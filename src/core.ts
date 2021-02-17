@@ -1,5 +1,5 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import { provideCore, AnswersCore, VerticalSearchResponse, Facet } from '@yext/answers-core';
+import { provideCore, AnswersCore, VerticalSearchResponse, Facet, Filter, QueryTrigger, QuerySource } from '@yext/answers-core';
 import ReduxThunk from 'redux-thunk';
 
 import coreReducer from './slices/reducer';
@@ -25,12 +25,24 @@ export default class StatefulCore {
     this.store.dispatch({ type: 'query/set', payload: { query }});
   }
 
+  setQueryTrigger(trigger: QueryTrigger) {
+    this.store.dispatch({ type: 'query/setTrigger', payload: { trigger }});
+  }
+
+  setQuerySource(source: QuerySource) {
+    this.store.dispatch({ type: 'query/setSource', payload: { source }});
+  }
+
   get verticalKey(): string {
     return this.store.getState().vertical.verticalKey;
   }
 
   setVerticalKey(key: string) {
     this.store.dispatch({ type: 'vertical/setKey', payload: { verticalKey: key }});
+  }
+
+  setFilters(filters: Filter[]) {
+    this.store.dispatch({ type: 'static-filters/set', payload: { filters }});
   }
 
   get verticalResults(): VerticalSearchResponse {

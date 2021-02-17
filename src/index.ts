@@ -13,6 +13,9 @@ async function test() {
     }
   ]);
   await statefulCore.executeVerticalQuery();
+
+  statefulCore.setQuery('Yext');
+  await statefulCore.executeUniversalQuery();
 }
 
 test();

@@ -1,5 +1,5 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import { provideCore, AnswersCore, VerticalSearchResponse, Facet, Filter, QueryTrigger, QuerySource } from '@yext/answers-core';
+import { provideCore, AnswersCore, VerticalSearchResponse, Facet, Filter, QueryTrigger, QuerySource, UniversalSearchResponse } from '@yext/answers-core';
 import ReduxThunk from 'redux-thunk';
 
 import coreReducer from './slices/reducer';
@@ -29,8 +29,16 @@ export default class StatefulCore {
     this.store.dispatch({ type: 'query/setTrigger', payload: { trigger }});
   }
 
+  get queryTrigger(): QueryTrigger {
+    return this.store.getState().querytrigger;
+  }
+
   setQuerySource(source: QuerySource) {
     this.store.dispatch({ type: 'query/setSource', payload: { source }});
+  }
+
+  get querySource(): QuerySource {
+    return this.store.getState().querySource;
   }
 
   get verticalKey(): string {
@@ -49,14 +57,35 @@ export default class StatefulCore {
     return this.store.getState().vertical.verticalResults;
   }
 
+  get universalResults(): UniversalSearchResponse {
+    return this.store.getState().universal.universalResults;
+  }
+
   get facets(): Facet[] {
     return this.store.getState().vertical.facets;
   }
 
+  async executeUniversalQuery() {
+    const queryThunk = async (dispatch, getState) => {
+      const results = await this.core.universalSearch({ 
+        query: this.query,
+        querySource: this.querySource,
+        queryTrigger: this.queryTrigger,
+      });
+      dispatch({ type: 'universal/setResults', payload: { results }});
+    }
+    await this.store.dispatch(queryThunk);
+  }
+
   async executeVerticalQuery() {
     const queryThunk = async (dispatch, getState) => {
-      const results = await this.core.verticalSearch(
-          { query: this.query, verticalKey: this.verticalKey, retrieveFacets: true });
+      const results = await this.core.verticalSearch({ 
+        query: this.query,
+        querySource: this.querySource,
+        queryTrigger: this.queryTrigger,
+        verticalKey: this.verticalKey,
+        retrieveFacets: true
+      });
       dispatch({ type: 'vertical/setResults', payload: { results }});
     }
     await this.store.dispatch(queryThunk);

@@ -82,6 +82,21 @@ export default class StatefulCore {
     });
   }
 
+  addListener(sliceName, listener) {
+    let previousValue;
+    this.store.subscribe(() => {
+      let currentValue = this.state;
+      sliceName.split('.').forEach(nestedKey => {
+        currentValue = currentValue[nestedKey];
+      })
+
+      if (previousValue !== currentValue) {
+        previousValue = currentValue;
+        listener(currentValue);
+      }
+    });
+  }
+
   async executeUniversalQuery() {
     const queryThunk = async (dispatch, getState) => {
       const results = await this.core.universalSearch({ 

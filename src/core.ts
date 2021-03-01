@@ -71,6 +71,10 @@ export default class StatefulCore {
     return this.store.getState().vertical.facets;
   }
 
+  get state(): any {
+    return this.store.getState();
+  }
+
   setState(state) {
     this.store.dispatch({
       type: 'set-state',

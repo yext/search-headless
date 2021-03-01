@@ -12,7 +12,13 @@ export default class StatefulCore {
     this.core = provideCore(
       { apiKey: 'df4b24f4075800e5e9705090c54c6c13', experienceKey: 'rosetest', locale: 'en' });
     this.store = configureStore({ 
-      reducer: coreReducer,
+      reducer: (state, action) => {
+        if (action.type === 'set-state') {
+          return action.payload.state;
+        } else {
+          return coreReducer(state, action);
+        }
+      },
       middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(ReduxThunk)
     });
   }
@@ -63,6 +69,13 @@ export default class StatefulCore {
 
   get facets(): Facet[] {
     return this.store.getState().vertical.facets;
+  }
+
+  setState(state) {
+    this.store.dispatch({
+      type: 'set-state',
+      payload: { state }
+    });
   }
 
   async executeUniversalQuery() {

@@ -1,4 +1,5 @@
 import { AnswersCore, VerticalSearchResponse, Facet, QueryTrigger, QuerySource, UniversalSearchResponse } from '@yext/answers-core';
+import StateListener from './state-listener';
 import StateManager from './state-manager';
 
 export default class StatefulCore {
@@ -50,6 +51,10 @@ export default class StatefulCore {
 
   get state(): any {
     return this.stateManager.getState();
+  }
+
+  addListener<T>(listener: StateListener<T>) {
+    this.stateManager.addListener<T>(listener);
   }
 
   async executeUniversalQuery() {

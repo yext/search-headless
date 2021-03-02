@@ -1,22 +1,26 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { VerticalSearchResponse, Facet } from '@yext/answers-core';
+
+interface VerticalSearchState {
+  key?: string,
+  results?: VerticalSearchResponse,
+  facets?: Facet[]
+}
+
+const initialState: VerticalSearchState = {};
 
 export const verticalSlice = createSlice({
   name: 'vertical',
-  initialState: {
-    verticalKey: null,
-    verticalResults: null,
-    facets: null
-  },
+  initialState,
   reducers: {
-    setKey: (state, action) => {
-      state.verticalKey = action.payload.verticalKey;
+    setKey: (state, action: PayloadAction<string>) => {
+      state.key = action.payload;
     },
-    setResults: (state, action) => {
-      state.verticalResults = action.payload.results;
-      state.facets = action.payload.results.facets;
+    setResults: (state, action: PayloadAction<VerticalSearchResponse>) => {
+      state.results = action.payload;
+      state.facets = action.payload.facets;
     }
   }
 });
 
-export const { setKey, setResults } = verticalSlice.actions;
 export default verticalSlice.reducer;

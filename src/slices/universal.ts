@@ -1,16 +1,20 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { UniversalSearchResponse } from '@yext/answers-core';
+
+interface UniversalSearchState {
+  results?: UniversalSearchResponse
+}
+
+const initialState: UniversalSearchState = {};
 
 export const universalSlice = createSlice({
   name: 'universal',
-  initialState: {
-    universalResults: null,
-  },
+  initialState,
   reducers: {
-    setResults: (state, action) => {
-      state.universalResults = action.payload.results;
+    setResults: (state, action: PayloadAction<UniversalSearchResponse>) => {
+      state.results = action.payload;
     }
   }
 });
 
-export const { setResults } = universalSlice.actions;
 export default universalSlice.reducer;

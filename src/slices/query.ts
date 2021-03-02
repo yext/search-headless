@@ -1,24 +1,27 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+interface QueryState {
+  query?: string,
+  queryTrigger?: string,
+  querySource?: string
+}
+
+const initialState: QueryState = {};
 
 export const querySlice = createSlice({
   name: 'query',
-  initialState: {
-    query: '',
-    queryTrigger: null,
-    querySource: null
-  },
+  initialState,
   reducers: {
-    set: (state, action) => {
-      state.query = action.payload.query;
+    set: (state, action: PayloadAction<string>) => {
+      state.query = action.payload;
     },
-    setTrigger: (state, action) => {
-      state.queryTrigger = action.payload.trigger;
+    setTrigger: (state, action: PayloadAction<string>) => {
+      state.queryTrigger = action.payload;
     },
-    setSource: (state, action) => {
-      state.querySource = action.payload.source;
+    setSource: (state, action: PayloadAction<string>) => {
+      state.querySource = action.payload;
     }
   }
 });
 
-export const { set, setTrigger, setSource } = querySlice.actions;
 export default querySlice.reducer;

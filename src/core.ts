@@ -1,126 +1,77 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import { provideCore, AnswersCore, VerticalSearchResponse, Facet, Filter, QueryTrigger, QuerySource, UniversalSearchResponse } from '@yext/answers-core';
-import ReduxThunk from 'redux-thunk';
-
-import coreReducer from './slices/reducer';
+import { AnswersCore, VerticalSearchResponse, Facet, QueryTrigger, QuerySource, UniversalSearchResponse } from '@yext/answers-core';
+import StateManager from './state-manager';
 
 export default class StatefulCore {
-  private core: AnswersCore;
-  private store: any;
+  constructor(private core: AnswersCore, private stateManager: StateManager) {}
 
-  constructor() {
-    this.core = provideCore(
-      { apiKey: 'df4b24f4075800e5e9705090c54c6c13', experienceKey: 'rosetest', locale: 'en' });
-    this.store = configureStore({ 
-      reducer: (state, action) => {
-        if (action.type === 'set-state') {
-          return action.payload.state;
-        } else {
-          return coreReducer(state, action);
-        }
-      },
-      middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(ReduxThunk)
-    });
+  setQuery(query: string) {
+    this.stateManager.dispatchEvent('query/set', query);
   }
 
   get query(): string {
-    return this.store.getState().query.query;
-  }
-
-  setQuery(query: string) {
-    this.store.dispatch({ type: 'query/set', payload: { query }});
+    return this.state.query.query;
   }
 
   setQueryTrigger(trigger: QueryTrigger) {
-    this.store.dispatch({ type: 'query/setTrigger', payload: { trigger }});
+    this.stateManager.dispatchEvent('query/setTrigger', trigger);
   }
 
   get queryTrigger(): QueryTrigger {
-    return this.store.getState().querytrigger;
+    return this.state.querytrigger;
   }
 
   setQuerySource(source: QuerySource) {
-    this.store.dispatch({ type: 'query/setSource', payload: { source }});
+    this.stateManager.dispatchEvent('query/setSource', source);
   }
 
   get querySource(): QuerySource {
-    return this.store.getState().querySource;
-  }
-
-  get verticalKey(): string {
-    return this.store.getState().vertical.verticalKey;
+    return this.state.querySource;
   }
 
   setVerticalKey(key: string) {
-    this.store.dispatch({ type: 'vertical/setKey', payload: { verticalKey: key }});
+    this.stateManager.dispatchEvent('vertical/setKey', key);
   }
 
-  setFilters(filters: Filter[]) {
-    this.store.dispatch({ type: 'static-filters/set', payload: { filters }});
+  get verticalKey(): string {
+    return this.state.vertical.key;
   }
 
   get verticalResults(): VerticalSearchResponse {
-    return this.store.getState().vertical.verticalResults;
-  }
-
-  get universalResults(): UniversalSearchResponse {
-    return this.store.getState().universal.universalResults;
+    return this.state.vertical.results;
   }
 
   get facets(): Facet[] {
-    return this.store.getState().vertical.facets;
+    return this.state.vertical.facets;
+  }
+
+  get universalResults(): UniversalSearchResponse {
+    return this.state.universal.results;
   }
 
   get state(): any {
-    return this.store.getState();
-  }
-
-  setState(state) {
-    this.store.dispatch({
-      type: 'set-state',
-      payload: { state }
-    });
-  }
-
-  addListener(sliceName, listener) {
-    let previousValue;
-    this.store.subscribe(() => {
-      let currentValue = this.state;
-      sliceName.split('.').forEach(nestedKey => {
-        currentValue = currentValue[nestedKey];
-      })
-
-      if (previousValue !== currentValue) {
-        previousValue = currentValue;
-        listener(currentValue);
-      }
-    });
+    return this.stateManager.getState();
   }
 
   async executeUniversalQuery() {
-    const queryThunk = async (dispatch, getState) => {
-      const results = await this.core.universalSearch({ 
-        query: this.query,
-        querySource: this.querySource,
-        queryTrigger: this.queryTrigger,
-      });
-      dispatch({ type: 'universal/setResults', payload: { results }});
-    }
-    await this.store.dispatch(queryThunk);
+    const results = await this.core.universalSearch({ 
+      query: this.query,
+      querySource: this.querySource,
+      queryTrigger: this.queryTrigger,
+    });
+
+    this.stateManager.dispatchEvent('universal/setResults', results);
   }
 
   async executeVerticalQuery() {
-    const queryThunk = async (dispatch, getState) => {
-      const results = await this.core.verticalSearch({ 
-        query: this.query,
-        querySource: this.querySource,
-        queryTrigger: this.queryTrigger,
-        verticalKey: this.verticalKey,
-        retrieveFacets: true
-      });
-      dispatch({ type: 'vertical/setResults', payload: { results }});
-    }
-    await this.store.dispatch(queryThunk);
+    const results = await this.core.verticalSearch({ 
+      query: this.query,
+      querySource: this.querySource,
+      queryTrigger: this.queryTrigger,
+      verticalKey: this.verticalKey,
+      retrieveFacets: true
+    });
+    
+    this.stateManager.dispatchEvent('vertical/setResults', results);
   }
 }
 

@@ -49,6 +49,10 @@ export default class StatefulCore {
     return this.state.universal.results;
   }
 
+  setState(state) {
+    this.stateManager.dispatchEvent('set-state', state);
+  }
+
   get state(): any {
     return this.stateManager.getState();
   }

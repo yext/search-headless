@@ -35,7 +35,7 @@ export default class StateManager {
   }
 
   addListener<T>(listener: StateListener<T>) {
-    let previousValue;
+    let previousValue: T;
     this.store.subscribe(() => {
       const currentValue: T = listener.valueAccessor(this.getState());
       if (currentValue !== previousValue) {

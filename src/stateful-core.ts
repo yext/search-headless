@@ -1,4 +1,4 @@
-import { AnswersCore, VerticalSearchResponse, Facet, QueryTrigger, QuerySource, UniversalSearchResponse } from '@yext/answers-core';
+import { AnswersCore, VerticalSearchResponse, Facet, QueryTrigger, QuerySource, UniversalSearchResponse, QuestionSubmissionRequest } from '@yext/answers-core';
 import StateListener from './state-listener';
 import StateManager from './state-manager';
 
@@ -63,6 +63,10 @@ export default class StatefulCore {
 
   addListener<T>(listener: StateListener<T>) {
     this.stateManager.addListener<T>(listener);
+  }
+
+  async submitQuestion(request: QuestionSubmissionRequest) {
+    const response = await this.core.submitQuestion(request);
   }
 
   async executeUniversalQuery() {

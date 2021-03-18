@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface QueryState {
   query?: string,
+  queryId?: string,
   queryTrigger?: string,
   querySource?: string
 }
@@ -20,6 +21,9 @@ export const querySlice = createSlice({
     },
     setSource: (state, action: PayloadAction<string>) => {
       state.querySource = action.payload;
+    },
+    setQueryId: (state, action: PayloadAction<string>) => {
+      state.queryId = action.payload;
     }
   }
 });

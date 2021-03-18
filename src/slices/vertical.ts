@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { VerticalSearchResponse, Facet } from '@yext/answers-core';
+import { VerticalSearchResponse, Facet, AutocompleteResponse } from '@yext/answers-core';
 
 interface VerticalSearchState {
   key?: string,
+  autoComplete?: AutocompleteResponse
   results?: VerticalSearchResponse,
   facets?: Facet[]
 }
@@ -19,6 +20,9 @@ export const verticalSlice = createSlice({
     setResults: (state, action: PayloadAction<VerticalSearchResponse>) => {
       state.results = action.payload;
       state.facets = action.payload.facets;
+    },
+    setAutoComplete: (state, action: PayloadAction<AutocompleteResponse>) => {
+      state.autoComplete = action.payload;
     }
   }
 });

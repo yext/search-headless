@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { UniversalSearchResponse } from '@yext/answers-core';
+import { UniversalSearchResponse, AutocompleteResponse } from '@yext/answers-core';
 
 interface UniversalSearchState {
-  results?: UniversalSearchResponse
+  results?: UniversalSearchResponse,
+  autoComplete?: AutocompleteResponse
 }
 
 const initialState: UniversalSearchState = {};
@@ -13,6 +14,9 @@ export const universalSlice = createSlice({
   reducers: {
     setResults: (state, action: PayloadAction<UniversalSearchResponse>) => {
       state.results = action.payload;
+    },
+    setAutoComplete: (state, action: PayloadAction<AutocompleteResponse>) => {
+      state.autoComplete = action.payload;
     }
   }
 });

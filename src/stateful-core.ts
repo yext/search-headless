@@ -49,6 +49,10 @@ export default class StatefulCore {
     return this.state.universal.results;
   }
 
+  getQueryId(): string {
+    return this.state.query.queryId;
+  }
+
   setState(state) {
     this.stateManager.dispatchEvent('set-state', state);
   }
@@ -69,6 +73,15 @@ export default class StatefulCore {
     });
 
     this.stateManager.dispatchEvent('universal/setResults', results);
+    this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
+  }
+
+  async executeUniversalAutoComplete() {
+    const results = await this.core.universalAutocomplete({
+      input: this.query
+    });
+    
+    this.stateManager.dispatchEvent('universal/setAutoComplete', results);
   }
 
   async executeVerticalQuery() {
@@ -81,6 +94,16 @@ export default class StatefulCore {
     });
     
     this.stateManager.dispatchEvent('vertical/setResults', results);
+    this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
+  }
+
+  async executeVerticalAutoComplete() {
+    const results = await this.core.verticalAutocomplete({
+      input: this.query,
+      verticalKey: this.verticalKey
+    });
+
+    this.stateManager.dispatchEvent('vertical/setAutoComplete', results);
   }
 }
 

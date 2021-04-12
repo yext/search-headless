@@ -1,11 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface QueryState {
-  query?: string,
-  queryId?: string,
-  queryTrigger?: string,
-  querySource?: string
-}
+import { QuerySource, QueryTrigger } from '@yext/answers-core';
+import { QueryState } from '../types/query';
 
 const initialState: QueryState = {};
 
@@ -16,10 +11,10 @@ export const querySlice = createSlice({
     set: (state, action: PayloadAction<string>) => {
       state.query = action.payload;
     },
-    setTrigger: (state, action: PayloadAction<string>) => {
+    setTrigger: (state, action: PayloadAction<QueryTrigger>) => {
       state.queryTrigger = action.payload;
     },
-    setSource: (state, action: PayloadAction<string>) => {
+    setSource: (state, action: PayloadAction<QuerySource>) => {
       state.querySource = action.payload;
     },
     setQueryId: (state, action: PayloadAction<string>) => {

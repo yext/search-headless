@@ -1,6 +1,7 @@
-import { AnswersCore, VerticalSearchResponse, Facet, QueryTrigger, QuerySource, UniversalSearchResponse, QuestionSubmissionRequest } from '@yext/answers-core';
+import { AnswersCore, QueryTrigger, QuerySource, QuestionSubmissionRequest } from '@yext/answers-core';
 import StateListener from './state-listener';
 import StateManager from './state-manager';
+import { State } from './types/state';
 
 export default class StatefulCore {
   constructor(private core: AnswersCore, private stateManager: StateManager) {}
@@ -9,55 +10,23 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('query/set', query);
   }
 
-  get query(): string {
-    return this.state.query.query;
-  }
-
   setQueryTrigger(trigger: QueryTrigger) {
     this.stateManager.dispatchEvent('query/setTrigger', trigger);
-  }
-
-  get queryTrigger(): QueryTrigger {
-    return this.state.querytrigger;
   }
 
   setQuerySource(source: QuerySource) {
     this.stateManager.dispatchEvent('query/setSource', source);
   }
 
-  get querySource(): QuerySource {
-    return this.state.querySource;
-  }
-
   setVerticalKey(key: string) {
     this.stateManager.dispatchEvent('vertical/setKey', key);
   }
 
-  get verticalKey(): string {
-    return this.state.vertical.key;
-  }
-
-  get verticalResults(): VerticalSearchResponse {
-    return this.state.vertical.results;
-  }
-
-  get facets(): Facet[] {
-    return this.state.vertical.facets;
-  }
-
-  get universalResults(): UniversalSearchResponse {
-    return this.state.universal.results;
-  }
-
-  getQueryId(): string {
-    return this.state.query.queryId;
-  }
-
-  setState(state) {
+  setState(state: State) {
     this.stateManager.dispatchEvent('set-state', state);
   }
 
-  get state(): any {
+  get state(): State {
     return this.stateManager.getState();
   }
 
@@ -70,44 +39,60 @@ export default class StatefulCore {
   }
 
   async executeUniversalQuery() {
-    const results = await this.core.universalSearch({ 
-      query: this.query,
-      querySource: this.querySource,
-      queryTrigger: this.queryTrigger,
-    });
-
-    this.stateManager.dispatchEvent('universal/setResults', results);
-    this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
+    const { query, querySource, queryTrigger } = this.state.query;
+    if (query) {
+      const results = await this.core.universalSearch({ 
+        query: query,
+        querySource: querySource,
+        queryTrigger: queryTrigger,
+      });
+  
+      this.stateManager.dispatchEvent('universal/setResults', results);
+      this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
+    }
   }
 
   async executeUniversalAutoComplete() {
-    const results = await this.core.universalAutocomplete({
-      input: this.query
-    });
-    
-    this.stateManager.dispatchEvent('universal/setAutoComplete', results);
+    const query = this.state.query.query;
+    if (query) {
+      const results = await this.core.universalAutocomplete({
+        input: query
+      });
+      
+      this.stateManager.dispatchEvent('universal/setAutoComplete', results);
+    }
   }
 
   async executeVerticalQuery() {
-    const results = await this.core.verticalSearch({ 
-      query: this.query,
-      querySource: this.querySource,
-      queryTrigger: this.queryTrigger,
-      verticalKey: this.verticalKey,
-      retrieveFacets: true
-    });
-    
-    this.stateManager.dispatchEvent('vertical/setResults', results);
-    this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
+    const { query, querySource, queryTrigger } = this.state.query;
+    const verticalKey = this.state.vertical.key;
+
+    if (query && verticalKey) {
+      const results = await this.core.verticalSearch({ 
+        query: query,
+        querySource: querySource,
+        queryTrigger: queryTrigger,
+        verticalKey: verticalKey,
+        retrieveFacets: true
+      });
+      
+      this.stateManager.dispatchEvent('vertical/setResults', results);
+      this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
+    }
   }
 
   async executeVerticalAutoComplete() {
-    const results = await this.core.verticalAutocomplete({
-      input: this.query,
-      verticalKey: this.verticalKey
-    });
+    const query = this.state.query.query;
+    const verticalKey = this.state.vertical.key;
 
-    this.stateManager.dispatchEvent('vertical/setAutoComplete', results);
+    if (query && verticalKey) {
+      const results = await this.core.verticalAutocomplete({
+        input: query,
+        verticalKey: verticalKey
+      });
+  
+      this.stateManager.dispatchEvent('vertical/setAutoComplete', results);
+    }
   }
 }
 

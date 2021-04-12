@@ -1,12 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { VerticalSearchResponse, Facet, AutocompleteResponse } from '@yext/answers-core';
-
-interface VerticalSearchState {
-  key?: string,
-  autoComplete?: AutocompleteResponse
-  results?: VerticalSearchResponse,
-  facets?: Facet[]
-}
+import { VerticalSearchResponse, AutocompleteResponse } from '@yext/answers-core';
+import { VerticalSearchState } from '../types/vertical';
 
 const initialState: VerticalSearchState = {};
 

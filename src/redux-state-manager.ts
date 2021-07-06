@@ -3,9 +3,10 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import queryReducer from './slices/query';
 import verticalReducer from './slices/vertical';
 import universalReducer from './slices/universal';
-import StateListener from './state-listener';
+import StateListener from './types/state-listener';
+import StateManager from './types/state-manager';
 
-export default class StateManager {
+export default class ReduxStateManager implements StateManager {
   private store;
 
   constructor() {

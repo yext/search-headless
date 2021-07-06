@@ -3,6 +3,7 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import queryReducer from './slices/query';
 import verticalReducer from './slices/vertical';
 import universalReducer from './slices/universal';
+import filtersReducer from './slices/filters';
 import StateListener from './types/state-listener';
 import StateManager from './types/state-manager';
 
@@ -14,6 +15,7 @@ export default class ReduxStateManager implements StateManager {
       query: queryReducer,
       vertical: verticalReducer,
       universal: universalReducer,
+      filters: filtersReducer
     });
 
     this.store = configureStore({ 

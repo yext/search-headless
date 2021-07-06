@@ -1,4 +1,4 @@
-import { AnswersCore, QueryTrigger, QuerySource, QuestionSubmissionRequest } from '@yext/answers-core';
+import { AnswersCore, QueryTrigger, QuerySource, QuestionSubmissionRequest, Filter, CombinedFilter } from '@yext/answers-core';
 import StateListener from './types/state-listener';
 import { State } from './types/state';
 import StateManager from './types/state-manager';
@@ -20,6 +20,10 @@ export default class StatefulCore {
 
   setVerticalKey(key: string) {
     this.stateManager.dispatchEvent('vertical/setKey', key);
+  }
+
+  setFilter(filter: Filter | CombinedFilter) {
+    this.stateManager.dispatchEvent('filters/setStatic', filter);
   }
 
   setState(state: State) {
@@ -65,14 +69,16 @@ export default class StatefulCore {
 
   async executeVerticalQuery() {
     const { query, querySource, queryTrigger } = this.state.query;
+    const staticFilters = this.state.filters.static;
     const verticalKey = this.state.vertical.key;
 
     if (query && verticalKey) {
       const results = await this.core.verticalSearch({ 
-        query: query,
+        query,
         querySource: querySource,
         queryTrigger: queryTrigger,
         verticalKey: verticalKey,
+        staticFilters,
         retrieveFacets: true
       });
       

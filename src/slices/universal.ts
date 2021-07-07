@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { UniversalSearchResponse, AutocompleteResponse } from '@yext/answers-core';
-import { UniversalSearchState } from '../types/universal';
+import { UniversalSearchState } from '../models/slices/universal';
 
 const initialState: UniversalSearchState = {};
 

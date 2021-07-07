@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CombinedFilter, Filter } from '@yext/answers-core';
-import { FiltersState } from '../types/filters';
+import { FiltersState } from '../models/slices/filters';
 
 const initialState: FiltersState = {};
 export const filtersSlice = createSlice({

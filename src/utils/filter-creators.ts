@@ -1,5 +1,5 @@
 import { CombinedFilter, Filter, FilterCombinator, Matcher, NearFilterValue } from "@yext/answers-core";
-import { Range } from "./types/range";
+import { Range } from "../models/utils/range";
 
 type filterTypes = Filter | CombinedFilter;
 

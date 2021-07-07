@@ -1,11 +1,11 @@
-import { configureStore, combineReducers, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 
 import queryReducer from './slices/query';
 import verticalReducer from './slices/vertical';
 import universalReducer from './slices/universal';
 import filtersReducer from './slices/filters';
-import StateListener from './types/state-listener';
-import StateManager from './types/state-manager';
+import StateListener from './models/state-listener';
+import StateManager from './models/state-manager';
 
 export default class ReduxStateManager implements StateManager {
   private store;

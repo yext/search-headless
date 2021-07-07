@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { QuerySource, QueryTrigger } from '@yext/answers-core';
-import { QueryState } from '../types/query';
+import { QueryState } from '../models/slices/query';
 
 const initialState: QueryState = {};
 

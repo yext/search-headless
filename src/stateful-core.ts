@@ -1,7 +1,7 @@
 import { AnswersCore, QueryTrigger, QuerySource, QuestionSubmissionRequest, Filter, CombinedFilter } from '@yext/answers-core';
-import StateListener from './types/state-listener';
-import { State } from './types/state';
-import StateManager from './types/state-manager';
+import StateListener from './models/state-listener';
+import { State } from './models/state';
+import StateManager from './models/state-manager';
 
 export default class StatefulCore {
   constructor(private core: AnswersCore, private stateManager: StateManager) {}

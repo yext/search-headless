@@ -9,5 +9,5 @@ export function provideStatefulCore(config: AnswersConfig): StatefulCore {
   return new StatefulCore(answersCore, stateManager);
 }
 
-export * from './filter-utils';
+export * from './utils/filter-creators';
 export { StatefulCore };

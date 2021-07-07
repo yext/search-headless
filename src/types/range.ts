@@ -1,9 +1,9 @@
-export interface RangeBoundary {
-  value: number,
+export interface RangeBoundary<T> {
+  value: T,
   inclusive: boolean
 }
 
-export interface Range {
-  min?: RangeBoundary,
-  max?: RangeBoundary
+export interface Range<T> {
+  min?: RangeBoundary<T>,
+  max?: RangeBoundary<T>
 }

@@ -13,7 +13,17 @@ export function createEqualsFilter(
   }
 }
 
-export function createRangeFilter(fieldId: string, range: Range): filterTypes {
+export function createNumberRangeFilter(fieldId: string, range: Range<number>): filterTypes {
+  return createRangeFilter(fieldId, range);
+}
+
+export function createDateRangeFilter(
+  fieldId: string, 
+  range: Range<Date>): filterTypes {
+  return createRangeFilter(fieldId, range);
+}
+
+function createRangeFilter(fieldId: string, range: Range<number|Date>): filterTypes {
   const { min, max } = range;
 
   let minFilter;

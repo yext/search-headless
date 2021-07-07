@@ -1,4 +1,4 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { configureStore, combineReducers, getDefaultMiddleware } from '@reduxjs/toolkit';
 
 import queryReducer from './slices/query';
 import verticalReducer from './slices/vertical';
@@ -18,7 +18,9 @@ export default class ReduxStateManager implements StateManager {
       filters: filtersReducer
     });
 
-    this.store = configureStore({ 
+    this.store = configureStore({
+      middleware: 
+        (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
       reducer: (state, action) => {
         if (action.type === 'set-state') {
           return action.payload;

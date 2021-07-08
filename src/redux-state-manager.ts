@@ -6,6 +6,7 @@ import universalReducer from './slices/universal';
 import filtersReducer from './slices/filters';
 import StateListener from './models/state-listener';
 import StateManager from './models/state-manager';
+import { State } from './models/state';
 
 /**
  * A Redux-backed implementation of the {@link StateManager} interface. Redux is used to
@@ -23,7 +24,7 @@ export default class ReduxStateManager implements StateManager {
     });
 
     this.store = configureStore({
-      middleware: 
+      middleware:
         (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
       reducer: (state, action) => {
         if (action.type === 'set-state') {
@@ -35,15 +36,15 @@ export default class ReduxStateManager implements StateManager {
     });
   }
 
-  getState() {
+  getState(): State {
     return this.store.getState();
   }
 
-  dispatchEvent(type, payload) {
+  dispatchEvent(type, payload): void {
     this.store.dispatch({ type, payload });
   }
 
-  addListener<T>(listener: StateListener<T>) {
+  addListener<T>(listener: StateListener<T>): void {
     let previousValue: T;
     this.store.subscribe(() => {
       const currentValue: T = listener.valueAccessor(this.getState());

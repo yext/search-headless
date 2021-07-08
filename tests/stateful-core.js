@@ -1,12 +1,12 @@
 import { Matcher, QuerySource, QueryTrigger } from '@yext/answers-core';
 import StatefulCore from '../src/stateful-core';
 
-describe("setters work as expected", () => {
+describe('setters work as expected', () => {
   const mockedState = {};
   const mockedStateManager = {
     getState: jest.fn(() => mockedState),
-    dispatchEvent: jest.fn((type, payload) => {}),
-    addEventListener: jest.fn(listener => {})
+    dispatchEvent: jest.fn(),
+    addEventListener: jest.fn()
   };
   const statefulCore = new StatefulCore(null, mockedStateManager);
 
@@ -14,7 +14,7 @@ describe("setters work as expected", () => {
     jest.clearAllMocks();
   });
 
-  it("setFilter works as expected", () => {
+  it('setFilter works as expected', () => {
     const filter = {
       fieldId: 'c_someField',
       matcher: Matcher.Equals,
@@ -22,7 +22,7 @@ describe("setters work as expected", () => {
     };
     statefulCore.setFilter(filter);
 
-    const dispatchEventCalls = 
+    const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
 
     expect(dispatchEventCalls.length).toBe(1);
@@ -30,11 +30,11 @@ describe("setters work as expected", () => {
     expect(dispatchEventCalls[0][1]).toBe(filter);
   });
 
-  it("setQuery works as expected", () => {
+  it('setQuery works as expected', () => {
     const query = 'Hello';
     statefulCore.setQuery(query);
 
-    const dispatchEventCalls = 
+    const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
 
     expect(dispatchEventCalls.length).toBe(1);
@@ -42,10 +42,10 @@ describe("setters work as expected", () => {
     expect(dispatchEventCalls[0][1]).toBe(query);
   });
 
-  it("setQueryTrigger works as expected", () => {
+  it('setQueryTrigger works as expected', () => {
     statefulCore.setQueryTrigger(QueryTrigger.Initialize);
 
-    const dispatchEventCalls = 
+    const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
 
     expect(dispatchEventCalls.length).toBe(1);
@@ -53,10 +53,10 @@ describe("setters work as expected", () => {
     expect(dispatchEventCalls[0][1]).toBe(QueryTrigger.Initialize);
   });
 
-  it("setQuerySource works as expected", () => {
+  it('setQuerySource works as expected', () => {
     statefulCore.setQuerySource(QuerySource.Overlay);
 
-    const dispatchEventCalls = 
+    const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
 
     expect(dispatchEventCalls.length).toBe(1);
@@ -64,11 +64,11 @@ describe("setters work as expected", () => {
     expect(dispatchEventCalls[0][1]).toBe(QuerySource.Overlay);
   });
 
-  it("setVerticalKey works as expected", () => {
+  it('setVerticalKey works as expected', () => {
     const verticalKey = 'key';
     statefulCore.setVerticalKey(verticalKey);
 
-    const dispatchEventCalls = 
+    const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
 
     expect(dispatchEventCalls.length).toBe(1);
@@ -76,11 +76,11 @@ describe("setters work as expected", () => {
     expect(dispatchEventCalls[0][1]).toBe(verticalKey);
   });
 
-  it("setState works as expected", () => {
+  it('setState works as expected', () => {
     const state = { query: {} };
     statefulCore.setState(state);
 
-    const dispatchEventCalls = 
+    const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
 
     expect(dispatchEventCalls.length).toBe(1);

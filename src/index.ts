@@ -4,7 +4,7 @@ import StatefulCore from './stateful-core';
 
 /**
  * Supplies a new instance of {@link StatefulCore}, using the provided configuration.
- * 
+ *
  * @param config - The apiKey, experienceKey, etc. needed to set up a front-end Answers
  *                 experience.
  */

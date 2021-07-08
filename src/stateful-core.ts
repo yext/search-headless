@@ -6,27 +6,27 @@ import StateManager from './models/state-manager';
 export default class StatefulCore {
   constructor(private core: AnswersCore, private stateManager: StateManager) {}
 
-  setQuery(query: string) {
+  setQuery(query: string): void {
     this.stateManager.dispatchEvent('query/set', query);
   }
 
-  setQueryTrigger(trigger: QueryTrigger) {
+  setQueryTrigger(trigger: QueryTrigger): void {
     this.stateManager.dispatchEvent('query/setTrigger', trigger);
   }
 
-  setQuerySource(source: QuerySource) {
+  setQuerySource(source: QuerySource): void {
     this.stateManager.dispatchEvent('query/setSource', source);
   }
 
-  setVerticalKey(key: string) {
+  setVerticalKey(key: string): void {
     this.stateManager.dispatchEvent('vertical/setKey', key);
   }
 
-  setFilter(filter: Filter | CombinedFilter) {
+  setFilter(filter: Filter | CombinedFilter): void {
     this.stateManager.dispatchEvent('filters/setStatic', filter);
   }
 
-  setState(state: State) {
+  setState(state: State): void {
     this.stateManager.dispatchEvent('set-state', state);
   }
 
@@ -34,23 +34,23 @@ export default class StatefulCore {
     return this.stateManager.getState();
   }
 
-  addListener<T>(listener: StateListener<T>) {
+  addListener<T>(listener: StateListener<T>): void {
     this.stateManager.addListener<T>(listener);
   }
 
   async submitQuestion(request: QuestionSubmissionRequest) {
-    const response = await this.core.submitQuestion(request);
+    await this.core.submitQuestion(request);
   }
 
   async executeUniversalQuery() {
     const { query, querySource, queryTrigger } = this.state.query;
     if (query) {
-      const results = await this.core.universalSearch({ 
+      const results = await this.core.universalSearch({
         query: query,
         querySource: querySource,
         queryTrigger: queryTrigger,
       });
-  
+
       this.stateManager.dispatchEvent('universal/setResults', results);
       this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
     }
@@ -62,7 +62,7 @@ export default class StatefulCore {
       const results = await this.core.universalAutocomplete({
         input: query
       });
-      
+
       this.stateManager.dispatchEvent('universal/setAutoComplete', results);
     }
   }
@@ -73,7 +73,7 @@ export default class StatefulCore {
     const verticalKey = this.state.vertical.key;
 
     if (query && verticalKey) {
-      const results = await this.core.verticalSearch({ 
+      const results = await this.core.verticalSearch({
         query,
         querySource: querySource,
         queryTrigger: queryTrigger,
@@ -81,7 +81,7 @@ export default class StatefulCore {
         staticFilters,
         retrieveFacets: true
       });
-      
+
       this.stateManager.dispatchEvent('vertical/setResults', results);
       this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
     }
@@ -96,7 +96,7 @@ export default class StatefulCore {
         input: query,
         verticalKey: verticalKey
       });
-  
+
       this.stateManager.dispatchEvent('vertical/setAutoComplete', results);
     }
   }

@@ -4,6 +4,10 @@ import { VerticalSearchState } from '../models/slices/vertical';
 
 const initialState: VerticalSearchState = {};
 
+/**
+ * Registers with Redux the slice of {@link State} pertaining to vertical search. There
+ * are reducers for setting the vertical key, results, and auto-complete.
+ */
 export const verticalSlice = createSlice({
   name: 'vertical',
   initialState,

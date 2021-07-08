@@ -3,6 +3,13 @@ import { Range } from "../models/utils/range";
 
 type filterTypes = Filter | CombinedFilter;
 
+/**
+ * Creates a simple {@link Filter} that ensures all results will match a specific
+ * field value.
+ * 
+ * @param fieldId - The comparrison field's identifier.
+ * @param value - The value to match.
+ */
 export function createEqualsFilter(
   fieldId: string, 
   value: string | number | boolean): Filter {
@@ -13,10 +20,24 @@ export function createEqualsFilter(
   }
 }
 
+/**
+ * Creates a {@link Filter} or {@link CombinedFilter} that matches all results where the
+ * given field value falls in a specific number {@link Range}.
+ * 
+ * @param fieldId - The comparrison field's identifier.
+ * @param range - The acceptable number range.
+ */
 export function createNumberRangeFilter(fieldId: string, range: Range<number>): filterTypes {
   return createRangeFilter(fieldId, range);
 }
 
+/**
+ * Creates a {@link Filter} or {@link CombinedFilter} that matches all results where the
+ * given field value falls in a specific Date {@link Range}.
+ * 
+ * @param fieldId - The comparrison field's identifier.
+ * @param range - The acceptable date range.
+ */
 export function createDateRangeFilter(
   fieldId: string, 
   range: Range<Date>): filterTypes {
@@ -53,6 +74,12 @@ function createRangeFilter(fieldId: string, range: Range<number|Date>): filterTy
   }
 }
 
+/**
+ * Creates a {@link Filter} that matches all results within a certain radius of the
+ * given position.
+ * 
+ * @param position - The position and radius.
+ */
 export function createNearMeFilter(position: NearFilterValue): Filter {
   return {
     fieldId: 'builtin.location',
@@ -61,6 +88,14 @@ export function createNearMeFilter(position: NearFilterValue): Filter {
   }
 }
 
+/**
+ * Creates a {@link CombinedFilter} by applying the specified {@link FilterCombinator}
+ * to the two filters.
+ * 
+ * @param filterA - The first filter to be combined.
+ * @param filterB - The second filter to be combined.
+ * @param combinator - Specifies how the two filters should be joined.
+ */
 export function combineFilters(
   filterA: filterTypes, 
   filterB: filterTypes,

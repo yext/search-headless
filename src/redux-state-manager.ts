@@ -7,6 +7,10 @@ import filtersReducer from './slices/filters';
 import StateListener from './models/state-listener';
 import StateManager from './models/state-manager';
 
+/**
+ * A Redux-backed implementation of the {@link StateManager} interface. Redux is used to
+ * manage the state, dispatch events, and register state listeners.
+ */
 export default class ReduxStateManager implements StateManager {
   private store;
 

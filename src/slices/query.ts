@@ -4,6 +4,10 @@ import { QueryState } from '../models/slices/query';
 
 const initialState: QueryState = {};
 
+/**
+ * Registers with Redux the slice of {@link State} pertaining to queries. There
+ * are reducers for setting the query string, trigger, source, and id.
+ */
 export const querySlice = createSlice({
   name: 'query',
   initialState,

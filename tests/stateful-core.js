@@ -1,15 +1,28 @@
 import { Matcher, QuerySource, QueryTrigger } from '@yext/answers-core';
 import StatefulCore from '../src/stateful-core';
 
-describe('setters work as expected', () => {
-  const mockedState = {};
-  const mockedStateManager = {
-    getState: jest.fn(() => mockedState),
-    dispatchEvent: jest.fn(),
-    addEventListener: jest.fn()
-  };
-  const statefulCore = new StatefulCore(null, mockedStateManager);
+const mockedState = {
+  query: {
+    query: 'Search'
+  },
+  vertical: {
+    key: 'someKey'
+  }
+};
+const mockedStateManager = {
+  getState: jest.fn(() => mockedState),
+  dispatchEvent: jest.fn(),
+  addEventListener: jest.fn()
+};
 
+const mockedCore = {
+  verticalAutocomplete: jest.fn(),
+  universalAutocomplete: jest.fn()
+};
+
+const statefulCore = new StatefulCore(mockedCore, mockedStateManager);
+
+describe('setters work as expected', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -86,5 +99,36 @@ describe('setters work as expected', () => {
     expect(dispatchEventCalls.length).toBe(1);
     expect(dispatchEventCalls[0][0]).toBe('set-state');
     expect(dispatchEventCalls[0][1]).toBe(state);
+  });
+});
+
+describe('auto-complete works as expected', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('vertical auto-complete works', async () => {
+    await statefulCore.executeVerticalAutoComplete();
+
+    const dispatchEventCalls = mockedStateManager.dispatchEvent.mock.calls;
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('vertical/setAutoComplete');
+
+    const coreCalls = mockedCore.verticalAutocomplete.mock.calls;
+    expect(coreCalls.length).toBe(1);
+    expect(coreCalls[0][0]).toEqual(
+      { input: mockedState.query.query, verticalKey: mockedState.vertical.key });
+  });
+
+  it('universal auto-complete works', async () => {
+    await statefulCore.executeUniversalAutoComplete();
+
+    const dispatchEventCalls = mockedStateManager.dispatchEvent.mock.calls;
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('universal/setAutoComplete');
+
+    const coreCalls = mockedCore.universalAutocomplete.mock.calls;
+    expect(coreCalls.length).toBe(1);
+    expect(coreCalls[0][0]).toEqual({ input: mockedState.query.query });
   });
 });

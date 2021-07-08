@@ -3,10 +3,19 @@ import StatefulCore from '../src/stateful-core';
 
 const mockedState = {
   query: {
-    query: 'Search'
+    query: 'Search',
+    querySource: QuerySource.Standard,
+    queryTrigger: QueryTrigger.Initialize
   },
   vertical: {
     key: 'someKey'
+  },
+  filters: {
+    static: {
+      fieldId: 'c_someField',
+      matcher: Matcher.Equals,
+      value: 'some value'
+    }
   }
 };
 const mockedStateManager = {
@@ -15,9 +24,12 @@ const mockedStateManager = {
   addEventListener: jest.fn()
 };
 
+const mockedSearch = jest.fn(() => { return { queryId: '123' };});
 const mockedCore = {
   verticalAutocomplete: jest.fn(),
-  universalAutocomplete: jest.fn()
+  universalAutocomplete: jest.fn(),
+  universalSearch: mockedSearch,
+  verticalSearch: mockedSearch
 };
 
 const statefulCore = new StatefulCore(mockedCore, mockedStateManager);
@@ -130,5 +142,43 @@ describe('auto-complete works as expected', () => {
     const coreCalls = mockedCore.universalAutocomplete.mock.calls;
     expect(coreCalls.length).toBe(1);
     expect(coreCalls[0][0]).toEqual({ input: mockedState.query.query });
+  });
+});
+
+describe('search works as expected', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('universal search works', async () => {
+    await statefulCore.executeUniversalQuery();
+
+    const dispatchEventCalls = mockedStateManager.dispatchEvent.mock.calls;
+    expect(dispatchEventCalls.length).toBe(2);
+    expect(dispatchEventCalls[0][0]).toBe('universal/setResults');
+    expect(dispatchEventCalls[1][0]).toBe('query/setQueryId');
+
+    const coreCalls = mockedCore.universalSearch.mock.calls;
+    expect(coreCalls.length).toBe(1);
+    expect(coreCalls[0][0]).toEqual({ ...mockedState.query });
+  });
+
+  it('vertical search works', async () => {
+    await statefulCore.executeVerticalQuery();
+
+    const dispatchEventCalls = mockedStateManager.dispatchEvent.mock.calls;
+    expect(dispatchEventCalls.length).toBe(2);
+    expect(dispatchEventCalls[0][0]).toBe('vertical/setResults');
+    expect(dispatchEventCalls[1][0]).toBe('query/setQueryId');
+
+    const coreCalls = mockedCore.verticalSearch.mock.calls;
+    const expectedSearchParams = {
+      ...mockedState.query,
+      verticalKey: mockedState.vertical.key,
+      staticFilters: mockedState.filters.static,
+      retrieveFacets: true
+    };
+    expect(coreCalls.length).toBe(1);
+    expect(coreCalls[0][0]).toEqual(expectedSearchParams);
   });
 });

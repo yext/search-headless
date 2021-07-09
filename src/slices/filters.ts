@@ -18,4 +18,5 @@ export const filtersSlice = createSlice({
   }
 });
 
+export const { setStatic } = filtersSlice.actions;
 export default filtersSlice.reducer;

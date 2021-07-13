@@ -36,7 +36,6 @@
   "jest": {
     "bail": 0,
     "verbose": true,
-    "collectCoverage": true,
     "collectCoverageFrom": [
       "src/slices/**",
       "src/utils/**",

@@ -21,4 +21,5 @@ export const universalSlice = createSlice({
   }
 });
 
+export const { setResults, setAutoComplete } = universalSlice.actions;
 export default universalSlice.reducer;

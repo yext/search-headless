@@ -25,4 +25,5 @@ export const verticalSlice = createSlice({
   }
 });
 
+export const { setKey, setResults, setAutoComplete } = verticalSlice.actions;
 export default verticalSlice.reducer;

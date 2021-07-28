@@ -75,7 +75,7 @@ export default class StatefulCore {
     }
     const { query, querySource, queryTrigger } = this.state.query;
     const staticFilters = this.state.filters.static;
-    if (query && verticalKey) {
+    if (query) {
       const results = await this.core.verticalSearch({
         query,
         querySource: querySource,

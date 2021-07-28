@@ -1,4 +1,4 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { configureStore, combineReducers, EnhancedStore, Unsubscribe } from '@reduxjs/toolkit';
 
 import queryReducer from './slices/query';
 import verticalReducer from './slices/vertical';
@@ -13,7 +13,7 @@ import { State } from './models/state';
  * manage the state, dispatch events, and register state listeners.
  */
 export default class ReduxStateManager implements StateManager {
-  private store;
+  private store: EnhancedStore;
 
   constructor() {
     const coreReducer = combineReducers({
@@ -44,9 +44,9 @@ export default class ReduxStateManager implements StateManager {
     this.store.dispatch({ type, payload });
   }
 
-  addListener<T>(listener: StateListener<T>): void {
+  addListener<T>(listener: StateListener<T>): Unsubscribe {
     let previousValue: T;
-    this.store.subscribe(() => {
+    return this.store.subscribe(() => {
       const currentValue: T = listener.valueAccessor(this.getState());
       if (currentValue !== previousValue) {
         listener.callback(currentValue);

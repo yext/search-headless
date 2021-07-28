@@ -93,8 +93,11 @@ export default class StatefulCore {
   async executeVerticalAutoComplete() {
     const query = this.state.query.query;
     const verticalKey = this.state.vertical.key;
+    if (!verticalKey) {
+      throw new Error('no verticalKey suppled for vertical search');
+    }
 
-    if (query && verticalKey) {
+    if (query) {
       const results = await this.core.verticalAutocomplete({
         input: query,
         verticalKey: verticalKey

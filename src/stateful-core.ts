@@ -81,7 +81,6 @@ export default class StatefulCore {
     const staticFilters = this.state.filters.static;
     const verticalKey = this.state.vertical.key;
     const facets = (this.state.facets ? this.state.facets.facets : undefined);
-
     if (query && verticalKey) {
       const results = await this.core.verticalSearch({
         query,

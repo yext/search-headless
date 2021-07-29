@@ -2,6 +2,7 @@ import { AnswersCore, QueryTrigger, QuerySource, QuestionSubmissionRequest, Filt
 import StateListener from './models/state-listener';
 import { State } from './models/state';
 import StateManager from './models/state-manager';
+import { Unsubscribe } from '@reduxjs/toolkit';
 
 
 export default class StatefulCore {
@@ -43,8 +44,8 @@ export default class StatefulCore {
     return this.stateManager.getState();
   }
 
-  addListener<T>(listener: StateListener<T>): void {
-    this.stateManager.addListener<T>(listener);
+  addListener<T>(listener: StateListener<T>): Unsubscribe {
+    return this.stateManager.addListener<T>(listener);
   }
 
   async submitQuestion(request: QuestionSubmissionRequest) {
@@ -77,11 +78,14 @@ export default class StatefulCore {
   }
 
   async executeVerticalQuery() {
+    const verticalKey = this.state.vertical.key;
+    if (!verticalKey) {
+      throw new Error('no verticalKey suppled for vertical search');
+    }
     const { query, querySource, queryTrigger } = this.state.query;
     const staticFilters = this.state.filters.static;
-    const verticalKey = this.state.vertical.key;
     const facets = (this.state.facets ? this.state.facets.facets : undefined);
-    if (query && verticalKey) {
+    if (query) {
       const results = await this.core.verticalSearch({
         query,
         querySource: querySource,
@@ -100,8 +104,11 @@ export default class StatefulCore {
   async executeVerticalAutoComplete() {
     const query = this.state.query.query;
     const verticalKey = this.state.vertical.key;
+    if (!verticalKey) {
+      throw new Error('no verticalKey suppled for vertical search');
+    }
 
-    if (query && verticalKey) {
+    if (query) {
       const results = await this.core.verticalAutocomplete({
         input: query,
         verticalKey: verticalKey

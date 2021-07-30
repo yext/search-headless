@@ -12,7 +12,7 @@ export const filtersSlice = createSlice({
   name: 'filters',
   initialState,
   reducers: {
-    setStatic: (state: FiltersState, action: PayloadAction<Filter|CombinedFilter>) => {
+    setStatic: (state: FiltersState, action: PayloadAction<Filter|CombinedFilter|null>) => {
       state.static = action.payload;
     },
   }

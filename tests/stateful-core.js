@@ -69,26 +69,8 @@ describe('setters work as expected', () => {
       mockedStateManager.dispatchEvent.mock.calls;
 
     expect(dispatchEventCalls.length).toBe(1);
-    expect(dispatchEventCalls[0][0]).toBe('facets/setFacets');
+    expect(dispatchEventCalls[0][0]).toBe('filters/setFacets');
     expect(dispatchEventCalls[0][1]).toBe(facets);
-  });
-
-  it('setDisplayableFacets works as expected', () => {
-    const displayableFacets = [{
-      fieldId: 'c_someField',
-      options: [{
-        matcher: null,
-        value: 'Technology'
-        }]
-    }];
-    statefulCore.setDisplayableFacet(displayableFacets);
-
-    const dispatchEventCalls =
-      mockedStateManager.dispatchEvent.mock.calls;
-
-    expect(dispatchEventCalls.length).toBe(1);
-    expect(dispatchEventCalls[0][0]).toBe('facets/setDisplayableFacets');
-    expect(dispatchEventCalls[0][1]).toBe(displayableFacets);
   });
 
   it('setQuery works as expected', () => {

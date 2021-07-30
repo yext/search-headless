@@ -3,8 +3,6 @@ import StateListener from './models/state-listener';
 import { State } from './models/state';
 import StateManager from './models/state-manager';
 import { Unsubscribe } from '@reduxjs/toolkit';
-
-
 export default class StatefulCore {
   constructor(private core: AnswersCore, private stateManager: StateManager) {}
 

@@ -22,7 +22,7 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('vertical/setKey', key);
   }
 
-  setFilter(filter: Filter | CombinedFilter): void {
+  setFilter(filter: Filter | CombinedFilter | null): void {
     this.stateManager.dispatchEvent('filters/setStatic', filter);
   }
 
@@ -77,7 +77,7 @@ export default class StatefulCore {
       throw new Error('no verticalKey suppled for vertical search');
     }
     const { query, querySource, queryTrigger } = this.state.query;
-    const staticFilters = this.state.filters.static;
+    const staticFilters = this.state.filters.static || undefined;
     const facets = this.state.filters?.facets;
     if (query) {
       const results = await this.core.verticalSearch({

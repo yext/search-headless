@@ -1,9 +1,8 @@
-import { AnswersCore, QueryTrigger, QuerySource, QuestionSubmissionRequest, Filter, CombinedFilter } from '@yext/answers-core';
+import { AnswersCore, QueryTrigger, QuerySource, QuestionSubmissionRequest, Filter, CombinedFilter, Facet, DisplayableFacet } from '@yext/answers-core';
 import StateListener from './models/state-listener';
 import { State } from './models/state';
 import StateManager from './models/state-manager';
 import { Unsubscribe } from '@reduxjs/toolkit';
-
 export default class StatefulCore {
   constructor(private core: AnswersCore, private stateManager: StateManager) {}
 
@@ -25,6 +24,10 @@ export default class StatefulCore {
 
   setFilter(filter: Filter | CombinedFilter | null): void {
     this.stateManager.dispatchEvent('filters/setStatic', filter);
+  }
+
+  setFacets(facets: Facet[]): void {
+    this.stateManager.dispatchEvent('filters/setFacets', facets);
   }
 
   setState(state: State): void {
@@ -75,6 +78,7 @@ export default class StatefulCore {
     }
     const { query, querySource, queryTrigger } = this.state.query;
     const staticFilters = this.state.filters.static || undefined;
+    const facets = this.state.filters?.facets;
     if (query) {
       const results = await this.core.verticalSearch({
         query,
@@ -82,11 +86,12 @@ export default class StatefulCore {
         queryTrigger: queryTrigger,
         verticalKey: verticalKey,
         staticFilters,
+        facets: facets,
         retrieveFacets: true
       });
-
       this.stateManager.dispatchEvent('vertical/setResults', results);
       this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
+      this.stateManager.dispatchEvent('facets/setDisplayableFacets', results.facets)
     }
   }
 

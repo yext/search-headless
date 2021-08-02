@@ -20,7 +20,7 @@ export default class ReduxStateManager implements StateManager {
       query: queryReducer,
       vertical: verticalReducer,
       universal: universalReducer,
-      filters: filtersReducer
+      filters: filtersReducer,
     });
 
     this.store = configureStore({

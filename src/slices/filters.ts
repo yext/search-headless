@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CombinedFilter, Filter } from '@yext/answers-core';
+import { CombinedFilter, Filter, DisplayableFacet, Facet } from '@yext/answers-core';
 import { FiltersState } from '../models/slices/filters';
-import { DisplayableFacet, Facet } from '@yext/answers-core';
 
 const initialState: FiltersState = {};
 

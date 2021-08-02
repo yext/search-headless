@@ -26,7 +26,7 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('filters/setStatic', filter);
   }
 
-  setFacet(facets: Facet[]): void {
+  setFacets(facets: Facet[]): void {
     this.stateManager.dispatchEvent('filters/setFacets', facets);
   }
 

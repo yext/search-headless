@@ -58,16 +58,16 @@ describe('setters work as expected', () => {
   it('setFacets works as expected', () => {
     const facets = [
       {
-      fieldId: 'c_someField',
-      options: [
-        {
-        matcher: null,
-        value: 'Technology'
-        }
-      ]
-    }
-  ];
-    statefulCore.setFacet(facets);
+        fieldId: 'c_someField',
+        options: [
+          {
+          matcher: null,
+          value: 'Technology'
+          }
+        ]
+      }
+    ];
+    statefulCore.setFacets(facets);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;

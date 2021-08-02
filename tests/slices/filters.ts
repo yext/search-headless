@@ -26,7 +26,7 @@ describe('filter slice reducer works as expected', () => {
             matcher: null,
             value: 'Technology'
           }
-      ]
+        ]
       },
       {
         fieldId: 'someField2',

@@ -16,8 +16,10 @@ describe('filter slice reducer works as expected', () => {
 
     expect(actualState).toEqual(expectedState);
   });
+
   it('setFacets action is handled properly', () => {
-    const facets = [{
+    const facets = [
+      {
         fieldId: 'someField',
         options:[{
         matcher: null,
@@ -26,33 +28,37 @@ describe('filter slice reducer works as expected', () => {
     },
     {
         fieldId: 'someField2',
-        options:[{
+        options:[
+          {
           matcher: null,
           value: 'Technology2'
-          }]
-    }];
+          }
+        ]
+    }
+  ];
     const actualState = reducer({}, setFacets(facets));
-    const expectedState = {
-      facets: facets
-    };
+    const expectedState = { facets };
     expect(actualState).toEqual(expectedState);
   });
 
   it('setDisplayableFacets action is handled properly', () => {
-    const displayableFacets = [{
+    const displayableFacets = [
+      {
         fieldId: 'someField',
         displayName: 'someDisplay',
-        options:[{
+        options:[
+          {
             displayName: 'Technology',
             count: 3,
             selected: true,
             matcher: null,
             value: 'Technology'
-        }]}];
+        }
+      ]
+    }
+  ];
     const actualState = reducer({}, setDisplayableFacets(displayableFacets));
-    const expectedState = {
-      displayableFacets: displayableFacets
-    };
+    const expectedState = { displayableFacets };
     expect(actualState).toEqual(expectedState);
   });
 });

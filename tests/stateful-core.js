@@ -56,13 +56,17 @@ describe('setters work as expected', () => {
   });
 
   it('setFacets works as expected', () => {
-    const facets = [{
+    const facets = [
+      {
       fieldId: 'c_someField',
-      options: [{
+      options: [
+        {
         matcher: null,
         value: 'Technology'
-        }]
-    }];
+        }
+      ]
+    }
+  ];
     statefulCore.setFacet(facets);
 
     const dispatchEventCalls =

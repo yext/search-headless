@@ -78,7 +78,7 @@ export default class StatefulCore {
     }
     const { query, querySource, queryTrigger } = this.state.query;
     const staticFilters = this.state.filters.static;
-    const facets = (this.state.filters ? this.state.filters.facets : undefined);
+    const facets = this.state.filters?.facets;
     if (query) {
       const results = await this.core.verticalSearch({
         query,

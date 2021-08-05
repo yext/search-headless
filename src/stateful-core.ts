@@ -8,7 +8,8 @@ import {
   Facet,
   AutocompleteResponse,
   VerticalSearchResponse,
-  UniversalSearchResponse
+  UniversalSearchResponse,
+  QuestionSubmissionResponse
 } from '@yext/answers-core';
 
 import StateListener from './models/state-listener';
@@ -54,8 +55,8 @@ export default class StatefulCore {
     return this.stateManager.addListener<T>(listener);
   }
 
-  async submitQuestion(request: QuestionSubmissionRequest): Promise<void> {
-    await this.core.submitQuestion(request);
+  async submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse> {
+    return this.core.submitQuestion(request);
   }
 
   async executeUniversalQuery(): Promise<UniversalSearchResponse | undefined> {

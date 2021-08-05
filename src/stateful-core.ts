@@ -1,4 +1,16 @@
-import { AnswersCore, QueryTrigger, QuerySource, QuestionSubmissionRequest, Filter, CombinedFilter, Facet, DisplayableFacet } from '@yext/answers-core';
+import {
+  AnswersCore,
+  QueryTrigger,
+  QuerySource,
+  QuestionSubmissionRequest,
+  Filter,
+  CombinedFilter,
+  Facet,
+  AutocompleteResponse,
+  VerticalSearchResponse,
+  UniversalSearchResponse
+} from '@yext/answers-core';
+
 import StateListener from './models/state-listener';
 import { State } from './models/state';
 import StateManager from './models/state-manager';
@@ -42,11 +54,11 @@ export default class StatefulCore {
     return this.stateManager.addListener<T>(listener);
   }
 
-  async submitQuestion(request: QuestionSubmissionRequest) {
+  async submitQuestion(request: QuestionSubmissionRequest): Promise<void> {
     await this.core.submitQuestion(request);
   }
 
-  async executeUniversalQuery() {
+  async executeUniversalQuery(): Promise<UniversalSearchResponse | undefined> {
     const { query, querySource, queryTrigger } = this.state.query;
     if (query) {
       const results = await this.core.universalSearch({
@@ -57,10 +69,11 @@ export default class StatefulCore {
 
       this.stateManager.dispatchEvent('universal/setResults', results);
       this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
+      return results;
     }
   }
 
-  async executeUniversalAutoComplete() {
+  async executeUniversalAutoComplete(): Promise<AutocompleteResponse | undefined> {
     const query = this.state.query.query;
     if (query) {
       const results = await this.core.universalAutocomplete({
@@ -68,13 +81,15 @@ export default class StatefulCore {
       });
 
       this.stateManager.dispatchEvent('universal/setAutoComplete', results);
+      return results;
     }
   }
 
-  async executeVerticalQuery() {
+  async executeVerticalQuery(): Promise<VerticalSearchResponse | undefined> {
     const verticalKey = this.state.vertical.key;
     if (!verticalKey) {
-      throw new Error('no verticalKey suppled for vertical search');
+      console.error('no verticalKey supplied for vertical search');
+      return;
     }
     const { query, querySource, queryTrigger } = this.state.query;
     const staticFilters = this.state.filters.static || undefined;
@@ -91,15 +106,17 @@ export default class StatefulCore {
       });
       this.stateManager.dispatchEvent('vertical/setResults', results);
       this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
-      this.stateManager.dispatchEvent('facets/setDisplayableFacets', results.facets)
+      this.stateManager.dispatchEvent('facets/setDisplayableFacets', results.facets);
+      return results;
     }
   }
 
-  async executeVerticalAutoComplete() {
+  async executeVerticalAutoComplete(): Promise<AutocompleteResponse | undefined> {
     const query = this.state.query.query;
     const verticalKey = this.state.vertical.key;
     if (!verticalKey) {
-      throw new Error('no verticalKey suppled for vertical search');
+      console.error('no verticalKey supplied for vertical autocomplete');
+      return;
     }
 
     if (query) {
@@ -109,6 +126,7 @@ export default class StatefulCore {
       });
 
       this.stateManager.dispatchEvent('vertical/setAutoComplete', results);
+      return results;
     }
   }
 }

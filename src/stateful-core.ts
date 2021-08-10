@@ -10,7 +10,6 @@ import {
   VerticalSearchResponse,
   UniversalSearchResponse,
   QuestionSubmissionResponse,
-  SpellCheck
 } from '@yext/answers-core';
 
 import StateListener from './models/state-listener';

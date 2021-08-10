@@ -74,15 +74,14 @@ export default class StatefulCore {
     }
   }
 
-  async executeUniversalAutoComplete(query = this.state.query.query): Promise<AutocompleteResponse | undefined> {
-    if (query) {
-      const results = await this.core.universalAutocomplete({
-        input: query
-      });
+  async executeUniversalAutoComplete(query?: string): Promise<AutocompleteResponse | undefined> {
+    query = query || this.state.query.query || '';
+    const results = await this.core.universalAutocomplete({
+      input: query
+    });
 
-      this.stateManager.dispatchEvent('universal/setAutoComplete', results);
-      return results;
-    }
+    this.stateManager.dispatchEvent('universal/setAutoComplete', results);
+    return results;
   }
 
   async executeVerticalQuery(): Promise<VerticalSearchResponse | undefined> {
@@ -111,22 +110,21 @@ export default class StatefulCore {
     }
   }
 
-  async executeVerticalAutoComplete(query = this.state.query.query): Promise<AutocompleteResponse | undefined> {
+  async executeVerticalAutoComplete(query?: string): Promise<AutocompleteResponse | undefined> {
+    query = query || this.state.query.query || '';
     const verticalKey = this.state.vertical.key;
     if (!verticalKey) {
       console.error('no verticalKey supplied for vertical autocomplete');
       return;
     }
 
-    if (query) {
-      const results = await this.core.verticalAutocomplete({
-        input: query,
-        verticalKey: verticalKey
-      });
+    const results = await this.core.verticalAutocomplete({
+      input: query,
+      verticalKey: verticalKey
+    });
 
-      this.stateManager.dispatchEvent('vertical/setAutoComplete', results);
-      return results;
-    }
+    this.stateManager.dispatchEvent('vertical/setAutoComplete', results);
+    return results;
   }
 }
 

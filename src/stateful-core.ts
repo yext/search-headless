@@ -74,8 +74,7 @@ export default class StatefulCore {
     }
   }
 
-  async executeUniversalAutoComplete(): Promise<AutocompleteResponse | undefined> {
-    const query = this.state.query.query;
+  async executeUniversalAutoComplete(query = this.state.query.query): Promise<AutocompleteResponse | undefined> {
     if (query) {
       const results = await this.core.universalAutocomplete({
         input: query
@@ -112,8 +111,7 @@ export default class StatefulCore {
     }
   }
 
-  async executeVerticalAutoComplete(): Promise<AutocompleteResponse | undefined> {
-    const query = this.state.query.query;
+  async executeVerticalAutoComplete(query = this.state.query.query): Promise<AutocompleteResponse | undefined> {
     const verticalKey = this.state.vertical.key;
     if (!verticalKey) {
       console.error('no verticalKey supplied for vertical autocomplete');

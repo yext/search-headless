@@ -77,7 +77,7 @@ export default class StatefulCore {
 
       this.stateManager.dispatchEvent('universal/setResults', results);
       this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
-      this.stateManager.dispatchEvent('spellCheck/setResults', results.spellCheck);
+      this.stateManager.dispatchEvent('spellCheck/setResult', results.spellCheck);
       return results;
     }
   }
@@ -118,7 +118,7 @@ export default class StatefulCore {
       this.stateManager.dispatchEvent('vertical/setResults', results);
       this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
       this.stateManager.dispatchEvent('facets/setDisplayableFacets', results.facets);
-      this.stateManager.dispatchEvent('spellCheck/setResults', results.spellCheck);
+      this.stateManager.dispatchEvent('spellCheck/setResult', results.spellCheck);
       return results;
     }
   }

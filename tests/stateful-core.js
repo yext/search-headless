@@ -193,7 +193,7 @@ describe('search works as expected', () => {
     expect(dispatchEventCalls.length).toBe(3);
     expect(dispatchEventCalls[0][0]).toBe('universal/setResults');
     expect(dispatchEventCalls[1][0]).toBe('query/setQueryId');
-    expect(dispatchEventCalls[2][0]).toBe('spellCheck/setResults');
+    expect(dispatchEventCalls[2][0]).toBe('spellCheck/setResult');
 
     const coreCalls = mockedCore.universalSearch.mock.calls;
     expect(coreCalls.length).toBe(1);
@@ -211,7 +211,7 @@ describe('search works as expected', () => {
     expect(dispatchEventCalls[0][0]).toBe('vertical/setResults');
     expect(dispatchEventCalls[1][0]).toBe('query/setQueryId');
     expect(dispatchEventCalls[2][0]).toBe('facets/setDisplayableFacets');
-    expect(dispatchEventCalls[3][0]).toBe('spellCheck/setResults');
+    expect(dispatchEventCalls[3][0]).toBe('spellCheck/setResult');
 
     const coreCalls = mockedCore.verticalSearch.mock.calls;
     const expectedSearchParams = {

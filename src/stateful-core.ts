@@ -52,10 +52,6 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('spellCheck/setEnabled', enabled);
   }
 
-  setSpellCheckResult(spellCheck: SpellCheck): void {
-    this.stateManager.dispatchEvent('spellCheck/setResult', spellCheck);
-  }
-
   get state(): State {
     return this.stateManager.getState();
   }

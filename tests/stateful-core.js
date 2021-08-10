@@ -16,6 +16,9 @@ const mockedState = {
       matcher: Matcher.Equals,
       value: 'some value'
     }
+  },
+  spellCheck: {
+    enabled: true
   }
 };
 const mockedStateManager = {
@@ -61,8 +64,8 @@ describe('setters work as expected', () => {
         fieldId: 'c_someField',
         options: [
           {
-          matcher: null,
-          value: 'Technology'
+            matcher: null,
+            value: 'Technology'
           }
         ]
       }
@@ -134,6 +137,17 @@ describe('setters work as expected', () => {
     expect(dispatchEventCalls[0][0]).toBe('set-state');
     expect(dispatchEventCalls[0][1]).toBe(state);
   });
+
+  it('setSpellCheckEnabled works as expected', () => {
+    statefulCore.setSpellCheckEnabled(false);
+
+    const dispatchEventCalls =
+      mockedStateManager.dispatchEvent.mock.calls;
+
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('spellCheck/setEnabled');
+    expect(dispatchEventCalls[0][1]).toBe(false);
+  });
 });
 
 describe('auto-complete works as expected', () => {
@@ -176,29 +190,35 @@ describe('search works as expected', () => {
     await statefulCore.executeUniversalQuery();
 
     const dispatchEventCalls = mockedStateManager.dispatchEvent.mock.calls;
-    expect(dispatchEventCalls.length).toBe(2);
+    expect(dispatchEventCalls.length).toBe(3);
     expect(dispatchEventCalls[0][0]).toBe('universal/setResults');
     expect(dispatchEventCalls[1][0]).toBe('query/setQueryId');
+    expect(dispatchEventCalls[2][0]).toBe('spellCheck/setResults');
 
     const coreCalls = mockedCore.universalSearch.mock.calls;
     expect(coreCalls.length).toBe(1);
-    expect(coreCalls[0][0]).toEqual({ ...mockedState.query });
+    expect(coreCalls[0][0]).toEqual({
+      ...mockedState.query,
+      skipSpellCheck: !mockedState.spellCheck.enabled
+    });
   });
 
   it('vertical search works', async () => {
     await statefulCore.executeVerticalQuery();
 
     const dispatchEventCalls = mockedStateManager.dispatchEvent.mock.calls;
-    expect(dispatchEventCalls.length).toBe(3);
+    expect(dispatchEventCalls.length).toBe(4);
     expect(dispatchEventCalls[0][0]).toBe('vertical/setResults');
     expect(dispatchEventCalls[1][0]).toBe('query/setQueryId');
     expect(dispatchEventCalls[2][0]).toBe('facets/setDisplayableFacets');
+    expect(dispatchEventCalls[3][0]).toBe('spellCheck/setResults');
 
     const coreCalls = mockedCore.verticalSearch.mock.calls;
     const expectedSearchParams = {
       ...mockedState.query,
       verticalKey: mockedState.vertical.key,
       staticFilters: mockedState.filters.static,
+      skipSpellCheck: !mockedState.spellCheck.enabled,
       retrieveFacets: true
     };
     expect(coreCalls.length).toBe(1);

@@ -9,7 +9,8 @@ import {
   AutocompleteResponse,
   VerticalSearchResponse,
   UniversalSearchResponse,
-  QuestionSubmissionResponse
+  QuestionSubmissionResponse,
+  SpellCheck
 } from '@yext/answers-core';
 
 import StateListener from './models/state-listener';
@@ -47,6 +48,14 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('set-state', state);
   }
 
+  setSpellCheckEnabled(enabled: boolean): void {
+    this.stateManager.dispatchEvent('spellCheck/setEnabled', enabled);
+  }
+
+  setSpellCheckResult(spellCheck: SpellCheck): void {
+    this.stateManager.dispatchEvent('spellCheck/setResult', spellCheck);
+  }
+
   get state(): State {
     return this.stateManager.getState();
   }
@@ -61,15 +70,19 @@ export default class StatefulCore {
 
   async executeUniversalQuery(): Promise<UniversalSearchResponse | undefined> {
     const { query, querySource, queryTrigger } = this.state.query;
+    const spellCheckEnabled = this.state.spellCheck.enabled;
+
     if (query) {
       const results = await this.core.universalSearch({
         query: query,
         querySource: querySource,
         queryTrigger: queryTrigger,
+        skipSpellCheck: !spellCheckEnabled,
       });
 
       this.stateManager.dispatchEvent('universal/setResults', results);
       this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
+      this.stateManager.dispatchEvent('spellCheck/setResults', results.spellCheck);
       return results;
     }
   }
@@ -93,6 +106,7 @@ export default class StatefulCore {
       return;
     }
     const { query, querySource, queryTrigger } = this.state.query;
+    const spellCheckEnabled = this.state.spellCheck.enabled;
     const staticFilters = this.state.filters.static || undefined;
     const facets = this.state.filters?.facets;
     if (query) {
@@ -103,11 +117,13 @@ export default class StatefulCore {
         verticalKey: verticalKey,
         staticFilters,
         facets: facets,
-        retrieveFacets: true
+        retrieveFacets: true,
+        skipSpellCheck: !spellCheckEnabled
       });
       this.stateManager.dispatchEvent('vertical/setResults', results);
       this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
       this.stateManager.dispatchEvent('facets/setDisplayableFacets', results.facets);
+      this.stateManager.dispatchEvent('spellCheck/setResults', results.spellCheck);
       return results;
     }
   }

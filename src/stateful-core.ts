@@ -9,7 +9,7 @@ import {
   AutocompleteResponse,
   VerticalSearchResponse,
   UniversalSearchResponse,
-  QuestionSubmissionResponse,
+  QuestionSubmissionResponse
 } from '@yext/answers-core';
 
 import StateListener from './models/state-listener';

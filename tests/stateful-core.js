@@ -137,17 +137,6 @@ describe('setters work as expected', () => {
     expect(dispatchEventCalls[0][0]).toBe('set-state');
     expect(dispatchEventCalls[0][1]).toBe(state);
   });
-
-  it('setSpellCheckEnabled works as expected', () => {
-    statefulCore.setSpellCheckEnabled(false);
-
-    const dispatchEventCalls =
-      mockedStateManager.dispatchEvent.mock.calls;
-
-    expect(dispatchEventCalls.length).toBe(1);
-    expect(dispatchEventCalls[0][0]).toBe('spellCheck/setEnabled');
-    expect(dispatchEventCalls[0][1]).toBe(false);
-  });
 });
 
 describe('auto-complete works as expected', () => {

@@ -65,14 +65,14 @@ export default class StatefulCore {
 
   async executeUniversalQuery(): Promise<UniversalSearchResponse | undefined> {
     const { query, querySource, queryTrigger } = this.state.query;
-    const spellCheckEnabled = this.state.spellCheck.enabled;
+    const skipSpellCheck = !this.state.spellCheck.enabled;
 
     if (query) {
       const results = await this.core.universalSearch({
         query: query,
         querySource: querySource,
         queryTrigger: queryTrigger,
-        skipSpellCheck: !spellCheckEnabled,
+        skipSpellCheck: skipSpellCheck
       });
 
       this.stateManager.dispatchEvent('universal/setResults', results);
@@ -101,7 +101,7 @@ export default class StatefulCore {
       return;
     }
     const { query, querySource, queryTrigger } = this.state.query;
-    const spellCheckEnabled = this.state.spellCheck.enabled;
+    const skipSpellCheck = !this.state.spellCheck.enabled;
     const staticFilters = this.state.filters.static || undefined;
     const facets = this.state.filters?.facets;
     if (query) {
@@ -113,7 +113,7 @@ export default class StatefulCore {
         staticFilters,
         facets: facets,
         retrieveFacets: true,
-        skipSpellCheck: !spellCheckEnabled
+        skipSpellCheck: skipSpellCheck
       });
       this.stateManager.dispatchEvent('vertical/setResults', results);
       this.stateManager.dispatchEvent('query/setQueryId', results.queryId);

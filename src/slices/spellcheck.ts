@@ -14,7 +14,10 @@ export const spellCheckSlice = createSlice({
   initialState,
   reducers: {
     setResult: (state, action: PayloadAction<SpellCheck>) => {
-      state = Object.assign(state, action.payload);
+      return {
+        enabled: state.enabled,
+        ...action.payload
+      };
     },
     setEnabled: (state, action: PayloadAction<boolean>) => {
       state.enabled = action.payload;

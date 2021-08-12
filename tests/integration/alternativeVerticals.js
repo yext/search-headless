@@ -38,7 +38,7 @@ function mockSearchWithAlternativeVerticals() {
 }
 
 describe('StatefulCore spellcheck interactions properly update state', () => {
-  it('executeVerticalQuery properly updates spellcheck state', async () => {
+  it('executeVerticalQuery properly updates alternative verticals state', async () => {
     const statefulCore = createMockedStatefulCore({
       verticalSearch: mockSearchWithAlternativeVerticals
     }, initialState);

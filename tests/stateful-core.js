@@ -9,10 +9,8 @@ const mockedState = {
   },
   vertical: {
     key: 'someKey',
-    request: {
-      offset: 0,
-      limit: 20
-    }
+    offset: 0,
+    limit: 20
   },
   filters: {
     static: {
@@ -139,6 +137,30 @@ describe('setters work as expected', () => {
     expect(dispatchEventCalls[0][0]).toBe('set-state');
     expect(dispatchEventCalls[0][1]).toBe(state);
   });
+
+  it('setLimit works as expected', () => {
+    const limit = 12;
+    statefulCore.setLimit(limit);
+
+    const dispatchEventCalls =
+      mockedStateManager.dispatchEvent.mock.calls;
+
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('vertical/setLimit');
+    expect(dispatchEventCalls[0][1]).toBe(limit);
+  });
+
+  it('setOffset works as expected', () => {
+    const offset = 12;
+    statefulCore.setOffset(offset);
+
+    const dispatchEventCalls =
+      mockedStateManager.dispatchEvent.mock.calls;
+
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('vertical/setOffset');
+    expect(dispatchEventCalls[0][1]).toBe(offset);
+  });
 });
 
 describe('auto-complete works as expected', () => {
@@ -195,11 +217,12 @@ describe('search works as expected', () => {
 
     const dispatchEventCalls = mockedStateManager.dispatchEvent.mock.calls;
 
-    expect(dispatchEventCalls.length).toBe(4);
+    expect(dispatchEventCalls.length).toBe(5);
     expect(dispatchEventCalls[0][0]).toBe('vertical/setResults');
-    expect(dispatchEventCalls[1][0]).toBe('vertical/setRequest')
-    expect(dispatchEventCalls[2][0]).toBe('query/setQueryId');
-    expect(dispatchEventCalls[3][0]).toBe('facets/setDisplayableFacets');
+    expect(dispatchEventCalls[1][0]).toBe('vertical/setLimit');
+    expect(dispatchEventCalls[2][0]).toBe('vertical/setOffset');
+    expect(dispatchEventCalls[3][0]).toBe('query/setQueryId');
+    expect(dispatchEventCalls[4][0]).toBe('facets/setDisplayableFacets');
 
 
     const coreCalls = mockedCore.verticalSearch.mock.calls;
@@ -207,9 +230,7 @@ describe('search works as expected', () => {
       ...mockedState.query,
       verticalKey: mockedState.vertical.key,
       staticFilters: mockedState.filters.static,
-      retrieveFacets: true,
-      limit: 20,
-      offset: 0
+      retrieveFacets: true
     };
     expect(coreCalls.length).toBe(1);
     expect(coreCalls[0][0]).toEqual(expectedSearchParams);

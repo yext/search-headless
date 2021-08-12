@@ -1,9 +1,10 @@
-import { VerticalSearchResponse, Facet, AutocompleteResponse, VerticalSearchRequest } from '@yext/answers-core';
+import { VerticalSearchResponse, Facet, AutocompleteResponse } from '@yext/answers-core';
 
 export interface VerticalSearchState {
   key?: string,
   autoComplete?: AutocompleteResponse,
   results?: VerticalSearchResponse,
   facets?: Facet[],
-  request?: VerticalSearchRequest
+  limit?: number,
+  offset?: number
 }

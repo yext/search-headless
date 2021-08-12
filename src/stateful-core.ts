@@ -36,8 +36,12 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('vertical/setKey', key);
   }
 
-  setVerticalRequest(request: VerticalSearchRequest): void {
-    this.stateManager.dispatchEvent('vertical/setRequest', request);
+  setLimit(limit: number): void {
+    this.stateManager.dispatchEvent('vertical/setLimit', limit);
+  }
+
+  setOffset(offset: number): void {
+    this.stateManager.dispatchEvent('vertical/setOffset', offset);
   }
 
   setFilter(filter: Filter | CombinedFilter | null): void {
@@ -98,8 +102,8 @@ export default class StatefulCore {
     const { query, querySource, queryTrigger } = this.state.query;
     const staticFilters = this.state.filters.static || undefined;
     const facets = this.state.filters?.facets;
-    const limit = this.state.vertical.request?.limit;
-    const offset = this.state.vertical.request?.offset;
+    const limit = this.state.vertical.limit;
+    const offset = this.state.vertical.offset;
 
     if (query) {
       const request = {
@@ -109,14 +113,13 @@ export default class StatefulCore {
         verticalKey: verticalKey,
         staticFilters,
         facets: facets,
-        retrieveFacets: true,
-        limit: limit,
-        offset: offset
+        retrieveFacets: true
       }
       const results = await this.core.verticalSearch(request);
       
       this.stateManager.dispatchEvent('vertical/setResults', results);
-      this.stateManager.dispatchEvent('vertical/setRequest', request);
+      this.stateManager.dispatchEvent('vertical/setLimit', limit);
+      this.stateManager.dispatchEvent('vertical/setOffset', offset);
       this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
       this.stateManager.dispatchEvent('facets/setDisplayableFacets', results.facets)
       return results;

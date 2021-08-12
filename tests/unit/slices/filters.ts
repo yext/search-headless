@@ -1,5 +1,5 @@
 import { Matcher } from '@yext/answers-core';
-import reducer, { setStatic, setFacets, setDisplayableFacets } from '../../src/slices/filters';
+import reducer, { setStatic, setFacets, setDisplayableFacets } from '../../../src/slices/filters';
 
 describe('filter slice reducer works as expected', () => {
   it('setStatic action is handled properly', () => {

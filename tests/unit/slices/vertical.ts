@@ -1,5 +1,5 @@
 import { SearchIntent, Source } from '@yext/answers-core';
-import reducer, { setAutoComplete, setKey, setResults, setLimit, setOffset } from '../../src/slices/vertical';
+import reducer, { setAutoComplete, setKey, setResults, setLimit, setOffset } from '../../../src/slices/vertical';
 
 describe('vertical slice reducer works as expected', () => {
   it('setKey action is handled properly', () => {

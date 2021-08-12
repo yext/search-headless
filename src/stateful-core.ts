@@ -56,6 +56,10 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('set-state', state);
   }
 
+  setSpellCheckEnabled(enabled: boolean): void {
+    this.stateManager.dispatchEvent('spellCheck/setEnabled', enabled);
+  }
+
   get state(): State {
     return this.stateManager.getState();
   }
@@ -70,15 +74,19 @@ export default class StatefulCore {
 
   async executeUniversalQuery(): Promise<UniversalSearchResponse | undefined> {
     const { query, querySource, queryTrigger } = this.state.query;
+    const skipSpellCheck = !this.state.spellCheck.enabled;
+
     if (query) {
       const results = await this.core.universalSearch({
         query: query,
         querySource: querySource,
         queryTrigger: queryTrigger,
+        skipSpellCheck: skipSpellCheck
       });
 
       this.stateManager.dispatchEvent('universal/setResults', results);
       this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
+      this.stateManager.dispatchEvent('spellCheck/setResult', results.spellCheck);
       return results;
     }
   }
@@ -100,6 +108,7 @@ export default class StatefulCore {
       return;
     }
     const { query, querySource, queryTrigger } = this.state.query;
+    const skipSpellCheck = !this.state.spellCheck.enabled;
     const staticFilters = this.state.filters.static || undefined;
     const facets = this.state.filters?.facets;
     const limit = this.state.vertical.limit;
@@ -115,15 +124,16 @@ export default class StatefulCore {
         facets: facets,
         retrieveFacets: true,
         limit: limit,
-        offset: offset
+        offset: offset,
+        skipSpellCheck: skipSpellCheck
       }
       const results = await this.core.verticalSearch(request);
-      
       this.stateManager.dispatchEvent('vertical/setResults', results);
       this.stateManager.dispatchEvent('vertical/setLimit', limit);
       this.stateManager.dispatchEvent('vertical/setOffset', offset);
       this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
-      this.stateManager.dispatchEvent('facets/setDisplayableFacets', results.facets)
+      this.stateManager.dispatchEvent('facets/setDisplayableFacets', results.facets);
+      this.stateManager.dispatchEvent('spellCheck/setResult', results.spellCheck);
       return results;
     }
   }

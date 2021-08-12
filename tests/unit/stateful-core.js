@@ -1,5 +1,5 @@
 import { Matcher, QuerySource, QueryTrigger } from '@yext/answers-core';
-import StatefulCore from '../src/stateful-core';
+import StatefulCore from '../../src/stateful-core';
 
 const mockedState = {
   query: {
@@ -18,6 +18,9 @@ const mockedState = {
       matcher: Matcher.Equals,
       value: 'some value'
     }
+  },
+  spellCheck: {
+    enabled: true
   }
 
 };
@@ -64,8 +67,8 @@ describe('setters work as expected', () => {
         fieldId: 'c_someField',
         options: [
           {
-          matcher: null,
-          value: 'Technology'
+            matcher: null,
+            value: 'Technology'
           }
         ]
       }
@@ -203,13 +206,17 @@ describe('search works as expected', () => {
     await statefulCore.executeUniversalQuery();
 
     const dispatchEventCalls = mockedStateManager.dispatchEvent.mock.calls;
-    expect(dispatchEventCalls.length).toBe(2);
+    expect(dispatchEventCalls.length).toBe(3);
     expect(dispatchEventCalls[0][0]).toBe('universal/setResults');
     expect(dispatchEventCalls[1][0]).toBe('query/setQueryId');
+    expect(dispatchEventCalls[2][0]).toBe('spellCheck/setResult');
 
     const coreCalls = mockedCore.universalSearch.mock.calls;
     expect(coreCalls.length).toBe(1);
-    expect(coreCalls[0][0]).toEqual({ ...mockedState.query });
+    expect(coreCalls[0][0]).toEqual({
+      ...mockedState.query,
+      skipSpellCheck: !mockedState.spellCheck.enabled
+    });
   });
 
   it('vertical search works', async () => {
@@ -217,13 +224,13 @@ describe('search works as expected', () => {
 
     const dispatchEventCalls = mockedStateManager.dispatchEvent.mock.calls;
 
-    expect(dispatchEventCalls.length).toBe(5);
+    expect(dispatchEventCalls.length).toBe(6);
     expect(dispatchEventCalls[0][0]).toBe('vertical/setResults');
     expect(dispatchEventCalls[1][0]).toBe('vertical/setLimit');
     expect(dispatchEventCalls[2][0]).toBe('vertical/setOffset');
     expect(dispatchEventCalls[3][0]).toBe('query/setQueryId');
     expect(dispatchEventCalls[4][0]).toBe('facets/setDisplayableFacets');
-
+    expect(dispatchEventCalls[5][0]).toBe('spellCheck/setResult');
 
     const coreCalls = mockedCore.verticalSearch.mock.calls;
     const expectedSearchParams = {
@@ -232,7 +239,9 @@ describe('search works as expected', () => {
       staticFilters: mockedState.filters.static,
       retrieveFacets: true,
       limit: mockedState.vertical.limit,
-      offset: mockedState.vertical.offset
+      offset: mockedState.vertical.offset,
+      skipSpellCheck: !mockedState.spellCheck.enabled,
+
     };
     expect(coreCalls.length).toBe(1);
     expect(coreCalls[0][0]).toEqual(expectedSearchParams);

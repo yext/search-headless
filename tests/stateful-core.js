@@ -230,7 +230,9 @@ describe('search works as expected', () => {
       ...mockedState.query,
       verticalKey: mockedState.vertical.key,
       staticFilters: mockedState.filters.static,
-      retrieveFacets: true
+      retrieveFacets: true,
+      limit: mockedState.vertical.limit,
+      offset: mockedState.vertical.offset
     };
     expect(coreCalls.length).toBe(1);
     expect(coreCalls[0][0]).toEqual(expectedSearchParams);

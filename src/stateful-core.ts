@@ -113,7 +113,9 @@ export default class StatefulCore {
         verticalKey: verticalKey,
         staticFilters,
         facets: facets,
-        retrieveFacets: true
+        retrieveFacets: true,
+        limit: limit,
+        offset: offset
       }
       const results = await this.core.verticalSearch(request);
       

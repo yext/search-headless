@@ -1,5 +1,5 @@
 import { SearchIntent } from '@yext/answers-core';
-import reducer, { setAutoComplete, setResults } from '../../src/slices/universal';
+import reducer, { setAutoComplete, setResults } from '../../../src/slices/universal';
 
 describe('universal slice reducer works as expected', () => {
   it('setResults action is handled properly', () => {

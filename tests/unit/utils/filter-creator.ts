@@ -1,5 +1,5 @@
 import { FilterCombinator, Matcher } from '@yext/answers-core';
-import { combineFilters, createDateRangeFilter, createEqualsFilter, createNearMeFilter, createNumberRangeFilter } from '../../src/utils/filter-creators';
+import { combineFilters, createDateRangeFilter, createEqualsFilter, createNearMeFilter, createNumberRangeFilter } from '../../../src/utils/filter-creators';
 
 describe('filter creators work properly', () => {
   it('builds an equality filter properly', () => {

@@ -1,5 +1,5 @@
 import { Matcher, QuerySource, QueryTrigger } from '@yext/answers-core';
-import StatefulCore from '../src/stateful-core';
+import StatefulCore from '../../src/stateful-core';
 
 const mockedState = {
   query: {
@@ -16,6 +16,9 @@ const mockedState = {
       matcher: Matcher.Equals,
       value: 'some value'
     }
+  },
+  spellCheck: {
+    enabled: true
   }
 };
 const mockedStateManager = {
@@ -61,8 +64,8 @@ describe('setters work as expected', () => {
         fieldId: 'c_someField',
         options: [
           {
-          matcher: null,
-          value: 'Technology'
+            matcher: null,
+            value: 'Technology'
           }
         ]
       }
@@ -176,29 +179,35 @@ describe('search works as expected', () => {
     await statefulCore.executeUniversalQuery();
 
     const dispatchEventCalls = mockedStateManager.dispatchEvent.mock.calls;
-    expect(dispatchEventCalls.length).toBe(2);
+    expect(dispatchEventCalls.length).toBe(3);
     expect(dispatchEventCalls[0][0]).toBe('universal/setResults');
     expect(dispatchEventCalls[1][0]).toBe('query/setQueryId');
+    expect(dispatchEventCalls[2][0]).toBe('spellCheck/setResult');
 
     const coreCalls = mockedCore.universalSearch.mock.calls;
     expect(coreCalls.length).toBe(1);
-    expect(coreCalls[0][0]).toEqual({ ...mockedState.query });
+    expect(coreCalls[0][0]).toEqual({
+      ...mockedState.query,
+      skipSpellCheck: !mockedState.spellCheck.enabled
+    });
   });
 
   it('vertical search works', async () => {
     await statefulCore.executeVerticalQuery();
 
     const dispatchEventCalls = mockedStateManager.dispatchEvent.mock.calls;
-    expect(dispatchEventCalls.length).toBe(3);
+    expect(dispatchEventCalls.length).toBe(4);
     expect(dispatchEventCalls[0][0]).toBe('vertical/setResults');
     expect(dispatchEventCalls[1][0]).toBe('query/setQueryId');
     expect(dispatchEventCalls[2][0]).toBe('facets/setDisplayableFacets');
+    expect(dispatchEventCalls[3][0]).toBe('spellCheck/setResult');
 
     const coreCalls = mockedCore.verticalSearch.mock.calls;
     const expectedSearchParams = {
       ...mockedState.query,
       verticalKey: mockedState.vertical.key,
       staticFilters: mockedState.filters.static,
+      skipSpellCheck: !mockedState.spellCheck.enabled,
       retrieveFacets: true
     };
     expect(coreCalls.length).toBe(1);

@@ -52,6 +52,9 @@
     ],
     "testMatch": [
       "<rootDir>/tests/**/*.[jt]s"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/tests/mocks/*"
     ]
   }
 }

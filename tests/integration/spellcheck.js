@@ -1,7 +1,6 @@
-import StatefulCore from '../src/stateful-core';
-import ReduxStateManager from '../src/redux-state-manager';
+import { createMockedStatefulCore } from "../mocks/createMockedStatefulCore";
 
-const preloadedState = {
+const initialState = {
   query: {
     query: 'virginia'
   },
@@ -21,49 +20,24 @@ const spellCheckResult = {
   type: 'SUGGEST'
 };
 
-const mockedVerticalSearch = jest.fn(() => {
-  return {
-    queryId: '123',
+function mockSearchWithSpellcheck() {
+  return Promise.resolve({
     spellCheck: spellCheckResult
-  };
-});
-
-const mockedUniversalSearch = jest.fn(() => {
-  return {
-    queryId: '123',
-    spellCheck: spellCheckResult
-  };
-});
-
-const mockedCore = {
-  verticalAutocomplete: jest.fn(),
-  universalAutocomplete: jest.fn(),
-  universalSearch: mockedUniversalSearch,
-  verticalSearch: mockedVerticalSearch
-};
-
-let statefulCore;
-let reduxStateManager;
-
-describe('StatefulCore interactions properly update state', () => {
-  beforeEach(() => {
-    reduxStateManager = new ReduxStateManager(preloadedState);
-    statefulCore = new StatefulCore(mockedCore, reduxStateManager);
   });
+}
 
-  it('executeVerticalQuery properly updates state', async () => {
+describe('StatefulCore spellcheck interactions properly update state', () => {
+  it('executeVerticalQuery properly updates spellcheck state', async () => {
+    const statefulCore = createMockedStatefulCore({
+      verticalSearch: mockSearchWithSpellcheck
+    }, initialState);
     await statefulCore.executeVerticalQuery();
     const expectedState = {
-      ...preloadedState,
-      query: {
-        query: 'virginia',
-        queryId: '123'
-      },
+      ...initialState,
       vertical: {
         facets: undefined,
         key: '123',
         results: {
-          queryId: '123',
           spellCheck: spellCheckResult
         }
       },
@@ -76,17 +50,15 @@ describe('StatefulCore interactions properly update state', () => {
     expect(statefulCore.state).toEqual(expectedState);
   });
 
-  it('executeUniversalQuery properly updates state', async () => {
+  it('executeUniversalQuery properly updates spellcheck state', async () => {
+    const statefulCore = createMockedStatefulCore({
+      universalSearch: mockSearchWithSpellcheck
+    }, initialState);
     await statefulCore.executeUniversalQuery();
     const expectedState = {
-      ...preloadedState,
-      query: {
-        query: 'virginia',
-        queryId: '123'
-      },
+      ...initialState,
       universal: {
         results: {
-          queryId: '123',
           spellCheck: spellCheckResult
         },
       },
@@ -100,9 +72,10 @@ describe('StatefulCore interactions properly update state', () => {
   });
 
   it('setSpellCheckEnabled properly updates state', async () => {
+    const statefulCore = createMockedStatefulCore({}, initialState);
     await statefulCore.setSpellCheckEnabled(false);
     const expectedState = {
-      ...preloadedState,
+      ...initialState,
       spellCheck: {
         enabled: false
       }

@@ -33,5 +33,5 @@ module.exports = {
       }
     }
   ],
-  ignorePatterns: ['dist', 'lib', 'webpack.config.js', 'generate-3rd-party-notices.js'],
+  ignorePatterns: ['dist', 'lib', 'webpack.config.js', 'generate-3rd-party-notices.js', 'tests/**/*.js'],
 };

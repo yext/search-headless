@@ -1,5 +1,5 @@
 import { Matcher, QuerySource, QueryTrigger } from '@yext/answers-core';
-import StatefulCore from '../src/stateful-core';
+import StatefulCore from '../../src/stateful-core';
 
 const mockedState = {
   query: {

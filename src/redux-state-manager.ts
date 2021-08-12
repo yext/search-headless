@@ -16,7 +16,7 @@ import { State } from './models/state';
 export default class ReduxStateManager implements StateManager {
   private store: EnhancedStore;
 
-  constructor(preloadedState = undefined) {
+  constructor() {
     const coreReducer = combineReducers({
       query: queryReducer,
       vertical: verticalReducer,
@@ -28,7 +28,6 @@ export default class ReduxStateManager implements StateManager {
     this.store = configureStore({
       middleware:
         (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
-      preloadedState: preloadedState,
       reducer: (state, action) => {
         if (action.type === 'set-state') {
           return action.payload;

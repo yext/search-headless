@@ -79,17 +79,23 @@ export default class StatefulCore {
     const { query, querySource, queryTrigger } = this.state.query;
     const staticFilters = this.state.filters.static || undefined;
     const facets = this.state.filters?.facets;
+    const limit = this.state.vertical.request?.limit;
+    const offset = this.state.vertical.request?.offset;
     if (query) {
-      const results = await this.core.verticalSearch({
+      const request = {
         query,
         querySource: querySource,
         queryTrigger: queryTrigger,
         verticalKey: verticalKey,
         staticFilters,
         facets: facets,
-        retrieveFacets: true
-      });
+        retrieveFacets: true,
+        limit: limit,
+        offset: offset
+      }
+      const results = await this.core.verticalSearch(request);
       this.stateManager.dispatchEvent('vertical/setResults', results);
+      this.stateManager.dispatchEvent('vertical/setRequest', request);
       this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
       this.stateManager.dispatchEvent('facets/setDisplayableFacets', results.facets)
     }

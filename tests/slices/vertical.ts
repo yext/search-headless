@@ -1,5 +1,5 @@
 import { SearchIntent, Source } from '@yext/answers-core';
-import reducer, { setAutoComplete, setKey, setResults } from '../../src/slices/vertical';
+import reducer, { setAutoComplete, setKey, setResults, setRequest } from '../../src/slices/vertical';
 
 describe('vertical slice reducer works as expected', () => {
   it('setKey action is handled properly', () => {
@@ -37,6 +37,19 @@ describe('vertical slice reducer works as expected', () => {
     };
     const expectedState = { autoComplete: autoCompleteResponse };
     const actualState = reducer({}, setAutoComplete(autoCompleteResponse));
+
+    expect(actualState).toEqual(expectedState);
+  });
+
+  it('setRequest action is handled properly', () => {
+    const verticalRequest = {
+      query: 'tom',
+      verticalKey: 'people',
+      limit: 20,
+      offset: 0
+    };
+    const expectedState = { request: verticalRequest };
+    const actualState = reducer({}, setRequest(verticalRequest));
 
     expect(actualState).toEqual(expectedState);
   });

@@ -8,6 +8,7 @@ import {
   Facet,
   AutocompleteResponse,
   VerticalSearchResponse,
+  VerticalSearchRequest,
   UniversalSearchResponse,
   QuestionSubmissionResponse
 } from '@yext/answers-core';
@@ -33,6 +34,10 @@ export default class StatefulCore {
 
   setVerticalKey(key: string): void {
     this.stateManager.dispatchEvent('vertical/setKey', key);
+  }
+
+  setVerticalRequest(request: VerticalSearchRequest): void {
+    this.stateManager.dispatchEvent('vertical/setRequest', request);
   }
 
   setFilter(filter: Filter | CombinedFilter | null): void {

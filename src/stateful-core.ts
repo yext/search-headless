@@ -1,4 +1,17 @@
-import { AnswersCore, QueryTrigger, QuerySource, QuestionSubmissionRequest, Filter, CombinedFilter, Facet, DisplayableFacet } from '@yext/answers-core';
+import {
+  AnswersCore,
+  QueryTrigger,
+  QuerySource,
+  QuestionSubmissionRequest,
+  Filter,
+  CombinedFilter,
+  Facet,
+  AutocompleteResponse,
+  VerticalSearchResponse,
+  UniversalSearchResponse,
+  QuestionSubmissionResponse
+} from '@yext/answers-core';
+
 import StateListener from './models/state-listener';
 import { State } from './models/state';
 import StateManager from './models/state-manager';
@@ -42,11 +55,11 @@ export default class StatefulCore {
     return this.stateManager.addListener<T>(listener);
   }
 
-  async submitQuestion(request: QuestionSubmissionRequest) {
-    await this.core.submitQuestion(request);
+  async submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse> {
+    return this.core.submitQuestion(request);
   }
 
-  async executeUniversalQuery() {
+  async executeUniversalQuery(): Promise<UniversalSearchResponse | undefined> {
     const { query, querySource, queryTrigger } = this.state.query;
     if (query) {
       const results = await this.core.universalSearch({
@@ -57,30 +70,32 @@ export default class StatefulCore {
 
       this.stateManager.dispatchEvent('universal/setResults', results);
       this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
+      return results;
     }
   }
 
-  async executeUniversalAutoComplete() {
-    const query = this.state.query.query;
-    if (query) {
-      const results = await this.core.universalAutocomplete({
-        input: query
-      });
+  async executeUniversalAutoComplete(): Promise<AutocompleteResponse | undefined> {
+    const query = this.state.query.query || '';
+    const results = await this.core.universalAutocomplete({
+      input: query
+    });
 
-      this.stateManager.dispatchEvent('universal/setAutoComplete', results);
-    }
+    this.stateManager.dispatchEvent('universal/setAutoComplete', results);
+    return results;
   }
 
-  async executeVerticalQuery() {
+  async executeVerticalQuery(): Promise<VerticalSearchResponse | undefined> {
     const verticalKey = this.state.vertical.key;
     if (!verticalKey) {
-      throw new Error('no verticalKey suppled for vertical search');
+      console.error('no verticalKey supplied for vertical search');
+      return;
     }
     const { query, querySource, queryTrigger } = this.state.query;
     const staticFilters = this.state.filters.static || undefined;
     const facets = this.state.filters?.facets;
     const limit = this.state.vertical.request?.limit;
     const offset = this.state.vertical.request?.offset;
+
     if (query) {
       const request = {
         query,
@@ -94,28 +109,30 @@ export default class StatefulCore {
         offset: offset
       }
       const results = await this.core.verticalSearch(request);
+      
       this.stateManager.dispatchEvent('vertical/setResults', results);
       this.stateManager.dispatchEvent('vertical/setRequest', request);
       this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
       this.stateManager.dispatchEvent('facets/setDisplayableFacets', results.facets)
+      return results;
     }
   }
 
-  async executeVerticalAutoComplete() {
-    const query = this.state.query.query;
+  async executeVerticalAutoComplete(): Promise<AutocompleteResponse | undefined> {
+    const query = this.state.query.query || '';
     const verticalKey = this.state.vertical.key;
     if (!verticalKey) {
-      throw new Error('no verticalKey suppled for vertical search');
+      console.error('no verticalKey supplied for vertical autocomplete');
+      return;
     }
 
-    if (query) {
-      const results = await this.core.verticalAutocomplete({
-        input: query,
-        verticalKey: verticalKey
-      });
+    const results = await this.core.verticalAutocomplete({
+      input: query,
+      verticalKey: verticalKey
+    });
 
-      this.stateManager.dispatchEvent('vertical/setAutoComplete', results);
-    }
+    this.stateManager.dispatchEvent('vertical/setAutoComplete', results);
+    return results;
   }
 }
 

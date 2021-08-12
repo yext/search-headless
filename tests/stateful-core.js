@@ -194,11 +194,13 @@ describe('search works as expected', () => {
     await statefulCore.executeVerticalQuery();
 
     const dispatchEventCalls = mockedStateManager.dispatchEvent.mock.calls;
+
     expect(dispatchEventCalls.length).toBe(4);
     expect(dispatchEventCalls[0][0]).toBe('vertical/setResults');
     expect(dispatchEventCalls[1][0]).toBe('vertical/setRequest')
     expect(dispatchEventCalls[2][0]).toBe('query/setQueryId');
     expect(dispatchEventCalls[3][0]).toBe('facets/setDisplayableFacets');
+
 
     const coreCalls = mockedCore.verticalSearch.mock.calls;
     const expectedSearchParams = {

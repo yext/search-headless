@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { VerticalSearchResponse, AutocompleteResponse } from '@yext/answers-core';
+import { VerticalSearchResponse, AutocompleteResponse, VerticalResults } from '@yext/answers-core';
 import { VerticalSearchState } from '../models/slices/vertical';
 
 const initialState: VerticalSearchState = {};
@@ -21,6 +21,9 @@ export const verticalSlice = createSlice({
     },
     setAutoComplete: (state, action: PayloadAction<AutocompleteResponse>) => {
       state.autoComplete = action.payload;
+    },
+    setAlternativeVerticals: (state, action: PayloadAction<VerticalResults[]>) => {
+      state.alternativeVerticals = action.payload;
     }
   }
 });

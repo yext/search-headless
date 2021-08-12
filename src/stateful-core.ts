@@ -9,7 +9,8 @@ import {
   AutocompleteResponse,
   VerticalSearchResponse,
   UniversalSearchResponse,
-  QuestionSubmissionResponse
+  QuestionSubmissionResponse,
+  VerticalResults
 } from '@yext/answers-core';
 
 import StateListener from './models/state-listener';
@@ -43,12 +44,16 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('filters/setFacets', facets);
   }
 
-  setState(state: State): void {
-    this.stateManager.dispatchEvent('set-state', state);
-  }
-
   setSpellCheckEnabled(enabled: boolean): void {
     this.stateManager.dispatchEvent('spellCheck/setEnabled', enabled);
+  }
+
+  setAlternativeVerticals(alternativeVerticals: VerticalResults[]): void {
+    this.stateManager.dispatchEvent('vertical/setAlternativeVerticals', alternativeVerticals);
+  }
+
+  setState(state: State): void {
+    this.stateManager.dispatchEvent('set-state', state);
   }
 
   get state(): State {
@@ -117,6 +122,7 @@ export default class StatefulCore {
       this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
       this.stateManager.dispatchEvent('facets/setDisplayableFacets', results.facets);
       this.stateManager.dispatchEvent('spellCheck/setResult', results.spellCheck);
+      this.stateManager.dispatchEvent('vertical/setAlternativeVerticals', results.alternativeVerticals);
       return results;
     }
   }

@@ -16,4 +16,5 @@ export function provideStatefulCore(config: AnswersConfig): StatefulCore {
 }
 
 export * from './utils/filter-creators';
+export * from './react-bindings';
 export { StatefulCore };

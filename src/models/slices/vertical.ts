@@ -3,8 +3,10 @@ import { VerticalSearchResponse, Facet, AutocompleteResponse, VerticalResults } 
 export interface VerticalSearchState {
   alternativeVerticals?: VerticalResults[]
   key?: string,
-  autoComplete?: AutocompleteResponse
+  autoComplete?: AutocompleteResponse,
   results?: VerticalSearchResponse,
   facets?: Facet[],
   displayName?: string
+  limit?: number,
+  offset?: number
 }

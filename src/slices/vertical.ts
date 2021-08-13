@@ -27,9 +27,15 @@ export const verticalSlice = createSlice({
     },
     setDisplayName: (state, action: PayloadAction<string>) => {
       state.displayName = action.payload;
+    },
+    setLimit: (state, action: PayloadAction<number>) => {
+      state.limit = action.payload;
+    },
+    setOffset: (state, action: PayloadAction<number>) => {
+      state.offset = action.payload;
     }
   }
 });
 
-export const { setKey, setResults, setAutoComplete } = verticalSlice.actions;
+export const { setKey, setResults, setAutoComplete, setLimit, setOffset } = verticalSlice.actions;
 export default verticalSlice.reducer;

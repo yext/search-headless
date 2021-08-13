@@ -36,6 +36,14 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('vertical/setKey', key);
   }
 
+  setLimit(limit: number): void {
+    this.stateManager.dispatchEvent('vertical/setLimit', limit);
+  }
+
+  setOffset(offset: number): void {
+    this.stateManager.dispatchEvent('vertical/setOffset', offset);
+  }
+
   setFilter(filter: Filter | CombinedFilter | null): void {
     this.stateManager.dispatchEvent('filters/setStatic', filter);
   }
@@ -108,8 +116,11 @@ export default class StatefulCore {
     const skipSpellCheck = !this.state.spellCheck.enabled;
     const staticFilters = this.state.filters.static || undefined;
     const facets = this.state.filters?.facets;
+    const limit = this.state.vertical.limit;
+    const offset = this.state.vertical.offset;
+
     if (query) {
-      const results = await this.core.verticalSearch({
+      const request = {
         query,
         querySource: querySource,
         queryTrigger: queryTrigger,
@@ -117,8 +128,11 @@ export default class StatefulCore {
         staticFilters,
         facets: facets,
         retrieveFacets: true,
+        limit: limit,
+        offset: offset,
         skipSpellCheck: skipSpellCheck
-      });
+      }
+      const results = await this.core.verticalSearch(request);
       this.stateManager.dispatchEvent('vertical/setResults', results);
       this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
       this.stateManager.dispatchEvent('query/setLatest', query);

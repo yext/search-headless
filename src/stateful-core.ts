@@ -8,7 +8,6 @@ import {
   Facet,
   AutocompleteResponse,
   VerticalSearchResponse,
-  VerticalSearchRequest,
   UniversalSearchResponse,
   QuestionSubmissionResponse
 } from '@yext/answers-core';
@@ -129,8 +128,6 @@ export default class StatefulCore {
       }
       const results = await this.core.verticalSearch(request);
       this.stateManager.dispatchEvent('vertical/setResults', results);
-      this.stateManager.dispatchEvent('vertical/setLimit', limit);
-      this.stateManager.dispatchEvent('vertical/setOffset', offset);
       this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
       this.stateManager.dispatchEvent('facets/setDisplayableFacets', results.facets);
       this.stateManager.dispatchEvent('spellCheck/setResult', results.spellCheck);

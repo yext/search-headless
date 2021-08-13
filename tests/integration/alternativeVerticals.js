@@ -2,6 +2,7 @@ import { createMockedStatefulCore } from "../mocks/createMockedStatefulCore";
 
 const initialState = {
   query: {
+    latest: 'virginia',
     query: 'virginia'
   },
   vertical: {
@@ -46,9 +47,8 @@ describe('StatefulCore spellcheck interactions properly update state', () => {
     const expectedState = {
       ...initialState,
       vertical: {
+        ...initialState.vertical,
         alternativeVerticals: alternativeVerticals,
-        facets: undefined,
-        key: '123',
         results: {
           alternativeVerticals: alternativeVerticals
         }

@@ -206,10 +206,11 @@ describe('search works as expected', () => {
     await statefulCore.executeUniversalQuery();
 
     const dispatchEventCalls = mockedStateManager.dispatchEvent.mock.calls;
-    expect(dispatchEventCalls.length).toBe(3);
+    expect(dispatchEventCalls.length).toBe(4);
     expect(dispatchEventCalls[0][0]).toBe('universal/setResults');
     expect(dispatchEventCalls[1][0]).toBe('query/setQueryId');
-    expect(dispatchEventCalls[2][0]).toBe('spellCheck/setResult');
+    expect(dispatchEventCalls[2][0]).toBe('query/setLatest');
+    expect(dispatchEventCalls[3][0]).toBe('spellCheck/setResult'); 
 
     const coreCalls = mockedCore.universalSearch.mock.calls;
     expect(coreCalls.length).toBe(1);
@@ -223,12 +224,13 @@ describe('search works as expected', () => {
     await statefulCore.executeVerticalQuery();
 
     const dispatchEventCalls = mockedStateManager.dispatchEvent.mock.calls;
-    expect(dispatchEventCalls.length).toBe(5);
+    expect(dispatchEventCalls.length).toBe(6);
     expect(dispatchEventCalls[0][0]).toBe('vertical/setResults');
     expect(dispatchEventCalls[1][0]).toBe('query/setQueryId');
-    expect(dispatchEventCalls[2][0]).toBe('facets/setDisplayableFacets');
-    expect(dispatchEventCalls[3][0]).toBe('spellCheck/setResult');
-    expect(dispatchEventCalls[4][0]).toBe('vertical/setAlternativeVerticals');
+    expect(dispatchEventCalls[2][0]).toBe('query/setLatest');
+    expect(dispatchEventCalls[3][0]).toBe('facets/setDisplayableFacets');
+    expect(dispatchEventCalls[4][0]).toBe('spellCheck/setResult');
+    expect(dispatchEventCalls[5][0]).toBe('vertical/setAlternativeVerticals');
 
     const coreCalls = mockedCore.verticalSearch.mock.calls;
     const expectedSearchParams = {

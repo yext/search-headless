@@ -131,7 +131,7 @@ export default class StatefulCore {
         limit: limit,
         offset: offset,
         skipSpellCheck: skipSpellCheck
-      }
+      };
       const results = await this.core.verticalSearch(request);
       this.stateManager.dispatchEvent('vertical/setResults', results);
       this.stateManager.dispatchEvent('query/setQueryId', results.queryId);

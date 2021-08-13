@@ -8,7 +8,9 @@ import {
   Facet,
   AutocompleteResponse,
   VerticalSearchResponse,
+  VerticalSearchRequest,
   UniversalSearchResponse,
+  UniversalSearchRequest,
   QuestionSubmissionResponse
 } from '@yext/answers-core';
 
@@ -63,7 +65,9 @@ export default class StatefulCore {
     return this.core.submitQuestion(request);
   }
 
-  async executeUniversalQuery(): Promise<UniversalSearchResponse | undefined> {
+  async executeUniversalQuery(
+    requestParams: Partial<UniversalSearchRequest> = {}
+  ): Promise<UniversalSearchResponse | undefined> {
     const { query, querySource, queryTrigger } = this.state.query;
     const skipSpellCheck = !this.state.spellCheck.enabled;
 
@@ -72,7 +76,8 @@ export default class StatefulCore {
         query: query,
         querySource: querySource,
         queryTrigger: queryTrigger,
-        skipSpellCheck: skipSpellCheck
+        skipSpellCheck: skipSpellCheck,
+        ...requestParams
       });
 
       this.stateManager.dispatchEvent('universal/setResults', results);
@@ -92,7 +97,9 @@ export default class StatefulCore {
     return results;
   }
 
-  async executeVerticalQuery(): Promise<VerticalSearchResponse | undefined> {
+  async executeVerticalQuery(
+    requestParams: Partial<VerticalSearchRequest> = {}
+  ): Promise<VerticalSearchResponse | undefined> {
     const verticalKey = this.state.vertical.key;
     if (!verticalKey) {
       console.error('no verticalKey supplied for vertical search');
@@ -111,7 +118,8 @@ export default class StatefulCore {
         staticFilters,
         facets: facets,
         retrieveFacets: true,
-        skipSpellCheck: skipSpellCheck
+        skipSpellCheck: skipSpellCheck,
+        ...requestParams
       });
       this.stateManager.dispatchEvent('vertical/setResults', results);
       this.stateManager.dispatchEvent('query/setQueryId', results.queryId);

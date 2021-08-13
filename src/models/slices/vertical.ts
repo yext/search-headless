@@ -5,5 +5,6 @@ export interface VerticalSearchState {
   key?: string,
   autoComplete?: AutocompleteResponse
   results?: VerticalSearchResponse,
-  facets?: Facet[]
+  facets?: Facet[],
+  displayName?: string
 }

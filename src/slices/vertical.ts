@@ -24,6 +24,9 @@ export const verticalSlice = createSlice({
     },
     setAlternativeVerticals: (state, action: PayloadAction<VerticalResults[]>) => {
       state.alternativeVerticals = action.payload;
+    },
+    setDisplayName: (state, action: PayloadAction<string>) => {
+      state.displayName = action.payload;
     }
   }
 });

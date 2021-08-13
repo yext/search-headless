@@ -23,6 +23,9 @@ export const querySlice = createSlice({
     },
     setQueryId: (state, action: PayloadAction<string>) => {
       state.queryId = action.payload;
+    },
+    setLatest: (state, action: PayloadAction<string>) => {
+      state.latest = action.payload;
     }
   }
 });

@@ -4,5 +4,6 @@ export interface QueryState {
   query?: string,
   queryId?: string,
   queryTrigger?: QueryTrigger,
-  querySource?: QuerySource
+  querySource?: QuerySource,
+  latest?: string,
 }

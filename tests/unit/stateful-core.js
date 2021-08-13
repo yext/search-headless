@@ -8,7 +8,9 @@ const mockedState = {
     queryTrigger: QueryTrigger.Initialize
   },
   vertical: {
-    key: 'someKey'
+    key: 'someKey',
+    offset: 0,
+    limit: 20
   },
   filters: {
     static: {
@@ -20,6 +22,7 @@ const mockedState = {
   spellCheck: {
     enabled: true
   }
+
 };
 const mockedStateManager = {
   getState: jest.fn(() => mockedState),
@@ -137,6 +140,30 @@ describe('setters work as expected', () => {
     expect(dispatchEventCalls[0][0]).toBe('set-state');
     expect(dispatchEventCalls[0][1]).toBe(state);
   });
+
+  it('setLimit works as expected', () => {
+    const limit = 12;
+    statefulCore.setLimit(limit);
+
+    const dispatchEventCalls =
+      mockedStateManager.dispatchEvent.mock.calls;
+
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('vertical/setLimit');
+    expect(dispatchEventCalls[0][1]).toBe(limit);
+  });
+
+  it('setOffset works as expected', () => {
+    const offset = 12;
+    statefulCore.setOffset(offset);
+
+    const dispatchEventCalls =
+      mockedStateManager.dispatchEvent.mock.calls;
+
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('vertical/setOffset');
+    expect(dispatchEventCalls[0][1]).toBe(offset);
+  });
 });
 
 describe('auto-complete works as expected', () => {
@@ -196,6 +223,7 @@ describe('search works as expected', () => {
     await statefulCore.executeVerticalQuery();
 
     const dispatchEventCalls = mockedStateManager.dispatchEvent.mock.calls;
+
     expect(dispatchEventCalls.length).toBe(4);
     expect(dispatchEventCalls[0][0]).toBe('vertical/setResults');
     expect(dispatchEventCalls[1][0]).toBe('query/setQueryId');
@@ -207,8 +235,11 @@ describe('search works as expected', () => {
       ...mockedState.query,
       verticalKey: mockedState.vertical.key,
       staticFilters: mockedState.filters.static,
+      retrieveFacets: true,
+      limit: mockedState.vertical.limit,
+      offset: mockedState.vertical.offset,
       skipSpellCheck: !mockedState.spellCheck.enabled,
-      retrieveFacets: true
+
     };
     expect(coreCalls.length).toBe(1);
     expect(coreCalls[0][0]).toEqual(expectedSearchParams);

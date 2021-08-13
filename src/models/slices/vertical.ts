@@ -2,7 +2,9 @@ import { VerticalSearchResponse, Facet, AutocompleteResponse } from '@yext/answe
 
 export interface VerticalSearchState {
   key?: string,
-  autoComplete?: AutocompleteResponse
+  autoComplete?: AutocompleteResponse,
   results?: VerticalSearchResponse,
-  facets?: Facet[]
+  facets?: Facet[],
+  limit?: number,
+  offset?: number
 }

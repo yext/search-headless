@@ -2,10 +2,11 @@ import { createMockedStatefulCore } from "../mocks/createMockedStatefulCore";
 
 const initialState = {
   query: {
+    latest: 'virginia',
     query: 'virginia'
   },
   vertical: {
-    key: '123'
+    key: '123',
   },
   universal: {},
   filters: {},
@@ -35,15 +36,14 @@ describe('StatefulCore spellcheck interactions properly update state', () => {
     const expectedState = {
       ...initialState,
       vertical: {
-        facets: undefined,
-        key: '123',
+        ...initialState.vertical,
         results: {
           spellCheck: spellCheckResult
         }
       },
       spellCheck: {
+        ...initialState.spellCheck,
         ...spellCheckResult,
-        enabled: true
       }
     };
 
@@ -63,8 +63,8 @@ describe('StatefulCore spellcheck interactions properly update state', () => {
         },
       },
       spellCheck: {
+        ...initialState.spellCheck,
         ...spellCheckResult,
-        enabled: true
       }
     };
 

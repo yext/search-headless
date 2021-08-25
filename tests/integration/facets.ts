@@ -60,7 +60,7 @@ function createInitialState(
     displayName: 'testDisplayName',
     options: [facetOption]
   };
-  const initialState ={
+  const initialState = {
     filters: {
       facets: [facet]
     }

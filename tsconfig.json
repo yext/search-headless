@@ -3,7 +3,6 @@
     "target": "es2015",
     "strict": true,
     "module": "es6",
-    "lib": ["es2019"],
     "outDir": "lib/esm",
     "esModuleInterop": true,
     "skipLibCheck": true,

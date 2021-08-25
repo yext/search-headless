@@ -17,7 +17,6 @@ export const verticalSlice = createSlice({
     },
     setResults: (state, action: PayloadAction<VerticalSearchResponse>) => {
       state.results = action.payload;
-      state.facets = action.payload.facets;
     },
     setAutoComplete: (state, action: PayloadAction<AutocompleteResponse>) => {
       state.autoComplete = action.payload;

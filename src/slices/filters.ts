@@ -1,8 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CombinedFilter, Filter, DisplayableFacet, Facet } from '@yext/answers-core';
+import { CombinedFilter, Filter, FacetOption } from '@yext/answers-core';
 import { FiltersState } from '../models/slices/filters';
 
 const initialState: FiltersState = {};
+
+interface FacetPayload {
+  fieldId: string
+  facetOption: FacetOption
+  shouldSelect: boolean
+}
 
 /**
  * Registers with Redux the slice of {@link State} pertaining to filters. There
@@ -15,14 +21,28 @@ export const filtersSlice = createSlice({
     setStatic: (state: FiltersState, action: PayloadAction<Filter|CombinedFilter|null>) => {
       state.static = action.payload;
     },
-    setFacets: (state: FiltersState, action: PayloadAction<Facet[]>) => {
-      state.facets = action.payload;
-    },
-    setDisplayableFacets: (state: FiltersState, action: PayloadAction<DisplayableFacet[]>) => {
-      state.displayableFacets = action.payload;
+    toggleFacetOption: (state: FiltersState, { payload }: PayloadAction<FacetPayload>) => {
+      if (!state.facets) {
+        console.warn('Trying to select a facet option when no facets exist.');
+        return;
+      }
+      const { fieldId, facetOption: optionToSelect, shouldSelect } = payload;
+      const facetForFieldId= state.facets.find(f => f.fieldId === fieldId);
+      if (!facetForFieldId) {
+        console.warn(
+          `Could not select a facet option for fieldId "${fieldId}": the fieldId was not found.`);
+        return;
+      }
+      // Mutating is OK because redux-toolkit uses the immer package
+      facetForFieldId.options = facetForFieldId.options.map(o => {
+        if (o.matcher !== optionToSelect.matcher || o.value !== optionToSelect.value) {
+          return o;
+        }
+        return { ...o, selected: shouldSelect };
+      });
     },
   }
 });
 
-export const { setStatic, setFacets, setDisplayableFacets } = filtersSlice.actions;
+export const { setStatic, toggleFacetOption } = filtersSlice.actions;
 export default filtersSlice.reducer;

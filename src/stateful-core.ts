@@ -17,6 +17,8 @@ import StateListener from './models/state-listener';
 import { State } from './models/state';
 import StateManager from './models/state-manager';
 import { Unsubscribe } from '@reduxjs/toolkit';
+import { HighlightableFacet, HighlightableFacetOption } from './models/utils/HighlightableFacet';
+import { calculateHighlightedSubstring } from './utils/searchable-facets';
 
 export default class StatefulCore {
   constructor(private core: AnswersCore, private stateManager: StateManager) {}
@@ -173,6 +175,23 @@ export default class StatefulCore {
       facetOption
     };
     this.stateManager.dispatchEvent('filters/toggleFacetOption', payload);
+  }
+
+  searchFacets(searchTerm: string): HighlightableFacet[] {
+    const facets = this.state.filters.facets;
+    if (!facets) {
+      return [];
+    }
+    return facets.map(f => {
+      const optionsWithHighlighting = f.options.map<HighlightableFacetOption | null>(o => {
+        const highlightedSubstring = calculateHighlightedSubstring(o.displayName, searchTerm);
+        if (!highlightedSubstring) {
+          return null;
+        }
+        return { ...o, highlightedSubstring };
+      }).filter((o): o is HighlightableFacetOption => !!o);
+      return { ...f, options: optionsWithHighlighting };
+    });
   }
 }
 

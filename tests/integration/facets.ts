@@ -15,6 +15,64 @@ it('can select a facet option', () => {
   });
 });
 
+it('handles multiple facets with the same fieldId', () => {
+  const [initialState, facetOption] = createInitialState(false);
+  initialState.filters.facets.push({
+    displayName: 'another test facet',
+    fieldId: 'testFieldId',
+    options: [{...facetOption}]
+  });
+  const statefulCore = createMockedStatefulCore({}, initialState);
+  statefulCore.selectFacetOption('testFieldId', facetOption);
+  expect(statefulCore.state.filters.facets).toEqual([
+    {
+      displayName: 'test facet name',
+      fieldId: 'testFieldId',
+      options: [{
+        matcher: Matcher.Equals,
+        value: 'testValue',
+        displayName: 'testDisplayName',
+        count: 96,
+        selected: true
+      }]
+    },
+    {
+      displayName: 'another test facet',
+      fieldId: 'testFieldId',
+      options: [{
+        matcher: Matcher.Equals,
+        value: 'testValue',
+        displayName: 'testDisplayName',
+        count: 96,
+        selected: true
+      }]
+    },
+  ]);
+});
+
+it('handles selecting multiple facetOptions at the same time', () => {
+  const [initialState, facetOption] = createInitialState(false);
+  initialState.filters.facets[0].options.push({ ...facetOption });
+  const statefulCore = createMockedStatefulCore({}, initialState);
+  statefulCore.selectFacetOption('testFieldId', facetOption);
+  expect(statefulCore.state.filters.facets[0].options).toEqual([
+    {
+      matcher: Matcher.Equals,
+      value: 'testValue',
+      displayName: 'testDisplayName',
+      count: 96,
+      selected: true
+    },
+    {
+      matcher: Matcher.Equals,
+      value: 'testValue',
+      displayName: 'testDisplayName',
+      count: 96,
+      selected: true
+    }
+  ]);
+});
+
 it('can unselect a facet option', () => {
   const [initialState, facetOption] = createInitialState(true);
   const statefulCore = createMockedStatefulCore({}, initialState);
@@ -57,7 +115,7 @@ function createInitialState(
   };
   const facet: DisplayableFacet = {
     fieldId: 'testFieldId',
-    displayName: 'testDisplayName',
+    displayName: 'test facet name',
     options: [facetOption]
   };
   const initialState = {

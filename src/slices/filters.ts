@@ -27,18 +27,20 @@ export const filtersSlice = createSlice({
         return;
       }
       const { fieldId, facetOption: optionToSelect, shouldSelect } = payload;
-      const facetForFieldId= state.facets.find(f => f.fieldId === fieldId);
-      if (!facetForFieldId) {
+      const facetsWithFieldId = state.facets.filter(f => f.fieldId === fieldId);
+      if (facetsWithFieldId.length === 0) {
         console.warn(
           `Could not select a facet option for fieldId "${fieldId}": the fieldId was not found.`);
         return;
       }
-      // Mutating is OK because redux-toolkit uses the immer package
-      facetForFieldId.options = facetForFieldId.options.map(o => {
-        if (o.matcher !== optionToSelect.matcher || o.value !== optionToSelect.value) {
-          return o;
-        }
-        return { ...o, selected: shouldSelect };
+      facetsWithFieldId.forEach(facet => {
+        // Mutating is OK because redux-toolkit uses the immer package
+        facet.options = facet.options.map(o => {
+          if (o.matcher !== optionToSelect.matcher || o.value !== optionToSelect.value) {
+            return o;
+          }
+          return { ...o, selected: shouldSelect };
+        });
       });
     },
   }

@@ -24,14 +24,14 @@ const mockedState = {
   }
 
 };
-const mockedStateManager = {
+const mockedStateManager: any = {
   getState: jest.fn(() => mockedState),
   dispatchEvent: jest.fn(),
   addEventListener: jest.fn()
 };
 
 const mockedSearch = jest.fn(() => { return { queryId: '123' };});
-const mockedCore = {
+const mockedCore: any = {
   verticalAutocomplete: jest.fn(),
   universalAutocomplete: jest.fn(),
   universalSearch: mockedSearch,
@@ -130,7 +130,7 @@ describe('setters work as expected', () => {
   });
 
   it('setState works as expected', () => {
-    const state = { query: {} };
+    const state: any = { query: {} };
     statefulCore.setState(state);
 
     const dispatchEventCalls =

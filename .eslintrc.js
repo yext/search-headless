@@ -9,8 +9,8 @@ module.exports = {
   ],
   rules: {
     indent: ['error', 2],
-    'no-trailing-spaces' : ['error'],
-    'no-multi-spaces' : ['error'],
+    'no-trailing-spaces': ['error'],
+    'no-multi-spaces': ['error'],
     quotes: ['error', 'single'],
     'space-before-function-paren': ['error', {
       named: 'never',

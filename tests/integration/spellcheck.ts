@@ -1,4 +1,4 @@
-import { createMockedStatefulCore } from "../mocks/createMockedStatefulCore";
+import { createMockedStatefulCore } from '../mocks/createMockedStatefulCore';
 
 const initialState = {
   query: {

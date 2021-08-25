@@ -1,4 +1,4 @@
-import { createMockedStatefulCore } from "../mocks/createMockedStatefulCore";
+import { createMockedStatefulCore } from '../mocks/createMockedStatefulCore';
 
 const initialState = {
   query: {
@@ -30,7 +30,7 @@ const alternativeVerticals = [{
   }],
   queryDurationMillis: 30,
   appliedQueryFilters: []
-}]
+}];
 
 function mockSearchWithAlternativeVerticals() {
   return Promise.resolve({

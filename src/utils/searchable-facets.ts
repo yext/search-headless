@@ -5,7 +5,7 @@ import levenshtein from 'js-levenshtein';
  *
  * @param value The display name for the facet
  * @param searchTerm The term being searched for e.g. the searchable facets query
- * @returns the closest substring match, if one exists
+ * @returns whether a similar substring exists
  */
 export function isLevenshteinMatch(
   value: string,
@@ -37,7 +37,6 @@ export function isLevenshteinMatch(
  *
  * @param value
  * @param searchTerm
- * @returns The matched substring and its levenshtein distance
  */
 export function getBestLevenshteinDistance(
   value: string,

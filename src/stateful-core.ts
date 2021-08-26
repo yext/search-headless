@@ -11,7 +11,6 @@ import {
   QuestionSubmissionResponse,
   VerticalResults,
   FacetOption,
-  Facet,
 } from '@yext/answers-core';
 
 import StateListener from './models/state-listener';
@@ -48,10 +47,6 @@ export default class StatefulCore {
 
   setFilter(filter: Filter | CombinedFilter | null): void {
     this.stateManager.dispatchEvent('filters/setStatic', filter);
-  }
-
-  setFacets(facets: Facet[]): void {
-    this.stateManager.dispatchEvent('filters/setFacets', facets);
   }
 
   setSpellCheckEnabled(enabled: boolean): void {

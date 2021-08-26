@@ -188,7 +188,7 @@ describe('search works as expected', () => {
     expect(dispatchEventCalls[0][0]).toBe('universal/setResults');
     expect(dispatchEventCalls[1][0]).toBe('query/setQueryId');
     expect(dispatchEventCalls[2][0]).toBe('query/setLatest');
-    expect(dispatchEventCalls[3][0]).toBe('spellCheck/setResult'); 
+    expect(dispatchEventCalls[3][0]).toBe('spellCheck/setResult');
 
     const coreCalls = mockedCore.universalSearch.mock.calls;
     expect(coreCalls.length).toBe(1);

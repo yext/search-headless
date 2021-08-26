@@ -104,7 +104,6 @@ it('gives a console warning when the facet option\'s fieldId is not found in sta
 });
 
 it('facets are updated after a vertical search', async () => {
-
   function mockSearchWithFacets() {
     return Promise.resolve({
       facets: [

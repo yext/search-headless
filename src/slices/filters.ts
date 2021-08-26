@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CombinedFilter, Filter, FacetOption } from '@yext/answers-core';
+import { CombinedFilter, Filter, FacetOption, DisplayableFacet } from '@yext/answers-core';
 import { FiltersState } from '../models/slices/filters';
 
 const initialState: FiltersState = {};
@@ -20,6 +20,9 @@ export const filtersSlice = createSlice({
   reducers: {
     setStatic: (state: FiltersState, action: PayloadAction<Filter|CombinedFilter|null>) => {
       state.static = action.payload;
+    },
+    setFacets: (state: FiltersState, action: PayloadAction<DisplayableFacet[]>) => {
+      state.facets = action.payload;
     },
     toggleFacetOption: (state: FiltersState, { payload }: PayloadAction<FacetPayload>) => {
       if (!state.facets) {
@@ -46,5 +49,5 @@ export const filtersSlice = createSlice({
   }
 });
 
-export const { setStatic, toggleFacetOption } = filtersSlice.actions;
+export const { setStatic, toggleFacetOption, setFacets } = filtersSlice.actions;
 export default filtersSlice.reducer;

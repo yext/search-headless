@@ -103,6 +103,30 @@ it('gives a console warning when the facet option\'s fieldId is not found in sta
   consoleWarnSpy.mockClear();
 });
 
+it('facets are updated after a vertical search', async () => {
+
+  function mockSearchWithFacets() {
+    return Promise.resolve({
+      facets: [
+        'mock facets state'
+      ]
+    });
+  }
+  const mockAnswersCore = {
+    verticalSearch: jest.fn().mockImplementation(mockSearchWithFacets)
+  };
+  const initialState = {
+    filters: {},
+    vertical: { key: 'test vertical key' },
+    query: { query: 'test query' },
+    spellCheck: { enabled: true }
+  };
+  const statefulCore = createMockedStatefulCore(mockAnswersCore, initialState);
+  expect(statefulCore.state.filters.facets).toEqual(undefined);
+  await statefulCore.executeVerticalQuery();
+  expect(statefulCore.state.filters.facets).toEqual([ 'mock facets state' ]);
+});
+
 function createInitialState(
   facetIsSelected: boolean
 ): [initialState: Partial<State>, facetOption: DisplayableFacetOption] {

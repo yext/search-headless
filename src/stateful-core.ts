@@ -5,18 +5,19 @@ import {
   QuestionSubmissionRequest,
   Filter,
   CombinedFilter,
-  Facet,
   AutocompleteResponse,
   VerticalSearchResponse,
   UniversalSearchResponse,
   QuestionSubmissionResponse,
-  VerticalResults
+  VerticalResults,
+  FacetOption,
 } from '@yext/answers-core';
 
 import StateListener from './models/state-listener';
 import { State } from './models/state';
 import StateManager from './models/state-manager';
 import { Unsubscribe } from '@reduxjs/toolkit';
+
 export default class StatefulCore {
   constructor(private core: AnswersCore, private stateManager: StateManager) {}
 
@@ -46,10 +47,6 @@ export default class StatefulCore {
 
   setFilter(filter: Filter | CombinedFilter | null): void {
     this.stateManager.dispatchEvent('filters/setStatic', filter);
-  }
-
-  setFacets(facets: Facet[]): void {
-    this.stateManager.dispatchEvent('filters/setFacets', facets);
   }
 
   setSpellCheckEnabled(enabled: boolean): void {
@@ -136,7 +133,7 @@ export default class StatefulCore {
       this.stateManager.dispatchEvent('vertical/setResults', results);
       this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
       this.stateManager.dispatchEvent('query/setLatest', query);
-      this.stateManager.dispatchEvent('facets/setDisplayableFacets', results.facets);
+      this.stateManager.dispatchEvent('filters/setFacets', results.facets);
       this.stateManager.dispatchEvent('spellCheck/setResult', results.spellCheck);
       this.stateManager.dispatchEvent('vertical/setAlternativeVerticals', results.alternativeVerticals);
       return results;
@@ -158,6 +155,24 @@ export default class StatefulCore {
 
     this.stateManager.dispatchEvent('vertical/setAutoComplete', results);
     return results;
+  }
+
+  selectFacetOption(fieldId: string, facetOption: FacetOption): void {
+    const payload = {
+      shouldSelect: true,
+      fieldId,
+      facetOption
+    };
+    this.stateManager.dispatchEvent('filters/toggleFacetOption', payload);
+  }
+
+  unselectFacetOption(fieldId: string, facetOption: FacetOption): void {
+    const payload = {
+      shouldSelect: false,
+      fieldId,
+      facetOption
+    };
+    this.stateManager.dispatchEvent('filters/toggleFacetOption', payload);
   }
 }
 

@@ -61,28 +61,6 @@ describe('setters work as expected', () => {
     expect(dispatchEventCalls[0][1]).toBe(filter);
   });
 
-  it('setFacets works as expected', () => {
-    const facets = [
-      {
-        fieldId: 'c_someField',
-        options: [
-          {
-            matcher: null,
-            value: 'Technology'
-          }
-        ]
-      }
-    ];
-    statefulCore.setFacets(facets);
-
-    const dispatchEventCalls =
-      mockedStateManager.dispatchEvent.mock.calls;
-
-    expect(dispatchEventCalls.length).toBe(1);
-    expect(dispatchEventCalls[0][0]).toBe('filters/setFacets');
-    expect(dispatchEventCalls[0][1]).toBe(facets);
-  });
-
   it('setQuery works as expected', () => {
     const query = 'Hello';
     statefulCore.setQuery(query);
@@ -210,7 +188,7 @@ describe('search works as expected', () => {
     expect(dispatchEventCalls[0][0]).toBe('universal/setResults');
     expect(dispatchEventCalls[1][0]).toBe('query/setQueryId');
     expect(dispatchEventCalls[2][0]).toBe('query/setLatest');
-    expect(dispatchEventCalls[3][0]).toBe('spellCheck/setResult'); 
+    expect(dispatchEventCalls[3][0]).toBe('spellCheck/setResult');
 
     const coreCalls = mockedCore.universalSearch.mock.calls;
     expect(coreCalls.length).toBe(1);
@@ -228,7 +206,7 @@ describe('search works as expected', () => {
     expect(dispatchEventCalls[0][0]).toBe('vertical/setResults');
     expect(dispatchEventCalls[1][0]).toBe('query/setQueryId');
     expect(dispatchEventCalls[2][0]).toBe('query/setLatest');
-    expect(dispatchEventCalls[3][0]).toBe('facets/setDisplayableFacets');
+    expect(dispatchEventCalls[3][0]).toBe('filters/setFacets');
     expect(dispatchEventCalls[4][0]).toBe('spellCheck/setResult');
     expect(dispatchEventCalls[5][0]).toBe('vertical/setAlternativeVerticals');
 

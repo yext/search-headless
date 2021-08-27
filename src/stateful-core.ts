@@ -11,12 +11,14 @@ import {
   QuestionSubmissionResponse,
   VerticalResults,
   FacetOption,
+  DisplayableFacet,
 } from '@yext/answers-core';
 
 import StateListener from './models/state-listener';
 import { State } from './models/state';
 import StateManager from './models/state-manager';
 import { Unsubscribe } from '@reduxjs/toolkit';
+import { isLevenshteinMatch } from './utils/searchable-facets';
 
 export default class StatefulCore {
   constructor(private core: AnswersCore, private stateManager: StateManager) {}
@@ -173,6 +175,13 @@ export default class StatefulCore {
       facetOption
     };
     this.stateManager.dispatchEvent('filters/toggleFacetOption', payload);
+  }
+
+  searchThroughFacet(facet: DisplayableFacet, searchTerm: string): DisplayableFacet {
+    return {
+      ...facet,
+      options: facet.options.filter(o => isLevenshteinMatch(o.displayName, searchTerm))
+    };
   }
 }
 

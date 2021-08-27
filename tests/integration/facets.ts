@@ -126,6 +126,39 @@ it('facets are updated after a vertical search', async () => {
   expect(statefulCore.state.filters.facets).toEqual([ 'mock facets state' ]);
 });
 
+it('searchThroughFacet filters facet options correctly', () => {
+  const [initialState, facetOption] = createInitialState(false);
+  initialState.filters.facets[0].options.push({
+    ...facetOption,
+    displayName: 'generation'
+  });
+  initialState.filters.facets[0].options.push({
+    ...facetOption,
+    displayName: 'cation'
+  });
+  initialState.filters.facets[0].options.push({
+    ...facetOption,
+    displayName: 'ignore me'
+  });
+  const statefulCore = createMockedStatefulCore({}, initialState);
+  const facet = statefulCore.state.filters.facets[0];
+  const searchedFacet = statefulCore.searchThroughFacet(facet, 'cation');
+  expect(searchedFacet).toEqual({
+    displayName: 'test facet name',
+    fieldId: 'testFieldId',
+    options: [
+      {
+        ...facetOption,
+        displayName: 'generation'
+      },
+      {
+        ...facetOption,
+        displayName: 'cation'
+      }
+    ]
+  });
+});
+
 function createInitialState(
   facetIsSelected: boolean
 ): [initialState: Partial<State>, facetOption: DisplayableFacetOption] {

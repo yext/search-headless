@@ -140,7 +140,7 @@ it('only selected facets are sent in the vertical search request', () => {
     options: [notSelectedFacetOption]
   });
   const mockedCore = {
-    verticalSearch: jest.fn()
+    verticalSearch: jest.fn(() => { return {}; })
   };
   const statefulCore = createMockedStatefulCore(mockedCore, initialState);
   statefulCore.executeVerticalQuery();

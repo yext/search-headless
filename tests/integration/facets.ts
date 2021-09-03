@@ -126,6 +126,40 @@ it('facets are updated after a vertical search', async () => {
   expect(statefulCore.state.filters.facets).toEqual([ 'mock facets state' ]);
 });
 
+it('only selected facets are sent in the vertical search request', () => {
+  const [initialState, selectedFacetOption] = createInitialState(true);
+  const notSelectedFacetOption = { ...selectedFacetOption, selected: false };
+  initialState.filters.facets.push({
+    displayName: 'testFacet2',
+    fieldId: 'testFieldId2',
+    options: [selectedFacetOption, selectedFacetOption, notSelectedFacetOption]
+  });
+  initialState.filters.facets.push({
+    displayName: 'testFacet3',
+    fieldId: 'testFieldId3',
+    options: [notSelectedFacetOption]
+  });
+  const mockedCore = {
+    verticalSearch: jest.fn(() => { return {}; })
+  };
+  const statefulCore = createMockedStatefulCore(mockedCore, initialState);
+  statefulCore.executeVerticalQuery();
+  expect(mockedCore.verticalSearch).toHaveBeenCalledWith(expect.objectContaining({
+    facets: [{
+      fieldId: 'testFieldId',
+      options: [selectedFacetOption]
+    },
+    {
+      fieldId: 'testFieldId2',
+      options: [selectedFacetOption, selectedFacetOption]
+    },
+    {
+      fieldId: 'testFieldId3',
+      options: []
+    }]
+  }));
+});
+
 it('searchThroughFacet filters facet options correctly', () => {
   const [initialState, facetOption] = createInitialState(false);
   initialState.filters.facets[0].options.push({
@@ -174,9 +208,19 @@ function createInitialState(
     displayName: 'test facet name',
     options: [facetOption]
   };
-  const initialState = {
+  const initialState: State = {
+    query: {
+      query: 'test'
+    },
     filters: {
       facets: [facet]
+    },
+    vertical: {
+      key: 'people'
+    },
+    universal: {},
+    spellCheck: {
+      enabled: false
     }
   };
   return [initialState, facetOption];

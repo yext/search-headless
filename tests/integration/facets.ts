@@ -152,6 +152,10 @@ it('only selected facets are sent in the vertical search request', () => {
     {
       fieldId: 'testFieldId2',
       options: [selectedFacetOption, selectedFacetOption]
+    },
+    {
+      fieldId: 'testFieldId3',
+      options: []
     }]
   }));
 });

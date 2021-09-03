@@ -118,12 +118,12 @@ export default class StatefulCore {
     const limit = this.state.vertical.limit;
     const offset = this.state.vertical.offset;
 
-    const selectedFacets = facets?.map(facet => {
+    const facetsToApply = facets?.map(facet => {
       return {
         fieldId: facet.fieldId,
         options: facet.options.filter(o => o.selected)
       };
-    }).filter(facet => facet.options.length > 0 );
+    });
 
     if (query) {
       const request = {
@@ -132,7 +132,7 @@ export default class StatefulCore {
         queryTrigger: queryTrigger,
         verticalKey: verticalKey,
         staticFilters,
-        facets: selectedFacets,
+        facets: facetsToApply,
         retrieveFacets: true,
         limit: limit,
         offset: offset,

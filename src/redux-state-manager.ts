@@ -47,7 +47,7 @@ export default class ReduxStateManager implements StateManager {
   }
 
   addListener<T>(listener: StateListener<T>): Unsubscribe {
-    let previousValue: T;
+    let previousValue = listener.valueAccessor(this.getState());
     return this.store.subscribe(() => {
       const currentValue: T = listener.valueAccessor(this.getState());
       if (currentValue !== previousValue) {

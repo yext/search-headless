@@ -12,6 +12,8 @@ import {
   VerticalResults,
   FacetOption,
   DisplayableFacet,
+  SortBy,
+  Context,
 } from '@yext/answers-core';
 
 import StateListener from './models/state-listener';
@@ -59,6 +61,18 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('vertical/setAlternativeVerticals', alternativeVerticals);
   }
 
+  setSortBys(sortBys: SortBy[]): void {
+    this.stateManager.dispatchEvent('filters/setSortBys', sortBys);
+  }
+
+  setContext(context: Context): void {
+    this.stateManager.dispatchEvent('meta/setContext', context);
+  }
+
+  setReferrerPageUrl(referrerPageUrl: string): void {
+    this.stateManager.dispatchEvent('meta/setReferrerPageUrl', referrerPageUrl);
+  }
+
   setState(state: State): void {
     this.stateManager.dispatchEvent('set-state', state);
   }
@@ -78,13 +92,16 @@ export default class StatefulCore {
   async executeUniversalQuery(): Promise<UniversalSearchResponse | undefined> {
     const { query, querySource, queryTrigger } = this.state.query;
     const skipSpellCheck = !this.state.spellCheck.enabled;
+    const { referrerPageUrl, context } = this.state.meta;
 
     if (query) {
       const results = await this.core.universalSearch({
         query: query,
         querySource: querySource,
         queryTrigger: queryTrigger,
-        skipSpellCheck: skipSpellCheck
+        skipSpellCheck: skipSpellCheck,
+        context,
+        referrerPageUrl
       });
 
       this.stateManager.dispatchEvent('universal/setResults', results);
@@ -117,6 +134,8 @@ export default class StatefulCore {
     const facets = this.state.filters?.facets;
     const limit = this.state.vertical.limit;
     const offset = this.state.vertical.offset;
+    const sortBys = this.state.filters?.sortBys;
+    const { referrerPageUrl, context } = this.state.meta;
 
     const facetsToApply = facets?.map(facet => {
       return {
@@ -136,7 +155,10 @@ export default class StatefulCore {
         retrieveFacets: true,
         limit: limit,
         offset: offset,
-        skipSpellCheck: skipSpellCheck
+        skipSpellCheck: skipSpellCheck,
+        sortBys,
+        context,
+        referrerPageUrl
       };
       const results = await this.core.verticalSearch(request);
       this.stateManager.dispatchEvent('vertical/setResults', results);

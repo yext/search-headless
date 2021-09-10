@@ -15,6 +15,9 @@ export function createMockedStatefulCore(
 ): StatefulCore {
   const reduxStateManager = new ReduxStateManager();
   const statefulCore = new StatefulCore(mockedAnswersCore, reduxStateManager);
-  statefulCore.setState(initialState as State);
+  statefulCore.setState({
+    ...statefulCore.state,
+    ...initialState
+  });
   return statefulCore;
 }

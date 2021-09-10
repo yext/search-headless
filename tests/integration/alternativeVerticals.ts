@@ -45,7 +45,6 @@ describe('StatefulCore spellcheck interactions properly update state', () => {
     }, initialState);
     await statefulCore.executeVerticalQuery();
     const expectedState = {
-      ...initialState,
       vertical: {
         ...initialState.vertical,
         alternativeVerticals: alternativeVerticals,
@@ -55,6 +54,6 @@ describe('StatefulCore spellcheck interactions properly update state', () => {
       },
     };
 
-    expect(statefulCore.state).toEqual(expectedState);
+    expect(statefulCore.state).toMatchObject(expectedState);
   });
 });

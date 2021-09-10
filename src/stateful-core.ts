@@ -61,6 +61,10 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('vertical/setAlternativeVerticals', alternativeVerticals);
   }
 
+  setSortBys(sortBys: SortBy[]): void {
+    this.stateManager.dispatchEvent('filters/setSortBys', sortBys);
+  }
+
   setContext(context: Context): void {
     this.stateManager.dispatchEvent('meta/setContext', context);
   }
@@ -207,10 +211,6 @@ export default class StatefulCore {
       ...facet,
       options: facet.options.filter(o => isLevenshteinMatch(o.displayName, searchTerm))
     };
-  }
-
-  setSortBys(sortBys: SortBy[]): void {
-    this.stateManager.dispatchEvent('filters/setSortBys', sortBys);
   }
 }
 

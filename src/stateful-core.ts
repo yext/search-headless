@@ -61,6 +61,14 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('vertical/setAlternativeVerticals', alternativeVerticals);
   }
 
+  setContext(context: Context): void {
+    this.stateManager.dispatchEvent('meta/setContext', context);
+  }
+
+  setReferrerPageUrl(referrerPageUrl: string): void {
+    this.stateManager.dispatchEvent('meta/setReferrerPageUrl', referrerPageUrl);
+  }
+
   setState(state: State): void {
     this.stateManager.dispatchEvent('set-state', state);
   }
@@ -80,7 +88,7 @@ export default class StatefulCore {
   async executeUniversalQuery(): Promise<UniversalSearchResponse | undefined> {
     const { query, querySource, queryTrigger } = this.state.query;
     const skipSpellCheck = !this.state.spellCheck.enabled;
-    const context = this.state.context.value;
+    const { referrerPageUrl, context } = this.state.meta;
 
     if (query) {
       const results = await this.core.universalSearch({
@@ -88,7 +96,8 @@ export default class StatefulCore {
         querySource: querySource,
         queryTrigger: queryTrigger,
         skipSpellCheck: skipSpellCheck,
-        context
+        context,
+        referrerPageUrl
       });
 
       this.stateManager.dispatchEvent('universal/setResults', results);
@@ -122,7 +131,7 @@ export default class StatefulCore {
     const limit = this.state.vertical.limit;
     const offset = this.state.vertical.offset;
     const sortBys = this.state.filters?.sortBys;
-    const context = this.state.context.value;
+    const { referrerPageUrl, context } = this.state.meta;
 
     const facetsToApply = facets?.map(facet => {
       return {
@@ -144,7 +153,8 @@ export default class StatefulCore {
         offset: offset,
         skipSpellCheck: skipSpellCheck,
         sortBys,
-        context
+        context,
+        referrerPageUrl
       };
       const results = await this.core.verticalSearch(request);
       this.stateManager.dispatchEvent('vertical/setResults', results);
@@ -201,10 +211,6 @@ export default class StatefulCore {
 
   setSortBys(sortBys: SortBy[]): void {
     this.stateManager.dispatchEvent('filters/setSortBys', sortBys);
-  }
-
-  setContext(context: Context): void {
-    this.stateManager.dispatchEvent('context/set', context);
   }
 }
 

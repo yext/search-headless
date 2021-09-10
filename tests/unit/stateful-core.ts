@@ -22,7 +22,7 @@ const mockedState = {
   spellCheck: {
     enabled: true
   },
-  context: {}
+  meta: {}
 };
 const mockedStateManager: any = {
   getState: jest.fn(() => mockedState),

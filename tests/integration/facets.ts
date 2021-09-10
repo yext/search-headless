@@ -222,7 +222,7 @@ function createInitialState(
     spellCheck: {
       enabled: false
     },
-    context: {}
+    meta: {}
   };
   return [initialState, facetOption];
 }

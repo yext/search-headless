@@ -3,7 +3,7 @@ import { QueryState } from './slices/query';
 import { UniversalSearchState } from './slices/universal';
 import { VerticalSearchState } from './slices/vertical';
 import { SpellCheckState } from './slices/spellcheck';
-import { ContextState } from './slices/context';
+import { MetaState } from './slices/meta';
 
 export interface State {
   query: QueryState,
@@ -11,5 +11,5 @@ export interface State {
   vertical: VerticalSearchState,
   filters: FiltersState,
   spellCheck: SpellCheckState,
-  context: ContextState,
+  meta: MetaState,
 }

@@ -221,7 +221,8 @@ function createInitialState(
     universal: {},
     spellCheck: {
       enabled: false
-    }
+    },
+    context: {}
   };
   return [initialState, facetOption];
 }

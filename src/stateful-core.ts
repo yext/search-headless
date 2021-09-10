@@ -12,6 +12,8 @@ import {
   VerticalResults,
   FacetOption,
   DisplayableFacet,
+  SortBy,
+  Context,
 } from '@yext/answers-core';
 
 import StateListener from './models/state-listener';
@@ -78,13 +80,15 @@ export default class StatefulCore {
   async executeUniversalQuery(): Promise<UniversalSearchResponse | undefined> {
     const { query, querySource, queryTrigger } = this.state.query;
     const skipSpellCheck = !this.state.spellCheck.enabled;
+    const context = this.state.context.value;
 
     if (query) {
       const results = await this.core.universalSearch({
         query: query,
         querySource: querySource,
         queryTrigger: queryTrigger,
-        skipSpellCheck: skipSpellCheck
+        skipSpellCheck: skipSpellCheck,
+        context
       });
 
       this.stateManager.dispatchEvent('universal/setResults', results);
@@ -117,6 +121,8 @@ export default class StatefulCore {
     const facets = this.state.filters?.facets;
     const limit = this.state.vertical.limit;
     const offset = this.state.vertical.offset;
+    const sortBys = this.state.filters?.sortBys;
+    const context = this.state.context.value;
 
     const facetsToApply = facets?.map(facet => {
       return {
@@ -136,7 +142,9 @@ export default class StatefulCore {
         retrieveFacets: true,
         limit: limit,
         offset: offset,
-        skipSpellCheck: skipSpellCheck
+        skipSpellCheck: skipSpellCheck,
+        sortBys,
+        context
       };
       const results = await this.core.verticalSearch(request);
       this.stateManager.dispatchEvent('vertical/setResults', results);
@@ -189,6 +197,14 @@ export default class StatefulCore {
       ...facet,
       options: facet.options.filter(o => isLevenshteinMatch(o.displayName, searchTerm))
     };
+  }
+
+  setSortBys(sortBys: SortBy[]): void {
+    this.stateManager.dispatchEvent('filters/setSortBys', sortBys);
+  }
+
+  setContext(context: Context): void {
+    this.stateManager.dispatchEvent('context/set', context);
   }
 }
 

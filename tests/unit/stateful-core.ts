@@ -21,8 +21,8 @@ const mockedState = {
   },
   spellCheck: {
     enabled: true
-  }
-
+  },
+  context: {}
 };
 const mockedStateManager: any = {
   getState: jest.fn(() => mockedState),
@@ -219,7 +219,6 @@ describe('search works as expected', () => {
       limit: mockedState.vertical.limit,
       offset: mockedState.vertical.offset,
       skipSpellCheck: !mockedState.spellCheck.enabled,
-
     };
     expect(coreCalls.length).toBe(1);
     expect(coreCalls[0][0]).toEqual(expectedSearchParams);

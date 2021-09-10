@@ -5,6 +5,7 @@ import verticalReducer from './slices/vertical';
 import universalReducer from './slices/universal';
 import filtersReducer from './slices/filters';
 import spellCheckReducer from './slices/spellcheck';
+import contextReducer from './slices/context';
 import StateListener from './models/state-listener';
 import StateManager from './models/state-manager';
 import { State } from './models/state';
@@ -22,7 +23,8 @@ export default class ReduxStateManager implements StateManager {
       vertical: verticalReducer,
       universal: universalReducer,
       filters: filtersReducer,
-      spellCheck: spellCheckReducer
+      spellCheck: spellCheckReducer,
+      context: contextReducer
     });
 
     this.store = configureStore({

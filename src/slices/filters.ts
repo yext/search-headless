@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CombinedFilter, Filter, FacetOption, DisplayableFacet } from '@yext/answers-core';
+import { CombinedFilter, Filter, FacetOption, DisplayableFacet, SortBy } from '@yext/answers-core';
 import { FiltersState } from '../models/slices/filters';
 
 const initialState: FiltersState = {};
@@ -23,6 +23,9 @@ export const filtersSlice = createSlice({
     },
     setFacets: (state: FiltersState, action: PayloadAction<DisplayableFacet[]>) => {
       state.facets = action.payload;
+    },
+    setSortBys: (state: FiltersState, action: PayloadAction<SortBy[]>) => {
+      state.sortBys = action.payload;
     },
     toggleFacetOption: (state: FiltersState, { payload }: PayloadAction<FacetPayload>) => {
       if (!state.facets) {

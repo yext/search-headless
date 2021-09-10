@@ -34,7 +34,6 @@ describe('StatefulCore spellcheck interactions properly update state', () => {
     }, initialState);
     await statefulCore.executeVerticalQuery();
     const expectedState = {
-      ...initialState,
       vertical: {
         ...initialState.vertical,
         results: {
@@ -47,7 +46,7 @@ describe('StatefulCore spellcheck interactions properly update state', () => {
       }
     };
 
-    expect(statefulCore.state).toEqual(expectedState);
+    expect(statefulCore.state).toMatchObject(expectedState);
   });
 
   it('executeUniversalQuery properly updates spellcheck state', async () => {
@@ -56,7 +55,6 @@ describe('StatefulCore spellcheck interactions properly update state', () => {
     }, initialState);
     await statefulCore.executeUniversalQuery();
     const expectedState = {
-      ...initialState,
       universal: {
         results: {
           spellCheck: spellCheckResult
@@ -68,19 +66,18 @@ describe('StatefulCore spellcheck interactions properly update state', () => {
       }
     };
 
-    expect(statefulCore.state).toEqual(expectedState);
+    expect(statefulCore.state).toMatchObject(expectedState);
   });
 
   it('setSpellCheckEnabled properly updates state', async () => {
     const statefulCore = createMockedStatefulCore({}, initialState);
     await statefulCore.setSpellCheckEnabled(false);
     const expectedState = {
-      ...initialState,
       spellCheck: {
         enabled: false
       }
     };
 
-    expect(statefulCore.state).toEqual(expectedState);
+    expect(statefulCore.state).toMatchObject(expectedState);
   });
 });

@@ -49,7 +49,7 @@ describe('locationBias', () => {
     await statefulCore.executeVerticalQuery();
     expect(statefulCore.state.location.locationBias).toEqual(locationBias);
   });
-  
+
   it('universal searches set location bias', async () => {
     const locationBias: LocationBias = {
       latitude: 2,

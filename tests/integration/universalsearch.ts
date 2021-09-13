@@ -38,8 +38,6 @@ it('universal searches update the search loading state', async () => {
   await thirdSearch;
   expect(statefulCore.state.universal.numSearchesRunning).toEqual(0);
   expect(statefulCore.state.universal.searchIsLoading).toBeFalsy();
-
-  expect(mockSearch.mock.calls[0][0].query).toEqual('');
 });
 
 function createMockSearch(times?: number[]) {

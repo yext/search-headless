@@ -39,8 +39,6 @@ it('vertical searches update the search loading state', async () => {
   await thirdSearch;
   expect(statefulCore.state.vertical.numSearchesRunning).toEqual(0);
   expect(statefulCore.state.vertical.searchIsLoading).toBeFalsy();
-
-  expect(mockSearch.mock.calls[0][0].query).toEqual('');
 });
 
 function createMockSearch(times?: number[]) {

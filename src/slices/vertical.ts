@@ -45,8 +45,7 @@ export const {
   setAutoComplete,
   setLimit,
   setOffset,
-  incrementSearchCounter,
-  decrementSearchCounter
+  setSearchLoading
 } = verticalSlice.actions;
 
 export default verticalSlice.reducer;

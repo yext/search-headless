@@ -1,4 +1,4 @@
-import { QuerySource, QueryTrigger } from '@yext/answers-core';
+import { QuerySource, QueryTrigger, SearchIntent } from '@yext/answers-core';
 
 export interface QueryState {
   query?: string,
@@ -6,4 +6,5 @@ export interface QueryState {
   queryTrigger?: QueryTrigger,
   querySource?: QuerySource,
   latest?: string,
+  searchIntents?: SearchIntent[]
 }

@@ -1,7 +1,7 @@
 import { UniversalSearchRequest } from '@yext/answers-core';
 import { createMockedStatefulCore } from '../mocks/createMockedStatefulCore';
 
-it('vertical searches send blank queries by default', async () => {
+it('universal searches send blank queries by default', async () => {
   const mockSearch = jest.fn((_request: UniversalSearchRequest) => Promise.resolve({}));
   const statefulCore = createMockedStatefulCore({
     universalSearch: mockSearch

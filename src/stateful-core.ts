@@ -14,6 +14,8 @@ import {
   DisplayableFacet,
   SortBy,
   Context,
+  LatLong,
+  LocationBias,
 } from '@yext/answers-core';
 
 import StateListener from './models/state-listener';
@@ -73,6 +75,10 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('meta/setReferrerPageUrl', referrerPageUrl);
   }
 
+  setUserLocation(latLong: LatLong) {
+    this.stateManager.dispatchEvent('location/setUserLocation', latLong);
+  }
+
   setState(state: State): void {
     this.stateManager.dispatchEvent('set-state', state);
   }
@@ -93,12 +99,14 @@ export default class StatefulCore {
     const { query, querySource, queryTrigger } = this.state.query;
     const skipSpellCheck = !this.state.spellCheck.enabled;
     const { referrerPageUrl, context } = this.state.meta;
+    const { userLocation } = this.state.location;
 
     const results = await this.core.universalSearch({
       query: query || '',
       querySource: querySource,
       queryTrigger: queryTrigger,
       skipSpellCheck: skipSpellCheck,
+      location: userLocation,
       context,
       referrerPageUrl
     });
@@ -107,6 +115,8 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
     this.stateManager.dispatchEvent('query/setLatest', query);
     this.stateManager.dispatchEvent('spellCheck/setResult', results.spellCheck);
+    this.stateManager.dispatchEvent('query/setSearchIntents', results.searchIntents || []);
+    this.stateManager.dispatchEvent('location/setLocationBias', results.locationBias);
     return results;
   }
 
@@ -117,6 +127,7 @@ export default class StatefulCore {
     });
 
     this.stateManager.dispatchEvent('universal/setAutoComplete', results);
+    this.stateManager.dispatchEvent('query/setSearchIntents', results.inputIntents || []);
     return results;
   }
 
@@ -134,6 +145,7 @@ export default class StatefulCore {
     const offset = this.state.vertical.offset;
     const sortBys = this.state.filters?.sortBys;
     const { referrerPageUrl, context } = this.state.meta;
+    const { userLocation } = this.state.location;
 
     const facetsToApply = facets?.map(facet => {
       return {
@@ -153,6 +165,7 @@ export default class StatefulCore {
       limit: limit,
       offset: offset,
       skipSpellCheck: skipSpellCheck,
+      location: userLocation,
       sortBys,
       context,
       referrerPageUrl
@@ -164,6 +177,9 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('filters/setFacets', results.facets);
     this.stateManager.dispatchEvent('spellCheck/setResult', results.spellCheck);
     this.stateManager.dispatchEvent('vertical/setAlternativeVerticals', results.alternativeVerticals);
+    this.stateManager.dispatchEvent('location/setLocationBias', results.locationBias);
+    this.stateManager.dispatchEvent('query/setSearchIntents', results.searchIntents || []);
+    this.stateManager.dispatchEvent('location/setLocationBias', results.locationBias);
     return results;
   }
 
@@ -181,6 +197,7 @@ export default class StatefulCore {
     });
 
     this.stateManager.dispatchEvent('vertical/setAutoComplete', results);
+    this.stateManager.dispatchEvent('query/setSearchIntents', results.inputIntents || []);
     return results;
   }
 

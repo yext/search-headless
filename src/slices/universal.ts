@@ -2,7 +2,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { UniversalSearchResponse, AutocompleteResponse } from '@yext/answers-core';
 import { UniversalSearchState } from '../models/slices/universal';
 
-const initialState: UniversalSearchState = {};
+const initialState: UniversalSearchState = {
+  numSearchesRunning: 0
+};
 
 /**
  * Registers with Redux the slice of {@link State} pertaining to universal search. There
@@ -17,9 +19,23 @@ export const universalSlice = createSlice({
     },
     setAutoComplete: (state, action: PayloadAction<AutocompleteResponse>) => {
       state.autoComplete = action.payload;
-    }
+    },
+    incrementSearchCounter: (state) => {
+      state.numSearchesRunning++;
+      state.searchIsLoading = true;
+    },
+    decrementSearchCounter: (state) => {
+      state.numSearchesRunning--;
+      state.searchIsLoading = state.numSearchesRunning > 0;
+    },
   }
 });
 
-export const { setResults, setAutoComplete } = universalSlice.actions;
+export const {
+  setResults,
+  setAutoComplete,
+  incrementSearchCounter,
+  decrementSearchCounter
+} = universalSlice.actions;
+
 export default universalSlice.reducer;

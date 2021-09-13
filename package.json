@@ -55,7 +55,8 @@
       "<rootDir>/tests/**/*.[jt]s"
     ],
     "testPathIgnorePatterns": [
-      "<rootDir>/tests/mocks/*"
+      "<rootDir>/tests/mocks/*",
+      "<rootDir>/tests/utils/*"
     ]
   }
 }

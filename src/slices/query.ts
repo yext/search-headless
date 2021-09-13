@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { QuerySource, QueryTrigger } from '@yext/answers-core';
+import { QuerySource, QueryTrigger, SearchIntent } from '@yext/answers-core';
 import { QueryState } from '../models/slices/query';
 
 const initialState: QueryState = {};
@@ -26,9 +26,12 @@ export const querySlice = createSlice({
     },
     setLatest: (state, action: PayloadAction<string>) => {
       state.latest = action.payload;
+    },
+    setSearchIntents: (state, action: PayloadAction<SearchIntent[]>) => {
+      state.searchIntents = action.payload;
     }
   }
 });
 
-export const { set, setTrigger, setSource, setQueryId } = querySlice.actions;
+export const { set, setTrigger, setSource, setQueryId, setLatest, setSearchIntents } = querySlice.actions;
 export default querySlice.reducer;

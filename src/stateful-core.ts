@@ -94,22 +94,20 @@ export default class StatefulCore {
     const skipSpellCheck = !this.state.spellCheck.enabled;
     const { referrerPageUrl, context } = this.state.meta;
 
-    if (query) {
-      const results = await this.core.universalSearch({
-        query: query,
-        querySource: querySource,
-        queryTrigger: queryTrigger,
-        skipSpellCheck: skipSpellCheck,
-        context,
-        referrerPageUrl
-      });
+    const results = await this.core.universalSearch({
+      query: query || '',
+      querySource: querySource,
+      queryTrigger: queryTrigger,
+      skipSpellCheck: skipSpellCheck,
+      context,
+      referrerPageUrl
+    });
 
-      this.stateManager.dispatchEvent('universal/setResults', results);
-      this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
-      this.stateManager.dispatchEvent('query/setLatest', query);
-      this.stateManager.dispatchEvent('spellCheck/setResult', results.spellCheck);
-      return results;
-    }
+    this.stateManager.dispatchEvent('universal/setResults', results);
+    this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
+    this.stateManager.dispatchEvent('query/setLatest', query);
+    this.stateManager.dispatchEvent('spellCheck/setResult', results.spellCheck);
+    return results;
   }
 
   async executeUniversalAutoComplete(): Promise<AutocompleteResponse | undefined> {
@@ -144,31 +142,29 @@ export default class StatefulCore {
       };
     });
 
-    if (query) {
-      const request = {
-        query,
-        querySource: querySource,
-        queryTrigger: queryTrigger,
-        verticalKey: verticalKey,
-        staticFilters,
-        facets: facetsToApply,
-        retrieveFacets: true,
-        limit: limit,
-        offset: offset,
-        skipSpellCheck: skipSpellCheck,
-        sortBys,
-        context,
-        referrerPageUrl
-      };
-      const results = await this.core.verticalSearch(request);
-      this.stateManager.dispatchEvent('vertical/setResults', results);
-      this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
-      this.stateManager.dispatchEvent('query/setLatest', query);
-      this.stateManager.dispatchEvent('filters/setFacets', results.facets);
-      this.stateManager.dispatchEvent('spellCheck/setResult', results.spellCheck);
-      this.stateManager.dispatchEvent('vertical/setAlternativeVerticals', results.alternativeVerticals);
-      return results;
-    }
+    const request = {
+      query: query || '',
+      querySource: querySource,
+      queryTrigger: queryTrigger,
+      verticalKey: verticalKey,
+      staticFilters,
+      facets: facetsToApply,
+      retrieveFacets: true,
+      limit: limit,
+      offset: offset,
+      skipSpellCheck: skipSpellCheck,
+      sortBys,
+      context,
+      referrerPageUrl
+    };
+    const results = await this.core.verticalSearch(request);
+    this.stateManager.dispatchEvent('vertical/setResults', results);
+    this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
+    this.stateManager.dispatchEvent('query/setLatest', query);
+    this.stateManager.dispatchEvent('filters/setFacets', results.facets);
+    this.stateManager.dispatchEvent('spellCheck/setResult', results.spellCheck);
+    this.stateManager.dispatchEvent('vertical/setAlternativeVerticals', results.alternativeVerticals);
+    return results;
   }
 
   async executeVerticalAutoComplete(): Promise<AutocompleteResponse | undefined> {

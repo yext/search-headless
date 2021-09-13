@@ -2,9 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { VerticalSearchResponse, AutocompleteResponse, VerticalResults } from '@yext/answers-core';
 import { VerticalSearchState } from '../models/slices/vertical';
 
-const initialState: VerticalSearchState = {
-  numSearchesRunning: 0
-};
+const initialState: VerticalSearchState = {};
 
 /**
  * Registers with Redux the slice of {@link State} pertaining to vertical search. There
@@ -35,14 +33,9 @@ export const verticalSlice = createSlice({
     setOffset: (state, action: PayloadAction<number>) => {
       state.offset = action.payload;
     },
-    incrementSearchCounter: (state) => {
-      state.numSearchesRunning++;
-      state.searchIsLoading = true;
-    },
-    decrementSearchCounter: (state) => {
-      state.numSearchesRunning--;
-      state.searchIsLoading = state.numSearchesRunning > 0;
-    },
+    setSearchLoading: (state, action: PayloadAction<boolean>) => {
+      state.searchLoading = action.payload;
+    }
   }
 });
 

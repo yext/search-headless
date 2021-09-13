@@ -13,39 +13,20 @@ it('vertical searches send blank queries by default', async () => {
 });
 
 it('vertical searches update the search loading state', async () => {
-  // No need to be conservative about wait times
-  const mockSearch = createMockSearch([0, 1, 2]);
+  const mockSearch = createMockSearch();
   const statefulCore = createMockedStatefulCore({
     verticalSearch: mockSearch
   });
   statefulCore.setVerticalKey('vertical-key');
-  expect(statefulCore.state.vertical.numSearchesRunning).toEqual(0);
-  expect(statefulCore.state.vertical.searchIsLoading).toBeFalsy();
-
-  const firstSearch = statefulCore.executeVerticalQuery();
-  const secondSearch = statefulCore.executeVerticalQuery();
-  const thirdSearch = statefulCore.executeVerticalQuery();
-  expect(statefulCore.state.vertical.numSearchesRunning).toEqual(3);
-  expect(statefulCore.state.vertical.searchIsLoading).toBeTruthy();
-
-  await firstSearch;
-  expect(statefulCore.state.vertical.numSearchesRunning).toEqual(2);
-  expect(statefulCore.state.vertical.searchIsLoading).toBeTruthy();
-
-  await secondSearch;
-  expect(statefulCore.state.vertical.numSearchesRunning).toEqual(1);
-  expect(statefulCore.state.vertical.searchIsLoading).toBeTruthy();
-
-  await thirdSearch;
-  expect(statefulCore.state.vertical.numSearchesRunning).toEqual(0);
-  expect(statefulCore.state.vertical.searchIsLoading).toBeFalsy();
+  const search = statefulCore.executeVerticalQuery();
+  expect(statefulCore.state.vertical.searchLoading).toEqual(true);
+  await search;
+  expect(statefulCore.state.vertical.searchLoading).toEqual(false);
 });
 
-function createMockSearch(times?: number[]) {
-  let index = 0;
+function createMockSearch() {
   return jest.fn(async (_request: VerticalSearchRequest) => {
-    const timeout = (times && times[index++]) || 0;
-    await setTimeout(timeout);
+    await setTimeout(0);
     return Promise.resolve({});
   });
 }

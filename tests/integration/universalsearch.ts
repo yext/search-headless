@@ -13,38 +13,20 @@ it('universal searches send blank queries by default', async () => {
 
 
 it('universal searches update the search loading state', async () => {
-  // No need to be conservative about wait times
-  const mockSearch = createMockSearch([0, 1, 2]);
+  const mockSearch = createMockSearch();
   const statefulCore = createMockedStatefulCore({
     universalSearch: mockSearch
   });
-  expect(statefulCore.state.universal.numSearchesRunning).toEqual(0);
-  expect(statefulCore.state.universal.searchIsLoading).toBeFalsy();
 
-  const firstSearch = statefulCore.executeUniversalQuery();
-  const secondSearch = statefulCore.executeUniversalQuery();
-  const thirdSearch = statefulCore.executeUniversalQuery();
-  expect(statefulCore.state.universal.numSearchesRunning).toEqual(3);
-  expect(statefulCore.state.universal.searchIsLoading).toBeTruthy();
-
-  await firstSearch;
-  expect(statefulCore.state.universal.numSearchesRunning).toEqual(2);
-  expect(statefulCore.state.universal.searchIsLoading).toBeTruthy();
-
-  await secondSearch;
-  expect(statefulCore.state.universal.numSearchesRunning).toEqual(1);
-  expect(statefulCore.state.universal.searchIsLoading).toBeTruthy();
-
-  await thirdSearch;
-  expect(statefulCore.state.universal.numSearchesRunning).toEqual(0);
-  expect(statefulCore.state.universal.searchIsLoading).toBeFalsy();
+  const search = statefulCore.executeUniversalQuery();
+  expect(statefulCore.state.universal.searchLoading).toEqual(true);
+  await search;
+  expect(statefulCore.state.universal.searchLoading).toEqual(false);
 });
 
-function createMockSearch(times?: number[]) {
-  let index = 0;
+function createMockSearch() {
   return jest.fn(async (_request: UniversalSearchRequest) => {
-    const timeout = (times && times[index++]) || 0;
-    await setTimeout(timeout);
+    await setTimeout(0);
     return Promise.resolve({});
   });
 }

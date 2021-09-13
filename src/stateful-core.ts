@@ -95,7 +95,7 @@ export default class StatefulCore {
   }
 
   async executeUniversalQuery(): Promise<UniversalSearchResponse | undefined> {
-    this.stateManager.dispatchEvent('universal/incrementSearchCounter');
+    this.stateManager.dispatchEvent('universal/setSearchLoading', true);
     const { query, querySource, queryTrigger } = this.state.query;
     const skipSpellCheck = !this.state.spellCheck.enabled;
     const { referrerPageUrl, context } = this.state.meta;
@@ -111,13 +111,13 @@ export default class StatefulCore {
       referrerPageUrl
     });
 
-    this.stateManager.dispatchEvent('universal/decrementSearchCounter');
     this.stateManager.dispatchEvent('universal/setResults', results);
     this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
     this.stateManager.dispatchEvent('query/setLatest', query);
     this.stateManager.dispatchEvent('spellCheck/setResult', results.spellCheck);
     this.stateManager.dispatchEvent('query/setSearchIntents', results.searchIntents || []);
     this.stateManager.dispatchEvent('location/setLocationBias', results.locationBias);
+    this.stateManager.dispatchEvent('universal/setSearchLoading', false);
     return results;
   }
 
@@ -138,7 +138,7 @@ export default class StatefulCore {
       console.error('no verticalKey supplied for vertical search');
       return;
     }
-    this.stateManager.dispatchEvent('vertical/incrementSearchCounter');
+    this.stateManager.dispatchEvent('vertical/setSearchLoading', true);
     const { query, querySource, queryTrigger } = this.state.query;
     const skipSpellCheck = !this.state.spellCheck.enabled;
     const staticFilters = this.state.filters.static || undefined;
@@ -173,7 +173,6 @@ export default class StatefulCore {
       referrerPageUrl
     };
     const results = await this.core.verticalSearch(request);
-    this.stateManager.dispatchEvent('vertical/decrementSearchCounter');
     this.stateManager.dispatchEvent('vertical/setResults', results);
     this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
     this.stateManager.dispatchEvent('query/setLatest', query);
@@ -183,6 +182,7 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('location/setLocationBias', results.locationBias);
     this.stateManager.dispatchEvent('query/setSearchIntents', results.searchIntents || []);
     this.stateManager.dispatchEvent('location/setLocationBias', results.locationBias);
+    this.stateManager.dispatchEvent('vertical/setSearchLoading', false);
     return results;
   }
 

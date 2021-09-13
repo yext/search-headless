@@ -14,8 +14,7 @@ import {
   DisplayableFacet,
   SortBy,
   Context,
-  LatLong,
-  LocationBias,
+  LatLong
 } from '@yext/answers-core';
 
 import StateListener from './models/state-listener';
@@ -75,7 +74,7 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('meta/setReferrerPageUrl', referrerPageUrl);
   }
 
-  setUserLocation(latLong: LatLong) {
+  setUserLocation(latLong: LatLong): void {
     this.stateManager.dispatchEvent('location/setUserLocation', latLong);
   }
 

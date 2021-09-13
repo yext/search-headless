@@ -2,5 +2,6 @@ import { UniversalSearchResponse, AutocompleteResponse } from '@yext/answers-cor
 
 export interface UniversalSearchState {
   results?: UniversalSearchResponse,
-  autoComplete?: AutocompleteResponse
+  autoComplete?: AutocompleteResponse,
+  searchLoading?: boolean
 }

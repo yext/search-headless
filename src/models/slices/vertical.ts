@@ -6,5 +6,6 @@ export interface VerticalSearchState {
   results?: VerticalSearchResponse,
   displayName?: string
   limit?: number,
-  offset?: number
+  offset?: number,
+  searchLoading?: boolean
 }

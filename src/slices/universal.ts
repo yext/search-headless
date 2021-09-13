@@ -17,9 +17,17 @@ export const universalSlice = createSlice({
     },
     setAutoComplete: (state, action: PayloadAction<AutocompleteResponse>) => {
       state.autoComplete = action.payload;
+    },
+    setSearchLoading: (state, action: PayloadAction<boolean>) => {
+      state.searchLoading = action.payload;
     }
   }
 });
 
-export const { setResults, setAutoComplete } = universalSlice.actions;
+export const {
+  setResults,
+  setAutoComplete,
+  setSearchLoading
+} = universalSlice.actions;
+
 export default universalSlice.reducer;

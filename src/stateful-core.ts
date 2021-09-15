@@ -113,9 +113,9 @@ export default class StatefulCore {
 
     const results = await this.core.universalSearch({
       query: query || '',
-      querySource: querySource,
-      queryTrigger: queryTrigger,
-      skipSpellCheck: skipSpellCheck,
+      querySource,
+      queryTrigger,
+      skipSpellCheck,
       sessionId,
       sessionTrackingEnabled,
       location: userLocation,
@@ -172,15 +172,15 @@ export default class StatefulCore {
 
     const request = {
       query: query || '',
-      querySource: querySource,
-      queryTrigger: queryTrigger,
-      verticalKey: verticalKey,
+      querySource,
+      queryTrigger,
+      verticalKey,
       staticFilters,
       facets: facetsToApply,
       retrieveFacets: true,
-      limit: limit,
-      offset: offset,
-      skipSpellCheck: skipSpellCheck,
+      limit,
+      offset,
+      skipSpellCheck,
       sessionId,
       sessionTrackingEnabled,
       location: userLocation,
@@ -212,7 +212,7 @@ export default class StatefulCore {
 
     const results = await this.core.verticalAutocomplete({
       input: query,
-      verticalKey: verticalKey
+      verticalKey
     });
 
     this.stateManager.dispatchEvent('vertical/setAutoComplete', results);

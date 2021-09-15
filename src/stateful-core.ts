@@ -58,6 +58,14 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('spellCheck/setEnabled', enabled);
   }
 
+  setSessionTrackingEnabled(enabled: boolean): void {
+    this.stateManager.dispatchEvent('sessionTracking/setEnabled', enabled);
+  }
+
+  setSessionId(sessionId: string): void {
+    this.stateManager.dispatchEvent('sessionTracking/setSessionId', sessionId);
+  }
+
   setAlternativeVerticals(alternativeVerticals: VerticalResults[]): void {
     this.stateManager.dispatchEvent('vertical/setAlternativeVerticals', alternativeVerticals);
   }
@@ -98,14 +106,18 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('universal/setSearchLoading', true);
     const { query, querySource, queryTrigger } = this.state.query;
     const skipSpellCheck = !this.state.spellCheck.enabled;
+    const sessionTrackingEnabled = this.state.sessionTracking.enabled;
+    const sessionId = this.state.sessionTracking.sessionId;
     const { referrerPageUrl, context } = this.state.meta;
     const { userLocation } = this.state.location;
 
     const results = await this.core.universalSearch({
       query: query || '',
-      querySource: querySource,
-      queryTrigger: queryTrigger,
-      skipSpellCheck: skipSpellCheck,
+      querySource,
+      queryTrigger,
+      skipSpellCheck,
+      sessionId,
+      sessionTrackingEnabled,
       location: userLocation,
       context,
       referrerPageUrl
@@ -141,6 +153,8 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('vertical/setSearchLoading', true);
     const { query, querySource, queryTrigger } = this.state.query;
     const skipSpellCheck = !this.state.spellCheck.enabled;
+    const sessionTrackingEnabled = this.state.sessionTracking.enabled;
+    const sessionId = this.state.sessionTracking.sessionId;
     const staticFilters = this.state.filters.static || undefined;
     const facets = this.state.filters?.facets;
     const limit = this.state.vertical.limit;
@@ -158,15 +172,17 @@ export default class StatefulCore {
 
     const request = {
       query: query || '',
-      querySource: querySource,
-      queryTrigger: queryTrigger,
-      verticalKey: verticalKey,
+      querySource,
+      queryTrigger,
+      verticalKey,
       staticFilters,
       facets: facetsToApply,
       retrieveFacets: true,
-      limit: limit,
-      offset: offset,
-      skipSpellCheck: skipSpellCheck,
+      limit,
+      offset,
+      skipSpellCheck,
+      sessionId,
+      sessionTrackingEnabled,
       location: userLocation,
       sortBys,
       context,
@@ -196,7 +212,7 @@ export default class StatefulCore {
 
     const results = await this.core.verticalAutocomplete({
       input: query,
-      verticalKey: verticalKey
+      verticalKey
     });
 
     this.stateManager.dispatchEvent('vertical/setAutoComplete', results);

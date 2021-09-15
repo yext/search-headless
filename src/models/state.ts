@@ -5,6 +5,7 @@ import { VerticalSearchState } from './slices/vertical';
 import { SpellCheckState } from './slices/spellcheck';
 import { MetaState } from './slices/meta';
 import { LocationState } from './slices/location';
+import { SessionState } from './slices/session';
 
 export interface State {
   query: QueryState,
@@ -12,6 +13,7 @@ export interface State {
   vertical: VerticalSearchState,
   filters: FiltersState,
   spellCheck: SpellCheckState,
+  session: SessionState
   meta: MetaState,
   location: LocationState
 }

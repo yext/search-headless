@@ -58,6 +58,14 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('spellCheck/setEnabled', enabled);
   }
 
+  setSessionTrackingEnabled(enabled: boolean): void {
+    this.stateManager.dispatchEvent('session/setEnabled', enabled);
+  }
+
+  setSessionId(sessionId: string): void {
+    this.stateManager.dispatchEvent('session/setSessionId', sessionId);
+  }
+
   setAlternativeVerticals(alternativeVerticals: VerticalResults[]): void {
     this.stateManager.dispatchEvent('vertical/setAlternativeVerticals', alternativeVerticals);
   }
@@ -98,6 +106,8 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('universal/setSearchLoading', true);
     const { query, querySource, queryTrigger } = this.state.query;
     const skipSpellCheck = !this.state.spellCheck.enabled;
+    const sessionTrackingEnabled = this.state.session.enabled;
+    const sessionId = this.state.session.sessionId;
     const { referrerPageUrl, context } = this.state.meta;
     const { userLocation } = this.state.location;
 
@@ -106,6 +116,8 @@ export default class StatefulCore {
       querySource: querySource,
       queryTrigger: queryTrigger,
       skipSpellCheck: skipSpellCheck,
+      sessionId: sessionId,
+      sessionTrackingEnabled: sessionTrackingEnabled,
       location: userLocation,
       context,
       referrerPageUrl
@@ -141,6 +153,8 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('vertical/setSearchLoading', true);
     const { query, querySource, queryTrigger } = this.state.query;
     const skipSpellCheck = !this.state.spellCheck.enabled;
+    const sessionTrackingEnabled = this.state.session.enabled;
+    const sessionId = this.state.session.sessionId;
     const staticFilters = this.state.filters.static || undefined;
     const facets = this.state.filters?.facets;
     const limit = this.state.vertical.limit;
@@ -167,6 +181,8 @@ export default class StatefulCore {
       limit: limit,
       offset: offset,
       skipSpellCheck: skipSpellCheck,
+      sessionId: sessionId,
+      sessionTrackingEnabled: sessionTrackingEnabled,
       location: userLocation,
       sortBys,
       context,

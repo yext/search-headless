@@ -22,6 +22,10 @@ const mockedState = {
   spellCheck: {
     enabled: true
   },
+  session: {
+    enabled: true,
+    sessionId: 'random-id-number'
+  },
   meta: {},
   location: {}
 };
@@ -60,6 +64,28 @@ describe('setters work as expected', () => {
     expect(dispatchEventCalls.length).toBe(1);
     expect(dispatchEventCalls[0][0]).toBe('filters/setStatic');
     expect(dispatchEventCalls[0][1]).toBe(filter);
+  });
+
+  it('setSessionTrackingEnabled works as expected', () => {
+    statefulCore.setSessionTrackingEnabled(true);
+
+    const dispatchEventCalls =
+      mockedStateManager.dispatchEvent.mock.calls;
+
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('session/setEnabled');
+    expect(dispatchEventCalls[0][1]).toBe(true);
+  });
+
+  it('setSessionId works as expected', () => {
+    statefulCore.setSessionId('random-id-number');
+
+    const dispatchEventCalls =
+      mockedStateManager.dispatchEvent.mock.calls;
+
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('session/setSessionId');
+    expect(dispatchEventCalls[0][1]).toBe('random-id-number');
   });
 
   it('setQuery works as expected', () => {
@@ -180,7 +206,9 @@ describe('search works as expected', () => {
     expect(coreCalls.length).toBe(1);
     expect(coreCalls[0][0]).toEqual({
       ...mockedState.query,
-      skipSpellCheck: !mockedState.spellCheck.enabled
+      skipSpellCheck: !mockedState.spellCheck.enabled,
+      sessionId: mockedState.session.sessionId,
+      sessionTrackingEnabled: mockedState.session.enabled
     });
   });
 
@@ -196,6 +224,8 @@ describe('search works as expected', () => {
       limit: mockedState.vertical.limit,
       offset: mockedState.vertical.offset,
       skipSpellCheck: !mockedState.spellCheck.enabled,
+      sessionId: mockedState.session.sessionId,
+      sessionTrackingEnabled: mockedState.session.enabled
     };
     expect(coreCalls.length).toBe(1);
     expect(coreCalls[0][0]).toEqual(expectedSearchParams);

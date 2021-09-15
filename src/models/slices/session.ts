@@ -1,4 +1,4 @@
 export interface SessionState {
-  enabled?: boolean,
+  trackingEnabled?: boolean,
   sessionId?: string
 }

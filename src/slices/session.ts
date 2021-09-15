@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { SessionState } from '../models/slices/session';
 
 const initialState: SessionState = {
-  enabled: false
+  trackingEnabled: false
 };
 
 /**
@@ -13,7 +13,7 @@ export const sessionSlice = createSlice({
   initialState,
   reducers: {
     setTrackingEnabled: (state, action: PayloadAction<boolean>) => {
-      state.enabled = action.payload;
+      state.trackingEnabled = action.payload;
     },
     setSessionId: (state, action: PayloadAction<string>) => {
       state.sessionId = action.payload;

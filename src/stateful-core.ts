@@ -106,7 +106,7 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('universal/setSearchLoading', true);
     const { query, querySource, queryTrigger } = this.state.query;
     const skipSpellCheck = !this.state.spellCheck.enabled;
-    const sessionTrackingEnabled = this.state.session.enabled;
+    const sessionTrackingEnabled = this.state.session.trackingEnabled;
     const sessionId = this.state.session.sessionId;
     const { referrerPageUrl, context } = this.state.meta;
     const { userLocation } = this.state.location;
@@ -153,7 +153,7 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('vertical/setSearchLoading', true);
     const { query, querySource, queryTrigger } = this.state.query;
     const skipSpellCheck = !this.state.spellCheck.enabled;
-    const sessionTrackingEnabled = this.state.session.enabled;
+    const sessionTrackingEnabled = this.state.session.trackingEnabled;
     const sessionId = this.state.session.sessionId;
     const staticFilters = this.state.filters.static || undefined;
     const facets = this.state.filters?.facets;

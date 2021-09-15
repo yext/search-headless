@@ -23,7 +23,7 @@ const mockedState = {
     enabled: true
   },
   session: {
-    enabled: true,
+    trackingEnabled: true,
     sessionId: 'random-id-number'
   },
   meta: {},
@@ -208,7 +208,7 @@ describe('search works as expected', () => {
       ...mockedState.query,
       skipSpellCheck: !mockedState.spellCheck.enabled,
       sessionId: mockedState.session.sessionId,
-      sessionTrackingEnabled: mockedState.session.enabled
+      sessionTrackingEnabled: mockedState.session.trackingEnabled
     });
   });
 
@@ -225,7 +225,7 @@ describe('search works as expected', () => {
       offset: mockedState.vertical.offset,
       skipSpellCheck: !mockedState.spellCheck.enabled,
       sessionId: mockedState.session.sessionId,
-      sessionTrackingEnabled: mockedState.session.enabled
+      sessionTrackingEnabled: mockedState.session.trackingEnabled
     };
     expect(coreCalls.length).toBe(1);
     expect(coreCalls[0][0]).toEqual(expectedSearchParams);

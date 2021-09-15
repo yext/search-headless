@@ -12,7 +12,7 @@ export const sessionSlice = createSlice({
   name: 'session',
   initialState,
   reducers: {
-    setEnabled: (state, action: PayloadAction<boolean>) => {
+    setTrackingEnabled: (state, action: PayloadAction<boolean>) => {
       state.enabled = action.payload;
     },
     setSessionId: (state, action: PayloadAction<string>) => {
@@ -21,5 +21,5 @@ export const sessionSlice = createSlice({
   }
 });
 
-export const { setSessionId, setEnabled } = sessionSlice.actions;
+export const { setSessionId, setTrackingEnabled } = sessionSlice.actions;
 export default sessionSlice.reducer;

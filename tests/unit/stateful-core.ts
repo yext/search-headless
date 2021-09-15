@@ -73,7 +73,7 @@ describe('setters work as expected', () => {
       mockedStateManager.dispatchEvent.mock.calls;
 
     expect(dispatchEventCalls.length).toBe(1);
-    expect(dispatchEventCalls[0][0]).toBe('session/setEnabled');
+    expect(dispatchEventCalls[0][0]).toBe('session/setTrackingEnabled');
     expect(dispatchEventCalls[0][1]).toBe(true);
   });
 

@@ -59,7 +59,7 @@ export default class StatefulCore {
   }
 
   setSessionTrackingEnabled(enabled: boolean): void {
-    this.stateManager.dispatchEvent('session/setEnabled', enabled);
+    this.stateManager.dispatchEvent('session/setTrackingEnabled', enabled);
   }
 
   setSessionId(sessionId: string): void {

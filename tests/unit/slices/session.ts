@@ -1,4 +1,4 @@
-import reducer, { setSessionId, setEnabled } from '../../../src/slices/session';
+import reducer, { setSessionId, setTrackingEnabled } from '../../../src/slices/session';
 
 describe('session slice reducer works as expected', () => {
   it('setSessionId action is handled properly', () => {
@@ -12,10 +12,10 @@ describe('session slice reducer works as expected', () => {
     expect(actualState).toEqual(expectedState);
   });
 
-  it('setEnabled action is handled properly', () => {
+  it('setTrackingEnabled action is handled properly', () => {
     const initialState = { enabled: false };
     const expectedState = { enabled: true };
-    const actualState = reducer(initialState, setEnabled(true));
+    const actualState = reducer(initialState, setTrackingEnabled(true));
 
     expect(actualState).toEqual(expectedState);
   });

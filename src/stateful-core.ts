@@ -117,7 +117,7 @@ export default class StatefulCore {
       queryTrigger: queryTrigger,
       skipSpellCheck: skipSpellCheck,
       sessionId,
-      sessionTrackingEnabled: sessionTrackingEnabled,
+      sessionTrackingEnabled,
       location: userLocation,
       context,
       referrerPageUrl
@@ -182,7 +182,7 @@ export default class StatefulCore {
       offset: offset,
       skipSpellCheck: skipSpellCheck,
       sessionId,
-      sessionTrackingEnabled: sessionTrackingEnabled,
+      sessionTrackingEnabled,
       location: userLocation,
       sortBys,
       context,

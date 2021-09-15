@@ -59,11 +59,11 @@ export default class StatefulCore {
   }
 
   setSessionTrackingEnabled(enabled: boolean): void {
-    this.stateManager.dispatchEvent('session/setTrackingEnabled', enabled);
+    this.stateManager.dispatchEvent('sessionTracking/setEnabled', enabled);
   }
 
   setSessionId(sessionId: string): void {
-    this.stateManager.dispatchEvent('session/setSessionId', sessionId);
+    this.stateManager.dispatchEvent('sessionTracking/setSessionId', sessionId);
   }
 
   setAlternativeVerticals(alternativeVerticals: VerticalResults[]): void {
@@ -106,8 +106,8 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('universal/setSearchLoading', true);
     const { query, querySource, queryTrigger } = this.state.query;
     const skipSpellCheck = !this.state.spellCheck.enabled;
-    const sessionTrackingEnabled = this.state.session.trackingEnabled;
-    const sessionId = this.state.session.sessionId;
+    const sessionTrackingEnabled = this.state.sessionTracking.enabled;
+    const sessionId = this.state.sessionTracking.sessionId;
     const { referrerPageUrl, context } = this.state.meta;
     const { userLocation } = this.state.location;
 
@@ -153,8 +153,8 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('vertical/setSearchLoading', true);
     const { query, querySource, queryTrigger } = this.state.query;
     const skipSpellCheck = !this.state.spellCheck.enabled;
-    const sessionTrackingEnabled = this.state.session.trackingEnabled;
-    const sessionId = this.state.session.sessionId;
+    const sessionTrackingEnabled = this.state.sessionTracking.enabled;
+    const sessionId = this.state.sessionTracking.sessionId;
     const staticFilters = this.state.filters.static || undefined;
     const facets = this.state.filters?.facets;
     const limit = this.state.vertical.limit;

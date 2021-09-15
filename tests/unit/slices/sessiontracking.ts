@@ -1,9 +1,9 @@
-import reducer, { setSessionId, setTrackingEnabled } from '../../../src/slices/session';
+import reducer, { setSessionId, setEnabled } from '../../../src/slices/sessiontracking';
 
-describe('session slice reducer works as expected', () => {
+describe('sessionTracking slice reducer works as expected', () => {
   it('setSessionId action is handled properly', () => {
     const initialState = {
-      trackingEnabled: true
+      enabled: true
     };
     const sessionId = '017bea48-ea11-17ed-e812-d9ce357b6d34';
     const expectedState = { ...initialState, sessionId: sessionId };
@@ -13,9 +13,9 @@ describe('session slice reducer works as expected', () => {
   });
 
   it('setTrackingEnabled action is handled properly', () => {
-    const initialState = { trackingEnabled: false };
-    const expectedState = { trackingEnabled: true };
-    const actualState = reducer(initialState, setTrackingEnabled(true));
+    const initialState = { enabled: false };
+    const expectedState = { enabled: true };
+    const actualState = reducer(initialState, setEnabled(true));
 
     expect(actualState).toEqual(expectedState);
   });

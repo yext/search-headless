@@ -22,8 +22,8 @@ const mockedState = {
   spellCheck: {
     enabled: true
   },
-  session: {
-    trackingEnabled: true,
+  sessionTracking: {
+    enabled: true,
     sessionId: 'random-id-number'
   },
   meta: {},
@@ -73,7 +73,7 @@ describe('setters work as expected', () => {
       mockedStateManager.dispatchEvent.mock.calls;
 
     expect(dispatchEventCalls.length).toBe(1);
-    expect(dispatchEventCalls[0][0]).toBe('session/setTrackingEnabled');
+    expect(dispatchEventCalls[0][0]).toBe('sessionTracking/setEnabled');
     expect(dispatchEventCalls[0][1]).toBe(true);
   });
 
@@ -84,7 +84,7 @@ describe('setters work as expected', () => {
       mockedStateManager.dispatchEvent.mock.calls;
 
     expect(dispatchEventCalls.length).toBe(1);
-    expect(dispatchEventCalls[0][0]).toBe('session/setSessionId');
+    expect(dispatchEventCalls[0][0]).toBe('sessionTracking/setSessionId');
     expect(dispatchEventCalls[0][1]).toBe('random-id-number');
   });
 
@@ -207,8 +207,8 @@ describe('search works as expected', () => {
     expect(coreCalls[0][0]).toEqual({
       ...mockedState.query,
       skipSpellCheck: !mockedState.spellCheck.enabled,
-      sessionId: mockedState.session.sessionId,
-      sessionTrackingEnabled: mockedState.session.trackingEnabled
+      sessionId: mockedState.sessionTracking.sessionId,
+      sessionTrackingEnabled: mockedState.sessionTracking.enabled
     });
   });
 
@@ -224,8 +224,8 @@ describe('search works as expected', () => {
       limit: mockedState.vertical.limit,
       offset: mockedState.vertical.offset,
       skipSpellCheck: !mockedState.spellCheck.enabled,
-      sessionId: mockedState.session.sessionId,
-      sessionTrackingEnabled: mockedState.session.trackingEnabled
+      sessionId: mockedState.sessionTracking.sessionId,
+      sessionTrackingEnabled: mockedState.sessionTracking.enabled
     };
     expect(coreCalls.length).toBe(1);
     expect(coreCalls[0][0]).toEqual(expectedSearchParams);

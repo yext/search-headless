@@ -1,19 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { SessionTrackingState } from '../models/slices/session';
+import { SessionTrackingState } from '../models/slices/sessiontracking';
 
 const initialState: SessionTrackingState = {
-  trackingEnabled: false
+  enabled: false
 };
 
 /**
  * Registers with Redux the slice of {@link State} pertaining to session tracking of an answers experience.
  */
 export const sessionTrackingSlice = createSlice({
-  name: 'session',
+  name: 'sessionTracking',
   initialState,
   reducers: {
-    setTrackingEnabled: (state, action: PayloadAction<boolean>) => {
-      state.trackingEnabled = action.payload;
+    setEnabled: (state, action: PayloadAction<boolean>) => {
+      state.enabled = action.payload;
     },
     setSessionId: (state, action: PayloadAction<string>) => {
       state.sessionId = action.payload;
@@ -21,5 +21,5 @@ export const sessionTrackingSlice = createSlice({
   }
 });
 
-export const { setSessionId, setTrackingEnabled } = sessionTrackingSlice.actions;
+export const { setSessionId, setEnabled } = sessionTrackingSlice.actions;
 export default sessionTrackingSlice.reducer;

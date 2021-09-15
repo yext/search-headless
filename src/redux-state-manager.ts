@@ -5,7 +5,7 @@ import verticalReducer from './slices/vertical';
 import universalReducer from './slices/universal';
 import filtersReducer from './slices/filters';
 import spellCheckReducer from './slices/spellcheck';
-import sessionReducer from './slices/session';
+import sessionTrackingReducer from './slices/sessiontracking';
 import metaReducer from './slices/meta';
 import locationReducer from './slices/location';
 import StateListener from './models/state-listener';
@@ -26,7 +26,7 @@ export default class ReduxStateManager implements StateManager {
       universal: universalReducer,
       filters: filtersReducer,
       spellCheck: spellCheckReducer,
-      session: sessionReducer,
+      sessionTracking: sessionTrackingReducer,
       meta: metaReducer,
       location: locationReducer
     });

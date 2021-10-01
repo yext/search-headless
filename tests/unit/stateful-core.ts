@@ -102,22 +102,6 @@ describe('setters work as expected', () => {
     expect(dispatchEventCalls[0][0]).toBe('filters/resetFacets');
   });
 
-  it('setFilter works as expected', () => {
-    const filter = {
-      fieldId: 'c_someField',
-      matcher: Matcher.Equals,
-      value: 'someValue'
-    };
-    statefulCore.setFilter(filter);
-
-    const dispatchEventCalls =
-      mockedStateManager.dispatchEvent.mock.calls;
-
-    expect(dispatchEventCalls.length).toBe(1);
-    expect(dispatchEventCalls[0][0]).toBe('filters/setStatic');
-    expect(dispatchEventCalls[0][1]).toBe(filter);
-  });
-
   it('setSessionTrackingEnabled works as expected', () => {
     statefulCore.setSessionTrackingEnabled(true);
 

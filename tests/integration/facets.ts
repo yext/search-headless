@@ -193,6 +193,30 @@ it('searchThroughFacet filters facet options correctly', () => {
   });
 });
 
+it('can set facets correctly', () => {
+  const [initialState, facetOption] = createInitialState(true);
+  const statefulCore = createMockedStatefulCore({}, initialState);
+  const facets = [
+    {
+      fieldId: 'newFieldId',
+      displayName: 'new test facet name',
+      options: [facetOption]
+    }
+  ];
+  statefulCore.setFacets(facets);
+  expect(statefulCore.state.filters.facets).toEqual(facets);
+});
+
+it('can reset facets correctly', () => {
+  const [initialState, ] = createInitialState(true);
+  const statefulCore = createMockedStatefulCore({}, initialState);
+  statefulCore.resetFacets();
+  statefulCore.state.filters.facets.map(facet =>
+    facet.options.map(option => expect(option.selected).toBeFalsy())
+  );
+});
+
+
 function createInitialState(
   facetIsSelected: boolean
 ): [initialState: Partial<State>, facetOption: DisplayableFacetOption] {
@@ -208,7 +232,7 @@ function createInitialState(
     displayName: 'test facet name',
     options: [facetOption]
   };
-  const initialState: State = {
+  const initialState: Partial<State> = {
     query: {
       query: 'test'
     },

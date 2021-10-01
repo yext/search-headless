@@ -48,7 +48,7 @@ export default class ReduxStateManager implements StateManager {
     return this.store.getState();
   }
 
-  dispatchEvent(type, payload): void {
+  dispatchEvent(type: string, payload?: unknown): void {
     this.store.dispatch({ type, payload });
   }
 

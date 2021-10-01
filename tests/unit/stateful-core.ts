@@ -1,4 +1,5 @@
 import { Matcher, QuerySource, QueryTrigger } from '@yext/answers-core';
+import StateManager from '../../src/models/state-manager';
 import StatefulCore from '../../src/stateful-core';
 
 const mockedState = {
@@ -7,6 +8,7 @@ const mockedState = {
     querySource: QuerySource.Standard,
     queryTrigger: QueryTrigger.Initialize
   },
+  universal: {},
   vertical: {
     key: 'someKey',
     offset: 0,
@@ -29,10 +31,11 @@ const mockedState = {
   meta: {},
   location: {}
 };
-const mockedStateManager: any = {
+
+const mockedStateManager: jest.Mocked<StateManager> = {
   getState: jest.fn(() => mockedState),
   dispatchEvent: jest.fn(),
-  addEventListener: jest.fn()
+  addListener: jest.fn()
 };
 
 const mockedSearch = jest.fn(() => { return { queryId: '123' };});
@@ -48,6 +51,55 @@ const statefulCore = new StatefulCore(mockedCore, mockedStateManager);
 describe('setters work as expected', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+  });
+
+  it('setFilter works as expected', () => {
+    const filter = {
+      fieldId: 'c_someField',
+      matcher: Matcher.Equals,
+      value: 'someValue'
+    };
+    statefulCore.setFilter(filter);
+
+    const dispatchEventCalls =
+      mockedStateManager.dispatchEvent.mock.calls;
+
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('filters/setStatic');
+    expect(dispatchEventCalls[0][1]).toBe(filter);
+  });
+
+  it('setFacets works as expected', () => {
+    const facets = [
+      {
+        fieldId: 'someField',
+        displayName: 'Some Field',
+        options: [{
+          matcher: Matcher.Equals,
+          value: 'someValue',
+          displayName: 'Some Value',
+          count: 1,
+          selected: true
+        }]
+      }
+    ];
+    statefulCore.setFacets(facets);
+    const dispatchEventCalls =
+      mockedStateManager.dispatchEvent.mock.calls;
+
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('filters/setFacets');
+    expect(dispatchEventCalls[0][1]).toBe(facets);
+  });
+
+  it('resetFacets works as expected', () => {
+    statefulCore.resetFacets();
+
+    const dispatchEventCalls =
+      mockedStateManager.dispatchEvent.mock.calls;
+
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('filters/resetFacets');
   });
 
   it('setFilter works as expected', () => {

@@ -54,6 +54,14 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('filters/setStatic', filter);
   }
 
+  setFacets(facets: DisplayableFacet[]): void {
+    this.stateManager.dispatchEvent('filters/setFacets', facets);
+  }
+
+  resetFacets(): void {
+    this.stateManager.dispatchEvent('filters/resetFacets');
+  }
+
   setSpellCheckEnabled(enabled: boolean): void {
     this.stateManager.dispatchEvent('spellCheck/setEnabled', enabled);
   }

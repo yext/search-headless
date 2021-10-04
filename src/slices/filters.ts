@@ -27,6 +27,11 @@ export const filtersSlice = createSlice({
     setSortBys: (state: FiltersState, action: PayloadAction<SortBy[]>) => {
       state.sortBys = action.payload;
     },
+    resetFacets: (state: FiltersState) => {
+      state.facets?.forEach(facet => {
+        facet.options.forEach(o => o.selected = false);
+      });
+    },
     toggleFacetOption: (state: FiltersState, { payload }: PayloadAction<FacetPayload>) => {
       if (!state.facets) {
         console.warn('Trying to select a facet option when no facets exist.');
@@ -52,5 +57,5 @@ export const filtersSlice = createSlice({
   }
 });
 
-export const { setStatic, toggleFacetOption, setFacets } = filtersSlice.actions;
+export const { setStatic, toggleFacetOption, setFacets, resetFacets } = filtersSlice.actions;
 export default filtersSlice.reducer;

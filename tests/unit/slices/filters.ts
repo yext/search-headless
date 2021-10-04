@@ -1,5 +1,6 @@
 import { Matcher } from '@yext/answers-core';
 import reducer, { setFacets, resetFacets, setStatic } from '../../../src/slices/filters';
+import _ from 'lodash';
 
 describe('filter slice reducer works as expected', () => {
   it('setStatic action is handled properly', () => {
@@ -71,33 +72,13 @@ describe('filter slice reducer works as expected', () => {
     };
 
     const actualState = reducer(initialState, resetFacets());
-    const expectedState = {
+    const unselectedFacets = {
       facets: [
-        {
-          fieldId: 'someField',
-          displayName: 'Some Field',
-          options: [{
-            matcher: Matcher.Equals,
-            value: 'someValue',
-            displayName: 'Some Value',
-            count: 1,
-            selected: false
-          }]
-        },
-        {
-          fieldId: 'someField2',
-          displayName: 'Some Field 2',
-          options: [{
-            matcher: Matcher.Equals,
-            value: 'someValue2',
-            displayName: 'Some Value 2',
-            count: 2,
-            selected: false
-          }]
-        }
+        { options: [{ selected: false }] },
+        { options: [{ selected: false }] },
       ]
     };
-
+    const expectedState = _.merge(_.cloneDeep(initialState), unselectedFacets);
     expect(actualState).toEqual(expectedState);
   });
 });

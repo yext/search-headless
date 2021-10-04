@@ -29,9 +29,7 @@ export const filtersSlice = createSlice({
     },
     resetFacets: (state: FiltersState) => {
       state.facets?.forEach(facet => {
-        facet.options = facet.options?.map(option => {
-          return { ...option, selected: false };
-        });
+        facet.options.forEach(o => o.selected = false);
       });
     },
     toggleFacetOption: (state: FiltersState, { payload }: PayloadAction<FacetPayload>) => {

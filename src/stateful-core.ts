@@ -14,7 +14,9 @@ import {
   DisplayableFacet,
   SortBy,
   Context,
-  LatLong
+  LatLong,
+  SearchParameterField,
+  FilterSearchResponse
 } from '@yext/answers-core';
 
 import StateListener from './models/state-listener';
@@ -226,6 +228,16 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('vertical/setAutoComplete', results);
     this.stateManager.dispatchEvent('query/setSearchIntents', results.inputIntents || []);
     return results;
+  }
+
+  executeFilterSearch(sectioned: boolean, fields: SearchParameterField[]): Promise<FilterSearchResponse> {
+    return this.core.filterSearch({
+      input: this.state.query.query || '',
+      verticalKey: this.state.vertical.key || '',
+      sessionTrackingEnabled: this.state.sessionTracking.enabled,
+      sectioned,
+      fields
+    });
   }
 
   selectFacetOption(fieldId: string, facetOption: FacetOption): void {

@@ -3,8 +3,16 @@ type RequestType = 'universalQuery'
   | 'universalAutoComplete'
   | 'verticalAutoComplete';
 
+type RequestIds = {
+  [key in RequestType]: number;
+};
+
+/**
+ * Track ids from latest requests. This is use in {@link StatefulCore} to ensure
+ * dispatch event for state update using responses from latest requests.
+ */
 export default class RequestManager {
-  private latestRequestIds: Record<RequestType, number>;
+  private latestRequestIds: RequestIds;
 
   constructor() {
     this.latestRequestIds = {
@@ -16,9 +24,7 @@ export default class RequestManager {
   }
 
   updateRequestId(requestName: RequestType): number {
-    const newId = ++this.latestRequestIds[requestName];
-    this.latestRequestIds[requestName] = newId;
-    return newId;
+    return ++this.latestRequestIds[requestName];
   }
 
   getLatestRequestId(requestName: RequestType): number {

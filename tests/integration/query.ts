@@ -1,4 +1,12 @@
-import { VerticalSearchRequest, UniversalSearchRequest, SearchIntent, AutocompleteResponse } from '@yext/answers-core';
+import {
+  VerticalSearchRequest,
+  UniversalSearchRequest,
+  SearchIntent,
+  VerticalAutocompleteRequest,
+  UniversalAutocompleteRequest
+} from '@yext/answers-core';
+import ReduxStateManager from '../../src/redux-state-manager';
+import StatefulCore from '../../src/stateful-core';
 import { createMockedStatefulCore } from '../mocks/createMockedStatefulCore';
 
 it('vertical searches set search intents', async () => {
@@ -29,7 +37,7 @@ it('universal searches set search intents', async () => {
 
 it('vertical autocomplete sets search intents', async () => {
   const statefulCore = createMockedStatefulCore({
-    verticalAutocomplete: jest.fn((_request: AutocompleteResponse) => Promise.resolve({
+    verticalAutocomplete: jest.fn((_request: VerticalAutocompleteRequest) => Promise.resolve({
       inputIntents: [SearchIntent.NearMe]
     }))
   });
@@ -41,7 +49,7 @@ it('vertical autocomplete sets search intents', async () => {
 
 it('universal autocomplete sets search intents', async () => {
   const statefulCore = createMockedStatefulCore({
-    universalAutocomplete: jest.fn((_request: AutocompleteResponse) => Promise.resolve({
+    universalAutocomplete: jest.fn((_request: UniversalAutocompleteRequest) => Promise.resolve({
       inputIntents: [SearchIntent.NearMe]
     }))
   });
@@ -50,3 +58,130 @@ it('universal autocomplete sets search intents', async () => {
   expect(statefulCore.state.query.searchIntents).toEqual(['NEAR_ME']);
 });
 
+it('vertical autocomplete get latest request results', async () => {
+  const mockedCore: any = {
+    verticalAutocomplete: jest.fn(
+      async (_request: VerticalAutocompleteRequest) => {
+        const waitTime = _request.input?.length * 200;
+        return new Promise(res => setTimeout(() => res(
+          { results: [ {value: _request.input} ]}), waitTime));
+      })
+  };
+  const stateManager = new ReduxStateManager();
+  const statefulCore = new StatefulCore(mockedCore, stateManager);
+  const queries = ['long request', 'short'];
+  statefulCore.setVerticalKey('someKey');
+
+  const dispatchEventSpy = jest.spyOn(stateManager, 'dispatchEvent');
+  statefulCore.setQuery(queries[0]);
+  statefulCore.executeVerticalAutoComplete();
+  statefulCore.setQuery(queries[1]);
+  statefulCore.executeVerticalAutoComplete();
+
+  await new Promise(res => setTimeout(res, 3000));
+
+  expect(statefulCore.state.query.query).toEqual(queries[1]);
+  expect(statefulCore.state.vertical.autoComplete.results).toEqual([{ value: queries[1] }]);
+  expect(dispatchEventSpy).toBeCalledTimes(4);
+  expect(dispatchEventSpy).toHaveBeenNthCalledWith(1, 'query/set', queries[0]);
+  expect(dispatchEventSpy).toHaveBeenNthCalledWith(2, 'query/set', queries[1]);
+  expect(dispatchEventSpy)
+    .toHaveBeenNthCalledWith(3, 'vertical/setAutoComplete', { results: [ {value: queries[1]} ] });
+  expect(dispatchEventSpy)
+    .toHaveBeenNthCalledWith(4, 'query/setSearchIntents', []);
+});
+
+it('universal autocomplete get latest request results', async () => {
+  const mockedCore: any = {
+    universalAutocomplete: jest.fn(
+      async (_request: UniversalAutocompleteRequest) => {
+        const waitTime = _request.input?.length * 200;
+        return new Promise(res => setTimeout(() => res(
+          { results: [{ value: _request.input }] }), waitTime));
+      })
+  };
+  const stateManager = new ReduxStateManager();
+  const statefulCore = new StatefulCore(mockedCore, stateManager);
+  const queries = ['long request', 'short'];
+  const dispatchEventSpy = jest.spyOn(stateManager, 'dispatchEvent');
+
+  statefulCore.setQuery(queries[0]);
+  statefulCore.executeUniversalAutoComplete();
+  statefulCore.setQuery(queries[1]);
+  statefulCore.executeUniversalAutoComplete();
+
+  await new Promise(res => setTimeout(res, 3000));
+
+  expect(statefulCore.state.query.query).toEqual(queries[1]);
+  expect(statefulCore.state.universal.autoComplete.results).toEqual([{ value: queries[1] }]);
+  expect(dispatchEventSpy).toBeCalledTimes(4);
+  expect(dispatchEventSpy).toHaveBeenNthCalledWith(1, 'query/set', queries[0]);
+  expect(dispatchEventSpy).toHaveBeenNthCalledWith(2, 'query/set', queries[1]);
+  expect(dispatchEventSpy)
+    .toHaveBeenNthCalledWith(3, 'universal/setAutoComplete', { results: [ {value: queries[1]} ] });
+  expect(dispatchEventSpy)
+    .toHaveBeenNthCalledWith(4, 'query/setSearchIntents', []);
+});
+
+it('vertical search get latest request results', async () => {
+  const mockedCore: any = {
+    verticalSearch: jest.fn( async (_request: VerticalSearchRequest) => {
+      const waitTime = _request.query?.length * 200;
+      return new Promise(res => setTimeout(() => res(
+        { verticalResults: { results: [_request.query] } }), waitTime));
+    })
+  };
+  const stateManager = new ReduxStateManager();
+  const statefulCore = new StatefulCore(mockedCore, stateManager);
+  const queries = ['long request', 'short'];
+  statefulCore.setVerticalKey('someKey');
+
+  const dispatchEventSpy = jest.spyOn(stateManager, 'dispatchEvent');
+  statefulCore.setQuery(queries[0]);
+  statefulCore.executeVerticalQuery();
+  statefulCore.setQuery(queries[1]);
+  statefulCore.executeVerticalQuery();
+
+  await new Promise(res => setTimeout(res, 3000));
+
+  expect(statefulCore.state.query.query).toEqual(queries[1]);
+  expect(statefulCore.state.vertical.results.verticalResults).toEqual({ results: [queries[1]] });
+  expect(dispatchEventSpy).toBeCalledTimes(14);
+  expect(dispatchEventSpy).toHaveBeenNthCalledWith(1, 'query/set', queries[0]);
+  expect(dispatchEventSpy).toHaveBeenNthCalledWith(2, 'vertical/setSearchLoading', true);
+  expect(dispatchEventSpy).toHaveBeenNthCalledWith(3, 'query/set', queries[1]);
+  expect(dispatchEventSpy).toHaveBeenNthCalledWith(4, 'vertical/setSearchLoading', true);
+  expect(dispatchEventSpy)
+    .toHaveBeenNthCalledWith(5, 'vertical/setResults', { verticalResults: { results: [queries[1]] } });
+});
+
+it('universal search get latest request results', async () => {
+  const mockedCore: any = {
+    universalSearch: jest.fn( async (_request: UniversalSearchRequest) => {
+      const waitTime = _request.query?.length * 200;
+      return new Promise(res => setTimeout(() => res(
+        { verticalResults: [{ results: [_request.query] }] }), waitTime));
+    })
+  };
+  const stateManager = new ReduxStateManager();
+  const statefulCore = new StatefulCore(mockedCore, stateManager);
+  const queries = ['long request', 'short'];
+
+  const dispatchEventSpy = jest.spyOn(stateManager, 'dispatchEvent');
+  statefulCore.setQuery(queries[0]);
+  statefulCore.executeUniversalQuery();
+  statefulCore.setQuery(queries[1]);
+  statefulCore.executeUniversalQuery();
+
+  await new Promise(res => setTimeout(res, 3000));
+
+  expect(statefulCore.state.query.query).toEqual(queries[1]);
+  expect(statefulCore.state.universal.results.verticalResults).toEqual([{ results: [queries[1]] }]);
+  expect(dispatchEventSpy).toBeCalledTimes(11);
+  expect(dispatchEventSpy).toHaveBeenNthCalledWith(1, 'query/set', queries[0]);
+  expect(dispatchEventSpy).toHaveBeenNthCalledWith(2, 'universal/setSearchLoading', true);
+  expect(dispatchEventSpy).toHaveBeenNthCalledWith(3, 'query/set', queries[1]);
+  expect(dispatchEventSpy).toHaveBeenNthCalledWith(4, 'universal/setSearchLoading', true);
+  expect(dispatchEventSpy)
+    .toHaveBeenNthCalledWith(5, 'universal/setResults', { verticalResults: [{ results: [queries[1]] }] });
+});

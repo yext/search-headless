@@ -22,24 +22,13 @@ import { State } from './models/state';
 import StateManager from './models/state-manager';
 import { Unsubscribe } from '@reduxjs/toolkit';
 import { isLevenshteinMatch } from './utils/searchable-facets';
+import RequestManager from './request-manager';
 
 export default class StatefulCore {
-  private latestRequestIds: Record<string, number>;
+  private requestManager: RequestManager;
 
   constructor(private core: AnswersCore, private stateManager: StateManager) {
-    this.latestRequestIds = {};
-  }
-
-  private getNewRequestId(requestName: string): number {
-    const newId = this.latestRequestIds[requestName]
-      ? this.latestRequestIds[requestName] + 1
-      : 1;
-    this.latestRequestIds[requestName] = newId;
-    return newId;
-  }
-
-  private getLatestRequestId(requestName: string): number {
-    return this.latestRequestIds[requestName];
+    this.requestManager = new RequestManager();
   }
 
   setQuery(query: string): void {
@@ -127,7 +116,7 @@ export default class StatefulCore {
   }
 
   async executeUniversalQuery(): Promise<UniversalSearchResponse | undefined> {
-    const currentId = this.getNewRequestId('universalQuery');
+    const currentId = this.requestManager.updateRequestId('universalQuery');
     this.stateManager.dispatchEvent('universal/setSearchLoading', true);
     const { query, querySource, queryTrigger } = this.state.query;
     const skipSpellCheck = !this.state.spellCheck.enabled;
@@ -148,7 +137,7 @@ export default class StatefulCore {
       referrerPageUrl
     });
 
-    const latestId = this.getLatestRequestId('universalQuery');
+    const latestId = this.requestManager.getLatestRequestId('universalQuery');
     if (currentId !== latestId) {
       return results;
     }
@@ -163,13 +152,13 @@ export default class StatefulCore {
   }
 
   async executeUniversalAutoComplete(): Promise<AutocompleteResponse | undefined> {
-    const currentId = this.getNewRequestId('universalAutoComplete');
+    const currentId = this.requestManager.updateRequestId('universalAutoComplete');
     const query = this.state.query.query || '';
     const results = await this.core.universalAutocomplete({
       input: query
     });
 
-    const latestId = this.getLatestRequestId('universalAutoComplete');
+    const latestId = this.requestManager.getLatestRequestId('universalAutoComplete');
     if (currentId !== latestId) {
       return results;
     }
@@ -179,7 +168,7 @@ export default class StatefulCore {
   }
 
   async executeVerticalQuery(): Promise<VerticalSearchResponse | undefined> {
-    const currentId = this.getNewRequestId('verticalQuery');
+    const currentId = this.requestManager.updateRequestId('verticalQuery');
     const verticalKey = this.state.vertical.key;
     if (!verticalKey) {
       console.error('no verticalKey supplied for vertical search');
@@ -224,7 +213,7 @@ export default class StatefulCore {
       referrerPageUrl
     };
     const results = await this.core.verticalSearch(request);
-    const latestId = this.getLatestRequestId('verticalQuery');
+    const latestId = this.requestManager.getLatestRequestId('verticalQuery');
     if (currentId !== latestId) {
       return results;
     }
@@ -242,7 +231,7 @@ export default class StatefulCore {
   }
 
   async executeVerticalAutoComplete(): Promise<AutocompleteResponse | undefined> {
-    const currentId = this.getNewRequestId('verticalAutoComplete');
+    const currentId = this.requestManager.updateRequestId('verticalAutoComplete');
     const query = this.state.query.query || '';
     const verticalKey = this.state.vertical.key;
     if (!verticalKey) {
@@ -255,7 +244,7 @@ export default class StatefulCore {
       verticalKey
     });
 
-    const latestId = this.getLatestRequestId('verticalAutoComplete');
+    const latestId = this.requestManager.getLatestRequestId('verticalAutoComplete');
     if (currentId !== latestId) {
       return results;
     }

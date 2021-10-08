@@ -86,16 +86,20 @@ describe('ensure correct results from latest request', () => {
   };
   const stateManager = new ReduxStateManager();
   const statefulCore = new StatefulCore(mockedCore, stateManager);
+  statefulCore.setVerticalKey('someKey');
   const queries = ['long request', 'short'];
-  const dispatchEventSpy = jest.spyOn(stateManager, 'dispatchEvent');
-  const addListenerSpy = jest.spyOn(stateManager, 'addListener');
+  const updateResult = jest.fn();
 
   beforeEach(() => {
-    statefulCore.setVerticalKey('someKey');
     jest.clearAllMocks();
   });
 
   it('vertical autocomplete get latest request results', async () => {
+    statefulCore.addListener({
+      valueAccessor: state => state.vertical?.autoComplete?.results,
+      callback: updateResult
+    });
+
     statefulCore.setQuery(queries[0]);
     const firstResponsePromise = statefulCore.executeVerticalAutoComplete();
     statefulCore.setQuery(queries[1]);
@@ -105,16 +109,14 @@ describe('ensure correct results from latest request', () => {
 
     expect(statefulCore.state.query.query).toEqual(queries[1]);
     expect(statefulCore.state.vertical.autoComplete.results).toEqual([{ value: queries[1] }]);
-    expect(dispatchEventSpy).toBeCalledTimes(4);
-    expect(dispatchEventSpy).toHaveBeenNthCalledWith(1, 'query/set', queries[0]);
-    expect(dispatchEventSpy).toHaveBeenNthCalledWith(2, 'query/set', queries[1]);
-    expect(dispatchEventSpy)
-      .toHaveBeenNthCalledWith(3, 'vertical/setAutoComplete', { results: [ {value: queries[1]} ] });
-    expect(dispatchEventSpy)
-      .toHaveBeenNthCalledWith(4, 'query/setSearchIntents', []);
+    expect(updateResult.mock.calls).toHaveLength(1);
   });
 
   it('universal autocomplete get latest request results', async () => {
+    statefulCore.addListener({
+      valueAccessor: state => state.universal?.autoComplete?.results,
+      callback: updateResult
+    });
     statefulCore.setQuery(queries[0]);
     const firstResponsePromise = statefulCore.executeUniversalAutoComplete();
     statefulCore.setQuery(queries[1]);
@@ -124,14 +126,14 @@ describe('ensure correct results from latest request', () => {
 
     expect(statefulCore.state.query.query).toEqual(queries[1]);
     expect(statefulCore.state.universal.autoComplete.results).toEqual([{ value: queries[1] }]);
-    expect(dispatchEventSpy).toBeCalledTimes(4);
-    expect(dispatchEventSpy).toHaveBeenNthCalledWith(1, 'query/set', queries[0]);
-    expect(dispatchEventSpy).toHaveBeenNthCalledWith(2, 'query/set', queries[1]);
-    expect(dispatchEventSpy)
-      .toHaveBeenNthCalledWith(3, 'universal/setAutoComplete', { results: [ {value: queries[1]} ] });
+    expect(updateResult.mock.calls).toHaveLength(1);
   });
 
   it('vertical search get latest request results', async () => {
+    statefulCore.addListener({
+      valueAccessor: state => state.vertical?.results,
+      callback: updateResult
+    });
     statefulCore.setQuery(queries[0]);
     const firstResponsePromise = statefulCore.executeVerticalQuery();
     statefulCore.setQuery(queries[1]);
@@ -141,14 +143,14 @@ describe('ensure correct results from latest request', () => {
 
     expect(statefulCore.state.query.query).toEqual(queries[1]);
     expect(statefulCore.state.vertical.results.verticalResults).toEqual({ results: [queries[1]] });
-    expect(dispatchEventSpy).toBeCalledTimes(14);
-    expect(dispatchEventSpy).toHaveBeenNthCalledWith(1, 'query/set', queries[0]);
-    expect(dispatchEventSpy).toHaveBeenNthCalledWith(3, 'query/set', queries[1]);
-    expect(dispatchEventSpy)
-      .toHaveBeenNthCalledWith(5, 'vertical/setResults', { verticalResults: { results: [queries[1]] } });
+    expect(updateResult.mock.calls).toHaveLength(1);
   });
 
   it('universal search get latest request results', async () => {
+    statefulCore.addListener({
+      valueAccessor: state => state.universal?.results,
+      callback: updateResult
+    });
     statefulCore.setQuery(queries[0]);
     const firstResponsePromise = statefulCore.executeUniversalQuery();
     statefulCore.setQuery(queries[1]);
@@ -158,10 +160,6 @@ describe('ensure correct results from latest request', () => {
 
     expect(statefulCore.state.query.query).toEqual(queries[1]);
     expect(statefulCore.state.universal.results.verticalResults).toEqual([{ results: [queries[1]] }]);
-    expect(dispatchEventSpy).toBeCalledTimes(11);
-    expect(dispatchEventSpy).toHaveBeenNthCalledWith(1, 'query/set', queries[0]);
-    expect(dispatchEventSpy).toHaveBeenNthCalledWith(3, 'query/set', queries[1]);
-    expect(dispatchEventSpy)
-      .toHaveBeenNthCalledWith(5, 'universal/setResults', { verticalResults: [{ results: [queries[1]] }] });
+    expect(updateResult.mock.calls).toHaveLength(1);
   });
 });

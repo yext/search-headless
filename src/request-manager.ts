@@ -4,7 +4,7 @@ type RequestType = 'universalQuery'
   | 'verticalAutoComplete';
 
 export default class RequestManager {
-  private latestRequestIds: Record<string, number>;
+  private latestRequestIds: Record<RequestType, number>;
 
   constructor() {
     this.latestRequestIds = {

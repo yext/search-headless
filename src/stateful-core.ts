@@ -116,7 +116,7 @@ export default class StatefulCore {
   }
 
   async executeUniversalQuery(): Promise<UniversalSearchResponse | undefined> {
-    const currentId = this.requestManager.updateRequestId('universalQuery');
+    const thisRequestId = this.requestManager.updateRequestId('universalQuery');
     this.stateManager.dispatchEvent('universal/setSearchLoading', true);
     const { query, querySource, queryTrigger } = this.state.query;
     const skipSpellCheck = !this.state.spellCheck.enabled;
@@ -137,8 +137,8 @@ export default class StatefulCore {
       referrerPageUrl
     });
 
-    const latestId = this.requestManager.getLatestRequestId('universalQuery');
-    if (currentId !== latestId) {
+    const latestRequestId = this.requestManager.getLatestRequestId('universalQuery');
+    if (thisRequestId !== latestRequestId) {
       return results;
     }
     this.stateManager.dispatchEvent('universal/setResults', results);
@@ -152,14 +152,14 @@ export default class StatefulCore {
   }
 
   async executeUniversalAutoComplete(): Promise<AutocompleteResponse | undefined> {
-    const currentId = this.requestManager.updateRequestId('universalAutoComplete');
+    const thisRequestId = this.requestManager.updateRequestId('universalAutoComplete');
     const query = this.state.query.query || '';
     const results = await this.core.universalAutocomplete({
       input: query
     });
 
-    const latestId = this.requestManager.getLatestRequestId('universalAutoComplete');
-    if (currentId !== latestId) {
+    const latestRequestId = this.requestManager.getLatestRequestId('universalAutoComplete');
+    if (thisRequestId !== latestRequestId) {
       return results;
     }
     this.stateManager.dispatchEvent('universal/setAutoComplete', results);
@@ -168,7 +168,7 @@ export default class StatefulCore {
   }
 
   async executeVerticalQuery(): Promise<VerticalSearchResponse | undefined> {
-    const currentId = this.requestManager.updateRequestId('verticalQuery');
+    const thisRequestId = this.requestManager.updateRequestId('verticalQuery');
     const verticalKey = this.state.vertical.key;
     if (!verticalKey) {
       console.error('no verticalKey supplied for vertical search');
@@ -213,8 +213,8 @@ export default class StatefulCore {
       referrerPageUrl
     };
     const results = await this.core.verticalSearch(request);
-    const latestId = this.requestManager.getLatestRequestId('verticalQuery');
-    if (currentId !== latestId) {
+    const latestRequestId = this.requestManager.getLatestRequestId('verticalQuery');
+    if (thisRequestId !== latestRequestId) {
       return results;
     }
     this.stateManager.dispatchEvent('vertical/setResults', results);
@@ -231,7 +231,7 @@ export default class StatefulCore {
   }
 
   async executeVerticalAutoComplete(): Promise<AutocompleteResponse | undefined> {
-    const currentId = this.requestManager.updateRequestId('verticalAutoComplete');
+    const thisRequestId = this.requestManager.updateRequestId('verticalAutoComplete');
     const query = this.state.query.query || '';
     const verticalKey = this.state.vertical.key;
     if (!verticalKey) {
@@ -244,8 +244,8 @@ export default class StatefulCore {
       verticalKey
     });
 
-    const latestId = this.requestManager.getLatestRequestId('verticalAutoComplete');
-    if (currentId !== latestId) {
+    const latestRequestId = this.requestManager.getLatestRequestId('verticalAutoComplete');
+    if (thisRequestId !== latestRequestId) {
       return results;
     }
     this.stateManager.dispatchEvent('vertical/setAutoComplete', results);

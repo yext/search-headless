@@ -88,6 +88,7 @@ describe('ensure correct results from latest request', () => {
   const statefulCore = new StatefulCore(mockedCore, stateManager);
   const queries = ['long request', 'short'];
   const dispatchEventSpy = jest.spyOn(stateManager, 'dispatchEvent');
+  const addListenerSpy = jest.spyOn(stateManager, 'addListener');
 
   beforeEach(() => {
     statefulCore.setVerticalKey('someKey');
@@ -128,8 +129,6 @@ describe('ensure correct results from latest request', () => {
     expect(dispatchEventSpy).toHaveBeenNthCalledWith(2, 'query/set', queries[1]);
     expect(dispatchEventSpy)
       .toHaveBeenNthCalledWith(3, 'universal/setAutoComplete', { results: [ {value: queries[1]} ] });
-    expect(dispatchEventSpy)
-      .toHaveBeenNthCalledWith(4, 'query/setSearchIntents', []);
   });
 
   it('vertical search get latest request results', async () => {
@@ -144,9 +143,7 @@ describe('ensure correct results from latest request', () => {
     expect(statefulCore.state.vertical.results.verticalResults).toEqual({ results: [queries[1]] });
     expect(dispatchEventSpy).toBeCalledTimes(14);
     expect(dispatchEventSpy).toHaveBeenNthCalledWith(1, 'query/set', queries[0]);
-    expect(dispatchEventSpy).toHaveBeenNthCalledWith(2, 'vertical/setSearchLoading', true);
     expect(dispatchEventSpy).toHaveBeenNthCalledWith(3, 'query/set', queries[1]);
-    expect(dispatchEventSpy).toHaveBeenNthCalledWith(4, 'vertical/setSearchLoading', true);
     expect(dispatchEventSpy)
       .toHaveBeenNthCalledWith(5, 'vertical/setResults', { verticalResults: { results: [queries[1]] } });
   });
@@ -163,9 +160,7 @@ describe('ensure correct results from latest request', () => {
     expect(statefulCore.state.universal.results.verticalResults).toEqual([{ results: [queries[1]] }]);
     expect(dispatchEventSpy).toBeCalledTimes(11);
     expect(dispatchEventSpy).toHaveBeenNthCalledWith(1, 'query/set', queries[0]);
-    expect(dispatchEventSpy).toHaveBeenNthCalledWith(2, 'universal/setSearchLoading', true);
     expect(dispatchEventSpy).toHaveBeenNthCalledWith(3, 'query/set', queries[1]);
-    expect(dispatchEventSpy).toHaveBeenNthCalledWith(4, 'universal/setSearchLoading', true);
     expect(dispatchEventSpy)
       .toHaveBeenNthCalledWith(5, 'universal/setResults', { verticalResults: [{ results: [queries[1]] }] });
   });

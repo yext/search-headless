@@ -17,7 +17,6 @@ export default class RequestManager {
 
   updateRequestId(requestName: RequestType): number {
     const newId = ++this.latestRequestIds[requestName];
-    console.log(newId);
     this.latestRequestIds[requestName] = newId;
     return newId;
   }

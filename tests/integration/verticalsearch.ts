@@ -24,7 +24,7 @@ it('vertical searches update the search loading state', async () => {
   expect(statefulCore.state.vertical.searchLoading).toEqual(false);
 });
 
-it('statefulCore.setLimit sets the vertical limit when a string is passed to it', () => {
+it('statefulCore.setLimit sets the vertical limit when a number is passed to it', () => {
   const statefulCore = createMockedStatefulCore();
   statefulCore.setLimit(7);
   expect(statefulCore.state.vertical.limit).toEqual(7);

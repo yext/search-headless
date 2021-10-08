@@ -24,6 +24,16 @@ it('universal searches update the search loading state', async () => {
   expect(statefulCore.state.universal.searchLoading).toEqual(false);
 });
 
+it('statefulCore.setLimit sets the universal limit when a UniversalLimit is passed to it', () => {
+  const statefulCore = createMockedStatefulCore();
+  const universalLimit = {
+    faq: 5,
+    people: 5
+  };
+  statefulCore.setLimit(universalLimit);
+  expect(statefulCore.state.universal.limit).toEqual(universalLimit);
+});
+
 function createMockSearch() {
   return jest.fn(async (_request: UniversalSearchRequest) => {
     await setTimeout(0);

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { UniversalSearchResponse, AutocompleteResponse } from '@yext/answers-core';
+import { UniversalSearchResponse, AutocompleteResponse, UniversalLimit } from '@yext/answers-core';
 import { UniversalSearchState } from '../models/slices/universal';
 
 const initialState: UniversalSearchState = {};
@@ -20,7 +20,10 @@ export const universalSlice = createSlice({
     },
     setSearchLoading: (state, action: PayloadAction<boolean>) => {
       state.searchLoading = action.payload;
-    }
+    },
+    setLimit: (state, action: PayloadAction<UniversalLimit>) => {
+      state.limit = action.payload;
+    },
   }
 });
 

@@ -61,19 +61,16 @@ it('universal autocomplete sets search intents', async () => {
 
 describe('ensure correct results from latest request', () => {
   jest.useFakeTimers();
+  const mockAutoCompleteFn = jest.fn(
+    async (request: VerticalAutocompleteRequest | UniversalAutocompleteRequest) => {
+      const waitTime = request.input?.length;
+      return new Promise(res => setTimeout(() => res({ results: [ {value: request.input} ]}), waitTime));
+    }
+  );
+
   const mockedCore: any = {
-    verticalAutocomplete: jest.fn(
-      async (request: VerticalAutocompleteRequest) => {
-        const waitTime = request.input?.length;
-        return new Promise(res => setTimeout(() => res(
-          { results: [ {value: request.input} ]}), waitTime));
-      }),
-    universalAutocomplete: jest.fn(
-      async (request: UniversalAutocompleteRequest) => {
-        const waitTime = request.input?.length;
-        return new Promise(res => setTimeout(() => res(
-          { results: [{ value: request.input }] }), waitTime));
-      }),
+    verticalAutocomplete: mockAutoCompleteFn,
+    universalAutocomplete: mockAutoCompleteFn,
     verticalSearch: jest.fn( async (request: VerticalSearchRequest) => {
       const waitTime = request.query?.length;
       return new Promise(res => setTimeout(() => res(

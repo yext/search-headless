@@ -45,14 +45,12 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('vertical/setKey', key);
   }
 
-  setLimit(limit: number | UniversalLimit): void {
-    if (typeof limit === 'object') {
-      this.stateManager.dispatchEvent('universal/setLimit', limit);
-    } else if (typeof limit === 'number') {
-      this.stateManager.dispatchEvent('vertical/setLimit', limit);
-    } else {
-      console.error(`Unsupported limit type of ${typeof limit}`);
-    }
+  setVerticalLimit(limit: number): void {
+    this.stateManager.dispatchEvent('vertical/setLimit', limit);
+  }
+
+  setUniversalLimit(limit: UniversalLimit): void {
+    this.stateManager.dispatchEvent('universal/setLimit', limit);
   }
 
   setOffset(offset: number): void {

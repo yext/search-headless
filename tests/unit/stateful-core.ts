@@ -183,15 +183,30 @@ describe('setters work as expected', () => {
     expect(dispatchEventCalls[0][1]).toBe(state);
   });
 
-  it('setLimit works as expected', () => {
+  it('setVerticalLimit works as expected', () => {
     const limit = 12;
-    statefulCore.setLimit(limit);
+    statefulCore.setVerticalLimit(limit);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
 
     expect(dispatchEventCalls.length).toBe(1);
     expect(dispatchEventCalls[0][0]).toBe('vertical/setLimit');
+    expect(dispatchEventCalls[0][1]).toBe(limit);
+  });
+
+  it('setUniversalLimit works as expected', () => {
+    const limit = {
+      people: 10,
+      faqs: 5
+    };
+    statefulCore.setUniversalLimit(limit);
+
+    const dispatchEventCalls =
+      mockedStateManager.dispatchEvent.mock.calls;
+
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('universal/setLimit');
     expect(dispatchEventCalls[0][1]).toBe(limit);
   });
 

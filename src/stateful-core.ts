@@ -16,7 +16,8 @@ import {
   Context,
   LatLong,
   SearchParameterField,
-  FilterSearchResponse
+  FilterSearchResponse,
+  UniversalLimit
 } from '@yext/answers-core';
 
 import StateListener from './models/state-listener';
@@ -44,8 +45,12 @@ export default class StatefulCore {
     this.stateManager.dispatchEvent('vertical/setKey', key);
   }
 
-  setLimit(limit: number): void {
+  setVerticalLimit(limit: number): void {
     this.stateManager.dispatchEvent('vertical/setLimit', limit);
+  }
+
+  setUniversalLimit(limit: UniversalLimit): void {
+    this.stateManager.dispatchEvent('universal/setLimit', limit);
   }
 
   setOffset(offset: number): void {
@@ -117,6 +122,7 @@ export default class StatefulCore {
     const { query, querySource, queryTrigger } = this.state.query;
     const skipSpellCheck = !this.state.spellCheck.enabled;
     const sessionTrackingEnabled = this.state.sessionTracking.enabled;
+    const limit = this.state.universal.limit;
     const sessionId = this.state.sessionTracking.sessionId;
     const { referrerPageUrl, context } = this.state.meta;
     const { userLocation } = this.state.location;
@@ -128,6 +134,7 @@ export default class StatefulCore {
       skipSpellCheck,
       sessionId,
       sessionTrackingEnabled,
+      limit,
       location: userLocation,
       context,
       referrerPageUrl

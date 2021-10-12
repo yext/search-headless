@@ -38,10 +38,6 @@ export default class HttpManager {
     return ++this.latestRequestIds[requestName];
   }
 
-  getLatestRequestId(requestName: ServiceType): number {
-    return this.latestRequestIds[requestName];
-  }
-
   setResponseId(responseName: ServiceType, responseId: number): void {
     this.latestResponseIds[responseName] = responseId;
   }

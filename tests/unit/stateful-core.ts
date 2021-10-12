@@ -1,4 +1,5 @@
 import { Matcher, QuerySource, QueryTrigger } from '@yext/answers-core';
+import HttpManager from '../../src/http-manager';
 import StateManager from '../../src/models/state-manager';
 import StatefulCore from '../../src/stateful-core';
 
@@ -46,7 +47,7 @@ const mockedCore: any = {
   verticalSearch: mockedSearch
 };
 
-const statefulCore = new StatefulCore(mockedCore, mockedStateManager);
+const statefulCore = new StatefulCore(mockedCore, mockedStateManager, new HttpManager());
 
 describe('setters work as expected', () => {
   beforeEach(() => {

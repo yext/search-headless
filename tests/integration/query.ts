@@ -5,6 +5,7 @@ import {
   VerticalAutocompleteRequest,
   UniversalAutocompleteRequest
 } from '@yext/answers-core';
+import HttpManager from '../../src/http-manager';
 import ReduxStateManager from '../../src/redux-state-manager';
 import StatefulCore from '../../src/stateful-core';
 import { createMockedStatefulCore } from '../mocks/createMockedStatefulCore';
@@ -83,16 +84,17 @@ describe('ensure correct results from latest request', () => {
     })
   };
   const stateManager = new ReduxStateManager();
-  const statefulCore = new StatefulCore(mockedCore, stateManager);
+  const httpManager = new HttpManager();
+  const statefulCore = new StatefulCore(mockedCore, stateManager, httpManager);
   statefulCore.setVerticalKey('someKey');
-  const queries = ['long request', 'short'];
+  const queries = ['really long request', 'short', 'long request'];
   const updateResult = jest.fn();
 
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  it('vertical autocomplete get latest request results', async () => {
+  it('vertical autocomplete get correct results based on up-to-date response', async () => {
     statefulCore.addListener({
       valueAccessor: state => state.vertical?.autoComplete?.results,
       callback: updateResult
@@ -102,18 +104,23 @@ describe('ensure correct results from latest request', () => {
     const firstResponsePromise = statefulCore.executeVerticalAutoComplete();
     statefulCore.setQuery(queries[1]);
     const secondResponsePromise = statefulCore.executeVerticalAutoComplete();
+    statefulCore.setQuery(queries[2]);
+    const thirdResponsePromise = statefulCore.executeVerticalAutoComplete();
 
-    jest.advanceTimersByTime(5);
+    jest.advanceTimersByTime(queries[1].length);
     await secondResponsePromise;
+    expect(statefulCore.state.vertical.autoComplete.results).toEqual([{ value: queries[1] }]);
+    jest.advanceTimersByTime(queries[2].length);
+    await thirdResponsePromise;
     jest.runAllTimers();
     await firstResponsePromise;
 
-    expect(statefulCore.state.query.query).toEqual(queries[1]);
-    expect(statefulCore.state.vertical.autoComplete.results).toEqual([{ value: queries[1] }]);
-    expect(updateResult.mock.calls).toHaveLength(1);
+    expect(statefulCore.state.query.query).toEqual(queries[2]);
+    expect(statefulCore.state.vertical.autoComplete.results).toEqual([{ value: queries[2] }]);
+    expect(updateResult.mock.calls).toHaveLength(2);
   });
 
-  it('universal autocomplete get latest request results', async () => {
+  it('universal autocomplete get correct results based on up-to-date response', async () => {
     statefulCore.addListener({
       valueAccessor: state => state.universal?.autoComplete?.results,
       callback: updateResult
@@ -122,18 +129,23 @@ describe('ensure correct results from latest request', () => {
     const firstResponsePromise = statefulCore.executeUniversalAutoComplete();
     statefulCore.setQuery(queries[1]);
     const secondResponsePromise = statefulCore.executeUniversalAutoComplete();
+    statefulCore.setQuery(queries[2]);
+    const thirdResponsePromise = statefulCore.executeUniversalAutoComplete();
 
-    jest.advanceTimersByTime(5);
+    jest.advanceTimersByTime(queries[1].length);
     await secondResponsePromise;
+    expect(statefulCore.state.universal.autoComplete.results).toEqual([{ value: queries[1] }]);
+    jest.advanceTimersByTime(queries[2].length);
+    await thirdResponsePromise;
     jest.runAllTimers();
     await firstResponsePromise;
 
-    expect(statefulCore.state.query.query).toEqual(queries[1]);
-    expect(statefulCore.state.universal.autoComplete.results).toEqual([{ value: queries[1] }]);
-    expect(updateResult.mock.calls).toHaveLength(1);
+    expect(statefulCore.state.query.query).toEqual(queries[2]);
+    expect(statefulCore.state.universal.autoComplete.results).toEqual([{ value: queries[2] }]);
+    expect(updateResult.mock.calls).toHaveLength(2);
   });
 
-  it('vertical search get latest request results', async () => {
+  it('vertical search get correct results based on up-to-date response', async () => {
     statefulCore.addListener({
       valueAccessor: state => state.vertical?.results,
       callback: updateResult
@@ -142,18 +154,23 @@ describe('ensure correct results from latest request', () => {
     const firstResponsePromise = statefulCore.executeVerticalQuery();
     statefulCore.setQuery(queries[1]);
     const secondResponsePromise = statefulCore.executeVerticalQuery();
+    statefulCore.setQuery(queries[2]);
+    const thirdResponsePromise = statefulCore.executeVerticalQuery();
 
-    jest.advanceTimersByTime(5);
+    jest.advanceTimersByTime(queries[1].length);
     await secondResponsePromise;
+    expect(statefulCore.state.vertical.results.verticalResults).toEqual({ results: [queries[1]] });
+    jest.advanceTimersByTime(queries[2].length);
+    await thirdResponsePromise;
     jest.runAllTimers();
     await firstResponsePromise;
 
-    expect(statefulCore.state.query.query).toEqual(queries[1]);
-    expect(statefulCore.state.vertical.results.verticalResults).toEqual({ results: [queries[1]] });
-    expect(updateResult.mock.calls).toHaveLength(1);
+    expect(statefulCore.state.query.query).toEqual(queries[2]);
+    expect(statefulCore.state.vertical.results.verticalResults).toEqual({ results: [queries[2]] });
+    expect(updateResult.mock.calls).toHaveLength(2);
   });
 
-  it('universal search get latest request results', async () => {
+  it('universal search get correct results based on up-to-date response', async () => {
     statefulCore.addListener({
       valueAccessor: state => state.universal?.results,
       callback: updateResult
@@ -162,14 +179,19 @@ describe('ensure correct results from latest request', () => {
     const firstResponsePromise = statefulCore.executeUniversalQuery();
     statefulCore.setQuery(queries[1]);
     const secondResponsePromise = statefulCore.executeUniversalQuery();
+    statefulCore.setQuery(queries[2]);
+    const thirdResponsePromise = statefulCore.executeUniversalQuery();
 
-    jest.advanceTimersByTime(5);
+    jest.advanceTimersByTime(queries[1].length);
     await secondResponsePromise;
+    expect(statefulCore.state.universal.results.verticalResults).toEqual([{ results: [queries[1]] }]);
+    jest.advanceTimersByTime(queries[2].length);
+    await thirdResponsePromise;
     jest.runAllTimers();
     await firstResponsePromise;
 
-    expect(statefulCore.state.query.query).toEqual(queries[1]);
-    expect(statefulCore.state.universal.results.verticalResults).toEqual([{ results: [queries[1]] }]);
-    expect(updateResult.mock.calls).toHaveLength(1);
+    expect(statefulCore.state.query.query).toEqual(queries[2]);
+    expect(statefulCore.state.universal.results.verticalResults).toEqual([{ results: [queries[2]] }]);
+    expect(updateResult.mock.calls).toHaveLength(2);
   });
 });

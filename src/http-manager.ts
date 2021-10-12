@@ -9,9 +9,10 @@ type ServiceIds = {
 
 /**
  * Assign numeric ids to every http requests and the corresponding responses
- * through answers-core, and track the latest received requests and responses.
- * This is use in {@link StatefulCore} to ensure dispatch event for state update
- * is trigger from up-to-date responses.
+ * through {@link AnswersCore}. This helps track the received order of requests
+ * and responses. {@link StatefulCore} use it to ensure dispatch event for
+ * state update is trigger from up-to-date responses (e.g. if the new received
+ * response have higher id number from the recorded received response)
  */
 export default class HttpManager {
   private latestRequestIds: ServiceIds;

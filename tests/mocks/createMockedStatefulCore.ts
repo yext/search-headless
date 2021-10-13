@@ -1,3 +1,4 @@
+import HttpManager from '../../src/http-manager';
 import { State } from '../../src/models/state';
 import ReduxStateManager from '../../src/redux-state-manager';
 import StatefulCore from '../../src/stateful-core';
@@ -14,7 +15,8 @@ export function createMockedStatefulCore(
   initialState: Partial<State> = {}
 ): StatefulCore {
   const reduxStateManager = new ReduxStateManager();
-  const statefulCore = new StatefulCore(mockedAnswersCore, reduxStateManager);
+  const httpManager = new HttpManager();
+  const statefulCore = new StatefulCore(mockedAnswersCore, reduxStateManager, httpManager);
   statefulCore.setState({
     ...statefulCore.state,
     ...initialState

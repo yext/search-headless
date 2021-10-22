@@ -1,4 +1,5 @@
 import { provideCore, AnswersConfig } from '@yext/answers-core';
+import AnswersUtilities from './answers-utilities';
 import HttpManager from './http-manager';
 import ReduxStateManager from './redux-state-manager';
 import StatefulCore from './stateful-core';
@@ -13,8 +14,9 @@ export function provideStatefulCore(config: AnswersConfig): StatefulCore {
   const answersCore = provideCore(config);
   const stateManager = new ReduxStateManager();
   const httpManager = new HttpManager();
+  const answersUtilities = new AnswersUtilities();
 
-  return new StatefulCore(answersCore, stateManager, httpManager);
+  return new StatefulCore(answersCore, stateManager, httpManager, answersUtilities);
 }
 
 export * from './utils/filter-creators';

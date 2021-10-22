@@ -2,6 +2,7 @@ import { Matcher, QuerySource, QueryTrigger } from '@yext/answers-core';
 import HttpManager from '../../src/http-manager';
 import StateManager from '../../src/models/state-manager';
 import StatefulCore from '../../src/stateful-core';
+import AnswersUtilities from '../../src/services/answers-utilities';
 
 const mockedState = {
   query: {
@@ -48,7 +49,12 @@ const mockedCore: any = {
   filterSearch: jest.fn(() => Promise.resolve({}))
 };
 
-const statefulCore = new StatefulCore(mockedCore, mockedStateManager, new HttpManager());
+const mockedAnswersUtilities: AnswersUtilities = {
+  searchThroughFacet: jest.fn(),
+};
+
+const statefulCore =
+  new StatefulCore(mockedCore, mockedStateManager, new HttpManager(), mockedAnswersUtilities);
 
 describe('setters work as expected', () => {
   beforeEach(() => {
@@ -282,25 +288,5 @@ describe('search works as expected', () => {
     };
     expect(coreCalls.length).toBe(1);
     expect(coreCalls[0][0]).toEqual(expectedSearchParams);
-  });
-
-  it('filter search works', async () => {
-    const fields = [
-      {
-        fieldApiName: 'builtin.location',
-        entityType: 'ce_person',
-        fetchEntities: false
-      }
-    ];
-    await statefulCore.executeFilterSearch(false, fields);
-
-    expect(mockedCore.filterSearch).toHaveBeenCalledTimes(1);
-    expect(mockedCore.filterSearch).toHaveBeenCalledWith({
-      input: 'Search',
-      verticalKey: 'someKey',
-      sessionTrackingEnabled: true,
-      sectioned: false,
-      fields
-    });
   });
 });

@@ -24,15 +24,16 @@ import StateListener from './models/state-listener';
 import { State } from './models/state';
 import StateManager from './models/state-manager';
 import { Unsubscribe } from '@reduxjs/toolkit';
-import { isLevenshteinMatch } from './utils/searchable-facets';
 import HttpManager from './http-manager';
+import AnswersUtilities from './answers-utilities';
 
 export default class StatefulCore {
 
   constructor(
     private core: AnswersCore,
     private stateManager: StateManager,
-    private httpManager: HttpManager
+    private httpManager: HttpManager,
+    public utilities: AnswersUtilities
   ) {}
 
   setQuery(query: string): void {
@@ -293,13 +294,6 @@ export default class StatefulCore {
       facetOption
     };
     this.stateManager.dispatchEvent('filters/toggleFacetOption', payload);
-  }
-
-  searchThroughFacet(facet: DisplayableFacet, searchTerm: string): DisplayableFacet {
-    return {
-      ...facet,
-      options: facet.options.filter(o => isLevenshteinMatch(o.displayName, searchTerm))
-    };
   }
 }
 

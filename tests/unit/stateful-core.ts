@@ -48,8 +48,7 @@ const mockedCore: any = {
   filterSearch: jest.fn(() => Promise.resolve({}))
 };
 
-const statefulCore =
-  new StatefulCore(mockedCore, mockedStateManager, new HttpManager());
+const statefulCore = new StatefulCore(mockedCore, mockedStateManager, new HttpManager());
 
 describe('setters work as expected', () => {
   beforeEach(() => {

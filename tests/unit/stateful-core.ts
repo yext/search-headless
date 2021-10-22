@@ -289,4 +289,24 @@ describe('search works as expected', () => {
     expect(coreCalls.length).toBe(1);
     expect(coreCalls[0][0]).toEqual(expectedSearchParams);
   });
+
+  it('filter search works', async () => {
+    const fields = [
+      {
+        fieldApiName: 'builtin.location',
+        entityType: 'ce_person',
+        fetchEntities: false
+      }
+    ];
+    await statefulCore.executeFilterSearch(false, fields);
+
+    expect(mockedCore.filterSearch).toHaveBeenCalledTimes(1);
+    expect(mockedCore.filterSearch).toHaveBeenCalledWith({
+      input: 'Search',
+      verticalKey: 'someKey',
+      sessionTrackingEnabled: true,
+      sectioned: false,
+      fields
+    });
+  });
 });

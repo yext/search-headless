@@ -1,7 +1,7 @@
 import { Matcher, QuerySource, QueryTrigger } from '@yext/answers-core';
 import HttpManager from '../../src/http-manager';
 import StateManager from '../../src/models/state-manager';
-import StatefulCore from '../../src/stateful-core';
+import AnswersHeadless from '../../src/answers-headless';
 
 const mockedState = {
   query: {
@@ -48,8 +48,8 @@ const mockedCore: any = {
   filterSearch: jest.fn(() => Promise.resolve({}))
 };
 
-const statefulCore =
-  new StatefulCore(mockedCore, mockedStateManager, new HttpManager());
+const answers =
+  new AnswersHeadless(mockedCore, mockedStateManager, new HttpManager());
 
 describe('setters work as expected', () => {
   beforeEach(() => {
@@ -62,7 +62,7 @@ describe('setters work as expected', () => {
       matcher: Matcher.Equals,
       value: 'someValue'
     };
-    statefulCore.setFilter(filter);
+    answers.setFilter(filter);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
@@ -86,7 +86,7 @@ describe('setters work as expected', () => {
         }]
       }
     ];
-    statefulCore.setFacets(facets);
+    answers.setFacets(facets);
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
 
@@ -96,7 +96,7 @@ describe('setters work as expected', () => {
   });
 
   it('resetFacets works as expected', () => {
-    statefulCore.resetFacets();
+    answers.resetFacets();
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
@@ -106,7 +106,7 @@ describe('setters work as expected', () => {
   });
 
   it('setSessionTrackingEnabled works as expected', () => {
-    statefulCore.setSessionTrackingEnabled(true);
+    answers.setSessionTrackingEnabled(true);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
@@ -117,7 +117,7 @@ describe('setters work as expected', () => {
   });
 
   it('setSessionId works as expected', () => {
-    statefulCore.setSessionId('random-id-number');
+    answers.setSessionId('random-id-number');
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
@@ -129,7 +129,7 @@ describe('setters work as expected', () => {
 
   it('setQuery works as expected', () => {
     const query = 'Hello';
-    statefulCore.setQuery(query);
+    answers.setQuery(query);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
@@ -140,7 +140,7 @@ describe('setters work as expected', () => {
   });
 
   it('setQueryTrigger works as expected', () => {
-    statefulCore.setQueryTrigger(QueryTrigger.Initialize);
+    answers.setQueryTrigger(QueryTrigger.Initialize);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
@@ -151,7 +151,7 @@ describe('setters work as expected', () => {
   });
 
   it('setQuerySource works as expected', () => {
-    statefulCore.setQuerySource(QuerySource.Overlay);
+    answers.setQuerySource(QuerySource.Overlay);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
@@ -163,7 +163,7 @@ describe('setters work as expected', () => {
 
   it('setVerticalKey works as expected', () => {
     const verticalKey = 'key';
-    statefulCore.setVerticalKey(verticalKey);
+    answers.setVerticalKey(verticalKey);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
@@ -175,7 +175,7 @@ describe('setters work as expected', () => {
 
   it('setState works as expected', () => {
     const state: any = { query: {} };
-    statefulCore.setState(state);
+    answers.setState(state);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
@@ -187,7 +187,7 @@ describe('setters work as expected', () => {
 
   it('setVerticalLimit works as expected', () => {
     const limit = 12;
-    statefulCore.setVerticalLimit(limit);
+    answers.setVerticalLimit(limit);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
@@ -202,7 +202,7 @@ describe('setters work as expected', () => {
       people: 10,
       faqs: 5
     };
-    statefulCore.setUniversalLimit(limit);
+    answers.setUniversalLimit(limit);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
@@ -214,7 +214,7 @@ describe('setters work as expected', () => {
 
   it('setOffset works as expected', () => {
     const offset = 12;
-    statefulCore.setOffset(offset);
+    answers.setOffset(offset);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
@@ -231,7 +231,7 @@ describe('auto-complete works as expected', () => {
   });
 
   it('vertical auto-complete works', async () => {
-    await statefulCore.executeVerticalAutoComplete();
+    await answers.executeVerticalAutoComplete();
 
     const coreCalls = mockedCore.verticalAutocomplete.mock.calls;
     expect(coreCalls.length).toBe(1);
@@ -240,7 +240,7 @@ describe('auto-complete works as expected', () => {
   });
 
   it('universal auto-complete works', async () => {
-    await statefulCore.executeUniversalAutoComplete();
+    await answers.executeUniversalAutoComplete();
 
     const coreCalls = mockedCore.universalAutocomplete.mock.calls;
     expect(coreCalls.length).toBe(1);
@@ -254,7 +254,7 @@ describe('search works as expected', () => {
   });
 
   it('universal search works', async () => {
-    await statefulCore.executeUniversalQuery();
+    await answers.executeUniversalQuery();
 
     const coreCalls = mockedCore.universalSearch.mock.calls;
     expect(coreCalls.length).toBe(1);
@@ -267,7 +267,7 @@ describe('search works as expected', () => {
   });
 
   it('vertical search works', async () => {
-    await statefulCore.executeVerticalQuery();
+    await answers.executeVerticalQuery();
 
     const coreCalls = mockedCore.verticalSearch.mock.calls;
     const expectedSearchParams = {
@@ -293,7 +293,7 @@ describe('search works as expected', () => {
         fetchEntities: false
       }
     ];
-    await statefulCore.executeFilterSearch(false, fields);
+    await answers.executeFilterSearch(false, fields);
 
     expect(mockedCore.filterSearch).toHaveBeenCalledTimes(1);
     expect(mockedCore.filterSearch).toHaveBeenCalledWith({

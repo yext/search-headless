@@ -1,37 +1,37 @@
 import { UniversalSearchRequest } from '@yext/answers-core';
-import { createMockedStatefulCore } from '../mocks/createMockedStatefulCore';
+import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
 import setTimeout from '../utils/setTimeout';
 
 it('universal searches send blank queries by default', async () => {
   const mockSearch = createMockSearch();
-  const statefulCore = createMockedStatefulCore({
+  const answers = createMockedAnswersHeadless({
     universalSearch: mockSearch
   });
-  await statefulCore.executeUniversalQuery();
+  await answers.executeUniversalQuery();
   expect(mockSearch.mock.calls[0][0].query).toEqual('');
 });
 
 
 it('universal searches update the search loading state', async () => {
   const mockSearch = createMockSearch();
-  const statefulCore = createMockedStatefulCore({
+  const answers = createMockedAnswersHeadless({
     universalSearch: mockSearch
   });
 
-  const search = statefulCore.executeUniversalQuery();
-  expect(statefulCore.state.universal.searchLoading).toEqual(true);
+  const search = answers.executeUniversalQuery();
+  expect(answers.state.universal.searchLoading).toEqual(true);
   await search;
-  expect(statefulCore.state.universal.searchLoading).toEqual(false);
+  expect(answers.state.universal.searchLoading).toEqual(false);
 });
 
-it('statefulCore.setUniversalLimit sets the universal limit when a UniversalLimit is passed to it', () => {
-  const statefulCore = createMockedStatefulCore();
+it('answers.setUniversalLimit sets the universal limit when a UniversalLimit is passed to it', () => {
+  const answers = createMockedAnswersHeadless();
   const universalLimit = {
     faq: 5,
     people: 5
   };
-  statefulCore.setUniversalLimit(universalLimit);
-  expect(statefulCore.state.universal.limit).toEqual(universalLimit);
+  answers.setUniversalLimit(universalLimit);
+  expect(answers.state.universal.limit).toEqual(universalLimit);
 });
 
 function createMockSearch() {

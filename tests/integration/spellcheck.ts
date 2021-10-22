@@ -1,4 +1,4 @@
-import { createMockedStatefulCore } from '../mocks/createMockedStatefulCore';
+import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
 
 const initialState = {
   query: {
@@ -27,12 +27,12 @@ function mockSearchWithSpellcheck() {
   });
 }
 
-describe('StatefulCore spellcheck interactions properly update state', () => {
+describe('AnswersHeadless spellcheck interactions properly update state', () => {
   it('executeVerticalQuery properly updates spellcheck state', async () => {
-    const statefulCore = createMockedStatefulCore({
+    const answers = createMockedAnswersHeadless({
       verticalSearch: mockSearchWithSpellcheck
     }, initialState);
-    await statefulCore.executeVerticalQuery();
+    await answers.executeVerticalQuery();
     const expectedState = {
       vertical: {
         ...initialState.vertical,
@@ -46,14 +46,14 @@ describe('StatefulCore spellcheck interactions properly update state', () => {
       }
     };
 
-    expect(statefulCore.state).toMatchObject(expectedState);
+    expect(answers.state).toMatchObject(expectedState);
   });
 
   it('executeUniversalQuery properly updates spellcheck state', async () => {
-    const statefulCore = createMockedStatefulCore({
+    const answers = createMockedAnswersHeadless({
       universalSearch: mockSearchWithSpellcheck
     }, initialState);
-    await statefulCore.executeUniversalQuery();
+    await answers.executeUniversalQuery();
     const expectedState = {
       universal: {
         results: {
@@ -66,18 +66,18 @@ describe('StatefulCore spellcheck interactions properly update state', () => {
       }
     };
 
-    expect(statefulCore.state).toMatchObject(expectedState);
+    expect(answers.state).toMatchObject(expectedState);
   });
 
   it('setSpellCheckEnabled properly updates state', async () => {
-    const statefulCore = createMockedStatefulCore({}, initialState);
-    await statefulCore.setSpellCheckEnabled(false);
+    const answers = createMockedAnswersHeadless({}, initialState);
+    await answers.setSpellCheckEnabled(false);
     const expectedState = {
       spellCheck: {
         enabled: false
       }
     };
 
-    expect(statefulCore.state).toMatchObject(expectedState);
+    expect(answers.state).toMatchObject(expectedState);
   });
 });

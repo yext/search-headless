@@ -1,5 +1,5 @@
 import { VerticalSearchRequest, UniversalSearchRequest, LocationBias, LocationBiasMethod, LatLong } from '@yext/answers-core';
-import { createMockedStatefulCore } from '../mocks/createMockedStatefulCore';
+import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
 
 describe('userLocation', () => {
   it('vertical searches pass userLocation', async () => {
@@ -8,12 +8,12 @@ describe('userLocation', () => {
       longitude: 1
     };
     const mockSearch = jest.fn((_request: VerticalSearchRequest) => Promise.resolve({}));
-    const statefulCore = createMockedStatefulCore({
+    const answers = createMockedAnswersHeadless({
       verticalSearch: mockSearch
     });
-    statefulCore.setVerticalKey('vertical-key');
-    statefulCore.setUserLocation(userLocation);
-    await statefulCore.executeVerticalQuery();
+    answers.setVerticalKey('vertical-key');
+    answers.setUserLocation(userLocation);
+    await answers.executeVerticalQuery();
     expect(mockSearch.mock.calls[0][0].location).toEqual(userLocation);
   });
 
@@ -23,11 +23,11 @@ describe('userLocation', () => {
       longitude: 1
     };
     const mockSearch = jest.fn((_request: UniversalSearchRequest) => Promise.resolve({}));
-    const statefulCore = createMockedStatefulCore({
+    const answers = createMockedAnswersHeadless({
       universalSearch: mockSearch
     });
-    statefulCore.setUserLocation(userLocation);
-    await statefulCore.executeUniversalQuery();
+    answers.setUserLocation(userLocation);
+    await answers.executeUniversalQuery();
     expect(mockSearch.mock.calls[0][0].location).toEqual(userLocation);
   });
 });
@@ -41,13 +41,13 @@ describe('locationBias', () => {
       method: LocationBiasMethod.Ip
     };
     const mockSearch = jest.fn((_request: VerticalSearchRequest) => Promise.resolve({ locationBias }));
-    const statefulCore = createMockedStatefulCore({
+    const answers = createMockedAnswersHeadless({
       verticalSearch: mockSearch
     });
-    statefulCore.setVerticalKey('vertical-key');
-    expect(statefulCore.state.location.locationBias).toEqual(undefined);
-    await statefulCore.executeVerticalQuery();
-    expect(statefulCore.state.location.locationBias).toEqual(locationBias);
+    answers.setVerticalKey('vertical-key');
+    expect(answers.state.location.locationBias).toEqual(undefined);
+    await answers.executeVerticalQuery();
+    expect(answers.state.location.locationBias).toEqual(locationBias);
   });
 
   it('universal searches set location bias', async () => {
@@ -58,11 +58,11 @@ describe('locationBias', () => {
       method: LocationBiasMethod.Ip
     };
     const mockSearch = jest.fn((_request: UniversalSearchRequest) => Promise.resolve({ locationBias }));
-    const statefulCore = createMockedStatefulCore({
+    const answers = createMockedAnswersHeadless({
       universalSearch: mockSearch
     });
-    expect(statefulCore.state.location.locationBias).toEqual(undefined);
-    await statefulCore.executeUniversalQuery();
-    expect(statefulCore.state.location.locationBias).toEqual(locationBias);
+    expect(answers.state.location.locationBias).toEqual(undefined);
+    await answers.executeUniversalQuery();
+    expect(answers.state.location.locationBias).toEqual(locationBias);
   });
 });

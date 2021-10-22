@@ -48,8 +48,7 @@ const mockedCore: any = {
   filterSearch: jest.fn(() => Promise.resolve({}))
 };
 
-const answers =
-  new AnswersHeadless(mockedCore, mockedStateManager, new HttpManager());
+const answers = new AnswersHeadless(mockedCore, mockedStateManager, new HttpManager());
 
 describe('setters work as expected', () => {
   beforeEach(() => {

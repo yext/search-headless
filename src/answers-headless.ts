@@ -122,10 +122,6 @@ export default class AnswersHeadless {
     return this.stateManager.addListener<T>(listener);
   }
 
-  // get utilities(): typeof answersUtilities {
-  //   return this._utilities;
-  // }
-
   async submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse> {
     return this.core.submitQuestion(request);
   }

@@ -176,7 +176,7 @@ it('searchThroughFacet filters facet options correctly', () => {
   });
   const statefulCore = createMockedStatefulCore({}, initialState);
   const facet = statefulCore.state.filters.facets[0];
-  const searchedFacet = statefulCore.searchThroughFacet(facet, 'cation');
+  const searchedFacet = statefulCore.utilities.searchThroughFacet(facet, 'cation');
   expect(searchedFacet).toEqual({
     displayName: 'test facet name',
     fieldId: 'testFieldId',

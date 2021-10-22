@@ -4,10 +4,10 @@ import ReduxStateManager from '../../src/redux-state-manager';
 import AnswersHeadless from '../../src/answers-headless';
 
 /**
- * Creates a stateful core instance with a mocked answers core
+ * Creates an Answers Headless instance with a mocked answers core
  *
  * @param {Partial<AnswersCore>} mockedAnswersCore Answers core overrides
- * @param {Partial<State>} initialState The initial state of the stateful core
+ * @param {Partial<State>} initialState The initial state of Answers Headless
  * @returns
  */
 export function createMockedAnswersHeadless(

@@ -25,16 +25,18 @@ import { State } from './models/state';
 import StateManager from './models/state-manager';
 import { Unsubscribe } from '@reduxjs/toolkit';
 import HttpManager from './http-manager';
-import AnswersUtilities from './answers-utilities';
+import answersUtilities from './answers-utilities';
 
 export default class StatefulCore {
+  readonly utilities: typeof answersUtilities;
 
   constructor(
     private core: AnswersCore,
     private stateManager: StateManager,
     private httpManager: HttpManager,
-    public utilities: AnswersUtilities
-  ) {}
+  ) {
+    this.utilities = answersUtilities;
+  }
 
   setQuery(query: string): void {
     this.stateManager.dispatchEvent('query/set', query);
@@ -119,6 +121,10 @@ export default class StatefulCore {
   addListener<T>(listener: StateListener<T>): Unsubscribe {
     return this.stateManager.addListener<T>(listener);
   }
+
+  // get utilities(): typeof answersUtilities {
+  //   return this._utilities;
+  // }
 
   async submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse> {
     return this.core.submitQuestion(request);

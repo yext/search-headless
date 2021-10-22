@@ -2,7 +2,6 @@ import { Matcher, QuerySource, QueryTrigger } from '@yext/answers-core';
 import HttpManager from '../../src/http-manager';
 import StateManager from '../../src/models/state-manager';
 import StatefulCore from '../../src/stateful-core';
-import AnswersUtilities from '../../src/services/answers-utilities';
 
 const mockedState = {
   query: {
@@ -49,12 +48,8 @@ const mockedCore: any = {
   filterSearch: jest.fn(() => Promise.resolve({}))
 };
 
-const mockedAnswersUtilities: AnswersUtilities = {
-  searchThroughFacet: jest.fn(),
-};
-
 const statefulCore =
-  new StatefulCore(mockedCore, mockedStateManager, new HttpManager(), mockedAnswersUtilities);
+  new StatefulCore(mockedCore, mockedStateManager, new HttpManager());
 
 describe('setters work as expected', () => {
   beforeEach(() => {

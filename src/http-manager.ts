@@ -10,7 +10,7 @@ type ServiceIds = {
 /**
  * Assign numeric ids to every http requests and the corresponding responses
  * through {@link AnswersCore}. This helps track the received order of requests
- * and responses. {@link StatefulCore} use it to ensure dispatch event for
+ * and responses. {@link AnswersHeadless} use it to ensure dispatch event for
  * state update is trigger from up-to-date responses (e.g. if the new received
  * response have higher id number from the recorded received response)
  */

@@ -1,12 +1,12 @@
 import { DisplayableFacet, DisplayableFacetOption, Matcher } from '@yext/answers-core';
 import { State } from '../../src/models/state';
-import { createMockedStatefulCore } from '../mocks/createMockedStatefulCore';
+import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
 
 it('can select a facet option', () => {
   const [initialState, facetOption] = createInitialState(false);
-  const statefulCore = createMockedStatefulCore({}, initialState);
-  statefulCore.selectFacetOption('testFieldId', facetOption);
-  expect(statefulCore.state.filters.facets[0].options[0]).toEqual({
+  const answers = createMockedAnswersHeadless({}, initialState);
+  answers.selectFacetOption('testFieldId', facetOption);
+  expect(answers.state.filters.facets[0].options[0]).toEqual({
     matcher: Matcher.Equals,
     value: 'testValue',
     displayName: 'testDisplayName',
@@ -22,9 +22,9 @@ it('handles multiple facets with the same fieldId', () => {
     fieldId: 'testFieldId',
     options: [{...facetOption}]
   });
-  const statefulCore = createMockedStatefulCore({}, initialState);
-  statefulCore.selectFacetOption('testFieldId', facetOption);
-  expect(statefulCore.state.filters.facets).toEqual([
+  const answers = createMockedAnswersHeadless({}, initialState);
+  answers.selectFacetOption('testFieldId', facetOption);
+  expect(answers.state.filters.facets).toEqual([
     {
       displayName: 'test facet name',
       fieldId: 'testFieldId',
@@ -53,9 +53,9 @@ it('handles multiple facets with the same fieldId', () => {
 it('handles selecting multiple facetOptions at the same time', () => {
   const [initialState, facetOption] = createInitialState(false);
   initialState.filters.facets[0].options.push({ ...facetOption });
-  const statefulCore = createMockedStatefulCore({}, initialState);
-  statefulCore.selectFacetOption('testFieldId', facetOption);
-  expect(statefulCore.state.filters.facets[0].options).toEqual([
+  const answers = createMockedAnswersHeadless({}, initialState);
+  answers.selectFacetOption('testFieldId', facetOption);
+  expect(answers.state.filters.facets[0].options).toEqual([
     {
       matcher: Matcher.Equals,
       value: 'testValue',
@@ -75,9 +75,9 @@ it('handles selecting multiple facetOptions at the same time', () => {
 
 it('can unselect a facet option', () => {
   const [initialState, facetOption] = createInitialState(true);
-  const statefulCore = createMockedStatefulCore({}, initialState);
-  statefulCore.unselectFacetOption('testFieldId', facetOption);
-  expect(statefulCore.state.filters.facets[0].options[0]).toEqual({
+  const answers = createMockedAnswersHeadless({}, initialState);
+  answers.unselectFacetOption('testFieldId', facetOption);
+  expect(answers.state.filters.facets[0].options[0]).toEqual({
     matcher: Matcher.Equals,
     value: 'testValue',
     displayName: 'testDisplayName',
@@ -88,8 +88,8 @@ it('can unselect a facet option', () => {
 
 it('gives a console warning when facets do not exist in state', () => {
   const consoleWarnSpy = jest.spyOn(global.console, 'warn').mockImplementation();
-  const statefulCore = createMockedStatefulCore();
-  statefulCore.selectFacetOption('testFieldId', {} as DisplayableFacetOption);
+  const answers = createMockedAnswersHeadless();
+  answers.selectFacetOption('testFieldId', {} as DisplayableFacetOption);
   expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
   consoleWarnSpy.mockClear();
 });
@@ -97,8 +97,8 @@ it('gives a console warning when facets do not exist in state', () => {
 it('gives a console warning when the facet option\'s fieldId is not found in state', () => {
   const consoleWarnSpy = jest.spyOn(global.console, 'warn').mockImplementation();
   const [initialState] = createInitialState(true);
-  const statefulCore = createMockedStatefulCore({}, initialState);
-  statefulCore.selectFacetOption('fakeFieldId', {} as DisplayableFacetOption);
+  const answers = createMockedAnswersHeadless({}, initialState);
+  answers.selectFacetOption('fakeFieldId', {} as DisplayableFacetOption);
   expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
   consoleWarnSpy.mockClear();
 });
@@ -120,10 +120,10 @@ it('facets are updated after a vertical search', async () => {
     query: { query: 'test query' },
     spellCheck: { enabled: true }
   };
-  const statefulCore = createMockedStatefulCore(mockAnswersCore, initialState);
-  expect(statefulCore.state.filters.facets).toEqual(undefined);
-  await statefulCore.executeVerticalQuery();
-  expect(statefulCore.state.filters.facets).toEqual([ 'mock facets state' ]);
+  const answers = createMockedAnswersHeadless(mockAnswersCore, initialState);
+  expect(answers.state.filters.facets).toEqual(undefined);
+  await answers.executeVerticalQuery();
+  expect(answers.state.filters.facets).toEqual([ 'mock facets state' ]);
 });
 
 it('only selected facets are sent in the vertical search request', () => {
@@ -142,8 +142,8 @@ it('only selected facets are sent in the vertical search request', () => {
   const mockedCore = {
     verticalSearch: jest.fn(() => { return {}; })
   };
-  const statefulCore = createMockedStatefulCore(mockedCore, initialState);
-  statefulCore.executeVerticalQuery();
+  const answers = createMockedAnswersHeadless(mockedCore, initialState);
+  answers.executeVerticalQuery();
   expect(mockedCore.verticalSearch).toHaveBeenCalledWith(expect.objectContaining({
     facets: [{
       fieldId: 'testFieldId',
@@ -174,9 +174,9 @@ it('searchThroughFacet filters facet options correctly', () => {
     ...facetOption,
     displayName: 'ignore me'
   });
-  const statefulCore = createMockedStatefulCore({}, initialState);
-  const facet = statefulCore.state.filters.facets[0];
-  const searchedFacet = statefulCore.utilities.searchThroughFacet(facet, 'cation');
+  const answers = createMockedAnswersHeadless({}, initialState);
+  const facet = answers.state.filters.facets[0];
+  const searchedFacet = answers.utilities.searchThroughFacet(facet, 'cation');
   expect(searchedFacet).toEqual({
     displayName: 'test facet name',
     fieldId: 'testFieldId',
@@ -195,7 +195,7 @@ it('searchThroughFacet filters facet options correctly', () => {
 
 it('can set facets correctly', () => {
   const [initialState, facetOption] = createInitialState(true);
-  const statefulCore = createMockedStatefulCore({}, initialState);
+  const answers = createMockedAnswersHeadless({}, initialState);
   const facets = [
     {
       fieldId: 'newFieldId',
@@ -203,15 +203,15 @@ it('can set facets correctly', () => {
       options: [facetOption]
     }
   ];
-  statefulCore.setFacets(facets);
-  expect(statefulCore.state.filters.facets).toEqual(facets);
+  answers.setFacets(facets);
+  expect(answers.state.filters.facets).toEqual(facets);
 });
 
 it('can reset facets correctly', () => {
   const [initialState, ] = createInitialState(true);
-  const statefulCore = createMockedStatefulCore({}, initialState);
-  statefulCore.resetFacets();
-  statefulCore.state.filters.facets.map(facet =>
+  const answers = createMockedAnswersHeadless({}, initialState);
+  answers.resetFacets();
+  answers.state.filters.facets.map(facet =>
     facet.options.map(option => expect(option.selected).toBeFalsy())
   );
 });

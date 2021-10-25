@@ -27,7 +27,7 @@ import { Unsubscribe } from '@reduxjs/toolkit';
 import HttpManager from './http-manager';
 import answersUtilities from './answers-utilities';
 
-export default class StatefulCore {
+export default class AnswersHeadless {
   readonly utilities: typeof answersUtilities;
 
   constructor(

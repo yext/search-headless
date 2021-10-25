@@ -7,56 +7,56 @@ import {
 } from '@yext/answers-core';
 import HttpManager from '../../src/http-manager';
 import ReduxStateManager from '../../src/redux-state-manager';
-import StatefulCore from '../../src/stateful-core';
-import { createMockedStatefulCore } from '../mocks/createMockedStatefulCore';
+import AnswersHeadless from '../../src/answers-headless';
+import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
 
 it('vertical searches set search intents', async () => {
   const mockSearch = jest.fn((_request: VerticalSearchRequest) => Promise.resolve({
     searchIntents: [SearchIntent.NearMe]
   }));
-  const statefulCore = createMockedStatefulCore({
+  const answers = createMockedAnswersHeadless({
     verticalSearch: mockSearch
   });
-  statefulCore.setVerticalKey('vertical-key');
-  expect(statefulCore.state.query.searchIntents).toEqual(undefined);
-  await statefulCore.executeVerticalQuery();
-  expect(statefulCore.state.query.searchIntents).toEqual(['NEAR_ME']);
+  answers.setVerticalKey('vertical-key');
+  expect(answers.state.query.searchIntents).toEqual(undefined);
+  await answers.executeVerticalQuery();
+  expect(answers.state.query.searchIntents).toEqual(['NEAR_ME']);
 });
 
 it('universal searches set search intents', async () => {
   const mockSearch = jest.fn((_request: UniversalSearchRequest) => Promise.resolve({
     searchIntents: [SearchIntent.NearMe]
   }));
-  const statefulCore = createMockedStatefulCore({
+  const answers = createMockedAnswersHeadless({
     universalSearch: mockSearch
   });
-  expect(statefulCore.state.query.searchIntents).toEqual(undefined);
-  await statefulCore.executeUniversalQuery();
-  expect(statefulCore.state.query.searchIntents).toEqual(['NEAR_ME']);
+  expect(answers.state.query.searchIntents).toEqual(undefined);
+  await answers.executeUniversalQuery();
+  expect(answers.state.query.searchIntents).toEqual(['NEAR_ME']);
 });
 
 
 it('vertical autocomplete sets search intents', async () => {
-  const statefulCore = createMockedStatefulCore({
+  const answers = createMockedAnswersHeadless({
     verticalAutocomplete: jest.fn((_request: VerticalAutocompleteRequest) => Promise.resolve({
       inputIntents: [SearchIntent.NearMe]
     }))
   });
-  statefulCore.setVerticalKey('vertical-key');
-  expect(statefulCore.state.query.searchIntents).toEqual(undefined);
-  await statefulCore.executeVerticalAutoComplete();
-  expect(statefulCore.state.query.searchIntents).toEqual(['NEAR_ME']);
+  answers.setVerticalKey('vertical-key');
+  expect(answers.state.query.searchIntents).toEqual(undefined);
+  await answers.executeVerticalAutoComplete();
+  expect(answers.state.query.searchIntents).toEqual(['NEAR_ME']);
 });
 
 it('universal autocomplete sets search intents', async () => {
-  const statefulCore = createMockedStatefulCore({
+  const answers = createMockedAnswersHeadless({
     universalAutocomplete: jest.fn((_request: UniversalAutocompleteRequest) => Promise.resolve({
       inputIntents: [SearchIntent.NearMe]
     }))
   });
-  expect(statefulCore.state.query.searchIntents).toEqual(undefined);
-  await statefulCore.executeUniversalAutoComplete();
-  expect(statefulCore.state.query.searchIntents).toEqual(['NEAR_ME']);
+  expect(answers.state.query.searchIntents).toEqual(undefined);
+  await answers.executeUniversalAutoComplete();
+  expect(answers.state.query.searchIntents).toEqual(['NEAR_ME']);
 });
 
 
@@ -92,8 +92,8 @@ describe('ensure correct results from latest request', () => {
   };
   const stateManager = new ReduxStateManager();
   const httpManager = new HttpManager();
-  const statefulCore = new StatefulCore(mockedCore, stateManager, httpManager);
-  statefulCore.setVerticalKey('someKey');
+  const answers = new AnswersHeadless(mockedCore, stateManager, httpManager);
+  answers.setVerticalKey('someKey');
   const updateResult = jest.fn();
 
   beforeEach(() => {
@@ -101,103 +101,103 @@ describe('ensure correct results from latest request', () => {
   });
 
   it('vertical autocomplete get correct results based on up-to-date response', async () => {
-    statefulCore.addListener({
+    answers.addListener({
       valueAccessor: state => state.vertical?.autoComplete?.results,
       callback: updateResult
     });
 
-    statefulCore.setQuery(queries[0]);
-    const firstResponsePromise = statefulCore.executeVerticalAutoComplete();
-    statefulCore.setQuery(queries[1]);
-    const secondResponsePromise = statefulCore.executeVerticalAutoComplete();
-    statefulCore.setQuery(queries[2]);
-    const thirdResponsePromise = statefulCore.executeVerticalAutoComplete();
+    answers.setQuery(queries[0]);
+    const firstResponsePromise = answers.executeVerticalAutoComplete();
+    answers.setQuery(queries[1]);
+    const secondResponsePromise = answers.executeVerticalAutoComplete();
+    answers.setQuery(queries[2]);
+    const thirdResponsePromise = answers.executeVerticalAutoComplete();
 
     jest.advanceTimersByTime(requestsTime[queries[1]]);
     await secondResponsePromise;
-    expect(statefulCore.state.vertical.autoComplete.results).toEqual([{ value: queries[1] }]);
+    expect(answers.state.vertical.autoComplete.results).toEqual([{ value: queries[1] }]);
     jest.advanceTimersByTime(requestsTime[queries[2]]);
     await thirdResponsePromise;
     jest.runAllTimers();
     await firstResponsePromise;
 
-    expect(statefulCore.state.query.query).toEqual(queries[2]);
-    expect(statefulCore.state.vertical.autoComplete.results).toEqual([{ value: queries[2] }]);
+    expect(answers.state.query.query).toEqual(queries[2]);
+    expect(answers.state.vertical.autoComplete.results).toEqual([{ value: queries[2] }]);
     expect(updateResult.mock.calls).toHaveLength(2);
   });
 
   it('universal autocomplete get correct results based on up-to-date response', async () => {
-    statefulCore.addListener({
+    answers.addListener({
       valueAccessor: state => state.universal?.autoComplete?.results,
       callback: updateResult
     });
-    statefulCore.setQuery(queries[0]);
-    const firstResponsePromise = statefulCore.executeUniversalAutoComplete();
-    statefulCore.setQuery(queries[1]);
-    const secondResponsePromise = statefulCore.executeUniversalAutoComplete();
-    statefulCore.setQuery(queries[2]);
-    const thirdResponsePromise = statefulCore.executeUniversalAutoComplete();
+    answers.setQuery(queries[0]);
+    const firstResponsePromise = answers.executeUniversalAutoComplete();
+    answers.setQuery(queries[1]);
+    const secondResponsePromise = answers.executeUniversalAutoComplete();
+    answers.setQuery(queries[2]);
+    const thirdResponsePromise = answers.executeUniversalAutoComplete();
 
     jest.advanceTimersByTime(requestsTime[queries[1]]);
     await secondResponsePromise;
-    expect(statefulCore.state.universal.autoComplete.results).toEqual([{ value: queries[1] }]);
+    expect(answers.state.universal.autoComplete.results).toEqual([{ value: queries[1] }]);
     jest.advanceTimersByTime(requestsTime[queries[2]]);
     await thirdResponsePromise;
     jest.runAllTimers();
     await firstResponsePromise;
 
-    expect(statefulCore.state.query.query).toEqual(queries[2]);
-    expect(statefulCore.state.universal.autoComplete.results).toEqual([{ value: queries[2] }]);
+    expect(answers.state.query.query).toEqual(queries[2]);
+    expect(answers.state.universal.autoComplete.results).toEqual([{ value: queries[2] }]);
     expect(updateResult.mock.calls).toHaveLength(2);
   });
 
   it('vertical search get correct results based on up-to-date response', async () => {
-    statefulCore.addListener({
+    answers.addListener({
       valueAccessor: state => state.vertical?.results,
       callback: updateResult
     });
-    statefulCore.setQuery(queries[0]);
-    const firstResponsePromise = statefulCore.executeVerticalQuery();
-    statefulCore.setQuery(queries[1]);
-    const secondResponsePromise = statefulCore.executeVerticalQuery();
-    statefulCore.setQuery(queries[2]);
-    const thirdResponsePromise = statefulCore.executeVerticalQuery();
+    answers.setQuery(queries[0]);
+    const firstResponsePromise = answers.executeVerticalQuery();
+    answers.setQuery(queries[1]);
+    const secondResponsePromise = answers.executeVerticalQuery();
+    answers.setQuery(queries[2]);
+    const thirdResponsePromise = answers.executeVerticalQuery();
 
     jest.advanceTimersByTime(requestsTime[queries[1]]);
     await secondResponsePromise;
-    expect(statefulCore.state.vertical.results.verticalResults).toEqual({ results: [queries[1]] });
+    expect(answers.state.vertical.results.verticalResults).toEqual({ results: [queries[1]] });
     jest.advanceTimersByTime(requestsTime[queries[2]]);
     await thirdResponsePromise;
     jest.runAllTimers();
     await firstResponsePromise;
 
-    expect(statefulCore.state.query.query).toEqual(queries[2]);
-    expect(statefulCore.state.vertical.results.verticalResults).toEqual({ results: [queries[2]] });
+    expect(answers.state.query.query).toEqual(queries[2]);
+    expect(answers.state.vertical.results.verticalResults).toEqual({ results: [queries[2]] });
     expect(updateResult.mock.calls).toHaveLength(2);
   });
 
   it('universal search get correct results based on up-to-date response', async () => {
-    statefulCore.addListener({
+    answers.addListener({
       valueAccessor: state => state.universal?.results,
       callback: updateResult
     });
-    statefulCore.setQuery(queries[0]);
-    const firstResponsePromise = statefulCore.executeUniversalQuery();
-    statefulCore.setQuery(queries[1]);
-    const secondResponsePromise = statefulCore.executeUniversalQuery();
-    statefulCore.setQuery(queries[2]);
-    const thirdResponsePromise = statefulCore.executeUniversalQuery();
+    answers.setQuery(queries[0]);
+    const firstResponsePromise = answers.executeUniversalQuery();
+    answers.setQuery(queries[1]);
+    const secondResponsePromise = answers.executeUniversalQuery();
+    answers.setQuery(queries[2]);
+    const thirdResponsePromise = answers.executeUniversalQuery();
 
     jest.advanceTimersByTime(requestsTime[queries[1]]);
     await secondResponsePromise;
-    expect(statefulCore.state.universal.results.verticalResults).toEqual([{ results: [queries[1]] }]);
+    expect(answers.state.universal.results.verticalResults).toEqual([{ results: [queries[1]] }]);
     jest.advanceTimersByTime(requestsTime[queries[2]]);
     await thirdResponsePromise;
     jest.runAllTimers();
     await firstResponsePromise;
 
-    expect(statefulCore.state.query.query).toEqual(queries[2]);
-    expect(statefulCore.state.universal.results.verticalResults).toEqual([{ results: [queries[2]] }]);
+    expect(answers.state.query.query).toEqual(queries[2]);
+    expect(answers.state.universal.results.verticalResults).toEqual([{ results: [queries[2]] }]);
     expect(updateResult.mock.calls).toHaveLength(2);
   });
 });

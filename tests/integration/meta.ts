@@ -1,33 +1,33 @@
 import { UniversalSearchRequest, VerticalSearchRequest } from '@yext/answers-core';
-import { createMockedStatefulCore } from '../mocks/createMockedStatefulCore';
+import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
 
 it('by default no meta attributes are sent', async () => {
   const mockSearch = jest.fn((_request: VerticalSearchRequest) => Promise.resolve({}));
-  const statefulCore = createMockedStatefulCore({
+  const answers = createMockedAnswersHeadless({
     verticalSearch: mockSearch
   });
-  statefulCore.setQuery('lol');
-  statefulCore.setVerticalKey('vertical-key');
-  await statefulCore.executeVerticalQuery();
+  answers.setQuery('lol');
+  answers.setVerticalKey('vertical-key');
+  await answers.executeVerticalQuery();
   expect(mockSearch.mock.calls[0][0].context).toEqual(undefined);
   expect(mockSearch.mock.calls[0][0].referrerPageUrl).toEqual(undefined);
 });
 
 it('vertical searches send meta data', async () => {
   const mockSearch = jest.fn((_request: VerticalSearchRequest) => Promise.resolve({}));
-  const statefulCore = createMockedStatefulCore({
+  const answers = createMockedAnswersHeadless({
     verticalSearch: mockSearch
   });
-  statefulCore.setQuery('lol');
-  statefulCore.setVerticalKey('vertical-key');
-  statefulCore.setContext({
+  answers.setQuery('lol');
+  answers.setVerticalKey('vertical-key');
+  answers.setContext({
     monke: 'cdawg',
     iron: {
       mouse: 'tsun'
     }
   });
-  statefulCore.setReferrerPageUrl('monkey');
-  await statefulCore.executeVerticalQuery();
+  answers.setReferrerPageUrl('monkey');
+  await answers.executeVerticalQuery();
   expect(mockSearch.mock.calls[0][0].context).toEqual({
     monke: 'cdawg',
     iron: {
@@ -39,19 +39,19 @@ it('vertical searches send meta data', async () => {
 
 it('universal searches send context', async () => {
   const mockSearch = jest.fn((_request: UniversalSearchRequest) => Promise.resolve({}));
-  const statefulCore = createMockedStatefulCore({
+  const answers = createMockedAnswersHeadless({
     universalSearch: mockSearch
   });
-  statefulCore.setQuery('lol');
-  statefulCore.setVerticalKey('vertical-key');
-  statefulCore.setContext({
+  answers.setQuery('lol');
+  answers.setVerticalKey('vertical-key');
+  answers.setContext({
     monke: 'cdawg',
     iron: {
       mouse: 'tsun'
     }
   });
-  statefulCore.setReferrerPageUrl('monkey');
-  await statefulCore.executeUniversalQuery();
+  answers.setReferrerPageUrl('monkey');
+  await answers.executeUniversalQuery();
   expect(mockSearch.mock.calls[0][0].context).toEqual({
     monke: 'cdawg',
     iron: {

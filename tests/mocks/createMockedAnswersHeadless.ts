@@ -1,25 +1,25 @@
 import HttpManager from '../../src/http-manager';
 import { State } from '../../src/models/state';
 import ReduxStateManager from '../../src/redux-state-manager';
-import StatefulCore from '../../src/stateful-core';
+import AnswersHeadless from '../../src/answers-headless';
 
 /**
- * Creates a stateful core instance with a mocked answers core
+ * Creates an Answers Headless instance with a mocked answers core
  *
  * @param {Partial<AnswersCore>} mockedAnswersCore Answers core overrides
- * @param {Partial<State>} initialState The initial state of the stateful core
+ * @param {Partial<State>} initialState The initial state of Answers Headless
  * @returns
  */
-export function createMockedStatefulCore(
+export function createMockedAnswersHeadless(
   mockedAnswersCore: any = {},
   initialState: Partial<State> = {}
-): StatefulCore {
+): AnswersHeadless {
   const reduxStateManager = new ReduxStateManager();
   const httpManager = new HttpManager();
-  const statefulCore = new StatefulCore(mockedAnswersCore, reduxStateManager, httpManager);
-  statefulCore.setState({
-    ...statefulCore.state,
+  const answers = new AnswersHeadless(mockedAnswersCore, reduxStateManager, httpManager);
+  answers.setState({
+    ...answers.state,
     ...initialState
   });
-  return statefulCore;
+  return answers;
 }

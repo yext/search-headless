@@ -1,4 +1,4 @@
-import { createMockedStatefulCore } from '../mocks/createMockedStatefulCore';
+import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
 
 const initialState = {
   query: {
@@ -38,12 +38,12 @@ function mockSearchWithAlternativeVerticals() {
   });
 }
 
-describe('StatefulCore spellcheck interactions properly update state', () => {
+describe('AnswersHeadless spellcheck interactions properly update state', () => {
   it('executeVerticalQuery properly updates alternative verticals state', async () => {
-    const statefulCore = createMockedStatefulCore({
+    const answers = createMockedAnswersHeadless({
       verticalSearch: mockSearchWithAlternativeVerticals
     }, initialState);
-    await statefulCore.executeVerticalQuery();
+    await answers.executeVerticalQuery();
     const expectedState = {
       vertical: {
         ...initialState.vertical,
@@ -54,6 +54,6 @@ describe('StatefulCore spellcheck interactions properly update state', () => {
       },
     };
 
-    expect(statefulCore.state).toMatchObject(expectedState);
+    expect(answers.state).toMatchObject(expectedState);
   });
 });

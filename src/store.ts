@@ -1,4 +1,4 @@
-import { configureStore, combineReducers, ReducersMapObject } from '@reduxjs/toolkit';
+import { configureStore, combineReducers, ReducersMapObject, EnhancedStore } from '@reduxjs/toolkit';
 
 import queryReducer from './slices/query';
 import verticalReducer from './slices/vertical';
@@ -20,19 +20,26 @@ export const baseReducers: ReducersMapObject<State> = {
   meta: metaReducer,
   location: locationReducer
 };
-
 const coreReducer = combineReducers(baseReducers);
-export const store = configureStore({
-  middleware:
-    (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
-  reducer: (state, action) => {
-    if (action.type === 'set-state') {
-      return action.payload;
-    } else {
-      return coreReducer(state, action);
+
+/**
+ * Outside of testing, this method should only be used below for instantiating the store exported below.
+ */
+export function createBaseStore(): EnhancedStore {
+  return configureStore({
+    middleware:
+      (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
+    reducer: (state, action) => {
+      if (action.type === 'set-state') {
+        return action.payload;
+      } else {
+        return coreReducer(state, action);
+      }
+    },
+    devTools: process.env.NODE_ENV === 'production' ? false : {
+      name: 'AnswersHeadless'
     }
-  },
-  devTools: process.env.NODE_ENV === 'production' ? false : {
-    name: 'AnswersHeadless'
-  }
-});
+  });
+}
+
+export const store = createBaseStore();

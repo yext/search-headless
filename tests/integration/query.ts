@@ -6,7 +6,7 @@ import {
   UniversalAutocompleteRequest
 } from '@yext/answers-core';
 import HttpManager from '../../src/http-manager';
-import ReduxStateManager from '../../src/redux-state-manager';
+import ReduxStateManager from '../../src/state-managers/redux-state-manager';
 import AnswersHeadless from '../../src/answers-headless';
 import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
 import { createBaseStore } from '../../src/store';

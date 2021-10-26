@@ -1,5 +1,8 @@
 import { QuerySource, QueryTrigger } from '@yext/answers-core';
-import reducer, { set, setQueryId, setSource, setTrigger } from '../../../src/slices/query';
+import createQuerySlice from '../../../src/slices/query';
+
+const { reducer, actions } = createQuerySlice();
+const { set, setQueryId, setSource, setTrigger } = actions;
 
 describe('query slice reducer works as expected', () => {
   it('set action is handled properly', () => {

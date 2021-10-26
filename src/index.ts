@@ -1,6 +1,6 @@
 import { provideCore, AnswersConfig } from '@yext/answers-core';
 import HttpManager from './http-manager';
-import ReduxStateManager from './redux-state-manager';
+import ReduxStateManager from './state-managers/redux-state-manager';
 import AnswersHeadless from './answers-headless';
 import { store } from './store';
 
@@ -21,4 +21,7 @@ export function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless 
 }
 
 export * from './utils/filter-creators';
-export { AnswersHeadless };
+export {
+  AnswersHeadless,
+  HeadlessConfig
+};

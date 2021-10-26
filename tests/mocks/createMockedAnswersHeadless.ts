@@ -1,6 +1,6 @@
 import HttpManager from '../../src/http-manager';
 import { State } from '../../src/models/state';
-import ReduxStateManager from '../../src/redux-state-manager';
+import ReduxStateManager from '../../src/state-managers/redux-state-manager';
 import AnswersHeadless from '../../src/answers-headless';
 import { createBaseStore } from '../../src/store';
 

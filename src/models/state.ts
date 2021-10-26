@@ -15,5 +15,8 @@ export interface State {
   spellCheck: SpellCheckState,
   sessionTracking: SessionTrackingState
   meta: MetaState,
-  location: LocationState
+  location: LocationState,
+  childStates: {
+    [childId: string]: State
+  }
 }

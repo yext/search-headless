@@ -1,24 +1,24 @@
 import { configureStore, combineReducers, ReducersMapObject, EnhancedStore } from '@reduxjs/toolkit';
 
-import queryReducer from './slices/query';
-import verticalReducer from './slices/vertical';
-import universalReducer from './slices/universal';
-import filtersReducer from './slices/filters';
-import spellCheckReducer from './slices/spellcheck';
-import sessionTrackingReducer from './slices/sessiontracking';
-import metaReducer from './slices/meta';
-import locationReducer from './slices/location';
+import createQuerySlice from './slices/query';
+import createVerticalSlice from './slices/vertical';
+import createUniversalSlice from './slices/universal';
+import createFiltersSlice from './slices/filters';
+import createSpellCheckSlice from './slices/spellcheck';
+import createSessionTrackingSlice from './slices/sessiontracking';
+import createMetaSlice from './slices/meta';
+import createLocationSlice from './slices/location';
 import { State } from './models/state';
 
-export const baseReducers: ReducersMapObject<State> = {
-  query: queryReducer,
-  vertical: verticalReducer,
-  universal: universalReducer,
-  filters: filtersReducer,
-  spellCheck: spellCheckReducer,
-  sessionTracking: sessionTrackingReducer,
-  meta: metaReducer,
-  location: locationReducer
+export const baseReducers: ReducersMapObject<Omit<State, 'childStates'>> = {
+  query: createQuerySlice().reducer,
+  vertical: createVerticalSlice().reducer,
+  universal: createUniversalSlice().reducer,
+  filters: createFiltersSlice().reducer,
+  spellCheck: createSpellCheckSlice().reducer,
+  sessionTracking: createSessionTrackingSlice().reducer,
+  meta: createMetaSlice().reducer,
+  location: createLocationSlice().reducer
 };
 const coreReducer = combineReducers(baseReducers);
 

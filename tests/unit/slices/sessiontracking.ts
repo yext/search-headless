@@ -1,4 +1,7 @@
-import reducer, { setSessionId, setEnabled } from '../../../src/slices/sessiontracking';
+import createSessionTrackingSlice from '../../../src/slices/sessiontracking';
+
+const { reducer, actions } = createSessionTrackingSlice();
+const { setSessionId, setEnabled } = actions;
 
 describe('sessionTracking slice reducer works as expected', () => {
   it('setSessionId action is handled properly', () => {

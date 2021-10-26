@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
 import { SpellCheck } from '@yext/answers-core';
 import { SpellCheckState } from '../models/slices/spellcheck';
 
@@ -6,24 +6,25 @@ const initialState: SpellCheckState = {
   enabled: true
 };
 
+const reducers = {
+  setResult: (state, action: PayloadAction<SpellCheck>) => {
+    return {
+      enabled: state.enabled,
+      ...action.payload
+    };
+  },
+  setEnabled: (state, action: PayloadAction<boolean>) => {
+    state.enabled = action.payload;
+  },
+};
+
 /**
  * Registers with Redux the slice of {@link State} pertaining to spellcheck.
  */
-export const spellCheckSlice = createSlice({
-  name: 'spellCheck',
-  initialState,
-  reducers: {
-    setResult: (state, action: PayloadAction<SpellCheck>) => {
-      return {
-        enabled: state.enabled,
-        ...action.payload
-      };
-    },
-    setEnabled: (state, action: PayloadAction<boolean>) => {
-      state.enabled = action.payload;
-    },
-  }
-});
-
-export const { setResult, setEnabled } = spellCheckSlice.actions;
-export default spellCheckSlice.reducer;
+export default function createSpellCheckSlice(prefix = ''): Slice<SpellCheckState, typeof reducers> {
+  return createSlice({
+    name: prefix + 'spellCheck',
+    initialState,
+    reducers
+  });
+}

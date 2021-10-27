@@ -107,3 +107,54 @@ it('addListener works with multiple headless instances', () => {
   headless.setQuery('yo');
   expect(callback).toHaveBeenCalledTimes(1);
 });
+
+it('addListener can be used to link together different headless instances', () => {
+  const store = createBaseStore();
+  const reducerManager = new ReducerManager();
+  const firstHeadless = new AnswersHeadless(
+    {} as AnswersCore,
+    new ReduxStateManager(store, 'first', reducerManager),
+    new HttpManager()
+  );
+  const secondHeadless = new AnswersHeadless(
+    {} as AnswersCore,
+    new ReduxStateManager(store, 'second', reducerManager),
+    new HttpManager()
+  );
+  firstHeadless.addListener({
+    valueAccessor: state => state.sessionTracking,
+    callback: sessionTracking => secondHeadless.setState({
+      ...secondHeadless.state,
+      sessionTracking
+    })
+  });
+  expect(store.getState()).toEqual({
+    first: {
+      ...expectedInitialState,
+      sessionTracking: {
+        enabled: false
+      }
+    },
+    second: {
+      ...expectedInitialState,
+      sessionTracking: {
+        enabled: false
+      }
+    }
+  });
+
+  firstHeadless.setSessionTrackingEnabled(true);
+  expect(store.getState()).toEqual({
+    first: {
+      ...expectedInitialState,
+      sessionTracking: {
+        enabled: true
+      }
+    }, second: {
+      ...expectedInitialState,
+      sessionTracking: {
+        enabled: true
+      }
+    }
+  });
+});

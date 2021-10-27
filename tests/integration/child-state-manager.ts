@@ -103,4 +103,8 @@ it('addListener works', () => {
   childHeadless.setQuery('yo');
   expect(callback).toHaveBeenCalledTimes(1);
   expect(callback).toHaveBeenCalledWith('yo');
+
+  // Check that the if the state is unchanged the listener is not called extra times
+  childHeadless.setQuery('yo');
+  expect(callback).toHaveBeenCalledTimes(1);
 });

@@ -150,7 +150,8 @@ it('addListener can be used to link together different headless instances', () =
       sessionTracking: {
         enabled: true
       }
-    }, second: {
+    },
+    second: {
       ...expectedInitialState,
       sessionTracking: {
         enabled: true

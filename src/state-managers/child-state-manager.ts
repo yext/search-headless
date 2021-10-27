@@ -1,7 +1,7 @@
 import { EnhancedStore, Unsubscribe, combineReducers } from '@reduxjs/toolkit';
 import StateListener from '../models/state-listener';
 import StateManager from '../models/state-manager';
-import { ChildState, State } from '../models/state';
+import { ChildState } from '../models/state';
 import { baseReducers, createAnswersReducers } from '../store';
 import ChildReducersManager from '../child-reducers-manager';
 

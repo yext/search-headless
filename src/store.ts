@@ -1,4 +1,4 @@
-import { configureStore, combineReducers, ReducersMapObject, StoreEnhancerStoreCreator, EnhancedStore } from '@reduxjs/toolkit';
+import { configureStore, combineReducers, ReducersMapObject, EnhancedStore } from '@reduxjs/toolkit';
 
 import createQuerySlice from './slices/query';
 import createVerticalSlice from './slices/vertical';

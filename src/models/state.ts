@@ -7,6 +7,14 @@ import { MetaState } from './slices/meta';
 import { LocationState } from './slices/location';
 import { SessionTrackingState } from './slices/sessiontracking';
 
+/**
+ * The overall shape of the redux state tree, with each key value pair
+ * of headlessId to {@link State} representing a single AnswersHeadless instance.
+ */
+export interface ParentState {
+  [headlessId: string]: State
+}
+
 export interface State {
   query: QueryState,
   universal: UniversalSearchState,
@@ -16,12 +24,4 @@ export interface State {
   sessionTracking: SessionTrackingState
   meta: MetaState,
   location: LocationState,
-  childStates?: {
-    [childId: string]: State
-  }
 }
-
-/**
- * A {@link ChildState} is just a regular {@link State} without any children.
- */
-export type ChildState = Omit<State, 'childStates'>;

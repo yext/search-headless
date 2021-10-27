@@ -22,7 +22,7 @@ it('setState in the child AnswersHeadless will only affect the child', () => {
   const store = createBaseStore();
   createMockedAnswersHeadless({}, {}, store);
   const childReducersManager = new ChildReducersManager();
-  const childStateManager =new ChildStateManager(store, 'aChildId', childReducersManager);
+  const childStateManager = new ChildStateManager(store, 'aChildId', childReducersManager);
   const childHeadless = new AnswersHeadless({} as AnswersCore, childStateManager, new HttpManager());
   childHeadless.setState({
     ...childHeadless.state,
@@ -72,7 +72,7 @@ it('calling actions in the child works as expected', () => {
   const store = createBaseStore();
   createMockedAnswersHeadless({}, {}, store);
   const childReducersManager = new ChildReducersManager();
-  const childStateManager =new ChildStateManager(store, 'aChildId', childReducersManager);
+  const childStateManager = new ChildStateManager(store, 'aChildId', childReducersManager);
   const childHeadless = new AnswersHeadless({} as AnswersCore, childStateManager, new HttpManager());
   childHeadless.setQuery('yo');
   expect(store.getState()).toEqual({
@@ -88,3 +88,19 @@ it('calling actions in the child works as expected', () => {
   });
 });
 
+it('addListener works', () => {
+  const store = createBaseStore();
+  createMockedAnswersHeadless({}, {}, store);
+  const childReducersManager = new ChildReducersManager();
+  const childStateManager = new ChildStateManager(store, 'aChildId', childReducersManager);
+  const childHeadless = new AnswersHeadless({} as AnswersCore, childStateManager, new HttpManager());
+  const callback = jest.fn();
+  childHeadless.addListener({
+    valueAccessor: state => state.query.query,
+    callback
+  });
+  expect(callback).toHaveBeenCalledTimes(0);
+  childHeadless.setQuery('yo');
+  expect(callback).toHaveBeenCalledTimes(1);
+  expect(callback).toHaveBeenCalledWith('yo');
+});

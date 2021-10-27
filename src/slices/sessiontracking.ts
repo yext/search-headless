@@ -18,7 +18,7 @@ const reducers = {
  * Registers with Redux the slice of {@link State} pertaining to session tracking of an answers experience.
  */
 export default function createSessionTrackingSlice(
-  prefix = ''
+  prefix: string
 ): Slice<SessionTrackingState, typeof reducers> {
   return createSlice({
     name: prefix + 'sessionTracking',

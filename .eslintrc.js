@@ -36,6 +36,7 @@ module.exports = {
   ],
   ignorePatterns: [
     'lib',
-    'scripts'
+    'scripts',
+    'test-site-node'
   ],
 };

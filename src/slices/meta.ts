@@ -17,7 +17,7 @@ const reducers = {
  * Registers with Redux the slice of {@link State} pertaining to meta attributes
  * like {@link Context} and referrerPageUrl.
  */
-export default function createMetaSlice(prefix = ''): Slice<MetaState, typeof reducers> {
+export default function createMetaSlice(prefix: string): Slice<MetaState, typeof reducers> {
   return createSlice({
     name: prefix + 'meta',
     initialState,

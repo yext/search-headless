@@ -35,7 +35,7 @@ const reducers = {
  * Registers with Redux the slice of {@link State} pertaining to vertical search. There
  * are reducers for setting the vertical key, results, and auto-complete.
  */
-export default function createVerticalSlice(prefix = ''): Slice<VerticalSearchState, typeof reducers> {
+export default function createVerticalSlice(prefix: string): Slice<VerticalSearchState, typeof reducers> {
   return createSlice({
     name: prefix + 'vertical',
     initialState,

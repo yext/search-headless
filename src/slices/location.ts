@@ -17,7 +17,7 @@ const reducers = {
  * Registers with Redux the slice of {@link State} pertaining to location related attributes
  * like a user specified {@link LatLong} and {@link LocationBias}.
  */
-export default function createLocationSlice(prefix = ''): Slice<LocationState, typeof reducers> {
+export default function createLocationSlice(prefix: string): Slice<LocationState, typeof reducers> {
   return createSlice({
     name: prefix + 'location',
     initialState,

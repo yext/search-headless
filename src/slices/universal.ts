@@ -23,7 +23,7 @@ const reducers = {
  * Registers with Redux the slice of {@link State} pertaining to universal search. There
  * are reducers for setting the universal results and auto-complete.
  */
-export default function createUniversalSlice(prefix = ''): Slice<UniversalSearchState, typeof reducers> {
+export default function createUniversalSlice(prefix: string): Slice<UniversalSearchState, typeof reducers> {
   return createSlice({
     name: prefix + 'universal',
     initialState,

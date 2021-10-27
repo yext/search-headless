@@ -53,7 +53,7 @@ const reducers = {
  * Registers with Redux the slice of {@link State} pertaining to filters. There
  * are reducers for setting the static filters.
  */
-export default function createFiltersSlice(prefix = ''): Slice<FiltersState, typeof reducers> {
+export default function createFiltersSlice(prefix: string): Slice<FiltersState, typeof reducers> {
   return createSlice({
     name: prefix + 'filters',
     initialState,

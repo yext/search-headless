@@ -21,7 +21,7 @@ const reducers = {
 /**
  * Registers with Redux the slice of {@link State} pertaining to spellcheck.
  */
-export default function createSpellCheckSlice(prefix = ''): Slice<SpellCheckState, typeof reducers> {
+export default function createSpellCheckSlice(prefix: string): Slice<SpellCheckState, typeof reducers> {
   return createSlice({
     name: prefix + 'spellCheck',
     initialState,

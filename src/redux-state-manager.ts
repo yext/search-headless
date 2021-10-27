@@ -15,8 +15,8 @@ export default class ReduxStateManager implements StateManager {
     private headlessId: string,
     reducerManager: ReducerManager
   ) {
-    reducerManager.addAnswersReducer(this.headlessId);
-    store.replaceReducer(reducerManager.getReducer());
+    reducerManager.addReducer(this.headlessId);
+    store.replaceReducer(reducerManager.getCombinedReducer());
   }
 
   getState(): State {

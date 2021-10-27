@@ -1,4 +1,6 @@
-export const expectedInitialState = {
+import { State } from '../../src/models/state';
+
+export const expectedInitialState: State = {
   filters: {},
   location: {},
   meta: {},

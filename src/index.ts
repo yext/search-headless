@@ -1,10 +1,16 @@
-import { provideCore, AnswersConfig } from '@yext/answers-core';
+import { provideCore, AnswersConfig, AnswersCore } from '@yext/answers-core';
 import HttpManager from './http-manager';
 import ReduxStateManager from './state-managers/redux-state-manager';
 import AnswersHeadless from './answers-headless';
-import { store } from './store';
+import { createBaseStore } from './store';
+import ChildStateManager from './state-managers/child-state-manager';
+import ChildReducersManager from './child-reducers-manager';
 
 type HeadlessConfig = AnswersConfig;
+
+let answersCore: AnswersCore;
+const store = createBaseStore();
+const childReducersManager = new ChildReducersManager();
 
 /**
  * Supplies a new instance of {@link AnswersHeadless}, using the provided configuration.
@@ -13,10 +19,24 @@ type HeadlessConfig = AnswersConfig;
  *                 experience.
  */
 export function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless {
-  const answersCore = provideCore(config);
+  answersCore = provideCore(config);
   const stateManager = new ReduxStateManager(store);
   const httpManager = new HttpManager();
 
+  return new AnswersHeadless(answersCore, stateManager, httpManager);
+}
+
+/**
+ * Supplies an {@link AnswersHeadless} instance, but inheriting data from a preexisting parent instance.
+ * Logs an error if no previous instance is found.
+ */
+export function provideChildAnswersHeadless(childId: string): AnswersHeadless {
+  if (!answersCore) {
+    console.error('No parent AnswersCore found. ' +
+      'Make sure provideAnswersHeadless has been called before provideChildAnswersHeadless.');
+  }
+  const stateManager = new ChildStateManager(store, childId, childReducersManager);
+  const httpManager = new HttpManager();
   return new AnswersHeadless(answersCore, stateManager, httpManager);
 }
 

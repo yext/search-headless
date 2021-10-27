@@ -16,7 +16,12 @@ export interface State {
   sessionTracking: SessionTrackingState
   meta: MetaState,
   location: LocationState,
-  childStates: {
+  childStates?: {
     [childId: string]: State
   }
 }
+
+/**
+ * A {@link ChildState} is just a regular {@link State} without any children.
+ */
+export type ChildState = Omit<State, 'childStates'>;

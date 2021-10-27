@@ -1,4 +1,4 @@
-import { configureStore, combineReducers, ReducersMapObject, EnhancedStore } from '@reduxjs/toolkit';
+import { configureStore, combineReducers, ReducersMapObject, StoreEnhancerStoreCreator, EnhancedStore } from '@reduxjs/toolkit';
 
 import createQuerySlice from './slices/query';
 import createVerticalSlice from './slices/vertical';
@@ -8,23 +8,23 @@ import createSpellCheckSlice from './slices/spellcheck';
 import createSessionTrackingSlice from './slices/sessiontracking';
 import createMetaSlice from './slices/meta';
 import createLocationSlice from './slices/location';
-import { State } from './models/state';
 
-export const baseReducers: ReducersMapObject<Omit<State, 'childStates'>> = {
-  query: createQuerySlice().reducer,
-  vertical: createVerticalSlice().reducer,
-  universal: createUniversalSlice().reducer,
-  filters: createFiltersSlice().reducer,
-  spellCheck: createSpellCheckSlice().reducer,
-  sessionTracking: createSessionTrackingSlice().reducer,
-  meta: createMetaSlice().reducer,
-  location: createLocationSlice().reducer
-};
+export function createAnswersReducers(prefix = ''): ReducersMapObject {
+  return {
+    query: createQuerySlice(prefix).reducer,
+    vertical: createVerticalSlice(prefix).reducer,
+    universal: createUniversalSlice(prefix).reducer,
+    filters: createFiltersSlice(prefix).reducer,
+    spellCheck: createSpellCheckSlice(prefix).reducer,
+    sessionTracking: createSessionTrackingSlice(prefix).reducer,
+    meta: createMetaSlice(prefix).reducer,
+    location: createLocationSlice(prefix).reducer
+  };
+}
+
+export const baseReducers = createAnswersReducers();
 const coreReducer = combineReducers(baseReducers);
 
-/**
- * Outside of testing, this method should only be used below for instantiating the store exported below.
- */
 export function createBaseStore(): EnhancedStore {
   return configureStore({
     middleware:
@@ -41,5 +41,3 @@ export function createBaseStore(): EnhancedStore {
     }
   });
 }
-
-export const store = createBaseStore();

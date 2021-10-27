@@ -3,6 +3,7 @@ import { State } from '../../src/models/state';
 import ReduxStateManager from '../../src/state-managers/redux-state-manager';
 import AnswersHeadless from '../../src/answers-headless';
 import { createBaseStore } from '../../src/store';
+import { EnhancedStore } from '@reduxjs/toolkit';
 
 /**
  * Creates an Answers Headless instance with a mocked answers core
@@ -13,9 +14,10 @@ import { createBaseStore } from '../../src/store';
  */
 export function createMockedAnswersHeadless(
   mockedAnswersCore: any = {},
-  initialState: Partial<State> = {}
+  initialState: Partial<State> = {},
+  store?: EnhancedStore
 ): AnswersHeadless {
-  const reduxStateManager = new ReduxStateManager(createBaseStore());
+  const reduxStateManager = new ReduxStateManager(store || createBaseStore());
   const httpManager = new HttpManager();
   const answers = new AnswersHeadless(mockedAnswersCore, reduxStateManager, httpManager);
   answers.setState({

@@ -2,7 +2,7 @@ import { Matcher } from '@yext/answers-core';
 import createFiltersSlice from '../../../src/slices/filters';
 import _ from 'lodash';
 
-const { actions, reducer } = createFiltersSlice();
+const { actions, reducer } = createFiltersSlice('');
 const { setStatic, setFacets, resetFacets } = actions;
 
 describe('filter slice reducer works as expected', () => {

@@ -1,7 +1,7 @@
 import { SpellCheck, SpellCheckType } from '@yext/answers-core';
 import createSpellCheckSlice from '../../../src/slices/spellcheck';
 
-const { reducer, actions } = createSpellCheckSlice();
+const { reducer, actions } = createSpellCheckSlice('');
 const { setResult, setEnabled } = actions;
 
 describe('spellCheck slice reducer works as expected', () => {

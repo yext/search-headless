@@ -19,5 +19,6 @@ export function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless 
   return new AnswersHeadless(answersCore, stateManager, httpManager);
 }
 
+export * from '@yext/answers-core';
 export * from './utils/filter-creators';
 export { AnswersHeadless };

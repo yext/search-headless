@@ -1,10 +1,9 @@
 name: Publish to NPM upon new releases
 
 on: 
-  release:
-    types: [created]
-    branches: 
-      - master
+  push:
+    branches:
+      [dev/test-npm-publish]
 
 jobs:
   npm-publish:
@@ -17,5 +16,12 @@ jobs:
         registry-url: 'https://registry.npmjs.org'
     - run: npm ci
     - run: npm publish
+      # env:
+      #   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - uses: 8398a7/action-slack@v3
+      with:
+        status: ${{ job.status }}
+        fields: repo,message,author,workflow,job
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      if: always()

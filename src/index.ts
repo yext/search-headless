@@ -8,7 +8,6 @@ import { DEFAULT_HEADLESS_ID } from './constants';
 
 type HeadlessConfig = AnswersConfig;
 
-let answersCore: AnswersCore;
 const store = createBaseStore();
 const headlessReducerManager = new HeadlessReducerManager();
 
@@ -23,7 +22,7 @@ export function provideAnswersHeadless(config: HeadlessConfig, headlessId?: stri
     throw new Error(`Cannot instantiate an AnswersHeadless with headlessId "${headlessId}", ` +
       'because it is the same as the default ID.');
   }
-  answersCore = provideCore(config);
+  const answersCore = provideCore(config);
   const stateManager = new ReduxStateManager(
     store, headlessId || DEFAULT_HEADLESS_ID, headlessReducerManager);
   const httpManager = new HttpManager();

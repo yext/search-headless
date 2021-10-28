@@ -14,7 +14,7 @@ import { ActionWithHeadlessId } from './store';
 /**
  * Manages the current map of headless IDs to Reducers.
  */
-export default class ReducerManager {
+export default class HeadlessReducerManager {
   private headlessIdToReducer: Record<string, Reducer> = {};
 
   addReducer(headlessId: string): void {

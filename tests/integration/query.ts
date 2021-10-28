@@ -10,8 +10,8 @@ import ReduxStateManager from '../../src/redux-state-manager';
 import AnswersHeadless from '../../src/answers-headless';
 import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
 import { createBaseStore } from '../../src/store';
-import { DEFAULT_ID } from '../../src/constants';
-import ReducerManager from '../../src/reducer-manager';
+import { DEFAULT_HEADLESS_ID } from '../../src/constants';
+import HeadlessReducerManager from '../../src/headless-reducer-manager';
 
 it('vertical searches set search intents', async () => {
   const mockSearch = jest.fn((_request: VerticalSearchRequest) => Promise.resolve({
@@ -93,7 +93,8 @@ describe('ensure correct results from latest request', () => {
         { verticalResults: [{ results: [request.query] }] }), waitTime));
     })
   };
-  const stateManager = new ReduxStateManager(createBaseStore(), DEFAULT_ID, new ReducerManager());
+  const stateManager = new ReduxStateManager(
+    createBaseStore(), DEFAULT_HEADLESS_ID, new HeadlessReducerManager());
   const httpManager = new HttpManager();
   const answers = new AnswersHeadless(mockedCore, stateManager, httpManager);
   answers.setVerticalKey('someKey');

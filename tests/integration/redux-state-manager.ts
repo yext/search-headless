@@ -1,6 +1,6 @@
 import ReduxStateManager from '../../src/redux-state-manager';
 import { createBaseStore } from '../../src/store';
-import ReducerManager from '../../src/reducer-manager';
+import HeadlessReducerManager from '../../src/headless-reducer-manager';
 import AnswersHeadless from '../../src/answers-headless';
 import { expectedInitialState } from '../mocks/expectedInitialState';
 import HttpManager from '../../src/http-manager';
@@ -10,13 +10,13 @@ it('instantiating a ReduxStateManager creates adjacent state subtrees', () => {
   const store = createBaseStore();
   expect(store.getState()).toEqual({});
 
-  const reducerManager = new ReducerManager();
-  new ReduxStateManager(store, 'aHeadlessId', reducerManager);
+  const headlessReducerManager = new HeadlessReducerManager();
+  new ReduxStateManager(store, 'aHeadlessId', headlessReducerManager);
   expect(store.getState()).toEqual({
     aHeadlessId: expectedInitialState
   });
 
-  new ReduxStateManager(store, 'anotherId', reducerManager);
+  new ReduxStateManager(store, 'anotherId', headlessReducerManager);
   expect(store.getState()).toEqual({
     aHeadlessId: expectedInitialState,
     anotherId: expectedInitialState
@@ -25,57 +25,38 @@ it('instantiating a ReduxStateManager creates adjacent state subtrees', () => {
 
 it('set-state actions are scoped to State subtrees respective to their ReduxStateManager', () => {
   const store = createBaseStore();
-  const reducerManager = new ReducerManager();
-  const firstManager = new ReduxStateManager(store, 'first', reducerManager);
-  const secondManager = new ReduxStateManager(store, 'second', reducerManager);
-
-  firstManager.dispatchEvent('set-state', {
-    ...firstManager.getState(),
+  const headlessReducerManager = new HeadlessReducerManager();
+  const firstManager = new ReduxStateManager(store, 'first', headlessReducerManager);
+  const secondManager = new ReduxStateManager(store, 'second', headlessReducerManager);
+  const firstManagerUpdatedState = {
+    ...expectedInitialState,
     query: {
       latest: 'the latest',
       query: 'lol'
     }
-  });
+  };
+  const secondManagerUpdatedState = {
+    latest: 'second latest',
+    query: 'second lol'
+  };
+
+  firstManager.dispatchEvent('set-state', firstManagerUpdatedState);
   expect(store.getState()).toEqual({
-    first: {
-      ...expectedInitialState,
-      query: {
-        latest: 'the latest',
-        query: 'lol'
-      }
-    },
+    first: firstManagerUpdatedState,
     second: expectedInitialState
   });
 
-  secondManager.dispatchEvent('set-state', {
-    ...secondManager.getState(),
-    query: {
-      latest: 'second latest',
-      query: 'second lol'
-    }
-  });
+  secondManager.dispatchEvent('set-state', secondManagerUpdatedState);
   expect(store.getState()).toEqual({
-    first: {
-      ...expectedInitialState,
-      query: {
-        latest: 'the latest',
-        query: 'lol'
-      }
-    },
-    second: {
-      ...expectedInitialState,
-      query: {
-        latest: 'second latest',
-        query: 'second lol'
-      }
-    }
+    first: firstManagerUpdatedState,
+    second: secondManagerUpdatedState
   });
 });
 
 it('dispatching answers actions through AnswersHeadless', () => {
   const store = createBaseStore();
-  const reducerManager = new ReducerManager();
-  const stateManager = new ReduxStateManager(store, 'anId', reducerManager);
+  const headlessReducerManager = new HeadlessReducerManager();
+  const stateManager = new ReduxStateManager(store, 'anId', headlessReducerManager);
   const headless = new AnswersHeadless({} as AnswersCore, stateManager, new HttpManager());
   headless.setQuery('yo');
   expect(store.getState()).toEqual({
@@ -90,8 +71,8 @@ it('dispatching answers actions through AnswersHeadless', () => {
 
 it('addListener works with multiple headless instances', () => {
   const store = createBaseStore();
-  const reducerManager = new ReducerManager();
-  const stateManager = new ReduxStateManager(store, 'anId', reducerManager);
+  const headlessReducerManager = new HeadlessReducerManager();
+  const stateManager = new ReduxStateManager(store, 'anId', headlessReducerManager);
   const headless = new AnswersHeadless({} as AnswersCore, stateManager, new HttpManager());
   const callback = jest.fn();
   headless.addListener({
@@ -110,15 +91,15 @@ it('addListener works with multiple headless instances', () => {
 
 it('addListener can be used to link together different headless instances', () => {
   const store = createBaseStore();
-  const reducerManager = new ReducerManager();
+  const headlessReducerManager = new HeadlessReducerManager();
   const firstHeadless = new AnswersHeadless(
     {} as AnswersCore,
-    new ReduxStateManager(store, 'first', reducerManager),
+    new ReduxStateManager(store, 'first', headlessReducerManager),
     new HttpManager()
   );
   const secondHeadless = new AnswersHeadless(
     {} as AnswersCore,
-    new ReduxStateManager(store, 'second', reducerManager),
+    new ReduxStateManager(store, 'second', headlessReducerManager),
     new HttpManager()
   );
   firstHeadless.addListener({
@@ -128,34 +109,26 @@ it('addListener can be used to link together different headless instances', () =
       sessionTracking
     })
   });
-  expect(store.getState()).toEqual({
-    first: {
-      ...expectedInitialState,
-      sessionTracking: {
-        enabled: false
-      }
-    },
-    second: {
-      ...expectedInitialState,
-      sessionTracking: {
-        enabled: false
-      }
+  const expectedStartState = {
+    ...expectedInitialState,
+    sessionTracking: {
+      enabled: false
     }
+  };
+  expect(store.getState()).toEqual({
+    first: expectedStartState,
+    second: expectedStartState
   });
 
+  const expectedFinalState = {
+    ...expectedInitialState,
+    sessionTracking: {
+      enabled: true
+    }
+  };
   firstHeadless.setSessionTrackingEnabled(true);
   expect(store.getState()).toEqual({
-    first: {
-      ...expectedInitialState,
-      sessionTracking: {
-        enabled: true
-      }
-    },
-    second: {
-      ...expectedInitialState,
-      sessionTracking: {
-        enabled: true
-      }
-    }
+    first: expectedFinalState,
+    second: expectedFinalState
   });
 });

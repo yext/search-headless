@@ -2,7 +2,7 @@ import { EnhancedStore, Unsubscribe } from '@reduxjs/toolkit';
 import StateListener from './models/state-listener';
 import StateManager from './models/state-manager';
 import { ParentState, State } from './models/state';
-import ReducerManager from './reducer-manager';
+import HeadlessReducerManager from './headless-reducer-manager';
 import { ActionWithHeadlessId } from './store';
 
 /**
@@ -13,10 +13,10 @@ export default class ReduxStateManager implements StateManager {
   constructor(
     private store: EnhancedStore<ParentState, ActionWithHeadlessId>,
     private headlessId: string,
-    reducerManager: ReducerManager
+    headlessReducerManager: HeadlessReducerManager
   ) {
-    reducerManager.addReducer(this.headlessId);
-    store.replaceReducer(reducerManager.getCombinedReducer());
+    headlessReducerManager.addReducer(this.headlessId);
+    store.replaceReducer(headlessReducerManager.getCombinedReducer());
   }
 
   getState(): State {

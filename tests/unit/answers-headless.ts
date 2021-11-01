@@ -24,7 +24,7 @@ const mockedState = {
           matcher: Matcher.Equals,
           value: 'some value'
         },
-        selectable: true
+        selected: true
       }
     }
   },
@@ -68,7 +68,7 @@ describe('setters work as expected', () => {
         matcher: Matcher.Equals,
         value: 'someValue'
       },
-      selectable: true
+      selected: true
     };
     const staticFilter = {
       someId: filter

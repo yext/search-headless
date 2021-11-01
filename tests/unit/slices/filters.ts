@@ -12,7 +12,7 @@ describe('filter slice reducer works as expected', () => {
   };
   const selectableFilter: SelectableFilter = {
     filter: filter,
-    selectable: false
+    selected: false
   };
 
   const initialState = {
@@ -26,7 +26,7 @@ describe('filter slice reducer works as expected', () => {
               matcher: Matcher.Equals,
               value: 'value1'
             },
-            selectable: true
+            selected: true
           },
           {
             combinator: FilterCombinator.OR,
@@ -37,7 +37,7 @@ describe('filter slice reducer works as expected', () => {
                   matcher: Matcher.Equals,
                   value: 'value2'
                 },
-                selectable: true
+                selected: true
               },
               {
                 filter: {
@@ -45,7 +45,7 @@ describe('filter slice reducer works as expected', () => {
                   matcher: Matcher.Equals,
                   value: 'value3'
                 },
-                selectable: false
+                selected: false
               }
             ]
           }
@@ -153,12 +153,12 @@ describe('filter slice reducer works as expected', () => {
 
     let actualState = reducer(initialState, toggleFilterOption(unselectFilterPayload));
     const unselectExpectedState = _.cloneDeep(initialState);
-    unselectExpectedState.static.someId.filters[1].filters[0].selectable = false;
+    unselectExpectedState.static.someId.filters[1].filters[0].selected = false;
     expect(actualState).toEqual(unselectExpectedState);
 
     actualState = reducer(initialState, toggleFilterOption(selectFilterPayload));
     const selecteExpectedState = _.cloneDeep(initialState);
-    selecteExpectedState.static.someId.filters[1].filters[1].selectable = true;
+    selecteExpectedState.static.someId.filters[1].filters[1].selected = true;
     expect(actualState).toEqual(selecteExpectedState);
   });
 
@@ -183,12 +183,12 @@ describe('filter slice reducer works as expected', () => {
 
     let actualState = reducer(initialState, toggleFilterOption(unselectFilterPayload));
     const unselectExpectedState = _.cloneDeep(initialState);
-    unselectExpectedState.static.someId.filters[1].filters[0].selectable = false;
+    unselectExpectedState.static.someId.filters[1].filters[0].selected = false;
     expect(actualState).toEqual(unselectExpectedState);
 
     actualState = reducer(initialState, toggleFilterOption(selectFilterPayload));
     const selecteExpectedState = _.cloneDeep(initialState);
-    selecteExpectedState.static.someId.filters[1].filters[1].selectable = true;
+    selecteExpectedState.static.someId.filters[1].filters[1].selected = true;
     expect(actualState).toEqual(selecteExpectedState);
   });
 

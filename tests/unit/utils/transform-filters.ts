@@ -22,7 +22,7 @@ describe('see that transformFiltersToHeadlessFormat works properly', () => {
 
     const expectedFilters: SelectableFilter = {
       filter: filters[0],
-      selectable: false
+      selected: false
     };
     const transformedFilter = transformFiltersToHeadlessFormat(filters);
     expect(transformedFilter).toEqual(expectedFilters);
@@ -47,11 +47,11 @@ describe('see that transformFiltersToHeadlessFormat works properly', () => {
       filters: [
         {
           filter: filters[0],
-          selectable: false
+          selected: false
         },
         {
           filter: filters[1],
-          selectable: false
+          selected: false
         }
       ]
     };
@@ -88,11 +88,11 @@ describe('see that transformFiltersToHeadlessFormat works properly', () => {
       filters: [
         {
           filter: filters[0],
-          selectable: false
+          selected: false
         },
         {
           filter: filters[2],
-          selectable: false
+          selected: false
         }
       ]
     };
@@ -102,11 +102,11 @@ describe('see that transformFiltersToHeadlessFormat works properly', () => {
       filters: [
         {
           filter: filters[1],
-          selectable: false
+          selected: false
         },
         {
           filter: filters[3],
-          selectable: false
+          selected: false
         }
       ]
     };
@@ -135,7 +135,7 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
           matcher: Matcher.Equals,
           value: 'some value'
         },
-        selectable: true
+        selected: true
       }
     };
     const expectedFilters = filters.someId.filter;
@@ -155,11 +155,11 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
         filters: [
           {
             filter,
-            selectable: true
+            selected: true
           },
           {
             filter,
-            selectable: false
+            selected: false
           }
         ]
       }
@@ -184,28 +184,28 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
         filters: [
           {
             filter,
-            selectable: true
+            selected: true
           },
           {
             filter,
-            selectable: false
+            selected: false
           }
         ]
       },
       anotherId: {
         filter,
-        selectable: false
+        selected: false
       },
       randomId: {
         combinator: FilterCombinator.OR,
         filters: [
           {
             filter,
-            selectable: true
+            selected: true
           },
           {
             filter,
-            selectable: false
+            selected: false
           }
         ]
       }

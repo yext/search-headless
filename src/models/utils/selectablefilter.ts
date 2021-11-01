@@ -2,7 +2,7 @@ import { Filter, FilterCombinator } from '@yext/answers-core';
 
 export interface SelectableFilter {
   filter: Filter,
-  selectable: boolean
+  selected: boolean
 }
 
 export interface CombinedSelectableFilter {

@@ -6,12 +6,12 @@ function formatOrFilters(filters: Filter[]): SelectableFilter | CombinedSelectab
   if (filters.length === 1) {
     return {
       filter: filters[0],
-      selectable: false
+      selected: false
     };
   }
   const selectableFilters = filters.map(filter => ({
     filter: filter,
-    selectable: false
+    selected: false
   }));
 
   return {
@@ -32,7 +32,7 @@ export function transformFiltersToHeadlessFormat(
   if (filters.length === 1) {
     return {
       filter: filters[0],
-      selectable: false
+      selected: false
     };
   }
   const groupedFilters: Record<string, Filter[]> = filters.reduce((groups, element) => {
@@ -66,7 +66,7 @@ export function transformFiltersToCoreFormat(
   const getCoreFormattedFilters = (
     filter: SelectableFilter | CombinedSelectableFilter
   ): Filter | CombinedFilter => {
-    if ('selectable' in filter) {
+    if ('selected' in filter) {
       return { ...filter.filter };
     }
     return {

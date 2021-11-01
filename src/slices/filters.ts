@@ -87,13 +87,13 @@ export const filtersSlice = createSlice({
         storedFilters: SelectableFilter | CombinedSelectableFilter,
         targetFilter: Filter
       ) => {
-        if ('selectable' in storedFilters) {
+        if ('selected' in storedFilters) {
           const storedFilter = storedFilters.filter;
           if (storedFilter.fieldId === targetFilter.fieldId
             && storedFilter.matcher === targetFilter.matcher
             && storedFilter.value === targetFilter.value) {
             foundFilterOption = true;
-            storedFilters.selectable = shouldSelect;
+            storedFilters.selected = shouldSelect;
           }
         } else {
           storedFilters.filters.map(filters => handleFilterOptionSelection(filters, targetFilter));

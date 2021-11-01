@@ -5,11 +5,13 @@ import AnswersHeadless from './answers-headless';
 import { createBaseStore } from './store';
 import HeadlessReducerManager from './headless-reducer-manager';
 import { DEFAULT_HEADLESS_ID } from './constants';
+import { SessionTrackingState } from './models/slices/sessiontracking';
 
 interface HeadlessConfig extends AnswersConfig {
   headlessId?: string
 }
 
+let firstHeadlessInstance: AnswersHeadless;
 const store = createBaseStore();
 const headlessReducerManager = new HeadlessReducerManager();
 
@@ -20,17 +22,46 @@ const headlessReducerManager = new HeadlessReducerManager();
  *                 experience.
  */
 export function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless {
-  const { headlessId, ...answersConfig } = config;
+  const {
+    headlessId,
+    ...answersConfig
+  } = config;
   if (headlessId === DEFAULT_HEADLESS_ID) {
-    throw new Error(`Cannot instantiate an AnswersHeadless with headlessId "${headlessId}", ` +
-      'because it is the same as the default ID.');
+    throw new Error(`Cannot instantiate an AnswersHeadless using the default headlessId "${headlessId}". `
+      + 'Specify a different headlessId.');
   }
   const answersCore = provideCore(answersConfig);
   const stateManager = new ReduxStateManager(
     store, headlessId || DEFAULT_HEADLESS_ID, headlessReducerManager);
   const httpManager = new HttpManager();
 
-  return new AnswersHeadless(answersCore, stateManager, httpManager);
+  const headless = new AnswersHeadless(answersCore, stateManager, httpManager);
+  if (!firstHeadlessInstance) {
+    firstHeadlessInstance = headless;
+  } else {
+    // Two-way bind the current headless instances with the first one instantiated on the page.
+    // This way, all headless instances on a page will have their sessionTracking states linked.
+    // We have to be careful not to create an infinite loop here.
+    firstHeadlessInstance.addListener<SessionTrackingState>({
+      valueAccessor: state => state.sessionTracking,
+      callback: sessionTracking => {
+        headless.setState({
+          ...headless.state,
+          sessionTracking
+        });
+      }
+    });
+    headless.addListener<SessionTrackingState>({
+      valueAccessor: state => state.sessionTracking,
+      callback: sessionTracking => {
+        firstHeadlessInstance.setState({
+          ...firstHeadlessInstance.state,
+          sessionTracking
+        });
+      }
+    });
+  }
+  return headless;
 }
 
 export * from './utils/filter-creators';

@@ -1,7 +1,10 @@
-import { CombinedFilter, DisplayableFacet, Filter, SortBy } from '@yext/answers-core';
+import { DisplayableFacet, SortBy } from '@yext/answers-core';
+import { CombinedSelectableFilter, SelectableFilter } from '../utils/selectablefilter';
 
 export interface FiltersState {
-  static?: Filter | CombinedFilter | null;
+  static?: {
+   [staticFiltersId: string]: SelectableFilter | CombinedSelectableFilter | null;
+  }
   facets?: DisplayableFacet[];
   sortBys?: SortBy[]
 }

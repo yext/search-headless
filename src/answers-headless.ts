@@ -4,7 +4,6 @@ import {
   QuerySource,
   QuestionSubmissionRequest,
   Filter,
-  CombinedFilter,
   AutocompleteResponse,
   VerticalSearchResponse,
   UniversalSearchResponse,
@@ -26,6 +25,8 @@ import StateManager from './models/state-manager';
 import { Unsubscribe } from '@reduxjs/toolkit';
 import HttpManager from './http-manager';
 import answersUtilities from './answers-utilities';
+import { CombinedSelectableFilter, SelectableFilter } from './models/utils/selectablefilter';
+import { transformFiltersToCoreFormat } from './utils/transform-filters';
 
 export default class AnswersHeadless {
   readonly utilities: typeof answersUtilities;
@@ -66,7 +67,7 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('vertical/setOffset', offset);
   }
 
-  setFilter(filter: Filter | CombinedFilter | null): void {
+  setFilter(filter: Record<string, SelectableFilter | CombinedSelectableFilter> | null): void {
     this.stateManager.dispatchEvent('filters/setStatic', filter);
   }
 
@@ -194,7 +195,7 @@ export default class AnswersHeadless {
     const skipSpellCheck = !this.state.spellCheck.enabled;
     const sessionTrackingEnabled = this.state.sessionTracking.enabled;
     const sessionId = this.state.sessionTracking.sessionId;
-    const staticFilters = this.state.filters.static || undefined;
+    const staticFilters = transformFiltersToCoreFormat(this.state.filters.static) || undefined;
     const facets = this.state.filters?.facets;
     const limit = this.state.vertical.limit;
     const offset = this.state.vertical.offset;
@@ -296,6 +297,32 @@ export default class AnswersHeadless {
       facetOption
     };
     this.stateManager.dispatchEvent('filters/toggleFacetOption', payload);
+  }
+
+  addFilters(staticFiltersId: string, filters: Filter[]): void {
+    const payload = {
+      staticFiltersId,
+      filters
+    };
+    this.stateManager.dispatchEvent('filters/addFilters', payload);
+  }
+
+  selectFilterOption(filter: Filter, staticFiltersId?: string): void {
+    const payload = {
+      shouldSelect: true,
+      staticFiltersId,
+      filter
+    };
+    this.stateManager.dispatchEvent('filters/toggleFilterOption', payload);
+  }
+
+  unselectFilterOption(filter: Filter, staticFiltersId?: string): void {
+    const payload = {
+      shouldSelect: false,
+      staticFiltersId,
+      filter
+    };
+    this.stateManager.dispatchEvent('filters/toggleFilterOption', payload);
   }
 }
 

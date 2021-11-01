@@ -1,21 +1,195 @@
-import { Matcher } from '@yext/answers-core';
-import reducer, { setFacets, resetFacets, setStatic } from '../../../src/slices/filters';
+import { Filter, FilterCombinator, Matcher } from '@yext/answers-core';
+import reducer, { setFacets, resetFacets, setStatic, addFilters, toggleFilterOption } from '../../../src/slices/filters';
+import { SelectableFilter } from '../../../src/models/utils/selectablefilter';
 import _ from 'lodash';
 
 describe('filter slice reducer works as expected', () => {
-  it('setStatic action is handled properly', () => {
-    const filter = {
-      fieldId: 'someField',
-      value: 'some value',
-      matcher: Matcher.Equals
-    };
 
-    const actualState = reducer({}, setStatic(filter));
+  const filter: Filter = {
+    fieldId: 'someField',
+    value: 'some value',
+    matcher: Matcher.Equals
+  };
+  const selectableFilter: SelectableFilter = {
+    filter: filter,
+    selectable: false
+  };
+
+  const initialState = {
+    static: {
+      someId: {
+        combinator: FilterCombinator.AND,
+        filters: [
+          {
+            filter: {
+              fieldId: 'id1',
+              matcher: Matcher.Equals,
+              value: 'value1'
+            },
+            selectable: true
+          },
+          {
+            combinator: FilterCombinator.OR,
+            filters: [
+              {
+                filter: {
+                  fieldId: 'id2',
+                  matcher: Matcher.Equals,
+                  value: 'value2'
+                },
+                selectable: true
+              },
+              {
+                filter: {
+                  fieldId: 'id3',
+                  matcher: Matcher.Equals,
+                  value: 'value3'
+                },
+                selectable: false
+              }
+            ]
+          }
+        ]
+      }
+    }
+  };
+
+  it('setStatic action is handled properly', () => {
+    const staticFilter = {
+      someId: selectableFilter
+    };
+    const actualState = reducer({}, setStatic(staticFilter));
     const expectedState = {
-      static: filter
+      static: staticFilter
     };
 
     expect(actualState).toEqual(expectedState);
+  });
+
+  it('addFilters action is handled properly', () => {
+    const firstStaticFilters = {
+      staticFiltersId: 'someId',
+      filters: [filter]
+    };
+    const SecondStaticFilters = {
+      staticFiltersId: 'anotherId',
+      filters: [filter, filter]
+    };
+
+    let actualState = reducer({}, addFilters(firstStaticFilters));
+    const firstExpectedState = {
+      static: {
+        someId: selectableFilter
+      }
+    };
+    expect(actualState).toEqual(firstExpectedState);
+    actualState = reducer(firstExpectedState, addFilters(SecondStaticFilters));
+    const secondExpectedState = {
+      static: {
+        someId: selectableFilter,
+        anotherId: {
+          combinator: FilterCombinator.OR,
+          filters: [selectableFilter, selectableFilter]
+        }
+      }
+    };
+    expect(actualState).toEqual(secondExpectedState);
+  });
+
+  it('toggleFilterOption action is handled properly with no static state', () => {
+    const unselectFilterPayload = {
+      staticFiltersId: 'someId',
+      filter: {
+        fieldId: 'id2',
+        matcher: Matcher.Equals,
+        value: 'value2'
+      },
+      shouldSelect: false
+    };
+    const consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation();
+    const actualState = reducer({}, toggleFilterOption(unselectFilterPayload));
+    expect(actualState).toEqual({});
+    expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
+    consoleWarnSpy.mockClear();
+  });
+
+  it('toggleFilterOption action is handled properly with invalid staticFiltersId', () => {
+    const unselectFilterPayload = {
+      staticFiltersId: 'invalidId',
+      filter: {
+        fieldId: 'id2',
+        matcher: Matcher.Equals,
+        value: 'value2'
+      },
+      shouldSelect: false
+    };
+    const consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation();
+    const actualState = reducer(initialState, toggleFilterOption(unselectFilterPayload));
+    expect(actualState).toEqual(initialState);
+    expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
+    consoleWarnSpy.mockClear();
+  });
+
+  it('toggleFilterOption action is handled properly, with valid staticFiltersId', () => {
+    const unselectFilterPayload = {
+      staticFiltersId: 'someId',
+      filter: {
+        fieldId: 'id2',
+        matcher: Matcher.Equals,
+        value: 'value2'
+      },
+      shouldSelect: false
+    };
+
+    const selectFilterPayload = {
+      staticFiltersId: 'someId',
+      filter: {
+        fieldId: 'id3',
+        matcher: Matcher.Equals,
+        value: 'value3'
+      },
+      shouldSelect: true
+    };
+
+    let actualState = reducer(initialState, toggleFilterOption(unselectFilterPayload));
+    const unselectExpectedState = _.cloneDeep(initialState);
+    unselectExpectedState.static.someId.filters[1].filters[0].selectable = false;
+    expect(actualState).toEqual(unselectExpectedState);
+
+    actualState = reducer(initialState, toggleFilterOption(selectFilterPayload));
+    const selecteExpectedState = _.cloneDeep(initialState);
+    selecteExpectedState.static.someId.filters[1].filters[1].selectable = true;
+    expect(actualState).toEqual(selecteExpectedState);
+  });
+
+  it('toggleFilterOption action is handled properly with no staticFiltersId', () => {
+    const unselectFilterPayload = {
+      filter: {
+        fieldId: 'id2',
+        matcher: Matcher.Equals,
+        value: 'value2'
+      },
+      shouldSelect: false
+    };
+
+    const selectFilterPayload = {
+      filter: {
+        fieldId: 'id3',
+        matcher: Matcher.Equals,
+        value: 'value3'
+      },
+      shouldSelect: true
+    };
+
+    let actualState = reducer(initialState, toggleFilterOption(unselectFilterPayload));
+    const unselectExpectedState = _.cloneDeep(initialState);
+    unselectExpectedState.static.someId.filters[1].filters[0].selectable = false;
+    expect(actualState).toEqual(unselectExpectedState);
+
+    actualState = reducer(initialState, toggleFilterOption(selectFilterPayload));
+    const selecteExpectedState = _.cloneDeep(initialState);
+    selecteExpectedState.static.someId.filters[1].filters[1].selectable = true;
+    expect(actualState).toEqual(selecteExpectedState);
   });
 
   it('setFacets action is handled properly', () => {

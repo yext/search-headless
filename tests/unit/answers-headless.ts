@@ -2,6 +2,7 @@ import { Matcher, QuerySource, QueryTrigger } from '@yext/answers-core';
 import HttpManager from '../../src/http-manager';
 import StateManager from '../../src/models/state-manager';
 import AnswersHeadless from '../../src/answers-headless';
+import { SelectableFilter } from '../../src/models/utils/selectablefilter';
 
 const mockedState = {
   query: {
@@ -17,9 +18,14 @@ const mockedState = {
   },
   filters: {
     static: {
-      fieldId: 'c_someField',
-      matcher: Matcher.Equals,
-      value: 'some value'
+      someId: {
+        filter: {
+          fieldId: 'c_someField',
+          matcher: Matcher.Equals,
+          value: 'some value'
+        },
+        selectable: true
+      }
     }
   },
   spellCheck: {
@@ -56,19 +62,25 @@ describe('setters work as expected', () => {
   });
 
   it('setFilter works as expected', () => {
-    const filter = {
-      fieldId: 'c_someField',
-      matcher: Matcher.Equals,
-      value: 'someValue'
+    const filter: SelectableFilter = {
+      filter: {
+        fieldId: 'c_someField',
+        matcher: Matcher.Equals,
+        value: 'someValue'
+      },
+      selectable: true
     };
-    answers.setFilter(filter);
+    const staticFilter = {
+      someId: filter
+    };
+    answers.setFilter(staticFilter);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
 
     expect(dispatchEventCalls.length).toBe(1);
     expect(dispatchEventCalls[0][0]).toBe('filters/setStatic');
-    expect(dispatchEventCalls[0][1]).toBe(filter);
+    expect(dispatchEventCalls[0][1]).toBe(staticFilter);
   });
 
   it('setFacets works as expected', () => {
@@ -224,6 +236,103 @@ describe('setters work as expected', () => {
   });
 });
 
+describe('filter functions work as expected', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('addFilters works', async () => {
+    const filter = {
+      fieldId: 'c_someField',
+      matcher: Matcher.Equals,
+      value: 'someValue'
+    };
+    answers.addFilters('someId', [filter, filter]);
+
+    const dispatchEventCalls =
+    mockedStateManager.dispatchEvent.mock.calls;
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('filters/addFilters');
+    expect(dispatchEventCalls[0][1]).toEqual({
+      staticFiltersId: 'someId',
+      filters: [filter, filter]
+    });
+  });
+
+  it('selectFilterOption works without staticFiltersId', async () => {
+    const filter = {
+      fieldId: 'c_someField',
+      matcher: Matcher.Equals,
+      value: 'someValue'
+    };
+    answers.selectFilterOption(filter);
+    const dispatchEventCalls =
+    mockedStateManager.dispatchEvent.mock.calls;
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('filters/toggleFilterOption');
+    expect(dispatchEventCalls[0][1]).toEqual({
+      shouldSelect: true,
+      staticFiltersId: undefined,
+      filter: filter
+    });
+  });
+
+  it('selectFilterOption works with staticFiltersId', async () => {
+    const filter = {
+      fieldId: 'c_someField',
+      matcher: Matcher.Equals,
+      value: 'someValue'
+    };
+    answers.selectFilterOption(filter, 'someId');
+    const dispatchEventCalls =
+    mockedStateManager.dispatchEvent.mock.calls;
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('filters/toggleFilterOption');
+    expect(dispatchEventCalls[0][1]).toEqual({
+      shouldSelect: true,
+      staticFiltersId: 'someId',
+      filter: filter
+    });
+  });
+
+  it('unselectFilterOption works without staticFiltersId', async () => {
+    const filter = {
+      fieldId: 'c_someField',
+      matcher: Matcher.Equals,
+      value: 'someValue'
+    };
+    answers.unselectFilterOption(filter);
+    const dispatchEventCalls =
+    mockedStateManager.dispatchEvent.mock.calls;
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('filters/toggleFilterOption');
+    expect(dispatchEventCalls[0][1]).toEqual({
+      shouldSelect: false,
+      staticFiltersId: undefined,
+      filter: filter
+    });
+  });
+
+  it('unselectFilterOption works with staticFiltersId', async () => {
+    const filter = {
+      fieldId: 'c_someField',
+      matcher: Matcher.Equals,
+      value: 'someValue'
+    };
+    answers.unselectFilterOption(filter, 'someId');
+    const dispatchEventCalls =
+    mockedStateManager.dispatchEvent.mock.calls;
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('filters/toggleFilterOption');
+    expect(dispatchEventCalls[0][1]).toEqual({
+      shouldSelect: false,
+      staticFiltersId: 'someId',
+      filter: filter
+    });
+  });
+});
+
+
 describe('auto-complete works as expected', () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -272,7 +381,7 @@ describe('search works as expected', () => {
     const expectedSearchParams = {
       ...mockedState.query,
       verticalKey: mockedState.vertical.key,
-      staticFilters: mockedState.filters.static,
+      staticFilters: mockedState.filters.static.someId.filter,
       retrieveFacets: true,
       limit: mockedState.vertical.limit,
       offset: mockedState.vertical.offset,

@@ -7,7 +7,7 @@ import HeadlessReducerManager from './headless-reducer-manager';
 import { DEFAULT_HEADLESS_ID } from './constants';
 import { SessionTrackingState } from './models/slices/sessiontracking';
 
-interface HeadlessConfig extends AnswersConfig {
+export interface HeadlessConfig extends AnswersConfig {
   headlessId?: string
 }
 
@@ -42,31 +42,27 @@ export function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless 
     // Two-way bind the current headless instances with the first one instantiated on the page.
     // This way, all headless instances on a page will have their sessionTracking states linked.
     // We have to be careful not to create an infinite loop here.
-    firstHeadlessInstance.addListener<SessionTrackingState>({
-      valueAccessor: state => state.sessionTracking,
-      callback: sessionTracking => {
-        headless.setState({
-          ...headless.state,
-          sessionTracking
-        });
-      }
-    });
-    headless.addListener<SessionTrackingState>({
-      valueAccessor: state => state.sessionTracking,
-      callback: sessionTracking => {
-        firstHeadlessInstance.setState({
-          ...firstHeadlessInstance.state,
-          sessionTracking
-        });
-      }
-    });
+    linkSessionTracking(firstHeadlessInstance, headless);
+    linkSessionTracking(headless, firstHeadlessInstance);
   }
   return headless;
 }
 
+/**
+ * Links the secondHeadless instance to sessionTracking updates made to the firstHeadless instance.
+ */
+function linkSessionTracking(firstHeadless: AnswersHeadless, secondHeadless: AnswersHeadless) {
+  firstHeadless.addListener<SessionTrackingState>({
+    valueAccessor: state => state.sessionTracking,
+    callback: sessionTracking => {
+      secondHeadless.setState({
+        ...secondHeadless.state,
+        sessionTracking
+      });
+    }
+  });
+}
+
 export * from '@yext/answers-core';
 export * from './utils/filter-creators';
-export {
-  AnswersHeadless,
-  HeadlessConfig
-};
+export { AnswersHeadless };

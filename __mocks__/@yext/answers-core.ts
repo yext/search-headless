@@ -1,3 +1,5 @@
+export * from '@yext/answers-core';
+
 export function provideCore(): unknown {
   return {
     universalSearch: jest.fn(() => {

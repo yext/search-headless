@@ -22,6 +22,7 @@ const headlessReducerManager = new HeadlessReducerManager();
  *                 experience.
  */
 export function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless {
+  console.log('its esm')
   const {
     headlessId,
     ...answersConfig

@@ -13,7 +13,7 @@ interface FacetPayload {
 }
 
 interface FilterPayload {
-  staticFiltersId?: string
+  filterSetId?: string
   filter: Filter
   shouldSelect: boolean
 }
@@ -40,13 +40,13 @@ export const filtersSlice = createSlice({
     },
     addFilters: (
       state: FiltersState,
-      action: PayloadAction<{staticFiltersId: string, filters: Filter[]}>
+      action: PayloadAction<{filterSetId: string, filters: Filter[]}>
     ) => {
-      const { staticFiltersId, filters } = action.payload;
+      const { filterSetId, filters } = action.payload;
       if (!state.static) {
         state.static = {};
       }
-      state.static[staticFiltersId] = transformFiltersToHeadlessFormat(filters);
+      state.static[filterSetId] = transformFiltersToHeadlessFormat(filters);
     },
     resetFacets: (state: FiltersState) => {
       state.facets?.forEach(facet => {
@@ -80,7 +80,7 @@ export const filtersSlice = createSlice({
         console.warn('Trying to select a static filter option when no static filters exist.');
         return;
       }
-      const { staticFiltersId, filter, shouldSelect } = payload;
+      const { filterSetId, filter, shouldSelect } = payload;
       let foundFilterOption = false;
 
       const handleFilterOptionSelection = (
@@ -100,11 +100,11 @@ export const filtersSlice = createSlice({
         }
       };
 
-      if (staticFiltersId && !state.static[staticFiltersId]) {
-        console.warn(`invalid static filters id: ${staticFiltersId}`);
+      if (filterSetId && !state.static[filterSetId]) {
+        console.warn(`invalid static filters id: ${filterSetId}`);
         return;
       }
-      const filtersInState = staticFiltersId && state.static[staticFiltersId];
+      const filtersInState = filterSetId && state.static[filterSetId];
       filtersInState
         ? handleFilterOptionSelection(filtersInState, filter)
         : Object.values(state.static)

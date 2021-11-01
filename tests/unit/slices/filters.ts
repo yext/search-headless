@@ -68,11 +68,11 @@ describe('filter slice reducer works as expected', () => {
 
   it('addFilters action is handled properly', () => {
     const firstStaticFilters = {
-      staticFiltersId: 'someId',
+      filterSetId: 'someId',
       filters: [filter]
     };
     const SecondStaticFilters = {
-      staticFiltersId: 'anotherId',
+      filterSetId: 'anotherId',
       filters: [filter, filter]
     };
 
@@ -98,7 +98,7 @@ describe('filter slice reducer works as expected', () => {
 
   it('toggleFilterOption action is handled properly with no static state', () => {
     const unselectFilterPayload = {
-      staticFiltersId: 'someId',
+      filterSetId: 'someId',
       filter: {
         fieldId: 'id2',
         matcher: Matcher.Equals,
@@ -113,9 +113,9 @@ describe('filter slice reducer works as expected', () => {
     consoleWarnSpy.mockClear();
   });
 
-  it('toggleFilterOption action is handled properly with invalid staticFiltersId', () => {
+  it('toggleFilterOption action is handled properly with invalid filterSetId', () => {
     const unselectFilterPayload = {
-      staticFiltersId: 'invalidId',
+      filterSetId: 'invalidId',
       filter: {
         fieldId: 'id2',
         matcher: Matcher.Equals,
@@ -130,9 +130,9 @@ describe('filter slice reducer works as expected', () => {
     consoleWarnSpy.mockClear();
   });
 
-  it('toggleFilterOption action is handled properly, with valid staticFiltersId', () => {
+  it('toggleFilterOption action is handled properly, with valid filterSetId', () => {
     const unselectFilterPayload = {
-      staticFiltersId: 'someId',
+      filterSetId: 'someId',
       filter: {
         fieldId: 'id2',
         matcher: Matcher.Equals,
@@ -142,7 +142,7 @@ describe('filter slice reducer works as expected', () => {
     };
 
     const selectFilterPayload = {
-      staticFiltersId: 'someId',
+      filterSetId: 'someId',
       filter: {
         fieldId: 'id3',
         matcher: Matcher.Equals,
@@ -162,7 +162,7 @@ describe('filter slice reducer works as expected', () => {
     expect(actualState).toEqual(selecteExpectedState);
   });
 
-  it('toggleFilterOption action is handled properly with no staticFiltersId', () => {
+  it('toggleFilterOption action is handled properly with no filterSetId', () => {
     const unselectFilterPayload = {
       filter: {
         fieldId: 'id2',

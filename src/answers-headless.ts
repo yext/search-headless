@@ -299,27 +299,27 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('filters/toggleFacetOption', payload);
   }
 
-  addFilters(staticFiltersId: string, filters: Filter[]): void {
+  addFilters(filterSetId: string, filters: Filter[]): void {
     const payload = {
-      staticFiltersId,
+      filterSetId,
       filters
     };
     this.stateManager.dispatchEvent('filters/addFilters', payload);
   }
 
-  selectFilterOption(filter: Filter, staticFiltersId?: string): void {
+  selectFilterOption(filter: Filter, filterSetId?: string): void {
     const payload = {
       shouldSelect: true,
-      staticFiltersId,
+      filterSetId,
       filter
     };
     this.stateManager.dispatchEvent('filters/toggleFilterOption', payload);
   }
 
-  unselectFilterOption(filter: Filter, staticFiltersId?: string): void {
+  unselectFilterOption(filter: Filter, filterSetId?: string): void {
     const payload = {
       shouldSelect: false,
-      staticFiltersId,
+      filterSetId,
       filter
     };
     this.stateManager.dispatchEvent('filters/toggleFilterOption', payload);

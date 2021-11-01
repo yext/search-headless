@@ -3,7 +3,7 @@ import { CombinedSelectableFilter, SelectableFilter } from '../utils/selectablef
 
 export interface FiltersState {
   static?: {
-   [staticFiltersId: string]: SelectableFilter | CombinedSelectableFilter | null;
+   [filterSetId: string]: SelectableFilter | CombinedSelectableFilter | null;
   }
   facets?: DisplayableFacet[];
   sortBys?: SortBy[]

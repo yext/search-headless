@@ -116,8 +116,8 @@ export default class AnswersHeadless {
     return this.stateManager.getState();
   }
 
-  addListener<T>({ valueAccessor, callback }: StateListener<T>): Unsubscribe {
-    return this.stateManager.addListener<T>({ valueAccessor, callback });
+  addListener<T>(listener: StateListener<T>): Unsubscribe {
+    return this.stateManager.addListener<T>(listener);
   }
 
   async submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse> {

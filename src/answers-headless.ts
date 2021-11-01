@@ -25,7 +25,7 @@ import StateManager from './models/state-manager';
 import { Unsubscribe } from '@reduxjs/toolkit';
 import HttpManager from './http-manager';
 import answersUtilities from './answers-utilities';
-import { CombinedSelectableFilter, SelectableFilter } from './models/utils/selectablefilter';
+import { SelectableFilter } from './models/utils/selectablefilter';
 import { transformFiltersToCoreFormat } from './utils/transform-filters';
 
 export default class AnswersHeadless {
@@ -67,7 +67,7 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('vertical/setOffset', offset);
   }
 
-  setFilter(filter: Record<string, SelectableFilter | CombinedSelectableFilter> | null): void {
+  setFilter(filter: Record<string, SelectableFilter[]> | null): void {
     this.stateManager.dispatchEvent('filters/setStatic', filter);
   }
 
@@ -299,7 +299,7 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('filters/toggleFacetOption', payload);
   }
 
-  addFilters(filterSetId: string, filters: Filter[]): void {
+  addFilters(filterSetId: string, filters: SelectableFilter[]): void {
     const payload = {
       filterSetId,
       filters

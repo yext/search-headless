@@ -1,44 +1,32 @@
 import { CombinedFilter, Filter, FilterCombinator } from '@yext/answers-core';
-import { CombinedSelectableFilter, SelectableFilter } from '../models/utils/selectablefilter';
+import { SelectableFilter } from '../models/utils/selectablefilter';
 
-
-function formatOrFilters(filters: Filter[]): SelectableFilter | CombinedSelectableFilter {
+function formatOrFilters(filters: Filter[]): Filter | CombinedFilter {
   if (filters.length === 1) {
-    return {
-      filter: filters[0],
-      selected: false
-    };
+    return filters[0];
   }
-  const selectableFilters = filters.map(filter => ({
-    filter: filter,
-    selected: false
-  }));
-
   return {
     combinator: FilterCombinator.OR,
-    filters: selectableFilters
+    filters: filters
   };
 }
 
 /**
- * Convert a list of filters to nested filter structure use in Headless
+ * Convert a list of SelectableFilter to nested filter structure use in core
  */
-export function transformFiltersToHeadlessFormat(
-  filters: Filter[]
-): SelectableFilter | CombinedSelectableFilter | null {
-  if (!filters || filters.length === 0) {
+function transformAFilterSetToCoreFormat(
+  filters: SelectableFilter[]
+): Filter | CombinedFilter | null {
+  if (filters.length === 0) {
     return null;
   }
   if (filters.length === 1) {
-    return {
-      filter: filters[0],
-      selected: false
-    };
+    return { ...filters[0].filter };
   }
   const groupedFilters: Record<string, Filter[]> = filters.reduce((groups, element) => {
-    groups[element.fieldId]
-      ? groups[element.fieldId].push(element)
-      : groups[element.fieldId] = [element];
+    groups[element.filter.fieldId]
+      ? groups[element.filter.fieldId].push({ ...element.filter })
+      : groups[element.filter.fieldId] = [{ ...element.filter }];
     return groups;
   }, {});
 
@@ -57,28 +45,24 @@ export function transformFiltersToHeadlessFormat(
  * to a single nested filter stucture use in Answers Core
  */
 export function transformFiltersToCoreFormat(
-  filters: Record<string, SelectableFilter | CombinedSelectableFilter | null> | undefined
+  filters: Record<string, SelectableFilter[] | null> | undefined
 ): Filter | CombinedFilter | null {
   if (!filters) {
     return null;
   }
 
-  const getCoreFormattedFilters = (
-    filter: SelectableFilter | CombinedSelectableFilter
-  ): Filter | CombinedFilter => {
-    if ('selected' in filter) {
-      return { ...filter.filter };
-    }
-    return {
-      combinator: filter.combinator,
-      filters: filter.filters.map(filter => getCoreFormattedFilters(filter))
-    };
-  };
-
   const coreFormattedFilters: (Filter | CombinedFilter)[] = [];
-  Object.values(filters).forEach(filter => {
-    filter && coreFormattedFilters.push(getCoreFormattedFilters(filter));
+  Object.values(filters).forEach((filter: SelectableFilter[] | null) => {
+    if (filter) {
+      const selectedFilters = filter.filter(filter => filter.selected);
+      const transformedFilterSet = transformAFilterSetToCoreFormat(selectedFilters);
+      transformedFilterSet && coreFormattedFilters.push(transformedFilterSet);
+    }
   });
+
+  if (coreFormattedFilters.length === 0) {
+    return null;
+  }
   if (coreFormattedFilters.length === 1) {
     return coreFormattedFilters[0];
   }

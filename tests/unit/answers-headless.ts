@@ -18,14 +18,16 @@ const mockedState = {
   },
   filters: {
     static: {
-      someId: {
-        filter: {
-          fieldId: 'c_someField',
-          matcher: Matcher.Equals,
-          value: 'some value'
-        },
-        selected: true
-      }
+      someId: [
+        {
+          filter: {
+            fieldId: 'c_someField',
+            matcher: Matcher.Equals,
+            value: 'some value'
+          },
+          selected: true
+        }
+      ]
     }
   },
   spellCheck: {
@@ -71,7 +73,7 @@ describe('setters work as expected', () => {
       selected: true
     };
     const staticFilter = {
-      someId: filter
+      someId: [filter]
     };
     answers.setFilter(staticFilter);
 
@@ -243,9 +245,12 @@ describe('filter functions work as expected', () => {
 
   it('addFilters works', async () => {
     const filter = {
-      fieldId: 'c_someField',
-      matcher: Matcher.Equals,
-      value: 'someValue'
+      filter: {
+        fieldId: 'c_someField',
+        matcher: Matcher.Equals,
+        value: 'someValue'
+      },
+      selected: false
     };
     answers.addFilters('someId', [filter, filter]);
 
@@ -381,7 +386,7 @@ describe('search works as expected', () => {
     const expectedSearchParams = {
       ...mockedState.query,
       verticalKey: mockedState.vertical.key,
-      staticFilters: mockedState.filters.static.someId.filter,
+      staticFilters: mockedState.filters.static.someId[0].filter,
       retrieveFacets: true,
       limit: mockedState.vertical.limit,
       offset: mockedState.vertical.offset,

@@ -1,8 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { FacetOption, DisplayableFacet, SortBy, Filter } from '@yext/answers-core';
 import { FiltersState } from '../models/slices/filters';
-import { CombinedSelectableFilter, SelectableFilter } from '../models/utils/selectablefilter';
-import { transformFiltersToHeadlessFormat } from '../utils/transform-filters';
+import { SelectableFilter } from '../models/utils/selectablefilter';
 
 const initialState: FiltersState = {};
 
@@ -28,7 +27,7 @@ export const filtersSlice = createSlice({
   reducers: {
     setStatic: (
       state: FiltersState,
-      action: PayloadAction<Record<string, SelectableFilter | CombinedSelectableFilter>>
+      action: PayloadAction<Record<string, SelectableFilter[]>>
     ) => {
       state.static = action.payload;
     },
@@ -40,13 +39,13 @@ export const filtersSlice = createSlice({
     },
     addFilters: (
       state: FiltersState,
-      action: PayloadAction<{filterSetId: string, filters: Filter[]}>
+      action: PayloadAction<{filterSetId: string, filters: SelectableFilter[]}>
     ) => {
       const { filterSetId, filters } = action.payload;
       if (!state.static) {
         state.static = {};
       }
-      state.static[filterSetId] = transformFiltersToHeadlessFormat(filters);
+      state.static[filterSetId] = filters;
     },
     resetFacets: (state: FiltersState) => {
       state.facets?.forEach(facet => {
@@ -81,39 +80,34 @@ export const filtersSlice = createSlice({
         return;
       }
       const { filterSetId, filter, shouldSelect } = payload;
-      let foundFilterOption = false;
-
-      const handleFilterOptionSelection = (
-        storedFilters: SelectableFilter | CombinedSelectableFilter,
-        targetFilter: Filter
-      ) => {
-        if ('selected' in storedFilters) {
-          const storedFilter = storedFilters.filter;
-          if (storedFilter.fieldId === targetFilter.fieldId
-            && storedFilter.matcher === targetFilter.matcher
-            && storedFilter.value === targetFilter.value) {
-            foundFilterOption = true;
-            storedFilters.selected = shouldSelect;
-          }
-        } else {
-          storedFilters.filters.map(filters => handleFilterOptionSelection(filters, targetFilter));
-        }
-      };
 
       if (filterSetId && !state.static[filterSetId]) {
         console.warn(`invalid static filters id: ${filterSetId}`);
         return;
       }
+
+      const handleFilterOptionSelection = (
+        storedFilters: SelectableFilter[],
+        targetFilter: Filter
+      ) => {
+        const foundFilter = storedFilters.find(storedSelectableFilter => {
+          const storedFilter = storedSelectableFilter.filter;
+          return storedFilter.fieldId === targetFilter.fieldId
+            && storedFilter.matcher === targetFilter.matcher
+            && storedFilter.value === targetFilter.value;
+        });
+        if (foundFilter) {
+          foundFilter.selected = shouldSelect;
+        } else {
+          console.warn(`Could not select a filter option with following fields:\n${JSON.stringify(filter)}.`);
+        }
+      };
+
       const filtersInState = filterSetId && state.static[filterSetId];
       filtersInState
         ? handleFilterOptionSelection(filtersInState, filter)
         : Object.values(state.static)
           .forEach(storedFilters => storedFilters && handleFilterOptionSelection(storedFilters, filter));
-
-      if (!foundFilterOption) {
-        console.warn(
-          `Could not select a filter option with following fields:\n${JSON.stringify(filter)}.`);
-      }
     }
   }
 });

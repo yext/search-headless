@@ -1,16 +1,16 @@
 {
   "name": "@yext/answers-headless",
-  "version": "0.1.0-beta.0",
+  "version": "0.1.0-beta.1",
   "description": "",
   "author": "slapshot@yext.com",
   "license": "ISC",
-  "main": "./lib/esm/index.js",
+  "main": "./lib/commonjs/index.js",
   "module": "./lib/esm/index.js",
   "files": [
     "lib"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p tsconfig.cjs.json && tsc -p tsconfig.esm.json",
     "lint": "eslint .",
     "prepublishOnly": "npm run build",
     "test": "jest",
@@ -59,7 +59,8 @@
     ],
     "testPathIgnorePatterns": [
       "<rootDir>/tests/mocks/*",
-      "<rootDir>/tests/utils/*"
+      "<rootDir>/tests/utils/*",
+      "<rootDir>/test-site-node/*"
     ]
   }
 }

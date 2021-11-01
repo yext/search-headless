@@ -64,6 +64,7 @@ export function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless 
   return headless;
 }
 
+export * from '@yext/answers-core';
 export * from './utils/filter-creators';
 export {
   AnswersHeadless,

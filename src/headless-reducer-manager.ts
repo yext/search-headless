@@ -17,11 +17,11 @@ import { ActionWithHeadlessId } from './store';
 export default class HeadlessReducerManager {
   private headlessIdToReducer: Record<string, Reducer> = {};
 
-  addReducer(headlessId: string): void {
+  addAnswersReducer(headlessId: string): void {
     this.headlessIdToReducer[headlessId] = createAnswersReducer(headlessId + '/');
   }
 
-  getCombinedReducer(): Reducer<ParentState, ActionWithHeadlessId> {
+  getParentReducer(): Reducer<ParentState, ActionWithHeadlessId> {
     // set-state should only update the state tree for the AnswersHeadless instance
     // that dispatched it
     const coreReducer = combineReducers(this.headlessIdToReducer);

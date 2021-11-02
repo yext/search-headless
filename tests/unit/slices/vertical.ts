@@ -1,5 +1,8 @@
 import { SearchIntent, Source } from '@yext/answers-core';
-import reducer, { setAutoComplete, setKey, setResults, setLimit, setOffset } from '../../../src/slices/vertical';
+import createVerticalSlice from '../../../src/slices/vertical';
+
+const { reducer, actions } = createVerticalSlice('');
+const { setAutoComplete, setKey, setResults, setLimit, setOffset, setDisplayName } = actions;
 
 describe('vertical slice reducer works as expected', () => {
   it('setKey action is handled properly', () => {
@@ -53,6 +56,14 @@ describe('vertical slice reducer works as expected', () => {
     const offset = 4;
     const expectedState = { offset: offset };
     const actualState = reducer({}, setOffset(offset));
+
+    expect(actualState).toEqual(expectedState);
+  });
+
+  it('setDisplayName action is handled properly', () => {
+    const displayName = 'a display name';
+    const expectedState = { displayName };
+    const actualState = reducer({}, setDisplayName(displayName));
 
     expect(actualState).toEqual(expectedState);
   });

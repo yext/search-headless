@@ -43,9 +43,8 @@
     "verbose": true,
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "src/slices/**",
-      "src/utils/**",
-      "src/*.ts"
+      "src/**/*.ts",
+      "!src/models/**/*.ts"
     ],
     "moduleFileExtensions": [
       "js",

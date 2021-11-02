@@ -29,15 +29,13 @@ import { SelectableFilter } from './models/utils/selectablefilter';
 import { transformFiltersToCoreFormat } from './utils/transform-filters';
 
 export default class AnswersHeadless {
-  readonly utilities: typeof answersUtilities;
+  public readonly utilities = answersUtilities;
 
   constructor(
     private core: AnswersCore,
     private stateManager: StateManager,
     private httpManager: HttpManager,
-  ) {
-    this.utilities = answersUtilities;
-  }
+  ) {}
 
   setQuery(query: string): void {
     this.stateManager.dispatchEvent('query/set', query);

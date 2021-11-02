@@ -1,55 +1,40 @@
-import { configureStore, combineReducers, EnhancedStore, Unsubscribe } from '@reduxjs/toolkit';
-
-import queryReducer from './slices/query';
-import verticalReducer from './slices/vertical';
-import universalReducer from './slices/universal';
-import filtersReducer from './slices/filters';
-import spellCheckReducer from './slices/spellcheck';
-import sessionTrackingReducer from './slices/sessiontracking';
-import metaReducer from './slices/meta';
-import locationReducer from './slices/location';
+import { EnhancedStore, Unsubscribe } from '@reduxjs/toolkit';
 import StateListener from './models/state-listener';
 import StateManager from './models/state-manager';
-import { State } from './models/state';
+import { ParentState, State } from './models/state';
+import HeadlessReducerManager from './headless-reducer-manager';
+import { ActionWithHeadlessId } from './store';
 
 /**
  * A Redux-backed implementation of the {@link StateManager} interface. Redux is used to
  * manage the state, dispatch events, and register state listeners.
  */
 export default class ReduxStateManager implements StateManager {
-  private store: EnhancedStore;
-
-  constructor() {
-    const coreReducer = combineReducers({
-      query: queryReducer,
-      vertical: verticalReducer,
-      universal: universalReducer,
-      filters: filtersReducer,
-      spellCheck: spellCheckReducer,
-      sessionTracking: sessionTrackingReducer,
-      meta: metaReducer,
-      location: locationReducer
-    });
-
-    this.store = configureStore({
-      middleware:
-        (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
-      reducer: (state, action) => {
-        if (action.type === 'set-state') {
-          return action.payload;
-        } else {
-          return coreReducer(state, action);
-        }
-      },
-    });
+  constructor(
+    private store: EnhancedStore<ParentState, ActionWithHeadlessId>,
+    private headlessId: string,
+    headlessReducerManager: HeadlessReducerManager
+  ) {
+    headlessReducerManager.addAnswersReducer(this.headlessId);
+    store.replaceReducer(headlessReducerManager.getParentReducer());
   }
 
   getState(): State {
-    return this.store.getState();
+    const state = this.store.getState();
+    return state[this.headlessId];
   }
 
+  /**
+   * For actions other than set-state, the action type is given a prefix to designate which
+   * AnswersHeadless instance it should affect.
+   */
   dispatchEvent(type: string, payload?: unknown): void {
-    this.store.dispatch({ type, payload });
+    const answersActionType = type === 'set-state' ? 'set-state' : this.headlessId + '/' + type;
+    this.store.dispatch({
+      type: answersActionType,
+      payload,
+      headlessId: this.headlessId
+    });
   }
 
   addListener<T>(listener: StateListener<T>): Unsubscribe {
@@ -57,8 +42,8 @@ export default class ReduxStateManager implements StateManager {
     return this.store.subscribe(() => {
       const currentValue: T = listener.valueAccessor(this.getState());
       if (currentValue !== previousValue) {
-        listener.callback(currentValue);
         previousValue = currentValue;
+        listener.callback(currentValue);
       }
     });
   }

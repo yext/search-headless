@@ -1,7 +1,10 @@
 import { Filter, Matcher } from '@yext/answers-core';
-import reducer, { setFacets, resetFacets, setStatic, addFilters, toggleFilterOption } from '../../../src/slices/filters';
 import { SelectableFilter } from '../../../src/models/utils/selectablefilter';
+import createFiltersSlice from '../../../src/slices/filters';
 import _ from 'lodash';
+
+const { actions, reducer } = createFiltersSlice('');
+const { setStatic, setFacets, resetFacets, addFilters, toggleFilterOption } = actions;
 
 describe('filter slice reducer works as expected', () => {
 

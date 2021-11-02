@@ -1,5 +1,8 @@
 import { SearchIntent } from '@yext/answers-core';
-import reducer, { setAutoComplete, setResults } from '../../../src/slices/universal';
+import createUniversalSlice from '../../../src/slices/universal';
+
+const { reducer, actions } = createUniversalSlice('');
+const { setAutoComplete, setResults } = actions;
 
 describe('universal slice reducer works as expected', () => {
   it('setResults action is handled properly', () => {

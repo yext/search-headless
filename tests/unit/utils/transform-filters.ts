@@ -7,9 +7,6 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
     let transformedFilter = transformFiltersToCoreFormat(undefined);
     expect(transformedFilter).toEqual(null);
 
-    transformedFilter = transformFiltersToCoreFormat({someId: null, anotherId: null});
-    expect(transformedFilter).toEqual(null);
-
     transformedFilter = transformFiltersToCoreFormat({someId: []});
     expect(transformedFilter).toEqual(null);
   });

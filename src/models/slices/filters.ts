@@ -3,7 +3,7 @@ import { SelectableFilter } from '../utils/selectablefilter';
 
 export interface FiltersState {
   static?: {
-   [filterCollectionId: string]: SelectableFilter[] | null;
+   [filterCollectionId: string]: SelectableFilter[];
   }
   facets?: DisplayableFacet[];
   sortBys?: SortBy[]

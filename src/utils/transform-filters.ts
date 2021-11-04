@@ -1,7 +1,10 @@
 import { CombinedFilter, Filter, FilterCombinator } from '@yext/answers-core';
 import { SelectableFilter } from '../models/utils/selectablefilter';
 
-function formatOrFilters(filters: Filter[]): Filter | CombinedFilter {
+/**
+ * Combine a given list of Filter using OR condition into a single CombinedFilter object
+ */
+function combineFiltersWithOR(filters: Filter[]): Filter | CombinedFilter {
   if (filters.length === 1) {
     return filters[0];
   }
@@ -32,11 +35,11 @@ function transformAFilterSetToCoreFormat(
 
   const groupedFilterLabels = Object.keys(groupedFilters);
   if (groupedFilterLabels.length === 1) {
-    return formatOrFilters(groupedFilters[groupedFilterLabels[0]]);
+    return combineFiltersWithOR(groupedFilters[groupedFilterLabels[0]]);
   }
   return {
     combinator: FilterCombinator.AND,
-    filters: Object.values(groupedFilters).map((filters: Filter[]) => formatOrFilters(filters))
+    filters: Object.values(groupedFilters).map((filters: Filter[]) => combineFiltersWithOR(filters))
   };
 }
 

@@ -163,7 +163,7 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
     expect(transformedFilter).toEqual(expectedFilters);
   });
 
-  it('properly handle selected filters of different groups with different filterSetIds', () => {
+  it('properly handle selected filters of different groups with different filterCollectionIds', () => {
     const someIdSelectableFilters: SelectableFilter[] = [
       {
         filter: {

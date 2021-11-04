@@ -259,12 +259,12 @@ describe('filter functions work as expected', () => {
     expect(dispatchEventCalls.length).toBe(1);
     expect(dispatchEventCalls[0][0]).toBe('filters/addFilters');
     expect(dispatchEventCalls[0][1]).toEqual({
-      filterSetId: 'someId',
+      filterCollectionId: 'someId',
       filters: [filter, filter]
     });
   });
 
-  it('selectFilterOption works without filterSetId', async () => {
+  it('selectFilterOption works without filterCollectionId', async () => {
     const filter = {
       fieldId: 'c_someField',
       matcher: Matcher.Equals,
@@ -277,12 +277,12 @@ describe('filter functions work as expected', () => {
     expect(dispatchEventCalls[0][0]).toBe('filters/toggleFilterOption');
     expect(dispatchEventCalls[0][1]).toEqual({
       shouldSelect: true,
-      filterSetId: undefined,
+      filterCollectionId: undefined,
       filter: filter
     });
   });
 
-  it('selectFilterOption works with filterSetId', async () => {
+  it('selectFilterOption works with filterCollectionId', async () => {
     const filter = {
       fieldId: 'c_someField',
       matcher: Matcher.Equals,
@@ -295,12 +295,12 @@ describe('filter functions work as expected', () => {
     expect(dispatchEventCalls[0][0]).toBe('filters/toggleFilterOption');
     expect(dispatchEventCalls[0][1]).toEqual({
       shouldSelect: true,
-      filterSetId: 'someId',
+      filterCollectionId: 'someId',
       filter: filter
     });
   });
 
-  it('unselectFilterOption works without filterSetId', async () => {
+  it('unselectFilterOption works without filterCollectionId', async () => {
     const filter = {
       fieldId: 'c_someField',
       matcher: Matcher.Equals,
@@ -313,12 +313,12 @@ describe('filter functions work as expected', () => {
     expect(dispatchEventCalls[0][0]).toBe('filters/toggleFilterOption');
     expect(dispatchEventCalls[0][1]).toEqual({
       shouldSelect: false,
-      filterSetId: undefined,
+      filterCollectionId: undefined,
       filter: filter
     });
   });
 
-  it('unselectFilterOption works with filterSetId', async () => {
+  it('unselectFilterOption works with filterCollectionId', async () => {
     const filter = {
       fieldId: 'c_someField',
       matcher: Matcher.Equals,
@@ -331,7 +331,7 @@ describe('filter functions work as expected', () => {
     expect(dispatchEventCalls[0][0]).toBe('filters/toggleFilterOption');
     expect(dispatchEventCalls[0][1]).toEqual({
       shouldSelect: false,
-      filterSetId: 'someId',
+      filterCollectionId: 'someId',
       filter: filter
     });
   });

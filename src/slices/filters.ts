@@ -12,7 +12,7 @@ interface FacetPayload {
 }
 
 interface FilterPayload {
-  filterSetId?: string
+  filterCollectionId?: string
   filter: Filter
   shouldSelect: boolean
 }
@@ -32,13 +32,13 @@ const reducers = {
   },
   addFilters: (
     state: FiltersState,
-    action: PayloadAction<{filterSetId: string, filters: SelectableFilter[]}>
+    action: PayloadAction<{filterCollectionId: string, filters: SelectableFilter[]}>
   ) => {
-    const { filterSetId, filters } = action.payload;
+    const { filterCollectionId, filters } = action.payload;
     if (!state.static) {
       state.static = {};
     }
-    state.static[filterSetId] = filters;
+    state.static[filterCollectionId] = filters;
   },
   resetFacets: (state: FiltersState) => {
     state.facets?.forEach(facet => {
@@ -72,10 +72,10 @@ const reducers = {
       console.warn('Trying to select a static filter option when no static filters exist.');
       return;
     }
-    const { filterSetId, filter, shouldSelect } = payload;
+    const { filterCollectionId, filter, shouldSelect } = payload;
 
-    if (filterSetId && !state.static[filterSetId]) {
-      console.warn(`invalid static filters id: ${filterSetId}`);
+    if (filterCollectionId && !state.static[filterCollectionId]) {
+      console.warn(`invalid static filters id: ${filterCollectionId}`);
       return;
     }
 
@@ -96,7 +96,7 @@ const reducers = {
       }
     };
 
-    const filtersInState = filterSetId && state.static[filterSetId];
+    const filtersInState = filterCollectionId && state.static[filterCollectionId];
     filtersInState
       ? handleFilterOptionSelection(filtersInState, filter)
       : Object.values(state.static)

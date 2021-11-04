@@ -63,11 +63,11 @@ describe('filter slice reducer works as expected', () => {
 
   it('addFilters action is handled properly', () => {
     const firstStaticFilters = {
-      filterSetId: 'someId',
+      filterCollectionId: 'someId',
       filters: [selectableFilter]
     };
     const SecondStaticFilters = {
-      filterSetId: 'anotherId',
+      filterCollectionId: 'anotherId',
       filters: [selectableFilter, selectableFilter]
     };
 
@@ -90,7 +90,7 @@ describe('filter slice reducer works as expected', () => {
 
   it('toggleFilterOption action is handled properly with no static state', () => {
     const unselectFilterPayload = {
-      filterSetId: 'someId',
+      filterCollectionId: 'someId',
       filter: {
         fieldId: 'id2',
         matcher: Matcher.Equals,
@@ -105,9 +105,9 @@ describe('filter slice reducer works as expected', () => {
     consoleWarnSpy.mockClear();
   });
 
-  it('toggleFilterOption action is handled properly with invalid filterSetId', () => {
+  it('toggleFilterOption action is handled properly with invalid filterCollectionId', () => {
     const unselectFilterPayload = {
-      filterSetId: 'invalidId',
+      filterCollectionId: 'invalidId',
       filter: {
         fieldId: 'id2',
         matcher: Matcher.Equals,
@@ -125,9 +125,9 @@ describe('filter slice reducer works as expected', () => {
     consoleWarnSpy.mockClear();
   });
 
-  it('toggleFilterOption action is handled properly, with valid filterSetId', () => {
+  it('toggleFilterOption action is handled properly, with valid filterCollectionId', () => {
     const unselectFilterPayload = {
-      filterSetId: 'someId',
+      filterCollectionId: 'someId',
       filter: {
         fieldId: 'id2',
         matcher: Matcher.Equals,
@@ -137,7 +137,7 @@ describe('filter slice reducer works as expected', () => {
     };
 
     const selectFilterPayload = {
-      filterSetId: 'someId',
+      filterCollectionId: 'someId',
       filter: {
         fieldId: 'id3',
         matcher: Matcher.Equals,
@@ -157,7 +157,7 @@ describe('filter slice reducer works as expected', () => {
     expect(actualState).toEqual(selecteExpectedState);
   });
 
-  it('toggleFilterOption action is handled properly, with no filterSetId', () => {
+  it('toggleFilterOption action is handled properly, with no filterCollectionId', () => {
     const unselectFilterPayload = {
       filter: {
         fieldId: 'id2',

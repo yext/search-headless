@@ -4,7 +4,7 @@ import createFiltersSlice from '../../../src/slices/filters';
 import _ from 'lodash';
 
 const { actions, reducer } = createFiltersSlice('');
-const { setStatic, setFacets, resetFacets, addFilters, toggleFilterOption } = actions;
+const { setStatic, setFacets, resetFacets, toggleFilterOption } = actions;
 
 describe('filter slice reducer works as expected', () => {
 
@@ -59,33 +59,6 @@ describe('filter slice reducer works as expected', () => {
     };
 
     expect(actualState).toEqual(expectedState);
-  });
-
-  it('addFilters action is handled properly', () => {
-    const firstStaticFilters = {
-      filterCollectionId: 'someId',
-      filters: [selectableFilter]
-    };
-    const SecondStaticFilters = {
-      filterCollectionId: 'anotherId',
-      filters: [selectableFilter, selectableFilter]
-    };
-
-    let actualState = reducer({}, addFilters(firstStaticFilters));
-    const firstExpectedState = {
-      static: {
-        someId: [selectableFilter]
-      }
-    };
-    expect(actualState).toEqual(firstExpectedState);
-    actualState = reducer(firstExpectedState, addFilters(SecondStaticFilters));
-    const secondExpectedState = {
-      static: {
-        someId: [selectableFilter],
-        anotherId: [selectableFilter, selectableFilter]
-      }
-    };
-    expect(actualState).toEqual(secondExpectedState);
   });
 
   it('toggleFilterOption action is handled properly with no static state', () => {
@@ -157,38 +130,32 @@ describe('filter slice reducer works as expected', () => {
     expect(actualState).toEqual(selecteExpectedState);
   });
 
-  it('toggleFilterOption action is handled properly, with no filterCollectionId', () => {
-    const unselectFilterPayload = {
-      filter: {
-        fieldId: 'id2',
-        matcher: Matcher.Equals,
-        value: 'value2'
-      },
-      shouldSelect: false
-    };
-
+  it('toggleFilterOption action is handled properly with a non-existing filter in state when select', () => {
     const selectFilterPayload = {
+      filterCollectionId: 'someId',
       filter: {
-        fieldId: 'id3',
+        fieldId: 'invalid field',
         matcher: Matcher.Equals,
-        value: 'value3'
+        value: 'invalid value'
       },
       shouldSelect: true
     };
-
-    let actualState = reducer(initialState, toggleFilterOption(unselectFilterPayload));
-    const unselectExpectedState = _.cloneDeep(initialState);
-    unselectExpectedState.static.someId[1].selected = false;
-    expect(actualState).toEqual(unselectExpectedState);
-
-    actualState = reducer(initialState, toggleFilterOption(selectFilterPayload));
+    const actualState = reducer(initialState, toggleFilterOption(selectFilterPayload));
     const selecteExpectedState = _.cloneDeep(initialState);
-    selecteExpectedState.static.someId[2].selected = true;
+    selecteExpectedState.static.someId.push({
+      filter: {
+        fieldId: 'invalid field',
+        matcher: Matcher.Equals,
+        value: 'invalid value'
+      },
+      selected: true
+    });
     expect(actualState).toEqual(selecteExpectedState);
   });
 
-  it('toggleFilterOption action is handled properly with filter not found', () => {
+  it('toggleFilterOption action is handled properly with filter not found when unselect', () => {
     const unselectFilterPayload = {
+      filterCollectionId: 'someId',
       filter: {
         fieldId: 'invalid field',
         matcher: Matcher.Equals,
@@ -201,7 +168,7 @@ describe('filter slice reducer works as expected', () => {
     expect(actualState).toEqual(initialState);
     expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
     expect(consoleWarnSpy).toHaveBeenLastCalledWith(
-      expect.stringContaining('Could not select a filter option with following fields')
+      expect.stringContaining('Could not unselect a non-existing filter option in state')
     );
     consoleWarnSpy.mockClear();
   });

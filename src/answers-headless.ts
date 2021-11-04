@@ -65,8 +65,8 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('vertical/setOffset', offset);
   }
 
-  setFilter(filter: Record<string, SelectableFilter[]> | null): void {
-    this.stateManager.dispatchEvent('filters/setStatic', filter);
+  setStaticFilters(filters: Record<string, SelectableFilter[]> | null): void {
+    this.stateManager.dispatchEvent('filters/setStatic', filters);
   }
 
   setFacets(facets: DisplayableFacet[]): void {
@@ -297,28 +297,11 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('filters/toggleFacetOption', payload);
   }
 
-  addFilters(filterCollectionId: string, filters: SelectableFilter[]): void {
+  toggleFilterOption(filterCollectionId: string, filter: Filter, shouldSelect: boolean): void {
     const payload = {
       filterCollectionId,
-      filters
-    };
-    this.stateManager.dispatchEvent('filters/addFilters', payload);
-  }
-
-  selectFilterOption(filter: Filter, filterCollectionId?: string): void {
-    const payload = {
-      shouldSelect: true,
-      filterCollectionId,
-      filter
-    };
-    this.stateManager.dispatchEvent('filters/toggleFilterOption', payload);
-  }
-
-  unselectFilterOption(filter: Filter, filterCollectionId?: string): void {
-    const payload = {
-      shouldSelect: false,
-      filterCollectionId,
-      filter
+      filter,
+      shouldSelect
     };
     this.stateManager.dispatchEvent('filters/toggleFilterOption', payload);
   }

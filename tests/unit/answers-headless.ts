@@ -63,7 +63,7 @@ describe('setters work as expected', () => {
     jest.clearAllMocks();
   });
 
-  it('setFilter works as expected', () => {
+  it('setStaticFilters works as expected', () => {
     const filter: SelectableFilter = {
       filter: {
         fieldId: 'c_someField',
@@ -75,7 +75,7 @@ describe('setters work as expected', () => {
     const staticFilter = {
       someId: [filter]
     };
-    answers.setFilter(staticFilter);
+    answers.setStaticFilters(staticFilter);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
@@ -243,52 +243,13 @@ describe('filter functions work as expected', () => {
     jest.clearAllMocks();
   });
 
-  it('addFilters works', async () => {
-    const filter = {
-      filter: {
-        fieldId: 'c_someField',
-        matcher: Matcher.Equals,
-        value: 'someValue'
-      },
-      selected: false
-    };
-    answers.addFilters('someId', [filter, filter]);
-
-    const dispatchEventCalls =
-    mockedStateManager.dispatchEvent.mock.calls;
-    expect(dispatchEventCalls.length).toBe(1);
-    expect(dispatchEventCalls[0][0]).toBe('filters/addFilters');
-    expect(dispatchEventCalls[0][1]).toEqual({
-      filterCollectionId: 'someId',
-      filters: [filter, filter]
-    });
-  });
-
-  it('selectFilterOption works without filterCollectionId', async () => {
+  it('toggleFilterOption works when select filter', async () => {
     const filter = {
       fieldId: 'c_someField',
       matcher: Matcher.Equals,
       value: 'someValue'
     };
-    answers.selectFilterOption(filter);
-    const dispatchEventCalls =
-    mockedStateManager.dispatchEvent.mock.calls;
-    expect(dispatchEventCalls.length).toBe(1);
-    expect(dispatchEventCalls[0][0]).toBe('filters/toggleFilterOption');
-    expect(dispatchEventCalls[0][1]).toEqual({
-      shouldSelect: true,
-      filterCollectionId: undefined,
-      filter: filter
-    });
-  });
-
-  it('selectFilterOption works with filterCollectionId', async () => {
-    const filter = {
-      fieldId: 'c_someField',
-      matcher: Matcher.Equals,
-      value: 'someValue'
-    };
-    answers.selectFilterOption(filter, 'someId');
+    answers.toggleFilterOption('someId', filter, true);
     const dispatchEventCalls =
     mockedStateManager.dispatchEvent.mock.calls;
     expect(dispatchEventCalls.length).toBe(1);
@@ -300,31 +261,13 @@ describe('filter functions work as expected', () => {
     });
   });
 
-  it('unselectFilterOption works without filterCollectionId', async () => {
+  it('toggleFilterOption works when unselect filter', async () => {
     const filter = {
       fieldId: 'c_someField',
       matcher: Matcher.Equals,
       value: 'someValue'
     };
-    answers.unselectFilterOption(filter);
-    const dispatchEventCalls =
-    mockedStateManager.dispatchEvent.mock.calls;
-    expect(dispatchEventCalls.length).toBe(1);
-    expect(dispatchEventCalls[0][0]).toBe('filters/toggleFilterOption');
-    expect(dispatchEventCalls[0][1]).toEqual({
-      shouldSelect: false,
-      filterCollectionId: undefined,
-      filter: filter
-    });
-  });
-
-  it('unselectFilterOption works with filterCollectionId', async () => {
-    const filter = {
-      fieldId: 'c_someField',
-      matcher: Matcher.Equals,
-      value: 'someValue'
-    };
-    answers.unselectFilterOption(filter, 'someId');
+    answers.toggleFilterOption('someId', filter, false);
     const dispatchEventCalls =
     mockedStateManager.dispatchEvent.mock.calls;
     expect(dispatchEventCalls.length).toBe(1);

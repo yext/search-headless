@@ -12,7 +12,7 @@ interface FacetPayload {
 }
 
 interface FilterPayload {
-  filterCollectionId?: string
+  filterCollectionId: string
   filter: Filter
   shouldSelect: boolean
 }
@@ -29,16 +29,6 @@ const reducers = {
   },
   setSortBys: (state: FiltersState, action: PayloadAction<SortBy[]>) => {
     state.sortBys = action.payload;
-  },
-  addFilters: (
-    state: FiltersState,
-    action: PayloadAction<{filterCollectionId: string, filters: SelectableFilter[]}>
-  ) => {
-    const { filterCollectionId, filters } = action.payload;
-    if (!state.static) {
-      state.static = {};
-    }
-    state.static[filterCollectionId] = filters;
   },
   resetFacets: (state: FiltersState) => {
     state.facets?.forEach(facet => {
@@ -72,35 +62,32 @@ const reducers = {
       console.warn('Trying to select a static filter option when no static filters exist.');
       return;
     }
-    const { filterCollectionId, filter, shouldSelect } = payload;
 
-    if (filterCollectionId && !state.static[filterCollectionId]) {
+    const { filterCollectionId, filter: targetFilter, shouldSelect } = payload;
+    const filterCollection = state.static[filterCollectionId];
+    if (!filterCollection) {
       console.warn(`invalid static filters id: ${filterCollectionId}`);
       return;
     }
 
-    const handleFilterOptionSelection = (
-      storedFilters: SelectableFilter[],
-      targetFilter: Filter
-    ) => {
-      const foundFilter = storedFilters.find(storedSelectableFilter => {
-        const storedFilter = storedSelectableFilter.filter;
-        return storedFilter.fieldId === targetFilter.fieldId
-          && storedFilter.matcher === targetFilter.matcher
-          && storedFilter.value === targetFilter.value;
-      });
-      if (foundFilter) {
-        foundFilter.selected = shouldSelect;
-      } else {
-        console.warn(`Could not select a filter option with following fields:\n${JSON.stringify(filter)}.`);
-      }
-    };
+    const foundFilter = filterCollection.find(storedSelectableFilter => {
+      const storedFilter = storedSelectableFilter.filter;
+      return storedFilter.fieldId === targetFilter.fieldId
+        && storedFilter.matcher === targetFilter.matcher
+        && storedFilter.value === targetFilter.value;
+    });
 
-    const filtersInState = filterCollectionId && state.static[filterCollectionId];
-    filtersInState
-      ? handleFilterOptionSelection(filtersInState, filter)
-      : Object.values(state.static)
-        .forEach(storedFilters => storedFilters && handleFilterOptionSelection(storedFilters, filter));
+    if (foundFilter) {
+      foundFilter.selected = shouldSelect;
+    } else if (shouldSelect) {
+      filterCollection.push({
+        filter: targetFilter,
+        selected: shouldSelect
+      });
+    } else {
+      console.warn('Could not unselect a non-existing filter option in state'
+        + ` with following fields:\n${JSON.stringify(targetFilter)}.`);
+    }
   }
 };
 

@@ -3,7 +3,6 @@ import {
   QueryTrigger,
   QuerySource,
   QuestionSubmissionRequest,
-  Filter,
   AutocompleteResponse,
   VerticalSearchResponse,
   UniversalSearchResponse,

@@ -48,15 +48,15 @@ function transformAFilterSetToCoreFormat(
  * to a single nested filter stucture use in Answers Core
  */
 export function transformFiltersToCoreFormat(
-  filters: Record<string, SelectableFilter[]> | null | undefined
+  filerCollections: Record<string, SelectableFilter[]> | null | undefined
 ): Filter | CombinedFilter | null {
-  if (!filters) {
+  if (!filerCollections) {
     return null;
   }
 
   const coreFormattedFilters: (Filter | CombinedFilter)[] = [];
-  Object.values(filters).forEach((filter: SelectableFilter[]) => {
-    const selectedFilters = filter.filter(filter => filter.selected);
+  Object.values(filerCollections).forEach((selectableFilters: SelectableFilter[]) => {
+    const selectedFilters = selectableFilters.filter(selectableFilter => selectableFilter.selected);
     const transformedFilterSet = transformAFilterSetToCoreFormat(selectedFilters);
     transformedFilterSet && coreFormattedFilters.push(transformedFilterSet);
   });

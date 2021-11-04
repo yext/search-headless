@@ -249,7 +249,7 @@ describe('filter functions work as expected', () => {
       matcher: Matcher.Equals,
       value: 'someValue'
     };
-    answers.toggleFilterOption('someId', filter, true);
+    answers.toggleFilterOption({ filter: filter, selected: true }, 'someId');
     const dispatchEventCalls =
     mockedStateManager.dispatchEvent.mock.calls;
     expect(dispatchEventCalls.length).toBe(1);
@@ -267,7 +267,7 @@ describe('filter functions work as expected', () => {
       matcher: Matcher.Equals,
       value: 'someValue'
     };
-    answers.toggleFilterOption('someId', filter, false);
+    answers.toggleFilterOption({ filter: filter, selected: false }, 'someId');
     const dispatchEventCalls =
     mockedStateManager.dispatchEvent.mock.calls;
     expect(dispatchEventCalls.length).toBe(1);

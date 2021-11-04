@@ -69,12 +69,20 @@ describe('filter slice reducer works as expected', () => {
         matcher: Matcher.Equals,
         value: 'value2'
       },
-      shouldSelect: false
+      shouldSelect: true
     };
     const consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation();
     const actualState = reducer({}, toggleFilterOption(unselectFilterPayload));
-    expect(actualState).toEqual({});
-    expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
+    const expectedState = {
+      static: {
+        someId: [{
+          filter: unselectFilterPayload.filter,
+          selected: true
+        }]
+      }
+    };
+    expect(actualState).toEqual(expectedState);
+    expect(consoleWarnSpy).toHaveBeenCalledTimes(0);
     consoleWarnSpy.mockClear();
   });
 

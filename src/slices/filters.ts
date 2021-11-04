@@ -59,8 +59,7 @@ const reducers = {
   },
   toggleFilterOption: (state: FiltersState, { payload }: PayloadAction<FilterPayload>) => {
     if (!state.static) {
-      console.warn('Trying to select a static filter option when no static filters exist.');
-      return;
+      state.static = {};
     }
     const { filterCollectionId, filter: targetFilter, shouldSelect } = payload;
     if (!state.static[filterCollectionId]) {

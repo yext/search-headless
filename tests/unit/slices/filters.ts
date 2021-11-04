@@ -177,7 +177,7 @@ describe('filter slice reducer works as expected', () => {
     expect(actualState).toEqual(selectedExpectedState);
   });
 
-  it('toggleFilterOption action is handled properly with a non-existing filter in state when select', () => {
+  it('toggleFilterOption action is handled properly with filter not found in state when select', () => {
     const selectFilterPayload = {
       filterCollectionId: 'someId',
       filter: {
@@ -200,7 +200,7 @@ describe('filter slice reducer works as expected', () => {
     expect(actualState).toEqual(selectedExpectedState);
   });
 
-  it('toggleFilterOption action is handled properly with filter not found when unselect', () => {
+  it('toggleFilterOption action is handled properly with filter not found in state when unselect', () => {
     const unselectFilterPayload = {
       filterCollectionId: 'someId',
       filter: {

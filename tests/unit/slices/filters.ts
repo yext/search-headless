@@ -78,7 +78,7 @@ describe('filter slice reducer works as expected', () => {
     consoleWarnSpy.mockClear();
   });
 
-  it('toggleFilterOption action is handled properly with invalid filterCollectionId', () => {
+  it('toggleFilterOption action is handled properly with unknown filterCollectionId on unselect', () => {
     const unselectFilterPayload = {
       filterCollectionId: 'invalidId',
       filter: {
@@ -90,6 +90,45 @@ describe('filter slice reducer works as expected', () => {
     };
     const consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation();
     const actualState = reducer(initialState, toggleFilterOption(unselectFilterPayload));
+    expect(actualState).toEqual(initialState);
+    expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
+    expect(consoleWarnSpy).toHaveBeenLastCalledWith(
+      expect.stringContaining('invalid static filters id')
+    );
+    consoleWarnSpy.mockClear();
+  });
+
+  it('toggleFilterOption action is handled properly with unknown filterCollectionId on select', () => {
+    const selectFilterPayload = {
+      filterCollectionId: 'newId',
+      filter: {
+        fieldId: 'id2',
+        matcher: Matcher.Equals,
+        value: 'value2'
+      },
+      shouldSelect: true
+    };
+    const consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation();
+    const actualState = reducer(initialState, toggleFilterOption(selectFilterPayload));
+    const selectExpectedState = _.cloneDeep(initialState);
+    selectExpectedState.static['newId'] = [{filter: selectFilterPayload.filter, selected: true}];
+    expect(actualState).toEqual(selectExpectedState);
+    expect(consoleWarnSpy).toHaveBeenCalledTimes(0);
+    consoleWarnSpy.mockClear();
+  });
+
+  it('toggleFilterOption action is handled properly with empty string for filterCollectionId', () => {
+    const selectFilterPayload = {
+      filterCollectionId: '',
+      filter: {
+        fieldId: 'id2',
+        matcher: Matcher.Equals,
+        value: 'value2'
+      },
+      shouldSelect: true
+    };
+    const consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation();
+    const actualState = reducer(initialState, toggleFilterOption(selectFilterPayload));
     expect(actualState).toEqual(initialState);
     expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
     expect(consoleWarnSpy).toHaveBeenLastCalledWith(

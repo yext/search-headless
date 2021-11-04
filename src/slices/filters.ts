@@ -62,21 +62,22 @@ const reducers = {
       console.warn('Trying to select a static filter option when no static filters exist.');
       return;
     }
-
     const { filterCollectionId, filter: targetFilter, shouldSelect } = payload;
-    const filterCollection = state.static[filterCollectionId];
-    if (!filterCollection) {
-      console.warn(`invalid static filters id: ${filterCollectionId}`);
-      return;
+    if (!state.static[filterCollectionId]) {
+      if (filterCollectionId && shouldSelect) {
+        state.static[filterCollectionId] = [];
+      } else {
+        console.warn(`invalid static filters id: ${filterCollectionId}`);
+        return;
+      }
     }
-
+    const filterCollection = state.static[filterCollectionId];
     const foundFilter = filterCollection.find(storedSelectableFilter => {
       const storedFilter = storedSelectableFilter.filter;
       return storedFilter.fieldId === targetFilter.fieldId
         && storedFilter.matcher === targetFilter.matcher
         && storedFilter.value === targetFilter.value;
     });
-
     if (foundFilter) {
       foundFilter.selected = shouldSelect;
     } else if (shouldSelect) {

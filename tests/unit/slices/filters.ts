@@ -172,9 +172,9 @@ describe('filter slice reducer works as expected', () => {
     expect(actualState).toEqual(unselectExpectedState);
 
     actualState = reducer(initialState, toggleFilterOption(selectFilterPayload));
-    const selecteExpectedState = _.cloneDeep(initialState);
-    selecteExpectedState.static.someId[2].selected = true;
-    expect(actualState).toEqual(selecteExpectedState);
+    const selectedExpectedState = _.cloneDeep(initialState);
+    selectedExpectedState.static.someId[2].selected = true;
+    expect(actualState).toEqual(selectedExpectedState);
   });
 
   it('toggleFilterOption action is handled properly with a non-existing filter in state when select', () => {
@@ -188,8 +188,8 @@ describe('filter slice reducer works as expected', () => {
       shouldSelect: true
     };
     const actualState = reducer(initialState, toggleFilterOption(selectFilterPayload));
-    const selecteExpectedState = _.cloneDeep(initialState);
-    selecteExpectedState.static.someId.push({
+    const selectedExpectedState = _.cloneDeep(initialState);
+    selectedExpectedState.static.someId.push({
       filter: {
         fieldId: 'invalid field',
         matcher: Matcher.Equals,
@@ -197,7 +197,7 @@ describe('filter slice reducer works as expected', () => {
       },
       selected: true
     });
-    expect(actualState).toEqual(selecteExpectedState);
+    expect(actualState).toEqual(selectedExpectedState);
   });
 
   it('toggleFilterOption action is handled properly with filter not found when unselect', () => {

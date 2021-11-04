@@ -101,7 +101,7 @@ describe('filter slice reducer works as expected', () => {
     expect(actualState).toEqual(initialState);
     expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
     expect(consoleWarnSpy).toHaveBeenLastCalledWith(
-      expect.stringContaining('invalid static filters id')
+      expect.stringContaining('Could not unselect a non-existing filter option in state')
     );
     consoleWarnSpy.mockClear();
   });

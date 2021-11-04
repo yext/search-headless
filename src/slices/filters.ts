@@ -62,16 +62,12 @@ const reducers = {
       state.static = {};
     }
     const { filterCollectionId, filter: targetFilter, shouldSelect } = payload;
-    if (!state.static[filterCollectionId]) {
-      if (filterCollectionId && shouldSelect) {
-        state.static[filterCollectionId] = [];
-      } else {
-        console.warn(`invalid static filters id: ${filterCollectionId}`);
-        return;
-      }
+    if (!filterCollectionId) {
+      console.warn(`invalid static filters id: ${filterCollectionId}`);
+      return;
     }
     const filterCollection = state.static[filterCollectionId];
-    const foundFilter = filterCollection.find(storedSelectableFilter => {
+    const foundFilter = filterCollection?.find(storedSelectableFilter => {
       const storedFilter = storedSelectableFilter.filter;
       return storedFilter.fieldId === targetFilter.fieldId
         && storedFilter.matcher === targetFilter.matcher
@@ -80,10 +76,10 @@ const reducers = {
     if (foundFilter) {
       foundFilter.selected = shouldSelect;
     } else if (shouldSelect) {
-      filterCollection.push({
-        filter: targetFilter,
-        selected: shouldSelect
-      });
+      const selectedFilter = { filter: targetFilter, selected: shouldSelect };
+      filterCollection
+        ? filterCollection.push(selectedFilter)
+        : state.static[filterCollectionId] = [selectedFilter];
     } else {
       console.warn('Could not unselect a non-existing filter option in state'
         + ` with following fields:\n${JSON.stringify(targetFilter)}.`);

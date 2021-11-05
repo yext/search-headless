@@ -2,7 +2,7 @@ import { CombinedFilter, Filter, FilterCombinator } from '@yext/answers-core';
 import { SelectableFilter } from '../models/utils/selectablefilter';
 
 /**
- * Combine a given list of Filter using OR condition into a single CombinedFilter object
+ * Combine a list of Filters using the logical OR operator into a CombinedFilter
  */
 function combineFiltersWithOR(filters: Filter[]): Filter | CombinedFilter {
   if (filters.length === 1) {
@@ -15,7 +15,7 @@ function combineFiltersWithOR(filters: Filter[]): Filter | CombinedFilter {
 }
 
 /**
- * Convert a list of SelectableFilter to nested filter structure use in core
+ * Convert a list of SelectableFilters into the nested filter structure used by Core
  */
 function transformAFilterSetToCoreFormat(
   filters: SelectableFilter[]
@@ -48,14 +48,14 @@ function transformAFilterSetToCoreFormat(
  * to a single nested filter stucture use in Answers Core
  */
 export function transformFiltersToCoreFormat(
-  filerCollections: Record<string, SelectableFilter[]> | null | undefined
+  filterCollection: Record<string, SelectableFilter[]> | null | undefined
 ): Filter | CombinedFilter | null {
-  if (!filerCollections) {
+  if (!filterCollection) {
     return null;
   }
 
   const coreFormattedFilters: (Filter | CombinedFilter)[] = [];
-  Object.values(filerCollections).forEach((selectableFilters: SelectableFilter[]) => {
+  Object.values(filterCollection).forEach((selectableFilters: SelectableFilter[]) => {
     const selectedFilters = selectableFilters.filter(selectableFilter => selectableFilter.selected);
     const transformedFilterSet = transformAFilterSetToCoreFormat(selectedFilters);
     transformedFilterSet && coreFormattedFilters.push(transformedFilterSet);

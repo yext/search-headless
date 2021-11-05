@@ -57,7 +57,7 @@ const reducers = {
       });
     });
   },
-  toggleFilterOption: (state: FiltersState, { payload }: PayloadAction<FilterPayload>) => {
+  setFilterOption: (state: FiltersState, { payload }: PayloadAction<FilterPayload>) => {
     if (!state.static) {
       state.static = {};
     }

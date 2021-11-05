@@ -239,17 +239,17 @@ describe('filter functions work as expected', () => {
     jest.clearAllMocks();
   });
 
-  it('toggleFilterOption works when select filter', async () => {
+  it('setFilterOption works when select filter', async () => {
     const filter = {
       fieldId: 'c_someField',
       matcher: Matcher.Equals,
       value: 'someValue'
     };
-    answers.toggleFilterOption({ ...filter, selected: true }, 'someId');
+    answers.setFilterOption({ ...filter, selected: true }, 'someId');
     const dispatchEventCalls =
     mockedStateManager.dispatchEvent.mock.calls;
     expect(dispatchEventCalls.length).toBe(1);
-    expect(dispatchEventCalls[0][0]).toBe('filters/toggleFilterOption');
+    expect(dispatchEventCalls[0][0]).toBe('filters/setFilterOption');
     expect(dispatchEventCalls[0][1]).toEqual({
       shouldSelect: true,
       filterCollectionId: 'someId',
@@ -257,17 +257,17 @@ describe('filter functions work as expected', () => {
     });
   });
 
-  it('toggleFilterOption works when unselect filter', async () => {
+  it('setFilterOption works when unselect filter', async () => {
     const filter = {
       fieldId: 'c_someField',
       matcher: Matcher.Equals,
       value: 'someValue'
     };
-    answers.toggleFilterOption({ ...filter, selected: false }, 'someId');
+    answers.setFilterOption({ ...filter, selected: false }, 'someId');
     const dispatchEventCalls =
     mockedStateManager.dispatchEvent.mock.calls;
     expect(dispatchEventCalls.length).toBe(1);
-    expect(dispatchEventCalls[0][0]).toBe('filters/toggleFilterOption');
+    expect(dispatchEventCalls[0][0]).toBe('filters/setFilterOption');
     expect(dispatchEventCalls[0][1]).toEqual({
       shouldSelect: false,
       filterCollectionId: 'someId',

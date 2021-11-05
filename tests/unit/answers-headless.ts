@@ -20,11 +20,9 @@ const mockedState = {
     static: {
       someId: [
         {
-          filter: {
-            fieldId: 'c_someField',
-            matcher: Matcher.Equals,
-            value: 'some value'
-          },
+          fieldId: 'c_someField',
+          matcher: Matcher.Equals,
+          value: 'some value',
           selected: true
         }
       ]
@@ -65,11 +63,9 @@ describe('setters work as expected', () => {
 
   it('setStaticFilters works as expected', () => {
     const filter: SelectableFilter = {
-      filter: {
-        fieldId: 'c_someField',
-        matcher: Matcher.Equals,
-        value: 'someValue'
-      },
+      fieldId: 'c_someField',
+      matcher: Matcher.Equals,
+      value: 'someValue',
       selected: true
     };
     const staticFilter = {
@@ -249,7 +245,7 @@ describe('filter functions work as expected', () => {
       matcher: Matcher.Equals,
       value: 'someValue'
     };
-    answers.toggleFilterOption({ filter: filter, selected: true }, 'someId');
+    answers.toggleFilterOption({ ...filter, selected: true }, 'someId');
     const dispatchEventCalls =
     mockedStateManager.dispatchEvent.mock.calls;
     expect(dispatchEventCalls.length).toBe(1);
@@ -267,7 +263,7 @@ describe('filter functions work as expected', () => {
       matcher: Matcher.Equals,
       value: 'someValue'
     };
-    answers.toggleFilterOption({ filter: filter, selected: false }, 'someId');
+    answers.toggleFilterOption({ ...filter, selected: false }, 'someId');
     const dispatchEventCalls =
     mockedStateManager.dispatchEvent.mock.calls;
     expect(dispatchEventCalls.length).toBe(1);
@@ -324,12 +320,12 @@ describe('search works as expected', () => {
 
   it('vertical search works', async () => {
     await answers.executeVerticalQuery();
-
+    const { selected:_, ...filter } = mockedState.filters.static.someId[0];
     const coreCalls = mockedCore.verticalSearch.mock.calls;
     const expectedSearchParams = {
       ...mockedState.query,
       verticalKey: mockedState.vertical.key,
-      staticFilters: mockedState.filters.static.someId[0].filter,
+      staticFilters: filter,
       retrieveFacets: true,
       limit: mockedState.vertical.limit,
       offset: mockedState.vertical.offset,

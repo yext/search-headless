@@ -24,12 +24,14 @@ function transformAFilterSetToCoreFormat(
     return null;
   }
   if (filters.length === 1) {
-    return { ...filters[0].filter };
+    const { selected:_, ...filter } = filters[0];
+    return filter;
   }
   const groupedFilters: Record<string, Filter[]> = filters.reduce((groups, element) => {
-    groups[element.filter.fieldId]
-      ? groups[element.filter.fieldId].push({ ...element.filter })
-      : groups[element.filter.fieldId] = [{ ...element.filter }];
+    const { selected:_, ...filter } = element;
+    groups[element.fieldId]
+      ? groups[element.fieldId].push({ ...filter })
+      : groups[element.fieldId] = [{ ...filter }];
     return groups;
   }, {});
 

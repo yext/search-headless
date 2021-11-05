@@ -15,16 +15,18 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
     const filters: Record<string, SelectableFilter[]> = {
       someId: [
         {
-          filter: {
-            fieldId: 'c_someField',
-            matcher: Matcher.Equals,
-            value: 'some value'
-          },
+          fieldId: 'c_someField',
+          matcher: Matcher.Equals,
+          value: 'some value',
           selected: true
         }
       ]
     };
-    const expectedFilters = filters.someId[0].filter;
+    const expectedFilters = {
+      fieldId: 'c_someField',
+      matcher: Matcher.Equals,
+      value: 'some value'
+    };
     const transformedFilter = transformFiltersToCoreFormat(filters);
     expect(transformedFilter).toEqual(expectedFilters);
   });
@@ -35,21 +37,12 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
       matcher: Matcher.Equals,
       value: 'some value'
     };
+    const selectableFilter = {
+      ...filter,
+      selected: true
+    };
     const filters: Record<string, SelectableFilter[]> = {
-      someId: [
-        {
-          filter,
-          selected: true
-        },
-        {
-          filter,
-          selected: true
-        },
-        {
-          filter,
-          selected: true
-        }
-      ]
+      someId: [selectableFilter, selectableFilter, selectableFilter]
     };
     const expectedFilters = {
       combinator: FilterCombinator.OR,
@@ -60,41 +53,48 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
   });
 
   it('properly handle selected filters of different groups', () => {
+    const filters: Filter[] = [
+      {
+        fieldId: 'c_someField',
+        matcher: Matcher.Equals,
+        value: 'some value'
+      },
+      {
+        fieldId: 'c_aDifferentField',
+        matcher: Matcher.Equals,
+        value: 'a different value'
+      },
+      {
+        fieldId: 'c_someField',
+        matcher: Matcher.Equals,
+        value: 'unique value'
+      },
+      {
+        fieldId: 'c_aDifferentField',
+        matcher: Matcher.Equals,
+        value: 'another value'
+      }
+    ];
+
     const selectableFilters: SelectableFilter[] = [
       {
-        filter: {
-          fieldId: 'c_someField',
-          matcher: Matcher.Equals,
-          value: 'some value'
-        },
+        ...filters[0],
         selected: true
       },
       {
-        filter: {
-          fieldId: 'c_aDifferentField',
-          matcher: Matcher.Equals,
-          value: 'a different value'
-        },
+        ...filters[1],
         selected: true
       },
       {
-        filter: {
-          fieldId: 'c_someField',
-          matcher: Matcher.Equals,
-          value: 'unique value'
-        },
+        ...filters[2],
         selected: true
       },
       {
-        filter: {
-          fieldId: 'c_aDifferentField',
-          matcher: Matcher.Equals,
-          value: 'another value'
-        },
+        ...filters[3],
         selected: true
       }
     ];
-    const filters = {
+    const filterCollections = {
       someId: selectableFilters
     };
     const expectedFilters: Filter | CombinedFilter = {
@@ -102,107 +102,125 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
       filters: [
         {
           combinator: FilterCombinator.OR,
-          filters: [filters.someId[0].filter, filters.someId[2].filter]
+          filters: [filters[0], filters[2]]
         },
         {
           combinator: FilterCombinator.OR,
-          filters: [filters.someId[1].filter, filters.someId[3].filter]
+          filters: [filters[1], filters[3]]
         }
       ]
     };
-    const transformedFilter = transformFiltersToCoreFormat(filters);
+    const transformedFilter = transformFiltersToCoreFormat(filterCollections);
     expect(transformedFilter).toEqual(expectedFilters);
   });
 
   it('properly handle a mix of unselected and selected filters of different groups', () => {
+    const filters: Filter[] = [
+      {
+        fieldId: 'c_someField',
+        matcher: Matcher.Equals,
+        value: 'some value'
+      },
+      {
+        fieldId: 'c_aDifferentField',
+        matcher: Matcher.Equals,
+        value: 'a different value'
+      },
+      {
+        fieldId: 'c_someField',
+        matcher: Matcher.Equals,
+        value: 'unique value'
+      },
+      {
+        fieldId: 'c_aDifferentField',
+        matcher: Matcher.Equals,
+        value: 'another value'
+      }
+    ];
+
     const selectableFilters: SelectableFilter[] = [
       {
-        filter: {
-          fieldId: 'c_someField',
-          matcher: Matcher.Equals,
-          value: 'some value'
-        },
+        ...filters[0],
         selected: false
       },
       {
-        filter: {
-          fieldId: 'c_aDifferentField',
-          matcher: Matcher.Equals,
-          value: 'a different value'
-        },
+        ...filters[1],
         selected: false
       },
       {
-        filter: {
-          fieldId: 'c_someField',
-          matcher: Matcher.Equals,
-          value: 'unique value'
-        },
+        ...filters[2],
         selected: true
       },
       {
-        filter: {
-          fieldId: 'c_aDifferentField',
-          matcher: Matcher.Equals,
-          value: 'another value'
-        },
+        ...filters[3],
         selected: true
       }
     ];
-    const filters = {
+    const filterCollections = {
       someId: selectableFilters
     };
     const expectedFilters: Filter | CombinedFilter = {
       combinator: FilterCombinator.AND,
-      filters: [filters.someId[2].filter, filters.someId[3].filter]
+      filters: [filters[2], filters[3]]
     };
-    const transformedFilter = transformFiltersToCoreFormat(filters);
+    const transformedFilter = transformFiltersToCoreFormat(filterCollections);
     expect(transformedFilter).toEqual(expectedFilters);
   });
 
   it('properly handle selected filters of different groups with different filterCollectionIds', () => {
+    const someIdfilters: Filter[] = [
+      {
+        fieldId: 'c_someField',
+        matcher: Matcher.Equals,
+        value: 'some value'
+      },
+      {
+        fieldId: 'c_someField',
+        matcher: Matcher.Equals,
+        value: 'unique value'
+      },
+      {
+        fieldId: 'c_aDifferentField',
+        matcher: Matcher.Equals,
+        value: 'very unique value'
+      }
+    ];
+
     const someIdSelectableFilters: SelectableFilter[] = [
       {
-        filter: {
-          fieldId: 'c_someField',
-          matcher: Matcher.Equals,
-          value: 'some value'
-        },
+        ...someIdfilters[0],
         selected: true
       },
       {
-        filter: {
-          fieldId: 'c_someField',
-          matcher: Matcher.Equals,
-          value: 'unique value'
-        },
+        ...someIdfilters[1],
         selected: true
       },
       {
-        filter: {
-          fieldId: 'c_differentField',
-          matcher: Matcher.Equals,
-          value: 'very unique value'
-        },
+        ...someIdfilters[2],
         selected: true
+      }
+    ];
+
+    const anotherIdfilters: Filter[] = [
+      {
+        fieldId: 'c_anotherField',
+        matcher: Matcher.Equals,
+        value: 'another value'
+      },
+      {
+        fieldId: 'c_anotherField',
+        matcher: Matcher.Equals,
+        value: 'unique value'
       }
     ];
 
     const anotherIdSelectableFilters: SelectableFilter[] = [
       {
-        filter: {
-          fieldId: 'c_anotherField',
-          matcher: Matcher.Equals,
-          value: 'another value'
-        },
+        ...anotherIdfilters[0],
         selected: true
       },
       {
-        filter: {
-          fieldId: 'c_anotherField',
-          matcher: Matcher.Equals,
-          value: 'unique value'
-        },
+        ...anotherIdfilters[1],
         selected: true
       }
     ];
@@ -219,14 +237,14 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
           filters: [
             {
               combinator: FilterCombinator.OR,
-              filters: [filters.someId[0].filter, filters.someId[1].filter]
+              filters: [someIdfilters[0], someIdfilters[1]]
             },
-            filters.someId[2].filter
+            someIdfilters[2]
           ]
         },
         {
           combinator: FilterCombinator.OR,
-          filters: [filters.anotherId[0].filter, filters.anotherId[1].filter]
+          filters: [anotherIdfilters[0], anotherIdfilters[1]]
         }
       ]
     };

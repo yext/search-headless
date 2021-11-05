@@ -68,7 +68,7 @@ const reducers = {
     }
     const filterCollection = state.static[filterCollectionId];
     const foundFilter = filterCollection?.find(storedSelectableFilter => {
-      const storedFilter = storedSelectableFilter.filter;
+      const { selected:_, ...storedFilter } = storedSelectableFilter;
       return storedFilter.fieldId === targetFilter.fieldId
         && storedFilter.matcher === targetFilter.matcher
         && storedFilter.value === targetFilter.value;
@@ -76,7 +76,7 @@ const reducers = {
     if (foundFilter) {
       foundFilter.selected = shouldSelect;
     } else if (shouldSelect) {
-      const selectedFilter = { filter: targetFilter, selected: shouldSelect };
+      const selectedFilter = { ...targetFilter, selected: shouldSelect };
       filterCollection
         ? filterCollection.push(selectedFilter)
         : state.static[filterCollectionId] = [selectedFilter];

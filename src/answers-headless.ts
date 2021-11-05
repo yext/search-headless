@@ -3,8 +3,6 @@ import {
   QueryTrigger,
   QuerySource,
   QuestionSubmissionRequest,
-  Filter,
-  CombinedFilter,
   AutocompleteResponse,
   VerticalSearchResponse,
   UniversalSearchResponse,
@@ -26,6 +24,8 @@ import StateManager from './models/state-manager';
 import { Unsubscribe } from '@reduxjs/toolkit';
 import HttpManager from './http-manager';
 import answersUtilities from './answers-utilities';
+import { SelectableFilter } from './models/utils/selectablefilter';
+import { transformFiltersToCoreFormat } from './utils/transform-filters';
 
 export default class AnswersHeadless {
   public readonly utilities = answersUtilities;
@@ -64,8 +64,8 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('vertical/setOffset', offset);
   }
 
-  setFilter(filter: Filter | CombinedFilter | null): void {
-    this.stateManager.dispatchEvent('filters/setStatic', filter);
+  setStaticFilters(filters: Record<string, SelectableFilter[]> | null): void {
+    this.stateManager.dispatchEvent('filters/setStatic', filters);
   }
 
   setFacets(facets: DisplayableFacet[]): void {
@@ -192,7 +192,7 @@ export default class AnswersHeadless {
     const skipSpellCheck = !this.state.spellCheck.enabled;
     const sessionTrackingEnabled = this.state.sessionTracking.enabled;
     const sessionId = this.state.sessionTracking.sessionId;
-    const staticFilters = this.state.filters.static || undefined;
+    const staticFilters = transformFiltersToCoreFormat(this.state.filters.static) || undefined;
     const facets = this.state.filters?.facets;
     const limit = this.state.vertical.limit;
     const offset = this.state.vertical.offset;
@@ -294,6 +294,16 @@ export default class AnswersHeadless {
       facetOption
     };
     this.stateManager.dispatchEvent('filters/toggleFacetOption', payload);
+  }
+
+  setFilterOption(seletableFilter: SelectableFilter, filterCollectionId: string): void {
+    const { selected, ...filter } = seletableFilter;
+    const payload = {
+      filterCollectionId,
+      filter: filter,
+      shouldSelect: selected
+    };
+    this.stateManager.dispatchEvent('filters/setFilterOption', payload);
   }
 }
 

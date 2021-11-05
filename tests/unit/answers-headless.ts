@@ -2,6 +2,7 @@ import { Matcher, QuerySource, QueryTrigger } from '@yext/answers-core';
 import HttpManager from '../../src/http-manager';
 import StateManager from '../../src/models/state-manager';
 import AnswersHeadless from '../../src/answers-headless';
+import { SelectableFilter } from '../../src/models/utils/selectablefilter';
 
 const mockedState = {
   query: {
@@ -17,9 +18,14 @@ const mockedState = {
   },
   filters: {
     static: {
-      fieldId: 'c_someField',
-      matcher: Matcher.Equals,
-      value: 'some value'
+      someId: [
+        {
+          fieldId: 'c_someField',
+          matcher: Matcher.Equals,
+          value: 'some value',
+          selected: true
+        }
+      ]
     }
   },
   spellCheck: {
@@ -55,20 +61,24 @@ describe('setters work as expected', () => {
     jest.clearAllMocks();
   });
 
-  it('setFilter works as expected', () => {
-    const filter = {
+  it('setStaticFilters works as expected', () => {
+    const filter: SelectableFilter = {
       fieldId: 'c_someField',
       matcher: Matcher.Equals,
-      value: 'someValue'
+      value: 'someValue',
+      selected: true
     };
-    answers.setFilter(filter);
+    const staticFilter = {
+      someId: [filter]
+    };
+    answers.setStaticFilters(staticFilter);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
 
     expect(dispatchEventCalls.length).toBe(1);
     expect(dispatchEventCalls[0][0]).toBe('filters/setStatic');
-    expect(dispatchEventCalls[0][1]).toBe(filter);
+    expect(dispatchEventCalls[0][1]).toBe(staticFilter);
   });
 
   it('setFacets works as expected', () => {
@@ -224,6 +234,49 @@ describe('setters work as expected', () => {
   });
 });
 
+describe('filter functions work as expected', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('setFilterOption works when select filter', async () => {
+    const filter = {
+      fieldId: 'c_someField',
+      matcher: Matcher.Equals,
+      value: 'someValue'
+    };
+    answers.setFilterOption({ ...filter, selected: true }, 'someId');
+    const dispatchEventCalls =
+    mockedStateManager.dispatchEvent.mock.calls;
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('filters/setFilterOption');
+    expect(dispatchEventCalls[0][1]).toEqual({
+      shouldSelect: true,
+      filterCollectionId: 'someId',
+      filter: filter
+    });
+  });
+
+  it('setFilterOption works when unselect filter', async () => {
+    const filter = {
+      fieldId: 'c_someField',
+      matcher: Matcher.Equals,
+      value: 'someValue'
+    };
+    answers.setFilterOption({ ...filter, selected: false }, 'someId');
+    const dispatchEventCalls =
+    mockedStateManager.dispatchEvent.mock.calls;
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('filters/setFilterOption');
+    expect(dispatchEventCalls[0][1]).toEqual({
+      shouldSelect: false,
+      filterCollectionId: 'someId',
+      filter: filter
+    });
+  });
+});
+
+
 describe('auto-complete works as expected', () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -267,12 +320,12 @@ describe('search works as expected', () => {
 
   it('vertical search works', async () => {
     await answers.executeVerticalQuery();
-
+    const { selected:_, ...filter } = mockedState.filters.static.someId[0];
     const coreCalls = mockedCore.verticalSearch.mock.calls;
     const expectedSearchParams = {
       ...mockedState.query,
       verticalKey: mockedState.vertical.key,
-      staticFilters: mockedState.filters.static,
+      staticFilters: filter,
       retrieveFacets: true,
       limit: mockedState.vertical.limit,
       offset: mockedState.vertical.offset,

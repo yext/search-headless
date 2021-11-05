@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
-import { CombinedFilter, Filter, FacetOption, DisplayableFacet, SortBy } from '@yext/answers-core';
+import { Filter, FacetOption, DisplayableFacet, SortBy } from '@yext/answers-core';
 import { FiltersState } from '../models/slices/filters';
+import { SelectableFilter } from '../models/utils/selectablefilter';
 
 const initialState: FiltersState = {};
 
@@ -10,8 +11,17 @@ interface FacetPayload {
   shouldSelect: boolean
 }
 
+interface FilterPayload {
+  filterCollectionId: string
+  filter: Filter
+  shouldSelect: boolean
+}
+
 const reducers = {
-  setStatic: (state: FiltersState, action: PayloadAction<Filter|CombinedFilter|null>) => {
+  setStatic: (
+    state: FiltersState,
+    action: PayloadAction<Record<string, SelectableFilter[]>>
+  ) => {
     state.static = action.payload;
   },
   setFacets: (state: FiltersState, action: PayloadAction<DisplayableFacet[]>) => {
@@ -47,6 +57,34 @@ const reducers = {
       });
     });
   },
+  setFilterOption: (state: FiltersState, { payload }: PayloadAction<FilterPayload>) => {
+    if (!state.static) {
+      state.static = {};
+    }
+    const { filterCollectionId, filter: targetFilter, shouldSelect } = payload;
+    if (!filterCollectionId) {
+      console.warn(`invalid static filters id: ${filterCollectionId}`);
+      return;
+    }
+    const filterCollection = state.static[filterCollectionId];
+    const foundFilter = filterCollection?.find(storedSelectableFilter => {
+      const { selected:_, ...storedFilter } = storedSelectableFilter;
+      return storedFilter.fieldId === targetFilter.fieldId
+        && storedFilter.matcher === targetFilter.matcher
+        && storedFilter.value === targetFilter.value;
+    });
+    if (foundFilter) {
+      foundFilter.selected = shouldSelect;
+    } else if (shouldSelect) {
+      const selectedFilter = { ...targetFilter, selected: shouldSelect };
+      filterCollection
+        ? filterCollection.push(selectedFilter)
+        : state.static[filterCollectionId] = [selectedFilter];
+    } else {
+      console.warn('Could not unselect a non-existing filter option in state from filterCollectionId: '
+        + `'${filterCollectionId}' with the following fields:\n${JSON.stringify(targetFilter)}.`);
+    }
+  }
 };
 
 /**

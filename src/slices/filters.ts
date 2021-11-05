@@ -81,8 +81,8 @@ const reducers = {
         ? filterCollection.push(selectedFilter)
         : state.static[filterCollectionId] = [selectedFilter];
     } else {
-      console.warn('Could not unselect a non-existing filter option in state'
-        + ` with following fields:\n${JSON.stringify(targetFilter)}.`);
+      console.warn('Could not unselect a non-existing filter option in state from filterCollectionId: '
+        + `'${filterCollectionId}' with the following fields:\n${JSON.stringify(targetFilter)}.`);
     }
   }
 };

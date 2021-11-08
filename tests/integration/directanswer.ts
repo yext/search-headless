@@ -1,5 +1,5 @@
 import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
-import { FeaturedSnippetDirectAnswer, DirectAnswerType, Source} from '@yext/answers-core';
+import { FeaturedSnippetDirectAnswer, DirectAnswerType, Source } from '@yext/answers-core';
 
 const initialState = {
   query: {

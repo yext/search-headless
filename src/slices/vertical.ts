@@ -5,28 +5,28 @@ import { VerticalSearchState } from '../models/slices/vertical';
 const initialState: VerticalSearchState = {};
 
 const reducers = {
-  setKey: (state, action: PayloadAction<string>) => {
+  setKey: (state: VerticalSearchState, action: PayloadAction<string>) => {
     state.key = action.payload;
   },
-  setResults: (state, action: PayloadAction<VerticalSearchResponse>) => {
+  setResults: (state: VerticalSearchState, action: PayloadAction<VerticalSearchResponse>) => {
     state.results = action.payload;
   },
-  setAutoComplete: (state, action: PayloadAction<AutocompleteResponse>) => {
+  setAutoComplete: (state: VerticalSearchState, action: PayloadAction<AutocompleteResponse>) => {
     state.autoComplete = action.payload;
   },
-  setAlternativeVerticals: (state, action: PayloadAction<VerticalResults[]>) => {
+  setAlternativeVerticals: (state: VerticalSearchState, action: PayloadAction<VerticalResults[]>) => {
     state.alternativeVerticals = action.payload;
   },
-  setDisplayName: (state, action: PayloadAction<string>) => {
+  setDisplayName: (state: VerticalSearchState, action: PayloadAction<string>) => {
     state.displayName = action.payload;
   },
-  setLimit: (state, action: PayloadAction<number>) => {
+  setLimit: (state: VerticalSearchState, action: PayloadAction<number>) => {
     state.limit = action.payload;
   },
-  setOffset: (state, action: PayloadAction<number>) => {
+  setOffset: (state: VerticalSearchState, action: PayloadAction<number>) => {
     state.offset = action.payload;
   },
-  setSearchLoading: (state, action: PayloadAction<boolean>) => {
+  setSearchLoading: (state: VerticalSearchState, action: PayloadAction<boolean>) => {
     state.searchLoading = action.payload;
   }
 };

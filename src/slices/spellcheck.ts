@@ -7,13 +7,13 @@ const initialState: SpellCheckState = {
 };
 
 const reducers = {
-  setResult: (state, action: PayloadAction<SpellCheck>) => {
+  setResult: (state: SpellCheckState, action: PayloadAction<SpellCheck>) => {
     return {
       enabled: state.enabled,
       ...action.payload
     };
   },
-  setEnabled: (state, action: PayloadAction<boolean>) => {
+  setEnabled: (state: SpellCheckState, action: PayloadAction<boolean>) => {
     state.enabled = action.payload;
   },
 };

@@ -3,7 +3,8 @@ import {
   UniversalSearchRequest,
   SearchIntent,
   VerticalAutocompleteRequest,
-  UniversalAutocompleteRequest
+  UniversalAutocompleteRequest,
+  FilterSearchRequest
 } from '@yext/answers-core';
 import HttpManager from '../../src/http-manager';
 import ReduxStateManager from '../../src/redux-state-manager';
@@ -73,7 +74,7 @@ describe('ensure correct results from latest request', () => {
   };
 
   const mockAutoCompleteFn = jest.fn(
-    async (request: VerticalAutocompleteRequest | UniversalAutocompleteRequest) => {
+    async (request: VerticalAutocompleteRequest | UniversalAutocompleteRequest | FilterSearchRequest) => {
       const waitTime = requestsTime[request.input];
       return new Promise(res => setTimeout(() => res({ results: [ {value: request.input} ]}), waitTime));
     }
@@ -82,6 +83,7 @@ describe('ensure correct results from latest request', () => {
   const mockedCore: any = {
     verticalAutocomplete: mockAutoCompleteFn,
     universalAutocomplete: mockAutoCompleteFn,
+    filterSearch: mockAutoCompleteFn,
     verticalSearch: jest.fn( async (request: VerticalSearchRequest) => {
       const waitTime = requestsTime[request.query];
       return new Promise(res => setTimeout(() => res(
@@ -202,6 +204,32 @@ describe('ensure correct results from latest request', () => {
 
     expect(answers.state.query.query).toEqual(queries[2]);
     expect(answers.state.universal.results.verticalResults).toEqual([{ results: [queries[2]] }]);
+    expect(updateResult.mock.calls).toHaveLength(2);
+  });
+
+  it('filter search get correct results based on up-to-date response', async () => {
+    const filterSearchId = 'someId';
+    answers.addListener({
+      valueAccessor: state => state.filterSearch[filterSearchId]?.results,
+      callback: updateResult
+    });
+    answers.setFilterSearchQuery(queries[0], filterSearchId);
+    const firstResponsePromise = answers.executeFilterSearch(filterSearchId, false, []);
+    answers.setFilterSearchQuery(queries[1], filterSearchId);
+    const secondResponsePromise = answers.executeFilterSearch(filterSearchId, false, []);
+    answers.setFilterSearchQuery(queries[2], filterSearchId);
+    const thirdResponsePromise = answers.executeFilterSearch(filterSearchId, false, []);
+
+    jest.advanceTimersByTime(requestsTime[queries[1]]);
+    await secondResponsePromise;
+    expect(answers.state.filterSearch[filterSearchId].results.results).toEqual([{ value: queries[1] }]);
+    jest.advanceTimersByTime(requestsTime[queries[2]]);
+    await thirdResponsePromise;
+    jest.runAllTimers();
+    await firstResponsePromise;
+
+    expect(answers.state.filterSearch[filterSearchId].query).toEqual(queries[2]);
+    expect(answers.state.filterSearch[filterSearchId].results.results).toEqual([{ value: queries[2] }]);
     expect(updateResult.mock.calls).toHaveLength(2);
   });
 });

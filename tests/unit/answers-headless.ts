@@ -16,6 +16,7 @@ const mockedState = {
     offset: 0,
     limit: 20
   },
+  filterSearch: {},
   filters: {
     static: {
       someId: [
@@ -59,6 +60,19 @@ const answers = new AnswersHeadless(mockedCore, mockedStateManager, new HttpMana
 describe('setters work as expected', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+  });
+
+  it('setFilterSearchQuery works as expected', () => {
+    const query = 'someQuery';
+    const filterSearchId = 'someId';
+    answers.setFilterSearchQuery(query, filterSearchId);
+
+    const dispatchEventCalls =
+      mockedStateManager.dispatchEvent.mock.calls;
+
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('filterSearch/setQuery');
+    expect(dispatchEventCalls[0][1]).toEqual({ query, filterSearchId });
   });
 
   it('setStaticFilters works as expected', () => {
@@ -337,7 +351,7 @@ describe('search works as expected', () => {
     expect(coreCalls[0][0]).toEqual(expectedSearchParams);
   });
 
-  it('filter search works', async () => {
+  describe('filter search works', () => {
     const fields = [
       {
         fieldApiName: 'builtin.location',
@@ -345,15 +359,52 @@ describe('search works as expected', () => {
         fetchEntities: false
       }
     ];
-    await answers.executeFilterSearch(false, fields);
 
-    expect(mockedCore.filterSearch).toHaveBeenCalledTimes(1);
-    expect(mockedCore.filterSearch).toHaveBeenCalledWith({
-      input: 'Search',
-      verticalKey: 'someKey',
-      sessionTrackingEnabled: true,
-      sectioned: false,
-      fields
+    beforeEach(() => {
+      jest.clearAllMocks();
+      answers.state.filterSearch = {};
+      answers.state.vertical.key = 'someKey';
+    });
+
+    it('execute filter search with no vertical Key', async () => {
+      answers.state.vertical.key = '';
+      const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation();
+      await answers.executeFilterSearch('someId', false, fields);
+      expect(mockedCore.filterSearch).toHaveBeenCalledTimes(0);
+      expect(consoleErrorSpy).toHaveBeenCalledTimes(1);
+      expect(consoleErrorSpy).toHaveBeenLastCalledWith(
+        expect.stringContaining('no verticalKey supplied for filter search')
+      );
+      consoleErrorSpy.mockClear();
+    });
+
+    it('execute filter search with invalid filterSearchId', async () => {
+      const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation();
+      await answers.executeFilterSearch('invalidId', false, fields);
+      expect(mockedCore.filterSearch).toHaveBeenCalledTimes(0);
+      expect(consoleErrorSpy).toHaveBeenCalledTimes(1);
+      expect(consoleErrorSpy).toHaveBeenLastCalledWith(
+        expect.stringContaining('invalid filterSearch id: "invalidId"')
+      );
+      consoleErrorSpy.mockClear();
+    });
+
+    it('execute filter search with valid filterSearchId', async () => {
+      answers.state.filterSearch = {
+        someId: {
+          query: 'someQuery'
+        }
+      };
+      await answers.executeFilterSearch('someId', false, fields);
+
+      expect(mockedCore.filterSearch).toHaveBeenCalledTimes(1);
+      expect(mockedCore.filterSearch).toHaveBeenCalledWith({
+        input: 'someQuery',
+        verticalKey: 'someKey',
+        sessionTrackingEnabled: true,
+        sectioned: false,
+        fields
+      });
     });
   });
 });

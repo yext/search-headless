@@ -5,10 +5,10 @@ import { LocationState } from '../models/slices/location';
 const initialState: LocationState = {};
 
 const reducers = {
-  setUserLocation: (state, action: PayloadAction<LatLong>) => {
+  setUserLocation: (state: LocationState, action: PayloadAction<LatLong>) => {
     state.userLocation = action.payload;
   },
-  setLocationBias: (state, action: PayloadAction<LocationBias>) => {
+  setLocationBias: (state: LocationState, action: PayloadAction<LocationBias>) => {
     state.locationBias = action.payload;
   }
 };

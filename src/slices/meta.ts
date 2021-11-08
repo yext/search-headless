@@ -5,10 +5,10 @@ import { MetaState } from '../models/slices/meta';
 const initialState: MetaState = {};
 
 const reducers = {
-  setContext: (state, action: PayloadAction<Context>) => {
+  setContext: (state: MetaState, action: PayloadAction<Context>) => {
     state.context = action.payload;
   },
-  setReferrerPageUrl: (state, action: PayloadAction<string>) => {
+  setReferrerPageUrl: (state: MetaState, action: PayloadAction<string>) => {
     state.referrerPageUrl = action.payload;
   }
 };

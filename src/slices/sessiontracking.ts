@@ -6,10 +6,10 @@ const initialState: SessionTrackingState = {
 };
 
 const reducers = {
-  setEnabled: (state, action: PayloadAction<boolean>) => {
+  setEnabled: (state: SessionTrackingState, action: PayloadAction<boolean>) => {
     state.enabled = action.payload;
   },
-  setSessionId: (state, action: PayloadAction<string>) => {
+  setSessionId: (state: SessionTrackingState, action: PayloadAction<string>) => {
     state.sessionId = action.payload;
   },
 };

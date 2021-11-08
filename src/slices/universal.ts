@@ -5,16 +5,16 @@ import { UniversalSearchState } from '../models/slices/universal';
 const initialState: UniversalSearchState = {};
 
 const reducers = {
-  setResults: (state, action: PayloadAction<UniversalSearchResponse>) => {
+  setResults: (state: UniversalSearchState, action: PayloadAction<UniversalSearchResponse>) => {
     state.results = action.payload;
   },
-  setAutoComplete: (state, action: PayloadAction<AutocompleteResponse>) => {
+  setAutoComplete: (state: UniversalSearchState, action: PayloadAction<AutocompleteResponse>) => {
     state.autoComplete = action.payload;
   },
-  setSearchLoading: (state, action: PayloadAction<boolean>) => {
+  setSearchLoading: (state: UniversalSearchState, action: PayloadAction<boolean>) => {
     state.searchLoading = action.payload;
   },
-  setLimit: (state, action: PayloadAction<UniversalLimit>) => {
+  setLimit: (state: UniversalSearchState, action: PayloadAction<UniversalLimit>) => {
     state.limit = action.payload;
   },
 };

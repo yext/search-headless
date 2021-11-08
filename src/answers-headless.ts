@@ -60,6 +60,14 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('universal/setLimit', limit);
   }
 
+  setFilterSearchQuery(query: string, filterSearchId: string): void {
+    const payload = {
+      query,
+      filterSearchId
+    };
+    this.stateManager.dispatchEvent('filterSearch/setQuery', payload);
+  }
+
   setOffset(offset: number): void {
     this.stateManager.dispatchEvent('vertical/setOffset', offset);
   }
@@ -268,14 +276,42 @@ export default class AnswersHeadless {
     return results;
   }
 
-  executeFilterSearch(sectioned: boolean, fields: SearchParameterField[]): Promise<FilterSearchResponse> {
-    return this.core.filterSearch({
-      input: this.state.query.query || '',
+  async executeFilterSearch(
+    filterSearchId: string,
+    sectioned: boolean,
+    fields: SearchParameterField[]
+  ): Promise<FilterSearchResponse | undefined> {
+    const thisRequestId = this.httpManager.updateRequestId('filterSearch');
+    const verticalKey = this.state.vertical.key;
+    console.log(verticalKey);
+    if (!verticalKey) {
+      console.error('no verticalKey supplied for filter search');
+      return;
+    }
+    if (!filterSearchId || !this.state.filterSearch[filterSearchId]) {
+      console.error(`invalid filterSearch id: "${filterSearchId}""`);
+      return;
+    }
+
+    const results = await this.core.filterSearch({
+      input: this.state.filterSearch[filterSearchId].query,
       verticalKey: this.state.vertical.key || '',
       sessionTrackingEnabled: this.state.sessionTracking.enabled,
       sectioned,
       fields
     });
+
+    const latestResponseId = this.httpManager.getLatestResponseId('filterSearch');
+    if (thisRequestId < latestResponseId) {
+      return results;
+    }
+    const payload = {
+      filterSearchId,
+      results
+    };
+    this.httpManager.setResponseId('filterSearch', thisRequestId);
+    this.stateManager.dispatchEvent('filterSearch/setResults', payload);
+    return results;
   }
 
   selectFacetOption(fieldId: string, facetOption: FacetOption): void {

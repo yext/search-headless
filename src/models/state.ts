@@ -6,6 +6,7 @@ import { SpellCheckState } from './slices/spellcheck';
 import { MetaState } from './slices/meta';
 import { LocationState } from './slices/location';
 import { SessionTrackingState } from './slices/sessiontracking';
+import { DirectAnswerState } from './slices/directanswer';
 
 /**
  * The overall shape of the redux state tree, with each key value pair
@@ -19,6 +20,7 @@ export interface State {
   query: QueryState,
   universal: UniversalSearchState,
   vertical: VerticalSearchState,
+  directAnswer: DirectAnswerState,
   filters: FiltersState,
   spellCheck: SpellCheckState,
   sessionTracking: SessionTrackingState

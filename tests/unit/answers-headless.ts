@@ -378,13 +378,28 @@ describe('search works as expected', () => {
       consoleErrorSpy.mockClear();
     });
 
+    it('execute filter search with empty string for filterSearchId', async () => {
+      const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation();
+      await answers.executeFilterSearch('', false, fields);
+      expect(mockedCore.filterSearch).toHaveBeenCalledTimes(0);
+      expect(consoleErrorSpy).toHaveBeenCalledTimes(1);
+      expect(consoleErrorSpy).toHaveBeenLastCalledWith(
+        expect.stringContaining('Unable to execute filter search. ' +
+        'invalid filterSearch id: "". Id must be a non-empty string.'
+        )
+      );
+      consoleErrorSpy.mockClear();
+    });
+
     it('execute filter search with invalid filterSearchId', async () => {
       const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation();
       await answers.executeFilterSearch('invalidId', false, fields);
       expect(mockedCore.filterSearch).toHaveBeenCalledTimes(0);
       expect(consoleErrorSpy).toHaveBeenCalledTimes(1);
       expect(consoleErrorSpy).toHaveBeenLastCalledWith(
-        expect.stringContaining('invalid filterSearch id: "invalidId"')
+        expect.stringContaining('Unable to execute filter search. ' +
+        'The following filterSearch id does not exist in state: "invalidId"'
+        )
       );
       consoleErrorSpy.mockClear();
     });

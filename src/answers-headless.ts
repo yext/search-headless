@@ -287,8 +287,14 @@ export default class AnswersHeadless {
       console.error('no verticalKey supplied for filter search');
       return;
     }
-    if (!filterSearchId || !this.state.filterSearch[filterSearchId]) {
-      console.error(`invalid filterSearch id: "${filterSearchId}""`);
+    if (!filterSearchId) {
+      console.error('Unable to execute filter search. ' +
+      `invalid filterSearch id: "${filterSearchId}". Id must be a non-empty string.`);
+      return;
+    }
+    if (!this.state.filterSearch[filterSearchId]) {
+      console.error('Unable to execute filter search. The following filterSearch id does not exist in state: '
+      + `"${filterSearchId}".`);
       return;
     }
 

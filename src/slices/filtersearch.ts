@@ -11,7 +11,7 @@ const reducers = {
   ) => {
     const { filterSearchId, query } = action.payload;
     if (!filterSearchId) {
-      console.warn(`invalid filterSearch id: "${filterSearchId}"`);
+      console.warn(`invalid filterSearch id: "${filterSearchId}". Id must be a non-empty string.`);
       return;
     }
     state[filterSearchId]

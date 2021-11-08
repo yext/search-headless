@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
-import { FilterSearchResponse } from '@yext/answers-core';
-import { FilterSearchStates } from '../models/slices/filtersearch';
+import { FilterSearchState, FilterSearchStates } from '../models/slices/filtersearch';
 
 const initialState: FilterSearchStates = {};
 
@@ -20,10 +19,13 @@ const reducers = {
   },
   setResults: (
     state: FilterSearchStates,
-    action: PayloadAction<{ filterSearchId: string, results: FilterSearchResponse }>
+    action: PayloadAction<{ filterSearchId: string, results: Omit<FilterSearchState, 'query'> }>
   ) => {
     const { filterSearchId, results } = action.payload;
-    state[filterSearchId].results = results;
+    state[filterSearchId] = {
+      query: state[filterSearchId].query,
+      ...results
+    };
   }
 };
 

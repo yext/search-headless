@@ -72,7 +72,7 @@ describe('filter slice reducer works as expected', () => {
     const expectedState = {
       someId: {
         query: initialState.someId.query,
-        results: filterSearchResults.results
+        ...filterSearchResults.results
       }
     };
     expect(actualState).toEqual(expectedState);

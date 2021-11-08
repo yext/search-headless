@@ -222,14 +222,14 @@ describe('ensure correct results from latest request', () => {
 
     jest.advanceTimersByTime(requestsTime[queries[1]]);
     await secondResponsePromise;
-    expect(answers.state.filterSearch[filterSearchId].results.results).toEqual([{ value: queries[1] }]);
+    expect(answers.state.filterSearch[filterSearchId].results).toEqual([{ value: queries[1] }]);
     jest.advanceTimersByTime(requestsTime[queries[2]]);
     await thirdResponsePromise;
     jest.runAllTimers();
     await firstResponsePromise;
 
     expect(answers.state.filterSearch[filterSearchId].query).toEqual(queries[2]);
-    expect(answers.state.filterSearch[filterSearchId].results.results).toEqual([{ value: queries[2] }]);
+    expect(answers.state.filterSearch[filterSearchId].results).toEqual([{ value: queries[2] }]);
     expect(updateResult.mock.calls).toHaveLength(2);
   });
 });

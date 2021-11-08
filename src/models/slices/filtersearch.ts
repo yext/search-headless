@@ -1,8 +1,16 @@
-import { FilterSearchResponse } from '@yext/answers-core';
+import { AutocompleteResult, SearchIntent } from '@yext/answers-core';
 
-interface FilterSearchState {
+export interface FilterSearchState {
   query: string,
-  results?: FilterSearchResponse
+  sectioned?: boolean,
+  sections?: {
+    label: string,
+    results: AutocompleteResult[]
+  }[],
+  results?: AutocompleteResult[],
+  searchIntents?: SearchIntent[],
+  queryId?: string,
+  uuid?: string
 }
 
 export interface FilterSearchStates {

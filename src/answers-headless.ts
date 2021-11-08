@@ -283,7 +283,6 @@ export default class AnswersHeadless {
   ): Promise<FilterSearchResponse | undefined> {
     const thisRequestId = this.httpManager.updateRequestId('filterSearch');
     const verticalKey = this.state.vertical.key;
-    console.log(verticalKey);
     if (!verticalKey) {
       console.error('no verticalKey supplied for filter search');
       return;

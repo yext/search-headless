@@ -31,22 +31,50 @@ const featuredSnippedDirectAnswer: FeaturedSnippetDirectAnswer = {
   }
 };
 
-function mockSearchWithFeaturedSnippedDirectAnswer() {
-  return Promise.resolve({
-    directAnswer: featuredSnippedDirectAnswer
-  });
-}
-
 describe('AnswersHeadless spellcheck interactions properly update state', () => {
   it('executeVerticalQuery properly updates direct answer state', async () => {
     const answers = createMockedAnswersHeadless({
-      verticalSearch: mockSearchWithFeaturedSnippedDirectAnswer
+      verticalSearch: () => Promise.resolve({ directAnswer: featuredSnippedDirectAnswer })
     }, initialState);
     await answers.executeVerticalQuery();
     const expectedState = {
       ...initialState,
       directAnswer: {
         result: featuredSnippedDirectAnswer
+      }
+    };
+
+    expect(answers.state).toMatchObject(expectedState);
+  });
+
+  it('executeUniversalQuery properly updates direct answer state', async () => {
+    const answers = createMockedAnswersHeadless({
+      universalSearch: () => Promise.resolve({ directAnswer: featuredSnippedDirectAnswer })
+    }, initialState);
+    await answers.executeUniversalQuery();
+    const expectedState = {
+      ...initialState,
+      directAnswer: {
+        result: featuredSnippedDirectAnswer
+      }
+    };
+
+    expect(answers.state).toMatchObject(expectedState);
+  });
+
+  it('An undefined direct answer results in an undefined direct answer state', async () => {
+    const initialStateWithDA = {
+      ...initialState,
+      directAnswer: { result: featuredSnippedDirectAnswer }
+    };
+    const answers = createMockedAnswersHeadless({
+      universalSearch: () => Promise.resolve({ directAnswer: undefined })
+    }, initialStateWithDA);
+    await answers.executeUniversalQuery();
+    const expectedState = {
+      ...initialState,
+      directAnswer: {
+        result: undefined
       }
     };
 

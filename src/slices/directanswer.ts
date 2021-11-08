@@ -7,7 +7,7 @@ const initialState: DirectAnswerState = {};
 const reducers = {
   setResult: (
     state: DirectAnswerState,
-    action: PayloadAction<FeaturedSnippetDirectAnswer | FieldValueDirectAnswer>
+    action: PayloadAction<FeaturedSnippetDirectAnswer | FieldValueDirectAnswer | undefined>
   ) => {
     state.result = action.payload;
   },

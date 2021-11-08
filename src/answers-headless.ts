@@ -14,7 +14,6 @@ import {
   Context,
   LatLong,
   SearchParameterField,
-  FilterSearchResponse,
   UniversalLimit
 } from '@yext/answers-core';
 
@@ -280,7 +279,7 @@ export default class AnswersHeadless {
     filterSearchId: string,
     sectioned: boolean,
     fields: SearchParameterField[]
-  ): Promise<FilterSearchResponse | undefined> {
+  ): Promise<void> {
     const thisRequestId = this.httpManager.updateRequestId('filterSearch');
     const verticalKey = this.state.vertical.key;
     if (!verticalKey) {
@@ -308,7 +307,7 @@ export default class AnswersHeadless {
 
     const latestResponseId = this.httpManager.getLatestResponseId('filterSearch');
     if (thisRequestId < latestResponseId) {
-      return results;
+      return;
     }
     const payload = {
       filterSearchId,
@@ -316,7 +315,6 @@ export default class AnswersHeadless {
     };
     this.httpManager.setResponseId('filterSearch', thisRequestId);
     this.stateManager.dispatchEvent('filterSearch/setResults', payload);
-    return results;
   }
 
   selectFacetOption(fieldId: string, facetOption: FacetOption): void {

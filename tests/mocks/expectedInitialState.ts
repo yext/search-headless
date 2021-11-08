@@ -12,5 +12,6 @@ export const expectedInitialState: State = {
     enabled: true
   },
   universal: {},
-  vertical: {}
+  vertical: {},
+  directAnswer: {}
 };

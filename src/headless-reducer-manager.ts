@@ -10,6 +10,7 @@ import createSessionTrackingSlice from './slices/sessiontracking';
 import createMetaSlice from './slices/meta';
 import createLocationSlice from './slices/location';
 import { ActionWithHeadlessId } from './store';
+import createDirectAnswerSlice from './slices/directanswer';
 
 /**
  * Manages the current map of headless IDs to Reducers.
@@ -43,6 +44,7 @@ function createAnswersReducer(prefix: string): Reducer<State> {
     query: createQuerySlice(prefix).reducer,
     vertical: createVerticalSlice(prefix).reducer,
     universal: createUniversalSlice(prefix).reducer,
+    directAnswer: createDirectAnswerSlice(prefix).reducer,
     filters: createFiltersSlice(prefix).reducer,
     spellCheck: createSpellCheckSlice(prefix).reducer,
     sessionTracking: createSessionTrackingSlice(prefix).reducer,

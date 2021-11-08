@@ -160,6 +160,7 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('query/setSearchIntents', results.searchIntents || []);
     this.stateManager.dispatchEvent('location/setLocationBias', results.locationBias);
     this.stateManager.dispatchEvent('universal/setSearchLoading', false);
+    this.stateManager.dispatchEvent('directAnswer/setResult', results.directAnswer);
     return results;
   }
 
@@ -241,6 +242,7 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('query/setSearchIntents', results.searchIntents || []);
     this.stateManager.dispatchEvent('location/setLocationBias', results.locationBias);
     this.stateManager.dispatchEvent('vertical/setSearchLoading', false);
+    this.stateManager.dispatchEvent('directAnswer/setResult', results.directAnswer);
     return results;
   }
 

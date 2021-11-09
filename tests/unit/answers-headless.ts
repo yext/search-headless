@@ -3,8 +3,9 @@ import HttpManager from '../../src/http-manager';
 import StateManager from '../../src/models/state-manager';
 import AnswersHeadless from '../../src/answers-headless';
 import { SelectableFilter } from '../../src/models/utils/selectablefilter';
+import { State } from '../../src/models/state';
 
-const mockedState = {
+const mockedState: State = {
   query: {
     query: 'Search',
     querySource: QuerySource.Standard,
@@ -17,16 +18,12 @@ const mockedState = {
     limit: 20
   },
   filters: {
-    static: {
-      someId: [
-        {
-          fieldId: 'c_someField',
-          matcher: Matcher.Equals,
-          value: 'some value',
-          selected: true
-        }
-      ]
-    }
+    static: [{
+      fieldId: 'c_someField',
+      matcher: Matcher.Equals,
+      value: 'some value',
+      selected: true
+    }]
   },
   spellCheck: {
     enabled: true
@@ -36,7 +33,8 @@ const mockedState = {
     sessionId: 'random-id-number'
   },
   meta: {},
-  location: {}
+  location: {},
+  directAnswer: {}
 };
 
 const mockedStateManager: jest.Mocked<StateManager> = {
@@ -245,14 +243,13 @@ describe('filter functions work as expected', () => {
       matcher: Matcher.Equals,
       value: 'someValue'
     };
-    answers.setFilterOption({ ...filter, selected: true }, 'someId');
+    answers.setFilterOption({ ...filter, selected: true });
     const dispatchEventCalls =
     mockedStateManager.dispatchEvent.mock.calls;
     expect(dispatchEventCalls.length).toBe(1);
     expect(dispatchEventCalls[0][0]).toBe('filters/setFilterOption');
     expect(dispatchEventCalls[0][1]).toEqual({
       shouldSelect: true,
-      filterCollectionId: 'someId',
       filter: filter
     });
   });
@@ -263,14 +260,13 @@ describe('filter functions work as expected', () => {
       matcher: Matcher.Equals,
       value: 'someValue'
     };
-    answers.setFilterOption({ ...filter, selected: false }, 'someId');
+    answers.setFilterOption({ ...filter, selected: false });
     const dispatchEventCalls =
     mockedStateManager.dispatchEvent.mock.calls;
     expect(dispatchEventCalls.length).toBe(1);
     expect(dispatchEventCalls[0][0]).toBe('filters/setFilterOption');
     expect(dispatchEventCalls[0][1]).toEqual({
       shouldSelect: false,
-      filterCollectionId: 'someId',
       filter: filter
     });
   });
@@ -320,7 +316,7 @@ describe('search works as expected', () => {
 
   it('vertical search works', async () => {
     await answers.executeVerticalQuery();
-    const { selected:_, ...filter } = mockedState.filters.static.someId[0];
+    const { selected:_, ...filter } = mockedState.filters.static[0];
     const coreCalls = mockedCore.verticalSearch.mock.calls;
     const expectedSearchParams = {
       ...mockedState.query,

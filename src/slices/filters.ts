@@ -12,7 +12,6 @@ interface FacetPayload {
 }
 
 interface FilterPayload {
-  filterCollectionId: string
   filter: Filter
   shouldSelect: boolean
 }
@@ -20,7 +19,7 @@ interface FilterPayload {
 const reducers = {
   setStatic: (
     state: FiltersState,
-    action: PayloadAction<Record<string, SelectableFilter[]>>
+    action: PayloadAction<SelectableFilter[]>
   ) => {
     state.static = action.payload;
   },
@@ -59,15 +58,10 @@ const reducers = {
   },
   setFilterOption: (state: FiltersState, { payload }: PayloadAction<FilterPayload>) => {
     if (!state.static) {
-      state.static = {};
+      state.static = [];
     }
-    const { filterCollectionId, filter: targetFilter, shouldSelect } = payload;
-    if (!filterCollectionId) {
-      console.warn(`invalid static filters id: ${filterCollectionId}`);
-      return;
-    }
-    const filterCollection = state.static[filterCollectionId];
-    const foundFilter = filterCollection?.find(storedSelectableFilter => {
+    const { filter: targetFilter, shouldSelect } = payload;
+    const foundFilter = state.static.find(storedSelectableFilter => {
       const { selected:_, ...storedFilter } = storedSelectableFilter;
       return storedFilter.fieldId === targetFilter.fieldId
         && storedFilter.matcher === targetFilter.matcher
@@ -77,12 +71,10 @@ const reducers = {
       foundFilter.selected = shouldSelect;
     } else if (shouldSelect) {
       const selectedFilter = { ...targetFilter, selected: shouldSelect };
-      filterCollection
-        ? filterCollection.push(selectedFilter)
-        : state.static[filterCollectionId] = [selectedFilter];
+      state.static.push(selectedFilter);
     } else {
-      console.warn('Could not unselect a non-existing filter option in state from filterCollectionId: '
-        + `'${filterCollectionId}' with the following fields:\n${JSON.stringify(targetFilter)}.`);
+      console.warn('Could not unselect a non-existing filter option in state '
+        + `with the following fields:\n${JSON.stringify(targetFilter)}.`);
     }
   }
 };

@@ -19,34 +19,30 @@ describe('filter slice reducer works as expected', () => {
   };
 
   const initialState = {
-    static: {
-      someId: [
-        {
-          fieldId: 'id1',
-          matcher: Matcher.Equals,
-          value: 'value1',
-          selected: true
-        },
-        {
-          fieldId: 'id2',
-          matcher: Matcher.Equals,
-          value: 'value2',
-          selected: true
-        },
-        {
-          fieldId: 'id3',
-          matcher: Matcher.Equals,
-          value: 'value3',
-          selected: false
-        }
-      ]
-    }
+    static: [
+      {
+        fieldId: 'id1',
+        matcher: Matcher.Equals,
+        value: 'value1',
+        selected: true
+      },
+      {
+        fieldId: 'id2',
+        matcher: Matcher.Equals,
+        value: 'value2',
+        selected: true
+      },
+      {
+        fieldId: 'id3',
+        matcher: Matcher.Equals,
+        value: 'value3',
+        selected: false
+      }
+    ]
   };
 
   it('setStatic action is handled properly', () => {
-    const staticFilter = {
-      someId: [selectableFilter]
-    };
+    const staticFilter = [selectableFilter];
     const actualState = reducer({}, setStatic(staticFilter));
     const expectedState = {
       static: staticFilter
@@ -57,7 +53,6 @@ describe('filter slice reducer works as expected', () => {
 
   it('setFilterOption action is handled properly with no static state', () => {
     const unselectFilterPayload = {
-      filterCollectionId: 'someId',
       filter: {
         fieldId: 'id2',
         matcher: Matcher.Equals,
@@ -68,80 +63,18 @@ describe('filter slice reducer works as expected', () => {
     const consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation();
     const actualState = reducer({}, setFilterOption(unselectFilterPayload));
     const expectedState = {
-      static: {
-        someId: [{
-          ...unselectFilterPayload.filter,
-          selected: true
-        }]
-      }
+      static: [{
+        ...unselectFilterPayload.filter,
+        selected: true
+      }]
     };
     expect(actualState).toEqual(expectedState);
     expect(consoleWarnSpy).toHaveBeenCalledTimes(0);
     consoleWarnSpy.mockClear();
   });
 
-  it('setFilterOption action is handled properly with unknown filterCollectionId on unselect', () => {
+  it('setFilterOption action is handled properly with existing filters', () => {
     const unselectFilterPayload = {
-      filterCollectionId: 'invalidId',
-      filter: {
-        fieldId: 'id2',
-        matcher: Matcher.Equals,
-        value: 'value2'
-      },
-      shouldSelect: false
-    };
-    const consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation();
-    const actualState = reducer(initialState, setFilterOption(unselectFilterPayload));
-    expect(actualState).toEqual(initialState);
-    expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
-    expect(consoleWarnSpy).toHaveBeenLastCalledWith(
-      expect.stringContaining('Could not unselect a non-existing filter option in state')
-    );
-    consoleWarnSpy.mockClear();
-  });
-
-  it('setFilterOption action is handled properly with unknown filterCollectionId on select', () => {
-    const selectFilterPayload = {
-      filterCollectionId: 'newId',
-      filter: {
-        fieldId: 'id2',
-        matcher: Matcher.Equals,
-        value: 'value2'
-      },
-      shouldSelect: true
-    };
-    const consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation();
-    const actualState = reducer(initialState, setFilterOption(selectFilterPayload));
-    const selectExpectedState = _.cloneDeep(initialState);
-    selectExpectedState.static['newId'] = [{ ...selectFilterPayload.filter, selected: true }];
-    expect(actualState).toEqual(selectExpectedState);
-    expect(consoleWarnSpy).toHaveBeenCalledTimes(0);
-    consoleWarnSpy.mockClear();
-  });
-
-  it('setFilterOption action is handled properly with empty string for filterCollectionId', () => {
-    const selectFilterPayload = {
-      filterCollectionId: '',
-      filter: {
-        fieldId: 'id2',
-        matcher: Matcher.Equals,
-        value: 'value2'
-      },
-      shouldSelect: true
-    };
-    const consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation();
-    const actualState = reducer(initialState, setFilterOption(selectFilterPayload));
-    expect(actualState).toEqual(initialState);
-    expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
-    expect(consoleWarnSpy).toHaveBeenLastCalledWith(
-      expect.stringContaining('invalid static filters id')
-    );
-    consoleWarnSpy.mockClear();
-  });
-
-  it('setFilterOption action is handled properly, with valid filterCollectionId', () => {
-    const unselectFilterPayload = {
-      filterCollectionId: 'someId',
       filter: {
         fieldId: 'id2',
         matcher: Matcher.Equals,
@@ -151,7 +84,6 @@ describe('filter slice reducer works as expected', () => {
     };
 
     const selectFilterPayload = {
-      filterCollectionId: 'someId',
       filter: {
         fieldId: 'id3',
         matcher: Matcher.Equals,
@@ -162,18 +94,17 @@ describe('filter slice reducer works as expected', () => {
 
     let actualState = reducer(initialState, setFilterOption(unselectFilterPayload));
     const unselectExpectedState = _.cloneDeep(initialState);
-    unselectExpectedState.static.someId[1].selected = false;
+    unselectExpectedState.static[1].selected = false;
     expect(actualState).toEqual(unselectExpectedState);
 
     actualState = reducer(initialState, setFilterOption(selectFilterPayload));
     const selectedExpectedState = _.cloneDeep(initialState);
-    selectedExpectedState.static.someId[2].selected = true;
+    selectedExpectedState.static[2].selected = true;
     expect(actualState).toEqual(selectedExpectedState);
   });
 
   it('setFilterOption action is handled properly with filter not found in state when select', () => {
     const selectFilterPayload = {
-      filterCollectionId: 'someId',
       filter: {
         fieldId: 'invalid field',
         matcher: Matcher.Equals,
@@ -183,7 +114,7 @@ describe('filter slice reducer works as expected', () => {
     };
     const actualState = reducer(initialState, setFilterOption(selectFilterPayload));
     const selectedExpectedState = _.cloneDeep(initialState);
-    selectedExpectedState.static.someId.push({
+    selectedExpectedState.static.push({
       ...selectFilterPayload.filter,
       selected: true
     });
@@ -192,7 +123,6 @@ describe('filter slice reducer works as expected', () => {
 
   it('setFilterOption action is handled properly with filter not found in state when unselect', () => {
     const unselectFilterPayload = {
-      filterCollectionId: 'someId',
       filter: {
         fieldId: 'invalid field',
         matcher: Matcher.Equals,

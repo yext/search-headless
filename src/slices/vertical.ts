@@ -1,21 +1,30 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
-import { VerticalSearchResponse, AutocompleteResponse, VerticalResults } from '@yext/answers-core';
+import {
+  AutocompleteResponse,
+  SortBy,
+  VerticalSearchResponse
+} from '@yext/answers-core';
 import { VerticalSearchState } from '../models/slices/vertical';
 
 const initialState: VerticalSearchState = {};
 
 const reducers = {
-  setKey: (state, action: PayloadAction<string>) => {
-    state.key = action.payload;
-  },
-  setResults: (state, action: PayloadAction<VerticalSearchResponse>) => {
-    state.results = action.payload;
+  handleSearchResponse: (state, action: PayloadAction<VerticalSearchResponse | undefined>) => {
+    state.allResultsForVertical = action.payload?.allResultsForVertical ? {
+      facets: action.payload.allResultsForVertical.facets,
+      results: action.payload.allResultsForVertical.verticalResults?.results,
+      resultsCount: action.payload.allResultsForVertical.verticalResults?.resultsCount,
+      searchIntents: action.payload.allResultsForVertical.searchIntents
+    } : undefined;
+    state.alternativeVerticals = action.payload?.alternativeVerticals;
+    state.appliedQueryFilters = action.payload?.verticalResults?.appliedQueryFilters;
+    state.queryDurationMillis = action.payload?.verticalResults?.queryDurationMillis;
+    state.results = action.payload?.verticalResults?.results;
+    state.resultsCount = action.payload?.verticalResults?.resultsCount;
+    state.source = action.payload?.verticalResults?.source;
   },
   setAutoComplete: (state, action: PayloadAction<AutocompleteResponse>) => {
     state.autoComplete = action.payload;
-  },
-  setAlternativeVerticals: (state, action: PayloadAction<VerticalResults[]>) => {
-    state.alternativeVerticals = action.payload;
   },
   setDisplayName: (state, action: PayloadAction<string>) => {
     state.displayName = action.payload;
@@ -28,6 +37,12 @@ const reducers = {
   },
   setSearchLoading: (state, action: PayloadAction<boolean>) => {
     state.searchLoading = action.payload;
+  },
+  setSortBys: (state, action: PayloadAction<SortBy[]>) => {
+    state.sortBys = action.payload;
+  },
+  setVerticalKey: (state, action: PayloadAction<string>) => {
+    state.verticalKey = action.payload;
   }
 };
 

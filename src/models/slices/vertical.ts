@@ -1,11 +1,34 @@
-import { VerticalSearchResponse, AutocompleteResponse, VerticalResults } from '@yext/answers-core';
+import {
+  AppliedQueryFilter,
+  AutocompleteResponse,
+  DisplayableFacet,
+  Result,
+  SearchIntent,
+  SortBy,
+  Source,
+  VerticalResults
+} from '@yext/answers-core';
+
+export interface AllResultsForVertical {
+  facets: DisplayableFacet[],
+  results: Result[],
+  resultsCount: number,
+  searchIntents: SearchIntent[]
+}
+
 export interface VerticalSearchState {
-  alternativeVerticals?: VerticalResults[]
-  key?: string,
+  allResultsForVertical?: AllResultsForVertical,
+  alternativeVerticals?: VerticalResults[],
+  appliedQueryFilters?: AppliedQueryFilter[],
   autoComplete?: AutocompleteResponse,
-  results?: VerticalSearchResponse,
   displayName?: string
   limit?: number,
   offset?: number,
-  searchLoading?: boolean
+  queryDurationMillis?: number,
+  results?: Result[],
+  resultsCount?: number,
+  searchLoading?: boolean,
+  sortBys?: SortBy[],
+  source?: Source,
+  verticalKey?: string,
 }

@@ -7,7 +7,7 @@ const initialState = {
     query: 'virginia'
   },
   vertical: {
-    key: '123'
+    verticalKey: '123'
   },
   directAnswer: {},
   universal: {},

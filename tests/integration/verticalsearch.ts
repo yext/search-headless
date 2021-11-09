@@ -38,7 +38,7 @@ it('vertical searches set allResultsForVertical', async () => {
     searchIntents: []
   };
   await answers.executeVerticalQuery();
-  expect(answers.state.vertical.allResultsForVertical).toEqual(expectedAllResultsForVertical);
+  expect(answers.state.vertical.noResults.allResultsForVertical).toEqual(expectedAllResultsForVertical);
 });
 
 it('vertical searches set appliedQueryFilters', async () => {

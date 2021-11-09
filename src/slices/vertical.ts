@@ -10,13 +10,17 @@ const initialState: VerticalSearchState = {};
 
 const reducers = {
   handleSearchResponse: (state, action: PayloadAction<VerticalSearchResponse | undefined>) => {
-    state.allResultsForVertical = action.payload?.allResultsForVertical ? {
+    const isNoResultsData = action.payload?.allResultsForVertical ?? action.payload?.alternativeVerticals;
+    const allResultsForVertical = action.payload?.allResultsForVertical ? {
       facets: action.payload.allResultsForVertical.facets,
       results: action.payload.allResultsForVertical.verticalResults?.results,
       resultsCount: action.payload.allResultsForVertical.verticalResults?.resultsCount,
       searchIntents: action.payload.allResultsForVertical.searchIntents
     } : undefined;
-    state.alternativeVerticals = action.payload?.alternativeVerticals;
+    state.noResults = isNoResultsData ? {
+      allResultsForVertical,
+      alternativeVerticals: action.payload?.alternativeVerticals
+    } : undefined;
     state.appliedQueryFilters = action.payload?.verticalResults?.appliedQueryFilters;
     state.queryDurationMillis = action.payload?.verticalResults?.queryDurationMillis;
     state.results = action.payload?.verticalResults?.results;

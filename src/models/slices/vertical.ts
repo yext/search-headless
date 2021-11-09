@@ -17,12 +17,14 @@ export interface AllResultsForVertical {
 }
 
 export interface VerticalSearchState {
-  allResultsForVertical?: AllResultsForVertical,
-  alternativeVerticals?: VerticalResults[],
   appliedQueryFilters?: AppliedQueryFilter[],
   autoComplete?: AutocompleteResponse,
   displayName?: string
   limit?: number,
+  noResults?: {
+    allResultsForVertical?: AllResultsForVertical,
+    alternativeVerticals?: VerticalResults[],
+  }
   offset?: number,
   queryDurationMillis?: number,
   results?: Result[],

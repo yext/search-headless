@@ -38,7 +38,7 @@ function mockSearchWithAlternativeVerticals() {
   });
 }
 
-describe('AnswersHeadless spellcheck interactions properly update state', () => {
+describe('AnswersHeadless alternative verticals interactions properly update state', () => {
   it('executeVerticalQuery properly updates alternative verticals state', async () => {
     const answers = createMockedAnswersHeadless({
       verticalSearch: mockSearchWithAlternativeVerticals
@@ -47,7 +47,9 @@ describe('AnswersHeadless spellcheck interactions properly update state', () => 
     const expectedState = {
       vertical: {
         ...initialState.vertical,
-        alternativeVerticals: alternativeVerticals
+        noResults: {
+          alternativeVerticals
+        }
       },
     };
 

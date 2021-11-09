@@ -21,7 +21,7 @@ const reducers = {
     state.queryDurationMillis = action.payload?.verticalResults?.queryDurationMillis;
     state.results = action.payload?.verticalResults?.results;
     state.resultsCount = action.payload?.verticalResults?.resultsCount;
-    state.source = action.payload.verticalResults?.source;
+    state.source = action.payload?.verticalResults?.source;
   },
   setAutoComplete: (state, action: PayloadAction<AutocompleteResponse>) => {
     state.autoComplete = action.payload;

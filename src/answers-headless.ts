@@ -14,7 +14,8 @@ import {
   LatLong,
   SearchParameterField,
   FilterSearchResponse,
-  UniversalLimit
+  UniversalLimit,
+  VerticalSearchResponse
 } from '@yext/answers-core';
 
 import StateListener from './models/state-listener';
@@ -180,7 +181,7 @@ export default class AnswersHeadless {
     return results;
   }
 
-  async executeVerticalQuery(): Promise<void> {
+  async executeVerticalQuery(): Promise<VerticalSearchResponse> {
     const thisRequestId = this.httpManager.updateRequestId('verticalQuery');
     const verticalKey = this.state.vertical.verticalKey;
     if (!verticalKey) {
@@ -249,6 +250,7 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('vertical/setResults', response.verticalResults?.results);
     this.stateManager.dispatchEvent('vertical/setResultsCount', response.verticalResults?.resultsCount);
     this.stateManager.dispatchEvent('vertical/setSource', response.verticalResults?.source);
+    return response;
   }
 
   async executeVerticalAutoComplete(): Promise<AutocompleteResponse | undefined> {

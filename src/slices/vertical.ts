@@ -10,7 +10,7 @@ const initialState: VerticalSearchState = {};
 
 const reducers = {
   handleSearchResponse: (state, action: PayloadAction<VerticalSearchResponse | undefined>) => {
-    state.allResultsForVertical = action.payload.allResultsForVertical ? {
+    state.allResultsForVertical = action.payload?.allResultsForVertical ? {
       facets: action.payload.allResultsForVertical.facets,
       results: action.payload.allResultsForVertical.verticalResults?.results,
       resultsCount: action.payload.allResultsForVertical.verticalResults?.resultsCount,

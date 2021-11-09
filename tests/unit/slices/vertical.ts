@@ -1,25 +1,14 @@
-import { Result, SearchIntent, Source } from '@yext/answers-core';
+import { SearchIntent } from '@yext/answers-core';
 import createVerticalSlice from '../../../src/slices/vertical';
 
 const { reducer, actions } = createVerticalSlice('');
-const { setAutoComplete, setVerticalKey, setResults, setLimit, setOffset, setDisplayName } = actions;
+const { setAutoComplete, setVerticalKey, setLimit, setOffset, setDisplayName } = actions;
 
 describe('vertical slice reducer works as expected', () => {
   it('setVerticalKey action is handled properly', () => {
     const verticalKey = 'someKey';
     const expectedState = { verticalKey };
     const actualState = reducer({}, setVerticalKey(verticalKey));
-
-    expect(actualState).toEqual(expectedState);
-  });
-
-  it('setResults action is handled properly', () => {
-    const mockResults: Result[] = [{
-      rawData: { test: 'hello' },
-      source: Source.KnowledgeManager
-    }];
-    const expectedState = { results: mockResults };
-    const actualState = reducer({}, setResults(mockResults));
 
     expect(actualState).toEqual(expectedState);
   });

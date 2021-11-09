@@ -1,11 +1,7 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
 import {
-  AppliedQueryFilter,
   AutocompleteResponse,
-  Result,
   SortBy,
-  Source,
-  VerticalResults,
   VerticalSearchResponse
 } from '@yext/answers-core';
 import { VerticalSearchState } from '../models/slices/vertical';
@@ -13,23 +9,19 @@ import { VerticalSearchState } from '../models/slices/vertical';
 const initialState: VerticalSearchState = {};
 
 const reducers = {
-  setAllResultsForVertical: (state, action: PayloadAction<VerticalSearchResponse | undefined>) => {
-    if (action.payload === undefined) {
-      state.allResults = undefined;
-      return;
-    }
-    state.allResultsForVertical = {
-      facets: action.payload.facets,
-      results: action.payload.verticalResults?.results,
-      resultsCount: action.payload.verticalResults?.resultsCount,
-      searchIntents: action.payload.searchIntents
-    };
-  },
-  setAlternativeVerticals: (state, action: PayloadAction<VerticalResults[]>) => {
-    state.alternativeVerticals = action.payload;
-  },
-  setAppliedQueryFilters: (state, action: PayloadAction<AppliedQueryFilter[]>) => {
-    state.appliedQueryFilters = action.payload;
+  handleSearchResponse: (state, action: PayloadAction<VerticalSearchResponse | undefined>) => {
+    state.allResultsForVertical = action.payload.allResultsForVertical ? {
+      facets: action.payload.allResultsForVertical.facets,
+      results: action.payload.allResultsForVertical.verticalResults?.results,
+      resultsCount: action.payload.allResultsForVertical.verticalResults?.resultsCount,
+      searchIntents: action.payload.allResultsForVertical.searchIntents
+    } : undefined;
+    state.alternativeVerticals = action.payload?.alternativeVerticals;
+    state.appliedQueryFilters = action.payload?.verticalResults?.appliedQueryFilters;
+    state.queryDurationMillis = action.payload?.verticalResults?.queryDurationMillis;
+    state.results = action.payload?.verticalResults?.results;
+    state.resultsCount = action.payload?.verticalResults?.resultsCount;
+    state.source = action.payload.verticalResults?.source;
   },
   setAutoComplete: (state, action: PayloadAction<AutocompleteResponse>) => {
     state.autoComplete = action.payload;
@@ -43,23 +35,11 @@ const reducers = {
   setOffset: (state, action: PayloadAction<number>) => {
     state.offset = action.payload;
   },
-  setQueryDurationMillis: (state, action: PayloadAction<number>) => {
-    state.queryDurationMillis = action.payload;
-  },
-  setResults: (state, action: PayloadAction<Result[]>) => {
-    state.results = action.payload;
-  },
-  setResultsCount: (state, action: PayloadAction<number>) => {
-    state.resultsCount = action.payload;
-  },
   setSearchLoading: (state, action: PayloadAction<boolean>) => {
     state.searchLoading = action.payload;
   },
   setSortBys: (state, action: PayloadAction<SortBy[]>) => {
     state.sortBys = action.payload;
-  },
-  setSource: (state, action: PayloadAction<Source>) => {
-    state.source = action.payload;
   },
   setVerticalKey: (state, action: PayloadAction<string>) => {
     state.verticalKey = action.payload;

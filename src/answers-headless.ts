@@ -241,15 +241,7 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('location/setLocationBias', response.locationBias);
     this.stateManager.dispatchEvent('directAnswer/setResult', response.directAnswer);
     this.stateManager.dispatchEvent('vertical/setSearchLoading', false);
-    this.stateManager.dispatchEvent('vertical/setAllResultsForVertical', response.allResultsForVertical);
-    this.stateManager.dispatchEvent('vertical/setAlternativeVerticals', response.alternativeVerticals);
-    this.stateManager.dispatchEvent('vertical/setAppliedQueryFilters',
-      response.verticalResults?.appliedQueryFilters);
-    this.stateManager.dispatchEvent('vertical/setQueryDurationMillis',
-      response.verticalResults?.queryDurationMillis);
-    this.stateManager.dispatchEvent('vertical/setResults', response.verticalResults?.results);
-    this.stateManager.dispatchEvent('vertical/setResultsCount', response.verticalResults?.resultsCount);
-    this.stateManager.dispatchEvent('vertical/setSource', response.verticalResults?.source);
+    this.stateManager.dispatchEvent('vertical/handleSearchResponse', response);
     return response;
   }
 

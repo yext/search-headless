@@ -4,7 +4,6 @@ import {
   QuerySource,
   QuestionSubmissionRequest,
   AutocompleteResponse,
-  VerticalSearchResponse,
   UniversalSearchResponse,
   QuestionSubmissionResponse,
   VerticalResults,
@@ -15,7 +14,8 @@ import {
   LatLong,
   SearchParameterField,
   FilterSearchResponse,
-  UniversalLimit
+  UniversalLimit,
+  VerticalSearchResponse
 } from '@yext/answers-core';
 
 import StateListener from './models/state-listener';
@@ -48,8 +48,8 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('query/setSource', source);
   }
 
-  setVerticalKey(key: string): void {
-    this.stateManager.dispatchEvent('vertical/setKey', key);
+  setVerticalKey(verticalKey: string): void {
+    this.stateManager.dispatchEvent('vertical/setVerticalKey', verticalKey);
   }
 
   setVerticalLimit(limit: number): void {
@@ -183,7 +183,7 @@ export default class AnswersHeadless {
 
   async executeVerticalQuery(): Promise<VerticalSearchResponse | undefined> {
     const thisRequestId = this.httpManager.updateRequestId('verticalQuery');
-    const verticalKey = this.state.vertical.key;
+    const verticalKey = this.state.vertical.verticalKey;
     if (!verticalKey) {
       console.error('no verticalKey supplied for vertical search');
       return;
@@ -226,30 +226,29 @@ export default class AnswersHeadless {
       context,
       referrerPageUrl
     };
-    const results = await this.core.verticalSearch(request);
+    const response = await this.core.verticalSearch(request);
     const latestResponseId = this.httpManager.getLatestResponseId('verticalQuery');
     if (thisRequestId < latestResponseId) {
-      return results;
+      return response;
     }
     this.httpManager.setResponseId('verticalQuery', thisRequestId);
-    this.stateManager.dispatchEvent('vertical/setResults', results);
-    this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
+    this.stateManager.dispatchEvent('query/setQueryId', response.queryId);
     this.stateManager.dispatchEvent('query/setLatest', query);
-    this.stateManager.dispatchEvent('filters/setFacets', results.facets);
-    this.stateManager.dispatchEvent('spellCheck/setResult', results.spellCheck);
-    this.stateManager.dispatchEvent('vertical/setAlternativeVerticals', results.alternativeVerticals);
-    this.stateManager.dispatchEvent('location/setLocationBias', results.locationBias);
-    this.stateManager.dispatchEvent('query/setSearchIntents', results.searchIntents || []);
-    this.stateManager.dispatchEvent('location/setLocationBias', results.locationBias);
+    this.stateManager.dispatchEvent('filters/setFacets', response.facets);
+    this.stateManager.dispatchEvent('spellCheck/setResult', response.spellCheck);
+    this.stateManager.dispatchEvent('location/setLocationBias', response.locationBias);
+    this.stateManager.dispatchEvent('query/setSearchIntents', response.searchIntents || []);
+    this.stateManager.dispatchEvent('location/setLocationBias', response.locationBias);
+    this.stateManager.dispatchEvent('directAnswer/setResult', response.directAnswer);
     this.stateManager.dispatchEvent('vertical/setSearchLoading', false);
-    this.stateManager.dispatchEvent('directAnswer/setResult', results.directAnswer);
-    return results;
+    this.stateManager.dispatchEvent('vertical/handleSearchResponse', response);
+    return response;
   }
 
   async executeVerticalAutoComplete(): Promise<AutocompleteResponse | undefined> {
     const thisRequestId = this.httpManager.updateRequestId('verticalAutoComplete');
     const query = this.state.query.query || '';
-    const verticalKey = this.state.vertical.key;
+    const verticalKey = this.state.vertical.verticalKey;
     if (!verticalKey) {
       console.error('no verticalKey supplied for vertical autocomplete');
       return;
@@ -273,7 +272,7 @@ export default class AnswersHeadless {
   executeFilterSearch(sectioned: boolean, fields: SearchParameterField[]): Promise<FilterSearchResponse> {
     return this.core.filterSearch({
       input: this.state.query.query || '',
-      verticalKey: this.state.vertical.key || '',
+      verticalKey: this.state.vertical.verticalKey || '',
       sessionTrackingEnabled: this.state.sessionTracking.enabled,
       sectioned,
       fields

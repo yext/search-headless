@@ -6,7 +6,7 @@ const initialState = {
     query: 'virginia'
   },
   vertical: {
-    key: '123'
+    verticalKey: '123'
   },
   universal: {},
   filters: {},
@@ -47,10 +47,7 @@ describe('AnswersHeadless spellcheck interactions properly update state', () => 
     const expectedState = {
       vertical: {
         ...initialState.vertical,
-        alternativeVerticals: alternativeVerticals,
-        results: {
-          alternativeVerticals: alternativeVerticals
-        }
+        alternativeVerticals: alternativeVerticals
       },
     };
 

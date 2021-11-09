@@ -181,7 +181,7 @@ export default class AnswersHeadless {
     return results;
   }
 
-  async executeVerticalQuery(): Promise<VerticalSearchResponse> {
+  async executeVerticalQuery(): Promise<VerticalSearchResponse | undefined> {
     const thisRequestId = this.httpManager.updateRequestId('verticalQuery');
     const verticalKey = this.state.vertical.verticalKey;
     if (!verticalKey) {
@@ -229,7 +229,7 @@ export default class AnswersHeadless {
     const response = await this.core.verticalSearch(request);
     const latestResponseId = this.httpManager.getLatestResponseId('verticalQuery');
     if (thisRequestId < latestResponseId) {
-      return;
+      return response;
     }
     this.httpManager.setResponseId('verticalQuery', thisRequestId);
     this.stateManager.dispatchEvent('query/setQueryId', response.queryId);

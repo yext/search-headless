@@ -13,5 +13,6 @@ export const expectedInitialState: State = {
   },
   universal: {},
   vertical: {},
-  filterSearch: {}
+  filterSearch: {},
+  directAnswer: {}
 };

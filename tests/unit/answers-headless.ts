@@ -136,15 +136,15 @@ describe('setters work as expected', () => {
     expect(dispatchEventCalls[0][1]).toBe('random-id-number');
   });
 
-  it('setQuery works as expected', () => {
+  it('setQueryInput works as expected', () => {
     const query = 'Hello';
-    answers.setQuery(query);
+    answers.setQueryInput(query);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
 
     expect(dispatchEventCalls.length).toBe(1);
-    expect(dispatchEventCalls[0][0]).toBe('query/set');
+    expect(dispatchEventCalls[0][0]).toBe('query/setInput');
     expect(dispatchEventCalls[0][1]).toBe(query);
   });
 

@@ -36,8 +36,8 @@ export default class AnswersHeadless {
     private httpManager: HttpManager,
   ) {}
 
-  setQuery(query: string): void {
-    this.stateManager.dispatchEvent('query/set', query);
+  setQueryInput(input: string): void {
+    this.stateManager.dispatchEvent('query/setInput', input);
   }
 
   setQueryTrigger(trigger: QueryTrigger): void {
@@ -127,7 +127,7 @@ export default class AnswersHeadless {
   async executeUniversalQuery(): Promise<UniversalSearchResponse | undefined> {
     const thisRequestId = this.httpManager.updateRequestId('universalQuery');
     this.stateManager.dispatchEvent('universal/setSearchLoading', true);
-    const { query, querySource, queryTrigger } = this.state.query;
+    const { input, querySource, queryTrigger } = this.state.query;
     const skipSpellCheck = !this.state.spellCheck.enabled;
     const sessionTrackingEnabled = this.state.sessionTracking.enabled;
     const limit = this.state.universal.limit;
@@ -136,7 +136,7 @@ export default class AnswersHeadless {
     const { userLocation } = this.state.location;
 
     const response = await this.core.universalSearch({
-      query: query || '',
+      query: input || '',
       querySource,
       queryTrigger,
       skipSpellCheck,
@@ -155,7 +155,7 @@ export default class AnswersHeadless {
     this.httpManager.setResponseId('universalQuery', thisRequestId);
     this.stateManager.dispatchEvent('universal/setVerticals', response.verticalResults);
     this.stateManager.dispatchEvent('query/setQueryId', response.queryId);
-    this.stateManager.dispatchEvent('query/setLatest', query);
+    this.stateManager.dispatchEvent('query/setMostRecentSearch', input);
     this.stateManager.dispatchEvent('spellCheck/setResult', response.spellCheck);
     this.stateManager.dispatchEvent('query/setSearchIntents', response.searchIntents || []);
     this.stateManager.dispatchEvent('location/setLocationBias', response.locationBias);
@@ -166,7 +166,7 @@ export default class AnswersHeadless {
 
   async executeUniversalAutoComplete(): Promise<AutocompleteResponse | undefined> {
     const thisRequestId = this.httpManager.updateRequestId('universalAutoComplete');
-    const query = this.state.query.query || '';
+    const query = this.state.query.input || '';
     const results = await this.core.universalAutocomplete({
       input: query
     });
@@ -189,7 +189,7 @@ export default class AnswersHeadless {
       return;
     }
     this.stateManager.dispatchEvent('vertical/setSearchLoading', true);
-    const { query, querySource, queryTrigger } = this.state.query;
+    const { input, querySource, queryTrigger } = this.state.query;
     const skipSpellCheck = !this.state.spellCheck.enabled;
     const sessionTrackingEnabled = this.state.sessionTracking.enabled;
     const sessionId = this.state.sessionTracking.sessionId;
@@ -209,7 +209,7 @@ export default class AnswersHeadless {
     });
 
     const request = {
-      query: query || '',
+      query: input || '',
       querySource,
       queryTrigger,
       verticalKey,
@@ -234,7 +234,7 @@ export default class AnswersHeadless {
     this.httpManager.setResponseId('verticalQuery', thisRequestId);
     this.stateManager.dispatchEvent('vertical/setResults', results);
     this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
-    this.stateManager.dispatchEvent('query/setLatest', query);
+    this.stateManager.dispatchEvent('query/setMostRecentSearch', input);
     this.stateManager.dispatchEvent('filters/setFacets', results.facets);
     this.stateManager.dispatchEvent('spellCheck/setResult', results.spellCheck);
     this.stateManager.dispatchEvent('vertical/setAlternativeVerticals', results.alternativeVerticals);
@@ -248,7 +248,7 @@ export default class AnswersHeadless {
 
   async executeVerticalAutoComplete(): Promise<AutocompleteResponse | undefined> {
     const thisRequestId = this.httpManager.updateRequestId('verticalAutoComplete');
-    const query = this.state.query.query || '';
+    const query = this.state.query.input || '';
     const verticalKey = this.state.vertical.key;
     if (!verticalKey) {
       console.error('no verticalKey supplied for vertical autocomplete');
@@ -272,7 +272,7 @@ export default class AnswersHeadless {
 
   executeFilterSearch(sectioned: boolean, fields: SearchParameterField[]): Promise<FilterSearchResponse> {
     return this.core.filterSearch({
-      input: this.state.query.query || '',
+      input: this.state.query.input || '',
       verticalKey: this.state.vertical.key || '',
       sessionTrackingEnabled: this.state.sessionTracking.enabled,
       sectioned,

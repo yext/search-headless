@@ -110,11 +110,11 @@ describe('ensure correct results from latest request', () => {
       callback: updateResult
     });
 
-    answers.setQuery(queries[0]);
+    answers.setQueryInput(queries[0]);
     const firstResponsePromise = answers.executeVerticalAutoComplete();
-    answers.setQuery(queries[1]);
+    answers.setQueryInput(queries[1]);
     const secondResponsePromise = answers.executeVerticalAutoComplete();
-    answers.setQuery(queries[2]);
+    answers.setQueryInput(queries[2]);
     const thirdResponsePromise = answers.executeVerticalAutoComplete();
 
     jest.advanceTimersByTime(requestsTime[queries[1]]);
@@ -125,7 +125,7 @@ describe('ensure correct results from latest request', () => {
     jest.runAllTimers();
     await firstResponsePromise;
 
-    expect(answers.state.query.query).toEqual(queries[2]);
+    expect(answers.state.query.input).toEqual(queries[2]);
     expect(answers.state.vertical.autoComplete.results).toEqual([{ value: queries[2] }]);
     expect(updateResult.mock.calls).toHaveLength(2);
   });
@@ -135,11 +135,11 @@ describe('ensure correct results from latest request', () => {
       valueAccessor: state => state.universal?.autoComplete?.results,
       callback: updateResult
     });
-    answers.setQuery(queries[0]);
+    answers.setQueryInput(queries[0]);
     const firstResponsePromise = answers.executeUniversalAutoComplete();
-    answers.setQuery(queries[1]);
+    answers.setQueryInput(queries[1]);
     const secondResponsePromise = answers.executeUniversalAutoComplete();
-    answers.setQuery(queries[2]);
+    answers.setQueryInput(queries[2]);
     const thirdResponsePromise = answers.executeUniversalAutoComplete();
 
     jest.advanceTimersByTime(requestsTime[queries[1]]);
@@ -150,7 +150,7 @@ describe('ensure correct results from latest request', () => {
     jest.runAllTimers();
     await firstResponsePromise;
 
-    expect(answers.state.query.query).toEqual(queries[2]);
+    expect(answers.state.query.input).toEqual(queries[2]);
     expect(answers.state.universal.autoComplete.results).toEqual([{ value: queries[2] }]);
     expect(updateResult.mock.calls).toHaveLength(2);
   });
@@ -160,11 +160,11 @@ describe('ensure correct results from latest request', () => {
       valueAccessor: state => state.vertical?.results,
       callback: updateResult
     });
-    answers.setQuery(queries[0]);
+    answers.setQueryInput(queries[0]);
     const firstResponsePromise = answers.executeVerticalQuery();
-    answers.setQuery(queries[1]);
+    answers.setQueryInput(queries[1]);
     const secondResponsePromise = answers.executeVerticalQuery();
-    answers.setQuery(queries[2]);
+    answers.setQueryInput(queries[2]);
     const thirdResponsePromise = answers.executeVerticalQuery();
 
     jest.advanceTimersByTime(requestsTime[queries[1]]);
@@ -175,7 +175,7 @@ describe('ensure correct results from latest request', () => {
     jest.runAllTimers();
     await firstResponsePromise;
 
-    expect(answers.state.query.query).toEqual(queries[2]);
+    expect(answers.state.query.input).toEqual(queries[2]);
     expect(answers.state.vertical.results.verticalResults).toEqual({ results: [queries[2]] });
     expect(updateResult.mock.calls).toHaveLength(2);
   });
@@ -185,11 +185,11 @@ describe('ensure correct results from latest request', () => {
       valueAccessor: state => state.universal.verticals,
       callback: updateResult
     });
-    answers.setQuery(queries[0]);
+    answers.setQueryInput(queries[0]);
     const firstResponsePromise = answers.executeUniversalQuery();
-    answers.setQuery(queries[1]);
+    answers.setQueryInput(queries[1]);
     const secondResponsePromise = answers.executeUniversalQuery();
-    answers.setQuery(queries[2]);
+    answers.setQueryInput(queries[2]);
     const thirdResponsePromise = answers.executeUniversalQuery();
 
     jest.advanceTimersByTime(requestsTime[queries[1]]);
@@ -200,7 +200,7 @@ describe('ensure correct results from latest request', () => {
     jest.runAllTimers();
     await firstResponsePromise;
 
-    expect(answers.state.query.query).toEqual(queries[2]);
+    expect(answers.state.query.input).toEqual(queries[2]);
     expect(answers.state.universal.verticals).toEqual([{ results: [queries[2]] }]);
     expect(updateResult.mock.calls).toHaveLength(2);
   });

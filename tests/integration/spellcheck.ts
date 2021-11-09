@@ -2,8 +2,8 @@ import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadles
 
 const initialState = {
   query: {
-    latest: 'virginia',
-    query: 'virginia'
+    mostRecentSearch: 'virginia',
+    input: 'virginia'
   },
   vertical: {
     key: '123',

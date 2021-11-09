@@ -2,13 +2,13 @@ import { QuerySource, QueryTrigger } from '@yext/answers-core';
 import createQuerySlice from '../../../src/slices/query';
 
 const { reducer, actions } = createQuerySlice('');
-const { set, setQueryId, setSource, setTrigger } = actions;
+const { setInput, setQueryId, setSource, setTrigger } = actions;
 
 describe('query slice reducer works as expected', () => {
-  it('set action is handled properly', () => {
+  it('setQueryInput action is handled properly', () => {
     const searchTerm = 'search term';
-    const expectedState = { query: searchTerm };
-    const actualState = reducer({}, set(searchTerm));
+    const expectedState = { input: searchTerm };
+    const actualState = reducer({}, setInput(searchTerm));
 
     expect(actualState).toEqual(expectedState);
   });

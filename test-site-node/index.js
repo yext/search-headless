@@ -7,7 +7,7 @@ const answers = provideAnswersHeadless({
 });
 
 const test = async () => {
-  answers.setQuery('virginia');
+  answers.setQueryInput('virginia');
   await answers.executeUniversalQuery();
   console.log(answers.state);
 }

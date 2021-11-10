@@ -274,7 +274,7 @@ export default class AnswersHeadless {
     sectioned: boolean,
     fields: SearchParameterField[]
   ): Promise<FilterSearchResponse | undefined> {
-    const verticalKey = this.state.vertical.key;
+    const verticalKey = this.state.vertical.verticalKey;
     if (!verticalKey) {
       console.error('no verticalKey supplied for filter search');
       return;

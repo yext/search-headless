@@ -12,7 +12,7 @@ const mockedState = {
   },
   universal: {},
   vertical: {
-    key: 'someKey',
+    verticalKey: 'someKey',
     offset: 0,
     limit: 20
   },
@@ -36,7 +36,8 @@ const mockedState = {
     sessionId: 'random-id-number'
   },
   meta: {},
-  location: {}
+  location: {},
+  directAnswer: {},
 };
 
 const mockedStateManager: jest.Mocked<StateManager> = {
@@ -178,7 +179,7 @@ describe('setters work as expected', () => {
       mockedStateManager.dispatchEvent.mock.calls;
 
     expect(dispatchEventCalls.length).toBe(1);
-    expect(dispatchEventCalls[0][0]).toBe('vertical/setKey');
+    expect(dispatchEventCalls[0][0]).toBe('vertical/setVerticalKey');
     expect(dispatchEventCalls[0][1]).toBe(verticalKey);
   });
 
@@ -288,7 +289,7 @@ describe('auto-complete works as expected', () => {
     const coreCalls = mockedCore.verticalAutocomplete.mock.calls;
     expect(coreCalls.length).toBe(1);
     expect(coreCalls[0][0]).toEqual(
-      { input: mockedState.query.query, verticalKey: mockedState.vertical.key });
+      { input: mockedState.query.query, verticalKey: mockedState.vertical.verticalKey });
   });
 
   it('universal auto-complete works', async () => {
@@ -324,7 +325,7 @@ describe('search works as expected', () => {
     const coreCalls = mockedCore.verticalSearch.mock.calls;
     const expectedSearchParams = {
       ...mockedState.query,
-      verticalKey: mockedState.vertical.key,
+      verticalKey: mockedState.vertical.verticalKey,
       staticFilters: filter,
       retrieveFacets: true,
       limit: mockedState.vertical.limit,

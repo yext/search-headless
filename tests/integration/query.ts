@@ -182,7 +182,7 @@ describe('ensure correct results from latest request', () => {
 
   it('universal search get correct results based on up-to-date response', async () => {
     answers.addListener({
-      valueAccessor: state => state.universal?.results,
+      valueAccessor: state => state.universal.verticals,
       callback: updateResult
     });
     answers.setQuery(queries[0]);
@@ -194,14 +194,14 @@ describe('ensure correct results from latest request', () => {
 
     jest.advanceTimersByTime(requestsTime[queries[1]]);
     await secondResponsePromise;
-    expect(answers.state.universal.results.verticalResults).toEqual([{ results: [queries[1]] }]);
+    expect(answers.state.universal.verticals).toEqual([{ results: [queries[1]] }]);
     jest.advanceTimersByTime(requestsTime[queries[2]]);
     await thirdResponsePromise;
     jest.runAllTimers();
     await firstResponsePromise;
 
     expect(answers.state.query.query).toEqual(queries[2]);
-    expect(answers.state.universal.results.verticalResults).toEqual([{ results: [queries[2]] }]);
+    expect(answers.state.universal.verticals).toEqual([{ results: [queries[2]] }]);
     expect(updateResult.mock.calls).toHaveLength(2);
   });
 });

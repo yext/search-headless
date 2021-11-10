@@ -135,7 +135,7 @@ export default class AnswersHeadless {
     const { referrerPageUrl, context } = this.state.meta;
     const { userLocation } = this.state.location;
 
-    const results = await this.core.universalSearch({
+    const response = await this.core.universalSearch({
       query: query || '',
       querySource,
       queryTrigger,
@@ -150,18 +150,18 @@ export default class AnswersHeadless {
 
     const latestResponseId = this.httpManager.getLatestResponseId('universalQuery');
     if (thisRequestId < latestResponseId) {
-      return results;
+      return response;
     }
     this.httpManager.setResponseId('universalQuery', thisRequestId);
-    this.stateManager.dispatchEvent('universal/setResults', results);
-    this.stateManager.dispatchEvent('query/setQueryId', results.queryId);
+    this.stateManager.dispatchEvent('universal/setVerticals', response.verticalResults);
+    this.stateManager.dispatchEvent('query/setQueryId', response.queryId);
     this.stateManager.dispatchEvent('query/setLatest', query);
-    this.stateManager.dispatchEvent('spellCheck/setResult', results.spellCheck);
-    this.stateManager.dispatchEvent('query/setSearchIntents', results.searchIntents || []);
-    this.stateManager.dispatchEvent('location/setLocationBias', results.locationBias);
+    this.stateManager.dispatchEvent('spellCheck/setResult', response.spellCheck);
+    this.stateManager.dispatchEvent('query/setSearchIntents', response.searchIntents || []);
+    this.stateManager.dispatchEvent('location/setLocationBias', response.locationBias);
     this.stateManager.dispatchEvent('universal/setSearchLoading', false);
-    this.stateManager.dispatchEvent('directAnswer/setResult', results.directAnswer);
-    return results;
+    this.stateManager.dispatchEvent('directAnswer/setResult', response.directAnswer);
+    return response;
   }
 
   async executeUniversalAutoComplete(): Promise<AutocompleteResponse | undefined> {

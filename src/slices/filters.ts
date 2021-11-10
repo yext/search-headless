@@ -2,6 +2,7 @@ import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
 import { Filter, FacetOption, DisplayableFacet, SortBy } from '@yext/answers-core';
 import { FiltersState } from '../models/slices/filters';
 import { SelectableFilter } from '../models/utils/selectablefilter';
+import { areFiltersEqual } from '../utils/filter-utils';
 
 const initialState: FiltersState = {};
 
@@ -61,14 +62,12 @@ const reducers = {
       state.static = [];
     }
     const { filter: targetFilter, shouldSelect } = payload;
-    const foundFilter = state.static.find(storedSelectableFilter => {
+    const matchedFilter = state.static.find(storedSelectableFilter => {
       const { selected:_, ...storedFilter } = storedSelectableFilter;
-      return storedFilter.fieldId === targetFilter.fieldId
-        && storedFilter.matcher === targetFilter.matcher
-        && storedFilter.value === targetFilter.value;
+      return areFiltersEqual(storedFilter, targetFilter);
     });
-    if (foundFilter) {
-      foundFilter.selected = shouldSelect;
+    if (matchedFilter) {
+      matchedFilter.selected = shouldSelect;
     } else if (shouldSelect) {
       const selectedFilter = { ...targetFilter, selected: shouldSelect };
       state.static.push(selectedFilter);

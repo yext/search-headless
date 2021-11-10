@@ -165,20 +165,10 @@ export default class AnswersHeadless {
   }
 
   async executeUniversalAutoComplete(): Promise<AutocompleteResponse | undefined> {
-    const thisRequestId = this.httpManager.updateRequestId('universalAutoComplete');
     const query = this.state.query.query || '';
-    const results = await this.core.universalAutocomplete({
+    return this.core.universalAutocomplete({
       input: query
     });
-
-    const latestResponseId = this.httpManager.getLatestResponseId('universalAutoComplete');
-    if (thisRequestId < latestResponseId) {
-      return results;
-    }
-    this.httpManager.setResponseId('universalAutoComplete', thisRequestId);
-    this.stateManager.dispatchEvent('universal/setAutoComplete', results);
-    this.stateManager.dispatchEvent('query/setSearchIntents', results.inputIntents || []);
-    return results;
   }
 
   async executeVerticalQuery(): Promise<VerticalSearchResponse | undefined> {
@@ -247,7 +237,6 @@ export default class AnswersHeadless {
   }
 
   async executeVerticalAutoComplete(): Promise<AutocompleteResponse | undefined> {
-    const thisRequestId = this.httpManager.updateRequestId('verticalAutoComplete');
     const query = this.state.query.query || '';
     const verticalKey = this.state.vertical.key;
     if (!verticalKey) {
@@ -255,19 +244,10 @@ export default class AnswersHeadless {
       return;
     }
 
-    const results = await this.core.verticalAutocomplete({
+    return this.core.verticalAutocomplete({
       input: query,
       verticalKey
     });
-
-    const latestResponseId = this.httpManager.getLatestResponseId('verticalAutoComplete');
-    if (thisRequestId < latestResponseId) {
-      return results;
-    }
-    this.httpManager.setResponseId('verticalAutoComplete', thisRequestId);
-    this.stateManager.dispatchEvent('vertical/setAutoComplete', results);
-    this.stateManager.dispatchEvent('query/setSearchIntents', results.inputIntents || []);
-    return results;
   }
 
   async executeFilterSearch(

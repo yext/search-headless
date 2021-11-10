@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
-import { VerticalSearchResponse, AutocompleteResponse, VerticalResults } from '@yext/answers-core';
+import { VerticalSearchResponse, VerticalResults } from '@yext/answers-core';
 import { VerticalSearchState } from '../models/slices/vertical';
 
 const initialState: VerticalSearchState = {};
@@ -10,9 +10,6 @@ const reducers = {
   },
   setResults: (state, action: PayloadAction<VerticalSearchResponse>) => {
     state.results = action.payload;
-  },
-  setAutoComplete: (state, action: PayloadAction<AutocompleteResponse>) => {
-    state.autoComplete = action.payload;
   },
   setAlternativeVerticals: (state, action: PayloadAction<VerticalResults[]>) => {
     state.alternativeVerticals = action.payload;

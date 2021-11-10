@@ -1,7 +1,4 @@
-type ServiceType = 'universalQuery'
-  | 'verticalQuery'
-  | 'universalAutoComplete'
-  | 'verticalAutoComplete';
+type ServiceType = 'universalQuery' | 'verticalQuery';
 
 type ServiceIds = {
   [key in ServiceType]: number;
@@ -21,16 +18,12 @@ export default class HttpManager {
   constructor() {
     this.latestRequestIds = {
       universalQuery: 0,
-      verticalQuery: 0,
-      universalAutoComplete: 0,
-      verticalAutoComplete: 0
+      verticalQuery: 0
     };
 
     this.latestResponseIds = {
       universalQuery: 0,
-      verticalQuery: 0,
-      universalAutoComplete: 0,
-      verticalAutoComplete: 0
+      verticalQuery: 0
     };
   }
 

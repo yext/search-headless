@@ -3,8 +3,9 @@ import HttpManager from '../../src/http-manager';
 import StateManager from '../../src/models/state-manager';
 import AnswersHeadless from '../../src/answers-headless';
 import { SelectableFilter } from '../../src/models/utils/selectablefilter';
+import { State } from '../../src/models/state';
 
-const mockedState = {
+const mockedState: State = {
   query: {
     query: 'Search',
     querySource: QuerySource.Standard,
@@ -36,7 +37,8 @@ const mockedState = {
     sessionId: 'random-id-number'
   },
   meta: {},
-  location: {}
+  location: {},
+  directAnswer: {}
 };
 
 const mockedStateManager: jest.Mocked<StateManager> = {

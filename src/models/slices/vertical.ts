@@ -22,8 +22,8 @@ export interface VerticalSearchState {
   displayName?: string
   limit?: number,
   noResults?: {
-    allResultsForVertical?: AllResultsForVertical,
-    alternativeVerticals?: VerticalResults[],
+    allResultsForVertical: AllResultsForVertical,
+    alternativeVerticals: VerticalResults[],
   }
   offset?: number,
   queryDurationMillis?: number,

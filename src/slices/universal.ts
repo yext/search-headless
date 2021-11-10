@@ -11,9 +11,6 @@ const reducers = {
   setAutoComplete: (state, action: PayloadAction<AutocompleteResponse>) => {
     state.autoComplete = action.payload;
   },
-  setSearchLoading: (state, action: PayloadAction<boolean>) => {
-    state.searchLoading = action.payload;
-  },
   setLimit: (state, action: PayloadAction<UniversalLimit>) => {
     state.limit = action.payload;
   },

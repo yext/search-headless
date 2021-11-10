@@ -10,6 +10,9 @@ const reducers = {
   },
   setReferrerPageUrl: (state, action: PayloadAction<string>) => {
     state.referrerPageUrl = action.payload;
+  },
+  setUUID: (state, action: PayloadAction<string>) => {
+    state.uuid = action.payload;
   }
 };
 

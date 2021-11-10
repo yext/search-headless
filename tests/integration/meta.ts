@@ -60,3 +60,28 @@ it('universal searches send context', async () => {
   });
   expect(mockSearch.mock.calls[0][0].referrerPageUrl).toEqual('monkey');
 });
+
+it('universal searches update the uuid', async () => {
+  const mockSearch = jest.fn((_request: UniversalSearchRequest) => Promise.resolve({
+    uuid: 123
+  }));
+  const answers = createMockedAnswersHeadless({
+    universalSearch: mockSearch
+  });
+  answers.setQueryInput('lol');
+  await answers.executeUniversalQuery();
+  expect(answers.state.meta.uuid).toEqual(123);
+});
+
+it('vertical searches update the uuid', async () => {
+  const mockSearch = jest.fn((_request: UniversalSearchRequest) => Promise.resolve({
+    uuid: 456
+  }));
+  const answers = createMockedAnswersHeadless({
+    verticalSearch: mockSearch
+  });
+  answers.setQueryInput('lol');
+  answers.setVerticalKey('test');
+  await answers.executeVerticalQuery();
+  expect(answers.state.meta.uuid).toEqual(456);
+});

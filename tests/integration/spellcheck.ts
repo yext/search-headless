@@ -52,9 +52,6 @@ describe('AnswersHeadless spellcheck interactions properly update state', () => 
     }, initialState);
     await answers.executeUniversalQuery();
     const expectedState = {
-      universal: {
-        searchLoading: false
-      },
       spellCheck: {
         ...initialState.spellCheck,
         ...spellCheckResult,

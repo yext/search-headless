@@ -270,11 +270,11 @@ export default class AnswersHeadless {
     return results;
   }
 
-  executeFilterSearch(
+  async executeFilterSearch(
     query: string,
     sectioned: boolean,
     fields: SearchParameterField[]
-  ): Promise<FilterSearchResponse> {
+  ): Promise<FilterSearchResponse | undefined> {
     const verticalKey = this.state.vertical.key;
     if (!verticalKey) {
       console.error('no verticalKey supplied for filter search');

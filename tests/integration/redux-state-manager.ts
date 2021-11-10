@@ -31,13 +31,13 @@ it('set-state actions are scoped to State subtrees respective to their ReduxStat
   const firstManagerUpdatedState = {
     ...expectedInitialState,
     query: {
-      latest: 'the latest',
-      query: 'lol'
+      mostRecentSearch: 'the latest',
+      input: 'lol'
     }
   };
   const secondManagerUpdatedState = {
-    latest: 'second latest',
-    query: 'second lol'
+    mostRecentSearch: 'second latest',
+    input: 'second lol'
   };
 
   firstManager.dispatchEvent('set-state', firstManagerUpdatedState);
@@ -63,7 +63,7 @@ it('dispatching answers actions through AnswersHeadless', () => {
     anId: {
       ...expectedInitialState,
       query: {
-        query: 'yo'
+        input: 'yo'
       }
     }
   });
@@ -76,7 +76,7 @@ it('addListener works with multiple headless instances', () => {
   const headless = new AnswersHeadless({} as AnswersCore, stateManager, new HttpManager());
   const callback = jest.fn();
   headless.addListener({
-    valueAccessor: state => state.query.query,
+    valueAccessor: state => state.query.input,
     callback
   });
   expect(callback).toHaveBeenCalledTimes(0);

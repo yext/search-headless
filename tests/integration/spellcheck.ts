@@ -2,8 +2,8 @@ import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadles
 
 const initialState = {
   query: {
-    latest: 'virginia',
-    query: 'virginia'
+    mostRecentSearch: 'virginia',
+    input: 'virginia'
   },
   vertical: {
     verticalKey: '123',
@@ -52,9 +52,6 @@ describe('AnswersHeadless spellcheck interactions properly update state', () => 
     }, initialState);
     await answers.executeUniversalQuery();
     const expectedState = {
-      universal: {
-        searchLoading: false
-      },
       spellCheck: {
         ...initialState.spellCheck,
         ...spellCheckResult,

@@ -1,11 +1,11 @@
 import { AppliedQueryFilter, Matcher, Result, Source, VerticalSearchRequest } from '@yext/answers-core';
+import { State } from '../../src/models/state';
 import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
 import setTimeout from '../utils/setTimeout';
 
-const initialState = {
+const initialState: State = {
   query: {
-    latest: 'virginia',
-    query: 'virginia'
+    input: 'virginia',
   },
   vertical: {
     verticalKey: '123'
@@ -13,9 +13,13 @@ const initialState = {
   directAnswer: {},
   universal: {},
   filters: {},
+  sessionTracking: {},
   spellCheck: {
     enabled: true,
   },
+  searchStatus: {},
+  meta: {},
+  location: {}
 };
 
 it('vertical searches set allResultsForVertical', async () => {
@@ -122,18 +126,6 @@ it('vertical searches send blank queries by default', async () => {
   answers.setVerticalKey('vertical-key');
   await answers.executeVerticalQuery();
   expect(mockSearch.mock.calls[0][0].query).toEqual('');
-});
-
-it('vertical searches update the search loading state', async () => {
-  const mockSearch = createMockSearch();
-  const answers = createMockedAnswersHeadless({
-    verticalSearch: mockSearch
-  });
-  answers.setVerticalKey('vertical-key');
-  const search = answers.executeVerticalQuery();
-  expect(answers.state.vertical.searchLoading).toEqual(true);
-  await search;
-  expect(answers.state.vertical.searchLoading).toEqual(false);
 });
 
 it('answers.setVerticalLimit sets the vertical limit when a number is passed to it', () => {

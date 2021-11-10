@@ -3,10 +3,11 @@ import HttpManager from '../../src/http-manager';
 import StateManager from '../../src/models/state-manager';
 import AnswersHeadless from '../../src/answers-headless';
 import { SelectableFilter } from '../../src/models/utils/selectablefilter';
+import { State } from '../../src/models/state';
 
-const mockedState = {
+const mockedState: State = {
   query: {
-    query: 'Search',
+    input: 'Search',
     querySource: QuerySource.Standard,
     queryTrigger: QueryTrigger.Initialize
   },
@@ -38,6 +39,7 @@ const mockedState = {
   meta: {},
   location: {},
   directAnswer: {},
+  searchStatus: {}
 };
 
 const mockedStateManager: jest.Mocked<StateManager> = {
@@ -145,7 +147,7 @@ describe('setters work as expected', () => {
       mockedStateManager.dispatchEvent.mock.calls;
 
     expect(dispatchEventCalls.length).toBe(1);
-    expect(dispatchEventCalls[0][0]).toBe('query/set');
+    expect(dispatchEventCalls[0][0]).toBe('query/setInput');
     expect(dispatchEventCalls[0][1]).toBe(query);
   });
 
@@ -289,7 +291,7 @@ describe('auto-complete works as expected', () => {
     const coreCalls = mockedCore.verticalAutocomplete.mock.calls;
     expect(coreCalls.length).toBe(1);
     expect(coreCalls[0][0]).toEqual(
-      { input: mockedState.query.query, verticalKey: mockedState.vertical.verticalKey });
+      { input: mockedState.query.input, verticalKey: mockedState.vertical.verticalKey });
   });
 
   it('universal auto-complete works', async () => {
@@ -297,7 +299,7 @@ describe('auto-complete works as expected', () => {
 
     const coreCalls = mockedCore.universalAutocomplete.mock.calls;
     expect(coreCalls.length).toBe(1);
-    expect(coreCalls[0][0]).toEqual({ input: mockedState.query.query });
+    expect(coreCalls[0][0]).toEqual({ input: mockedState.query.input });
   });
 });
 
@@ -312,7 +314,9 @@ describe('search works as expected', () => {
     const coreCalls = mockedCore.universalSearch.mock.calls;
     expect(coreCalls.length).toBe(1);
     expect(coreCalls[0][0]).toEqual({
-      ...mockedState.query,
+      query: mockedState.query.input,
+      querySource: mockedState.query.querySource,
+      queryTrigger: mockedState.query.queryTrigger,
       skipSpellCheck: !mockedState.spellCheck.enabled,
       sessionId: mockedState.sessionTracking.sessionId,
       sessionTrackingEnabled: mockedState.sessionTracking.enabled
@@ -324,7 +328,9 @@ describe('search works as expected', () => {
     const { selected:_, ...filter } = mockedState.filters.static.someId[0];
     const coreCalls = mockedCore.verticalSearch.mock.calls;
     const expectedSearchParams = {
-      ...mockedState.query,
+      query: mockedState.query.input,
+      querySource: mockedState.query.querySource,
+      queryTrigger: mockedState.query.queryTrigger,
       verticalKey: mockedState.vertical.verticalKey,
       staticFilters: filter,
       retrieveFacets: true,

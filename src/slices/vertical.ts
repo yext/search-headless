@@ -39,9 +39,6 @@ const reducers = {
   setOffset: (state, action: PayloadAction<number>) => {
     state.offset = action.payload;
   },
-  setSearchLoading: (state, action: PayloadAction<boolean>) => {
-    state.searchLoading = action.payload;
-  },
   setSortBys: (state, action: PayloadAction<SortBy[]>) => {
     state.sortBys = action.payload;
   },

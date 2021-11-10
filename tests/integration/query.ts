@@ -125,7 +125,7 @@ describe('ensure correct results from latest request', () => {
     jest.runAllTimers();
     await firstResponsePromise;
 
-    expect(answers.state.query.query).toEqual(queries[2]);
+    expect(answers.state.query.input).toEqual(queries[2]);
     expect(answers.state.vertical.autoComplete.results).toEqual([{ value: queries[2] }]);
     expect(updateResult.mock.calls).toHaveLength(2);
   });
@@ -150,7 +150,7 @@ describe('ensure correct results from latest request', () => {
     jest.runAllTimers();
     await firstResponsePromise;
 
-    expect(answers.state.query.query).toEqual(queries[2]);
+    expect(answers.state.query.input).toEqual(queries[2]);
     expect(answers.state.universal.autoComplete.results).toEqual([{ value: queries[2] }]);
     expect(updateResult.mock.calls).toHaveLength(2);
   });
@@ -175,7 +175,7 @@ describe('ensure correct results from latest request', () => {
     jest.runAllTimers();
     await firstResponsePromise;
 
-    expect(answers.state.query.query).toEqual(queries[2]);
+    expect(answers.state.query.input).toEqual(queries[2]);
     expect(answers.state.vertical.results).toEqual([queries[2]]);
     expect(updateResult.mock.calls).toHaveLength(2);
   });
@@ -200,7 +200,7 @@ describe('ensure correct results from latest request', () => {
     jest.runAllTimers();
     await firstResponsePromise;
 
-    expect(answers.state.query.query).toEqual(queries[2]);
+    expect(answers.state.query.input).toEqual(queries[2]);
     expect(answers.state.universal.verticals).toEqual([{ results: [queries[2]] }]);
     expect(updateResult.mock.calls).toHaveLength(2);
   });

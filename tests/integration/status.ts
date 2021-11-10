@@ -9,9 +9,9 @@ it('universal searches update the search loading state', async () => {
   });
 
   const search = answers.executeUniversalQuery();
-  expect(answers.state.status.searchLoading).toEqual(true);
+  expect(answers.state.searchStatus.isLoading).toEqual(true);
   await search;
-  expect(answers.state.status.searchLoading).toEqual(false);
+  expect(answers.state.searchStatus.isLoading).toEqual(false);
 });
 
 it('vertical searches update the search loading state', async () => {
@@ -21,9 +21,9 @@ it('vertical searches update the search loading state', async () => {
   });
   answers.setVerticalKey('vertical-key');
   const search = answers.executeVerticalQuery();
-  expect(answers.state.status.searchLoading).toEqual(true);
+  expect(answers.state.searchStatus.isLoading).toEqual(true);
   await search;
-  expect(answers.state.status.searchLoading).toEqual(false);
+  expect(answers.state.searchStatus.isLoading).toEqual(false);
 });
 
 function createMockSearch() {

@@ -110,11 +110,11 @@ describe('ensure correct results from latest request', () => {
       callback: updateResult
     });
 
-    answers.setQueryInput(queries[0]);
+    answers.setQuery(queries[0]);
     const firstResponsePromise = answers.executeVerticalAutoComplete();
-    answers.setQueryInput(queries[1]);
+    answers.setQuery(queries[1]);
     const secondResponsePromise = answers.executeVerticalAutoComplete();
-    answers.setQueryInput(queries[2]);
+    answers.setQuery(queries[2]);
     const thirdResponsePromise = answers.executeVerticalAutoComplete();
 
     jest.advanceTimersByTime(requestsTime[queries[1]]);
@@ -135,11 +135,11 @@ describe('ensure correct results from latest request', () => {
       valueAccessor: state => state.universal?.autoComplete?.results,
       callback: updateResult
     });
-    answers.setQueryInput(queries[0]);
+    answers.setQuery(queries[0]);
     const firstResponsePromise = answers.executeUniversalAutoComplete();
-    answers.setQueryInput(queries[1]);
+    answers.setQuery(queries[1]);
     const secondResponsePromise = answers.executeUniversalAutoComplete();
-    answers.setQueryInput(queries[2]);
+    answers.setQuery(queries[2]);
     const thirdResponsePromise = answers.executeUniversalAutoComplete();
 
     jest.advanceTimersByTime(requestsTime[queries[1]]);
@@ -160,11 +160,11 @@ describe('ensure correct results from latest request', () => {
       valueAccessor: state => state.vertical?.results,
       callback: updateResult
     });
-    answers.setQueryInput(queries[0]);
+    answers.setQuery(queries[0]);
     const firstResponsePromise = answers.executeVerticalQuery();
-    answers.setQueryInput(queries[1]);
+    answers.setQuery(queries[1]);
     const secondResponsePromise = answers.executeVerticalQuery();
-    answers.setQueryInput(queries[2]);
+    answers.setQuery(queries[2]);
     const thirdResponsePromise = answers.executeVerticalQuery();
 
     jest.advanceTimersByTime(requestsTime[queries[1]]);
@@ -185,11 +185,11 @@ describe('ensure correct results from latest request', () => {
       valueAccessor: state => state.universal.verticals,
       callback: updateResult
     });
-    answers.setQueryInput(queries[0]);
+    answers.setQuery(queries[0]);
     const firstResponsePromise = answers.executeUniversalQuery();
-    answers.setQueryInput(queries[1]);
+    answers.setQuery(queries[1]);
     const secondResponsePromise = answers.executeUniversalQuery();
-    answers.setQueryInput(queries[2]);
+    answers.setQuery(queries[2]);
     const thirdResponsePromise = answers.executeUniversalQuery();
 
     jest.advanceTimersByTime(requestsTime[queries[1]]);

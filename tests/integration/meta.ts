@@ -6,7 +6,7 @@ it('by default no meta attributes are sent', async () => {
   const answers = createMockedAnswersHeadless({
     verticalSearch: mockSearch
   });
-  answers.setQueryInput('lol');
+  answers.setQuery('lol');
   answers.setVerticalKey('vertical-key');
   await answers.executeVerticalQuery();
   expect(mockSearch.mock.calls[0][0].context).toEqual(undefined);
@@ -18,7 +18,7 @@ it('vertical searches send meta data', async () => {
   const answers = createMockedAnswersHeadless({
     verticalSearch: mockSearch
   });
-  answers.setQueryInput('lol');
+  answers.setQuery('lol');
   answers.setVerticalKey('vertical-key');
   answers.setContext({
     monke: 'cdawg',
@@ -42,7 +42,7 @@ it('universal searches send context', async () => {
   const answers = createMockedAnswersHeadless({
     universalSearch: mockSearch
   });
-  answers.setQueryInput('lol');
+  answers.setQuery('lol');
   answers.setVerticalKey('vertical-key');
   answers.setContext({
     monke: 'cdawg',
@@ -68,7 +68,7 @@ it('universal searches update the uuid', async () => {
   const answers = createMockedAnswersHeadless({
     universalSearch: mockSearch
   });
-  answers.setQueryInput('lol');
+  answers.setQuery('lol');
   await answers.executeUniversalQuery();
   expect(answers.state.meta.uuid).toEqual(123);
 });
@@ -80,7 +80,7 @@ it('vertical searches update the uuid', async () => {
   const answers = createMockedAnswersHeadless({
     verticalSearch: mockSearch
   });
-  answers.setQueryInput('lol');
+  answers.setQuery('lol');
   answers.setVerticalKey('test');
   await answers.executeVerticalQuery();
   expect(answers.state.meta.uuid).toEqual(456);

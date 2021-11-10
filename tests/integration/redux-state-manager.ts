@@ -58,7 +58,7 @@ it('dispatching answers actions through AnswersHeadless', () => {
   const headlessReducerManager = new HeadlessReducerManager();
   const stateManager = new ReduxStateManager(store, 'anId', headlessReducerManager);
   const headless = new AnswersHeadless({} as AnswersCore, stateManager, new HttpManager());
-  headless.setQueryInput('yo');
+  headless.setQuery('yo');
   expect(store.getState()).toEqual({
     anId: {
       ...expectedInitialState,
@@ -80,12 +80,12 @@ it('addListener works with multiple headless instances', () => {
     callback
   });
   expect(callback).toHaveBeenCalledTimes(0);
-  headless.setQueryInput('yo');
+  headless.setQuery('yo');
   expect(callback).toHaveBeenCalledTimes(1);
   expect(callback).toHaveBeenCalledWith('yo');
 
   // Check that the if the state is unchanged the listener is not called extra times
-  headless.setQueryInput('yo');
+  headless.setQuery('yo');
   expect(callback).toHaveBeenCalledTimes(1);
 });
 

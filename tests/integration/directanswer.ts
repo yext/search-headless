@@ -16,7 +16,7 @@ const initialState: State = {
   spellCheck: {
     enabled: true,
   },
-  status: {},
+  searchStatus: {},
   sessionTracking: {},
   location: {},
   meta: {}

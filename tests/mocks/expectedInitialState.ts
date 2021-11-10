@@ -11,7 +11,7 @@ export const expectedInitialState: State = {
   spellCheck: {
     enabled: true
   },
-  status: {},
+  searchStatus: {},
   universal: {},
   vertical: {},
   directAnswer: {}

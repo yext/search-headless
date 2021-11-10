@@ -39,7 +39,7 @@ const mockedState: State = {
   meta: {},
   location: {},
   directAnswer: {},
-  status: {}
+  searchStatus: {}
 };
 
 const mockedStateManager: jest.Mocked<StateManager> = {
@@ -139,9 +139,9 @@ describe('setters work as expected', () => {
     expect(dispatchEventCalls[0][1]).toBe('random-id-number');
   });
 
-  it('setQueryInput works as expected', () => {
+  it('setQuery works as expected', () => {
     const query = 'Hello';
-    answers.setQueryInput(query);
+    answers.setQuery(query);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;

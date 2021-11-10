@@ -5,7 +5,7 @@ const { reducer, actions } = createQuerySlice('');
 const { setInput, setQueryId, setSource, setTrigger } = actions;
 
 describe('query slice reducer works as expected', () => {
-  it('setQueryInput action is handled properly', () => {
+  it('setQuery action is handled properly', () => {
     const searchTerm = 'search term';
     const expectedState = { input: searchTerm };
     const actualState = reducer({}, setInput(searchTerm));

@@ -6,7 +6,7 @@ it('executeVerticalQuery properly updates spellcheck state', async () => {
   const answers = createMockedAnswersHeadless({
     verticalSearch: mockSearch
   });
-  answers.setQueryInput('lol');
+  answers.setQuery('lol');
   answers.setVerticalKey('vertical-key');
   answers.setSortBys([
     {

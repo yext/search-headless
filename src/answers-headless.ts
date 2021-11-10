@@ -36,7 +36,7 @@ export default class AnswersHeadless {
     private httpManager: HttpManager,
   ) {}
 
-  setQueryInput(input: string): void {
+  setQuery(input: string): void {
     this.stateManager.dispatchEvent('query/setInput', input);
   }
 
@@ -126,7 +126,7 @@ export default class AnswersHeadless {
 
   async executeUniversalQuery(): Promise<UniversalSearchResponse | undefined> {
     const thisRequestId = this.httpManager.updateRequestId('universalQuery');
-    this.stateManager.dispatchEvent('status/setSearchLoading', true);
+    this.stateManager.dispatchEvent('searchStatus/setIsLoading', true);
     const { input, querySource, queryTrigger } = this.state.query;
     const skipSpellCheck = !this.state.spellCheck.enabled;
     const sessionTrackingEnabled = this.state.sessionTracking.enabled;
@@ -159,7 +159,7 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('spellCheck/setResult', response.spellCheck);
     this.stateManager.dispatchEvent('query/setSearchIntents', response.searchIntents || []);
     this.stateManager.dispatchEvent('location/setLocationBias', response.locationBias);
-    this.stateManager.dispatchEvent('status/setSearchLoading', false);
+    this.stateManager.dispatchEvent('searchStatus/setIsLoading', false);
     this.stateManager.dispatchEvent('meta/setUUID', response.uuid);
     this.stateManager.dispatchEvent('directAnswer/setResult', response.directAnswer);
     return response;
@@ -189,7 +189,7 @@ export default class AnswersHeadless {
       console.error('no verticalKey supplied for vertical search');
       return;
     }
-    this.stateManager.dispatchEvent('status/setSearchLoading', true);
+    this.stateManager.dispatchEvent('searchStatus/setIsLoading', true);
     const { input, querySource, queryTrigger } = this.state.query;
     const skipSpellCheck = !this.state.spellCheck.enabled;
     const sessionTrackingEnabled = this.state.sessionTracking.enabled;
@@ -242,7 +242,7 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('location/setLocationBias', response.locationBias);
     this.stateManager.dispatchEvent('directAnswer/setResult', response.directAnswer);
     this.stateManager.dispatchEvent('meta/setUUID', response.uuid);
-    this.stateManager.dispatchEvent('status/setSearchLoading', false);
+    this.stateManager.dispatchEvent('searchStatus/setIsLoading', false);
     this.stateManager.dispatchEvent('vertical/handleSearchResponse', response);
     return response;
   }

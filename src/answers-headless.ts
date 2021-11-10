@@ -269,10 +269,19 @@ export default class AnswersHeadless {
     return results;
   }
 
-  executeFilterSearch(sectioned: boolean, fields: SearchParameterField[]): Promise<FilterSearchResponse> {
+  async executeFilterSearch(
+    query: string,
+    sectioned: boolean,
+    fields: SearchParameterField[]
+  ): Promise<FilterSearchResponse | undefined> {
+    const verticalKey = this.state.vertical.verticalKey;
+    if (!verticalKey) {
+      console.error('no verticalKey supplied for filter search');
+      return;
+    }
     return this.core.filterSearch({
-      input: this.state.query.query || '',
-      verticalKey: this.state.vertical.verticalKey || '',
+      input: query,
+      verticalKey,
       sessionTrackingEnabled: this.state.sessionTracking.enabled,
       sectioned,
       fields

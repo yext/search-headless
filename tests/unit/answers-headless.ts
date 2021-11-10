@@ -346,11 +346,11 @@ describe('search works as expected', () => {
         fetchEntities: false
       }
     ];
-    await answers.executeFilterSearch(false, fields);
+    await answers.executeFilterSearch('someInput', false, fields);
 
     expect(mockedCore.filterSearch).toHaveBeenCalledTimes(1);
     expect(mockedCore.filterSearch).toHaveBeenCalledWith({
-      input: 'Search',
+      input: 'someInput',
       verticalKey: 'someKey',
       sessionTrackingEnabled: true,
       sectioned: false,

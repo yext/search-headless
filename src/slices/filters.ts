@@ -62,12 +62,12 @@ const reducers = {
       state.static = [];
     }
     const { filter: targetFilter, shouldSelect } = payload;
-    const matchedFilter = state.static.find(storedSelectableFilter => {
+    const matchingFilter = state.static.find(storedSelectableFilter => {
       const { selected:_, ...storedFilter } = storedSelectableFilter;
       return areFiltersEqual(storedFilter, targetFilter);
     });
-    if (matchedFilter) {
-      matchedFilter.selected = shouldSelect;
+    if (matchingFilter) {
+      matchingFilter.selected = shouldSelect;
     } else if (shouldSelect) {
       const selectedFilter = { ...targetFilter, selected: shouldSelect };
       state.static.push(selectedFilter);

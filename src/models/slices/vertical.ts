@@ -27,7 +27,6 @@ export interface VerticalSearchState {
   queryDurationMillis?: number,
   results?: Result[],
   resultsCount?: number,
-  searchLoading?: boolean,
   sortBys?: SortBy[],
   source?: Source,
   verticalKey?: string,

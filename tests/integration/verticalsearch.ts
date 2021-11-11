@@ -22,28 +22,49 @@ const initialState: State = {
   location: {}
 };
 
-it('vertical searches set allResultsForVertical', async () => {
+const alternativeVerticals = [{
+  verticalKey: '999',
+  source: 'KNOWLEDGE_MANAGER',
+  resultsCount: 1,
+  results: [{
+    description: 'Sushi is a traditional Japanese dish',
+    name: 'Sushi',
+    rawData: {
+      name: 'Sushi',
+      description: 'Sushi is a traditional Japanese dish'
+    },
+    source: 'KNOWLEDGE_MANAGER',
+  }],
+  queryDurationMillis: 30,
+  appliedQueryFilters: []
+}];
+
+const allResultsForVertical = {
+  verticalResults: {
+    results: [],
+    resultsCount: 0
+  }
+};
+
+it('vertical searches set allResultsForVertical and alternativeVerticals', async () => {
   const answers = createMockedAnswersHeadless({
     verticalSearch: () => Promise.resolve({
-      allResultsForVertical: {
-        facets: [],
-        verticalResults: {
-          results: [],
-          resultsCount: 0
-        },
-        searchIntents: []
-      },
-      alternativeVerticals: []
+      allResultsForVertical,
+      alternativeVerticals,
     })
   }, initialState);
+  await answers.executeVerticalQuery();
   const expectedAllResultsForVertical = {
     facets: [],
     results: [],
     resultsCount: 0,
     searchIntents: []
   };
-  await answers.executeVerticalQuery();
-  expect(answers.state.vertical.noResults.allResultsForVertical).toEqual(expectedAllResultsForVertical);
+  const expectedNoResultsState = {
+    allResultsForVertical: expectedAllResultsForVertical,
+    alternativeVerticals
+  };
+  expect(answers.state.vertical.noResults).toEqual(expectedNoResultsState);
 });
 
 it('vertical searches set appliedQueryFilters', async () => {

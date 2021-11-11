@@ -18,16 +18,12 @@ const mockedState: State = {
     limit: 20
   },
   filters: {
-    static: {
-      someId: [
-        {
-          fieldId: 'c_someField',
-          matcher: Matcher.Equals,
-          value: 'some value',
-          selected: true
-        }
-      ]
-    }
+    static: [{
+      fieldId: 'c_someField',
+      matcher: Matcher.Equals,
+      value: 'some value',
+      selected: true
+    }]
   },
   spellCheck: {
     enabled: true
@@ -248,14 +244,13 @@ describe('filter functions work as expected', () => {
       matcher: Matcher.Equals,
       value: 'someValue'
     };
-    answers.setFilterOption({ ...filter, selected: true }, 'someId');
+    answers.setFilterOption({ ...filter, selected: true });
     const dispatchEventCalls =
     mockedStateManager.dispatchEvent.mock.calls;
     expect(dispatchEventCalls.length).toBe(1);
     expect(dispatchEventCalls[0][0]).toBe('filters/setFilterOption');
     expect(dispatchEventCalls[0][1]).toEqual({
       shouldSelect: true,
-      filterCollectionId: 'someId',
       filter: filter
     });
   });
@@ -266,14 +261,13 @@ describe('filter functions work as expected', () => {
       matcher: Matcher.Equals,
       value: 'someValue'
     };
-    answers.setFilterOption({ ...filter, selected: false }, 'someId');
+    answers.setFilterOption({ ...filter, selected: false });
     const dispatchEventCalls =
     mockedStateManager.dispatchEvent.mock.calls;
     expect(dispatchEventCalls.length).toBe(1);
     expect(dispatchEventCalls[0][0]).toBe('filters/setFilterOption');
     expect(dispatchEventCalls[0][1]).toEqual({
       shouldSelect: false,
-      filterCollectionId: 'someId',
       filter: filter
     });
   });
@@ -325,7 +319,7 @@ describe('search works as expected', () => {
 
   it('vertical search works', async () => {
     await answers.executeVerticalQuery();
-    const { selected:_, ...filter } = mockedState.filters.static.someId[0];
+    const { selected:_, ...filter } = mockedState.filters.static[0];
     const coreCalls = mockedCore.verticalSearch.mock.calls;
     const expectedSearchParams = {
       query: mockedState.query.input,

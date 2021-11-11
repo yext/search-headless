@@ -15,19 +15,24 @@ function combineFiltersWithOR(filters: Filter[]): Filter | CombinedFilter {
 }
 
 /**
- * Convert a list of SelectableFilters into the nested filter structure used by Core
+ * Convert a list of SelectableFilters use in Answers Headless
+ * to a single nested filter stucture use in Answers Core
  */
-function transformAFilterSetToCoreFormat(
-  filters: SelectableFilter[]
+export function transformFiltersToCoreFormat(
+  selectableFilters: SelectableFilter[] | undefined
 ): Filter | CombinedFilter | null {
-  if (filters.length === 0) {
+  if (!selectableFilters) {
     return null;
   }
-  if (filters.length === 1) {
-    const { selected:_, ...filter } = filters[0];
+  if (selectableFilters.length === 0) {
+    return null;
+  }
+  if (selectableFilters.length === 1) {
+    const { selected:_, ...filter } = selectableFilters[0];
     return filter;
   }
-  const groupedFilters: Record<string, Filter[]> = filters.reduce((groups, element) => {
+  const selectedFilters = selectableFilters.filter(selectableFilter => selectableFilter.selected);
+  const groupedFilters: Record<string, Filter[]> = selectedFilters.reduce((groups, element) => {
     const { selected:_, ...filter } = element;
     groups[element.fieldId]
       ? groups[element.fieldId].push({ ...filter })
@@ -42,35 +47,5 @@ function transformAFilterSetToCoreFormat(
   return {
     combinator: FilterCombinator.AND,
     filters: Object.values(groupedFilters).map((filters: Filter[]) => combineFiltersWithOR(filters))
-  };
-}
-
-/**
- * Convert a map of filtersId to filters in nested structure use in Answers Headless
- * to a single nested filter stucture use in Answers Core
- */
-export function transformFiltersToCoreFormat(
-  filterCollection: Record<string, SelectableFilter[]> | null | undefined
-): Filter | CombinedFilter | null {
-  if (!filterCollection) {
-    return null;
-  }
-
-  const coreFormattedFilters: (Filter | CombinedFilter)[] = [];
-  Object.values(filterCollection).forEach((selectableFilters: SelectableFilter[]) => {
-    const selectedFilters = selectableFilters.filter(selectableFilter => selectableFilter.selected);
-    const transformedFilterSet = transformAFilterSetToCoreFormat(selectedFilters);
-    transformedFilterSet && coreFormattedFilters.push(transformedFilterSet);
-  });
-
-  if (coreFormattedFilters.length === 0) {
-    return null;
-  }
-  if (coreFormattedFilters.length === 1) {
-    return coreFormattedFilters[0];
-  }
-  return {
-    combinator: FilterCombinator.AND,
-    filters: coreFormattedFilters
   };
 }

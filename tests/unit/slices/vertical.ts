@@ -1,33 +1,13 @@
-import { Source } from '@yext/answers-core';
 import createVerticalSlice from '../../../src/slices/vertical';
 
 const { reducer, actions } = createVerticalSlice('');
-const { setKey, setResults, setLimit, setOffset, setDisplayName } = actions;
+const { setVerticalKey, setLimit, setOffset, setDisplayName } = actions;
 
 describe('vertical slice reducer works as expected', () => {
-  it('setKey action is handled properly', () => {
+  it('setVerticalKey action is handled properly', () => {
     const verticalKey = 'someKey';
-    const expectedState = { key: verticalKey };
-    const actualState = reducer({}, setKey(verticalKey));
-
-    expect(actualState).toEqual(expectedState);
-  });
-
-  it('setResults action is handled properly', () => {
-    const searchResponse = {
-      verticalResults: {
-        results: [],
-        resultsCount: 0,
-        source: Source.Generic,
-        appliedQueryFilters: [],
-        queryDurationMillis: 1000,
-        verticalKey: 'someKey'
-      },
-      uuid: '1234',
-      queryId: 'some-query'
-    };
-    const expectedState = { results: searchResponse };
-    const actualState = reducer({}, setResults(searchResponse));
+    const expectedState = { verticalKey };
+    const actualState = reducer({}, setVerticalKey(verticalKey));
 
     expect(actualState).toEqual(expectedState);
   });

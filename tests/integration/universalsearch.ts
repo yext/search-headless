@@ -11,19 +11,6 @@ it('universal searches send blank queries by default', async () => {
   expect(mockSearch.mock.calls[0][0].query).toEqual('');
 });
 
-
-it('universal searches update the search loading state', async () => {
-  const mockSearch = createMockSearch();
-  const answers = createMockedAnswersHeadless({
-    universalSearch: mockSearch
-  });
-
-  const search = answers.executeUniversalQuery();
-  expect(answers.state.universal.searchLoading).toEqual(true);
-  await search;
-  expect(answers.state.universal.searchLoading).toEqual(false);
-});
-
 it('answers.setUniversalLimit sets the universal limit when a UniversalLimit is passed to it', () => {
   const answers = createMockedAnswersHeadless();
   const universalLimit = {

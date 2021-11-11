@@ -1,30 +1,51 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
-import { VerticalSearchResponse, VerticalResults } from '@yext/answers-core';
-import { VerticalSearchState } from '../models/slices/vertical';
+import {
+  SortBy,
+  VerticalSearchResponse
+} from '@yext/answers-core';
+import { AllResultsForVertical, VerticalSearchState } from '../models/slices/vertical';
 
 const initialState: VerticalSearchState = {};
 
 const reducers = {
-  setKey: (state, action: PayloadAction<string>) => {
-    state.key = action.payload;
+  handleSearchResponse: (
+    state: VerticalSearchState,
+    action: PayloadAction<VerticalSearchResponse>
+  ) => {
+    if (action.payload.allResultsForVertical && action.payload.alternativeVerticals) {
+      const allResultsForVertical: AllResultsForVertical = {
+        facets: action.payload.allResultsForVertical.facets || [],
+        results: action.payload.allResultsForVertical.verticalResults?.results,
+        resultsCount: action.payload.allResultsForVertical.verticalResults?.resultsCount,
+        searchIntents: action.payload.allResultsForVertical.searchIntents || []
+      };
+      state.noResults = {
+        allResultsForVertical,
+        alternativeVerticals: action.payload.alternativeVerticals
+      };
+    } else {
+      state.noResults = undefined;
+    }
+    state.appliedQueryFilters = action.payload.verticalResults?.appliedQueryFilters;
+    state.queryDurationMillis = action.payload.verticalResults?.queryDurationMillis;
+    state.results = action.payload.verticalResults?.results;
+    state.resultsCount = action.payload.verticalResults?.resultsCount;
+    state.source = action.payload.verticalResults?.source;
   },
-  setResults: (state, action: PayloadAction<VerticalSearchResponse>) => {
-    state.results = action.payload;
-  },
-  setAlternativeVerticals: (state, action: PayloadAction<VerticalResults[]>) => {
-    state.alternativeVerticals = action.payload;
-  },
-  setDisplayName: (state, action: PayloadAction<string>) => {
+  setDisplayName: (state: VerticalSearchState, action: PayloadAction<string>) => {
     state.displayName = action.payload;
   },
-  setLimit: (state, action: PayloadAction<number>) => {
+  setLimit: (state: VerticalSearchState, action: PayloadAction<number>) => {
     state.limit = action.payload;
   },
-  setOffset: (state, action: PayloadAction<number>) => {
+  setOffset: (state: VerticalSearchState, action: PayloadAction<number>) => {
     state.offset = action.payload;
   },
-  setSearchLoading: (state, action: PayloadAction<boolean>) => {
-    state.searchLoading = action.payload;
+  setSortBys: (state: VerticalSearchState, action: PayloadAction<SortBy[]>) => {
+    state.sortBys = action.payload;
+  },
+  setVerticalKey: (state: VerticalSearchState, action: PayloadAction<string>) => {
+    state.verticalKey = action.payload;
   }
 };
 

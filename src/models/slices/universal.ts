@@ -1,7 +1,7 @@
-import { UniversalSearchResponse, UniversalLimit } from '@yext/answers-core';
+import { UniversalLimit, VerticalResults } from '@yext/answers-core';
 
 export interface UniversalSearchState {
-  results?: UniversalSearchResponse,
+  limit?: UniversalLimit,
+  verticals?: VerticalResults[],
   searchLoading?: boolean
-  limit?: UniversalLimit
 }

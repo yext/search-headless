@@ -116,7 +116,7 @@ it('facets are updated after a vertical search', async () => {
   };
   const initialState = {
     filters: {},
-    vertical: { key: 'test vertical key' },
+    vertical: { verticalKey: 'test vertical key' },
     query: { query: 'test query' },
     spellCheck: { enabled: true }
   };
@@ -240,7 +240,7 @@ function createInitialState(
       facets: [facet]
     },
     vertical: {
-      key: 'people'
+      verticalKey: 'people'
     },
     universal: {},
     spellCheck: {

@@ -5,8 +5,8 @@ import { QueryState } from '../models/slices/query';
 const initialState: QueryState = {};
 
 const reducers = {
-  set: (state, action: PayloadAction<string>) => {
-    state.query = action.payload;
+  setInput: (state, action: PayloadAction<string>) => {
+    state.input = action.payload;
   },
   setTrigger: (state, action: PayloadAction<QueryTrigger>) => {
     state.queryTrigger = action.payload;
@@ -17,8 +17,8 @@ const reducers = {
   setQueryId: (state, action: PayloadAction<string>) => {
     state.queryId = action.payload;
   },
-  setLatest: (state, action: PayloadAction<string>) => {
-    state.latest = action.payload;
+  setMostRecentSearch: (state, action: PayloadAction<string>) => {
+    state.mostRecentSearch = action.payload;
   },
   setSearchIntents: (state, action: PayloadAction<SearchIntent[]>) => {
     state.searchIntents = action.payload;

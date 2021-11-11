@@ -2,11 +2,11 @@ import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadles
 
 const initialState = {
   query: {
-    latest: 'virginia',
-    query: 'virginia'
+    mostRecentSearch: 'virginia',
+    input: 'virginia'
   },
   vertical: {
-    key: '123'
+    verticalKey: '123'
   },
   universal: {},
   filters: {},
@@ -38,7 +38,7 @@ function mockSearchWithAlternativeVerticals() {
   });
 }
 
-describe('AnswersHeadless spellcheck interactions properly update state', () => {
+describe('AnswersHeadless alternative verticals interactions properly update state', () => {
   it('executeVerticalQuery properly updates alternative verticals state', async () => {
     const answers = createMockedAnswersHeadless({
       verticalSearch: mockSearchWithAlternativeVerticals
@@ -47,9 +47,8 @@ describe('AnswersHeadless spellcheck interactions properly update state', () => 
     const expectedState = {
       vertical: {
         ...initialState.vertical,
-        alternativeVerticals: alternativeVerticals,
-        results: {
-          alternativeVerticals: alternativeVerticals
+        noResults: {
+          alternativeVerticals
         }
       },
     };

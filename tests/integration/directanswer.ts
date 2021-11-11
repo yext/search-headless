@@ -1,13 +1,14 @@
 import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
 import { FeaturedSnippetDirectAnswer, DirectAnswerType, Source } from '@yext/answers-core';
+import { State } from '../../src/models/state';
 
-const initialState = {
+const initialState: State = {
   query: {
-    latest: 'virginia',
-    query: 'virginia'
+    input: 'virginia',
+    mostRecentSearch: 'virginia'
   },
   vertical: {
-    key: '123'
+    verticalKey: '123'
   },
   directAnswer: {},
   universal: {},
@@ -15,6 +16,10 @@ const initialState = {
   spellCheck: {
     enabled: true,
   },
+  searchStatus: {},
+  sessionTracking: {},
+  location: {},
+  meta: {}
 };
 
 const featuredSnippedDirectAnswer: FeaturedSnippetDirectAnswer = {

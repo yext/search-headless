@@ -2,11 +2,11 @@ import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadles
 
 const initialState = {
   query: {
-    latest: 'virginia',
-    query: 'virginia'
+    mostRecentSearch: 'virginia',
+    input: 'virginia'
   },
   vertical: {
-    key: '123',
+    verticalKey: '123',
   },
   universal: {},
   filters: {},
@@ -35,10 +35,7 @@ describe('AnswersHeadless spellcheck interactions properly update state', () => 
     await answers.executeVerticalQuery();
     const expectedState = {
       vertical: {
-        ...initialState.vertical,
-        results: {
-          spellCheck: spellCheckResult
-        }
+        ...initialState.vertical
       },
       spellCheck: {
         ...initialState.spellCheck,
@@ -55,11 +52,6 @@ describe('AnswersHeadless spellcheck interactions properly update state', () => 
     }, initialState);
     await answers.executeUniversalQuery();
     const expectedState = {
-      universal: {
-        results: {
-          spellCheck: spellCheckResult
-        },
-      },
       spellCheck: {
         ...initialState.spellCheck,
         ...spellCheckResult,

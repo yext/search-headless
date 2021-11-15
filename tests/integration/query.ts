@@ -1,9 +1,7 @@
 import {
   VerticalSearchRequest,
   UniversalSearchRequest,
-  SearchIntent,
-  VerticalAutocompleteRequest,
-  UniversalAutocompleteRequest
+  SearchIntent
 } from '@yext/answers-core';
 import HttpManager from '../../src/http-manager';
 import ReduxStateManager from '../../src/redux-state-manager';
@@ -38,31 +36,6 @@ it('universal searches set search intents', async () => {
   expect(answers.state.query.searchIntents).toEqual(['NEAR_ME']);
 });
 
-
-it('vertical autocomplete sets search intents', async () => {
-  const answers = createMockedAnswersHeadless({
-    verticalAutocomplete: jest.fn((_request: VerticalAutocompleteRequest) => Promise.resolve({
-      inputIntents: [SearchIntent.NearMe]
-    }))
-  });
-  answers.setVerticalKey('vertical-key');
-  expect(answers.state.query.searchIntents).toEqual(undefined);
-  await answers.executeVerticalAutoComplete();
-  expect(answers.state.query.searchIntents).toEqual(['NEAR_ME']);
-});
-
-it('universal autocomplete sets search intents', async () => {
-  const answers = createMockedAnswersHeadless({
-    universalAutocomplete: jest.fn((_request: UniversalAutocompleteRequest) => Promise.resolve({
-      inputIntents: [SearchIntent.NearMe]
-    }))
-  });
-  expect(answers.state.query.searchIntents).toEqual(undefined);
-  await answers.executeUniversalAutoComplete();
-  expect(answers.state.query.searchIntents).toEqual(['NEAR_ME']);
-});
-
-
 describe('ensure correct results from latest request', () => {
   jest.useFakeTimers();
   const queries = ['really long request', 'short', 'long request'];
@@ -72,16 +45,7 @@ describe('ensure correct results from latest request', () => {
     [queries[2]]: 12
   };
 
-  const mockAutoCompleteFn = jest.fn(
-    async (request: VerticalAutocompleteRequest | UniversalAutocompleteRequest) => {
-      const waitTime = requestsTime[request.input];
-      return new Promise(res => setTimeout(() => res({ results: [ {value: request.input} ]}), waitTime));
-    }
-  );
-
   const mockedCore: any = {
-    verticalAutocomplete: mockAutoCompleteFn,
-    universalAutocomplete: mockAutoCompleteFn,
     verticalSearch: jest.fn( async (request: VerticalSearchRequest) => {
       const waitTime = requestsTime[request.query];
       return new Promise(res => setTimeout(() => res(
@@ -102,57 +66,6 @@ describe('ensure correct results from latest request', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-  });
-
-  it('vertical autocomplete get correct results based on up-to-date response', async () => {
-    answers.addListener({
-      valueAccessor: state => state.vertical?.autoComplete?.results,
-      callback: updateResult
-    });
-
-    answers.setQuery(queries[0]);
-    const firstResponsePromise = answers.executeVerticalAutoComplete();
-    answers.setQuery(queries[1]);
-    const secondResponsePromise = answers.executeVerticalAutoComplete();
-    answers.setQuery(queries[2]);
-    const thirdResponsePromise = answers.executeVerticalAutoComplete();
-
-    jest.advanceTimersByTime(requestsTime[queries[1]]);
-    await secondResponsePromise;
-    expect(answers.state.vertical.autoComplete.results).toEqual([{ value: queries[1] }]);
-    jest.advanceTimersByTime(requestsTime[queries[2]]);
-    await thirdResponsePromise;
-    jest.runAllTimers();
-    await firstResponsePromise;
-
-    expect(answers.state.query.input).toEqual(queries[2]);
-    expect(answers.state.vertical.autoComplete.results).toEqual([{ value: queries[2] }]);
-    expect(updateResult.mock.calls).toHaveLength(2);
-  });
-
-  it('universal autocomplete get correct results based on up-to-date response', async () => {
-    answers.addListener({
-      valueAccessor: state => state.universal?.autoComplete?.results,
-      callback: updateResult
-    });
-    answers.setQuery(queries[0]);
-    const firstResponsePromise = answers.executeUniversalAutoComplete();
-    answers.setQuery(queries[1]);
-    const secondResponsePromise = answers.executeUniversalAutoComplete();
-    answers.setQuery(queries[2]);
-    const thirdResponsePromise = answers.executeUniversalAutoComplete();
-
-    jest.advanceTimersByTime(requestsTime[queries[1]]);
-    await secondResponsePromise;
-    expect(answers.state.universal.autoComplete.results).toEqual([{ value: queries[1] }]);
-    jest.advanceTimersByTime(requestsTime[queries[2]]);
-    await thirdResponsePromise;
-    jest.runAllTimers();
-    await firstResponsePromise;
-
-    expect(answers.state.query.input).toEqual(queries[2]);
-    expect(answers.state.universal.autoComplete.results).toEqual([{ value: queries[2] }]);
-    expect(updateResult.mock.calls).toHaveLength(2);
   });
 
   it('vertical search get correct results based on up-to-date response', async () => {

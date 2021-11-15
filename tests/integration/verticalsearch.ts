@@ -1,4 +1,5 @@
-import { AppliedQueryFilter, Matcher, Result, Source, VerticalSearchRequest } from '@yext/answers-core';
+import { AppliedQueryFilter, Matcher, Result, Source, VerticalResults, VerticalSearchRequest, VerticalSearchResponse } from '@yext/answers-core';
+import { AllResultsForVertical } from '../../src/models/slices/vertical';
 import { State } from '../../src/models/state';
 import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
 import setTimeout from '../utils/setTimeout';
@@ -22,27 +23,55 @@ const initialState: State = {
   location: {}
 };
 
-it('vertical searches set allResultsForVertical', async () => {
+const alternativeVerticals: VerticalResults[] = [{
+  verticalKey: '999',
+  source: Source.KnowledgeManager,
+  resultsCount: 1,
+  results: [{
+    description: 'Sushi is a traditional Japanese dish',
+    name: 'Sushi',
+    rawData: {
+      name: 'Sushi',
+      description: 'Sushi is a traditional Japanese dish'
+    },
+    source: Source.KnowledgeManager,
+  }],
+  queryDurationMillis: 30,
+  appliedQueryFilters: []
+}];
+
+const allResultsForVertical: VerticalSearchResponse = {
+  queryId: 'SOME_ID',
+  verticalResults: {
+    appliedQueryFilters: [],
+    queryDurationMillis: 0,
+    results: [],
+    resultsCount: 0,
+    source: Source.KnowledgeManager,
+    verticalKey: 'SOME_KEY'
+  },
+  uuid: ''
+};
+
+it('vertical searches set allResultsForVertical and alternativeVerticals', async () => {
   const answers = createMockedAnswersHeadless({
     verticalSearch: () => Promise.resolve({
-      allResultsForVertical: {
-        facets: [],
-        verticalResults: {
-          results: [],
-          resultsCount: 0
-        },
-        searchIntents: []
-      }
+      allResultsForVertical,
+      alternativeVerticals,
     })
   }, initialState);
-  const expectedAllResultsForVertical = {
+  await answers.executeVerticalQuery();
+  const expectedAllResultsForVertical: AllResultsForVertical = {
     facets: [],
     results: [],
     resultsCount: 0,
     searchIntents: []
   };
-  await answers.executeVerticalQuery();
-  expect(answers.state.vertical.noResults.allResultsForVertical).toEqual(expectedAllResultsForVertical);
+  const expectedNoResultsState = {
+    allResultsForVertical: expectedAllResultsForVertical,
+    alternativeVerticals
+  };
+  expect(answers.state.vertical.noResults).toEqual(expectedNoResultsState);
 });
 
 it('vertical searches set appliedQueryFilters', async () => {

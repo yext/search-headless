@@ -165,21 +165,11 @@ export default class AnswersHeadless {
     return response;
   }
 
-  async executeUniversalAutoComplete(): Promise<AutocompleteResponse | undefined> {
-    const thisRequestId = this.httpManager.updateRequestId('universalAutoComplete');
+  async executeUniversalAutocomplete(): Promise<AutocompleteResponse> {
     const query = this.state.query.input || '';
-    const results = await this.core.universalAutocomplete({
+    return this.core.universalAutocomplete({
       input: query
     });
-
-    const latestResponseId = this.httpManager.getLatestResponseId('universalAutoComplete');
-    if (thisRequestId < latestResponseId) {
-      return results;
-    }
-    this.httpManager.setResponseId('universalAutoComplete', thisRequestId);
-    this.stateManager.dispatchEvent('universal/setAutoComplete', results);
-    this.stateManager.dispatchEvent('query/setSearchIntents', results.inputIntents || []);
-    return results;
   }
 
   async executeVerticalQuery(): Promise<VerticalSearchResponse | undefined> {
@@ -247,8 +237,7 @@ export default class AnswersHeadless {
     return response;
   }
 
-  async executeVerticalAutoComplete(): Promise<AutocompleteResponse | undefined> {
-    const thisRequestId = this.httpManager.updateRequestId('verticalAutoComplete');
+  async executeVerticalAutocomplete(): Promise<AutocompleteResponse | undefined> {
     const query = this.state.query.input || '';
     const verticalKey = this.state.vertical.verticalKey;
     if (!verticalKey) {
@@ -256,19 +245,10 @@ export default class AnswersHeadless {
       return;
     }
 
-    const results = await this.core.verticalAutocomplete({
+    return this.core.verticalAutocomplete({
       input: query,
       verticalKey
     });
-
-    const latestResponseId = this.httpManager.getLatestResponseId('verticalAutoComplete');
-    if (thisRequestId < latestResponseId) {
-      return results;
-    }
-    this.httpManager.setResponseId('verticalAutoComplete', thisRequestId);
-    this.stateManager.dispatchEvent('vertical/setAutoComplete', results);
-    this.stateManager.dispatchEvent('query/setSearchIntents', results.inputIntents || []);
-    return results;
   }
 
   async executeFilterSearch(

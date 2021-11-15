@@ -1,6 +1,5 @@
 import {
   AppliedQueryFilter,
-  AutocompleteResponse,
   DisplayableFacet,
   Result,
   SearchIntent,
@@ -18,7 +17,6 @@ export interface AllResultsForVertical {
 
 export interface VerticalSearchState {
   appliedQueryFilters?: AppliedQueryFilter[],
-  autoComplete?: AutocompleteResponse,
   displayName?: string
   limit?: number,
   noResults?: {
@@ -29,7 +27,6 @@ export interface VerticalSearchState {
   queryDurationMillis?: number,
   results?: Result[],
   resultsCount?: number,
-  searchLoading?: boolean,
   sortBys?: SortBy[],
   source?: Source,
   verticalKey?: string,

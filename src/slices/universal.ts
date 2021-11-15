@@ -1,17 +1,14 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
-import { AutocompleteResponse, UniversalLimit, VerticalResults } from '@yext/answers-core';
+import { UniversalLimit, VerticalResults } from '@yext/answers-core';
 import { UniversalSearchState } from '../models/slices/universal';
 
 const initialState: UniversalSearchState = {};
 
 const reducers = {
-  setVerticals: (state, action: PayloadAction<VerticalResults[]>) => {
+  setVerticals: (state: UniversalSearchState, action: PayloadAction<VerticalResults[]>) => {
     state.verticals = action.payload;
   },
-  setAutoComplete: (state, action: PayloadAction<AutocompleteResponse>) => {
-    state.autoComplete = action.payload;
-  },
-  setLimit: (state, action: PayloadAction<UniversalLimit>) => {
+  setLimit: (state: UniversalSearchState, action: PayloadAction<UniversalLimit>) => {
     state.limit = action.payload;
   },
 };

@@ -237,7 +237,7 @@ export default class AnswersHeadless {
     return response;
   }
 
-  async executeVerticalAutoComplete(): Promise<AutocompleteResponse | undefined> {
+  async executeVerticalAutocomplete(): Promise<AutocompleteResponse | undefined> {
     const query = this.state.query.input || '';
     const verticalKey = this.state.vertical.verticalKey;
     if (!verticalKey) {

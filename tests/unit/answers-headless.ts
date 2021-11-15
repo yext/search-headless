@@ -280,7 +280,7 @@ describe('auto-complete works as expected', () => {
   });
 
   it('vertical auto-complete works', async () => {
-    await answers.executeVerticalAutoComplete();
+    await answers.executeVerticalAutocomplete();
 
     const coreCalls = mockedCore.verticalAutocomplete.mock.calls;
     expect(coreCalls.length).toBe(1);

@@ -165,7 +165,7 @@ export default class AnswersHeadless {
     return response;
   }
 
-  async executeUniversalAutoComplete(): Promise<AutocompleteResponse> {
+  async executeUniversalAutocomplete(): Promise<AutocompleteResponse> {
     const query = this.state.query.input || '';
     return this.core.universalAutocomplete({
       input: query

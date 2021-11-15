@@ -295,7 +295,7 @@ describe('auto-complete works as expected', () => {
   });
 
   it('universal auto-complete works', async () => {
-    await answers.executeUniversalAutoComplete();
+    await answers.executeUniversalAutocomplete();
 
     const coreCalls = mockedCore.universalAutocomplete.mock.calls;
     expect(coreCalls.length).toBe(1);

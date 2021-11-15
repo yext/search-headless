@@ -64,7 +64,7 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('vertical/setOffset', offset);
   }
 
-  setStaticFilters(filters: Record<string, SelectableFilter[]> | null): void {
+  setStaticFilters(filters: SelectableFilter[]): void {
     this.stateManager.dispatchEvent('filters/setStatic', filters);
   }
 

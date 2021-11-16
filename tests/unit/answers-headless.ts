@@ -67,9 +67,7 @@ describe('setters work as expected', () => {
       value: 'someValue',
       selected: true
     };
-    const staticFilter = {
-      someId: [filter]
-    };
+    const staticFilter = [filter];
     answers.setStaticFilters(staticFilter);
 
     const dispatchEventCalls =

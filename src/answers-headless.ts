@@ -64,7 +64,7 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('vertical/setOffset', offset);
   }
 
-  setStaticFilters(filters: Record<string, SelectableFilter[]> | null): void {
+  setStaticFilters(filters: SelectableFilter[]): void {
     this.stateManager.dispatchEvent('filters/setStatic', filters);
   }
 
@@ -227,7 +227,6 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('query/setMostRecentSearch', input);
     this.stateManager.dispatchEvent('filters/setFacets', response.facets);
     this.stateManager.dispatchEvent('spellCheck/setResult', response.spellCheck);
-    this.stateManager.dispatchEvent('location/setLocationBias', response.locationBias);
     this.stateManager.dispatchEvent('query/setSearchIntents', response.searchIntents || []);
     this.stateManager.dispatchEvent('location/setLocationBias', response.locationBias);
     this.stateManager.dispatchEvent('directAnswer/setResult', response.directAnswer);

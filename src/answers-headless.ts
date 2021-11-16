@@ -227,7 +227,6 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('query/setMostRecentSearch', input);
     this.stateManager.dispatchEvent('filters/setFacets', response.facets);
     this.stateManager.dispatchEvent('spellCheck/setResult', response.spellCheck);
-    this.stateManager.dispatchEvent('location/setLocationBias', response.locationBias);
     this.stateManager.dispatchEvent('query/setSearchIntents', response.searchIntents || []);
     this.stateManager.dispatchEvent('location/setLocationBias', response.locationBias);
     this.stateManager.dispatchEvent('directAnswer/setResult', response.directAnswer);

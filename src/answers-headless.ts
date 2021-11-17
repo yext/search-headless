@@ -12,6 +12,7 @@ import {
   SortBy,
   Context,
   LatLong,
+  SearchIntent,
   SearchParameterField,
   FilterSearchResponse,
   UniversalLimit,
@@ -46,6 +47,10 @@ export default class AnswersHeadless {
 
   setQuerySource(source: QuerySource): void {
     this.stateManager.dispatchEvent('query/setSource', source);
+  }
+
+  setQuerySearchIntents(searchIntents: SearchIntent[]): void {
+    this.stateManager.dispatchEvent('query/setSearchIntents', searchIntents);
   }
 
   setVerticalKey(verticalKey: string): void {

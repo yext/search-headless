@@ -1,8 +1,8 @@
-import { QuerySource, QueryTrigger } from '@yext/answers-core';
+import { QuerySource, QueryTrigger, SearchIntent } from '@yext/answers-core';
 import createQuerySlice from '../../../src/slices/query';
 
 const { reducer, actions } = createQuerySlice('');
-const { setInput, setQueryId, setSource, setTrigger } = actions;
+const { setInput, setQueryId, setSource, setTrigger, setSearchIntents } = actions;
 
 describe('query slice reducer works as expected', () => {
   it('setQuery action is handled properly', () => {
@@ -33,6 +33,14 @@ describe('query slice reducer works as expected', () => {
     const queryId = 'some-id';
     const expectedState = { queryId };
     const actualState = reducer({}, setQueryId(queryId));
+
+    expect(actualState).toEqual(expectedState);
+  });
+
+  it('setSearchIntents action is handled properly', () => {
+    const searchIntents = [SearchIntent.NearMe];
+    const expectedState = { searchIntents };
+    const actualState = reducer({}, setSearchIntents(searchIntents));
 
     expect(actualState).toEqual(expectedState);
   });

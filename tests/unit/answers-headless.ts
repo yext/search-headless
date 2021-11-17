@@ -1,4 +1,4 @@
-import { Matcher, QuerySource, QueryTrigger } from '@yext/answers-core';
+import { Matcher, QuerySource, QueryTrigger, SearchIntent } from '@yext/answers-core';
 import HttpManager from '../../src/http-manager';
 import StateManager from '../../src/models/state-manager';
 import AnswersHeadless from '../../src/answers-headless';
@@ -165,6 +165,17 @@ describe('setters work as expected', () => {
     expect(dispatchEventCalls.length).toBe(1);
     expect(dispatchEventCalls[0][0]).toBe('query/setSource');
     expect(dispatchEventCalls[0][1]).toBe(QuerySource.Overlay);
+  });
+
+  it('setQuerySearchIntents works as expected', () => {
+    answers.setQuerySearchIntents([SearchIntent.NearMe]);
+
+    const dispatchEventCalls =
+      mockedStateManager.dispatchEvent.mock.calls;
+
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('query/setSearchIntents');
+    expect(dispatchEventCalls[0][1]).toEqual([SearchIntent.NearMe]);
   });
 
   it('setVerticalKey works as expected', () => {

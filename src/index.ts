@@ -7,6 +7,9 @@ import HeadlessReducerManager from './headless-reducer-manager';
 import { DEFAULT_HEADLESS_ID } from './constants';
 import { SessionTrackingState } from './models/slices/sessiontracking';
 
+export * from '@yext/answers-core';
+export * from './utils/filter-creators';
+
 export interface HeadlessConfig extends AnswersConfig {
   headlessId?: string
 }
@@ -63,6 +66,4 @@ function linkSessionTracking(firstHeadless: AnswersHeadless, secondHeadless: Ans
   });
 }
 
-export * from '@yext/answers-core';
-export * from './utils/filter-creators';
 export { AnswersHeadless };

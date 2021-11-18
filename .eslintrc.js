@@ -5,7 +5,8 @@ module.exports = {
     sourceType: 'module'
   },
   extends: [
-    'plugin:@typescript-eslint/recommended'
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@yext/export-star/recommended'
   ],
   rules: {
     indent: ['error', 2],

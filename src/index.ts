@@ -1,4 +1,4 @@
-import { provideCore, AnswersConfig } from '@yext/answers-core';
+import { provideCore, AnswersConfig } from '../../answers-core/lib/esm';
 import HttpManager from './http-manager';
 import ReduxStateManager from './redux-state-manager';
 import AnswersHeadless from './answers-headless';
@@ -10,9 +10,7 @@ import { SessionTrackingState } from './models/slices/sessiontracking';
 export * from '@yext/answers-core';
 export * from './utils/filter-creators';
 
-export interface HeadlessConfig extends AnswersConfig {
-  headlessId?: string
-}
+type HeadlessConfig = AnswersConfig & { headlessId?: string }
 
 let firstHeadlessInstance: AnswersHeadless;
 const store = createBaseStore();

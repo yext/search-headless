@@ -16,7 +16,7 @@ import {
   FilterSearchResponse,
   UniversalLimit,
   VerticalSearchResponse
-} from '@yext/answers-core';
+} from '../../answers-core/lib/esm';
 
 import StateListener from './models/state-listener';
 import { State } from './models/state';
@@ -26,6 +26,7 @@ import HttpManager from './http-manager';
 import answersUtilities from './answers-utilities';
 import { SelectableFilter } from './models/utils/selectablefilter';
 import { transformFiltersToCoreFormat } from './utils/transform-filters';
+import { v4 as uuidv4 } from 'uuid';
 
 export default class AnswersHeadless {
   public readonly utilities = answersUtilities;
@@ -46,6 +47,14 @@ export default class AnswersHeadless {
 
   setQuerySource(source: QuerySource): void {
     this.stateManager.dispatchEvent('query/setSource', source);
+  }
+
+  setSearchAggregationEnabled(enabled: boolean): void {
+    this.stateManager.dispatchEvent('query/setSearchAggregationEnabled', enabled);
+  }
+
+  setSearchAggregationId(uuid: string): void {
+    this.stateManager.dispatchEvent('query/setSearchAggregationId', uuid);
   }
 
   setVerticalKey(verticalKey: string): void {
@@ -145,7 +154,9 @@ export default class AnswersHeadless {
       limit,
       location: userLocation,
       context,
-      referrerPageUrl
+      referrerPageUrl,
+      ...(this.state.query.searchAggregation?.enabled 
+          && { autocompleteSessionId: this.state.query.searchAggregation.id })
     });
 
     const latestResponseId = this.httpManager.getLatestResponseId('universalQuery');
@@ -162,13 +173,18 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('searchStatus/setIsLoading', false);
     this.stateManager.dispatchEvent('meta/setUUID', response.uuid);
     this.stateManager.dispatchEvent('directAnswer/setResult', response.directAnswer);
+    if (this.state.query.searchAggregation?.enabled) {
+      this.stateManager.dispatchEvent('query/setSearchAggregationId', uuidv4());
+    }
     return response;
   }
 
   async executeUniversalAutocomplete(): Promise<AutocompleteResponse> {
     const query = this.state.query.input || '';
     return this.core.universalAutocomplete({
-      input: query
+      input: query,
+      ...(this.state.query.searchAggregation?.enabled 
+        && { autocompleteSessionId: this.state.query.searchAggregation.id })
     });
   }
 
@@ -215,7 +231,9 @@ export default class AnswersHeadless {
       location: userLocation,
       sortBys,
       context,
-      referrerPageUrl
+      referrerPageUrl,
+      ...(this.state.query.searchAggregation?.enabled 
+        && { autocompleteSessionId: this.state.query.searchAggregation.id })
     };
     const response = await this.core.verticalSearch(request);
     const latestResponseId = this.httpManager.getLatestResponseId('verticalQuery');
@@ -233,6 +251,9 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('meta/setUUID', response.uuid);
     this.stateManager.dispatchEvent('searchStatus/setIsLoading', false);
     this.stateManager.dispatchEvent('vertical/handleSearchResponse', response);
+    if (this.state.query.searchAggregation?.enabled) {
+      this.stateManager.dispatchEvent('query/setSearchAggregationId', uuidv4());
+    }
     return response;
   }
 
@@ -246,7 +267,9 @@ export default class AnswersHeadless {
 
     return this.core.verticalAutocomplete({
       input: query,
-      verticalKey
+      verticalKey,
+      ...(this.state.query.searchAggregation?.enabled 
+        && { autocompleteSessionId: this.state.query.searchAggregation.id })
     });
   }
 

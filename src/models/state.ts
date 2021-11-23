@@ -25,7 +25,7 @@ export interface State {
   filters: FiltersState,
   searchStatus: SearchStatusState,
   spellCheck: SpellCheckState,
-  sessionTracking: SessionTrackingState
+  sessionTracking: SessionTrackingState,
   meta: MetaState,
   location: LocationState,
 }

@@ -118,3 +118,83 @@ describe('ensure correct results from latest request', () => {
     expect(updateResult.mock.calls).toHaveLength(2);
   });
 });
+
+
+let uuidString = 'some-uuid-value';
+const mockUuid = jest.fn(() => uuidString);
+jest.mock('uuid', () => ({
+  v4: () => mockUuid()
+}));
+
+describe('ensure correct searchAggregationId passed to related requests', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('autocompleteSessionId is properly handle in request when search aggregation is disabled/enabled', async () => {
+    const mockVerticalSearch = jest.fn().mockReturnValue(Promise.resolve({}));
+    const mockVerticalAutocomplete = jest.fn().mockReturnValue(Promise.resolve({}));;
+    const answers = createMockedAnswersHeadless({
+      verticalSearch: mockVerticalSearch,
+      verticalAutocomplete: mockVerticalAutocomplete
+    });
+    answers.setVerticalKey('someKey');
+    
+    // search term aggregation disabled
+    await answers.executeVerticalAutocomplete();
+    await answers.executeVerticalQuery();
+    expect(mockVerticalAutocomplete).toHaveBeenLastCalledWith(
+      expect.not.objectContaining({ autocompleteSessionId: expect.anything })
+    );
+    expect(mockVerticalSearch).toHaveBeenLastCalledWith(
+      expect.not.objectContaining({ autocompleteSessionId: expect.anything })
+    );
+    expect(mockUuid).toHaveBeenCalledTimes(0);
+
+    // search term aggregation enabled
+    answers.setSearchAggregationEnabled(true);
+    expect(mockUuid).toHaveBeenCalledTimes(1);
+    await answers.executeVerticalAutocomplete();
+    await answers.executeVerticalQuery();
+    expect(mockVerticalAutocomplete).toHaveBeenLastCalledWith(
+      expect.objectContaining({ autocompleteSessionId: 'some-uuid-value' })
+    );
+    expect(mockVerticalSearch).toHaveBeenLastCalledWith(
+      expect.objectContaining({ autocompleteSessionId: 'some-uuid-value' })
+    );
+    expect(mockUuid).toHaveBeenCalledTimes(2);
+  })
+
+  it('related autocomplete and query search a grouped with updated uuid after new query search', async () => {
+    const mockUniversalSearch = jest.fn().mockReturnValue(Promise.resolve({}));
+    const mockUniversalAutocomplete = jest.fn().mockReturnValue(Promise.resolve({}));;
+    const answers = createMockedAnswersHeadless({
+      universalSearch: mockUniversalSearch,
+      universalAutocomplete: mockUniversalAutocomplete
+    });
+    answers.setSearchAggregationEnabled(true);
+    expect(mockUuid).toHaveBeenCalledTimes(1);
+    uuidString = 'different-uuid-value';
+
+    //first grouping
+    await answers.executeUniversalAutocomplete();
+    await answers.executeUniversalQuery();
+    expect(mockUniversalAutocomplete).toHaveBeenLastCalledWith(
+      expect.objectContaining({ autocompleteSessionId: 'some-uuid-value' })
+    );
+    expect(mockUniversalSearch).toHaveBeenLastCalledWith(
+      expect.objectContaining({ autocompleteSessionId: 'some-uuid-value' })
+    );
+    expect(mockUuid).toHaveBeenCalledTimes(2);
+
+    // second grouping
+    await answers.executeUniversalAutocomplete();
+    await answers.executeUniversalQuery();
+    expect(mockUniversalAutocomplete).toHaveBeenLastCalledWith(
+      expect.objectContaining({ autocompleteSessionId: 'different-uuid-value' })
+    );
+    expect(mockUniversalSearch).toHaveBeenLastCalledWith(
+      expect.objectContaining({ autocompleteSessionId: 'different-uuid-value' })
+    );
+  })
+})

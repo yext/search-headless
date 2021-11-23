@@ -1,26 +1,40 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
 import { QuerySource, QueryTrigger, SearchIntent } from '@yext/answers-core';
 import { QueryState } from '../models/slices/query';
+import { v4 as uuidv4 } from 'uuid';
 
 const initialState: QueryState = {};
 
 const reducers = {
-  setInput: (state, action: PayloadAction<string>) => {
+  setInput: (state: QueryState, action: PayloadAction<string>) => {
     state.input = action.payload;
   },
-  setTrigger: (state, action: PayloadAction<QueryTrigger>) => {
+  setTrigger: (state: QueryState, action: PayloadAction<QueryTrigger>) => {
     state.queryTrigger = action.payload;
   },
-  setSource: (state, action: PayloadAction<QuerySource>) => {
+  setSource: (state: QueryState, action: PayloadAction<QuerySource>) => {
     state.querySource = action.payload;
   },
-  setQueryId: (state, action: PayloadAction<string>) => {
+  setQueryId: (state: QueryState, action: PayloadAction<string>) => {
     state.queryId = action.payload;
   },
-  setMostRecentSearch: (state, action: PayloadAction<string>) => {
+  setSearchAggregationEnabled: (state: QueryState, action: PayloadAction<boolean>) => {
+    state.searchAggregation = { 
+      enabled: action.payload,
+      id: action.payload ? uuidv4() : undefined
+    };
+  },
+  setSearchAggregationId: (state: QueryState, action: PayloadAction<string>) => {
+    if (!state.searchAggregation) {
+      console.error('Search aggregation is not enabled.');
+      return;
+    }
+    state.searchAggregation.id = action.payload;
+  },
+  setMostRecentSearch: (state: QueryState, action: PayloadAction<string>) => {
     state.mostRecentSearch = action.payload;
   },
-  setSearchIntents: (state, action: PayloadAction<SearchIntent[]>) => {
+  setSearchIntents: (state: QueryState, action: PayloadAction<SearchIntent[]>) => {
     state.searchIntents = action.payload;
   }
 };

@@ -26,7 +26,6 @@ import HttpManager from './http-manager';
 import answersUtilities from './answers-utilities';
 import { SelectableFilter } from './models/utils/selectablefilter';
 import { transformFiltersToCoreFormat } from './utils/transform-filters';
-import { v4 as uuidv4 } from 'uuid';
 
 export default class AnswersHeadless {
   public readonly utilities = answersUtilities;

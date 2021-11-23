@@ -1,10 +1,6 @@
 import { QuerySource, QueryTrigger } from '@yext/answers-core';
 import createQuerySlice from '../../../src/slices/query';
 
-jest.mock('uuid', () => ({
-  v4: jest.fn(() => 'some-uuid-value')
-}));
-
 const { reducer, actions } = createQuerySlice('');
 const { 
   setInput,

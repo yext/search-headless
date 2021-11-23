@@ -230,14 +230,14 @@ describe('setters work as expected', () => {
     expect(dispatchEventCalls[0][1]).toBe(offset);
   });
 
-  it('setSearchAggregationId works as expected', () => {
-    answers.setSearchAggregationId('some-uuid-value');
+  it('setAutocompleteSessionId works as expected', () => {
+    answers.setAutocompleteSessionId('some-uuid-value');
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
 
     expect(dispatchEventCalls.length).toBe(1);
-    expect(dispatchEventCalls[0][0]).toBe('query/setSearchAggregationId');
+    expect(dispatchEventCalls[0][0]).toBe('query/setAutocompleteSessionId');
     expect(dispatchEventCalls[0][1]).toBe('some-uuid-value');
   });
 });

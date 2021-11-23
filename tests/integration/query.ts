@@ -33,7 +33,7 @@ it('related query search a grouped with updated uuid', async () => {
   });
   answers.setVerticalKey('vertical-key');
 
-  answers.setSearchAggregationId('some-uuid-value');
+  answers.setAutocompleteSessionId('some-uuid-value');
   await answers.executeUniversalQuery();
   await answers.executeVerticalQuery();
   expect(mockUniversalSearch).toHaveBeenLastCalledWith(
@@ -43,7 +43,7 @@ it('related query search a grouped with updated uuid', async () => {
     expect.objectContaining({ autocompleteSessionId: 'some-uuid-value' })
   );
 
-  answers.setSearchAggregationId('different-uuid-value');
+  answers.setAutocompleteSessionId('different-uuid-value');
   await answers.executeUniversalQuery();
   await answers.executeVerticalQuery();
   expect(mockUniversalSearch).toHaveBeenLastCalledWith(

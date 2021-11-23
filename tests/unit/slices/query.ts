@@ -7,7 +7,7 @@ const {
   setQueryId,
   setSource,
   setTrigger,
-  setSearchAggregationId
+  setAutocompleteSessionId
 } = actions;
 
 describe('query slice reducer works as expected', () => {
@@ -43,14 +43,14 @@ describe('query slice reducer works as expected', () => {
     expect(actualState).toEqual(expectedState);
   });
 
-  it('setSearchAggregationId action is handled properly', () => {
+  it('setAutocompleteSessionId action is handled properly', () => {
     const initalState = {
-      searchAggregationId: 'very-old-uuid-value'
+      autocompleteSessionId: 'very-old-uuid-value'
     };
     const expectedState = {
-      searchAggregationId: 'some-uuid-value'
+      autocompleteSessionId: 'some-uuid-value'
     };
-    const actualState = reducer(initalState, setSearchAggregationId('some-uuid-value'));
+    const actualState = reducer(initalState, setAutocompleteSessionId('some-uuid-value'));
     expect(actualState).toEqual(expectedState);
   });
 });

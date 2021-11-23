@@ -7,5 +7,5 @@ export interface QueryState {
   querySource?: QuerySource,
   mostRecentSearch?: string,
   searchIntents?: SearchIntent[],
-  searchAggregationId?: string
+  autocompleteSessionId?: string
 }

@@ -17,8 +17,8 @@ const reducers = {
   setQueryId: (state: QueryState, action: PayloadAction<string>) => {
     state.queryId = action.payload;
   },
-  setSearchAggregationId: (state: QueryState, action: PayloadAction<string>) => {
-    state.searchAggregationId = action.payload;
+  setAutocompleteSessionId: (state: QueryState, action: PayloadAction<string>) => {
+    state.autocompleteSessionId = action.payload;
   },
   setMostRecentSearch: (state: QueryState, action: PayloadAction<string>) => {
     state.mostRecentSearch = action.payload;

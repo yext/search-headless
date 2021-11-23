@@ -48,8 +48,8 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('query/setSource', source);
   }
 
-  setSearchAggregationId(uuid: string): void {
-    this.stateManager.dispatchEvent('query/setSearchAggregationId', uuid);
+  setAutocompleteSessionId(uuid: string): void {
+    this.stateManager.dispatchEvent('query/setAutocompleteSessionId', uuid);
   }
 
   setVerticalKey(verticalKey: string): void {
@@ -138,7 +138,7 @@ export default class AnswersHeadless {
     const sessionId = this.state.sessionTracking.sessionId;
     const { referrerPageUrl, context } = this.state.meta;
     const { userLocation } = this.state.location;
-    const autocompleteSessionId = this.state.query.searchAggregationId;
+    const autocompleteSessionId = this.state.query.autocompleteSessionId;
 
     const response = await this.core.universalSearch({
       query: input || '',
@@ -151,7 +151,7 @@ export default class AnswersHeadless {
       location: userLocation,
       context,
       referrerPageUrl,
-      autocompleteSessionId
+      ...(autocompleteSessionId && { autocompleteSessionId })
     });
 
     const latestResponseId = this.httpManager.getLatestResponseId('universalQuery');
@@ -197,7 +197,7 @@ export default class AnswersHeadless {
     const sortBys = this.state.filters?.sortBys;
     const { referrerPageUrl, context } = this.state.meta;
     const { userLocation } = this.state.location;
-    const autocompleteSessionId = this.state.query.searchAggregationId;
+    const autocompleteSessionId = this.state.query.autocompleteSessionId;
 
     const facetsToApply = facets?.map(facet => {
       return {
@@ -223,7 +223,7 @@ export default class AnswersHeadless {
       sortBys,
       context,
       referrerPageUrl,
-      autocompleteSessionId
+      ...(autocompleteSessionId && { autocompleteSessionId })
     };
     const response = await this.core.verticalSearch(request);
     const latestResponseId = this.httpManager.getLatestResponseId('verticalQuery');

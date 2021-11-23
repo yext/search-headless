@@ -11,7 +11,6 @@ const {
   setQueryId,
   setSource,
   setTrigger,
-  setSearchAggregationEnabled,
   setSearchAggregationId
 } = actions;
 
@@ -48,50 +47,14 @@ describe('query slice reducer works as expected', () => {
     expect(actualState).toEqual(expectedState);
   });
 
-  it('setSearchAggregationEnabled action is handled properly when set to false', () => {
-    const expectedState = { 
-      searchAggregation: {
-        enabled: false,
-        id: undefined
-      }
-    };
-    const actualState = reducer({}, setSearchAggregationEnabled(false));
-    expect(actualState).toEqual(expectedState);
-  });
-
-  it('setSearchAggregationEnabled action is handled properly when set to true', () => {
-    const expectedState = { 
-      searchAggregation: {
-        enabled: true,
-        id: 'some-uuid-value'
-      }
-    };
-    const actualState = reducer({}, setSearchAggregationEnabled(true));
-    expect(actualState).toEqual(expectedState);
-  });
-
   it('setSearchAggregationId action is handled properly', () => {
     const initalState = {
-      searchAggregation: {
-        enabled: true,
-        id: 'very-old-uuid-value'
-      }
+      searchAggregationId: 'very-old-uuid-value'
     };
     const expectedState = {
-      searchAggregation: {
-        enabled: true,
-        id: 'some-uuid-value'
-      }
+      searchAggregationId: 'some-uuid-value'
     };
     const actualState = reducer(initalState, setSearchAggregationId('some-uuid-value'));
     expect(actualState).toEqual(expectedState);
-  });
-
-  it('setSearchAggregationId action is handled properly when searchAggregation is never set', () => {
-    const consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation();
-    const actualState = reducer({}, setSearchAggregationId('some-uuid-value'));
-    expect(consoleErrorSpy).toHaveBeenCalledTimes(1);
-    consoleErrorSpy.mockClear();
-    expect(actualState).toEqual({});
   });
 });

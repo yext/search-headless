@@ -230,17 +230,6 @@ describe('setters work as expected', () => {
     expect(dispatchEventCalls[0][1]).toBe(offset);
   });
 
-  it('setSearchAggregationEnabled works as expected', () => {
-    answers.setSearchAggregationEnabled(true);
-
-    const dispatchEventCalls =
-      mockedStateManager.dispatchEvent.mock.calls;
-
-    expect(dispatchEventCalls.length).toBe(1);
-    expect(dispatchEventCalls[0][0]).toBe('query/setSearchAggregationEnabled');
-    expect(dispatchEventCalls[0][1]).toBe(true);
-  });
-
   it('setSearchAggregationId works as expected', () => {
     answers.setSearchAggregationId('some-uuid-value');
 

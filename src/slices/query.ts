@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
 import { QuerySource, QueryTrigger, SearchIntent } from '@yext/answers-core';
 import { QueryState } from '../models/slices/query';
-import { v4 as uuidv4 } from 'uuid';
 
 const initialState: QueryState = {};
 
@@ -18,18 +17,8 @@ const reducers = {
   setQueryId: (state: QueryState, action: PayloadAction<string>) => {
     state.queryId = action.payload;
   },
-  setSearchAggregationEnabled: (state: QueryState, action: PayloadAction<boolean>) => {
-    state.searchAggregation = { 
-      enabled: action.payload,
-      id: action.payload ? uuidv4() : undefined
-    };
-  },
   setSearchAggregationId: (state: QueryState, action: PayloadAction<string>) => {
-    if (!state.searchAggregation) {
-      console.error('Search aggregation is not enabled.');
-      return;
-    }
-    state.searchAggregation.id = action.payload;
+    state.searchAggregationId = action.payload;
   },
   setMostRecentSearch: (state: QueryState, action: PayloadAction<string>) => {
     state.mostRecentSearch = action.payload;

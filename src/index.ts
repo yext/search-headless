@@ -10,9 +10,9 @@ import { SessionTrackingState } from './models/slices/sessiontracking';
 export * from '@yext/answers-core';
 export * from './utils/filter-creators';
 
-export interface HeadlessConfig extends AnswersConfig {
+type HeadlessConfig = AnswersConfig & {
   headlessId?: string
-}
+};
 
 let firstHeadlessInstance: AnswersHeadless;
 const store = createBaseStore();

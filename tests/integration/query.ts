@@ -36,6 +36,45 @@ it('universal searches set search intents', async () => {
   expect(answers.state.query.searchIntents).toEqual(['NEAR_ME']);
 });
 
+describe('sessionId to request works as expected', () => {
+  const verticalMockSearch = jest.fn().mockReturnValue({});
+  const universalMockSearch = jest.fn().mockReturnValue({});
+  const answers = createMockedAnswersHeadless({
+    verticalSearch: verticalMockSearch,
+    universalSearch: universalMockSearch
+  });
+  answers.setVerticalKey('vertical-key');
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('sessionId is in request when sessionTrackingEnabled is true', async () => {
+    answers.setSessionTrackingEnabled(true);
+    answers.setSessionId('some-session-id');
+
+    await answers.executeVerticalQuery();
+    await answers.executeUniversalQuery();
+    expect(verticalMockSearch.mock.calls[0][0])
+      .toEqual(expect.objectContaining({ sessionId: 'some-session-id' }));
+    expect(universalMockSearch.mock.calls[0][0])
+      .toEqual(expect.objectContaining({ sessionId: 'some-session-id' }));
+  });
+
+  it('sessionId is not in request when sessionTrackingEnabled is false', async () => {
+    answers.setSessionTrackingEnabled(false);
+    answers.setSessionId('some-session-id');
+
+    await answers.executeVerticalQuery();
+    await answers.executeUniversalQuery();
+
+    expect(verticalMockSearch.mock.calls[0][0])
+      .toEqual(expect.not.objectContaining({ sessionId: 'some-session-id' }));
+    expect(universalMockSearch.mock.calls[0][0])
+      .toEqual(expect.not.objectContaining({ sessionId: 'some-session-id' }));
+  });
+});
+
 describe('ensure correct results from latest request', () => {
   jest.useFakeTimers();
   const queries = ['really long request', 'short', 'long request'];

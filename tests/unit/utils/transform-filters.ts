@@ -11,6 +11,19 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
     expect(transformedFilter).toEqual(null);
   });
 
+  it('properly handle an unselected Filter', () => {
+    const selectableFilters: SelectableFilter[] = [
+      {
+        fieldId: 'c_someField',
+        matcher: Matcher.Equals,
+        value: 'some value',
+        selected: false
+      }
+    ];
+    const transformedFilter = transformFiltersToCoreFormat(selectableFilters);
+    expect(transformedFilter).toEqual(null);
+  });
+
   it('properly handle a selected Filter', () => {
     const selectableFilters: SelectableFilter[] = [
       {

@@ -28,8 +28,8 @@ export function transformFiltersToCoreFormat(
     return null;
   }
   if (selectableFilters.length === 1) {
-    const { selected:_, ...filter } = selectableFilters[0];
-    return filter;
+    const { selected, ...filter } = selectableFilters[0];
+    return selected ? filter : null;
   }
   const selectedFilters = selectableFilters.filter(selectableFilter => selectableFilter.selected);
   const groupedFilters: Record<string, Filter[]> = selectedFilters.reduce((groups, element) => {

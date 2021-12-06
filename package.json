@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.0",
-    "@yext/answers-core": "^1.4.0",
+    "@yext/answers-core": "^1.5.0-beta.1",
     "js-levenshtein": "^1.1.6",
     "redux-thunk": "^2.3.0"
   },

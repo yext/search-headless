@@ -11,6 +11,9 @@ const reducers = {
   setLimit: (state: UniversalSearchState, action: PayloadAction<UniversalLimit>) => {
     state.limit = action.payload;
   },
+  setRestrictVerticals: (state: UniversalSearchState, action: PayloadAction<string[]>) => {
+    state.restrictVerticals = action.payload;
+  }
 };
 
 /**

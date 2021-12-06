@@ -112,6 +112,10 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('set-state', state);
   }
 
+  setRestrictVerticals(restrictVerticals: string[]): void {
+    this.stateManager.dispatchEvent('universal/setRestrictVerticals', restrictVerticals);
+  }
+
   get state(): State {
     return this.stateManager.getState();
   }
@@ -130,7 +134,7 @@ export default class AnswersHeadless {
     const { input, querySource, queryTrigger } = this.state.query;
     const skipSpellCheck = !this.state.spellCheck.enabled;
     const sessionTrackingEnabled = this.state.sessionTracking.enabled;
-    const limit = this.state.universal.limit;
+    const { limit, restrictVerticals } = this.state.universal;
     const sessionId = this.state.sessionTracking.sessionId;
     const { referrerPageUrl, context } = this.state.meta;
     const { userLocation } = this.state.location;
@@ -145,7 +149,8 @@ export default class AnswersHeadless {
       limit,
       location: userLocation,
       context,
-      referrerPageUrl
+      referrerPageUrl,
+      restrictVerticals
     });
 
     const latestResponseId = this.httpManager.getLatestResponseId('universalQuery');

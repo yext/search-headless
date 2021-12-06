@@ -1,6 +1,7 @@
 import { Unsubscribe } from '@reduxjs/toolkit';
 import { State } from './state';
 import StateListener from './state-listener';
+
 /**
  * An interface for managing the state.
  */

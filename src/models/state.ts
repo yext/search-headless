@@ -17,6 +17,9 @@ export interface ParentState {
   [headlessId: string]: State
 }
 
+/**
+ * The state representing an AnswersHeadless instance.
+ */
 export interface State {
   query: QueryState,
   universal: UniversalSearchState,

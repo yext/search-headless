@@ -6,11 +6,13 @@ import { State } from './state';
 export default interface StateListener<T> {
   /**
    * Accesses a value in the state.
+   * 
    * @param state - The current state
    */
   valueAccessor(state: State): T;
   /**
    * The function to call when the state value updates.
+   * 
    * @param currentValue - The current state value
    */
   callback(currentValue: T);

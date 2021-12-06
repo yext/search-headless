@@ -27,9 +27,6 @@ const reducers = {
   setFacets: (state: FiltersState, action: PayloadAction<DisplayableFacet[]>) => {
     state.facets = action.payload;
   },
-  setSortBys: (state: FiltersState, action: PayloadAction<SortBy[]>) => {
-    state.sortBys = action.payload;
-  },
   resetFacets: (state: FiltersState) => {
     state.facets?.forEach(facet => {
       facet.options.forEach(o => o.selected = false);

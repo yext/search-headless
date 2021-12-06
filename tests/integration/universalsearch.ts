@@ -21,6 +21,16 @@ it('answers.setUniversalLimit sets the universal limit when a UniversalLimit is 
   expect(answers.state.universal.limit).toEqual(universalLimit);
 });
 
+it('answers.setRestrictVerticals sets the restrictVerticals param', async () => {
+  const mockSearch = createMockSearch();
+  const answers = createMockedAnswersHeadless({
+    universalSearch: mockSearch
+  });
+  answers.setRestrictVerticals(['KM', 'people']);
+  await answers.executeUniversalQuery();
+  expect(mockSearch.mock.calls[0][0].restrictVerticals).toEqual(['KM', 'people']);
+});
+
 function createMockSearch() {
   return jest.fn(async (_request: UniversalSearchRequest) => {
     await setTimeout(0);

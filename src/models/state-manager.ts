@@ -12,13 +12,13 @@ export default interface StateManager {
   getState(): State;
   /**
    * Dispatches an event.
-   * @param type The type of action to dispatch
-   * @param payload The payload of the action to dispatch
+   * @param type - The type of action to dispatch
+   * @param payload - The payload of the action to dispatch
    */
   dispatchEvent(type: string, payload?: unknown): void;
   /**
    * Adds a listener for a state value.
-   * @param listener State listener to add
+   * @param listener - State listener to add
    */
   addListener<T>(listener: StateListener<T>): Unsubscribe;
 }

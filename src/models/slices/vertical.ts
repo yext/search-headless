@@ -31,7 +31,7 @@ export interface AllResultsForVertical {
 }
 
 /**
- * Maintains the data for the latest universal search.
+ * Maintains the data for the latest vertical search.
  */
 export interface VerticalSearchState {
   /**

@@ -7,12 +7,12 @@ import { SelectableFilter } from '../utils/selectablefilter';
 export interface FiltersState {
   /**
    * The collection of possible static filters that can be applied to the
-   * search results.
+   * search results and whether they are currently selected.
    */
   static?: SelectableFilter[];
   /**
    * The dynamic collection of facets that can be applied to filter the search
-   * results.
+   * results and whether they are currently selected.
    */
   facets?: DisplayableFacet[];
 }

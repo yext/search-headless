@@ -5,7 +5,7 @@ import { QuerySource, QueryTrigger, SearchIntent } from '@yext/answers-core';
  */
 export interface QueryState {
   /**
-   * The latest user query input.
+   * The user input used for the next search query.
    */
   input?: string,
   /**

@@ -14,6 +14,9 @@ import { SearchStatusState } from './slices/searchstatus';
  * headlessId to {@link State} representing a single AnswersHeadless instance.
  */
 export interface ParentState {
+  /**
+   * A mapping of the ID of an AnswersHeadless instance to its {@link State}.
+   */
   [headlessId: string]: State
 }
 

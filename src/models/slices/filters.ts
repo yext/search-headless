@@ -1,16 +1,18 @@
-import { DisplayableFacet, SortBy } from '@yext/answers-core';
+import { DisplayableFacet } from '@yext/answers-core';
 import { SelectableFilter } from '../utils/selectablefilter';
 
 /**
- * Maintains the filters applied to the latest search.
+ * Maintains the current state of facets and filters in the application.
  */
 export interface FiltersState {
   /**
-   * The array of static filters, with data on whether each filter is selected.
+   * The collection of possible static filters that can be applied to the
+   * search results.
    */
   static?: SelectableFilter[];
   /**
-   * The array of facet filters, with data on how they should be displayed.
+   * The dynamic collection of facets that can be applied to filter the search
+   * results.
    */
   facets?: DisplayableFacet[];
 }

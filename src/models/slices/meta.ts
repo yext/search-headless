@@ -1,7 +1,7 @@
 import { Context } from '@yext/answers-core';
 
 /**
- * Maintains the metadata for the latest search.
+ * Maintains the metadata for network requests.
  */
 export interface MetaState {
   /**

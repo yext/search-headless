@@ -16,8 +16,7 @@ const reducers = {
       const allResultsForVertical: AllResultsForVertical = {
         facets: action.payload.allResultsForVertical.facets || [],
         results: action.payload.allResultsForVertical.verticalResults?.results,
-        resultsCount: action.payload.allResultsForVertical.verticalResults?.resultsCount,
-        searchIntents: action.payload.allResultsForVertical.searchIntents || []
+        resultsCount: action.payload.allResultsForVertical.verticalResults?.resultsCount
       };
       state.noResults = {
         allResultsForVertical,

@@ -2,7 +2,6 @@ import {
   AppliedQueryFilter,
   DisplayableFacet,
   Result,
-  SearchIntent,
   SortBy,
   Source,
   VerticalResults
@@ -23,11 +22,7 @@ export interface AllResultsForVertical {
   /**
    * The total number of results for the vertical.
    */
-  resultsCount: number,
-  /**
-   * {@inheritDoc QueryState.searchIntents}
-   */
-  searchIntents: SearchIntent[]
+  resultsCount: number
 }
 
 /**
@@ -55,12 +50,13 @@ export interface VerticalSearchState {
      */
     allResultsForVertical: AllResultsForVertical,
     /**
-     * The results from alternative verticals.
+     * The results from other verticals in the experience.
      */
     alternativeVerticals: VerticalResults[],
   }
   /**
-   * The number of results to skip.
+   * The number of results that should be skipped when fetching results for the
+   * response. Allows for fetching more results with the same query.
    */
   offset?: number,
   /**
@@ -76,7 +72,7 @@ export interface VerticalSearchState {
    */
   resultsCount?: number,
   /**
-   * Criteria by which the results should be sorted, in the order in which they
+   * The criteria by which the results should be sorted, in the order in which they
    * should be applied.
    */
   sortBys?: SortBy[],

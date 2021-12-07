@@ -1,13 +1,14 @@
 import { State } from './state';
 
 /**
- * Represents a listener for a value in the state.
+ * Represents a listener for a value of type T in the state.
  */
 export default interface StateListener<T> {
   /**
-   * Accesses a value in the state.
+   * Accesses a value of type T in the state.
    * 
    * @param state - The current state
+   * @returns The value of type T from the state
    */
   valueAccessor(state: State): T;
   /**

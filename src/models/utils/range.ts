@@ -1,5 +1,5 @@
 /**
- * A boundary of a {@link Range}.
+ * A boundary for a {@link Range} of type T.
  */
 export interface RangeBoundary<T> {
   /**
@@ -13,7 +13,7 @@ export interface RangeBoundary<T> {
 }
 
 /**
- * An interface representing a range of values.
+ * An interface representing a range of values of type T.
  */
 export interface Range<T> {
   /**

@@ -1,5 +1,6 @@
 /**
- * Maintains session information and whether it should be tracked.
+ * Maintains whether the user session should be tracked and, if so, the session
+ * information.
  */
 export interface SessionTrackingState {
   /**

@@ -6,7 +6,8 @@ import { LatLong, LocationBias } from '@yext/answers-core';
  */
 export interface LocationState {
   /**
-   * The geographical location bias used in the search, from the Answers API.
+   * The geographical location bias used in the search, returned from the
+   * Answers API.
    */
   locationBias?: LocationBias,
   /**

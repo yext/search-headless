@@ -26,7 +26,7 @@ export interface QueryState {
    */
   mostRecentSearch?: string,
   /**
-   * The intents of the search, from the Answers API.
+   * The computed intents of the mostRecentSearch, as returned by the Answers API.
    */
   searchIntents?: SearchIntent[]
 }

@@ -1,7 +1,8 @@
 import { LatLong, LocationBias } from '@yext/answers-core';
 
 /**
- * Maintains the user's location, if given, or the inferred location, that is used to bias search results.
+ * Maintains the user's location, if given, or the inferred location, that is
+ * used to bias search results.
  */
 export interface LocationState {
   /**
@@ -9,7 +10,8 @@ export interface LocationState {
    */
   locationBias?: LocationBias,
   /**
-   * The latitude and longitude of the user making the request. Used to bias the results.
+   * The latitude and longitude of the user making the request. Used to bias
+   * the results.
    */
   userLocation?: LatLong,
 }

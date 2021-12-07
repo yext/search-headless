@@ -7,7 +7,8 @@ export interface SessionTrackingState {
    */
   enabled?: boolean,
   /**
-   * The ID of the current session. Used to track session state when cookies are blocked.
+   * The ID of the current session. Used to track session state when cookies
+   * are blocked.
    */
   sessionId?: string
 }

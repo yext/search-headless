@@ -10,8 +10,8 @@ import { DirectAnswerState } from './slices/directanswer';
 import { SearchStatusState } from './slices/searchstatus';
 
 /**
- * The overall shape of the redux state tree, with each key value pair
- * of headlessId to {@link State} representing a single AnswersHeadless instance.
+ * The overall shape of the redux state tree, with each key value pair of
+ * headlessId to {@link State} representing a single AnswersHeadless instance.
  */
 export interface ParentState {
   [headlessId: string]: State

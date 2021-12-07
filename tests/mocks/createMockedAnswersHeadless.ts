@@ -10,8 +10,8 @@ import HeadlessReducerManager from '../../src/headless-reducer-manager';
 /**
  * Creates an Answers Headless instance with a mocked Answers Core.
  *
- * @param {Partial<AnswersCore>} mockedAnswersCore - Answers Core overrides
- * @param {Partial<State>} initialState - The initial state of Answers Headless
+ * @param mockedAnswersCore - Answers Core overrides
+ * @param initialState - The initial state of Answers Headless
  * @returns The new Answers Headless instance
  */
 export function createMockedAnswersHeadless(

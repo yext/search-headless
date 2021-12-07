@@ -1,7 +1,7 @@
 import { SpellCheck } from '@yext/answers-core';
 
 /**
- * The state for spellcheck.
+ * Maintains whether spellcheck is enabled and the spellcheck response from the latest search.
  */
 export interface SpellCheckState extends Partial<SpellCheck> {
   /**

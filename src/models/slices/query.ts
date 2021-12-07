@@ -1,15 +1,15 @@
 import { QuerySource, QueryTrigger, SearchIntent } from '@yext/answers-core';
 
 /**
- * The state for the query.
+ * Maintains the latest query and its associated data.
  */
 export interface QueryState {
   /**
-   * The user query input.
+   * The latest user query input.
    */
   input?: string,
   /**
-   * The ID of the query.
+   * The ID of the query from the latest search.
    */
   queryId?: string,
   /**

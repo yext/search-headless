@@ -1,7 +1,7 @@
 import { Context } from '@yext/answers-core';
 
 /**
- * The state for the response metadata.
+ * Maintains the metadata for the latest search.
  */
 export interface MetaState {
   /**
@@ -14,7 +14,7 @@ export interface MetaState {
    */
   referrerPageUrl?: string,
   /**
-   * A unique id which corresponds to the request.
+   * A unique id which corresponds to the latest request/response.
    */
   uuid?: string
 }

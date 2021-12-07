@@ -1,7 +1,7 @@
 import { FeaturedSnippetDirectAnswer, FieldValueDirectAnswer } from '@yext/answers-core';
 
 /**
- * The state for a direct answer.
+ * Maintains the direct answer associated with the latest search.
  */
 export interface DirectAnswerState {
   /**

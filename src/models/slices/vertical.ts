@@ -9,7 +9,7 @@ import {
 } from '@yext/answers-core';
 
 /**
- * Represents all results for the vertical.
+ * Represents all results for the current vertical.
  */
 export interface AllResultsForVertical {
   /**
@@ -31,7 +31,7 @@ export interface AllResultsForVertical {
 }
 
 /**
- * The state for a vertical search.
+ * Maintains the data for the latest universal search.
  */
 export interface VerticalSearchState {
   /**

@@ -1,7 +1,7 @@
 import { State } from './state';
 
 /**
- * An interface for a state listener.
+ * Represents a listener for a value in the state.
  */
 export default interface StateListener<T> {
   /**

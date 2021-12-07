@@ -1,5 +1,5 @@
 /**
- * The state for the search status.
+ * Maintains the status of the latest search.
  */
 export interface SearchStatusState {
   /**

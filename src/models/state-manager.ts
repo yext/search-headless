@@ -3,7 +3,7 @@ import { State } from './state';
 import StateListener from './state-listener';
 
 /**
- * An interface for managing the state.
+ * Manages the information contained in the state for an AnswersHeadless instance.
  */
 export default interface StateManager {
   /**

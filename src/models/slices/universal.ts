@@ -1,7 +1,7 @@
 import { UniversalLimit, VerticalResults } from '@yext/answers-core';
 
 /**
- * The state for a universal search.
+ * Maintains the data for the latest universal search.
  */
 export interface UniversalSearchState {
   /**

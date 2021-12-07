@@ -8,11 +8,11 @@ import { DEFAULT_HEADLESS_ID } from '../../src/constants';
 import HeadlessReducerManager from '../../src/headless-reducer-manager';
 
 /**
- * Creates an Answers Headless instance with a mocked answers core
+ * Creates an Answers Headless instance with a mocked Answers Core.
  *
- * @param {Partial<AnswersCore>} mockedAnswersCore Answers core overrides
- * @param {Partial<State>} initialState The initial state of Answers Headless
- * @returns
+ * @param {Partial<AnswersCore>} mockedAnswersCore - Answers Core overrides
+ * @param {Partial<State>} initialState - The initial state of Answers Headless
+ * @returns The new Answers Headless instance
  */
 export function createMockedAnswersHeadless(
   mockedAnswersCore: any = {},

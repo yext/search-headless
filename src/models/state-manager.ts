@@ -4,6 +4,8 @@ import StateListener from './state-listener';
 
 /**
  * Manages the information contained in the state for an AnswersHeadless instance.
+ * 
+ * @remarks
  * The {@link State} is immutable, and can only be updated by dispatched events. 
  */
 export default interface StateManager {

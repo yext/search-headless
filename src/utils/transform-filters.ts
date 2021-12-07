@@ -2,7 +2,12 @@ import { CombinedFilter, Filter, FilterCombinator } from '@yext/answers-core';
 import { SelectableFilter } from '../models/utils/selectablefilter';
 
 /**
- * Combine a list of Filters using the logical OR operator into a CombinedFilter
+ * Combines a list of Filters using the logical OR operator into a
+ * {@link CombinedFilter}.
+ *
+ * @param filters - The filters to be combined
+ * @returns The filters combined into a {@link CombinedFilter}, or the original
+ *          filter if there is only one in the list
  */
 function combineFiltersWithOR(filters: Filter[]): Filter | CombinedFilter {
   if (filters.length === 1) {
@@ -15,8 +20,11 @@ function combineFiltersWithOR(filters: Filter[]): Filter | CombinedFilter {
 }
 
 /**
- * Convert a list of SelectableFilters use in Answers Headless
- * to a single nested filter stucture use in Answers Core
+ * Converts a list of {@link SelectableFilter}s used in Answers Headless to a
+ * single nested filter stucture used in Answers Core.
+ *
+ * @param selectableFilters - The filters to be transformed
+ * @returns The filters in a singly-nested structure
  */
 export function transformFiltersToCoreFormat(
   selectableFilters: SelectableFilter[] | undefined

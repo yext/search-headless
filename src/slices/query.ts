@@ -26,8 +26,11 @@ const reducers = {
 };
 
 /**
- * Registers with Redux the slice of {@link State} pertaining to queries. There
- * are reducers for setting the query string, trigger, source, and id.
+ * Registers with Redux the slice of {@link State} pertaining to queries. There are
+ * reducers for setting query data like the query string, trigger, source, and id.
+ *
+ * @param prefix - The prefix for the AnswersHeadless instance
+ * @returns The {@link Slice} for query data
  */
 export default function createQuerySlice(prefix: string): Slice<QueryState, typeof reducers> {
   return createSlice({

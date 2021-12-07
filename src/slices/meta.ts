@@ -19,6 +19,9 @@ const reducers = {
 /**
  * Registers with Redux the slice of {@link State} pertaining to meta attributes
  * like {@link Context} and referrerPageUrl.
+ *
+ * @param prefix - The prefix for the AnswersHeadless instance
+ * @returns The {@link Slice} for the metadata of network requests
  */
 export default function createMetaSlice(prefix: string): Slice<MetaState, typeof reducers> {
   return createSlice({

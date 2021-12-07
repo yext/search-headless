@@ -15,6 +15,9 @@ const reducers = {
 
 /**
  * Registers with Redux the slice of {@link State} pertaining to direct answers.
+ *
+ * @param prefix - The prefix for the AnswersHeadless instance
+ * @returns The {@link Slice} for direct answers
  */
 export default function createDirectAnswerSlice(prefix: string): Slice<DirectAnswerState, typeof reducers> {
   return createSlice({

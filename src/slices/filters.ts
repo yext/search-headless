@@ -6,14 +6,35 @@ import { areFiltersEqual } from '../utils/filter-utils';
 
 const initialState: FiltersState = {};
 
+/**
+ * The payload for updating a facet option.
+ */
 interface FacetPayload {
+  /**
+   * The fieldId of the facet option to update.
+   */
   fieldId: string
+  /**
+   * The facet option to update.
+   */
   facetOption: FacetOption
+  /**
+   * Whether the facet option should be selected or not.
+   */
   shouldSelect: boolean
 }
 
+/**
+ * The payload for updating a static filter.
+ */
 interface FilterPayload {
+  /**
+   * The static filter to update.
+   */
   filter: Filter
+  /**
+   * Whether the filter should be selected or not.
+   */
   shouldSelect: boolean
 }
 

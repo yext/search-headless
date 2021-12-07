@@ -1,6 +1,9 @@
 import { CombinedFilter, Filter, FilterCombinator, Matcher, NearFilterValue } from '@yext/answers-core';
 import { Range } from '../models/utils/range';
 
+/**
+ * A union type for the different kinds of filter.
+ */
 type filterTypes = Filter | CombinedFilter;
 
 /**
@@ -9,6 +12,7 @@ type filterTypes = Filter | CombinedFilter;
  *
  * @param fieldId - The comparison field's identifier
  * @param value - The value to match
+ * @returns The newly created {@link Filter} for the field value
  */
 export function createEqualsFilter(
   fieldId: string,
@@ -26,6 +30,7 @@ export function createEqualsFilter(
  *
  * @param fieldId - The comparison field's identifier
  * @param range - The acceptable number range
+ * @returns The newly created filter for the field value range
  */
 export function createNumberRangeFilter(fieldId: string, range: Range<number>): filterTypes {
   return createRangeFilter(fieldId, range);
@@ -37,6 +42,7 @@ export function createNumberRangeFilter(fieldId: string, range: Range<number>): 
  *
  * @param fieldId - The comparison field's identifier
  * @param range - The acceptable date range
+ * @returns The newly created filter for the field value range
  */
 export function createDateRangeFilter(
   fieldId: string,
@@ -50,6 +56,7 @@ export function createDateRangeFilter(
  *
  * @param fieldId - The comparison field's identifier
  * @param range - The acceptable number or date range
+ * @returns The newly created filter for the field value range
  */
 function createRangeFilter(fieldId: string, range: Range<number|Date>): filterTypes {
   const { min, max } = range;
@@ -86,6 +93,7 @@ function createRangeFilter(fieldId: string, range: Range<number|Date>): filterTy
  * given position.
  *
  * @param position - The position and radius
+ * @returns The newly created {@link Filter} for the radius of the position
  */
 export function createNearMeFilter(position: NearFilterValue): Filter {
   return {
@@ -102,6 +110,7 @@ export function createNearMeFilter(position: NearFilterValue): Filter {
  * @param filterA - The first filter to be combined
  * @param filterB - The second filter to be combined
  * @param combinator - Specifies how the two filters should be joined
+ * @returns The newly created {@link CombinedFilter}
  */
 export function combineFilters(
   filterA: filterTypes,

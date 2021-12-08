@@ -111,7 +111,8 @@ const reducers = {
  * Registers with Redux the slice of {@link State} pertaining to filters. There are
  * reducers for setting the static filters and facet options.
  *
- * @param prefix - The prefix for the AnswersHeadless instance
+ * @param prefix - The prefix to access the part of the Redux store specific to the
+ *                 AnswersHeadless instance
  * @returns The {@link Slice} for filters
  */
 export default function createFiltersSlice(prefix: string): Slice<FiltersState, typeof reducers> {

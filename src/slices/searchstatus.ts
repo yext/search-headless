@@ -13,7 +13,8 @@ const reducers = {
  * Registers with Redux the slice of {@link State} pertaining to the loading status
  * of Answers Headless.
  *
- * @param prefix - The prefix for the AnswersHeadless instance
+ * @param prefix - The prefix to access the part of the Redux store specific to the
+ *                 AnswersHeadless instance
  * @returns The {@link Slice} for the search loading status
  */
 export default function createSearchStatusSlice(prefix: string): Slice<SearchStatusState, typeof reducers> {

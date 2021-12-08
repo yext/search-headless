@@ -20,7 +20,8 @@ const reducers = {
  * Registers with Redux the slice of {@link State} pertaining to universal search. There
  * are reducers for setting the limit and verticals to search and the universal results.
  *
- * @param prefix - The prefix for the AnswersHeadless instance
+ * @param prefix - The prefix to access the part of the Redux store specific to the
+ *                 AnswersHeadless instance
  * @returns The {@link Slice} for universal search
  */
 export default function createUniversalSlice(prefix: string): Slice<UniversalSearchState, typeof reducers> {

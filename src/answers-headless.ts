@@ -93,7 +93,7 @@ export default class AnswersHeadless {
   }
 
   setSortBys(sortBys: SortBy[]): void {
-    this.stateManager.dispatchEvent('filters/setSortBys', sortBys);
+    this.stateManager.dispatchEvent('vertical/setSortBys', sortBys);
   }
 
   setContext(context: Context): void {
@@ -193,7 +193,7 @@ export default class AnswersHeadless {
     const facets = this.state.filters?.facets;
     const limit = this.state.vertical.limit;
     const offset = this.state.vertical.offset;
-    const sortBys = this.state.filters?.sortBys;
+    const sortBys = this.state.vertical.sortBys;
     const { referrerPageUrl, context } = this.state.meta;
     const { userLocation } = this.state.location;
 

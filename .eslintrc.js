@@ -4,6 +4,9 @@ module.exports = {
     ecmaVersion: 2020,
     sourceType: 'module'
   },
+  plugins: [
+    'eslint-plugin-tsdoc'
+  ],
   extends: [
     'plugin:@typescript-eslint/recommended',
     'plugin:@yext/export-star/recommended'
@@ -24,7 +27,8 @@ module.exports = {
     }],
     '@typescript-eslint/semi': ['error'],
     '@typescript-eslint/type-annotation-spacing': ['error'],
-    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }]
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
+    'tsdoc/syntax': ['warn']
   },
   overrides: [
     {

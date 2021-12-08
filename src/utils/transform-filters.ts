@@ -24,7 +24,9 @@ function combineFiltersWithOR(filters: Filter[]): Filter | CombinedFilter {
  * single nested filter stucture used in Answers Core.
  *
  * @param selectableFilters - The filters to be transformed
- * @returns The filters in a singly-nested structure
+ * @returns The filters in a singly-nested {@link CombinedFilter}, or if there
+ *          is only one filter in the list and it is selected, returns that
+ *          {@link Filter}
  */
 export function transformFiltersToCoreFormat(
   selectableFilters: SelectableFilter[] | undefined

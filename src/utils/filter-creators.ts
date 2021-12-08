@@ -4,7 +4,7 @@ import { Range } from '../models/utils/range';
 /**
  * A union type for the different kinds of filter.
  */
-type filterTypes = Filter | CombinedFilter;
+type FilterTypes = Filter | CombinedFilter;
 
 /**
  * Creates a simple {@link Filter} that ensures all results will match a specific
@@ -32,7 +32,7 @@ export function createEqualsFilter(
  * @param range - The acceptable number range
  * @returns The newly created filter for the field value range
  */
-export function createNumberRangeFilter(fieldId: string, range: Range<number>): filterTypes {
+export function createNumberRangeFilter(fieldId: string, range: Range<number>): FilterTypes {
   return createRangeFilter(fieldId, range);
 }
 
@@ -46,7 +46,7 @@ export function createNumberRangeFilter(fieldId: string, range: Range<number>): 
  */
 export function createDateRangeFilter(
   fieldId: string,
-  range: Range<Date>): filterTypes {
+  range: Range<Date>): FilterTypes {
   return createRangeFilter(fieldId, range);
 }
 
@@ -58,7 +58,7 @@ export function createDateRangeFilter(
  * @param range - The acceptable number or date range
  * @returns The newly created filter for the field value range
  */
-function createRangeFilter(fieldId: string, range: Range<number|Date>): filterTypes {
+function createRangeFilter(fieldId: string, range: Range<number|Date>): FilterTypes {
   const { min, max } = range;
 
   let minFilter;
@@ -113,8 +113,8 @@ export function createNearMeFilter(position: NearFilterValue): Filter {
  * @returns The newly created {@link CombinedFilter}
  */
 export function combineFilters(
-  filterA: filterTypes,
-  filterB: filterTypes,
+  filterA: FilterTypes,
+  filterB: FilterTypes,
   combinator: FilterCombinator): CombinedFilter {
   return {
     combinator,

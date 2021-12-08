@@ -5,8 +5,9 @@ import { FeaturedSnippetDirectAnswer, FieldValueDirectAnswer } from '@yext/answe
  */
 export interface DirectAnswerState {
   /**
-   * The data for the direct answer. The type of the data is based on where the
-   * answer was found by the Answers API.
+   * The data for the direct answer. The type of the data is determined by the
+   * Answers API based on whether the answer was found within a document or was a
+   * field value in the knowledge graph.
    */
   result?: FeaturedSnippetDirectAnswer | FieldValueDirectAnswer;
 }

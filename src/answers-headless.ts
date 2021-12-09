@@ -158,8 +158,8 @@ export default class AnswersHeadless {
   }
 
   /**
-   * Sets {@link VerticalSearchState.alternativeVerticals} to the specified
-   * verticals.
+   * Sets the alternativeVerticals for {@link VerticalSearchState.noResults} to the
+   * specified verticals.
    *
    * @param alternativeVerticals - The alternative verticals to set
    */

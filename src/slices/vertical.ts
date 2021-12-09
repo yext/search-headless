@@ -8,15 +8,6 @@ import { AllResultsForVertical, VerticalSearchState } from '../models/slices/ver
 const initialState: VerticalSearchState = {};
 
 const reducers = {
-  /**
-   * Sets vertical search state data using the response to the latest vertical search.
-   *
-   * @remarks
-   * {@link VerticalSearchState.noResults | noResults} is only defined if both
-   * {@link VerticalSearchResponse.allResultsForVertical | allResultsForVertical} and
-   * {@link VerticalSearchResponse.alternativeVerticals | alternativeVerticals} are
-   * populated.
-   */
   handleSearchResponse: (
     state: VerticalSearchState,
     action: PayloadAction<VerticalSearchResponse>

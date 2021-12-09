@@ -1,9 +1,6 @@
 import { CombinedFilter, Filter, FilterCombinator, Matcher, NearFilterValue } from '@yext/answers-core';
 import { Range } from '../models/utils/range';
 
-/**
- * A union type for the different kinds of filter.
- */
 type FilterTypes = Filter | CombinedFilter;
 
 /**
@@ -50,14 +47,6 @@ export function createDateRangeFilter(
   return createRangeFilter(fieldId, range);
 }
 
-/**
- * Creates a {@link Filter} or {@link CombinedFilter} that matches all results where the
- * given field value falls in a specific number or Date {@link Range}.
- *
- * @param fieldId - The comparison field's identifier
- * @param range - The acceptable number or date range
- * @returns The newly created filter for the field value range
- */
 function createRangeFilter(fieldId: string, range: Range<number|Date>): FilterTypes {
   const { min, max } = range;
 

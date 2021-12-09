@@ -6,35 +6,14 @@ import { areFiltersEqual } from '../utils/filter-utils';
 
 const initialState: FiltersState = {};
 
-/**
- * The payload for updating a facet option.
- */
 interface FacetPayload {
-  /**
-   * The fieldId of the facet option to update.
-   */
   fieldId: string
-  /**
-   * The facet option to update.
-   */
   facetOption: FacetOption
-  /**
-   * Whether the facet option should be selected or not.
-   */
   shouldSelect: boolean
 }
 
-/**
- * The payload for updating a static filter.
- */
 interface FilterPayload {
-  /**
-   * The static filter to update.
-   */
   filter: Filter
-  /**
-   * Whether the filter should be selected or not.
-   */
   shouldSelect: boolean
 }
 
@@ -48,17 +27,11 @@ const reducers = {
   setFacets: (state: FiltersState, action: PayloadAction<DisplayableFacet[]>) => {
     state.facets = action.payload;
   },
-  /**
-   * Resets all facets to be unselected.
-   */
   resetFacets: (state: FiltersState) => {
     state.facets?.forEach(facet => {
       facet.options.forEach(o => o.selected = false);
     });
   },
-  /**
-   * Selects or unselects a specified facet option.
-   */
   toggleFacetOption: (state: FiltersState, { payload }: PayloadAction<FacetPayload>) => {
     if (!state.facets) {
       console.warn('Trying to select a facet option when no facets exist.');

@@ -5,7 +5,6 @@ import { SelectableFilter } from '../models/utils/selectablefilter';
  * Combines a list of Filters using the logical OR operator into a
  * {@link CombinedFilter}.
  *
- * @param filters - The filters to be combined
  * @returns The filters combined into a {@link CombinedFilter}, or the original
  *          filter if there is only one in the list
  */

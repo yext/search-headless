@@ -28,8 +28,7 @@ import { SelectableFilter } from './models/utils/selectablefilter';
 import { transformFiltersToCoreFormat } from './utils/transform-filters';
 
 /**
- * Provides methods for updating the state and for sending requests to the Answers
- * API through {@link AnswersCore}.
+ * Provides the functionality for interacting with an Answers Search experience.
  */
 export default class AnswersHeadless {
   /**
@@ -46,7 +45,7 @@ export default class AnswersHeadless {
   /**
    * Sets {@link QueryState.input} to the specified input.
    *
-   * @param input - The new query input to update to
+   * @param input - The input to set
    */
   setQuery(input: string): void {
     this.stateManager.dispatchEvent('query/setInput', input);
@@ -55,7 +54,7 @@ export default class AnswersHeadless {
   /**
    * Sets {@link QueryState.queryTrigger} to the specified trigger.
    *
-   * @param trigger - The new query trigger to update to
+   * @param trigger - The query trigger to set
    */
   setQueryTrigger(trigger: QueryTrigger): void {
     this.stateManager.dispatchEvent('query/setTrigger', trigger);
@@ -64,7 +63,7 @@ export default class AnswersHeadless {
   /**
    * Sets {@link QueryState.querySource} to the specified source.
    *
-   * @param source - The new query source to update to
+   * @param source - The query source to set
    */
   setQuerySource(source: QuerySource): void {
     this.stateManager.dispatchEvent('query/setSource', source);
@@ -73,7 +72,7 @@ export default class AnswersHeadless {
   /**
    * Sets {@link VerticalSearchState.verticalKey} to the specified key.
    *
-   * @param verticalKey - The new vertical key to update to
+   * @param verticalKey - The vertical key to set
    */
   setVerticalKey(verticalKey: string): void {
     this.stateManager.dispatchEvent('vertical/setVerticalKey', verticalKey);
@@ -82,7 +81,7 @@ export default class AnswersHeadless {
   /**
    * Sets {@link VerticalSearchState.limit} to the specified limit.
    *
-   * @param limit - The new vertical limit to update to
+   * @param limit - The vertical limit to set
    */
   setVerticalLimit(limit: number): void {
     this.stateManager.dispatchEvent('vertical/setLimit', limit);
@@ -91,7 +90,7 @@ export default class AnswersHeadless {
   /**
    * Sets {@link UniversalSearchState.limit} to the specified limit.
    *
-   * @param limit - The new universal limit to update to
+   * @param limit - The universal limit to set
    */
   setUniversalLimit(limit: UniversalLimit): void {
     this.stateManager.dispatchEvent('universal/setLimit', limit);
@@ -100,7 +99,7 @@ export default class AnswersHeadless {
   /**
    * Sets {@link VerticalSearchState.offset} to the specified offset.
    *
-   * @param offset - The new vertical offset to update to
+   * @param offset - The vertical offset to set
    */
   setOffset(offset: number): void {
     this.stateManager.dispatchEvent('vertical/setOffset', offset);
@@ -109,7 +108,7 @@ export default class AnswersHeadless {
   /**
    * Sets {@link FiltersState."static"} to the specified filters.
    *
-   * @param filters - The new static filters to update to
+   * @param filters - The static filters to set
    */
   setStaticFilters(filters: SelectableFilter[]): void {
     this.stateManager.dispatchEvent('filters/setStatic', filters);
@@ -118,14 +117,14 @@ export default class AnswersHeadless {
   /**
    * Sets {@link FiltersState.facets} to the specified facets.
    *
-   * @param facets - The new facets to update to
+   * @param facets - The facets to set
    */
   setFacets(facets: DisplayableFacet[]): void {
     this.stateManager.dispatchEvent('filters/setFacets', facets);
   }
 
   /**
-   * Resets all {@link FiltersState.facets | facets} to be unselected.
+   * Unselects all {@link FiltersState.facets | facets}.
    */
   resetFacets(): void {
     this.stateManager.dispatchEvent('filters/resetFacets');
@@ -134,7 +133,7 @@ export default class AnswersHeadless {
   /**
    * Sets {@link SpellCheckState.enabled} to the specified boolean value.
    *
-   * @param enabled - Whether spellcheck should be set to enabled or not
+   * @param enabled - Whether or not spellcheck should be set to enabled
    */
   setSpellCheckEnabled(enabled: boolean): void {
     this.stateManager.dispatchEvent('spellCheck/setEnabled', enabled);
@@ -143,7 +142,7 @@ export default class AnswersHeadless {
   /**
    * Sets {@link SessionTrackingState.enabled} to the specified boolean value.
    *
-   * @param enabled - Whether session tracking should be set to enabled or not
+   * @param enabled - Whether or not session tracking should be set to enabled
    */
   setSessionTrackingEnabled(enabled: boolean): void {
     this.stateManager.dispatchEvent('sessionTracking/setEnabled', enabled);
@@ -152,7 +151,7 @@ export default class AnswersHeadless {
   /**
    * Sets {@link SessionTrackingState.sessionId} to the specified ID.
    *
-   * @param sessionId - The new session ID to update to
+   * @param sessionId - The session ID to set
    */
   setSessionId(sessionId: string): void {
     this.stateManager.dispatchEvent('sessionTracking/setSessionId', sessionId);
@@ -162,7 +161,7 @@ export default class AnswersHeadless {
    * Sets {@link VerticalSearchState.alternativeVerticals} to the specified
    * verticals.
    *
-   * @param alternativeVerticals - The new alternative verticals to update to
+   * @param alternativeVerticals - The alternative verticals to set
    */
   setAlternativeVerticals(alternativeVerticals: VerticalResults[]): void {
     this.stateManager.dispatchEvent('vertical/setAlternativeVerticals', alternativeVerticals);
@@ -171,7 +170,7 @@ export default class AnswersHeadless {
   /**
    * Sets {@link VerticalSearchState.sortBys} to the specified sortBys.
    *
-   * @param sortBys - The new sortBys to update to
+   * @param sortBys - The sortBys to set
    */
   setSortBys(sortBys: SortBy[]): void {
     this.stateManager.dispatchEvent('vertical/setSortBys', sortBys);
@@ -180,7 +179,7 @@ export default class AnswersHeadless {
   /**
    * Sets {@link MetaState.context} to the specified context.
    *
-   * @param context - The new context to update to
+   * @param context - The context to set
    */
   setContext(context: Context): void {
     this.stateManager.dispatchEvent('meta/setContext', context);
@@ -189,7 +188,7 @@ export default class AnswersHeadless {
   /**
    * Sets {@link MetaState.referrerPageUrl} to the specified URL.
    *
-   * @param referrerPageUrl - The new referring page URL to update to
+   * @param referrerPageUrl - The referring page URL to set
    */
   setReferrerPageUrl(referrerPageUrl: string): void {
     this.stateManager.dispatchEvent('meta/setReferrerPageUrl', referrerPageUrl);
@@ -199,7 +198,7 @@ export default class AnswersHeadless {
    * Sets {@link LocationState.userLocation} to the specified latitude and
    * longitude.
    *
-   * @param latLong - The new user location to update to
+   * @param latLong - The user location to set
    */
   setUserLocation(latLong: LatLong): void {
     this.stateManager.dispatchEvent('location/setUserLocation', latLong);
@@ -208,7 +207,7 @@ export default class AnswersHeadless {
   /**
    * Sets the {@link State} to the specified state.
    *
-   * @param state - The new state to update to
+   * @param state - The state to set
    */
   setState(state: State): void {
     this.stateManager.dispatchEvent('set-state', state);
@@ -242,8 +241,7 @@ export default class AnswersHeadless {
   }
 
   /**
-   * Uses {@link AnswersCore} to submit a question to the Answers API with the
-   * specified request data.
+   * Submits a question to the Answers API with the specified request data.
    *
    * @param request - The data for the network request
    * @returns A Promise of a {@link QuestionSubmissionResponse} from the Answers API
@@ -253,9 +251,8 @@ export default class AnswersHeadless {
   }
 
   /**
-   * Uses {@link AnswersCore} to perform an Answers search across all verticals with
-   * the request data stored in state. Updates the information in state with the
-   * corresponding response.
+   * Performs an Answers search across all verticals with relevant parts of the
+   * state used as input to the search. Updates the state with the response data.
    *
    * @returns A Promise of a {@link UniversalSearchResponse} from the Answers API
    */
@@ -302,8 +299,8 @@ export default class AnswersHeadless {
   }
 
   /**
-   * Uses {@link AnswersCore} to perform an autocomplete request across all
-   * verticals with the request data stored in state.
+   * Performs an autocomplete request across all verticals using the query input
+   * stored in state.
    *
    * @returns A Promise of an {@link AutocompleteResponse} from the Answers API
    */
@@ -315,9 +312,8 @@ export default class AnswersHeadless {
   }
 
   /**
-   * Uses {@link AnswersCore} to perform an Answers search for a single vertical
-   * with the request data stored in state. Updates the information in state with
-   * the corresponding response.
+   * Perform an Answers search for a single vertical with relevant parts of the
+   * state used as input to the search. Updates the state with the response data.
    *
    * @returns A Promise of a {@link VerticalSearchResponse} from the Answers API or
    *          of undefined if there is no verticalKey defined in state
@@ -387,8 +383,8 @@ export default class AnswersHeadless {
   }
 
   /**
-   * Uses {@link AnswersCore} to perform an autocomplete request for a single
-   * vertical with the request data stored in state.
+   * Performs an autocomplete request for a single vertical using the query input
+   * and vertical key stored in state.
    *
    * @returns A Promise of an {@link AutocompleteResponse} from the Answers API or
    *          of undefined if there is no verticalKey defined in state
@@ -408,12 +404,11 @@ export default class AnswersHeadless {
   }
 
   /**
-   * Uses {@link AnswersCore} to perform a filtersearch request against specified
-   * fields within a single vertical with the specified parameters and the
-   * additional request data stored in state.
+   * Performs a filtersearch request against specified fields within a single
+   * vertical using the vertical key stored in state.
    *
    * @param query - The query for which to search
-   * @param sectioned - Whether the results should be sectioned by field or not
+   * @param sectioned - Whether or not the results should be sectioned by field
    * @param fields - The entity fields to search
    * @returns A Promise of a {@link FilterSearchResponse} from the Answers API or
    *          of undefined if there is no verticalKey defined in state
@@ -468,7 +463,7 @@ export default class AnswersHeadless {
   }
 
   /**
-   * Sets a static filter option and whether it is selected or not in state.
+   * Sets a static filter option and whether or not it is selected in state.
    *
    * @param seletableFilter - The static filter and whether it is selected
    */

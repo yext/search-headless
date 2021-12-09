@@ -17,29 +17,12 @@ import createSearchStatusSlice from './slices/searchstatus';
  * Manages the current map of headless IDs to Reducers.
  */
 export default class HeadlessReducerManager {
-  /**
-   * A mapping of unique headless IDs to Reducers.
-   */
   private headlessIdToReducer: Record<string, Reducer> = {};
 
-  /**
-   * Adds a mapping of the provided headless ID to an Answers state Reducer into
-   * {@link headlessIdToReducer}.
-   *
-   * @param headlessId - The ID of the AnswersHeadless instance for which to add a
-   *                     Reducer
-   */
   addAnswersReducer(headlessId: string): void {
     this.headlessIdToReducer[headlessId] = createAnswersReducer(headlessId + '/');
   }
 
-  /**
-   * Gets the parent Reducer for the {@link ParentState} of the mapping of
-   * AnswersHeadless instances.
-   *
-   * @returns A parent Reducer function that is a combination of the Reducers in
-   *          {@link headlessIdToReducer}
-   */
   getParentReducer(): Reducer<ParentState, ActionWithHeadlessId> {
     // set-state should only update the state tree for the AnswersHeadless instance
     // that dispatched it

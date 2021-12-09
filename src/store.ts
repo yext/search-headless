@@ -1,13 +1,7 @@
 import { configureStore, EnhancedStore, Reducer, Middleware, PayloadAction } from '@reduxjs/toolkit';
 import { ParentState } from './models/state';
 
-/**
- * An action with the ID of the AnswersHeadless instance that dispatched it.
- */
 export interface ActionWithHeadlessId extends PayloadAction<unknown> {
-  /**
-   * The ID of the AnswersHeadless instance.
-   */
   headlessId: string
 }
 
@@ -20,12 +14,6 @@ const initialReducer: Reducer<ParentState> = (state: ParentState | undefined) =>
   return state || {};
 };
 
-/**
- * Creates a base Redux store with the {@link initialReducer} as the reducer and
- * developer tools if it is not a production environment.
- *
- * @returns The newly created base Redux store
- */
 export function createBaseStore(): EnhancedStore<ParentState, ActionWithHeadlessId> {
   const store = configureStore<ParentState, ActionWithHeadlessId, Middleware<unknown, ParentState>[]>({
     middleware:

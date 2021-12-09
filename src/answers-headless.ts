@@ -37,14 +37,6 @@ export default class AnswersHeadless {
    */
   public readonly utilities = answersUtilities;
 
-  /**
-   * Sets up the AnswersHeadless instance with managers for its state and network
-   * requests and an instance of the {@link AnswersCore} library.
-   *
-   * @param core - The Answers Core instance used for sending network requests
-   * @param stateManager - The manager of the state and how it can be manipulated
-   * @param httpManager - The manager for network requests and reponses through core
-   */
   constructor(
     private core: AnswersCore,
     private stateManager: StateManager,

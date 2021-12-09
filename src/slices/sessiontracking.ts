@@ -17,10 +17,6 @@ const reducers = {
 /**
  * Registers with Redux the slice of {@link State} pertaining to session tracking of
  * an Answers experience.
- *
- * @param prefix - The prefix to access the part of the Redux store specific to the
- *                 AnswersHeadless instance
- * @returns The {@link Slice} for session tracking
  */
 export default function createSessionTrackingSlice(
   prefix: string

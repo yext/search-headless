@@ -52,10 +52,6 @@ const reducers = {
  * Registers with Redux the slice of {@link State} pertaining to vertical search. There
  * are reducers for setting the vertical key, search request data, and
  * results.
- *
- * @param prefix - The prefix to access the part of the Redux store specific to the
- *                 AnswersHeadless instance
- * @returns The {@link Slice} for vertical search
  */
 export default function createVerticalSlice(prefix: string): Slice<VerticalSearchState, typeof reducers> {
   return createSlice({

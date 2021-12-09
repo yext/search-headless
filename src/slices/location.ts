@@ -16,10 +16,6 @@ const reducers = {
 /**
  * Registers with Redux the slice of {@link State} pertaining to location related
  * attributes like a user specified {@link LatLong} and {@link LocationBias}.
- *
- * @param prefix - The prefix to access the part of the Redux store specific to the
- *                 AnswersHeadless instance
- * @returns The {@link Slice} for the user location
  */
 export default function createLocationSlice(prefix: string): Slice<LocationState, typeof reducers> {
   return createSlice({

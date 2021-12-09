@@ -5,7 +5,8 @@ import { Context } from '@yext/answers-core';
  */
 export interface MetaState {
   /**
-   * A JSON object used for triggering and passing data to query rules.
+   * A JSON object used for passing data to and triggering Answers
+   * {@link https://hitchhikers.yext.com/tracks/answers-advanced/ans302-query-rules/ | Query Rules}.
    */
   context?: Context,
   /**

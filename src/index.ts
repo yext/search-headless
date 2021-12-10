@@ -16,6 +16,9 @@ export * from './utils/filter-creators';
 export type HeadlessConfig = AnswersConfig & {
   /**
    * The ID of the AnswersHeadless instance.
+   *
+   * @remarks
+   * Must be different from the reserved ID for the default AnswersHeadless instance.
    */
   headlessId?: string
 };

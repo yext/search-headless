@@ -35,7 +35,7 @@ const reducers = {
       facet.options.forEach(o => o.selected = false);
     });
   },
-  toggleFacetOption: (state: FiltersState, { payload }: PayloadAction<FacetPayload>) => {
+  setFacetOption: (state: FiltersState, { payload }: PayloadAction<FacetPayload>) => {
     if (!state.facets) {
       console.warn('Trying to select a facet option when no facets exist.');
       return;

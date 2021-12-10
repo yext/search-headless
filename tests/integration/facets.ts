@@ -5,7 +5,7 @@ import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadles
 it('can select a facet option', () => {
   const [initialState, facetOption] = createInitialState(false);
   const answers = createMockedAnswersHeadless({}, initialState);
-  answers.selectFacetOption('testFieldId', facetOption);
+  answers.setFacetOption('testFieldId', facetOption, true);
   expect(answers.state.filters.facets[0].options[0]).toEqual({
     matcher: Matcher.Equals,
     value: 'testValue',
@@ -23,7 +23,7 @@ it('handles multiple facets with the same fieldId', () => {
     options: [{...facetOption}]
   });
   const answers = createMockedAnswersHeadless({}, initialState);
-  answers.selectFacetOption('testFieldId', facetOption);
+  answers.setFacetOption('testFieldId', facetOption, true);
   expect(answers.state.filters.facets).toEqual([
     {
       displayName: 'test facet name',
@@ -54,7 +54,7 @@ it('handles selecting multiple facetOptions at the same time', () => {
   const [initialState, facetOption] = createInitialState(false);
   initialState.filters.facets[0].options.push({ ...facetOption });
   const answers = createMockedAnswersHeadless({}, initialState);
-  answers.selectFacetOption('testFieldId', facetOption);
+  answers.setFacetOption('testFieldId', facetOption, true);
   expect(answers.state.filters.facets[0].options).toEqual([
     {
       matcher: Matcher.Equals,
@@ -76,7 +76,7 @@ it('handles selecting multiple facetOptions at the same time', () => {
 it('can unselect a facet option', () => {
   const [initialState, facetOption] = createInitialState(true);
   const answers = createMockedAnswersHeadless({}, initialState);
-  answers.unselectFacetOption('testFieldId', facetOption);
+  answers.setFacetOption('testFieldId', facetOption, false);
   expect(answers.state.filters.facets[0].options[0]).toEqual({
     matcher: Matcher.Equals,
     value: 'testValue',
@@ -89,7 +89,7 @@ it('can unselect a facet option', () => {
 it('gives a console warning when facets do not exist in state', () => {
   const consoleWarnSpy = jest.spyOn(global.console, 'warn').mockImplementation();
   const answers = createMockedAnswersHeadless();
-  answers.selectFacetOption('testFieldId', {} as DisplayableFacetOption);
+  answers.setFacetOption('testFieldId', {} as DisplayableFacetOption, true);
   expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
   consoleWarnSpy.mockClear();
 });
@@ -98,7 +98,7 @@ it('gives a console warning when the facet option\'s fieldId is not found in sta
   const consoleWarnSpy = jest.spyOn(global.console, 'warn').mockImplementation();
   const [initialState] = createInitialState(true);
   const answers = createMockedAnswersHeadless({}, initialState);
-  answers.selectFacetOption('fakeFieldId', {} as DisplayableFacetOption);
+  answers.setFacetOption('fakeFieldId', {} as DisplayableFacetOption, true);
   expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
   consoleWarnSpy.mockClear();
 });
@@ -117,7 +117,7 @@ it('facets are updated after a vertical search', async () => {
   const initialState = {
     filters: {},
     vertical: { verticalKey: 'test vertical key' },
-    query: { query: 'test query' },
+    query: { input: 'test query' },
     spellCheck: { enabled: true }
   };
   const answers = createMockedAnswersHeadless(mockAnswersCore, initialState);
@@ -234,7 +234,7 @@ function createInitialState(
   };
   const initialState: Partial<State> = {
     query: {
-      query: 'test'
+      input: 'test'
     },
     filters: {
       facets: [facet]

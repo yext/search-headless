@@ -2,6 +2,8 @@ import { UniversalLimit, VerticalResults } from '@yext/answers-core';
 
 /**
  * Maintains the data for the latest universal search.
+ *
+ * @public
  */
 export interface UniversalSearchState {
   /**

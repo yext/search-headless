@@ -3,6 +3,8 @@ import { SelectableFilter } from '../utils/selectablefilter';
 
 /**
  * Maintains the current state of facets and filters in the application.
+ *
+ * @public
  */
 export interface FiltersState {
   /**

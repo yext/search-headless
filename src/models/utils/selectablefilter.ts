@@ -2,10 +2,12 @@ import { Filter } from '@yext/answers-core';
 
 /**
  * A {@link Filter} that can be selected and maintains whether or not it is.
+ *
+ * @public
  */
 export interface SelectableFilter extends Filter {
   /**
-   * Whether the filter is selected or not.
+   * Whether or not the filter is selected.
    */
   selected: boolean
 }

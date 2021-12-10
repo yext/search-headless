@@ -27,9 +27,15 @@ import answersUtilities from './answers-utilities';
 import { SelectableFilter } from './models/utils/selectablefilter';
 import { transformFiltersToCoreFormat } from './utils/transform-filters';
 
+/**
+ * @public
+ */
 export default class AnswersHeadless {
   public readonly utilities = answersUtilities;
 
+  /**
+   * @internal
+   */
   constructor(
     private core: AnswersCore,
     private stateManager: StateManager,

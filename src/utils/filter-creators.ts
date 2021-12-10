@@ -10,6 +10,8 @@ type FilterTypes = Filter | CombinedFilter;
  * @param fieldId - The comparison field's identifier
  * @param value - The value to match
  * @returns The newly created {@link Filter} for the field value
+ *
+ * @public
  */
 export function createEqualsFilter(
   fieldId: string,
@@ -23,11 +25,13 @@ export function createEqualsFilter(
 
 /**
  * Creates a {@link Filter} or {@link CombinedFilter} that matches all results where the
- * given field value falls in a specific number {@link Range}.
+ * given field value falls in a specific number {@link Range_2}.
  *
  * @param fieldId - The comparison field's identifier
  * @param range - The acceptable number range
  * @returns The newly created filter for the field value range
+ *
+ * @public
  */
 export function createNumberRangeFilter(fieldId: string, range: Range<number>): FilterTypes {
   return createRangeFilter(fieldId, range);
@@ -35,11 +39,13 @@ export function createNumberRangeFilter(fieldId: string, range: Range<number>): 
 
 /**
  * Creates a {@link Filter} or {@link CombinedFilter} that matches all results where the
- * given field value falls in a specific Date {@link Range}.
+ * given field value falls in a specific Date {@link Range_2}.
  *
  * @param fieldId - The comparison field's identifier
  * @param range - The acceptable date range
  * @returns The newly created filter for the field value range
+ *
+ * @public
  */
 export function createDateRangeFilter(
   fieldId: string,
@@ -83,6 +89,8 @@ function createRangeFilter(fieldId: string, range: Range<number|Date>): FilterTy
  *
  * @param position - The position and radius
  * @returns The newly created {@link Filter} for the radius of the position
+ *
+ * @public
  */
 export function createNearMeFilter(position: NearFilterValue): Filter {
   return {
@@ -100,6 +108,8 @@ export function createNearMeFilter(position: NearFilterValue): Filter {
  * @param filterB - The second filter to be combined
  * @param combinator - Specifies how the two filters should be joined
  * @returns The newly created {@link CombinedFilter}
+ *
+ * @public
  */
 export function combineFilters(
   filterA: FilterTypes,

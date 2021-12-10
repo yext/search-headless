@@ -1,5 +1,7 @@
 /**
  * Maintains the status of the latest search.
+ *
+ * @public
  */
 export interface SearchStatusState {
   /**

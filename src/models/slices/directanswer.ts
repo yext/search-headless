@@ -2,6 +2,8 @@ import { FeaturedSnippetDirectAnswer, FieldValueDirectAnswer } from '@yext/answe
 
 /**
  * Maintains the direct answer associated with the latest search.
+ *
+ * @public
  */
 export interface DirectAnswerState {
   /**

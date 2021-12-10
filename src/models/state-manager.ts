@@ -7,6 +7,8 @@ import StateListener from './state-listener';
  *
  * @remarks
  * The {@link State} is immutable, and can only be updated by dispatched events.
+ *
+ * @public
  */
 export default interface StateManager {
   /**

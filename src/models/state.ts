@@ -12,6 +12,8 @@ import { SearchStatusState } from './slices/searchstatus';
 /**
  * The overall shape of the redux state tree, with each key value pair of
  * headlessId to {@link State} representing a single AnswersHeadless instance.
+ *
+ * @public
  */
 export interface ParentState {
   /**
@@ -22,6 +24,8 @@ export interface ParentState {
 
 /**
  * The state representing an AnswersHeadless instance.
+ *
+ * @public
  */
 export interface State {
   query: QueryState,

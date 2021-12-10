@@ -2,6 +2,8 @@ import { QuerySource, QueryTrigger, SearchIntent } from '@yext/answers-core';
 
 /**
  * Maintains the latest query and its associated data.
+ *
+ * @public
  */
 export interface QueryState {
   /**

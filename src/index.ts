@@ -10,7 +10,13 @@ import { SessionTrackingState } from './models/slices/sessiontracking';
 export * from '@yext/answers-core';
 export * from './utils/filter-creators';
 
-type HeadlessConfig = AnswersConfig & {
+/**
+ * The configuration for an AnswersHeadless instance.
+ */
+export type HeadlessConfig = AnswersConfig & {
+  /**
+   * The ID of the AnswersHeadless instance.
+   */
   headlessId?: string
 };
 

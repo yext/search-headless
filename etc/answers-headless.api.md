@@ -189,11 +189,6 @@ export function createNearMeFilter(position: NearFilterValue): Filter;
 // @public
 export function createNumberRangeFilter(fieldId: string, range: Range_2<number>): FilterTypes;
 
-// Warning: (ae-internal-missing-underscore) The name "DEFAULT_HEADLESS_ID" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export const DEFAULT_HEADLESS_ID = "main";
-
 // @public
 export interface DirectAnswer {
     fieldType: string;

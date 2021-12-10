@@ -4,12 +4,12 @@
 
 ## createDateRangeFilter() function
 
-Creates a [Filter](./answers-headless.filter.md) or [CombinedFilter](./answers-headless.combinedfilter.md) that matches all results where the given field value falls in a specific Date [Range\_2](./answers-headless.range_2.md)<!-- -->.
+Creates a [Filter](./answers-headless.filter.md) or [CombinedFilter](./answers-headless.combinedfilter.md) that matches all results where the given field value falls in a specific Date [BoundedRange](./answers-headless.boundedrange.md)<!-- -->.
 
 <b>Signature:</b>
 
 ```typescript
-export declare function createDateRangeFilter(fieldId: string, range: Range<Date>): FilterTypes;
+export declare function createDateRangeFilter(fieldId: string, range: BoundedRange<Date>): FilterTypes;
 ```
 
 ## Parameters
@@ -17,7 +17,7 @@ export declare function createDateRangeFilter(fieldId: string, range: Range<Date
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  fieldId | string | The comparison field's identifier |
-|  range | Range&lt;Date&gt; | The acceptable date range |
+|  range | [BoundedRange](./answers-headless.boundedrange.md)<!-- -->&lt;Date&gt; | The acceptable date range |
 
 <b>Returns:</b>
 

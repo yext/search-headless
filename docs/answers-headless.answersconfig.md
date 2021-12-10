@@ -11,5 +11,3 @@ The main configuration options for [AnswersCore](./answers-headless.answerscore.
 ```typescript
 export declare type AnswersConfig = AnswersConfigWithApiKey | AnswersConfigWithToken;
 ```
-<b>References:</b> [AnswersConfigWithApiKey](./answers-headless.answersconfigwithapikey.md)<!-- -->, [AnswersConfigWithToken](./answers-headless.answersconfigwithtoken.md)
-

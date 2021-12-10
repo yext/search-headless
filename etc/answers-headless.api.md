@@ -13,27 +13,21 @@ export interface AllResultsForVertical {
     resultsCount: number;
 }
 
+// Warning: (ae-forgotten-export) The symbol "AnswersConfigWithApiKey" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "AnswersConfigWithToken" needs to be exported by the entry point index.d.ts
+//
 // @public
 export type AnswersConfig = AnswersConfigWithApiKey | AnswersConfigWithToken;
 
 // @public
-export interface AnswersConfigWithApiKey extends BaseAnswersConfig {
-    apiKey: string;
-    token?: never;
-}
-
-// @public
-export interface AnswersConfigWithToken extends BaseAnswersConfig {
-    apiKey?: never;
-    token: string;
-}
-
-// @public
 export class AnswersCore {
+    // Warning: (ae-forgotten-export) The symbol "FilterSearchRequest" needs to be exported by the entry point index.d.ts
     filterSearch(request: FilterSearchRequest): Promise<FilterSearchResponse>;
     submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse>;
+    // Warning: (ae-forgotten-export) The symbol "UniversalAutocompleteRequest" needs to be exported by the entry point index.d.ts
     universalAutocomplete(request: UniversalAutocompleteRequest): Promise<AutocompleteResponse>;
     universalSearch(request: UniversalSearchRequest): Promise<UniversalSearchResponse>;
+    // Warning: (ae-forgotten-export) The symbol "VerticalAutocompleteRequest" needs to be exported by the entry point index.d.ts
     verticalAutocomplete(request: VerticalAutocompleteRequest): Promise<AutocompleteResponse>;
     verticalSearch(request: VerticalSearchRequest): Promise<VerticalSearchResponse>;
 }
@@ -164,6 +158,12 @@ export interface BaseAnswersConfig {
 }
 
 // @public
+export interface BoundedRange<T> {
+    max?: RangeBoundary<T>;
+    min?: RangeBoundary<T>;
+}
+
+// @public
 export interface CombinedFilter {
     combinator: FilterCombinator;
     filters: (Filter | CombinedFilter)[];
@@ -178,7 +178,7 @@ export function combineFilters(filterA: FilterTypes, filterB: FilterTypes, combi
 export type Context = any;
 
 // @public
-export function createDateRangeFilter(fieldId: string, range: Range_2<Date>): FilterTypes;
+export function createDateRangeFilter(fieldId: string, range: BoundedRange<Date>): FilterTypes;
 
 // @public
 export function createEqualsFilter(fieldId: string, value: string | number | boolean): Filter;
@@ -187,7 +187,7 @@ export function createEqualsFilter(fieldId: string, value: string | number | boo
 export function createNearMeFilter(position: NearFilterValue): Filter;
 
 // @public
-export function createNumberRangeFilter(fieldId: string, range: Range_2<number>): FilterTypes;
+export function createNumberRangeFilter(fieldId: string, range: BoundedRange<number>): FilterTypes;
 
 // @public
 export interface DirectAnswer {
@@ -207,12 +207,6 @@ export interface DirectAnswerState {
 export enum DirectAnswerType {
     FeaturedSnippet = "FEATURED_SNIPPET",
     FieldValue = "FIELD_VALUE"
-}
-
-// @public
-export enum Direction {
-    Ascending = "ASC",
-    Descending = "DESC"
 }
 
 // @public
@@ -294,15 +288,6 @@ export interface Filter {
 export enum FilterCombinator {
     AND = "$and",
     OR = "$or"
-}
-
-// @public
-export interface FilterSearchRequest {
-    fields: SearchParameterField[];
-    input: string;
-    sectioned: boolean;
-    sessionTrackingEnabled?: boolean;
-    verticalKey: string;
 }
 
 // @public
@@ -402,9 +387,6 @@ export interface ParentState {
 export function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless;
 
 // @public
-export function provideCore(config: AnswersConfig): AnswersCore;
-
-// @public
 export enum QuerySource {
     Overlay = "OVERLAY",
     Standard = "STANDARD"
@@ -440,13 +422,6 @@ export interface QuestionSubmissionRequest {
 export interface QuestionSubmissionResponse {
     uuid: string;
 }
-
-// @public
-interface Range_2<T> {
-    max?: RangeBoundary<T>;
-    min?: RangeBoundary<T>;
-}
-export { Range_2 as Range }
 
 // @public
 export interface RangeBoundary<T> {
@@ -508,6 +483,7 @@ export interface Snippet {
 
 // @public
 export interface SortBy {
+    // Warning: (ae-forgotten-export) The symbol "Direction" needs to be exported by the entry point index.d.ts
     direction?: Direction;
     field?: string;
     type: SortType;
@@ -534,19 +510,13 @@ export enum Source {
 export interface SpellCheck {
     correctedQuery: string;
     originalQuery: string;
+    // Warning: (ae-forgotten-export) The symbol "SpellCheckType" needs to be exported by the entry point index.d.ts
     type: SpellCheckType;
 }
 
 // @public
 export interface SpellCheckState extends Partial<SpellCheck> {
     enabled: boolean;
-}
-
-// @public
-export enum SpellCheckType {
-    AutoCorrect = "AUTOCORRECT",
-    Combine = "COMBINE",
-    Suggest = "SUGGEST"
 }
 
 // @public
@@ -587,12 +557,6 @@ export interface StateManager {
 }
 
 // @public
-export interface UniversalAutocompleteRequest {
-    input: string;
-    sessionTrackingEnabled?: boolean;
-}
-
-// @public
 export interface UniversalLimit {
     // (undocumented)
     [verticalKey: string]: number;
@@ -629,13 +593,6 @@ export interface UniversalSearchState {
     limit?: UniversalLimit;
     restrictVerticals?: string[];
     verticals?: VerticalResults[];
-}
-
-// @public
-export interface VerticalAutocompleteRequest {
-    input: string;
-    sessionTrackingEnabled?: boolean;
-    verticalKey: string;
 }
 
 // @public

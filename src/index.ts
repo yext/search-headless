@@ -8,7 +8,7 @@ import { DEFAULT_HEADLESS_ID } from './constants';
 import { SessionTrackingState } from './models/slices/sessiontracking';
 import answersUtilities from './answers-utilities';
 
-export * from '@yext/answers-core';
+export * from './answers-core-re-exports';
 export * from './models';
 export * from './utils/filter-creators';
 export { answersUtilities };

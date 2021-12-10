@@ -1,5 +1,5 @@
 import { CombinedFilter, Filter, FilterCombinator, Matcher, NearFilterValue } from '@yext/answers-core';
-import { Range } from '../models/utils/range';
+import { BoundedRange } from '../models/utils/boundedrange';
 
 type FilterTypes = Filter | CombinedFilter;
 
@@ -25,7 +25,7 @@ export function createEqualsFilter(
 
 /**
  * Creates a {@link Filter} or {@link CombinedFilter} that matches all results where the
- * given field value falls in a specific number {@link Range_2}.
+ * given field value falls in a specific number {@link BoundedRange}.
  *
  * @param fieldId - The comparison field's identifier
  * @param range - The acceptable number range
@@ -33,13 +33,13 @@ export function createEqualsFilter(
  *
  * @public
  */
-export function createNumberRangeFilter(fieldId: string, range: Range<number>): FilterTypes {
+export function createNumberRangeFilter(fieldId: string, range: BoundedRange<number>): FilterTypes {
   return createRangeFilter(fieldId, range);
 }
 
 /**
  * Creates a {@link Filter} or {@link CombinedFilter} that matches all results where the
- * given field value falls in a specific Date {@link Range_2}.
+ * given field value falls in a specific Date {@link BoundedRange}.
  *
  * @param fieldId - The comparison field's identifier
  * @param range - The acceptable date range
@@ -49,11 +49,11 @@ export function createNumberRangeFilter(fieldId: string, range: Range<number>): 
  */
 export function createDateRangeFilter(
   fieldId: string,
-  range: Range<Date>): FilterTypes {
+  range: BoundedRange<Date>): FilterTypes {
   return createRangeFilter(fieldId, range);
 }
 
-function createRangeFilter(fieldId: string, range: Range<number|Date>): FilterTypes {
+function createRangeFilter(fieldId: string, range: BoundedRange<number|Date>): FilterTypes {
   const { min, max } = range;
 
   let minFilter;

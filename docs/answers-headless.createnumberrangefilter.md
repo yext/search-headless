@@ -4,12 +4,12 @@
 
 ## createNumberRangeFilter() function
 
-Creates a [Filter](./answers-headless.filter.md) or [CombinedFilter](./answers-headless.combinedfilter.md) that matches all results where the given field value falls in a specific number [Range\_2](./answers-headless.range_2.md)<!-- -->.
+Creates a [Filter](./answers-headless.filter.md) or [CombinedFilter](./answers-headless.combinedfilter.md) that matches all results where the given field value falls in a specific number [BoundedRange](./answers-headless.boundedrange.md)<!-- -->.
 
 <b>Signature:</b>
 
 ```typescript
-export declare function createNumberRangeFilter(fieldId: string, range: Range<number>): FilterTypes;
+export declare function createNumberRangeFilter(fieldId: string, range: BoundedRange<number>): FilterTypes;
 ```
 
 ## Parameters
@@ -17,7 +17,7 @@ export declare function createNumberRangeFilter(fieldId: string, range: Range<nu
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  fieldId | string | The comparison field's identifier |
-|  range | Range&lt;number&gt; | The acceptable number range |
+|  range | [BoundedRange](./answers-headless.boundedrange.md)<!-- -->&lt;number&gt; | The acceptable number range |
 
 <b>Returns:</b>
 

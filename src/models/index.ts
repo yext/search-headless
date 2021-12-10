@@ -14,7 +14,7 @@ export { UniversalSearchState } from './slices/universal';
 export { VerticalSearchState, AllResultsForVertical } from './slices/vertical';
 
 // utils models
-export { Range, RangeBoundary } from './utils/range';
+export { BoundedRange, RangeBoundary } from './utils/boundedrange';
 export { SelectableFilter } from './utils/selectablefilter';
 
 // state models

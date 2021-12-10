@@ -4,7 +4,7 @@
 
 ## RangeBoundary interface
 
-A boundary for a [Range\_2](./answers-headless.range_2.md) of type T.
+A boundary for a [BoundedRange](./answers-headless.boundedrange.md) of type T.
 
 <b>Signature:</b>
 

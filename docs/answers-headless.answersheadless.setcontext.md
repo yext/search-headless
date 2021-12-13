@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.setContext() method
 
+Sets [MetaState.context](./answers-headless.metastate.context.md) to the specified context.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ setContext(context: Context): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  context | [Context](./answers-headless.context.md) |  |
+|  context | [Context](./answers-headless.context.md) | The context to set |
 
 <b>Returns:</b>
 

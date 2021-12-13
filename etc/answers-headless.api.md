@@ -46,73 +46,42 @@ export class AnswersError extends Error {
     /* Excluded from this release type: __constructor */
 }
 
-// @public (undocumented)
+// @public
 export class AnswersHeadless {
     // Warning: (ae-forgotten-export) The symbol "HttpManager" needs to be exported by the entry point index.d.ts
     //
     // @internal
     constructor(core: AnswersCore, stateManager: StateManager, httpManager: HttpManager);
-    // (undocumented)
     addListener<T>(listener: StateListener<T>): Unsubscribe;
-    // (undocumented)
     executeFilterSearch(query: string, sectioned: boolean, fields: SearchParameterField[]): Promise<FilterSearchResponse | undefined>;
-    // (undocumented)
     executeUniversalAutocomplete(): Promise<AutocompleteResponse>;
-    // (undocumented)
-    executeUniversalQuery(): Promise<UniversalSearchResponse | undefined>;
-    // (undocumented)
+    executeUniversalQuery(): Promise<UniversalSearchResponse>;
     executeVerticalAutocomplete(): Promise<AutocompleteResponse | undefined>;
-    // (undocumented)
     executeVerticalQuery(): Promise<VerticalSearchResponse | undefined>;
-    // (undocumented)
     resetFacets(): void;
-    // (undocumented)
     setAlternativeVerticals(alternativeVerticals: VerticalResults[]): void;
-    // (undocumented)
     setContext(context: Context): void;
-    // (undocumented)
     setFacetOption(fieldId: string, facetOption: FacetOption, selected: boolean): void;
-    // (undocumented)
     setFacets(facets: DisplayableFacet[]): void;
-    // (undocumented)
     setFilterOption(seletableFilter: SelectableFilter): void;
-    // (undocumented)
     setOffset(offset: number): void;
-    // (undocumented)
     setQuery(input: string): void;
-    // (undocumented)
     setQuerySource(source: QuerySource): void;
-    // (undocumented)
     setQueryTrigger(trigger: QueryTrigger): void;
-    // (undocumented)
     setReferrerPageUrl(referrerPageUrl: string): void;
-    // (undocumented)
     setRestrictVerticals(restrictVerticals: string[]): void;
-    // (undocumented)
     setSessionId(sessionId: string): void;
-    // (undocumented)
     setSessionTrackingEnabled(enabled: boolean): void;
-    // (undocumented)
     setSortBys(sortBys: SortBy[]): void;
-    // (undocumented)
     setSpellCheckEnabled(enabled: boolean): void;
-    // (undocumented)
     setState(state: State): void;
-    // (undocumented)
     setStaticFilters(filters: SelectableFilter[]): void;
-    // (undocumented)
     setUniversalLimit(limit: UniversalLimit): void;
-    // (undocumented)
     setUserLocation(latLong: LatLong): void;
-    // (undocumented)
     setVerticalKey(verticalKey: string): void;
-    // (undocumented)
     setVerticalLimit(limit: number): void;
-    // (undocumented)
     get state(): State;
-    // (undocumented)
     submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse>;
-    // (undocumented)
     readonly utilities: {
         searchThroughFacet(facet: DisplayableFacet, searchTerm: string): DisplayableFacet;
     };
@@ -330,7 +299,7 @@ export interface FiltersState {
 // @public
 export type FilterTypes = Filter | CombinedFilter;
 
-// @public (undocumented)
+// @public
 export type HeadlessConfig = AnswersConfig & {
     headlessId?: string;
 };

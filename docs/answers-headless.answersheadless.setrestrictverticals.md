@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.setRestrictVerticals() method
 
+Sets [UniversalSearchState.restrictVerticals](./answers-headless.universalsearchstate.restrictverticals.md) to the specified vertical keys.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ setRestrictVerticals(restrictVerticals: string[]): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  restrictVerticals | string\[\] |  |
+|  restrictVerticals | string\[\] | The new verticals to restrict a universal search |
 
 <b>Returns:</b>
 

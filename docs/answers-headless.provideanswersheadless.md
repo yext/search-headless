@@ -22,3 +22,5 @@ export declare function provideAnswersHeadless(config: HeadlessConfig): AnswersH
 
 AnswersHeadless
 
+The newly created instance of [AnswersHeadless](./answers-headless.answersheadless.md)
+

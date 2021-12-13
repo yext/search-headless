@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.executeVerticalQuery() method
 
+Perform an Answers search for a single vertical with relevant parts of the state used as input to the search. Updates the state with the response data.
+
 <b>Signature:</b>
 
 ```typescript
@@ -12,4 +14,6 @@ executeVerticalQuery(): Promise<VerticalSearchResponse | undefined>;
 <b>Returns:</b>
 
 Promise&lt;[VerticalSearchResponse](./answers-headless.verticalsearchresponse.md) \| undefined&gt;
+
+A Promise of a [VerticalSearchResponse](./answers-headless.verticalsearchresponse.md) from the Answers API or of undefined if there is no verticalKey defined in state
 

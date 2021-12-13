@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.setUniversalLimit() method
 
+Sets [UniversalSearchState.limit](./answers-headless.universalsearchstate.limit.md) to the specified limit.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ setUniversalLimit(limit: UniversalLimit): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  limit | [UniversalLimit](./answers-headless.universallimit.md) |  |
+|  limit | [UniversalLimit](./answers-headless.universallimit.md) | The universal limit to set |
 
 <b>Returns:</b>
 

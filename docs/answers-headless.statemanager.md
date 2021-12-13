@@ -20,7 +20,7 @@ The [State](./answers-headless.state.md) is immutable, and can only be updated b
 
 |  Method | Description |
 |  --- | --- |
-|  [addListener(listener)](./answers-headless.statemanager.addlistener.md) | Adds a listener for a state value. |
+|  [addListener(listener)](./answers-headless.statemanager.addlistener.md) | Adds a listener for a specific state value of type T. |
 |  [dispatchEvent(type, payload)](./answers-headless.statemanager.dispatchevent.md) | Dispatches an event. This can update the [State](./answers-headless.state.md)<!-- -->. |
 |  [getState()](./answers-headless.statemanager.getstate.md) | Returns the current state. |
 

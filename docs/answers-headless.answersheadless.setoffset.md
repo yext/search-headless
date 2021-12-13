@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.setOffset() method
 
+Sets [VerticalSearchState.offset](./answers-headless.verticalsearchstate.offset.md) to the specified offset.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ setOffset(offset: number): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  offset | number |  |
+|  offset | number | The vertical offset to set |
 
 <b>Returns:</b>
 

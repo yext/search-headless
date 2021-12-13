@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.utilities property
 
+Common utility functions for manipulating Answers-related data.
+
 <b>Signature:</b>
 
 ```typescript

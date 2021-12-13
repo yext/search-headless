@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.executeFilterSearch() method
 
+Performs a filtersearch request against specified fields within a single vertical using the vertical key stored in state.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,11 +16,13 @@ executeFilterSearch(query: string, sectioned: boolean, fields: SearchParameterFi
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  query | string |  |
-|  sectioned | boolean |  |
-|  fields | [SearchParameterField](./answers-headless.searchparameterfield.md)<!-- -->\[\] |  |
+|  query | string | The query for which to search |
+|  sectioned | boolean | Whether or not the results should be sectioned by field |
+|  fields | [SearchParameterField](./answers-headless.searchparameterfield.md)<!-- -->\[\] | The entity fields to search |
 
 <b>Returns:</b>
 
 Promise&lt;[FilterSearchResponse](./answers-headless.filtersearchresponse.md) \| undefined&gt;
+
+A Promise of a [FilterSearchResponse](./answers-headless.filtersearchresponse.md) from the Answers API or of undefined if there is no verticalKey defined in state
 

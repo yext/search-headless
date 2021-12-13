@@ -4,7 +4,7 @@
 
 ## StateManager.addListener() method
 
-Adds a listener for a state value.
+Adds a listener for a specific state value of type T.
 
 <b>Signature:</b>
 
@@ -16,9 +16,11 @@ addListener<T>(listener: StateListener<T>): Unsubscribe;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  listener | StateListener&lt;T&gt; | State listener to add |
+|  listener | StateListener&lt;T&gt; | The state listener to add |
 
 <b>Returns:</b>
 
 Unsubscribe
+
+The function for removing the added listener
 

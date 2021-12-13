@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.state property
 
+Gets the current state of the AnswersHeadless instance.
+
 <b>Signature:</b>
 
 ```typescript

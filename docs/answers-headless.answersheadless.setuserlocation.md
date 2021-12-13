@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.setUserLocation() method
 
+Sets [LocationState.userLocation](./answers-headless.locationstate.userlocation.md) to the specified latitude and longitude.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ setUserLocation(latLong: LatLong): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  latLong | [LatLong](./answers-headless.latlong.md) |  |
+|  latLong | [LatLong](./answers-headless.latlong.md) | The user location to set |
 
 <b>Returns:</b>
 

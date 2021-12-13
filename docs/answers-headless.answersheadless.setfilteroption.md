@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.setFilterOption() method
 
+Sets a static filter option and whether or not it is selected in state.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ setFilterOption(seletableFilter: SelectableFilter): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  seletableFilter | [SelectableFilter](./answers-headless.selectablefilter.md) |  |
+|  seletableFilter | [SelectableFilter](./answers-headless.selectablefilter.md) | The static filter and whether it is selected |
 
 <b>Returns:</b>
 

@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.setAlternativeVerticals() method
 
+Sets the alternativeVerticals for [VerticalSearchState.noResults](./answers-headless.verticalsearchstate.noresults.md) to the specified verticals.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ setAlternativeVerticals(alternativeVerticals: VerticalResults[]): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  alternativeVerticals | [VerticalResults](./answers-headless.verticalresults.md)<!-- -->\[\] |  |
+|  alternativeVerticals | [VerticalResults](./answers-headless.verticalresults.md)<!-- -->\[\] | The alternative verticals to set |
 
 <b>Returns:</b>
 

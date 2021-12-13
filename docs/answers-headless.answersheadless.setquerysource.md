@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.setQuerySource() method
 
+Sets [QueryState.querySource](./answers-headless.querystate.querysource.md) to the specified source.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ setQuerySource(source: QuerySource): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  source | [QuerySource](./answers-headless.querysource.md) |  |
+|  source | [QuerySource](./answers-headless.querysource.md) | The query source to set |
 
 <b>Returns:</b>
 

@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.setFacets() method
 
+Sets [FiltersState.facets](./answers-headless.filtersstate.facets.md) to the specified facets.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ setFacets(facets: DisplayableFacet[]): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  facets | [DisplayableFacet](./answers-headless.displayablefacet.md)<!-- -->\[\] |  |
+|  facets | [DisplayableFacet](./answers-headless.displayablefacet.md)<!-- -->\[\] | The facets to set |
 
 <b>Returns:</b>
 

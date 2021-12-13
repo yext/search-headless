@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.setReferrerPageUrl() method
 
+Sets [MetaState.referrerPageUrl](./answers-headless.metastate.referrerpageurl.md) to the specified URL.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ setReferrerPageUrl(referrerPageUrl: string): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  referrerPageUrl | string |  |
+|  referrerPageUrl | string | The referring page URL to set |
 
 <b>Returns:</b>
 

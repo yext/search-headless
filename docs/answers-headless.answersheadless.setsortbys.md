@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.setSortBys() method
 
+Sets [VerticalSearchState.sortBys](./answers-headless.verticalsearchstate.sortbys.md) to the specified sortBys.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ setSortBys(sortBys: SortBy[]): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  sortBys | [SortBy](./answers-headless.sortby.md)<!-- -->\[\] |  |
+|  sortBys | [SortBy](./answers-headless.sortby.md)<!-- -->\[\] | The sortBys to set |
 
 <b>Returns:</b>
 

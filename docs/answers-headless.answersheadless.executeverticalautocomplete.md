@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.executeVerticalAutocomplete() method
 
+Performs an autocomplete request for a single vertical using the query input and vertical key stored in state.
+
 <b>Signature:</b>
 
 ```typescript
@@ -12,4 +14,6 @@ executeVerticalAutocomplete(): Promise<AutocompleteResponse | undefined>;
 <b>Returns:</b>
 
 Promise&lt;[AutocompleteResponse](./answers-headless.autocompleteresponse.md) \| undefined&gt;
+
+A Promise of an [AutocompleteResponse](./answers-headless.autocompleteresponse.md) from the Answers API or of undefined if there is no verticalKey defined in state
 

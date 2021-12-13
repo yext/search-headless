@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.setSessionId() method
 
+Sets [SessionTrackingState.sessionId](./answers-headless.sessiontrackingstate.sessionid.md) to the specified ID.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ setSessionId(sessionId: string): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  sessionId | string |  |
+|  sessionId | string | The session ID to set |
 
 <b>Returns:</b>
 

@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.resetFacets() method
 
+Unselects all [facets](./answers-headless.filtersstate.facets.md)<!-- -->.
+
 <b>Signature:</b>
 
 ```typescript

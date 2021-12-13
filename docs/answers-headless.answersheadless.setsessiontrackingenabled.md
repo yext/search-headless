@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.setSessionTrackingEnabled() method
 
+Sets [SessionTrackingState.enabled](./answers-headless.sessiontrackingstate.enabled.md) to the specified boolean value.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ setSessionTrackingEnabled(enabled: boolean): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  enabled | boolean |  |
+|  enabled | boolean | Whether or not session tracking should be set to enabled |
 
 <b>Returns:</b>
 

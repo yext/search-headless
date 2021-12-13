@@ -4,12 +4,16 @@
 
 ## AnswersHeadless.executeUniversalQuery() method
 
+Performs an Answers search across all verticals with relevant parts of the state used as input to the search. Updates the state with the response data.
+
 <b>Signature:</b>
 
 ```typescript
-executeUniversalQuery(): Promise<UniversalSearchResponse | undefined>;
+executeUniversalQuery(): Promise<UniversalSearchResponse>;
 ```
 <b>Returns:</b>
 
-Promise&lt;[UniversalSearchResponse](./answers-headless.universalsearchresponse.md) \| undefined&gt;
+Promise&lt;[UniversalSearchResponse](./answers-headless.universalsearchresponse.md)<!-- -->&gt;
+
+A Promise of a [UniversalSearchResponse](./answers-headless.universalsearchresponse.md) from the Answers API
 

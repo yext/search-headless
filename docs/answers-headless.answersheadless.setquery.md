@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.setQuery() method
 
+Sets [QueryState.input](./answers-headless.querystate.input.md) to the specified input.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ setQuery(input: string): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  input | string |  |
+|  input | string | The input to set |
 
 <b>Returns:</b>
 

@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.submitQuestion() method
 
+Submits a question to the Answers API with the specified request data.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,9 +16,11 @@ submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionRe
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | [QuestionSubmissionRequest](./answers-headless.questionsubmissionrequest.md) |  |
+|  request | [QuestionSubmissionRequest](./answers-headless.questionsubmissionrequest.md) | The data for the network request |
 
 <b>Returns:</b>
 
 Promise&lt;[QuestionSubmissionResponse](./answers-headless.questionsubmissionresponse.md)<!-- -->&gt;
+
+A Promise of a [QuestionSubmissionResponse](./answers-headless.questionsubmissionresponse.md) from the Answers API
 

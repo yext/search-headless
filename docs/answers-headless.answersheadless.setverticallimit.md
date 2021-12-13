@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.setVerticalLimit() method
 
+Sets [VerticalSearchState.limit](./answers-headless.verticalsearchstate.limit.md) to the specified limit.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ setVerticalLimit(limit: number): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  limit | number |  |
+|  limit | number | The vertical limit to set |
 
 <b>Returns:</b>
 

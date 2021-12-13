@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.setQueryTrigger() method
 
+Sets [QueryState.queryTrigger](./answers-headless.querystate.querytrigger.md) to the specified trigger.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ setQueryTrigger(trigger: QueryTrigger): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  trigger | [QueryTrigger](./answers-headless.querytrigger.md) |  |
+|  trigger | [QueryTrigger](./answers-headless.querytrigger.md) | The query trigger to set |
 
 <b>Returns:</b>
 

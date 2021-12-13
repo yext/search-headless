@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.setStaticFilters() method
 
+Sets [FiltersState.static](./answers-headless.filtersstate.static.md) to the specified filters.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ setStaticFilters(filters: SelectableFilter[]): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  filters | [SelectableFilter](./answers-headless.selectablefilter.md)<!-- -->\[\] |  |
+|  filters | [SelectableFilter](./answers-headless.selectablefilter.md)<!-- -->\[\] | The static filters to set |
 
 <b>Returns:</b>
 

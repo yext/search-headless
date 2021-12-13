@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.setFacetOption() method
 
+Sets a specified facet option to be selected or unselected.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,9 +16,9 @@ setFacetOption(fieldId: string, facetOption: FacetOption, selected: boolean): vo
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  fieldId | string |  |
-|  facetOption | [FacetOption](./answers-headless.facetoption.md) |  |
-|  selected | boolean |  |
+|  fieldId | string | The fieldId for the facet |
+|  facetOption | [FacetOption](./answers-headless.facetoption.md) | The option of the facet to select |
+|  selected | boolean | Whether or not the facet option should be selected |
 
 <b>Returns:</b>
 

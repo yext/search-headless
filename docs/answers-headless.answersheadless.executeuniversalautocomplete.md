@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.executeUniversalAutocomplete() method
 
+Performs an autocomplete request across all verticals using the query input stored in state.
+
 <b>Signature:</b>
 
 ```typescript
@@ -12,4 +14,6 @@ executeUniversalAutocomplete(): Promise<AutocompleteResponse>;
 <b>Returns:</b>
 
 Promise&lt;[AutocompleteResponse](./answers-headless.autocompleteresponse.md)<!-- -->&gt;
+
+A Promise of an [AutocompleteResponse](./answers-headless.autocompleteresponse.md) from the Answers API
 

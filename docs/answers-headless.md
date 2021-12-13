@@ -10,7 +10,7 @@
 |  --- | --- |
 |  [AnswersCore](./answers-headless.answerscore.md) | Provides methods for executing searches, submitting questions, and performing autocompletes. |
 |  [AnswersError](./answers-headless.answerserror.md) | Represents an error |
-|  [AnswersHeadless](./answers-headless.answersheadless.md) |  |
+|  [AnswersHeadless](./answers-headless.answersheadless.md) | Provides the functionality for interacting with an Answers Search experience. |
 
 ## Enumerations
 
@@ -114,6 +114,6 @@
 |  [AnswersConfig](./answers-headless.answersconfig.md) | The main configuration options for [AnswersCore](./answers-headless.answerscore.md)<!-- -->. For a full description of the options, see [BaseAnswersConfig](./answers-headless.baseanswersconfig.md)<!-- -->. The config requires either an apiKey or a token. |
 |  [Context](./answers-headless.context.md) | Used to trigger Answers [Query Rules](https://hitchhikers.yext.com/tracks/answers-advanced/ans302-query-rules/)<!-- -->. |
 |  [FilterTypes](./answers-headless.filtertypes.md) | A union type for the different kinds of filter. |
-|  [HeadlessConfig](./answers-headless.headlessconfig.md) |  |
+|  [HeadlessConfig](./answers-headless.headlessconfig.md) | The configuration for an AnswersHeadless instance. |
 |  [HighlightedFields](./answers-headless.highlightedfields.md) | A mapping of fields to the values emphasized by the Answers API |
 

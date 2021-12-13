@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.setVerticalKey() method
 
+Sets [VerticalSearchState.verticalKey](./answers-headless.verticalsearchstate.verticalkey.md) to the specified key.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ setVerticalKey(verticalKey: string): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  verticalKey | string |  |
+|  verticalKey | string | The vertical key to set |
 
 <b>Returns:</b>
 

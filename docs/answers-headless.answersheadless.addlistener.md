@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.addListener() method
 
+Adds a listener for a specific state value of type T.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,9 +16,11 @@ addListener<T>(listener: StateListener<T>): Unsubscribe;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  listener | StateListener&lt;T&gt; |  |
+|  listener | StateListener&lt;T&gt; | The listener to add |
 
 <b>Returns:</b>
 
 Unsubscribe
+
+The function for removing the added listener
 

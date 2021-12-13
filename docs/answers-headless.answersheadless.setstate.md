@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.setState() method
 
+Sets the [State](./answers-headless.state.md) to the specified state.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ setState(state: State): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  state | [State](./answers-headless.state.md) |  |
+|  state | [State](./answers-headless.state.md) | The state to set |
 
 <b>Returns:</b>
 

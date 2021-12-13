@@ -4,6 +4,8 @@
 
 ## AnswersHeadless.setSpellCheckEnabled() method
 
+Sets [SpellCheckState.enabled](./answers-headless.spellcheckstate.enabled.md) to the specified boolean value.
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ setSpellCheckEnabled(enabled: boolean): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  enabled | boolean |  |
+|  enabled | boolean | Whether or not spellcheck should be set to enabled |
 
 <b>Returns:</b>
 

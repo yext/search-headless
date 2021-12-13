@@ -14,7 +14,7 @@
     "lint": "eslint .",
     "prepublishOnly": "npm run build",
     "test": "jest",
-    "generate-notices": "generate-license-file --input package.json --output THIRD-PARTY-NOTICES"
+    "generate-notices": "generate-license-file --input package.json --output THIRD-PARTY-NOTICES  && node ./scripts/remove-repo-license.js"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.0",

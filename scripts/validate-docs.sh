@@ -4,7 +4,7 @@
 # The script should be ran after new docs are built
 # If there are any git diffs after new docs are generated, the docs are out of date
 
-git diff --exit-code > /dev/null # send stdout to /dev/null to reduce clutter in the CI output
+git diff --exit-code docs > /dev/null # send stdout to /dev/null to reduce clutter in the CI output
 
 diff_exit_code=$?
 

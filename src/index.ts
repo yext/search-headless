@@ -18,7 +18,7 @@ export type HeadlessConfig = AnswersConfig & {
    * The ID of the AnswersHeadless instance.
    *
    * @remarks
-   * Must be different from the reserved ID for the default AnswersHeadless instance.
+   * Must be different from {@link DEFAULT_HEADLESS_ID}.
    */
   headlessId?: string
 };

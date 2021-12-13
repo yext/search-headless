@@ -280,22 +280,13 @@ export default class AnswersHeadless {
     });
   }
 
-  selectFacetOption(fieldId: string, facetOption: FacetOption): void {
+  setFacetOption(fieldId: string, facetOption: FacetOption, selected: boolean): void {
     const payload = {
-      shouldSelect: true,
+      shouldSelect: selected,
       fieldId,
       facetOption
     };
-    this.stateManager.dispatchEvent('filters/toggleFacetOption', payload);
-  }
-
-  unselectFacetOption(fieldId: string, facetOption: FacetOption): void {
-    const payload = {
-      shouldSelect: false,
-      fieldId,
-      facetOption
-    };
-    this.stateManager.dispatchEvent('filters/toggleFacetOption', payload);
+    this.stateManager.dispatchEvent('filters/setFacetOption', payload);
   }
 
   setFilterOption(seletableFilter: SelectableFilter): void {

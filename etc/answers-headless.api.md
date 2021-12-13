@@ -190,6 +190,9 @@ export function createNearMeFilter(position: NearFilterValue): Filter;
 export function createNumberRangeFilter(fieldId: string, range: BoundedRange<number>): FilterTypes;
 
 // @public
+export const DEFAULT_HEADLESS_ID = "main";
+
+// @public
 export interface DirectAnswer {
     fieldType: string;
     relatedResult: Result;

@@ -10,6 +10,7 @@ import answersUtilities from './answers-utilities';
 
 export * from './answers-core-re-exports';
 export * from './models';
+export * from './constants';
 export * from './utils/filter-creators';
 export { answersUtilities };
 

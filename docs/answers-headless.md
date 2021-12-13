@@ -98,6 +98,7 @@
 |  Variable | Description |
 |  --- | --- |
 |  [answersUtilities](./answers-headless.answersutilities.md) |  |
+|  [DEFAULT\_HEADLESS\_ID](./answers-headless.default_headless_id.md) | The headlessId automatically given to the first AnswersHeadless instance created. |
 
 ## Type Aliases
 

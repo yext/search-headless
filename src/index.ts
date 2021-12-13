@@ -10,7 +10,16 @@ import { SessionTrackingState } from './models/slices/sessiontracking';
 export * from '@yext/answers-core';
 export * from './utils/filter-creators';
 
-type HeadlessConfig = AnswersConfig & {
+/**
+ * The configuration for an AnswersHeadless instance.
+ */
+export type HeadlessConfig = AnswersConfig & {
+  /**
+   * The ID of the AnswersHeadless instance.
+   *
+   * @remarks
+   * Must be different from {@link DEFAULT_HEADLESS_ID}.
+   */
   headlessId?: string
 };
 
@@ -23,6 +32,7 @@ const headlessReducerManager = new HeadlessReducerManager();
  *
  * @param config - The apiKey, experienceKey, etc. needed to set up a front-end Answers
  *                 experience.
+ * @returns The newly created instance of {@link AnswersHeadless}
  */
 export function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless {
   const {
@@ -52,7 +62,8 @@ export function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless 
 }
 
 /**
- * Links the secondHeadless instance to sessionTracking updates made to the firstHeadless instance.
+ * Links the secondHeadless instance to sessionTracking updates made to the firstHeadless
+ * instance.
  */
 function linkSessionTracking(firstHeadless: AnswersHeadless, secondHeadless: AnswersHeadless) {
   firstHeadless.addListener<SessionTrackingState>({

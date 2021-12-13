@@ -29,6 +29,8 @@ import { transformFiltersToCoreFormat } from './utils/transform-filters';
 
 /**
  * Provides the functionality for interacting with an Answers Search experience.
+ *
+ * @public
  */
 export default class AnswersHeadless {
   /**
@@ -36,6 +38,9 @@ export default class AnswersHeadless {
    */
   public readonly utilities = answersUtilities;
 
+  /**
+   * @internal
+   */
   constructor(
     private core: AnswersCore,
     private stateManager: StateManager,

@@ -9,6 +9,8 @@ import {
 
 /**
  * Represents all results for the current vertical.
+ *
+ * @public
  */
 export interface AllResultsForVertical {
   /**
@@ -27,6 +29,8 @@ export interface AllResultsForVertical {
 
 /**
  * Maintains the data for the latest vertical search.
+ *
+ * @public
  */
 export interface VerticalSearchState {
   /**

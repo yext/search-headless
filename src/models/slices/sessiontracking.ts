@@ -1,10 +1,12 @@
 /**
  * Maintains whether the user session should be tracked and, if so, the session
  * information.
+ *
+ * @public
  */
 export interface SessionTrackingState {
   /**
-   * Whether session tracking is enabled or not.
+   * Whether or not session tracking is enabled.
    */
   enabled?: boolean,
   /**

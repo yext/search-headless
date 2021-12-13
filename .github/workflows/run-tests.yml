@@ -20,5 +20,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
-    - run: npm run build
+    - run: npm run build-ci
+    - run: ./scripts/validate-docs.sh
     - run: npm test

@@ -1,5 +1,7 @@
 /**
- * A boundary for a {@link Range} of type T.
+ * A boundary for a {@link BoundedRange} of type T.
+ *
+ * @public
  */
 export interface RangeBoundary<T> {
   /**
@@ -7,15 +9,17 @@ export interface RangeBoundary<T> {
    */
   value: T,
   /**
-   * Whether the range includes the boundary value or not.
+   * Whether or not the range includes the boundary value.
    */
   inclusive: boolean
 }
 
 /**
  * An interface representing a range of values of type T.
+ *
+ * @public
  */
-export interface Range<T> {
+export interface BoundedRange<T> {
   /**
    * The minimum value bounding the range.
    */

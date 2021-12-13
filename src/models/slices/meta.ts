@@ -2,6 +2,8 @@ import { Context } from '@yext/answers-core';
 
 /**
  * Maintains the metadata for network requests.
+ *
+ * @public
  */
 export interface MetaState {
   /**

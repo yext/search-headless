@@ -20,4 +20,3 @@ export { SelectableFilter } from './utils/selectablefilter';
 // state models
 export { ParentState, State } from './state';
 export { StateListener, StateManager };
-

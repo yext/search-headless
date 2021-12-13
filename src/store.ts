@@ -7,7 +7,7 @@ export interface ActionWithHeadlessId extends PayloadAction<unknown> {
 
 /**
  * This reducer will be replaced by initializations of {@link ReduxStateManager}.
- * It is necessary to still have this reducer, though, other wise Redux's `@@init`
+ * It is necessary to still have this reducer, though, otherwise Redux's `@@init`
  * event will not function properly.
  */
 const initialReducer: Reducer<ParentState> = (state: ParentState | undefined) => {

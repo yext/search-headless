@@ -5,11 +5,11 @@ type ServiceIds = {
 };
 
 /**
- * Assign numeric ids to every http requests and the corresponding responses
+ * Assigns numeric IDs to every http request and the corresponding response
  * through {@link AnswersCore}. This helps track the received order of requests
- * and responses. {@link AnswersHeadless} use it to ensure dispatch event for
- * state update is trigger from up-to-date responses (e.g. if the new received
- * response have higher id number from the recorded received response)
+ * and responses. {@link AnswersHeadless} uses it to ensure dispatch events for
+ * state updates are triggered with up-to-date responses (e.g. if the newly received
+ * response has a higher ID number than the recorded received response).
  */
 export default class HttpManager {
   private latestRequestIds: ServiceIds;

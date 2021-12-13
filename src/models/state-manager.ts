@@ -23,9 +23,10 @@ export default interface StateManager {
    */
   dispatchEvent(type: string, payload?: unknown): void;
   /**
-   * Adds a listener for a state value.
+   * Adds a listener for a specific state value of type T.
    *
-   * @param listener - State listener to add
+   * @param listener - The state listener to add
+   * @returns The function for removing the added listener
    */
   addListener<T>(listener: StateListener<T>): Unsubscribe;
 }

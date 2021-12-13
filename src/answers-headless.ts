@@ -433,33 +433,19 @@ export default class AnswersHeadless {
   }
 
   /**
-   * Selects a specified facet option.
+   * Sets a specified facet option to be selected or unselected.
    *
    * @param fieldId - The fieldId for the facet
    * @param facetOption - The option of the facet to select
+   * @param selected - Whether or not the facet option should be selected
    */
-  selectFacetOption(fieldId: string, facetOption: FacetOption): void {
+  setFacetOption(fieldId: string, facetOption: FacetOption, selected: boolean): void {
     const payload = {
-      shouldSelect: true,
+      shouldSelect: selected,
       fieldId,
       facetOption
     };
-    this.stateManager.dispatchEvent('filters/toggleFacetOption', payload);
-  }
-
-  /**
-   * Unselects a specified facet option.
-   *
-   * @param fieldId - The fieldId for the facet
-   * @param facetOption - The option of the facet to unselect
-   */
-  unselectFacetOption(fieldId: string, facetOption: FacetOption): void {
-    const payload = {
-      shouldSelect: false,
-      fieldId,
-      facetOption
-    };
-    this.stateManager.dispatchEvent('filters/toggleFacetOption', payload);
+    this.stateManager.dispatchEvent('filters/setFacetOption', payload);
   }
 
   /**

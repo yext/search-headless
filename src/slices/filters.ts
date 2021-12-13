@@ -32,7 +32,7 @@ const reducers = {
       facet.options.forEach(o => o.selected = false);
     });
   },
-  toggleFacetOption: (state: FiltersState, { payload }: PayloadAction<FacetPayload>) => {
+  setFacetOption: (state: FiltersState, { payload }: PayloadAction<FacetPayload>) => {
     if (!state.facets) {
       console.warn('Trying to select a facet option when no facets exist.');
       return;
@@ -54,6 +54,11 @@ const reducers = {
       });
     });
   },
+  /**
+   * Sets whether a static filter currently in the state is selected or unselected.
+   * If the specified static filter should be selected, but is not in state, it will
+   * be added to the state.
+   */
   setFilterOption: (state: FiltersState, { payload }: PayloadAction<FilterPayload>) => {
     if (!state.static) {
       state.static = [];
@@ -76,8 +81,8 @@ const reducers = {
 };
 
 /**
- * Registers with Redux the slice of {@link State} pertaining to filters. There
- * are reducers for setting the static filters.
+ * Registers with Redux the slice of {@link State} pertaining to filters. There are
+ * reducers for setting the static filters and facet options.
  */
 export default function createFiltersSlice(prefix: string): Slice<FiltersState, typeof reducers> {
   return createSlice({

@@ -61,11 +61,11 @@ export class AnswersHeadless {
     // (undocumented)
     resetFacets(): void;
     // (undocumented)
-    selectFacetOption(fieldId: string, facetOption: FacetOption): void;
-    // (undocumented)
     setAlternativeVerticals(alternativeVerticals: VerticalResults[]): void;
     // (undocumented)
     setContext(context: Context): void;
+    // (undocumented)
+    setFacetOption(fieldId: string, facetOption: FacetOption, selected: boolean): void;
     // (undocumented)
     setFacets(facets: DisplayableFacet[]): void;
     // (undocumented)
@@ -106,8 +106,6 @@ export class AnswersHeadless {
     get state(): State;
     // (undocumented)
     submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse>;
-    // (undocumented)
-    unselectFacetOption(fieldId: string, facetOption: FacetOption): void;
     // (undocumented)
     readonly utilities: {
         searchThroughFacet(facet: DisplayableFacet, searchTerm: string): DisplayableFacet;

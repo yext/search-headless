@@ -32,9 +32,9 @@ The constructor for this class is marked as internal. Third-party code should no
 |  [executeVerticalAutocomplete()](./answers-headless.answersheadless.executeverticalautocomplete.md) |  |  |
 |  [executeVerticalQuery()](./answers-headless.answersheadless.executeverticalquery.md) |  |  |
 |  [resetFacets()](./answers-headless.answersheadless.resetfacets.md) |  |  |
-|  [selectFacetOption(fieldId, facetOption)](./answers-headless.answersheadless.selectfacetoption.md) |  |  |
 |  [setAlternativeVerticals(alternativeVerticals)](./answers-headless.answersheadless.setalternativeverticals.md) |  |  |
 |  [setContext(context)](./answers-headless.answersheadless.setcontext.md) |  |  |
+|  [setFacetOption(fieldId, facetOption, selected)](./answers-headless.answersheadless.setfacetoption.md) |  |  |
 |  [setFacets(facets)](./answers-headless.answersheadless.setfacets.md) |  |  |
 |  [setFilterOption(seletableFilter)](./answers-headless.answersheadless.setfilteroption.md) |  |  |
 |  [setOffset(offset)](./answers-headless.answersheadless.setoffset.md) |  |  |
@@ -54,5 +54,4 @@ The constructor for this class is marked as internal. Third-party code should no
 |  [setVerticalKey(verticalKey)](./answers-headless.answersheadless.setverticalkey.md) |  |  |
 |  [setVerticalLimit(limit)](./answers-headless.answersheadless.setverticallimit.md) |  |  |
 |  [submitQuestion(request)](./answers-headless.answersheadless.submitquestion.md) |  |  |
-|  [unselectFacetOption(fieldId, facetOption)](./answers-headless.answersheadless.unselectfacetoption.md) |  |  |
 

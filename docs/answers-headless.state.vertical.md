@@ -4,6 +4,8 @@
 
 ## State.vertical property
 
+Maintains the data for the latest vertical search.
+
 <b>Signature:</b>
 
 ```typescript

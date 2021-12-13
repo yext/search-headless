@@ -18,5 +18,5 @@ export declare interface SpellCheck
 |  --- | --- | --- |
 |  [correctedQuery](./answers-headless.spellcheck.correctedquery.md) | string | The corrected version of the originalQuery. |
 |  [originalQuery](./answers-headless.spellcheck.originalquery.md) | string | The query that was input into the spell checker. |
-|  [type](./answers-headless.spellcheck.type.md) | SpellCheckType | The type of spell check. |
+|  [type](./answers-headless.spellcheck.type.md) | [SpellCheckType](./answers-headless.spellchecktype.md) | The type of spell check. |
 

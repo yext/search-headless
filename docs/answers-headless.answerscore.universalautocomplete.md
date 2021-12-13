@@ -16,7 +16,7 @@ universalAutocomplete(request: UniversalAutocompleteRequest): Promise<Autocomple
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | UniversalAutocompleteRequest | Universal autocomplete request options |
+|  request | [UniversalAutocompleteRequest](./answers-headless.universalautocompleterequest.md) | Universal autocomplete request options |
 
 <b>Returns:</b>
 

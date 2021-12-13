@@ -28,14 +28,44 @@ export interface ParentState {
  * @public
  */
 export interface State {
+  /**
+   * {@inheritDoc QueryState}
+   */
   query: QueryState,
+  /**
+   * {@inheritDoc UniversalSearchState}
+   */
   universal: UniversalSearchState,
+  /**
+   * {@inheritDoc VerticalSearchState}
+   */
   vertical: VerticalSearchState,
+  /**
+   * {@inheritDoc DirectAnswerState}
+   */
   directAnswer: DirectAnswerState,
+  /**
+   * {@inheritDoc FiltersState}
+   */
   filters: FiltersState,
+  /**
+   * {@inheritDoc SearchStatusState}
+   */
   searchStatus: SearchStatusState,
+  /**
+   * {@inheritDoc SpellCheckState}
+   */
   spellCheck: SpellCheckState,
+  /**
+   * {@inheritDoc SessionTrackingState}
+   */
   sessionTracking: SessionTrackingState
+  /**
+   * {@inheritDoc MetaState}
+   */
   meta: MetaState,
+  /**
+   * {@inheritDoc LocationState}
+   */
   location: LocationState,
 }

@@ -16,14 +16,14 @@ export interface State
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [directAnswer](./answers-headless.state.directanswer.md) | [DirectAnswerState](./answers-headless.directanswerstate.md) |  |
-|  [filters](./answers-headless.state.filters.md) | [FiltersState](./answers-headless.filtersstate.md) |  |
-|  [location](./answers-headless.state.location.md) | [LocationState](./answers-headless.locationstate.md) |  |
-|  [meta](./answers-headless.state.meta.md) | [MetaState](./answers-headless.metastate.md) |  |
-|  [query](./answers-headless.state.query.md) | [QueryState](./answers-headless.querystate.md) |  |
-|  [searchStatus](./answers-headless.state.searchstatus.md) | [SearchStatusState](./answers-headless.searchstatusstate.md) |  |
-|  [sessionTracking](./answers-headless.state.sessiontracking.md) | [SessionTrackingState](./answers-headless.sessiontrackingstate.md) |  |
-|  [spellCheck](./answers-headless.state.spellcheck.md) | [SpellCheckState](./answers-headless.spellcheckstate.md) |  |
-|  [universal](./answers-headless.state.universal.md) | [UniversalSearchState](./answers-headless.universalsearchstate.md) |  |
-|  [vertical](./answers-headless.state.vertical.md) | [VerticalSearchState](./answers-headless.verticalsearchstate.md) |  |
+|  [directAnswer](./answers-headless.state.directanswer.md) | [DirectAnswerState](./answers-headless.directanswerstate.md) | Maintains the direct answer associated with the latest search. |
+|  [filters](./answers-headless.state.filters.md) | [FiltersState](./answers-headless.filtersstate.md) | Maintains the current state of facets and filters in the application. |
+|  [location](./answers-headless.state.location.md) | [LocationState](./answers-headless.locationstate.md) | Maintains the user's location, if given, or the inferred location, that is used to bias search results. |
+|  [meta](./answers-headless.state.meta.md) | [MetaState](./answers-headless.metastate.md) | Maintains the metadata for network requests. |
+|  [query](./answers-headless.state.query.md) | [QueryState](./answers-headless.querystate.md) | Maintains the latest query and its associated data. |
+|  [searchStatus](./answers-headless.state.searchstatus.md) | [SearchStatusState](./answers-headless.searchstatusstate.md) | Maintains the status of the latest search. |
+|  [sessionTracking](./answers-headless.state.sessiontracking.md) | [SessionTrackingState](./answers-headless.sessiontrackingstate.md) | Maintains whether the user session should be tracked and, if so, the session information. |
+|  [spellCheck](./answers-headless.state.spellcheck.md) | [SpellCheckState](./answers-headless.spellcheckstate.md) | Maintains whether spellcheck is enabled and the spellcheck response from the latest search. |
+|  [universal](./answers-headless.state.universal.md) | [UniversalSearchState](./answers-headless.universalsearchstate.md) | Maintains the data for the latest universal search. |
+|  [vertical](./answers-headless.state.vertical.md) | [VerticalSearchState](./answers-headless.verticalsearchstate.md) | Maintains the data for the latest vertical search. |
 

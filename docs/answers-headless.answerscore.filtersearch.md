@@ -16,7 +16,7 @@ filterSearch(request: FilterSearchRequest): Promise<FilterSearchResponse>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | FilterSearchRequest | filtersearch request options |
+|  request | [FilterSearchRequest](./answers-headless.filtersearchrequest.md) | filtersearch request options |
 
 <b>Returns:</b>
 

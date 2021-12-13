@@ -4,6 +4,8 @@
 
 ## State.spellCheck property
 
+Maintains whether spellcheck is enabled and the spellcheck response from the latest search.
+
 <b>Signature:</b>
 
 ```typescript

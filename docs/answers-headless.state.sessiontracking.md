@@ -4,6 +4,8 @@
 
 ## State.sessionTracking property
 
+Maintains whether the user session should be tracked and, if so, the session information.
+
 <b>Signature:</b>
 
 ```typescript

@@ -16,7 +16,7 @@ verticalAutocomplete(request: VerticalAutocompleteRequest): Promise<Autocomplete
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | VerticalAutocompleteRequest | Vertical autocomplete request options |
+|  request | [VerticalAutocompleteRequest](./answers-headless.verticalautocompleterequest.md) | Vertical autocomplete request options |
 
 <b>Returns:</b>
 

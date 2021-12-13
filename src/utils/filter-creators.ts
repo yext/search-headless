@@ -1,7 +1,12 @@
 import { CombinedFilter, Filter, FilterCombinator, Matcher, NearFilterValue } from '@yext/answers-core';
 import { BoundedRange } from '../models/utils/boundedrange';
 
-type FilterTypes = Filter | CombinedFilter;
+/**
+ * A union type for the different kinds of filter.
+ *
+ * @public
+ */
+export type FilterTypes = Filter | CombinedFilter;
 
 /**
  * Creates a simple {@link Filter} that ensures all results will match a specific

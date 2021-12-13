@@ -20,7 +20,7 @@ Overrides the sort options that are configured on the experience configuration.
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [direction?](./answers-headless.sortby.direction.md) | Direction | <i>(Optional)</i> The direction of the sort. Required if the SortBy type is [SortType.Field](./answers-headless.sorttype.md)<!-- -->. |
+|  [direction?](./answers-headless.sortby.direction.md) | [Direction](./answers-headless.direction.md) | <i>(Optional)</i> The direction of the sort. Required if the SortBy type is [SortType.Field](./answers-headless.sorttype.md)<!-- -->. |
 |  [field?](./answers-headless.sortby.field.md) | string | <i>(Optional)</i> The field name to sort by. Required if the SortBy type is [SortType.Field](./answers-headless.sorttype.md)<!-- -->. |
 |  [type](./answers-headless.sortby.type.md) | [SortType](./answers-headless.sorttype.md) | The method of sorting. |
 

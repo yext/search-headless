@@ -13,21 +13,27 @@ export interface AllResultsForVertical {
     resultsCount: number;
 }
 
-// Warning: (ae-forgotten-export) The symbol "AnswersConfigWithApiKey" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "AnswersConfigWithToken" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type AnswersConfig = AnswersConfigWithApiKey | AnswersConfigWithToken;
 
 // @public
+export interface AnswersConfigWithApiKey extends BaseAnswersConfig {
+    apiKey: string;
+    token?: never;
+}
+
+// @public
+export interface AnswersConfigWithToken extends BaseAnswersConfig {
+    apiKey?: never;
+    token: string;
+}
+
+// @public
 export class AnswersCore {
-    // Warning: (ae-forgotten-export) The symbol "FilterSearchRequest" needs to be exported by the entry point index.d.ts
     filterSearch(request: FilterSearchRequest): Promise<FilterSearchResponse>;
     submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse>;
-    // Warning: (ae-forgotten-export) The symbol "UniversalAutocompleteRequest" needs to be exported by the entry point index.d.ts
     universalAutocomplete(request: UniversalAutocompleteRequest): Promise<AutocompleteResponse>;
     universalSearch(request: UniversalSearchRequest): Promise<UniversalSearchResponse>;
-    // Warning: (ae-forgotten-export) The symbol "VerticalAutocompleteRequest" needs to be exported by the entry point index.d.ts
     verticalAutocomplete(request: VerticalAutocompleteRequest): Promise<AutocompleteResponse>;
     verticalSearch(request: VerticalSearchRequest): Promise<VerticalSearchResponse>;
 }
@@ -167,8 +173,6 @@ export interface CombinedFilter {
     filters: (Filter | CombinedFilter)[];
 }
 
-// Warning: (ae-forgotten-export) The symbol "FilterTypes" needs to be exported by the entry point index.d.ts
-//
 // @public
 export function combineFilters(filterA: FilterTypes, filterB: FilterTypes, combinator: FilterCombinator): CombinedFilter;
 
@@ -208,6 +212,12 @@ export interface DirectAnswerState {
 export enum DirectAnswerType {
     FeaturedSnippet = "FEATURED_SNIPPET",
     FieldValue = "FIELD_VALUE"
+}
+
+// @public
+export enum Direction {
+    Ascending = "ASC",
+    Descending = "DESC"
 }
 
 // @public
@@ -292,6 +302,15 @@ export enum FilterCombinator {
 }
 
 // @public
+export interface FilterSearchRequest {
+    fields: SearchParameterField[];
+    input: string;
+    sectioned: boolean;
+    sessionTrackingEnabled?: boolean;
+    verticalKey: string;
+}
+
+// @public
 export interface FilterSearchResponse {
     businessId?: string;
     queryId?: string;
@@ -307,6 +326,9 @@ export interface FiltersState {
     facets?: DisplayableFacet[];
     static?: SelectableFilter[];
 }
+
+// @public
+export type FilterTypes = Filter | CombinedFilter;
 
 // @public (undocumented)
 export type HeadlessConfig = AnswersConfig & {
@@ -484,7 +506,6 @@ export interface Snippet {
 
 // @public
 export interface SortBy {
-    // Warning: (ae-forgotten-export) The symbol "Direction" needs to be exported by the entry point index.d.ts
     direction?: Direction;
     field?: string;
     type: SortType;
@@ -511,7 +532,6 @@ export enum Source {
 export interface SpellCheck {
     correctedQuery: string;
     originalQuery: string;
-    // Warning: (ae-forgotten-export) The symbol "SpellCheckType" needs to be exported by the entry point index.d.ts
     type: SpellCheckType;
 }
 
@@ -521,26 +541,23 @@ export interface SpellCheckState extends Partial<SpellCheck> {
 }
 
 // @public
+export enum SpellCheckType {
+    AutoCorrect = "AUTOCORRECT",
+    Combine = "COMBINE",
+    Suggest = "SUGGEST"
+}
+
+// @public
 export interface State {
-    // (undocumented)
     directAnswer: DirectAnswerState;
-    // (undocumented)
     filters: FiltersState;
-    // (undocumented)
     location: LocationState;
-    // (undocumented)
     meta: MetaState;
-    // (undocumented)
     query: QueryState;
-    // (undocumented)
     searchStatus: SearchStatusState;
-    // (undocumented)
     sessionTracking: SessionTrackingState;
-    // (undocumented)
     spellCheck: SpellCheckState;
-    // (undocumented)
     universal: UniversalSearchState;
-    // (undocumented)
     vertical: VerticalSearchState;
 }
 
@@ -555,6 +572,12 @@ export interface StateManager {
     addListener<T>(listener: StateListener<T>): Unsubscribe;
     dispatchEvent(type: string, payload?: unknown): void;
     getState(): State;
+}
+
+// @public
+export interface UniversalAutocompleteRequest {
+    input: string;
+    sessionTrackingEnabled?: boolean;
 }
 
 // @public
@@ -594,6 +617,13 @@ export interface UniversalSearchState {
     limit?: UniversalLimit;
     restrictVerticals?: string[];
     verticals?: VerticalResults[];
+}
+
+// @public
+export interface VerticalAutocompleteRequest {
+    input: string;
+    sessionTrackingEnabled?: boolean;
+    verticalKey: string;
 }
 
 // @public

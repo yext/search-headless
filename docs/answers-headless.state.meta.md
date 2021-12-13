@@ -4,6 +4,8 @@
 
 ## State.meta property
 
+Maintains the metadata for network requests.
+
 <b>Signature:</b>
 
 ```typescript

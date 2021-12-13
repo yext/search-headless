@@ -4,6 +4,8 @@
 
 ## State.location property
 
+Maintains the user's location, if given, or the inferred location, that is used to bias search results.
+
 <b>Signature:</b>
 
 ```typescript

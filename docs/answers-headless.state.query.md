@@ -4,6 +4,8 @@
 
 ## State.query property
 
+Maintains the latest query and its associated data.
+
 <b>Signature:</b>
 
 ```typescript

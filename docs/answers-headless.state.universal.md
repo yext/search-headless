@@ -4,6 +4,8 @@
 
 ## State.universal property
 
+Maintains the data for the latest universal search.
+
 <b>Signature:</b>
 
 ```typescript

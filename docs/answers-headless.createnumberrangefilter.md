@@ -21,7 +21,7 @@ export declare function createNumberRangeFilter(fieldId: string, range: BoundedR
 
 <b>Returns:</b>
 
-FilterTypes
+[FilterTypes](./answers-headless.filtertypes.md)
 
 The newly created filter for the field value range
 

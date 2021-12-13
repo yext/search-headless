@@ -4,6 +4,8 @@
 
 ## State.filters property
 
+Maintains the current state of facets and filters in the application.
+
 <b>Signature:</b>
 
 ```typescript

@@ -4,6 +4,8 @@
 
 ## State.searchStatus property
 
+Maintains the status of the latest search.
+
 <b>Signature:</b>
 
 ```typescript

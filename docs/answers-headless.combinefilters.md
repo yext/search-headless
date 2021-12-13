@@ -16,8 +16,8 @@ export declare function combineFilters(filterA: FilterTypes, filterB: FilterType
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  filterA | FilterTypes | The first filter to be combined |
-|  filterB | FilterTypes | The second filter to be combined |
+|  filterA | [FilterTypes](./answers-headless.filtertypes.md) | The first filter to be combined |
+|  filterB | [FilterTypes](./answers-headless.filtertypes.md) | The second filter to be combined |
 |  combinator | [FilterCombinator](./answers-headless.filtercombinator.md) | Specifies how the two filters should be joined |
 
 <b>Returns:</b>

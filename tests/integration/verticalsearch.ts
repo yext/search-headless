@@ -64,8 +64,7 @@ it('vertical searches set allResultsForVertical and alternativeVerticals', async
   const expectedAllResultsForVertical: AllResultsForVertical = {
     facets: [],
     results: [],
-    resultsCount: 0,
-    searchIntents: []
+    resultsCount: 0
   };
   const expectedNoResultsState = {
     allResultsForVertical: expectedAllResultsForVertical,

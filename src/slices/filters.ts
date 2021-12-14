@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
-import { Filter, FacetOption, DisplayableFacet, SortBy } from '@yext/answers-core';
+import { Filter, FacetOption, DisplayableFacet } from '@yext/answers-core';
 import { FiltersState } from '../models/slices/filters';
 import { SelectableFilter } from '../models/utils/selectablefilter';
 import { areFiltersEqual } from '../utils/filter-utils';
@@ -26,9 +26,6 @@ const reducers = {
   },
   setFacets: (state: FiltersState, action: PayloadAction<DisplayableFacet[]>) => {
     state.facets = action.payload;
-  },
-  setSortBys: (state: FiltersState, action: PayloadAction<SortBy[]>) => {
-    state.sortBys = action.payload;
   },
   resetFacets: (state: FiltersState) => {
     state.facets?.forEach(facet => {
@@ -57,6 +54,11 @@ const reducers = {
       });
     });
   },
+  /**
+   * Sets whether a static filter currently in the state is selected or unselected.
+   * If the specified static filter should be selected, but is not in state, it will
+   * be added to the state.
+   */
   setFilterOption: (state: FiltersState, { payload }: PayloadAction<FilterPayload>) => {
     if (!state.static) {
       state.static = [];
@@ -79,8 +81,8 @@ const reducers = {
 };
 
 /**
- * Registers with Redux the slice of {@link State} pertaining to filters. There
- * are reducers for setting the static filters.
+ * Registers with Redux the slice of {@link State} pertaining to filters. There are
+ * reducers for setting the static filters and facet options.
  */
 export default function createFiltersSlice(prefix: string): Slice<FiltersState, typeof reducers> {
   return createSlice({

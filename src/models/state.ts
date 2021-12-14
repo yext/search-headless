@@ -10,22 +10,62 @@ import { DirectAnswerState } from './slices/directanswer';
 import { SearchStatusState } from './slices/searchstatus';
 
 /**
- * The overall shape of the redux state tree, with each key value pair
- * of headlessId to {@link State} representing a single AnswersHeadless instance.
+ * The overall shape of the redux state tree, with each key value pair of
+ * headlessId to {@link State} representing a single AnswersHeadless instance.
+ *
+ * @public
  */
 export interface ParentState {
+  /**
+   * A mapping of the ID of an AnswersHeadless instance to its {@link State}.
+   */
   [headlessId: string]: State
 }
 
+/**
+ * The state representing an AnswersHeadless instance.
+ *
+ * @public
+ */
 export interface State {
+  /**
+   * {@inheritDoc QueryState}
+   */
   query: QueryState,
+  /**
+   * {@inheritDoc UniversalSearchState}
+   */
   universal: UniversalSearchState,
+  /**
+   * {@inheritDoc VerticalSearchState}
+   */
   vertical: VerticalSearchState,
+  /**
+   * {@inheritDoc DirectAnswerState}
+   */
   directAnswer: DirectAnswerState,
+  /**
+   * {@inheritDoc FiltersState}
+   */
   filters: FiltersState,
+  /**
+   * {@inheritDoc SearchStatusState}
+   */
   searchStatus: SearchStatusState,
+  /**
+   * {@inheritDoc SpellCheckState}
+   */
   spellCheck: SpellCheckState,
+  /**
+   * {@inheritDoc SessionTrackingState}
+   */
   sessionTracking: SessionTrackingState
+  /**
+   * {@inheritDoc MetaState}
+   */
   meta: MetaState,
+  /**
+   * {@inheritDoc LocationState}
+   */
   location: LocationState,
 }

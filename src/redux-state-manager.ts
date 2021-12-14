@@ -24,10 +24,6 @@ export default class ReduxStateManager implements StateManager {
     return state[this.headlessId];
   }
 
-  /**
-   * For actions other than set-state, the action type is given a prefix to designate which
-   * AnswersHeadless instance it should affect.
-   */
   dispatchEvent(type: string, payload?: unknown): void {
     const answersActionType = type === 'set-state' ? 'set-state' : this.headlessId + '/' + type;
     this.store.dispatch({

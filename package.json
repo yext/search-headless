@@ -70,5 +70,9 @@
       "<rootDir>/tests/utils/*",
       "<rootDir>/test-site-node/*"
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yext/answers-headless.git"
   }
 }

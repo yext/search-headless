@@ -19,11 +19,12 @@ function removeRepoLicense() {
  * in the third party notices file
  * @param {string} fileContents The contents of the 3rd party notices file
  * @param {number} licenseStart the index at the start of the repo's license section
+ * @returns {string}
  */
 function countNumPackagesWithSharedLicense(fileContents, licenseStart) {
   const packageNameRegex = / - .*@.*/;
-  let atPackageName = true;
   let currentFileIndex = licenseStart + packageNameRegex.exec(fileContents.slice(licenseStart)).index;
+  let atPackageName = true;
   let numPackagesWithSharedLicense = 0;
   while (atPackageName) {
     const line = fileContents.slice(currentFileIndex, fileContents.indexOf('\n', currentFileIndex));
@@ -70,10 +71,9 @@ function getNoticesWithoutRepoLicense(fileContents) {
       repoLicenseSection = repoLicenseSection.replace(
         'The following NPM packages may be included in this product:', 
         'The following NPM package may be included in this product:');
-        repoLicenseSection = repoLicenseSection.replace(
+      repoLicenseSection = repoLicenseSection.replace(
         'These packages each contain the following license and notice below:', 
-        'This package contains the following license and notice below:'
-      );
+        'This package contains the following license and notice below:');
     }
     const contentsBeforeRepoLicense = fileContents.slice(0, startIndexOfRepoLicense)
     const contentsAfterRepoLicense = fileContents.slice(endIndexOfRepoLicense);

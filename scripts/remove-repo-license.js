@@ -44,7 +44,7 @@ function countNumPackagesWithSharedLicense(fileContents, licenseStart) {
  * @returns {string}
  */
 function getNoticesWithoutRepoLicense(fileContents) {
-  const repoLine = ` - ${packageJson.name}`;
+  const repoLine = ` - ${packageJson.name}@${packageJson.version}\n`;
   const divider = '-----------\n';
 
   const startIndexOfRepoLine = fileContents.indexOf(repoLine);
@@ -64,9 +64,7 @@ function getNoticesWithoutRepoLicense(fileContents) {
   } else {
     // remove repo's package name
     let repoLicenseSection = fileContents.slice(startIndexOfRepoLicense, endIndexOfRepoLicense);
-    const startIndexOfrepoLineInSection = repoLicenseSection.indexOf(repoLine);
-    const endIndexOfRepoLineInSection = repoLicenseSection.indexOf('\n', startIndexOfrepoLineInSection) + 1;
-    repoLicenseSection = repoLicenseSection.slice(0, startIndexOfrepoLineInSection) + repoLicenseSection.slice(endIndexOfRepoLineInSection);
+    repoLicenseSection = repoLicenseSection.replace(repoLine, '');
 
     if (numPackagesWithSharedLicense === 2) {
       repoLicenseSection = repoLicenseSection.replace(

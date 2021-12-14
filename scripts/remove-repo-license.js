@@ -47,35 +47,39 @@ function getNoticesWithoutRepoLicense(fileContents) {
   const repoLine = ` - ${packageJson.name}`;
   const divider = '-----------\n';
 
-  const indexOfRepoLine = fileContents.indexOf(repoLine);
-  if (indexOfRepoLine === -1) {
+  const startIndexOfRepoLine = fileContents.indexOf(repoLine);
+  if (startIndexOfRepoLine === -1) {
     return fileContents;
   }
 
   // determine how many packages share the same license as current repo
-  const startIndexOfRepoDivider = fileContents.lastIndexOf(divider, indexOfRepoLine);
+  const startIndexOfRepoDivider = fileContents.lastIndexOf(divider, startIndexOfRepoLine);
   const startIndexOfRepoLicense = startIndexOfRepoDivider === -1 ? 0 : startIndexOfRepoDivider + divider.length;
+  const endIndexOfRepoLicense = fileContents.indexOf(divider, startIndexOfRepoLicense) + divider.length;
   const numPackagesWithSharedLicense = countNumPackagesWithSharedLicense(fileContents, startIndexOfRepoLicense);
 
   if (numPackagesWithSharedLicense === 1) {
     // remove repo's license
-    const endIndexOfRepoLicense = fileContents.indexOf(divider, startIndexOfRepoLicense) + divider.length;
     return fileContents.slice(0, startIndexOfRepoLicense) + fileContents.slice(endIndexOfRepoLicense);
   } else {
     // remove repo's package name
-    const endIndexOfRepoLine = fileContents.indexOf('\n', indexOfRepoLine) + 1;
-    let modifiedFileContents = fileContents.slice(0, indexOfRepoLine) + fileContents.slice(endIndexOfRepoLine);
+    let repoLicenseSection = fileContents.slice(startIndexOfRepoLicense, endIndexOfRepoLicense);
+    const startIndexOfrepoLineInSection = repoLicenseSection.indexOf(repoLine);
+    const endIndexOfRepoLineInSection = repoLicenseSection.indexOf('\n', startIndexOfrepoLineInSection) + 1;
+    repoLicenseSection = repoLicenseSection.slice(0, startIndexOfrepoLineInSection) + repoLicenseSection.slice(endIndexOfRepoLineInSection);
 
     if (numPackagesWithSharedLicense === 2) {
-      modifiedFileContents = modifiedFileContents.replace(
+      repoLicenseSection = repoLicenseSection.replace(
         'The following NPM packages may be included in this product:', 
         'The following NPM package may be included in this product:');
-      modifiedFileContents = modifiedFileContents.replace(
+        repoLicenseSection = repoLicenseSection.replace(
         'These packages each contain the following license and notice below:', 
         'This package contains the following license and notice below:'
       );
     }
-    return modifiedFileContents;
+    const contentsBeforeRepoLicense = fileContents.slice(0, startIndexOfRepoLicense)
+    const contentsAfterRepoLicense = fileContents.slice(endIndexOfRepoLicense);
+    return contentsBeforeRepoLicense + repoLicenseSection + contentsAfterRepoLicense;
   }
 }
 

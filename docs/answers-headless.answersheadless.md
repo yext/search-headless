@@ -51,9 +51,10 @@ The constructor for this class is marked as internal. Third-party code should no
 |  [setSpellCheckEnabled(enabled)](./answers-headless.answersheadless.setspellcheckenabled.md) |  | Sets [SpellCheckState.enabled](./answers-headless.spellcheckstate.enabled.md) to the specified boolean value. |
 |  [setState(state)](./answers-headless.answersheadless.setstate.md) |  | Sets the [State](./answers-headless.state.md) to the specified state. |
 |  [setStaticFilters(filters)](./answers-headless.answersheadless.setstaticfilters.md) |  | Sets [FiltersState.static](./answers-headless.filtersstate.static.md) to the specified filters. |
+|  [setUniversal()](./answers-headless.answersheadless.setuniversal.md) |  | Sets up Headless to manage universal searches. |
 |  [setUniversalLimit(limit)](./answers-headless.answersheadless.setuniversallimit.md) |  | Sets [UniversalSearchState.limit](./answers-headless.universalsearchstate.limit.md) to the specified limit. |
 |  [setUserLocation(latLong)](./answers-headless.answersheadless.setuserlocation.md) |  | Sets [LocationState.userLocation](./answers-headless.locationstate.userlocation.md) to the specified latitude and longitude. |
-|  [setVerticalKey(verticalKey)](./answers-headless.answersheadless.setverticalkey.md) |  | Sets [VerticalSearchState.verticalKey](./answers-headless.verticalsearchstate.verticalkey.md) to the specified key. |
+|  [setVertical(verticalKey)](./answers-headless.answersheadless.setvertical.md) |  | Sets up Headless to manage the vertical indicated by the verticalKey. |
 |  [setVerticalLimit(limit)](./answers-headless.answersheadless.setverticallimit.md) |  | Sets [VerticalSearchState.limit](./answers-headless.verticalsearchstate.limit.md) to the specified limit. |
 |  [submitQuestion(request)](./answers-headless.answersheadless.submitquestion.md) |  | Submits a question to the Answers API with the specified request data. |
 

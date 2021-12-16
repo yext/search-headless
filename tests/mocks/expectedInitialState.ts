@@ -1,9 +1,12 @@
 import { State } from '../../src/models/state';
+import { SearchTypeEnum } from '../../src/models/utils/searchType';
 
 export const expectedInitialState: State = {
   filters: {},
   location: {},
-  meta: {},
+  meta: {
+    searchType: SearchTypeEnum.Universal
+  },
   query: {},
   sessionTracking: {
     enabled: false

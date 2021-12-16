@@ -1,8 +1,11 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
 import { Context } from '@yext/answers-core';
 import { MetaState } from '../models/slices/meta';
+import { SearchTypeEnum } from '../models/utils/searchType';
 
-const initialState: MetaState = {};
+const initialState: MetaState = {
+  searchType: SearchTypeEnum.Universal
+};
 
 const reducers = {
   setContext: (state, action: PayloadAction<Context>) => {
@@ -13,6 +16,9 @@ const reducers = {
   },
   setUUID: (state, action: PayloadAction<string>) => {
     state.uuid = action.payload;
+  },
+  setSearchType: (state, action: PayloadAction<string>) => {
+    state.searchType = action.payload;
   }
 };
 

@@ -43,7 +43,7 @@ const reducers = {
   setSortBys: (state: VerticalSearchState, action: PayloadAction<SortBy[]>) => {
     state.sortBys = action.payload;
   },
-  setVerticalKey: (state: VerticalSearchState, action: PayloadAction<string>) => {
+  setVerticalKey: (state: VerticalSearchState, action: PayloadAction<string | undefined>) => {
     state.verticalKey = action.payload;
   }
 };

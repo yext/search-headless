@@ -1,15 +1,14 @@
 import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
 import { FeaturedSnippetDirectAnswer, DirectAnswerType, Source } from '@yext/answers-core';
 import { State } from '../../src/models/state';
+import { SearchTypeEnum } from '../../src/models/utils/searchType';
 
 const initialState: State = {
   query: {
     input: 'virginia',
     mostRecentSearch: 'virginia'
   },
-  vertical: {
-    verticalKey: '123'
-  },
+  vertical: {},
   directAnswer: {},
   universal: {},
   filters: {},
@@ -19,7 +18,9 @@ const initialState: State = {
   searchStatus: {},
   sessionTracking: {},
   location: {},
-  meta: {}
+  meta: {
+    searchType: SearchTypeEnum.Universal
+  }
 };
 
 const featuredSnippedDirectAnswer: FeaturedSnippetDirectAnswer = {
@@ -41,11 +42,15 @@ describe('AnswersHeadless spellcheck interactions properly update state', () => 
     const answers = createMockedAnswersHeadless({
       verticalSearch: () => Promise.resolve({ directAnswer: featuredSnippedDirectAnswer })
     }, initialState);
+    answers.setVertical('123');
     await answers.executeVerticalQuery();
     const expectedState = {
       ...initialState,
       directAnswer: {
         result: featuredSnippedDirectAnswer
+      },
+      meta: {
+        searchType: SearchTypeEnum.Vertical
       }
     };
 
@@ -56,6 +61,7 @@ describe('AnswersHeadless spellcheck interactions properly update state', () => 
     const answers = createMockedAnswersHeadless({
       universalSearch: () => Promise.resolve({ directAnswer: featuredSnippedDirectAnswer })
     }, initialState);
+    answers.setUniversal();
     await answers.executeUniversalQuery();
     const expectedState = {
       ...initialState,
@@ -75,6 +81,7 @@ describe('AnswersHeadless spellcheck interactions properly update state', () => 
     const answers = createMockedAnswersHeadless({
       universalSearch: () => Promise.resolve({ directAnswer: undefined })
     }, initialStateWithDA);
+    answers.setUniversal();
     await answers.executeUniversalQuery();
     const expectedState = {
       ...initialState,

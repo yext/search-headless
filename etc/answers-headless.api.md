@@ -55,7 +55,7 @@ export class AnswersHeadless {
     addListener<T>(listener: StateListener<T>): Unsubscribe;
     executeFilterSearch(query: string, sectioned: boolean, fields: SearchParameterField[]): Promise<FilterSearchResponse | undefined>;
     executeUniversalAutocomplete(): Promise<AutocompleteResponse>;
-    executeUniversalQuery(): Promise<UniversalSearchResponse>;
+    executeUniversalQuery(): Promise<UniversalSearchResponse | undefined>;
     executeVerticalAutocomplete(): Promise<AutocompleteResponse | undefined>;
     executeVerticalQuery(): Promise<VerticalSearchResponse | undefined>;
     resetFacets(): void;
@@ -76,9 +76,10 @@ export class AnswersHeadless {
     setSpellCheckEnabled(enabled: boolean): void;
     setState(state: State): void;
     setStaticFilters(filters: SelectableFilter[]): void;
+    setUniversal(): void;
     setUniversalLimit(limit: UniversalLimit): void;
     setUserLocation(latLong: LatLong): void;
-    setVerticalKey(verticalKey: string): void;
+    setVertical(verticalKey: string): void;
     setVerticalLimit(limit: number): void;
     get state(): State;
     submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse>;
@@ -360,6 +361,8 @@ export enum Matcher {
 export interface MetaState {
     context?: Context;
     referrerPageUrl?: string;
+    // Warning: (ae-forgotten-export) The symbol "SearchType" needs to be exported by the entry point index.d.ts
+    searchType: SearchType;
     uuid?: string;
 }
 

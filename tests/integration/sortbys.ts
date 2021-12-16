@@ -7,7 +7,7 @@ it('executeVerticalQuery properly updates spellcheck state', async () => {
     verticalSearch: mockSearch
   });
   answers.setQuery('lol');
-  answers.setVerticalKey('vertical-key');
+  answers.setVertical('vertical-key');
   answers.setSortBys([
     {
       type: SortType.Field,

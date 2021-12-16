@@ -18,7 +18,7 @@ it('vertical searches set search intents', async () => {
   const answers = createMockedAnswersHeadless({
     verticalSearch: mockSearch
   });
-  answers.setVerticalKey('vertical-key');
+  answers.setVertical('vertical-key');
   expect(answers.state.query.searchIntents).toEqual(undefined);
   await answers.executeVerticalQuery();
   expect(answers.state.query.searchIntents).toEqual(['NEAR_ME']);
@@ -43,7 +43,7 @@ describe('sessionId to request works as expected', () => {
     verticalSearch: verticalMockSearch,
     universalSearch: universalMockSearch
   });
-  answers.setVerticalKey('vertical-key');
+  answers.setVertical('vertical-key');
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -53,7 +53,9 @@ describe('sessionId to request works as expected', () => {
     answers.setSessionTrackingEnabled(true);
     answers.setSessionId('some-session-id');
 
+    answers.setVertical('vertical-key');
     await answers.executeVerticalQuery();
+    answers.setUniversal();
     await answers.executeUniversalQuery();
     expect(verticalMockSearch.mock.calls[0][0])
       .toEqual(expect.objectContaining({ sessionId: 'some-session-id' }));
@@ -65,7 +67,9 @@ describe('sessionId to request works as expected', () => {
     answers.setSessionTrackingEnabled(false);
     answers.setSessionId('some-session-id');
 
+    answers.setVertical('vertical-key');
     await answers.executeVerticalQuery();
+    answers.setUniversal();
     await answers.executeUniversalQuery();
 
     expect(verticalMockSearch.mock.calls[0][0])
@@ -100,7 +104,7 @@ describe('ensure correct results from latest request', () => {
     createBaseStore(), DEFAULT_HEADLESS_ID, new HeadlessReducerManager());
   const httpManager = new HttpManager();
   const answers = new AnswersHeadless(mockedCore, stateManager, httpManager);
-  answers.setVerticalKey('someKey');
+  answers.setVertical('someKey');
   const updateResult = jest.fn();
 
   beforeEach(() => {
@@ -133,6 +137,7 @@ describe('ensure correct results from latest request', () => {
   });
 
   it('universal search get correct results based on up-to-date response', async () => {
+    answers.setUniversal();
     answers.addListener({
       valueAccessor: state => state.universal.verticals,
       callback: updateResult

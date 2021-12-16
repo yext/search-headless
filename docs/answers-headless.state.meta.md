@@ -4,7 +4,7 @@
 
 ## State.meta property
 
-Maintains the metadata for network requests.
+Maintains the metadata for Answers Headless.
 
 <b>Signature:</b>
 

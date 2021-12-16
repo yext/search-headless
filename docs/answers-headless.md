@@ -69,7 +69,7 @@
 |  [LatLong](./answers-headless.latlong.md) | The latitude and longitude of the user making the request. Used to bias the results. |
 |  [LocationBias](./answers-headless.locationbias.md) | Information about the user's location. |
 |  [LocationState](./answers-headless.locationstate.md) | Maintains the user's location, if given, or the inferred location, that is used to bias search results. |
-|  [MetaState](./answers-headless.metastate.md) | Maintains the metadata for network requests. |
+|  [MetaState](./answers-headless.metastate.md) | Maintains the metadata for Answers Headless. |
 |  [NearFilterValue](./answers-headless.nearfiltervalue.md) | A filter value for a filter with a $near [Matcher](./answers-headless.matcher.md)<!-- -->. |
 |  [ParentState](./answers-headless.parentstate.md) | The overall shape of the redux state tree, with each key value pair of headlessId to [State](./answers-headless.state.md) representing a single AnswersHeadless instance. |
 |  [QueryState](./answers-headless.querystate.md) | Maintains the latest query and its associated data. |

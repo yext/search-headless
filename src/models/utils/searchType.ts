@@ -1,7 +1,7 @@
 import { EnumOrLiteral } from '../../utils/types';
 
 /**
- * Indicates the type of search that headless is managing.
+ * An enum which indicates the type of search that headless is managing.
  *
  * @public
  */
@@ -16,4 +16,9 @@ export enum SearchTypeEnum {
   Vertical = 'vertical'
 }
 
+/**
+ * An enum and its corresponding string literals which indicate the type of search that headless is managing.
+ *
+ * @public
+ */
 export type SearchType = EnumOrLiteral<SearchTypeEnum>;

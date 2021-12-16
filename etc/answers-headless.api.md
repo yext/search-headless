@@ -362,7 +362,6 @@ export enum Matcher {
 export interface MetaState {
     context?: Context;
     referrerPageUrl?: string;
-    // Warning: (ae-forgotten-export) The symbol "SearchType" needs to be exported by the entry point index.d.ts
     searchType: SearchType;
     uuid?: string;
 }
@@ -455,6 +454,17 @@ export interface SearchParameterField {
 // @public
 export interface SearchStatusState {
     isLoading?: boolean;
+}
+
+// Warning: (ae-forgotten-export) The symbol "EnumOrLiteral" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export type SearchType = EnumOrLiteral<SearchTypeEnum>;
+
+// @public
+export enum SearchTypeEnum {
+    Universal = "universal",
+    Vertical = "vertical"
 }
 
 // @public

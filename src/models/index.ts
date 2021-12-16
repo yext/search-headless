@@ -16,6 +16,7 @@ export { VerticalSearchState, AllResultsForVertical } from './slices/vertical';
 // utils models
 export { BoundedRange, RangeBoundary } from './utils/boundedrange';
 export { SelectableFilter } from './utils/selectablefilter';
+export { SearchTypeEnum, SearchType } from './utils/searchType';
 
 // state models
 export { ParentState, State } from './state';

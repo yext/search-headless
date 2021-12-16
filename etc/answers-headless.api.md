@@ -303,6 +303,7 @@ export type FilterTypes = Filter | CombinedFilter;
 // @public
 export type HeadlessConfig = AnswersConfig & {
     headlessId?: string;
+    verticalKey?: string;
 };
 
 // @public

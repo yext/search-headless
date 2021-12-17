@@ -4,7 +4,7 @@
 
 ## SearchTypeEnum enum
 
-Indicates the type of search that headless is managing.
+An enum which indicates the type of search that headless is managing.
 
 <b>Signature:</b>
 

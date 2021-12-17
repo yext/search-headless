@@ -458,7 +458,7 @@ export interface SearchStatusState {
 
 // Warning: (ae-forgotten-export) The symbol "EnumOrLiteral" needs to be exported by the entry point index.d.ts
 //
-// @public (undocumented)
+// @public
 export type SearchType = EnumOrLiteral<SearchTypeEnum>;
 
 // @public

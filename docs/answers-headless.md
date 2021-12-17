@@ -24,7 +24,7 @@
 |  [QuerySource](./answers-headless.querysource.md) | The source of the search request. |
 |  [QueryTrigger](./answers-headless.querytrigger.md) | Describes the ways a search can be executed besides user input. |
 |  [SearchIntent](./answers-headless.searchintent.md) | Represents intents from the Answers API. |
-|  [SearchTypeEnum](./answers-headless.searchtypeenum.md) | Indicates the type of search that headless is managing. |
+|  [SearchTypeEnum](./answers-headless.searchtypeenum.md) | An enum which indicates the type of search that headless is managing. |
 |  [SortType](./answers-headless.sorttype.md) | The method of sorting. |
 |  [Source](./answers-headless.source.md) | Represents the source of a [Result](./answers-headless.result.md)<!-- -->. |
 |  [SpellCheckType](./answers-headless.spellchecktype.md) | Represents the type of spell check performed. |
@@ -117,5 +117,5 @@
 |  [FilterTypes](./answers-headless.filtertypes.md) | A union type for the different kinds of filter. |
 |  [HeadlessConfig](./answers-headless.headlessconfig.md) | The configuration for an AnswersHeadless instance. |
 |  [HighlightedFields](./answers-headless.highlightedfields.md) | A mapping of fields to the values emphasized by the Answers API |
-|  [SearchType](./answers-headless.searchtype.md) |  |
+|  [SearchType](./answers-headless.searchtype.md) | An enum and its corresponding string literals which indicate the type of search that headless is managing. |
 

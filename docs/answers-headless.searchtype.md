@@ -4,6 +4,8 @@
 
 ## SearchType type
 
+An enum and its corresponding string literals which indicate the type of search that headless is managing.
+
 <b>Signature:</b>
 
 ```typescript

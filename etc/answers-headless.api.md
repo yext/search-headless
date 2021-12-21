@@ -225,6 +225,9 @@ export interface Endpoints {
 }
 
 // @public
+export type EnumOrLiteral<T extends string> = T | `${T}`;
+
+// @public
 export interface Facet {
     fieldId: string;
     options: FacetOption[];
@@ -456,8 +459,6 @@ export interface SearchStatusState {
     isLoading?: boolean;
 }
 
-// Warning: (ae-forgotten-export) The symbol "EnumOrLiteral" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type SearchType = EnumOrLiteral<SearchTypeEnum>;
 

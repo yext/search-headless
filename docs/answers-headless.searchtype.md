@@ -4,12 +4,12 @@
 
 ## SearchType type
 
-An enum and its corresponding string literals which indicate the type of search that headless is managing.
+An enum and its corresponding string literals which indicate the type of search that Headless is managing.
 
 <b>Signature:</b>
 
 ```typescript
 export declare type SearchType = EnumOrLiteral<SearchTypeEnum>;
 ```
-<b>References:</b> [SearchTypeEnum](./answers-headless.searchtypeenum.md)
+<b>References:</b> [EnumOrLiteral](./answers-headless.enumorliteral.md)<!-- -->, [SearchTypeEnum](./answers-headless.searchtypeenum.md)
 

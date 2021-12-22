@@ -19,7 +19,7 @@ it('vertical searches update the search loading state', async () => {
   const answers = createMockedAnswersHeadless({
     verticalSearch: mockSearch
   });
-  answers.setVerticalKey('vertical-key');
+  answers.setVertical('vertical-key');
   const search = answers.executeVerticalQuery();
   expect(answers.state.searchStatus.isLoading).toEqual(true);
   await search;

@@ -55,7 +55,7 @@ export class AnswersHeadless {
     addListener<T>(listener: StateListener<T>): Unsubscribe;
     executeFilterSearch(query: string, sectioned: boolean, fields: SearchParameterField[]): Promise<FilterSearchResponse | undefined>;
     executeUniversalAutocomplete(): Promise<AutocompleteResponse>;
-    executeUniversalQuery(): Promise<UniversalSearchResponse>;
+    executeUniversalQuery(): Promise<UniversalSearchResponse | undefined>;
     executeVerticalAutocomplete(): Promise<AutocompleteResponse | undefined>;
     executeVerticalQuery(): Promise<VerticalSearchResponse | undefined>;
     resetFacets(): void;
@@ -76,9 +76,10 @@ export class AnswersHeadless {
     setSpellCheckEnabled(enabled: boolean): void;
     setState(state: State): void;
     setStaticFilters(filters: SelectableFilter[]): void;
+    setUniversal(): void;
     setUniversalLimit(limit: UniversalLimit): void;
     setUserLocation(latLong: LatLong): void;
-    setVerticalKey(verticalKey: string): void;
+    setVertical(verticalKey: string): void;
     setVerticalLimit(limit: number): void;
     get state(): State;
     submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse>;
@@ -224,6 +225,9 @@ export interface Endpoints {
 }
 
 // @public
+export type EnumOrLiteral<T extends string> = T | `${T}`;
+
+// @public
 export interface Facet {
     fieldId: string;
     options: FacetOption[];
@@ -302,6 +306,7 @@ export type FilterTypes = Filter | CombinedFilter;
 // @public
 export type HeadlessConfig = AnswersConfig & {
     headlessId?: string;
+    verticalKey?: string;
 };
 
 // @public
@@ -360,6 +365,7 @@ export enum Matcher {
 export interface MetaState {
     context?: Context;
     referrerPageUrl?: string;
+    searchType: SearchType;
     uuid?: string;
 }
 
@@ -451,6 +457,15 @@ export interface SearchParameterField {
 // @public
 export interface SearchStatusState {
     isLoading?: boolean;
+}
+
+// @public
+export type SearchType = EnumOrLiteral<SearchTypeEnum>;
+
+// @public
+export enum SearchTypeEnum {
+    Universal = "universal",
+    Vertical = "vertical"
 }
 
 // @public

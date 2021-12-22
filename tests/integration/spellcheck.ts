@@ -5,9 +5,7 @@ const initialState = {
     mostRecentSearch: 'virginia',
     input: 'virginia'
   },
-  vertical: {
-    verticalKey: '123',
-  },
+  vertical: {},
   universal: {},
   filters: {},
   spellCheck: {
@@ -32,6 +30,7 @@ describe('AnswersHeadless spellcheck interactions properly update state', () => 
     const answers = createMockedAnswersHeadless({
       verticalSearch: mockSearchWithSpellcheck
     }, initialState);
+    answers.setVertical('123');
     await answers.executeVerticalQuery();
     const expectedState = {
       vertical: {
@@ -50,6 +49,7 @@ describe('AnswersHeadless spellcheck interactions properly update state', () => 
     const answers = createMockedAnswersHeadless({
       universalSearch: mockSearchWithSpellcheck
     }, initialState);
+    answers.setUniversal();
     await answers.executeUniversalQuery();
     const expectedState = {
       spellCheck: {

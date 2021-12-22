@@ -1,5 +1,6 @@
 import { DisplayableFacet, DisplayableFacetOption, Matcher } from '@yext/answers-core';
 import { State } from '../../src/models/state';
+import { SearchTypeEnum } from '../../src/models/utils/searchType';
 import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
 
 it('can select a facet option', () => {
@@ -122,6 +123,7 @@ it('facets are updated after a vertical search', async () => {
   };
   const answers = createMockedAnswersHeadless(mockAnswersCore, initialState);
   expect(answers.state.filters.facets).toEqual(undefined);
+  answers.setVertical('vertical-key');
   await answers.executeVerticalQuery();
   expect(answers.state.filters.facets).toEqual([ 'mock facets state' ]);
 });
@@ -143,6 +145,7 @@ it('only selected facets are sent in the vertical search request', () => {
     verticalSearch: jest.fn(() => { return {}; })
   };
   const answers = createMockedAnswersHeadless(mockedCore, initialState);
+  answers.setVertical('vertical-key');
   answers.executeVerticalQuery();
   expect(mockedCore.verticalSearch).toHaveBeenCalledWith(expect.objectContaining({
     facets: [{
@@ -246,7 +249,9 @@ function createInitialState(
     spellCheck: {
       enabled: false
     },
-    meta: {}
+    meta: {
+      searchType: SearchTypeEnum.Universal
+    }
   };
   return [initialState, facetOption];
 }

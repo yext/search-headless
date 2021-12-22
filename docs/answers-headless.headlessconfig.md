@@ -11,6 +11,7 @@ The configuration for an AnswersHeadless instance.
 ```typescript
 export declare type HeadlessConfig = AnswersConfig & {
     headlessId?: string;
+    verticalKey?: string;
 };
 ```
 <b>References:</b> [AnswersConfig](./answers-headless.answersconfig.md)

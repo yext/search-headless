@@ -1,7 +1,8 @@
 import { Context } from '@yext/answers-core';
+import { SearchType } from '../utils/searchType';
 
 /**
- * Maintains the metadata for network requests.
+ * Maintains the metadata for Answers Headless.
  *
  * @public
  */
@@ -19,5 +20,9 @@ export interface MetaState {
   /**
    * A unique id which corresponds to the latest request/response.
    */
-  uuid?: string
+  uuid?: string,
+  /**
+   * Indicates the type of search that Answers Headless is managing.
+  */
+  searchType: SearchType
 }

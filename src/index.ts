@@ -12,6 +12,7 @@ export * from './answers-core-re-exports';
 export * from './models';
 export * from './constants';
 export * from './utils/filter-creators';
+export * from './utils/types';
 export { answersUtilities };
 
 /**
@@ -26,7 +27,12 @@ export type HeadlessConfig = AnswersConfig & {
    * @remarks
    * Must be different from {@link DEFAULT_HEADLESS_ID}.
    */
-  headlessId?: string
+  headlessId?: string,
+  /**
+   * The verticalKey associated with the vertical to manage. If none is provided,
+   * Answers Headless will manage universal search.
+   */
+  verticalKey?: string
 };
 
 let firstHeadlessInstance: AnswersHeadless;
@@ -44,6 +50,7 @@ const headlessReducerManager = new HeadlessReducerManager();
  */
 export function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless {
   const {
+    verticalKey,
     headlessId,
     ...answersConfig
   } = config;
@@ -57,6 +64,9 @@ export function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless 
   const httpManager = new HttpManager();
 
   const headless = new AnswersHeadless(answersCore, stateManager, httpManager);
+  verticalKey
+    ? headless.setVertical(verticalKey)
+    : headless.setUniversal();
   if (!firstHeadlessInstance) {
     firstHeadlessInstance = headless;
   } else {

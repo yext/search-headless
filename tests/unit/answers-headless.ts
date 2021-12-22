@@ -4,6 +4,7 @@ import StateManager from '../../src/models/state-manager';
 import AnswersHeadless from '../../src/answers-headless';
 import { SelectableFilter } from '../../src/models/utils/selectablefilter';
 import { State } from '../../src/models/state';
+import { SearchTypeEnum } from '../../src/models/utils/searchType';
 
 const mockedState: State = {
   query: {
@@ -32,7 +33,9 @@ const mockedState: State = {
     enabled: true,
     sessionId: 'random-id-number'
   },
-  meta: {},
+  meta: {
+    searchType: SearchTypeEnum.Vertical
+  },
   location: {},
   directAnswer: {},
   searchStatus: {}
@@ -167,16 +170,31 @@ describe('setters work as expected', () => {
     expect(dispatchEventCalls[0][1]).toBe(QuerySource.Overlay);
   });
 
-  it('setVerticalKey works as expected', () => {
+  it('setVertical works as expected', () => {
     const verticalKey = 'key';
-    answers.setVerticalKey(verticalKey);
+    answers.setVertical(verticalKey);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
 
-    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls.length).toBe(2);
     expect(dispatchEventCalls[0][0]).toBe('vertical/setVerticalKey');
     expect(dispatchEventCalls[0][1]).toBe(verticalKey);
+    expect(dispatchEventCalls[1][0]).toBe('meta/setSearchType');
+    expect(dispatchEventCalls[1][1]).toBe(SearchTypeEnum.Vertical);
+  });
+
+  it('setUniversal works as expected', () => {
+    answers.setUniversal();
+
+    const dispatchEventCalls =
+      mockedStateManager.dispatchEvent.mock.calls;
+
+    expect(dispatchEventCalls.length).toBe(2);
+    expect(dispatchEventCalls[0][0]).toBe('vertical/setVerticalKey');
+    expect(dispatchEventCalls[0][1]).toBe(undefined);
+    expect(dispatchEventCalls[1][0]).toBe('meta/setSearchType');
+    expect(dispatchEventCalls[1][1]).toBe(SearchTypeEnum.Universal);
   });
 
   it('setState works as expected', () => {
@@ -301,6 +319,7 @@ describe('search works as expected', () => {
   });
 
   it('universal search works', async () => {
+    answers.state.meta.searchType = SearchTypeEnum.Universal;
     await answers.executeUniversalQuery();
 
     const coreCalls = mockedCore.universalSearch.mock.calls;
@@ -316,6 +335,7 @@ describe('search works as expected', () => {
   });
 
   it('vertical search works', async () => {
+    answers.state.meta.searchType = SearchTypeEnum.Vertical;
     await answers.executeVerticalQuery();
     const { selected:_, ...filter } = mockedState.filters.static[0];
     const coreCalls = mockedCore.verticalSearch.mock.calls;
@@ -344,6 +364,7 @@ describe('search works as expected', () => {
         fetchEntities: false
       }
     ];
+    answers.state.meta.searchType = SearchTypeEnum.Vertical;
     await answers.executeFilterSearch('someInput', false, fields);
 
     expect(mockedCore.filterSearch).toHaveBeenCalledTimes(1);

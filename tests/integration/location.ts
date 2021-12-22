@@ -11,7 +11,7 @@ describe('userLocation', () => {
     const answers = createMockedAnswersHeadless({
       verticalSearch: mockSearch
     });
-    answers.setVerticalKey('vertical-key');
+    answers.setVertical('vertical-key');
     answers.setUserLocation(userLocation);
     await answers.executeVerticalQuery();
     expect(mockSearch.mock.calls[0][0].location).toEqual(userLocation);
@@ -44,7 +44,7 @@ describe('locationBias', () => {
     const answers = createMockedAnswersHeadless({
       verticalSearch: mockSearch
     });
-    answers.setVerticalKey('vertical-key');
+    answers.setVertical('vertical-key');
     expect(answers.state.location.locationBias).toEqual(undefined);
     await answers.executeVerticalQuery();
     expect(answers.state.location.locationBias).toEqual(locationBias);

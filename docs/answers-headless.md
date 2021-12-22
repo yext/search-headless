@@ -24,6 +24,7 @@
 |  [QuerySource](./answers-headless.querysource.md) | The source of the search request. |
 |  [QueryTrigger](./answers-headless.querytrigger.md) | Describes the ways a search can be executed besides user input. |
 |  [SearchIntent](./answers-headless.searchintent.md) | Represents intents from the Answers API. |
+|  [SearchTypeEnum](./answers-headless.searchtypeenum.md) | An enum which indicates the type of search that Headless is managing. |
 |  [SortType](./answers-headless.sorttype.md) | The method of sorting. |
 |  [Source](./answers-headless.source.md) | Represents the source of a [Result](./answers-headless.result.md)<!-- -->. |
 |  [SpellCheckType](./answers-headless.spellchecktype.md) | Represents the type of spell check performed. |
@@ -69,7 +70,7 @@
 |  [LatLong](./answers-headless.latlong.md) | The latitude and longitude of the user making the request. Used to bias the results. |
 |  [LocationBias](./answers-headless.locationbias.md) | Information about the user's location. |
 |  [LocationState](./answers-headless.locationstate.md) | Maintains the user's location, if given, or the inferred location, that is used to bias search results. |
-|  [MetaState](./answers-headless.metastate.md) | Maintains the metadata for network requests. |
+|  [MetaState](./answers-headless.metastate.md) | Maintains the metadata for Answers Headless. |
 |  [NearFilterValue](./answers-headless.nearfiltervalue.md) | A filter value for a filter with a $near [Matcher](./answers-headless.matcher.md)<!-- -->. |
 |  [ParentState](./answers-headless.parentstate.md) | The overall shape of the redux state tree, with each key value pair of headlessId to [State](./answers-headless.state.md) representing a single AnswersHeadless instance. |
 |  [QueryState](./answers-headless.querystate.md) | Maintains the latest query and its associated data. |
@@ -113,7 +114,9 @@
 |  --- | --- |
 |  [AnswersConfig](./answers-headless.answersconfig.md) | The main configuration options for [AnswersCore](./answers-headless.answerscore.md)<!-- -->. For a full description of the options, see [BaseAnswersConfig](./answers-headless.baseanswersconfig.md)<!-- -->. The config requires either an apiKey or a token. |
 |  [Context](./answers-headless.context.md) | Used to trigger Answers [Query Rules](https://hitchhikers.yext.com/tracks/answers-advanced/ans302-query-rules/)<!-- -->. |
+|  [EnumOrLiteral](./answers-headless.enumorliteral.md) | Produces a union type from the enum passed as a generic which consists of the enum values and the string literals of the enum. |
 |  [FilterTypes](./answers-headless.filtertypes.md) | A union type for the different kinds of filter. |
 |  [HeadlessConfig](./answers-headless.headlessconfig.md) | The configuration for an AnswersHeadless instance. |
 |  [HighlightedFields](./answers-headless.highlightedfields.md) | A mapping of fields to the values emphasized by the Answers API |
+|  [SearchType](./answers-headless.searchtype.md) | An enum and its corresponding string literals which indicate the type of search that Headless is managing. |
 

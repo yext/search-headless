@@ -4,7 +4,7 @@
 
 ## MetaState interface
 
-Maintains the metadata for network requests.
+Maintains the metadata for Answers Headless.
 
 <b>Signature:</b>
 
@@ -18,5 +18,6 @@ export interface MetaState
 |  --- | --- | --- |
 |  [context?](./answers-headless.metastate.context.md) | [Context](./answers-headless.context.md) | <i>(Optional)</i> A JSON object used for passing data to and triggering Answers [Query Rules](https://hitchhikers.yext.com/tracks/answers-advanced/ans302-query-rules/)<!-- -->. |
 |  [referrerPageUrl?](./answers-headless.metastate.referrerpageurl.md) | string | <i>(Optional)</i> The URL of the referring page (the page that directed to the current page from which the request was made). |
+|  [searchType](./answers-headless.metastate.searchtype.md) | [SearchType](./answers-headless.searchtype.md) | Indicates the type of search that Answers Headless is managing. |
 |  [uuid?](./answers-headless.metastate.uuid.md) | string | <i>(Optional)</i> A unique id which corresponds to the latest request/response. |
 

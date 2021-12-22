@@ -9,11 +9,11 @@ Performs an Answers search across all verticals with relevant parts of the state
 <b>Signature:</b>
 
 ```typescript
-executeUniversalQuery(): Promise<UniversalSearchResponse>;
+executeUniversalQuery(): Promise<UniversalSearchResponse | undefined>;
 ```
 <b>Returns:</b>
 
-Promise&lt;[UniversalSearchResponse](./answers-headless.universalsearchresponse.md)<!-- -->&gt;
+Promise&lt;[UniversalSearchResponse](./answers-headless.universalsearchresponse.md) \| undefined&gt;
 
 A Promise of a [UniversalSearchResponse](./answers-headless.universalsearchresponse.md) from the Answers API
 

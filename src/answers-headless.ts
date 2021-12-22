@@ -26,6 +26,7 @@ import HttpManager from './http-manager';
 import answersUtilities from './answers-utilities';
 import { SelectableFilter } from './models/utils/selectablefilter';
 import { transformFiltersToCoreFormat } from './utils/transform-filters';
+import { SearchTypeEnum } from './models/utils/searchType';
 
 /**
  * Provides the functionality for interacting with an Answers Search experience.
@@ -75,12 +76,21 @@ export default class AnswersHeadless {
   }
 
   /**
-   * Sets {@link VerticalSearchState.verticalKey} to the specified key.
+   * Sets up Headless to manage the vertical indicated by the verticalKey.
    *
    * @param verticalKey - The vertical key to set
    */
-  setVerticalKey(verticalKey: string): void {
+  setVertical(verticalKey: string): void {
     this.stateManager.dispatchEvent('vertical/setVerticalKey', verticalKey);
+    this.stateManager.dispatchEvent('meta/setSearchType', SearchTypeEnum.Vertical);
+  }
+
+  /**
+   * Sets up Headless to manage universal searches.
+   */
+  setUniversal(): void {
+    this.stateManager.dispatchEvent('vertical/setVerticalKey', undefined);
+    this.stateManager.dispatchEvent('meta/setSearchType', SearchTypeEnum.Universal);
   }
 
   /**
@@ -261,7 +271,12 @@ export default class AnswersHeadless {
    *
    * @returns A Promise of a {@link UniversalSearchResponse} from the Answers API
    */
-  async executeUniversalQuery(): Promise<UniversalSearchResponse> {
+  async executeUniversalQuery(): Promise<UniversalSearchResponse | undefined> {
+    if(this.state.meta.searchType !== SearchTypeEnum.Universal) {
+      console.error('The meta.searchType must be set to \'universal\' for universal search. '
+        + 'Set the searchType to universal by calling `setUniversal()`');
+      return;
+    }
     const thisRequestId = this.httpManager.updateRequestId('universalQuery');
     this.stateManager.dispatchEvent('searchStatus/setIsLoading', true);
     const { input, querySource, queryTrigger } = this.state.query;
@@ -324,6 +339,11 @@ export default class AnswersHeadless {
    *          of undefined if there is no verticalKey defined in state
    */
   async executeVerticalQuery(): Promise<VerticalSearchResponse | undefined> {
+    if(this.state.meta.searchType !== SearchTypeEnum.Vertical) {
+      console.error('The meta.searchType must be set to \'vertical\' for vertical search. '
+       + 'Set the searchType to vertical by calling `setVertical()`');
+      return;
+    }
     const thisRequestId = this.httpManager.updateRequestId('verticalQuery');
     const verticalKey = this.state.vertical.verticalKey;
     if (!verticalKey) {
@@ -395,6 +415,11 @@ export default class AnswersHeadless {
    *          of undefined if there is no verticalKey defined in state
    */
   async executeVerticalAutocomplete(): Promise<AutocompleteResponse | undefined> {
+    if(this.state.meta.searchType !== SearchTypeEnum.Vertical) {
+      console.error('The meta.searchType must be set to \'vertical\' for vertical autocomplete. '
+        + 'Set the searchType to vertical by calling `setVertical()`');
+      return;
+    }
     const query = this.state.query.input || '';
     const verticalKey = this.state.vertical.verticalKey;
     if (!verticalKey) {
@@ -423,6 +448,11 @@ export default class AnswersHeadless {
     sectioned: boolean,
     fields: SearchParameterField[]
   ): Promise<FilterSearchResponse | undefined> {
+    if(this.state.meta.searchType !== SearchTypeEnum.Vertical) {
+      console.error('The meta.searchType must be set to \'vertical\' for filter search. '
+      + 'Set the searchType to vertical by calling `setVertical()`');
+      return;
+    }
     const verticalKey = this.state.vertical.verticalKey;
     if (!verticalKey) {
       console.error('no verticalKey supplied for filter search');

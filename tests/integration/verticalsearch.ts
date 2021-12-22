@@ -1,6 +1,7 @@
 import { AppliedQueryFilter, Matcher, Result, Source, VerticalResults, VerticalSearchRequest, VerticalSearchResponse } from '@yext/answers-core';
 import { AllResultsForVertical } from '../../src/models/slices/vertical';
 import { State } from '../../src/models/state';
+import { SearchTypeEnum } from '../../src/models/utils/searchType';
 import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
 import setTimeout from '../utils/setTimeout';
 
@@ -19,7 +20,9 @@ const initialState: State = {
     enabled: true,
   },
   searchStatus: {},
-  meta: {},
+  meta: {
+    searchType: SearchTypeEnum.Vertical
+  },
   location: {}
 };
 
@@ -151,7 +154,7 @@ it('vertical searches send blank queries by default', async () => {
   const answers = createMockedAnswersHeadless({
     verticalSearch: mockSearch
   });
-  answers.setVerticalKey('vertical-key');
+  answers.setVertical('vertical-key');
   await answers.executeVerticalQuery();
   expect(mockSearch.mock.calls[0][0].query).toEqual('');
 });

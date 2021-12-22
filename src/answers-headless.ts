@@ -416,7 +416,7 @@ export default class AnswersHeadless {
    */
   async executeVerticalAutocomplete(): Promise<AutocompleteResponse | undefined> {
     if(this.state.meta.searchType !== SearchTypeEnum.Vertical) {
-      console.error('The meta.searchType must be set to \'vertical\' for filter search. '
+      console.error('The meta.searchType must be set to \'vertical\' for vertical autocomplete. '
         + 'Set the searchType to vertical by calling `setVertical()`');
       return;
     }

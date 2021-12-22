@@ -340,7 +340,7 @@ export default class AnswersHeadless {
    */
   async executeVerticalQuery(): Promise<VerticalSearchResponse | undefined> {
     if(this.state.meta.searchType !== SearchTypeEnum.Vertical) {
-      console.error('The meta.searchType must be set to \'vertical\' for vertical search'
+      console.error('The meta.searchType must be set to \'vertical\' for vertical search. '
        + 'Set the searchType to vertical by calling `setVertical()`');
       return;
     }
@@ -415,8 +415,11 @@ export default class AnswersHeadless {
    *          of undefined if there is no verticalKey defined in state
    */
   async executeVerticalAutocomplete(): Promise<AutocompleteResponse | undefined> {
-    console.error('The meta.searchType must be set to \'vertical\' for filter search.'
-      + 'Set the searchType to vertical by calling `setVertical()`');
+    if(this.state.meta.searchType !== SearchTypeEnum.Vertical) {
+      console.error('The meta.searchType must be set to \'vertical\' for filter search. '
+        + 'Set the searchType to vertical by calling `setVertical()`');
+      return;
+    }
     const query = this.state.query.input || '';
     const verticalKey = this.state.vertical.verticalKey;
     if (!verticalKey) {
@@ -446,7 +449,7 @@ export default class AnswersHeadless {
     fields: SearchParameterField[]
   ): Promise<FilterSearchResponse | undefined> {
     if(this.state.meta.searchType !== SearchTypeEnum.Vertical) {
-      console.error('The meta.searchType must be set to \'vertical\' for filter search.'
+      console.error('The meta.searchType must be set to \'vertical\' for filter search. '
       + 'Set the searchType to vertical by calling `setVertical()`');
       return;
     }

@@ -196,6 +196,80 @@ it('searchThroughFacet filters facet options correctly', () => {
   });
 });
 
+it('searchThroughFacet filters facet options correctly for similar searchTerm', () => {
+  const [initialState, facetOption] = createInitialState(false);
+  initialState.filters.facets[0].options.push({
+    ...facetOption,
+    displayName: 'generation'
+  });
+  initialState.filters.facets[0].options.push({
+    ...facetOption,
+    displayName: 'cation'
+  });
+  initialState.filters.facets[0].options.push({
+    ...facetOption,
+    displayName: 'Cation'
+  });
+  const answers = createMockedAnswersHeadless({}, initialState);
+  const facet = answers.state.filters.facets[0];
+  const searchedFacet = answers.utilities.searchThroughFacet(facet, 'car');
+  expect(searchedFacet).toEqual({
+    displayName: 'test facet name',
+    fieldId: 'testFieldId',
+    options: [
+      {
+        ...facetOption,
+        displayName: 'cation'
+      },
+      {
+        ...facetOption,
+        displayName: 'Cation'
+      }
+    ]
+  });
+});
+
+it('searchThroughFacet filters facet options correctly for short searchTerm', () => {
+  const [initialState, facetOption] = createInitialState(false);
+  initialState.filters.facets[0].options.push({
+    ...facetOption,
+    displayName: 'macaw'
+  });
+  initialState.filters.facets[0].options.push({
+    ...facetOption,
+    displayName: 'cation'
+  });
+  initialState.filters.facets[0].options.push({
+    ...facetOption,
+    displayName: 'Caution'
+  });
+  initialState.filters.facets[0].options.push({
+    ...facetOption,
+    displayName: 'ignore me'
+  });
+  const answers = createMockedAnswersHeadless({}, initialState);
+  const facet = answers.state.filters.facets[0];
+  const searchedFacet = answers.utilities.searchThroughFacet(facet, 'ca');
+  expect(searchedFacet).toEqual({
+    displayName: 'test facet name',
+    fieldId: 'testFieldId',
+    options: [
+      {
+        ...facetOption,
+        displayName: 'macaw'
+      },
+      {
+        ...facetOption,
+        displayName: 'cation'
+      },
+      {
+        ...facetOption,
+        displayName: 'Caution'
+      }
+    ]
+  });
+});
+
 it('can set facets correctly', () => {
   const [initialState, facetOption] = createInitialState(true);
   const answers = createMockedAnswersHeadless({}, initialState);

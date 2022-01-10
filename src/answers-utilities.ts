@@ -4,7 +4,7 @@ import { isLevenshteinMatch } from './utils/searchable-facets';
 export default {
   /**
    * Searches through the specified facet and filters out the options that aren't a
-   * close match for the given searchTerm.
+   * close match for the given searchTerm. The comparison is case insensitive.
    *
    * @param facet - The facet whose options are searched through
    * @param searchTerm - The search term to compare the facet options against
@@ -14,7 +14,9 @@ export default {
   searchThroughFacet(facet: DisplayableFacet, searchTerm: string): DisplayableFacet {
     return {
       ...facet,
-      options: facet.options.filter(o => isLevenshteinMatch(o.displayName, searchTerm))
+      options: facet.options.filter(o =>
+        isLevenshteinMatch(o.displayName.toLowerCase(), searchTerm.toLowerCase())
+      )
     };
   }
 };

@@ -11,5 +11,6 @@ Common utility functions for manipulating Answers-related data.
 ```typescript
 readonly utilities: {
         searchThroughFacet(facet: DisplayableFacet, searchTerm: string): DisplayableFacet;
+        isCloseMatch: (value: string, searchTerm: string) => boolean;
     };
 ```

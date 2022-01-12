@@ -3,7 +3,7 @@ import levenshtein from 'js-levenshtein';
 /**
  * Given some value, determines whether it contains a "similar enough" match for the given searchTerm.
  *
- * @param value - The display name for the facet
+ * @param value - The string to compare against, e.g. the display name for the facet
  * @param searchTerm - The term being searched for, e.g. the searchable facets query
  * @returns Whether a similar substring exists
  */

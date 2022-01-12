@@ -9,5 +9,6 @@
 ```typescript
 _default: {
     searchThroughFacet(facet: DisplayableFacet, searchTerm: string): DisplayableFacet;
+    isCloseMatch: typeof isCloseMatch;
 }
 ```

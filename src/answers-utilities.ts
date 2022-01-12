@@ -14,9 +14,20 @@ export default {
   searchThroughFacet(facet: DisplayableFacet, searchTerm: string): DisplayableFacet {
     return {
       ...facet,
-      options: facet.options.filter(o =>
-        isLevenshteinMatch(o.displayName.toLowerCase(), searchTerm.toLowerCase())
-      )
+      options: facet.options.filter(o => isCloseMatch(o.displayName, searchTerm))
     };
-  }
+  },
+  isCloseMatch
 };
+
+/**
+ * Checks if the searchTerm is a case-insensitive, Levenshtein match for the value.
+ *
+ * @param value - The string to compare against
+ * @param searchTerm - The term being searched for
+ * @returns Whether or not the searchTerm is a substring of or a close Levenshtein match
+ *          for the value
+ */
+function isCloseMatch(value: string, searchTerm: string): boolean {
+  return isLevenshteinMatch(value.toLowerCase(), searchTerm.toLowerCase());
+}

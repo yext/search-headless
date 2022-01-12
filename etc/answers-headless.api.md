@@ -85,12 +85,14 @@ export class AnswersHeadless {
     submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse>;
     readonly utilities: {
         searchThroughFacet(facet: DisplayableFacet, searchTerm: string): DisplayableFacet;
+        isCloseMatch: (value: string, searchTerm: string) => boolean;
     };
 }
 
 // @public (undocumented)
 export const answersUtilities: {
     searchThroughFacet(facet: DisplayableFacet, searchTerm: string): DisplayableFacet;
+    isCloseMatch: typeof isCloseMatch;
 };
 
 // @public
@@ -681,6 +683,10 @@ export interface Visitor {
     id: string;
     idMethod?: string;
 }
+
+// Warnings were encountered during analysis:
+//
+// src/answers-utilities.ts:15:3 - (ae-forgotten-export) The symbol "isCloseMatch" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

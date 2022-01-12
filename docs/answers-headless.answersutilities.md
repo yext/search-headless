@@ -2,12 +2,12 @@
 
 [Home](./index.md) &gt; [@yext/answers-headless](./answers-headless.md) &gt; [answersUtilities](./answers-headless.answersutilities.md)
 
-## answersUtilities variable
+## answersUtilities namespace
 
-<b>Signature:</b>
+## Functions
 
-```typescript
-_default: {
-    searchThroughFacet(facet: DisplayableFacet, searchTerm: string): DisplayableFacet;
-}
-```
+|  Function | Description |
+|  --- | --- |
+|  [isCloseMatch(value, searchTerm)](./answers-headless.answersutilities.isclosematch.md) | Checks if the searchTerm is a case-insensitive, Levenshtein match for the value. |
+|  [searchThroughFacet(facet, searchTerm)](./answers-headless.answersutilities.searchthroughfacet.md) | Searches through the specified facet and filters out the options that aren't a close match for the given searchTerm. The comparison is case insensitive. |
+

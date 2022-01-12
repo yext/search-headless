@@ -6,7 +6,7 @@ import { createBaseStore } from './store';
 import HeadlessReducerManager from './headless-reducer-manager';
 import { DEFAULT_HEADLESS_ID } from './constants';
 import { SessionTrackingState } from './models/slices/sessiontracking';
-import answersUtilities from './answers-utilities';
+import * as answersUtilities from './answers-utilities';
 
 export * from './answers-core-re-exports';
 export * from './models';

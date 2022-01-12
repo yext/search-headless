@@ -83,15 +83,16 @@ export class AnswersHeadless {
     setVerticalLimit(limit: number): void;
     get state(): State;
     submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse>;
-    readonly utilities: {
-        searchThroughFacet(facet: DisplayableFacet, searchTerm: string): DisplayableFacet;
-    };
+    readonly utilities: typeof answersUtilities;
 }
 
-// @public (undocumented)
-export const answersUtilities: {
-    searchThroughFacet(facet: DisplayableFacet, searchTerm: string): DisplayableFacet;
-};
+declare namespace answersUtilities {
+    export {
+        searchThroughFacet,
+        isCloseMatch
+    }
+}
+export { answersUtilities }
 
 // @public
 export interface AppliedQueryFilter {
@@ -326,6 +327,9 @@ export interface HighlightedValue {
 }
 
 // @public
+function isCloseMatch(value: string, searchTerm: string): boolean;
+
+// @public
 export interface LatLong {
     latitude: number;
     longitude: number;
@@ -460,6 +464,9 @@ export interface SearchParameterField {
 export interface SearchStatusState {
     isLoading?: boolean;
 }
+
+// @public
+function searchThroughFacet(facet: DisplayableFacet, searchTerm: string): DisplayableFacet;
 
 // @public
 export type SearchType = EnumOrLiteral<SearchTypeEnum>;

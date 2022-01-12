@@ -101,11 +101,16 @@
 |  [VerticalSearchState](./answers-headless.verticalsearchstate.md) | Maintains the data for the latest vertical search. |
 |  [Visitor](./answers-headless.visitor.md) | Information used to associate requests with a particular user. |
 
+## Namespaces
+
+|  Namespace | Description |
+|  --- | --- |
+|  [answersUtilities](./answers-headless.answersutilities.md) |  |
+
 ## Variables
 
 |  Variable | Description |
 |  --- | --- |
-|  [answersUtilities](./answers-headless.answersutilities.md) |  |
 |  [DEFAULT\_HEADLESS\_ID](./answers-headless.default_headless_id.md) | The headlessId automatically given to the first AnswersHeadless instance created. |
 
 ## Type Aliases

@@ -21,7 +21,7 @@ The constructor for this class is marked as internal. Third-party code should no
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [state](./answers-headless.answersheadless.state.md) |  | [State](./answers-headless.state.md) | Gets the current state of the AnswersHeadless instance. |
-|  [utilities](./answers-headless.answersheadless.utilities.md) |  | { searchThroughFacet(facet: [DisplayableFacet](./answers-headless.displayablefacet.md)<!-- -->, searchTerm: string): [DisplayableFacet](./answers-headless.displayablefacet.md)<!-- -->; isCloseMatch: (value: string, searchTerm: string) =&gt; boolean; } | Common utility functions for manipulating Answers-related data. |
+|  [utilities](./answers-headless.answersheadless.utilities.md) |  | typeof answersUtilities | Common utility functions for manipulating Answers-related data. |
 
 ## Methods
 

@@ -83,17 +83,16 @@ export class AnswersHeadless {
     setVerticalLimit(limit: number): void;
     get state(): State;
     submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse>;
-    readonly utilities: {
-        searchThroughFacet(facet: DisplayableFacet, searchTerm: string): DisplayableFacet;
-        isCloseMatch: (value: string, searchTerm: string) => boolean;
-    };
+    readonly utilities: typeof answersUtilities;
 }
 
-// @public (undocumented)
-export const answersUtilities: {
-    searchThroughFacet(facet: DisplayableFacet, searchTerm: string): DisplayableFacet;
-    isCloseMatch: typeof isCloseMatch;
-};
+declare namespace answersUtilities {
+    export {
+        searchThroughFacet,
+        isCloseMatch
+    }
+}
+export { answersUtilities }
 
 // @public
 export interface AppliedQueryFilter {
@@ -328,6 +327,9 @@ export interface HighlightedValue {
 }
 
 // @public
+function isCloseMatch(value: string, searchTerm: string): boolean;
+
+// @public
 export interface LatLong {
     latitude: number;
     longitude: number;
@@ -462,6 +464,9 @@ export interface SearchParameterField {
 export interface SearchStatusState {
     isLoading?: boolean;
 }
+
+// @public
+function searchThroughFacet(facet: DisplayableFacet, searchTerm: string): DisplayableFacet;
 
 // @public
 export type SearchType = EnumOrLiteral<SearchTypeEnum>;
@@ -683,10 +688,6 @@ export interface Visitor {
     id: string;
     idMethod?: string;
 }
-
-// Warnings were encountered during analysis:
-//
-// src/answers-utilities.ts:15:3 - (ae-forgotten-export) The symbol "isCloseMatch" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

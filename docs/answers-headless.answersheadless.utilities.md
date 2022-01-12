@@ -9,8 +9,5 @@ Common utility functions for manipulating Answers-related data.
 <b>Signature:</b>
 
 ```typescript
-readonly utilities: {
-        searchThroughFacet(facet: DisplayableFacet, searchTerm: string): DisplayableFacet;
-        isCloseMatch: (value: string, searchTerm: string) => boolean;
-    };
+readonly utilities: typeof answersUtilities;
 ```

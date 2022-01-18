@@ -19,8 +19,8 @@ export interface QueryState {
    */
   queryTrigger?: QueryTrigger,
   /**
-   * The source of the query (either from a standard Answers integration or from an
-   * Answers overlay).
+   * The source of the query (from a standard Answers integration, an Answers
+   * overlay, or from visual autocomplete).
    */
   querySource?: QuerySource,
   /**

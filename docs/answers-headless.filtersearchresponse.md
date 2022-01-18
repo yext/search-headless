@@ -16,10 +16,8 @@ export declare interface FilterSearchResponse
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [inputIntents](./answers-headless.filtersearchresponse.inputintents.md) | [SearchIntent](./answers-headless.searchintent.md)<!-- -->\[\] | Represents intents from the Answers API. |
+|  [businessId?](./answers-headless.filtersearchresponse.businessid.md) | string | <i>(Optional)</i> ID of the account associated with this Answers experience |
 |  [queryId?](./answers-headless.filtersearchresponse.queryid.md) | string | <i>(Optional)</i> The ID of the search query. |
-|  [results](./answers-headless.filtersearchresponse.results.md) | [AutocompleteResult](./answers-headless.autocompleteresult.md)<!-- -->\[\] | An array of [AutocompleteResult](./answers-headless.autocompleteresult.md)<!-- -->s. |
-|  [sectioned](./answers-headless.filtersearchresponse.sectioned.md) | boolean | Indicates that the results are separated by field in the sections property. |
-|  [sections](./answers-headless.filtersearchresponse.sections.md) | { label: string; results: [AutocompleteResult](./answers-headless.autocompleteresult.md)<!-- -->\[\]; }\[\] | Represents autocomplete results separated by field. |
+|  [sections](./answers-headless.filtersearchresponse.sections.md) | { label?: string; results: [AutocompleteResult](./answers-headless.autocompleteresult.md)<!-- -->\[\]; }\[\] | Represents autocomplete results separated by field. |
 |  [uuid](./answers-headless.filtersearchresponse.uuid.md) | string | A unique id which corresponds to the request. |
 

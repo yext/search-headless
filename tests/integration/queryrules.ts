@@ -37,7 +37,6 @@ describe('AnswersHeadless queryRules interactions properly update state', () => 
     await answers.executeVerticalQuery();
     const expectedState = {
       queryRules: {
-        ...initialState.queryRules,
         actions: actions
       }
     };
@@ -53,7 +52,6 @@ describe('AnswersHeadless queryRules interactions properly update state', () => 
     await answers.executeUniversalQuery();
     const expectedState = {
       queryRules: {
-        ...initialState.queryRules,
         actions: actions,
       }
     };

@@ -7,6 +7,7 @@ export { FiltersState } from './slices/filters';
 export { LocationState } from './slices/location';
 export { MetaState } from './slices/meta';
 export { QueryState } from './slices/query';
+export { QueryRulesState } from './slices/queryrules';
 export { SearchStatusState } from './slices/searchstatus';
 export { SessionTrackingState } from './slices/sessiontracking';
 export { SpellCheckState } from './slices/spellcheck';

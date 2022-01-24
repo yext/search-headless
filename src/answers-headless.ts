@@ -315,6 +315,7 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('searchStatus/setIsLoading', false);
     this.stateManager.dispatchEvent('meta/setUUID', response.uuid);
     this.stateManager.dispatchEvent('directAnswer/setResult', response.directAnswer);
+    this.stateManager.dispatchEvent('queryRules/setActions', response.queryRulesActionsData || []);
     return response;
   }
 
@@ -404,6 +405,7 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('meta/setUUID', response.uuid);
     this.stateManager.dispatchEvent('searchStatus/setIsLoading', false);
     this.stateManager.dispatchEvent('vertical/handleSearchResponse', response);
+    this.stateManager.dispatchEvent('queryRules/setActions', response.queryRulesActionsData || []);
     return response;
   }
 

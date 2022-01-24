@@ -18,6 +18,9 @@ const mockedState: State = {
     offset: 0,
     limit: 20
   },
+  queryRules: {
+    actions: []
+  },
   filters: {
     static: [{
       fieldId: 'c_someField',

@@ -21,6 +21,7 @@ export interface State
 |  [location](./answers-headless.state.location.md) | [LocationState](./answers-headless.locationstate.md) | Maintains the user's location, if given, or the inferred location, that is used to bias search results. |
 |  [meta](./answers-headless.state.meta.md) | [MetaState](./answers-headless.metastate.md) | Maintains the metadata for Answers Headless. |
 |  [query](./answers-headless.state.query.md) | [QueryState](./answers-headless.querystate.md) | Maintains the latest query and its associated data. |
+|  [queryRules](./answers-headless.state.queryrules.md) | [QueryRulesState](./answers-headless.queryrulesstate.md) | Maintains the data from the triggered query rules. |
 |  [searchStatus](./answers-headless.state.searchstatus.md) | [SearchStatusState](./answers-headless.searchstatusstate.md) | Maintains the status of the latest search. |
 |  [sessionTracking](./answers-headless.state.sessiontracking.md) | [SessionTrackingState](./answers-headless.sessiontrackingstate.md) | Maintains whether the user session should be tracked and, if so, the session information. |
 |  [spellCheck](./answers-headless.state.spellcheck.md) | [SpellCheckState](./answers-headless.spellcheckstate.md) | Maintains whether spellcheck is enabled and the spellcheck response from the latest search. |

@@ -73,6 +73,8 @@
 |  [MetaState](./answers-headless.metastate.md) | Maintains the metadata for Answers Headless. |
 |  [NearFilterValue](./answers-headless.nearfiltervalue.md) | A filter value for a filter with a $near [Matcher](./answers-headless.matcher.md)<!-- -->. |
 |  [ParentState](./answers-headless.parentstate.md) | The overall shape of the redux state tree, with each key value pair of headlessId to [State](./answers-headless.state.md) representing a single AnswersHeadless instance. |
+|  [QueryRulesActionsData](./answers-headless.queryrulesactionsdata.md) | Data returned from the Answers query rules system. |
+|  [QueryRulesState](./answers-headless.queryrulesstate.md) | Maintains the data from the triggered query rules. |
 |  [QueryState](./answers-headless.querystate.md) | Maintains the latest query and its associated data. |
 |  [QuestionSubmissionRequest](./answers-headless.questionsubmissionrequest.md) | Options for a QuestionSubmission request. |
 |  [QuestionSubmissionResponse](./answers-headless.questionsubmissionresponse.md) | A representation of a question submission response. |

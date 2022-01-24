@@ -11,6 +11,7 @@ const initialState: State = {
   vertical: {},
   directAnswer: {},
   universal: {},
+  queryRules: { actions: [] },
   filters: {},
   spellCheck: {
     enabled: true,

@@ -31,6 +31,7 @@ export {
   LocationBiasMethod,
   Matcher,
   NearFilterValue,
+  QueryRulesActionsData,
   QuerySource,
   QueryTrigger,
   QuestionSubmissionRequest,

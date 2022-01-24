@@ -389,6 +389,18 @@ export interface ParentState {
 export function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless;
 
 // @public
+export interface QueryRulesActionsData {
+    data?: Record<string, unknown>;
+    errors?: string;
+    key: string;
+}
+
+// @public
+export interface QueryRulesState {
+    actions: QueryRulesActionsData[];
+}
+
+// @public
 export enum QuerySource {
     Autocomplete = "AUTOCOMPLETE",
     Overlay = "OVERLAY",
@@ -546,6 +558,7 @@ export interface State {
     location: LocationState;
     meta: MetaState;
     query: QueryState;
+    queryRules: QueryRulesState;
     searchStatus: SearchStatusState;
     sessionTracking: SessionTrackingState;
     spellCheck: SpellCheckState;
@@ -598,6 +611,7 @@ export interface UniversalSearchResponse {
     directAnswer?: FeaturedSnippetDirectAnswer | FieldValueDirectAnswer;
     locationBias?: LocationBias;
     queryId?: string;
+    queryRulesActionsData?: QueryRulesActionsData[];
     searchIntents?: SearchIntent[];
     spellCheck?: SpellCheck;
     uuid: string;
@@ -658,6 +672,7 @@ export interface VerticalSearchResponse {
     facets?: DisplayableFacet[];
     locationBias?: LocationBias;
     queryId: string;
+    queryRulesActionsData?: QueryRulesActionsData[];
     searchIntents?: SearchIntent[];
     spellCheck?: SpellCheck;
     uuid: string;

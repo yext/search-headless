@@ -14,6 +14,7 @@ const initialState: State = {
   },
   directAnswer: {},
   universal: {},
+  queryRules: { actions: [] },
   filters: {},
   sessionTracking: {},
   spellCheck: {

@@ -17,6 +17,6 @@ export declare interface QueryRulesActionsData
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [data?](./answers-headless.queryrulesactionsdata.data.md) | Record&lt;string, unknown&gt; | <i>(Optional)</i> The data returned from the query rule. |
-|  [errors?](./answers-headless.queryrulesactionsdata.errors.md) | string | <i>(Optional)</i> Any errors returned from the query rule. |
+|  [errors?](./answers-headless.queryrulesactionsdata.errors.md) | { uuid: string; type: string; message?: string; }\[\] | <i>(Optional)</i> Any errors returned from the query rule. |
 |  [key](./answers-headless.queryrulesactionsdata.key.md) | string | The unique identifier for this query rule. |
 

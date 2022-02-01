@@ -391,7 +391,11 @@ export function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless;
 // @public
 export interface QueryRulesActionsData {
     data?: Record<string, unknown>;
-    errors?: string;
+    errors?: {
+        uuid: string;
+        type: string;
+        message?: string;
+    }[];
     key: string;
 }
 

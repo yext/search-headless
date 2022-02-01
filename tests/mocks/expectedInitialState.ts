@@ -17,5 +17,6 @@ export const expectedInitialState: State = {
   searchStatus: {},
   universal: {},
   vertical: {},
-  directAnswer: {}
+  directAnswer: {},
+  queryRules: { actions: [] }
 };

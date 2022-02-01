@@ -8,6 +8,7 @@ import { LocationState } from './slices/location';
 import { SessionTrackingState } from './slices/sessiontracking';
 import { DirectAnswerState } from './slices/directanswer';
 import { SearchStatusState } from './slices/searchstatus';
+import { QueryRulesState } from './slices/queryrules';
 
 /**
  * The overall shape of the redux state tree, with each key value pair of
@@ -44,6 +45,10 @@ export interface State {
    * {@inheritDoc DirectAnswerState}
    */
   directAnswer: DirectAnswerState,
+  /**
+   * {@inheritDoc QueryRulesState}
+   */
+  queryRules: QueryRulesState,
   /**
    * {@inheritDoc FiltersState}
    */

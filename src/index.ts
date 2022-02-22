@@ -40,7 +40,7 @@ const store = createBaseStore();
 const headlessReducerManager = new HeadlessReducerManager();
 
 /**
- * Supplies a new instance of {@link AnswersHeadless}, using the provided configuration.
+ * Supplies a new instance of {@link AnswersHeadless}, using the provided configuration. TEST
  *
  * @param config - The apiKey, experienceKey, etc. needed to set up a front-end Answers
  *                 experience.
@@ -72,7 +72,7 @@ export function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless 
   } else {
     // Two-way bind the current headless instances with the first one instantiated on the page.
     // This way, all headless instances on a page will have their sessionTracking states linked.
-    // We have to be careful not to create an infinite loop here. TEST
+    // We have to be careful not to create an infinite loop here.
     linkSessionTracking(firstHeadlessInstance, headless);
     linkSessionTracking(headless, firstHeadlessInstance);
   }

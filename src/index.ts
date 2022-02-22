@@ -72,7 +72,7 @@ export function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless 
   } else {
     // Two-way bind the current headless instances with the first one instantiated on the page.
     // This way, all headless instances on a page will have their sessionTracking states linked.
-    // We have to be careful not to create an infinite loop here.
+    // We have to be careful not to create an infinite loop here. TEST
     linkSessionTracking(firstHeadlessInstance, headless);
     linkSessionTracking(headless, firstHeadlessInstance);
   }

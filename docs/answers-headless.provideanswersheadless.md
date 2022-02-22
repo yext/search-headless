@@ -4,7 +4,7 @@
 
 ## provideAnswersHeadless() function
 
-Supplies a new instance of [AnswersHeadless](./answers-headless.answersheadless.md)<!-- -->, using the provided configuration. TEST
+Supplies a new instance of [AnswersHeadless](./answers-headless.answersheadless.md)<!-- -->, using the provided configuration.
 
 <b>Signature:</b>
 

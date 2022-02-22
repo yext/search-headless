@@ -38,7 +38,7 @@
 |  [createEqualsFilter(fieldId, value)](./answers-headless.createequalsfilter.md) | Creates a simple [Filter](./answers-headless.filter.md) that ensures all results will match a specific field value. |
 |  [createNearMeFilter(position)](./answers-headless.createnearmefilter.md) | Creates a [Filter](./answers-headless.filter.md) that matches all results within a certain radius of the given position. |
 |  [createNumberRangeFilter(fieldId, range)](./answers-headless.createnumberrangefilter.md) | Creates a [Filter](./answers-headless.filter.md) or [CombinedFilter](./answers-headless.combinedfilter.md) that matches all results where the given field value falls in a specific number [BoundedRange](./answers-headless.boundedrange.md)<!-- -->. |
-|  [provideAnswersHeadless(config)](./answers-headless.provideanswersheadless.md) | Supplies a new instance of [AnswersHeadless](./answers-headless.answersheadless.md)<!-- -->, using the provided configuration. |
+|  [provideAnswersHeadless(config)](./answers-headless.provideanswersheadless.md) | Supplies a new instance of [AnswersHeadless](./answers-headless.answersheadless.md)<!-- -->, using the provided configuration. TEST |
 
 ## Interfaces
 

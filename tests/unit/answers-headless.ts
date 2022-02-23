@@ -180,11 +180,18 @@ describe('setters work as expected', () => {
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
 
-    expect(dispatchEventCalls.length).toBe(2);
-    expect(dispatchEventCalls[0][0]).toBe('vertical/setVerticalKey');
-    expect(dispatchEventCalls[0][1]).toBe(verticalKey);
-    expect(dispatchEventCalls[1][0]).toBe('meta/setSearchType');
-    expect(dispatchEventCalls[1][1]).toBe(SearchTypeEnum.Vertical);
+    expect(dispatchEventCalls.length).toBe(3);
+    expect(dispatchEventCalls[0][0]).toBe('set-state');
+    expect(dispatchEventCalls[0][1]).toStrictEqual({
+      ...answers.state,
+      filters: {},
+      vertical: {},
+      universal: {}
+    });
+    expect(dispatchEventCalls[1][0]).toBe('vertical/setVerticalKey');
+    expect(dispatchEventCalls[1][1]).toBe(verticalKey);
+    expect(dispatchEventCalls[2][0]).toBe('meta/setSearchType');
+    expect(dispatchEventCalls[2][1]).toBe(SearchTypeEnum.Vertical);
   });
 
   it('setUniversal works as expected', () => {
@@ -193,11 +200,18 @@ describe('setters work as expected', () => {
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
 
-    expect(dispatchEventCalls.length).toBe(2);
-    expect(dispatchEventCalls[0][0]).toBe('vertical/setVerticalKey');
-    expect(dispatchEventCalls[0][1]).toBe(undefined);
-    expect(dispatchEventCalls[1][0]).toBe('meta/setSearchType');
-    expect(dispatchEventCalls[1][1]).toBe(SearchTypeEnum.Universal);
+    expect(dispatchEventCalls.length).toBe(3);
+    expect(dispatchEventCalls[0][0]).toBe('set-state');
+    expect(dispatchEventCalls[0][1]).toStrictEqual({
+      ...answers.state,
+      filters: {},
+      vertical: {},
+      universal: {}
+    });
+    expect(dispatchEventCalls[1][0]).toBe('vertical/setVerticalKey');
+    expect(dispatchEventCalls[1][1]).toBe(undefined);
+    expect(dispatchEventCalls[2][0]).toBe('meta/setSearchType');
+    expect(dispatchEventCalls[2][1]).toBe(SearchTypeEnum.Universal);
   });
 
   it('setState works as expected', () => {

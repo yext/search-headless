@@ -81,6 +81,12 @@ export default class AnswersHeadless {
    * @param verticalKey - The vertical key to set
    */
   setVertical(verticalKey: string): void {
+    this.setState({
+      ...this.state,
+      filters: {},
+      vertical: {},
+      universal: {}
+    });
     this.stateManager.dispatchEvent('vertical/setVerticalKey', verticalKey);
     this.stateManager.dispatchEvent('meta/setSearchType', SearchTypeEnum.Vertical);
   }
@@ -89,6 +95,12 @@ export default class AnswersHeadless {
    * Sets up Headless to manage universal searches.
    */
   setUniversal(): void {
+    this.setState({
+      ...this.state,
+      filters: {},
+      vertical: {},
+      universal: {}
+    });
     this.stateManager.dispatchEvent('vertical/setVerticalKey', undefined);
     this.stateManager.dispatchEvent('meta/setSearchType', SearchTypeEnum.Universal);
   }

@@ -146,6 +146,7 @@ it('only selected facets are sent in the vertical search request', () => {
   };
   const answers = createMockedAnswersHeadless(mockedCore, initialState);
   answers.setVertical('vertical-key');
+  answers.setFacets(initialState.filters.facets);
   answers.executeVerticalQuery();
   expect(mockedCore.verticalSearch).toHaveBeenCalledWith(expect.objectContaining({
     facets: [{

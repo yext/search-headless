@@ -2,7 +2,7 @@ import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
 import { QueryRulesActionsData } from '@yext/answers-core';
 import { QueryRulesState } from '../models/slices/queryrules';
 
-const initialState: QueryRulesState = { actions: [] };
+export const initialState: QueryRulesState = { actions: [] };
 
 const reducers = {
   setActions: (state, action: PayloadAction<QueryRulesActionsData[]>) => {

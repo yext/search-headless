@@ -2,7 +2,7 @@ import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
 import { UniversalLimit, VerticalResults } from '@yext/answers-core';
 import { UniversalSearchState } from '../models/slices/universal';
 
-const initialState: UniversalSearchState = {};
+export const initialState: UniversalSearchState = {};
 
 const reducers = {
   setVerticals: (state: UniversalSearchState, action: PayloadAction<VerticalResults[]>) => {

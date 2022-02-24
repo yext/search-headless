@@ -27,6 +27,12 @@ import * as answersUtilities from './answers-utilities';
 import { SelectableFilter } from './models/utils/selectablefilter';
 import { transformFiltersToCoreFormat } from './utils/transform-filters';
 import { SearchTypeEnum } from './models/utils/searchType';
+import { initialState as initialVerticalState } from './slices/vertical';
+import { initialState as initialUniversalState } from './slices/universal';
+import { initialState as initialFiltersState } from './slices/filters';
+import { initialState as initialDirectAnswerState } from './slices/directanswer';
+import { initialState as initialQueryRulesState } from './slices/queryrules';
+import { initialState as initialSearchStatusState } from './slices/searchstatus';
 
 /**
  * Provides the functionality for interacting with an Answers Search experience.
@@ -81,12 +87,7 @@ export default class AnswersHeadless {
    * @param verticalKey - The vertical key to set
    */
   setVertical(verticalKey: string): void {
-    this.setState({
-      ...this.state,
-      filters: {},
-      vertical: {},
-      universal: {}
-    });
+    this._resetSearcherStates();
     this.stateManager.dispatchEvent('vertical/setVerticalKey', verticalKey);
     this.stateManager.dispatchEvent('meta/setSearchType', SearchTypeEnum.Vertical);
   }
@@ -95,14 +96,25 @@ export default class AnswersHeadless {
    * Sets up Headless to manage universal searches.
    */
   setUniversal(): void {
-    this.setState({
-      ...this.state,
-      filters: {},
-      vertical: {},
-      universal: {}
-    });
+    this._resetSearcherStates();
     this.stateManager.dispatchEvent('vertical/setVerticalKey', undefined);
     this.stateManager.dispatchEvent('meta/setSearchType', SearchTypeEnum.Universal);
+  }
+
+  /**
+   * Resets the direct answer, filters, query rules, search status, vertical, and universal states
+   * to their initial values.
+   */
+  private _resetSearcherStates() {
+    this.stateManager.dispatchEvent('set-state', {
+      ...this.state,
+      directAnswer: initialDirectAnswerState,
+      filters: initialFiltersState,
+      queryRules: initialQueryRulesState,
+      searchStatus: initialSearchStatusState,
+      vertical: initialVerticalState,
+      universal: initialUniversalState
+    });
   }
 
   /**

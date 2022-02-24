@@ -4,7 +4,7 @@ import { FiltersState } from '../models/slices/filters';
 import { SelectableFilter } from '../models/utils/selectablefilter';
 import { areFiltersEqual } from '../utils/filter-utils';
 
-const initialState: FiltersState = {};
+export const initialState: FiltersState = {};
 
 interface FacetPayload {
   fieldId: string

@@ -96,7 +96,7 @@ describe('ensure correct results from latest request', () => {
   it('vertical search get correct results based on up-to-date response', async () => {
     const answers = getAnswersHeadless(requestsTime);
     answers.setVertical('someKey');
-    const removeListener = answers.addListener({
+    answers.addListener({
       valueAccessor: state => state.vertical?.results,
       callback: updateResult
     });
@@ -118,13 +118,12 @@ describe('ensure correct results from latest request', () => {
     expect(answers.state.query.input).toEqual(queries[2]);
     expect(answers.state.vertical.results).toEqual([queries[2]]);
     expect(updateResult.mock.calls).toHaveLength(2);
-    removeListener();
   });
 
   it('universal search get correct results based on up-to-date response', async () => {
     const answers = getAnswersHeadless(requestsTime);
     answers.setUniversal();
-    const removeListener = answers.addListener({
+    answers.addListener({
       valueAccessor: state => state.universal.verticals,
       callback: updateResult
     });
@@ -146,7 +145,6 @@ describe('ensure correct results from latest request', () => {
     expect(answers.state.query.input).toEqual(queries[2]);
     expect(answers.state.universal.verticals).toEqual([{ results: [queries[2]] }]);
     expect(updateResult.mock.calls).toHaveLength(2);
-    removeListener();
   });
 });
 

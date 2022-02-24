@@ -5,6 +5,12 @@ import AnswersHeadless from '../../src/answers-headless';
 import { SelectableFilter } from '../../src/models/utils/selectablefilter';
 import { State } from '../../src/models/state';
 import { SearchTypeEnum } from '../../src/models/utils/searchType';
+import { initialState as initialVerticalState } from '../../src/slices/vertical';
+import { initialState as initialUniversalState } from '../../src/slices/universal';
+import { initialState as initialFiltersState } from '../../src/slices/filters';
+import { initialState as initialDirectAnswerState } from '../../src/slices/directanswer';
+import { initialState as initialQueryRulesState } from '../../src/slices/queryrules';
+import { initialState as initialSearchStatusState } from '../../src/slices/searchstatus';
 
 const mockedState: State = {
   query: {
@@ -184,9 +190,12 @@ describe('setters work as expected', () => {
     expect(dispatchEventCalls[0][0]).toBe('set-state');
     expect(dispatchEventCalls[0][1]).toStrictEqual({
       ...answers.state,
-      filters: {},
-      vertical: {},
-      universal: {}
+      directAnswer: initialDirectAnswerState,
+      filters: initialFiltersState,
+      queryRules: initialQueryRulesState,
+      searchStatus: initialSearchStatusState,
+      vertical: initialVerticalState,
+      universal: initialUniversalState
     });
     expect(dispatchEventCalls[1][0]).toBe('vertical/setVerticalKey');
     expect(dispatchEventCalls[1][1]).toBe(verticalKey);
@@ -204,9 +213,12 @@ describe('setters work as expected', () => {
     expect(dispatchEventCalls[0][0]).toBe('set-state');
     expect(dispatchEventCalls[0][1]).toStrictEqual({
       ...answers.state,
-      filters: {},
-      vertical: {},
-      universal: {}
+      directAnswer: initialDirectAnswerState,
+      filters: initialFiltersState,
+      queryRules: initialQueryRulesState,
+      searchStatus: initialSearchStatusState,
+      vertical: initialVerticalState,
+      universal: initialUniversalState
     });
     expect(dispatchEventCalls[1][0]).toBe('vertical/setVerticalKey');
     expect(dispatchEventCalls[1][1]).toBe(undefined);

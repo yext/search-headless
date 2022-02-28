@@ -17,5 +17,5 @@ export interface FiltersState
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [facets?](./answers-headless.filtersstate.facets.md) | [DisplayableFacet](./answers-headless.displayablefacet.md)<!-- -->\[\] | <i>(Optional)</i> The dynamic collection of facets that can be applied to filter the search results and whether each of them is currently selected. |
-|  [static?](./answers-headless.filtersstate.static.md) | [SelectableFilter](./answers-headless.selectablefilter.md)<!-- -->\[\] | <i>(Optional)</i> The collection of possible static filters that can be applied to the search results and whether each of them is currently selected. |
+|  [static?](./answers-headless.filtersstate.static.md) | [DisplayableFilter](./answers-headless.displayablefilter.md)<!-- -->\[\] | <i>(Optional)</i> The collection of possible static filters that can be applied to the search results and whether each of them is currently selected. |
 

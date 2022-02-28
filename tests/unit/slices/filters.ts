@@ -1,7 +1,8 @@
 import { Filter, Matcher } from '@yext/answers-core';
-import { SelectableFilter } from '../../../src/models/utils/selectablefilter';
+import { DisplayableFilter } from '../../../src/models/utils/displayableFilter';
 import createFiltersSlice from '../../../src/slices/filters';
 import _ from 'lodash';
+import { FiltersState } from '../../../src';
 
 const { actions, reducer } = createFiltersSlice('');
 const { setStatic, setFacets, resetFacets, setFilterOption } = actions;
@@ -13,36 +14,40 @@ describe('filter slice reducer works as expected', () => {
     value: 'some value',
     matcher: Matcher.Equals
   };
-  const selectableFilter: SelectableFilter = {
+  const displayableFilter: DisplayableFilter = {
     ...filter,
-    selected: false
+    selected: false,
+    displayName: 'some label'
   };
 
-  const initialState = {
+  const initialState: FiltersState = {
     static: [
       {
         fieldId: 'id1',
         matcher: Matcher.Equals,
         value: 'value1',
-        selected: true
+        selected: true,
+        displayName: 'label1'
       },
       {
         fieldId: 'id2',
         matcher: Matcher.Equals,
         value: 'value2',
-        selected: true
+        selected: true,
+        displayName: 'label2'
       },
       {
         fieldId: 'id3',
         matcher: Matcher.Equals,
         value: 'value3',
-        selected: false
+        selected: false,
+        displayName: 'label3'
       }
     ]
   };
 
   it('setStatic action is handled properly', () => {
-    const staticFilter = [selectableFilter];
+    const staticFilter = [displayableFilter];
     const actualState = reducer({}, setStatic(staticFilter));
     const expectedState = {
       static: staticFilter
@@ -58,14 +63,16 @@ describe('filter slice reducer works as expected', () => {
         matcher: Matcher.Equals,
         value: 'value2'
       },
-      shouldSelect: true
+      shouldSelect: true,
+      displayName: 'label2'
     };
     const consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation();
     const actualState = reducer({}, setFilterOption(unselectFilterPayload));
-    const expectedState = {
+    const expectedState: FiltersState = {
       static: [{
         ...unselectFilterPayload.filter,
-        selected: true
+        displayName: unselectFilterPayload.displayName,
+        selected: true,
       }]
     };
     expect(actualState).toEqual(expectedState);
@@ -80,7 +87,8 @@ describe('filter slice reducer works as expected', () => {
         matcher: Matcher.Equals,
         value: 'value2'
       },
-      shouldSelect: false
+      shouldSelect: false,
+      displayName: 'label2'
     };
 
     const selectFilterPayload = {
@@ -89,7 +97,8 @@ describe('filter slice reducer works as expected', () => {
         matcher: Matcher.Equals,
         value: 'value3'
       },
-      shouldSelect: true
+      shouldSelect: true,
+      displayName: 'label3'
     };
 
     let actualState = reducer(initialState, setFilterOption(unselectFilterPayload));
@@ -110,12 +119,14 @@ describe('filter slice reducer works as expected', () => {
         matcher: Matcher.Equals,
         value: 'invalid value'
       },
-      shouldSelect: true
+      shouldSelect: true,
+      displayName: 'invalid label'
     };
     const actualState = reducer(initialState, setFilterOption(selectFilterPayload));
     const selectedExpectedState = _.cloneDeep(initialState);
     selectedExpectedState.static.push({
       ...selectFilterPayload.filter,
+      displayName: selectFilterPayload.displayName,
       selected: true
     });
     expect(actualState).toEqual(selectedExpectedState);
@@ -128,7 +139,8 @@ describe('filter slice reducer works as expected', () => {
         matcher: Matcher.Equals,
         value: 'invalid value'
       },
-      shouldSelect: false
+      shouldSelect: false,
+      displayName: 'invalid label'
     };
     const consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation();
     const actualState = reducer(initialState, setFilterOption(unselectFilterPayload));

@@ -1,8 +1,8 @@
-import { Matcher, QuerySource, QueryTrigger } from '@yext/answers-core';
+import { Filter, Matcher, QuerySource, QueryTrigger } from '@yext/answers-core';
 import HttpManager from '../../src/http-manager';
 import StateManager from '../../src/models/state-manager';
 import AnswersHeadless from '../../src/answers-headless';
-import { SelectableFilter } from '../../src/models/utils/selectablefilter';
+import { DisplayableFilter } from '../../src/models/utils/displayableFilter';
 import { State } from '../../src/models/state';
 import { SearchTypeEnum } from '../../src/models/utils/searchType';
 import { initialState as initialVerticalState } from '../../src/slices/vertical';
@@ -32,7 +32,8 @@ const mockedState: State = {
       fieldId: 'c_someField',
       matcher: Matcher.Equals,
       value: 'some value',
-      selected: true
+      selected: true,
+      displayName: 'some display name'
     }]
   },
   spellCheck: {
@@ -73,11 +74,12 @@ describe('setters work as expected', () => {
   });
 
   it('setStaticFilters works as expected', () => {
-    const filter: SelectableFilter = {
+    const filter: DisplayableFilter = {
       fieldId: 'c_someField',
       matcher: Matcher.Equals,
       value: 'someValue',
-      selected: true
+      selected: true,
+      displayName: 'someLabel'
     };
     const staticFilter = [filter];
     answers.setStaticFilters(staticFilter);
@@ -284,19 +286,20 @@ describe('filter functions work as expected', () => {
   });
 
   it('setFilterOption works when select filter', async () => {
-    const filter = {
+    const filter: Filter = {
       fieldId: 'c_someField',
       matcher: Matcher.Equals,
       value: 'someValue'
     };
-    answers.setFilterOption({ ...filter, selected: true });
+    answers.setFilterOption({ ...filter, selected: true, displayName: 'someLabel' });
     const dispatchEventCalls =
     mockedStateManager.dispatchEvent.mock.calls;
     expect(dispatchEventCalls.length).toBe(1);
     expect(dispatchEventCalls[0][0]).toBe('filters/setFilterOption');
     expect(dispatchEventCalls[0][1]).toEqual({
       shouldSelect: true,
-      filter: filter
+      filter: filter,
+      displayName: 'someLabel'
     });
   });
 
@@ -306,14 +309,15 @@ describe('filter functions work as expected', () => {
       matcher: Matcher.Equals,
       value: 'someValue'
     };
-    answers.setFilterOption({ ...filter, selected: false });
+    answers.setFilterOption({ ...filter, selected: false, displayName: 'someLabel' });
     const dispatchEventCalls =
     mockedStateManager.dispatchEvent.mock.calls;
     expect(dispatchEventCalls.length).toBe(1);
     expect(dispatchEventCalls[0][0]).toBe('filters/setFilterOption');
     expect(dispatchEventCalls[0][1]).toEqual({
       shouldSelect: false,
-      filter: filter
+      filter: filter,
+      displayName: 'someLabel'
     });
   });
 });
@@ -366,7 +370,7 @@ describe('search works as expected', () => {
   it('vertical search works', async () => {
     answers.state.meta.searchType = SearchTypeEnum.Vertical;
     await answers.executeVerticalQuery();
-    const { selected:_, ...filter } = mockedState.filters.static[0];
+    const { selected:_, displayName:__, ...filter } = mockedState.filters.static[0];
     const coreCalls = mockedCore.verticalSearch.mock.calls;
     const expectedSearchParams = {
       query: mockedState.query.input,

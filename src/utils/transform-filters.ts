@@ -1,5 +1,5 @@
 import { CombinedFilter, Filter, FilterCombinator } from '@yext/answers-core';
-import { SelectableFilter } from '../models/utils/selectablefilter';
+import { DisplayableFilter } from '../models/utils/displayableFilter';
 
 /**
  * Combines a list of Filters using the logical OR operator into a
@@ -19,33 +19,33 @@ function combineFiltersWithOR(filters: Filter[]): Filter | CombinedFilter {
 }
 
 /**
- * Converts a list of {@link SelectableFilter}s used in Answers Headless to a
+ * Converts a list of {@link DisplayableFilter}s used in Answers Headless to a
  * single nested filter stucture used in Answers Core.
  *
- * @param selectableFilters - The filters to be transformed
+ * @param displayableFilters - The filters to be transformed
  * @returns The filters in a singly-nested {@link CombinedFilter}, or if there
  *          is only one filter in the list and it is selected, returns that
  *          {@link Filter}
  */
 export function transformFiltersToCoreFormat(
-  selectableFilters: SelectableFilter[] | undefined
+  displayableFilters: DisplayableFilter[] | undefined
 ): Filter | CombinedFilter | null {
-  if (!selectableFilters) {
+  if (!displayableFilters) {
     return null;
   }
-  if (selectableFilters.length === 0) {
+  if (displayableFilters.length === 0) {
     return null;
   }
-  if (selectableFilters.length === 1) {
-    const { selected, ...filter } = selectableFilters[0];
+  if (displayableFilters.length === 1) {
+    const { selected, displayName:_, ...filter } = displayableFilters[0];
     return selected ? filter : null;
   }
-  const selectedFilters = selectableFilters.filter(selectableFilter => selectableFilter.selected);
+  const selectedFilters = displayableFilters.filter(displayableFilter => displayableFilter.selected);
   const groupedFilters: Record<string, Filter[]> = selectedFilters.reduce((groups, element) => {
-    const { selected:_, ...filter } = element;
-    groups[element.fieldId]
-      ? groups[element.fieldId].push({ ...filter })
-      : groups[element.fieldId] = [{ ...filter }];
+    const { selected:_, displayName:__, ...filter } = element;
+    groups[filter.fieldId]
+      ? groups[filter.fieldId].push(filter)
+      : groups[filter.fieldId] = [filter];
     return groups;
   }, {});
 

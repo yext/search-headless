@@ -9,5 +9,5 @@ The collection of possible static filters that can be applied to the search resu
 <b>Signature:</b>
 
 ```typescript
-static?: SelectableFilter[];
+static?: DisplayableFilter[];
 ```

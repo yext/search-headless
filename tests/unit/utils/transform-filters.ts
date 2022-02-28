@@ -1,5 +1,5 @@
 import { CombinedFilter, Filter, FilterCombinator, Matcher } from '@yext/answers-core';
-import { SelectableFilter } from '../../../src/models/utils/selectablefilter';
+import { DisplayableFilter } from '../../../src/models/utils/displayableFilter';
 import { transformFiltersToCoreFormat } from '../../../src/utils/transform-filters';
 
 describe('see that transformFiltersToCoreFormat works properly', () => {
@@ -12,24 +12,26 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
   });
 
   it('properly handle an unselected Filter', () => {
-    const selectableFilters: SelectableFilter[] = [
+    const displayableFilters: DisplayableFilter[] = [
       {
         fieldId: 'c_someField',
         matcher: Matcher.Equals,
         value: 'some value',
+        displayName: 'some label',
         selected: false
       }
     ];
-    const transformedFilter = transformFiltersToCoreFormat(selectableFilters);
+    const transformedFilter = transformFiltersToCoreFormat(displayableFilters);
     expect(transformedFilter).toEqual(null);
   });
 
   it('properly handle a selected Filter', () => {
-    const selectableFilters: SelectableFilter[] = [
+    const displayableFilters: DisplayableFilter[] = [
       {
         fieldId: 'c_someField',
         matcher: Matcher.Equals,
         value: 'some value',
+        displayName: 'some label',
         selected: true
       }
     ];
@@ -38,7 +40,7 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
       matcher: Matcher.Equals,
       value: 'some value'
     };
-    const transformedFilter = transformFiltersToCoreFormat(selectableFilters);
+    const transformedFilter = transformFiltersToCoreFormat(displayableFilters);
     expect(transformedFilter).toEqual(expectedFilters);
   });
 
@@ -48,11 +50,12 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
       matcher: Matcher.Equals,
       value: 'some value'
     };
-    const selectableFilter = {
+    const displayableFilter = {
       ...filter,
+      displayName: 'some label',
       selected: true
     };
-    const filters: SelectableFilter[] = [selectableFilter, selectableFilter, selectableFilter];
+    const filters: DisplayableFilter[] = [displayableFilter, displayableFilter, displayableFilter];
     const expectedFilters = {
       combinator: FilterCombinator.OR,
       filters: [filter, filter, filter]
@@ -85,21 +88,25 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
       }
     ];
 
-    const selectableFilters: SelectableFilter[] = [
+    const displayableFilters: DisplayableFilter[] = [
       {
         ...filters[0],
+        displayName: 'some label',
         selected: true
       },
       {
         ...filters[1],
+        displayName: 'different label',
         selected: true
       },
       {
         ...filters[2],
+        displayName: 'unique label',
         selected: true
       },
       {
         ...filters[3],
+        displayName: 'another label',
         selected: true
       }
     ];
@@ -117,7 +124,7 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
         }
       ]
     };
-    const transformedFilter = transformFiltersToCoreFormat(selectableFilters);
+    const transformedFilter = transformFiltersToCoreFormat(displayableFilters);
     expect(transformedFilter).toEqual(expectedFilters);
   });
 
@@ -145,29 +152,34 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
       }
     ];
 
-    const selectableFilters: SelectableFilter[] = [
+    const displayableFilters: DisplayableFilter[] = [
       {
         ...filters[0],
+        displayName: 'some label',
         selected: false
       },
       {
         ...filters[1],
+        displayName: 'different label',
         selected: false
       },
       {
         ...filters[2],
+        displayName: 'unique label',
         selected: true
       },
       {
         ...filters[3],
+        displayName: 'another label',
         selected: true
       }
     ];
+
     const expectedFilters: Filter | CombinedFilter = {
       combinator: FilterCombinator.AND,
       filters: [filters[2], filters[3]]
     };
-    const transformedFilter = transformFiltersToCoreFormat(selectableFilters);
+    const transformedFilter = transformFiltersToCoreFormat(displayableFilters);
     expect(transformedFilter).toEqual(expectedFilters);
   });
 });

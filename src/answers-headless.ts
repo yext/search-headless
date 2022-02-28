@@ -24,7 +24,7 @@ import StateManager from './models/state-manager';
 import { Unsubscribe } from '@reduxjs/toolkit';
 import HttpManager from './http-manager';
 import * as answersUtilities from './answers-utilities';
-import { SelectableFilter } from './models/utils/selectablefilter';
+import { DisplayableFilter } from './models/utils/displayableFilter';
 import { transformFiltersToCoreFormat } from './utils/transform-filters';
 import { SearchTypeEnum } from './models/utils/searchType';
 import { initialState as initialVerticalState } from './slices/vertical';
@@ -149,7 +149,7 @@ export default class AnswersHeadless {
    *
    * @param filters - The static filters to set
    */
-  setStaticFilters(filters: SelectableFilter[]): void {
+  setStaticFilters(filters: DisplayableFilter[]): void {
     this.stateManager.dispatchEvent('filters/setStatic', filters);
   }
 
@@ -512,15 +512,10 @@ export default class AnswersHeadless {
   /**
    * Sets a static filter option and whether or not it is selected in state.
    *
-   * @param seletableFilter - The static filter and whether it is selected
+   * @param displayableFilter - The static filter and whether it is selected
    */
-  setFilterOption(seletableFilter: SelectableFilter): void {
-    const { selected, ...filter } = seletableFilter;
-    const payload = {
-      filter: filter,
-      shouldSelect: selected
-    };
-    this.stateManager.dispatchEvent('filters/setFilterOption', payload);
+  setFilterOption(displayableFilter: DisplayableFilter): void {
+    this.stateManager.dispatchEvent('filters/setFilterOption', displayableFilter);
   }
 }
 

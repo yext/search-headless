@@ -285,40 +285,20 @@ describe('filter functions work as expected', () => {
     jest.clearAllMocks();
   });
 
-  it('setFilterOption works when select filter', async () => {
-    const filter: Filter = {
+  it('setFilterOption works', async () => {
+    const filter: DisplayableFilter = {
       fieldId: 'c_someField',
       matcher: Matcher.Equals,
-      value: 'someValue'
+      value: 'someValue',
+      displayName: 'someLabel',
+      selected: true
     };
-    answers.setFilterOption({ ...filter, selected: true, displayName: 'someLabel' });
+    answers.setFilterOption(filter);
     const dispatchEventCalls =
     mockedStateManager.dispatchEvent.mock.calls;
     expect(dispatchEventCalls.length).toBe(1);
     expect(dispatchEventCalls[0][0]).toBe('filters/setFilterOption');
-    expect(dispatchEventCalls[0][1]).toEqual({
-      shouldSelect: true,
-      filter: filter,
-      displayName: 'someLabel'
-    });
-  });
-
-  it('setFilterOption works when unselect filter', async () => {
-    const filter = {
-      fieldId: 'c_someField',
-      matcher: Matcher.Equals,
-      value: 'someValue'
-    };
-    answers.setFilterOption({ ...filter, selected: false, displayName: 'someLabel' });
-    const dispatchEventCalls =
-    mockedStateManager.dispatchEvent.mock.calls;
-    expect(dispatchEventCalls.length).toBe(1);
-    expect(dispatchEventCalls[0][0]).toBe('filters/setFilterOption');
-    expect(dispatchEventCalls[0][1]).toEqual({
-      shouldSelect: false,
-      filter: filter,
-      displayName: 'someLabel'
-    });
+    expect(dispatchEventCalls[0][1]).toEqual(filter);
   });
 });
 

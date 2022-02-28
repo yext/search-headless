@@ -17,6 +17,6 @@ export interface DisplayableFilter extends Filter
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [displayName?](./answers-headless.displayablefilter.displayname.md) | string | <i>(Optional)</i> The filter's display name. |
-|  [selected?](./answers-headless.displayablefilter.selected.md) | boolean | <i>(Optional)</i> Whether or not the filter is selected. |
+|  [displayName](./answers-headless.displayablefilter.displayname.md) | string | The filter's display name. |
+|  [selected](./answers-headless.displayablefilter.selected.md) | boolean | Whether or not the filter is selected. |
 

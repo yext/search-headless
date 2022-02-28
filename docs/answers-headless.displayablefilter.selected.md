@@ -9,5 +9,5 @@ Whether or not the filter is selected.
 <b>Signature:</b>
 
 ```typescript
-selected?: boolean;
+selected: boolean;
 ```

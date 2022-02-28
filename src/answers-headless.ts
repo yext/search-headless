@@ -515,13 +515,7 @@ export default class AnswersHeadless {
    * @param displayableFilter - The static filter and whether it is selected
    */
   setFilterOption(displayableFilter: DisplayableFilter): void {
-    const { selected, displayName, ...filter } = displayableFilter;
-    const payload = {
-      filter: filter,
-      displayName,
-      shouldSelect: selected
-    };
-    this.stateManager.dispatchEvent('filters/setFilterOption', payload);
+    this.stateManager.dispatchEvent('filters/setFilterOption', displayableFilter);
   }
 }
 

@@ -209,8 +209,8 @@ export interface DisplayableFacetOption extends FacetOption {
 
 // @public
 export interface DisplayableFilter extends Filter {
-    displayName?: string;
-    selected?: boolean;
+    displayName: string;
+    selected: boolean;
 }
 
 // @public

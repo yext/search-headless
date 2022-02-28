@@ -9,9 +9,9 @@ export interface DisplayableFilter extends Filter {
   /**
    * Whether or not the filter is selected.
    */
-  selected?: boolean,
+  selected: boolean,
   /**
    * The filter's display name.
    */
-  displayName?: string
+  displayName: string
 }

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
-import { Filter, FacetOption, DisplayableFacet } from '@yext/answers-core';
+import { FacetOption, DisplayableFacet } from '@yext/answers-core';
 import { FiltersState } from '../models/slices/filters';
 import { DisplayableFilter } from '../models/utils/displayableFilter';
 import { areFiltersEqual } from '../utils/filter-utils';
@@ -10,12 +10,6 @@ interface FacetPayload {
   fieldId: string
   facetOption: FacetOption
   shouldSelect: boolean
-}
-
-interface FilterPayload {
-  filter: Filter
-  shouldSelect: boolean,
-  displayName?: string
 }
 
 const reducers = {
@@ -60,20 +54,18 @@ const reducers = {
    * If the specified static filter should be selected, but is not in state, it will
    * be added to the state.
    */
-  setFilterOption: (state: FiltersState, { payload }: PayloadAction<FilterPayload>) => {
+  setFilterOption: (state: FiltersState, { payload }: PayloadAction<DisplayableFilter>) => {
     if (!state.static) {
       state.static = [];
     }
-    const { filter: targetFilter, shouldSelect, displayName } = payload;
-    const matchingFilter = state.static.find(storedDisplayableFilter => {
-      const { selected:_, displayName:__, ...storedFilter } = storedDisplayableFilter;
+    const { selected, displayName:_, ...targetFilter } = payload;
+    const matchingFilter = state.static.find(storedFilter => {
       return areFiltersEqual(storedFilter, targetFilter);
     });
     if (matchingFilter) {
-      matchingFilter.selected = shouldSelect;
-    } else if (shouldSelect) {
-      const selectedFilter = { ...targetFilter, displayName, selected: shouldSelect };
-      state.static.push(selectedFilter);
+      matchingFilter.selected = selected;
+    } else if (selected) {
+      state.static.push(payload);
     } else {
       console.warn('Could not unselect a non-existing filter option in state '
         + `with the following fields:\n${JSON.stringify(targetFilter)}.`);

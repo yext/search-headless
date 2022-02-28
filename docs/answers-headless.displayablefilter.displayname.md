@@ -9,5 +9,5 @@ The filter's display name.
 <b>Signature:</b>
 
 ```typescript
-displayName?: string;
+displayName: string;
 ```

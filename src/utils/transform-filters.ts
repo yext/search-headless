@@ -1,4 +1,5 @@
 import { CombinedFilter, Filter, FilterCombinator } from '@yext/answers-core';
+import { SelectableFilter } from '../models/utils/selectableFilter';
 import { DisplayableFilter } from '../models/utils/displayableFilter';
 
 /**
@@ -19,8 +20,8 @@ function combineFiltersWithOR(filters: Filter[]): Filter | CombinedFilter {
 }
 
 /**
- * Converts a list of {@link DisplayableFilter}s used in Answers Headless to a
- * single nested filter stucture used in Answers Core.
+ * Converts a list of {@link SelectableFilter}s or {@link DisplayableFilter}s
+ * used in Answers Headless to a single nested filter stucture used in Answers Core.
  *
  * @param displayableFilters - The filters to be transformed
  * @returns The filters in a singly-nested {@link CombinedFilter}, or if there
@@ -28,8 +29,13 @@ function combineFiltersWithOR(filters: Filter[]): Filter | CombinedFilter {
  *          {@link Filter}
  */
 export function transformFiltersToCoreFormat(
-  displayableFilters: DisplayableFilter[] | undefined
+  filters: SelectableFilter[] | DisplayableFilter[] | undefined
 ): Filter | CombinedFilter | null {
+  const displayableFilters: DisplayableFilter[] | undefined = filters
+    ?.map((filter: SelectableFilter | DisplayableFilter) => 'displayName' in filter
+      ? filter
+      : { ...filter, displayName: '' }
+    );
   if (!displayableFilters) {
     return null;
   }

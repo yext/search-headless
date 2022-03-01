@@ -1,4 +1,5 @@
 import { CombinedFilter, Filter, FilterCombinator, Matcher } from '@yext/answers-core';
+import { SelectableFilter } from '../../../src/models/utils/selectableFilter';
 import { DisplayableFilter } from '../../../src/models/utils/displayableFilter';
 import { transformFiltersToCoreFormat } from '../../../src/utils/transform-filters';
 
@@ -41,6 +42,24 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
       value: 'some value'
     };
     const transformedFilter = transformFiltersToCoreFormat(displayableFilters);
+    expect(transformedFilter).toEqual(expectedFilters);
+  });
+
+  it('properly handle a selected filter of type deprecated SelectableFilter', () => {
+    const selectableFilter: SelectableFilter[] = [
+      {
+        fieldId: 'c_someField',
+        matcher: Matcher.Equals,
+        value: 'some value',
+        selected: true
+      }
+    ];
+    const expectedFilters = {
+      fieldId: 'c_someField',
+      matcher: Matcher.Equals,
+      value: 'some value'
+    };
+    const transformedFilter = transformFiltersToCoreFormat(selectableFilter);
     expect(transformedFilter).toEqual(expectedFilters);
   });
 

@@ -24,6 +24,7 @@ import StateManager from './models/state-manager';
 import { Unsubscribe } from '@reduxjs/toolkit';
 import HttpManager from './http-manager';
 import * as answersUtilities from './answers-utilities';
+import { SelectableFilter } from './models/utils/selectableFilter';
 import { DisplayableFilter } from './models/utils/displayableFilter';
 import { transformFiltersToCoreFormat } from './utils/transform-filters';
 import { SearchTypeEnum } from './models/utils/searchType';
@@ -149,8 +150,13 @@ export default class AnswersHeadless {
    *
    * @param filters - The static filters to set
    */
-  setStaticFilters(filters: DisplayableFilter[]): void {
-    this.stateManager.dispatchEvent('filters/setStatic', filters);
+  setStaticFilters(filters: SelectableFilter[] | DisplayableFilter[]): void {
+    const displayableFilters: DisplayableFilter[] = filters
+      .map((filter: SelectableFilter | DisplayableFilter) => 'displayName' in filter
+        ? filter
+        : { ...filter, displayName: '' }
+      );
+    this.stateManager.dispatchEvent('filters/setStatic', displayableFilters);
   }
 
   /**
@@ -512,9 +518,12 @@ export default class AnswersHeadless {
   /**
    * Sets a static filter option and whether or not it is selected in state.
    *
-   * @param displayableFilter - The static filter and whether it is selected
+   * @param filter - The static filter and whether it is selected
    */
-  setFilterOption(displayableFilter: DisplayableFilter): void {
+  setFilterOption(filter: SelectableFilter | DisplayableFilter): void {
+    const displayableFilter: DisplayableFilter = 'displayName' in filter
+      ? filter
+      : { ...filter, displayName: '' };
     this.stateManager.dispatchEvent('filters/setFilterOption', displayableFilter);
   }
 }

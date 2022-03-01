@@ -1,8 +1,9 @@
-import { Filter, Matcher, QuerySource, QueryTrigger } from '@yext/answers-core';
+import { Matcher, QuerySource, QueryTrigger } from '@yext/answers-core';
 import HttpManager from '../../src/http-manager';
 import StateManager from '../../src/models/state-manager';
 import AnswersHeadless from '../../src/answers-headless';
 import { DisplayableFilter } from '../../src/models/utils/displayableFilter';
+import { SelectableFilter } from '../../src/models/utils/selectableFilter';
 import { State } from '../../src/models/state';
 import { SearchTypeEnum } from '../../src/models/utils/searchType';
 import { initialState as initialVerticalState } from '../../src/slices/vertical';
@@ -89,7 +90,25 @@ describe('setters work as expected', () => {
 
     expect(dispatchEventCalls.length).toBe(1);
     expect(dispatchEventCalls[0][0]).toBe('filters/setStatic');
-    expect(dispatchEventCalls[0][1]).toBe(staticFilter);
+    expect(dispatchEventCalls[0][1]).toEqual(staticFilter);
+  });
+
+  it('setStaticFilters works as expected with deprecated SelectableFilter', () => {
+    const filter: SelectableFilter = {
+      fieldId: 'c_someField',
+      matcher: Matcher.Equals,
+      value: 'someValue',
+      selected: true
+    };
+    const staticFilter = [{...filter, displayName: ''}];
+    answers.setStaticFilters(staticFilter);
+
+    const dispatchEventCalls =
+      mockedStateManager.dispatchEvent.mock.calls;
+
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('filters/setStatic');
+    expect(dispatchEventCalls[0][1]).toEqual(staticFilter);
   });
 
   it('setFacets works as expected', () => {
@@ -300,6 +319,21 @@ describe('filter functions work as expected', () => {
     expect(dispatchEventCalls[0][0]).toBe('filters/setFilterOption');
     expect(dispatchEventCalls[0][1]).toEqual(filter);
   });
+
+  it('setFilterOption works with deprecated selectableFilter', async () => {
+    const filter: SelectableFilter = {
+      fieldId: 'c_someField',
+      matcher: Matcher.Equals,
+      value: 'someValue',
+      selected: true
+    };
+    answers.setFilterOption(filter);
+    const dispatchEventCalls =
+    mockedStateManager.dispatchEvent.mock.calls;
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('filters/setFilterOption');
+    expect(dispatchEventCalls[0][1]).toEqual({...filter, displayName: ''});
+  });
 });
 
 
@@ -350,14 +384,14 @@ describe('search works as expected', () => {
   it('vertical search works', async () => {
     answers.state.meta.searchType = SearchTypeEnum.Vertical;
     await answers.executeVerticalQuery();
-    const { selected:_, displayName:__, ...filter } = mockedState.filters.static[0];
+    const { fieldId, matcher, value } = mockedState.filters.static[0];
     const coreCalls = mockedCore.verticalSearch.mock.calls;
     const expectedSearchParams = {
       query: mockedState.query.input,
       querySource: mockedState.query.querySource,
       queryTrigger: mockedState.query.queryTrigger,
       verticalKey: mockedState.vertical.verticalKey,
-      staticFilters: filter,
+      staticFilters: { fieldId, matcher, value },
       retrieveFacets: true,
       limit: mockedState.vertical.limit,
       offset: mockedState.vertical.offset,

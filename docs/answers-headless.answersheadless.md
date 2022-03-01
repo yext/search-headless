@@ -38,7 +38,7 @@ The constructor for this class is marked as internal. Third-party code should no
 |  [setContext(context)](./answers-headless.answersheadless.setcontext.md) |  | Sets [MetaState.context](./answers-headless.metastate.context.md) to the specified context. |
 |  [setFacetOption(fieldId, facetOption, selected)](./answers-headless.answersheadless.setfacetoption.md) |  | Sets a specified facet option to be selected or unselected. |
 |  [setFacets(facets)](./answers-headless.answersheadless.setfacets.md) |  | Sets [FiltersState.facets](./answers-headless.filtersstate.facets.md) to the specified facets. |
-|  [setFilterOption(displayableFilter)](./answers-headless.answersheadless.setfilteroption.md) |  | Sets a static filter option and whether or not it is selected in state. |
+|  [setFilterOption(filter)](./answers-headless.answersheadless.setfilteroption.md) |  | Sets a static filter option and whether or not it is selected in state. |
 |  [setOffset(offset)](./answers-headless.answersheadless.setoffset.md) |  | Sets [VerticalSearchState.offset](./answers-headless.verticalsearchstate.offset.md) to the specified offset. |
 |  [setQuery(input)](./answers-headless.answersheadless.setquery.md) |  | Sets [QueryState.input](./answers-headless.querystate.input.md) to the specified input. |
 |  [setQuerySource(source)](./answers-headless.answersheadless.setquerysource.md) |  | Sets [QueryState.querySource](./answers-headless.querystate.querysource.md) to the specified source. |

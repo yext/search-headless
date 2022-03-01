@@ -9,14 +9,14 @@ Sets [FiltersState.static](./answers-headless.filtersstate.static.md) to the spe
 <b>Signature:</b>
 
 ```typescript
-setStaticFilters(filters: SelectableFilter[] | DisplayableFilter[]): void;
+setStaticFilters(filters: SelectableFilter[]): void;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  filters | [SelectableFilter](./answers-headless.selectablefilter.md)<!-- -->\[\] \| [DisplayableFilter](./answers-headless.displayablefilter.md)<!-- -->\[\] | The static filters to set |
+|  filters | [SelectableFilter](./answers-headless.selectablefilter.md)<!-- -->\[\] | The static filters to set |
 
 <b>Returns:</b>
 

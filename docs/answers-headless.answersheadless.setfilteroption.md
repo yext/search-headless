@@ -9,14 +9,14 @@ Sets a static filter option and whether or not it is selected in state.
 <b>Signature:</b>
 
 ```typescript
-setFilterOption(filter: SelectableFilter | DisplayableFilter): void;
+setFilterOption(filter: SelectableFilter): void;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  filter | [SelectableFilter](./answers-headless.selectablefilter.md) \| [DisplayableFilter](./answers-headless.displayablefilter.md) | The static filter and whether it is selected |
+|  filter | [SelectableFilter](./answers-headless.selectablefilter.md) | The static filter and whether it is selected |
 
 <b>Returns:</b>
 

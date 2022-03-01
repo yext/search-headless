@@ -63,7 +63,7 @@ export class AnswersHeadless {
     setContext(context: Context): void;
     setFacetOption(fieldId: string, facetOption: FacetOption, selected: boolean): void;
     setFacets(facets: DisplayableFacet[]): void;
-    setFilterOption(filter: SelectableFilter | DisplayableFilter): void;
+    setFilterOption(filter: SelectableFilter): void;
     setOffset(offset: number): void;
     setQuery(input: string): void;
     setQuerySource(source: QuerySource): void;
@@ -75,7 +75,7 @@ export class AnswersHeadless {
     setSortBys(sortBys: SortBy[]): void;
     setSpellCheckEnabled(enabled: boolean): void;
     setState(state: State): void;
-    setStaticFilters(filters: SelectableFilter[] | DisplayableFilter[]): void;
+    setStaticFilters(filters: SelectableFilter[]): void;
     setUniversal(): void;
     setUniversalLimit(limit: UniversalLimit): void;
     setUserLocation(latLong: LatLong): void;
@@ -208,12 +208,6 @@ export interface DisplayableFacetOption extends FacetOption {
 }
 
 // @public
-export interface DisplayableFilter extends Filter {
-    displayName: string;
-    selected: boolean;
-}
-
-// @public
 export interface Endpoints {
     // (undocumented)
     filterSearch?: string;
@@ -304,7 +298,7 @@ export interface FilterSearchResponse {
 // @public
 export interface FiltersState {
     facets?: DisplayableFacet[];
-    static?: SelectableFilter[] | DisplayableFilter[];
+    static?: SelectableFilter[];
 }
 
 // @public
@@ -498,8 +492,9 @@ export enum SearchTypeEnum {
     Vertical = "vertical"
 }
 
-// @public @deprecated
+// @public
 export interface SelectableFilter extends Filter {
+    displayName?: string;
     selected: boolean;
 }
 

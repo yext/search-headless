@@ -1,6 +1,5 @@
 import { CombinedFilter, Filter, FilterCombinator, Matcher } from '@yext/answers-core';
 import { SelectableFilter } from '../../../src/models/utils/selectableFilter';
-import { DisplayableFilter } from '../../../src/models/utils/displayableFilter';
 import { transformFiltersToCoreFormat } from '../../../src/utils/transform-filters';
 
 describe('see that transformFiltersToCoreFormat works properly', () => {
@@ -13,7 +12,7 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
   });
 
   it('properly handle an unselected Filter', () => {
-    const displayableFilters: DisplayableFilter[] = [
+    const selectableFilters: SelectableFilter[] = [
       {
         fieldId: 'c_someField',
         matcher: Matcher.Equals,
@@ -22,12 +21,12 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
         selected: false
       }
     ];
-    const transformedFilter = transformFiltersToCoreFormat(displayableFilters);
+    const transformedFilter = transformFiltersToCoreFormat(selectableFilters);
     expect(transformedFilter).toEqual(null);
   });
 
   it('properly handle a selected Filter', () => {
-    const displayableFilters: DisplayableFilter[] = [
+    const selectableFilters: SelectableFilter[] = [
       {
         fieldId: 'c_someField',
         matcher: Matcher.Equals,
@@ -41,25 +40,7 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
       matcher: Matcher.Equals,
       value: 'some value'
     };
-    const transformedFilter = transformFiltersToCoreFormat(displayableFilters);
-    expect(transformedFilter).toEqual(expectedFilters);
-  });
-
-  it('properly handle a selected filter of type deprecated SelectableFilter', () => {
-    const selectableFilter: SelectableFilter[] = [
-      {
-        fieldId: 'c_someField',
-        matcher: Matcher.Equals,
-        value: 'some value',
-        selected: true
-      }
-    ];
-    const expectedFilters = {
-      fieldId: 'c_someField',
-      matcher: Matcher.Equals,
-      value: 'some value'
-    };
-    const transformedFilter = transformFiltersToCoreFormat(selectableFilter);
+    const transformedFilter = transformFiltersToCoreFormat(selectableFilters);
     expect(transformedFilter).toEqual(expectedFilters);
   });
 
@@ -69,12 +50,12 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
       matcher: Matcher.Equals,
       value: 'some value'
     };
-    const displayableFilter = {
+    const selectableFilter = {
       ...filter,
       displayName: 'some label',
       selected: true
     };
-    const filters: DisplayableFilter[] = [displayableFilter, displayableFilter, displayableFilter];
+    const filters: SelectableFilter[] = [selectableFilter, selectableFilter, selectableFilter];
     const expectedFilters = {
       combinator: FilterCombinator.OR,
       filters: [filter, filter, filter]
@@ -107,7 +88,7 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
       }
     ];
 
-    const displayableFilters: DisplayableFilter[] = [
+    const selectableFilters: SelectableFilter[] = [
       {
         ...filters[0],
         displayName: 'some label',
@@ -143,7 +124,7 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
         }
       ]
     };
-    const transformedFilter = transformFiltersToCoreFormat(displayableFilters);
+    const transformedFilter = transformFiltersToCoreFormat(selectableFilters);
     expect(transformedFilter).toEqual(expectedFilters);
   });
 
@@ -171,7 +152,7 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
       }
     ];
 
-    const displayableFilters: DisplayableFilter[] = [
+    const selectableFilters: SelectableFilter[] = [
       {
         ...filters[0],
         displayName: 'some label',
@@ -198,7 +179,7 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
       combinator: FilterCombinator.AND,
       filters: [filters[2], filters[3]]
     };
-    const transformedFilter = transformFiltersToCoreFormat(displayableFilters);
+    const transformedFilter = transformFiltersToCoreFormat(selectableFilters);
     expect(transformedFilter).toEqual(expectedFilters);
   });
 });

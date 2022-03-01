@@ -4,11 +4,6 @@
 
 ## SelectableFilter interface
 
-> Warning: This API is now obsolete.
-> 
-> Will be removed in favor of [DisplayableFilter](./answers-headless.displayablefilter.md) in the next major version.
-> 
-
 A [Filter](./answers-headless.filter.md) that can be selected and maintains whether or not it is.
 
 <b>Signature:</b>
@@ -22,5 +17,6 @@ export interface SelectableFilter extends Filter
 
 |  Property | Type | Description |
 |  --- | --- | --- |
+|  [displayName?](./answers-headless.selectablefilter.displayname.md) | string | <i>(Optional)</i> The filter's display name. |
 |  [selected](./answers-headless.selectablefilter.selected.md) | boolean | Whether or not the filter is selected. |
 

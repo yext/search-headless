@@ -57,7 +57,6 @@
 |  [DirectAnswerState](./answers-headless.directanswerstate.md) | Maintains the direct answer associated with the latest search. |
 |  [DisplayableFacet](./answers-headless.displayablefacet.md) | A [Facet](./answers-headless.facet.md) which contains extra fields meant to be displayed to the end user. |
 |  [DisplayableFacetOption](./answers-headless.displayablefacetoption.md) | A [FacetOption](./answers-headless.facetoption.md) with extra data meant to be displayed to the end user. |
-|  [DisplayableFilter](./answers-headless.displayablefilter.md) | A [Filter](./answers-headless.filter.md) with additional fields meant to be displayed to the end user. |
 |  [Endpoints](./answers-headless.endpoints.md) | Overrides for the URLs which are used when making requests to the Answers API. |
 |  [Facet](./answers-headless.facet.md) | Represents dynamic filter options for the Answers API. |
 |  [FacetOption](./answers-headless.facetoption.md) | A filter associated with the facet. |

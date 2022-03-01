@@ -1,8 +1,7 @@
 import { Filter, Matcher } from '@yext/answers-core';
-import { DisplayableFilter } from '../../../src/models/utils/displayableFilter';
 import createFiltersSlice from '../../../src/slices/filters';
 import _ from 'lodash';
-import { FiltersState } from '../../../src';
+import { FiltersState, SelectableFilter } from '../../../src';
 
 const { actions, reducer } = createFiltersSlice('');
 const { setStatic, setFacets, resetFacets, setFilterOption } = actions;
@@ -14,7 +13,7 @@ describe('filter slice reducer works as expected', () => {
     value: 'some value',
     matcher: Matcher.Equals
   };
-  const displayableFilter: DisplayableFilter = {
+  const selectableFilter: SelectableFilter = {
     ...filter,
     selected: false,
     displayName: 'some label'
@@ -47,7 +46,7 @@ describe('filter slice reducer works as expected', () => {
   };
 
   it('setStatic action is handled properly', () => {
-    const staticFilter = [displayableFilter];
+    const staticFilter = [selectableFilter];
     const actualState = reducer({}, setStatic(staticFilter));
     const expectedState = {
       static: staticFilter
@@ -57,7 +56,7 @@ describe('filter slice reducer works as expected', () => {
   });
 
   it('setFilterOption action is handled properly with no static state', () => {
-    const filter: DisplayableFilter = {
+    const filter: SelectableFilter = {
       fieldId: 'id2',
       matcher: Matcher.Equals,
       value: 'value2',
@@ -117,7 +116,7 @@ describe('filter slice reducer works as expected', () => {
   });
 
   it('setFilterOption action is handled properly with filter not found in state when unselect', () => {
-    const unselectFilterPayload: DisplayableFilter = {
+    const unselectFilterPayload: SelectableFilter = {
       fieldId: 'invalid field',
       matcher: Matcher.Equals,
       value: 'invalid value',

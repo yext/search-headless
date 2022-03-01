@@ -2,7 +2,6 @@ import { Matcher, QuerySource, QueryTrigger } from '@yext/answers-core';
 import HttpManager from '../../src/http-manager';
 import StateManager from '../../src/models/state-manager';
 import AnswersHeadless from '../../src/answers-headless';
-import { DisplayableFilter } from '../../src/models/utils/displayableFilter';
 import { SelectableFilter } from '../../src/models/utils/selectableFilter';
 import { State } from '../../src/models/state';
 import { SearchTypeEnum } from '../../src/models/utils/searchType';
@@ -75,7 +74,7 @@ describe('setters work as expected', () => {
   });
 
   it('setStaticFilters works as expected', () => {
-    const filter: DisplayableFilter = {
+    const filter: SelectableFilter = {
       fieldId: 'c_someField',
       matcher: Matcher.Equals,
       value: 'someValue',
@@ -83,24 +82,6 @@ describe('setters work as expected', () => {
       displayName: 'someLabel'
     };
     const staticFilter = [filter];
-    answers.setStaticFilters(staticFilter);
-
-    const dispatchEventCalls =
-      mockedStateManager.dispatchEvent.mock.calls;
-
-    expect(dispatchEventCalls.length).toBe(1);
-    expect(dispatchEventCalls[0][0]).toBe('filters/setStatic');
-    expect(dispatchEventCalls[0][1]).toEqual(staticFilter);
-  });
-
-  it('setStaticFilters works as expected with deprecated SelectableFilter', () => {
-    const filter: SelectableFilter = {
-      fieldId: 'c_someField',
-      matcher: Matcher.Equals,
-      value: 'someValue',
-      selected: true
-    };
-    const staticFilter = [{...filter, displayName: ''}];
     answers.setStaticFilters(staticFilter);
 
     const dispatchEventCalls =
@@ -305,7 +286,7 @@ describe('filter functions work as expected', () => {
   });
 
   it('setFilterOption works', async () => {
-    const filter: DisplayableFilter = {
+    const filter: SelectableFilter = {
       fieldId: 'c_someField',
       matcher: Matcher.Equals,
       value: 'someValue',
@@ -318,21 +299,6 @@ describe('filter functions work as expected', () => {
     expect(dispatchEventCalls.length).toBe(1);
     expect(dispatchEventCalls[0][0]).toBe('filters/setFilterOption');
     expect(dispatchEventCalls[0][1]).toEqual(filter);
-  });
-
-  it('setFilterOption works with deprecated selectableFilter', async () => {
-    const filter: SelectableFilter = {
-      fieldId: 'c_someField',
-      matcher: Matcher.Equals,
-      value: 'someValue',
-      selected: true
-    };
-    answers.setFilterOption(filter);
-    const dispatchEventCalls =
-    mockedStateManager.dispatchEvent.mock.calls;
-    expect(dispatchEventCalls.length).toBe(1);
-    expect(dispatchEventCalls[0][0]).toBe('filters/setFilterOption');
-    expect(dispatchEventCalls[0][1]).toEqual({...filter, displayName: ''});
   });
 });
 

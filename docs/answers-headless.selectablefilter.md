@@ -4,7 +4,7 @@
 
 ## SelectableFilter interface
 
-A [Filter](./answers-headless.filter.md) with additional information, such as optional display name and whether it is or not selected.
+A [Filter](./answers-headless.filter.md) with additional information, such as an optional display name and whether or not it is selected.
 
 <b>Signature:</b>
 

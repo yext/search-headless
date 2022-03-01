@@ -82,7 +82,7 @@
 |  [Result](./answers-headless.result.md) | An individual search result. |
 |  [SearchParameterField](./answers-headless.searchparameterfield.md) | Indicates which entity field to perform the autocomplete request on. |
 |  [SearchStatusState](./answers-headless.searchstatusstate.md) | Maintains the status of the latest search. |
-|  [SelectableFilter](./answers-headless.selectablefilter.md) | A [Filter](./answers-headless.filter.md) with additional information, such as optional display name and whether it is or not selected. |
+|  [SelectableFilter](./answers-headless.selectablefilter.md) | A [Filter](./answers-headless.filter.md) with additional information, such as an optional display name and whether or not it is selected. |
 |  [SessionTrackingState](./answers-headless.sessiontrackingstate.md) | Maintains whether the user session should be tracked and, if so, the session information. |
 |  [Snippet](./answers-headless.snippet.md) | The section of text where a [FeaturedSnippetDirectAnswer](./answers-headless.featuredsnippetdirectanswer.md) was found. |
 |  [SortBy](./answers-headless.sortby.md) | Represents a criterion that can be used to sort results. |

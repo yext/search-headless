@@ -1,8 +1,8 @@
 import { Filter } from '@yext/answers-core';
 
 /**
- * A {@link Filter} with additional information, such as optional
- * display name and whether it is or not selected.
+ * A {@link Filter} with additional information, such as an
+ * optional display name and whether or not it is selected.
  *
  * @public
  */

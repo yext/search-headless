@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
 import { FacetOption, DisplayableFacet } from '@yext/answers-core';
+import { SelectableFilter } from '../models/utils/selectableFilter';
 import { FiltersState } from '../models/slices/filters';
-import { DisplayableFilter } from '../models/utils/displayableFilter';
 import { areFiltersEqual } from '../utils/filter-utils';
 
 export const initialState: FiltersState = {};
@@ -15,7 +15,7 @@ interface FacetPayload {
 const reducers = {
   setStatic: (
     state: FiltersState,
-    action: PayloadAction<DisplayableFilter[]>
+    action: PayloadAction<SelectableFilter[]>
   ) => {
     state.static = action.payload;
   },
@@ -54,7 +54,7 @@ const reducers = {
    * If the specified static filter should be selected, but is not in state, it will
    * be added to the state.
    */
-  setFilterOption: (state: FiltersState, { payload }: PayloadAction<DisplayableFilter>) => {
+  setFilterOption: (state: FiltersState, { payload }: PayloadAction<SelectableFilter>) => {
     if (!state.static) {
       state.static = [];
     }

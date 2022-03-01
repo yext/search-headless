@@ -1,5 +1,5 @@
 import { CombinedFilter, Filter, FilterCombinator } from '@yext/answers-core';
-import { DisplayableFilter } from '../models/utils/displayableFilter';
+import { SelectableFilter } from '../models/utils/selectableFilter';
 
 /**
  * Combines a list of Filters using the logical OR operator into a
@@ -19,28 +19,28 @@ function combineFiltersWithOR(filters: Filter[]): Filter | CombinedFilter {
 }
 
 /**
- * Converts a list of {@link DisplayableFilter}s used in Answers Headless to a
- * single nested filter stucture used in Answers Core.
+ * Converts a list of {@link SelectableFilter}s used in Answers Headless
+ * to a single nested filter stucture used in Answers Core.
  *
- * @param displayableFilters - The filters to be transformed
+ * @param selectableFilters - The filters to be transformed
  * @returns The filters in a singly-nested {@link CombinedFilter}, or if there
  *          is only one filter in the list and it is selected, returns that
  *          {@link Filter}
  */
 export function transformFiltersToCoreFormat(
-  displayableFilters: DisplayableFilter[] | undefined
+  selectableFilters: SelectableFilter[] | undefined
 ): Filter | CombinedFilter | null {
-  if (!displayableFilters) {
+  if (!selectableFilters) {
     return null;
   }
-  if (displayableFilters.length === 0) {
+  if (selectableFilters.length === 0) {
     return null;
   }
-  if (displayableFilters.length === 1) {
-    const { selected, displayName:_, ...filter } = displayableFilters[0];
+  if (selectableFilters.length === 1) {
+    const { selected, displayName:_, ...filter } = selectableFilters[0];
     return selected ? filter : null;
   }
-  const selectedFilters = displayableFilters.filter(displayableFilter => displayableFilter.selected);
+  const selectedFilters = selectableFilters.filter(selectableFilter => selectableFilter.selected);
   const groupedFilters: Record<string, Filter[]> = selectedFilters.reduce((groups, element) => {
     const { selected:_, displayName:__, ...filter } = element;
     groups[filter.fieldId]

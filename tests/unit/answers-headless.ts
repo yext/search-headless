@@ -1,8 +1,8 @@
-import { Filter, Matcher, QuerySource, QueryTrigger } from '@yext/answers-core';
+import { Matcher, QuerySource, QueryTrigger } from '@yext/answers-core';
 import HttpManager from '../../src/http-manager';
 import StateManager from '../../src/models/state-manager';
 import AnswersHeadless from '../../src/answers-headless';
-import { DisplayableFilter } from '../../src/models/utils/displayableFilter';
+import { SelectableFilter } from '../../src/models/utils/selectableFilter';
 import { State } from '../../src/models/state';
 import { SearchTypeEnum } from '../../src/models/utils/searchType';
 import { initialState as initialVerticalState } from '../../src/slices/vertical';
@@ -74,7 +74,7 @@ describe('setters work as expected', () => {
   });
 
   it('setStaticFilters works as expected', () => {
-    const filter: DisplayableFilter = {
+    const filter: SelectableFilter = {
       fieldId: 'c_someField',
       matcher: Matcher.Equals,
       value: 'someValue',
@@ -286,7 +286,7 @@ describe('filter functions work as expected', () => {
   });
 
   it('setFilterOption works', async () => {
-    const filter: DisplayableFilter = {
+    const filter: SelectableFilter = {
       fieldId: 'c_someField',
       matcher: Matcher.Equals,
       value: 'someValue',
@@ -350,14 +350,14 @@ describe('search works as expected', () => {
   it('vertical search works', async () => {
     answers.state.meta.searchType = SearchTypeEnum.Vertical;
     await answers.executeVerticalQuery();
-    const { selected:_, displayName:__, ...filter } = mockedState.filters.static[0];
+    const { fieldId, matcher, value } = mockedState.filters.static[0];
     const coreCalls = mockedCore.verticalSearch.mock.calls;
     const expectedSearchParams = {
       query: mockedState.query.input,
       querySource: mockedState.query.querySource,
       queryTrigger: mockedState.query.queryTrigger,
       verticalKey: mockedState.vertical.verticalKey,
-      staticFilters: filter,
+      staticFilters: { fieldId, matcher, value },
       retrieveFacets: true,
       limit: mockedState.vertical.limit,
       offset: mockedState.vertical.offset,

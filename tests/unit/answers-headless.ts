@@ -89,7 +89,7 @@ describe('setters work as expected', () => {
 
     expect(dispatchEventCalls.length).toBe(1);
     expect(dispatchEventCalls[0][0]).toBe('filters/setStatic');
-    expect(dispatchEventCalls[0][1]).toEqual(staticFilter);
+    expect(dispatchEventCalls[0][1]).toBe(staticFilter);
   });
 
   it('setFacets works as expected', () => {

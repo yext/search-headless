@@ -1,5 +1,5 @@
 import { DisplayableFacet } from '@yext/answers-core';
-import { SelectableFilter } from '..';
+import { SelectableFilter } from '../utils/selectableFilter';
 import { DisplayableFilter } from '../utils/displayableFilter';
 
 /**

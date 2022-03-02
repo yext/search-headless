@@ -50,6 +50,7 @@
 |  [AppliedQueryFilter](./answers-headless.appliedqueryfilter.md) | A filter that the Answers API applied to the search. |
 |  [AutocompleteResponse](./answers-headless.autocompleteresponse.md) | The response of a universal or vertical autocomplete request. |
 |  [AutocompleteResult](./answers-headless.autocompleteresult.md) | An autocomplete suggestion. |
+|  [AutocompleteService](./answers-headless.autocompleteservice.md) | A service for autocomplete requests. |
 |  [BaseAnswersConfig](./answers-headless.baseanswersconfig.md) | The base configuration options for [AnswersCore](./answers-headless.answerscore.md)<!-- -->. |
 |  [BoundedRange](./answers-headless.boundedrange.md) | An interface representing a range of values of type T. |
 |  [CombinedFilter](./answers-headless.combinedfilter.md) | Represents multiple filters that will be combined to refine results. |
@@ -78,9 +79,11 @@
 |  [QueryState](./answers-headless.querystate.md) | Maintains the latest query and its associated data. |
 |  [QuestionSubmissionRequest](./answers-headless.questionsubmissionrequest.md) | Options for a QuestionSubmission request. |
 |  [QuestionSubmissionResponse](./answers-headless.questionsubmissionresponse.md) | A representation of a question submission response. |
+|  [QuestionSubmissionService](./answers-headless.questionsubmissionservice.md) | Submits a custom question to the Answers API. |
 |  [RangeBoundary](./answers-headless.rangeboundary.md) | A boundary for a [BoundedRange](./answers-headless.boundedrange.md) of type T. |
 |  [Result](./answers-headless.result.md) | An individual search result. |
 |  [SearchParameterField](./answers-headless.searchparameterfield.md) | Indicates which entity field to perform the autocomplete request on. |
+|  [SearchService](./answers-headless.searchservice.md) | A service which performs Yext Answers searches |
 |  [SearchStatusState](./answers-headless.searchstatusstate.md) | Maintains the status of the latest search. |
 |  [SelectableFilter](./answers-headless.selectablefilter.md) | A [Filter](./answers-headless.filter.md) with additional information, such as an optional display name and whether or not it is selected. |
 |  [SessionTrackingState](./answers-headless.sessiontrackingstate.md) | Maintains whether the user session should be tracked and, if so, the session information. |

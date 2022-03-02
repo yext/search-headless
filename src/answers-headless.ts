@@ -45,9 +45,6 @@ export default class AnswersHeadless {
    */
   public readonly utilities = answersUtilities;
 
-  /**
-   * @internal
-   */
   constructor(
     private core: AnswersCore,
     private stateManager: StateManager,

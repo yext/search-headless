@@ -30,6 +30,7 @@ export interface AnswersConfigWithToken extends BaseAnswersConfig {
 
 // @public
 export class AnswersCore {
+    constructor(searchService: SearchService, questionSubmissionService: QuestionSubmissionService, autoCompleteService: AutocompleteService);
     filterSearch(request: FilterSearchRequest): Promise<FilterSearchResponse>;
     submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse>;
     universalAutocomplete(request: UniversalAutocompleteRequest): Promise<AutocompleteResponse>;
@@ -49,8 +50,6 @@ export class AnswersError extends Error {
 // @public
 export class AnswersHeadless {
     // Warning: (ae-forgotten-export) The symbol "HttpManager" needs to be exported by the entry point index.d.ts
-    //
-    // @internal
     constructor(core: AnswersCore, stateManager: StateManager, httpManager: HttpManager);
     addListener<T>(listener: StateListener<T>): Unsubscribe;
     executeFilterSearch(query: string, sectioned: boolean, fields: SearchParameterField[]): Promise<FilterSearchResponse | undefined>;
@@ -120,6 +119,13 @@ export interface AutocompleteResult {
     relatedItem?: Result;
     value: string;
     verticalKeys?: string[];
+}
+
+// @public
+export interface AutocompleteService {
+    filterSearch(request: FilterSearchRequest): Promise<FilterSearchResponse>;
+    universalAutocomplete(request: UniversalAutocompleteRequest): Promise<AutocompleteResponse>;
+    verticalAutocomplete(request: VerticalAutocompleteRequest): Promise<AutocompleteResponse>;
 }
 
 // @public
@@ -443,6 +449,11 @@ export interface QuestionSubmissionResponse {
 }
 
 // @public
+export interface QuestionSubmissionService {
+    submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse>;
+}
+
+// @public
 export interface RangeBoundary<T> {
     inclusive: boolean;
     value: T;
@@ -473,6 +484,12 @@ export interface SearchParameterField {
     entityType: string;
     fetchEntities: boolean;
     fieldApiName: string;
+}
+
+// @public
+export interface SearchService {
+    universalSearch(request: UniversalSearchRequest): Promise<UniversalSearchResponse>;
+    verticalSearch(request: VerticalSearchRequest): Promise<VerticalSearchResponse>;
 }
 
 // @public

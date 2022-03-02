@@ -12,9 +12,11 @@ Provides the functionality for interacting with an Answers Search experience.
 export default class AnswersHeadless 
 ```
 
-## Remarks
+## Constructors
 
-The constructor for this class is marked as internal. Third-party code should not call the constructor directly or create subclasses that extend the `AnswersHeadless` class.
+|  Constructor | Modifiers | Description |
+|  --- | --- | --- |
+|  [(constructor)(core, stateManager, httpManager)](./answers-headless.answersheadless._constructor_.md) |  | Constructs a new instance of the <code>AnswersHeadless</code> class |
 
 ## Properties
 

@@ -12,6 +12,12 @@ Provides methods for executing searches, submitting questions, and performing au
 export declare class AnswersCore 
 ```
 
+## Constructors
+
+|  Constructor | Modifiers | Description |
+|  --- | --- | --- |
+|  [(constructor)(searchService, questionSubmissionService, autoCompleteService)](./answers-headless.answerscore._constructor_.md) |  | Constructs a new instance of the <code>AnswersCore</code> class |
+
 ## Methods
 
 |  Method | Modifiers | Description |

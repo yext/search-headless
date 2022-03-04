@@ -322,7 +322,7 @@ export default class AnswersHeadless {
       restrictVerticals
     };
 
-    let response = undefined;
+    let response: UniversalSearchResponse;
     try {
       response = await this.core.universalSearch(request);
     } catch (e) {
@@ -423,7 +423,7 @@ export default class AnswersHeadless {
       referrerPageUrl
     };
 
-    let response = undefined;
+    let response: VerticalSearchResponse;
     try {
       response = await this.core.verticalSearch(request);
     } catch (e) {

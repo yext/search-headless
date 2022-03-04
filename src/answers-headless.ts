@@ -330,7 +330,7 @@ export default class AnswersHeadless {
       if (isLatestResponse) {
         this.stateManager.dispatchEvent('searchStatus/setIsLoading', false);
       }
-      throw e;
+      return Promise.reject(e);
     }
     const isLatestResponse = this.httpManager.processRequestId('universalQuery', thisRequestId);
     if (!isLatestResponse) {

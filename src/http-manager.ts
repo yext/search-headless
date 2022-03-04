@@ -40,8 +40,8 @@ export default class HttpManager {
   }
 
   /**
-   * Update the recorded received response id of the given service type if
-   * the given request id corresponds to the latest response.
+   * Update the latest saved response id of the given service type if
+   * the given request id is newer than the latest saved response id.
    *
    * @param requestName - the request type.
    * @param requestId - the request id of a received response.

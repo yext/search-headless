@@ -308,7 +308,7 @@ export default class AnswersHeadless {
     const { referrerPageUrl, context } = this.state.meta;
     const { userLocation } = this.state.location;
 
-    const response = await this.core.universalSearch({
+    const request = {
       query: input || '',
       querySource,
       queryTrigger,
@@ -320,13 +320,22 @@ export default class AnswersHeadless {
       context,
       referrerPageUrl,
       restrictVerticals
-    });
+    };
 
-    const latestResponseId = this.httpManager.getLatestResponseId('universalQuery');
-    if (thisRequestId < latestResponseId) {
+    let response: UniversalSearchResponse;
+    try {
+      response = await this.core.universalSearch(request);
+    } catch (e) {
+      const isLatestResponse = this.httpManager.processRequestId('universalQuery', thisRequestId);
+      if (isLatestResponse) {
+        this.stateManager.dispatchEvent('searchStatus/setIsLoading', false);
+      }
+      return Promise.reject(e);
+    }
+    const isLatestResponse = this.httpManager.processRequestId('universalQuery', thisRequestId);
+    if (!isLatestResponse) {
       return response;
     }
-    this.httpManager.setResponseId('universalQuery', thisRequestId);
     this.stateManager.dispatchEvent('universal/setVerticals', response.verticalResults);
     this.stateManager.dispatchEvent('query/setQueryId', response.queryId);
     this.stateManager.dispatchEvent('query/setMostRecentSearch', input);
@@ -410,12 +419,22 @@ export default class AnswersHeadless {
       context,
       referrerPageUrl
     };
-    const response = await this.core.verticalSearch(request);
-    const latestResponseId = this.httpManager.getLatestResponseId('verticalQuery');
-    if (thisRequestId < latestResponseId) {
+
+    let response: VerticalSearchResponse;
+    try {
+      response = await this.core.verticalSearch(request);
+    } catch (e) {
+      const isLatestResponse = this.httpManager.processRequestId('verticalQuery', thisRequestId);
+      if (isLatestResponse) {
+        this.stateManager.dispatchEvent('searchStatus/setIsLoading', false);
+      }
+      return Promise.reject(e);
+    }
+
+    const isLatestResponse = this.httpManager.processRequestId('verticalQuery', thisRequestId);
+    if (!isLatestResponse) {
       return response;
     }
-    this.httpManager.setResponseId('verticalQuery', thisRequestId);
     this.stateManager.dispatchEvent('query/setQueryId', response.queryId);
     this.stateManager.dispatchEvent('query/setMostRecentSearch', input);
     this.stateManager.dispatchEvent('filters/setFacets', response.facets);

@@ -18,12 +18,13 @@ export function createMockedAnswersHeadless(
   mockedAnswersCore: any = {},
   initialState: Partial<State> = {},
   store?: EnhancedStore<ParentState, ActionWithHeadlessId>,
-  headlessReducerManager?: HeadlessReducerManager
+  headlessReducerManager?: HeadlessReducerManager,
+  httpManager?: HttpManager
 ): AnswersHeadless {
   const reduxStateManager = new ReduxStateManager(
     store || createBaseStore(), DEFAULT_HEADLESS_ID, headlessReducerManager || new HeadlessReducerManager());
-  const httpManager = new HttpManager();
-  const answers = new AnswersHeadless(mockedAnswersCore, reduxStateManager, httpManager);
+  const headlessHttpManager = httpManager || new HttpManager();
+  const answers = new AnswersHeadless(mockedAnswersCore, reduxStateManager, headlessHttpManager);
   answers.setState({
     ...answers.state,
     ...initialState

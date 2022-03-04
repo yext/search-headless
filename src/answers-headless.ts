@@ -308,7 +308,7 @@ export default class AnswersHeadless {
     const { referrerPageUrl, context } = this.state.meta;
     const { userLocation } = this.state.location;
 
-    const response = await this.core.universalSearch({
+    const request = {
       query: input || '',
       querySource,
       queryTrigger,
@@ -320,7 +320,19 @@ export default class AnswersHeadless {
       context,
       referrerPageUrl,
       restrictVerticals
-    });
+    };
+
+    let response = undefined;
+    try {
+      response = await this.core.universalSearch(request);
+    } catch (e) {
+      const latestResponseId = this.httpManager.getLatestResponseId('universalQuery');
+      if (thisRequestId > latestResponseId) {
+        this.stateManager.dispatchEvent('searchStatus/setIsLoading', false);
+        this.httpManager.setResponseId('universalQuery', thisRequestId);
+      }
+      return Promise.reject(e);
+    }
 
     const latestResponseId = this.httpManager.getLatestResponseId('universalQuery');
     if (thisRequestId < latestResponseId) {
@@ -410,7 +422,19 @@ export default class AnswersHeadless {
       context,
       referrerPageUrl
     };
-    const response = await this.core.verticalSearch(request);
+
+    let response = undefined;
+    try {
+      response = await this.core.verticalSearch(request);
+    } catch (e) {
+      const latestResponseId = this.httpManager.getLatestResponseId('verticalQuery');
+      if (thisRequestId > latestResponseId) {
+        this.stateManager.dispatchEvent('searchStatus/setIsLoading', false);
+        this.httpManager.setResponseId('verticalQuery', thisRequestId);
+      }
+      return Promise.reject(e);
+    }
+
     const latestResponseId = this.httpManager.getLatestResponseId('verticalQuery');
     if (thisRequestId < latestResponseId) {
       return response;

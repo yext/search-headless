@@ -1,4 +1,5 @@
 import { AppliedQueryFilter, Matcher, Result, Source, VerticalResults, VerticalSearchRequest, VerticalSearchResponse } from '@yext/answers-core';
+import HttpManager from '../../src/http-manager';
 import { AllResultsForVertical } from '../../src/models/slices/vertical';
 import { State } from '../../src/models/state';
 import { SearchTypeEnum } from '../../src/models/utils/searchType';
@@ -166,9 +167,32 @@ it('answers.setVerticalLimit sets the vertical limit when a number is passed to 
   expect(answers.state.vertical.limit).toEqual(7);
 });
 
+
+it('handle a rejected promise from core', async () => {
+  const mockSearch = createMockRejectedSearch();
+  const mockCore = { verticalSearch: mockSearch };
+  const httpManager = new HttpManager();
+  const answers = createMockedAnswersHeadless(mockCore, {}, undefined, undefined, httpManager);
+  answers.setVertical('vertical-key');
+  try {
+    await answers.executeVerticalQuery();
+  } catch (e) {
+    expect(e).toEqual('mock error message');
+  }
+  expect(answers.state.searchStatus.isLoading).toEqual(false);
+  expect(httpManager.getLatestResponseId('verticalQuery')).toEqual(1);
+});
+
 function createMockSearch() {
   return jest.fn(async (_request: VerticalSearchRequest) => {
     await setTimeout(0);
     return Promise.resolve({});
+  });
+}
+
+function createMockRejectedSearch() {
+  return jest.fn(async (_request: VerticalSearchRequest) => {
+    await setTimeout(0);
+    return Promise.reject('mock error message');
   });
 }

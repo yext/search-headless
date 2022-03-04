@@ -326,19 +326,16 @@ export default class AnswersHeadless {
     try {
       response = await this.core.universalSearch(request);
     } catch (e) {
-      const latestResponseId = this.httpManager.getLatestResponseId('universalQuery');
-      if (thisRequestId > latestResponseId) {
+      const isLatestResponse = this.httpManager.processRequestId('universalQuery', thisRequestId);
+      if (isLatestResponse) {
         this.stateManager.dispatchEvent('searchStatus/setIsLoading', false);
-        this.httpManager.setResponseId('universalQuery', thisRequestId);
       }
-      return Promise.reject(e);
+      throw e;
     }
-
-    const latestResponseId = this.httpManager.getLatestResponseId('universalQuery');
-    if (thisRequestId < latestResponseId) {
+    const isLatestResponse = this.httpManager.processRequestId('universalQuery', thisRequestId);
+    if (!isLatestResponse) {
       return response;
     }
-    this.httpManager.setResponseId('universalQuery', thisRequestId);
     this.stateManager.dispatchEvent('universal/setVerticals', response.verticalResults);
     this.stateManager.dispatchEvent('query/setQueryId', response.queryId);
     this.stateManager.dispatchEvent('query/setMostRecentSearch', input);
@@ -427,19 +424,17 @@ export default class AnswersHeadless {
     try {
       response = await this.core.verticalSearch(request);
     } catch (e) {
-      const latestResponseId = this.httpManager.getLatestResponseId('verticalQuery');
-      if (thisRequestId > latestResponseId) {
+      const isLatestResponse = this.httpManager.processRequestId('verticalQuery', thisRequestId);
+      if (isLatestResponse) {
         this.stateManager.dispatchEvent('searchStatus/setIsLoading', false);
-        this.httpManager.setResponseId('verticalQuery', thisRequestId);
       }
       return Promise.reject(e);
     }
 
-    const latestResponseId = this.httpManager.getLatestResponseId('verticalQuery');
-    if (thisRequestId < latestResponseId) {
+    const isLatestResponse = this.httpManager.processRequestId('verticalQuery', thisRequestId);
+    if (!isLatestResponse) {
       return response;
     }
-    this.httpManager.setResponseId('verticalQuery', thisRequestId);
     this.stateManager.dispatchEvent('query/setQueryId', response.queryId);
     this.stateManager.dispatchEvent('query/setMostRecentSearch', input);
     this.stateManager.dispatchEvent('filters/setFacets', response.facets);

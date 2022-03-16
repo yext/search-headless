@@ -9,8 +9,9 @@ Options for a QuestionSubmission request.
 <b>Signature:</b>
 
 ```typescript
-export declare interface QuestionSubmissionRequest 
+export declare interface QuestionSubmissionRequest extends AnswersRequest 
 ```
+<b>Extends:</b> [AnswersRequest](./answers-headless.answersrequest.md)
 
 ## Properties
 

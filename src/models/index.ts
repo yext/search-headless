@@ -22,3 +22,5 @@ export { SearchTypeEnum, SearchType } from './utils/searchType';
 // state models
 export { ParentState, State } from './state';
 export { StateListener, StateManager };
+
+export { CustomAnswersAgents } from './client-sdk';

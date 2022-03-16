@@ -16,7 +16,7 @@ export default class AnswersHeadless
 
 |  Constructor | Modifiers | Description |
 |  --- | --- | --- |
-|  [(constructor)(core, stateManager, httpManager)](./answers-headless.answersheadless._constructor_.md) |  | Constructs a new instance of the <code>AnswersHeadless</code> class |
+|  [(constructor)(core, stateManager, httpManager, customClientSdk)](./answers-headless.answersheadless._constructor_.md) |  | Constructs a new instance of the <code>AnswersHeadless</code> class |
 
 ## Properties
 

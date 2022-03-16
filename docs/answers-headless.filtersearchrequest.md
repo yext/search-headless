@@ -9,8 +9,9 @@ Options for a filtersearch request.
 <b>Signature:</b>
 
 ```typescript
-export declare interface FilterSearchRequest 
+export declare interface FilterSearchRequest extends AnswersRequest 
 ```
+<b>Extends:</b> [AnswersRequest](./answers-headless.answersrequest.md)
 
 ## Properties
 

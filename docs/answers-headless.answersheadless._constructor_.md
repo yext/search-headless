@@ -9,7 +9,7 @@ Constructs a new instance of the `AnswersHeadless` class
 <b>Signature:</b>
 
 ```typescript
-constructor(core: AnswersCore, stateManager: StateManager, httpManager: HttpManager);
+constructor(core: AnswersCore, stateManager: StateManager, httpManager: HttpManager, customClientSdk?: CustomClientSdk | undefined);
 ```
 
 ## Parameters
@@ -19,4 +19,5 @@ constructor(core: AnswersCore, stateManager: StateManager, httpManager: HttpMana
 |  core | [AnswersCore](./answers-headless.answerscore.md) |  |
 |  stateManager | StateManager |  |
 |  httpManager | HttpManager |  |
+|  customClientSdk | [CustomClientSdk](./answers-headless.customclientsdk.md) \| undefined |  |
 

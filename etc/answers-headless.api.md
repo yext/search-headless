@@ -50,7 +50,7 @@ export class AnswersError extends Error {
 // @public
 export class AnswersHeadless {
     // Warning: (ae-forgotten-export) The symbol "HttpManager" needs to be exported by the entry point index.d.ts
-    constructor(core: AnswersCore, stateManager: StateManager, httpManager: HttpManager);
+    constructor(core: AnswersCore, stateManager: StateManager, httpManager: HttpManager, customClientSdk?: CustomClientSdk | undefined);
     addListener<T>(listener: StateListener<T>): Unsubscribe;
     executeFilterSearch(query: string, sectioned: boolean, fields: SearchParameterField[]): Promise<FilterSearchResponse | undefined>;
     executeUniversalAutocomplete(): Promise<AutocompleteResponse>;
@@ -81,8 +81,13 @@ export class AnswersHeadless {
     setVertical(verticalKey: string): void;
     setVerticalLimit(limit: number): void;
     get state(): State;
-    submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse>;
+    submitQuestion(request: Omit<QuestionSubmissionRequest, 'customClientSdk'>): Promise<QuestionSubmissionResponse>;
     readonly utilities: typeof answersUtilities;
+}
+
+// @public
+export interface AnswersRequest {
+    customClientSdk?: CustomClientSdk;
 }
 
 declare namespace answersUtilities {
@@ -167,6 +172,17 @@ export function createNearMeFilter(position: NearFilterValue): Filter;
 
 // @public
 export function createNumberRangeFilter(fieldId: string, range: BoundedRange<number>): FilterTypes;
+
+// @public
+export interface CustomAnswersAgents extends CustomClientSdk {
+    'ANSWERS_HEADLESS'?: never;
+}
+
+// @public
+export interface CustomClientSdk {
+    [agent: string]: string | undefined;
+    ANSWERS_CORE?: never;
+}
 
 // @public
 export const DEFAULT_HEADLESS_ID = "main";
@@ -282,7 +298,7 @@ export enum FilterCombinator {
 }
 
 // @public
-export interface FilterSearchRequest {
+export interface FilterSearchRequest extends AnswersRequest {
     fields: SearchParameterField[];
     input: string;
     sectioned: boolean;
@@ -292,10 +308,12 @@ export interface FilterSearchRequest {
 
 // @public
 export interface FilterSearchResponse {
-    businessId?: string;
+    inputIntents: SearchIntent[];
     queryId?: string;
+    results: AutocompleteResult[];
+    sectioned: boolean;
     sections: {
-        label?: string;
+        label: string;
         results: AutocompleteResult[];
     }[];
     uuid: string;
@@ -314,6 +332,7 @@ export type FilterTypes = Filter | CombinedFilter;
 export type HeadlessConfig = AnswersConfig & {
     headlessId?: string;
     verticalKey?: string;
+    additionalAgents?: CustomAnswersAgents;
 };
 
 // @public
@@ -434,7 +453,7 @@ export enum QueryTrigger {
 }
 
 // @public
-export interface QuestionSubmissionRequest {
+export interface QuestionSubmissionRequest extends AnswersRequest {
     email: string;
     entityId: string;
     name: string;
@@ -602,7 +621,7 @@ export interface StateManager {
 }
 
 // @public
-export interface UniversalAutocompleteRequest {
+export interface UniversalAutocompleteRequest extends AnswersRequest {
     input: string;
     sessionTrackingEnabled?: boolean;
 }
@@ -614,7 +633,7 @@ export interface UniversalLimit {
 }
 
 // @public
-export interface UniversalSearchRequest {
+export interface UniversalSearchRequest extends AnswersRequest {
     context?: Context;
     limit?: UniversalLimit;
     location?: LatLong;
@@ -648,7 +667,7 @@ export interface UniversalSearchState {
 }
 
 // @public
-export interface VerticalAutocompleteRequest {
+export interface VerticalAutocompleteRequest extends AnswersRequest {
     input: string;
     sessionTrackingEnabled?: boolean;
     verticalKey: string;
@@ -665,7 +684,7 @@ export interface VerticalResults {
 }
 
 // @public
-export interface VerticalSearchRequest {
+export interface VerticalSearchRequest extends AnswersRequest {
     context?: Context;
     facets?: Facet[];
     limit?: number;

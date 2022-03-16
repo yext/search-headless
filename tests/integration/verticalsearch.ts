@@ -3,6 +3,7 @@ import HttpManager from '../../src/http-manager';
 import { AllResultsForVertical } from '../../src/models/slices/vertical';
 import { State } from '../../src/models/state';
 import { SearchTypeEnum } from '../../src/models/utils/searchType';
+import { getCustomClientSdk } from '../../src/utils/client-sdk-utils';
 import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
 import setTimeout from '../utils/setTimeout';
 
@@ -181,6 +182,18 @@ it('handle a rejected promise from core', async () => {
   }
   expect(answers.state.searchStatus.isLoading).toEqual(false);
   expect(httpManager.getLatestResponseId('verticalQuery')).toEqual(1);
+});
+
+it('executeVerticalQuery passes the custom client SDK', async () => {
+  const mockSearch = createMockSearch();
+  const answers = createMockedAnswersHeadless({
+    verticalSearch: mockSearch
+  });
+  answers.setVertical('vertical-key');
+  await answers.executeVerticalQuery();
+  expect(mockSearch).toHaveBeenLastCalledWith(expect.objectContaining({
+    customClientSdk: getCustomClientSdk()
+  }));
 });
 
 function createMockSearch() {

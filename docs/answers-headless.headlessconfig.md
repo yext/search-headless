@@ -12,7 +12,8 @@ The configuration for an AnswersHeadless instance.
 export declare type HeadlessConfig = AnswersConfig & {
     headlessId?: string;
     verticalKey?: string;
+    additionalAgents?: CustomAnswersAgents;
 };
 ```
-<b>References:</b> [AnswersConfig](./answers-headless.answersconfig.md)
+<b>References:</b> [AnswersConfig](./answers-headless.answersconfig.md)<!-- -->, [CustomAnswersAgents](./answers-headless.customanswersagents.md)
 

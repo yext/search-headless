@@ -47,6 +47,7 @@
 |  [AllResultsForVertical](./answers-headless.allresultsforvertical.md) | Represents all results for the current vertical. |
 |  [AnswersConfigWithApiKey](./answers-headless.answersconfigwithapikey.md) | Configuration options for [AnswersCore](./answers-headless.answerscore.md)<!-- -->, which includes the options from [BaseAnswersConfig](./answers-headless.baseanswersconfig.md)<!-- -->, but requires apiKey. |
 |  [AnswersConfigWithToken](./answers-headless.answersconfigwithtoken.md) | Configuration options for [AnswersCore](./answers-headless.answerscore.md)<!-- -->, which includes the options from [BaseAnswersConfig](./answers-headless.baseanswersconfig.md)<!-- -->, but requires token. |
+|  [AnswersRequest](./answers-headless.answersrequest.md) | Options for an Answers API request. |
 |  [AppliedQueryFilter](./answers-headless.appliedqueryfilter.md) | A filter that the Answers API applied to the search. |
 |  [AutocompleteResponse](./answers-headless.autocompleteresponse.md) | The response of a universal or vertical autocomplete request. |
 |  [AutocompleteResult](./answers-headless.autocompleteresult.md) | An autocomplete suggestion. |
@@ -54,6 +55,8 @@
 |  [BaseAnswersConfig](./answers-headless.baseanswersconfig.md) | The base configuration options for [AnswersCore](./answers-headless.answerscore.md)<!-- -->. |
 |  [BoundedRange](./answers-headless.boundedrange.md) | An interface representing a range of values of type T. |
 |  [CombinedFilter](./answers-headless.combinedfilter.md) | Represents multiple filters that will be combined to refine results. |
+|  [CustomAnswersAgents](./answers-headless.customanswersagents.md) | Additional agents and their versions used to create the Answers experience. The information for these agents is added to the Client-SDK HTTP header for Answers API requests along with that of the ANSWERS\_HEADLESS and ANSWERS\_CORE agents. |
+|  [CustomClientSdk](./answers-headless.customclientsdk.md) | Additional agents and their versions used to create the Answers experience. The information for these agents is added to the Client-SDK HTTP header along with that of the ANSWERS\_CORE agent. |
 |  [DirectAnswer](./answers-headless.directanswer.md) | A direct answer to a search. |
 |  [DirectAnswerState](./answers-headless.directanswerstate.md) | Maintains the direct answer associated with the latest search. |
 |  [DisplayableFacet](./answers-headless.displayablefacet.md) | A [Facet](./answers-headless.facet.md) which contains extra fields meant to be displayed to the end user. |

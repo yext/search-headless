@@ -1,17 +1,17 @@
 {
   "name": "@yext/answers-headless",
-  "version": "1.1.0-beta.8",
+  "version": "1.1.0-beta.9",
   "description": "",
   "author": "slapshot@yext.com",
   "license": "ISC",
-  "main": "./lib/commonjs/index.js",
-  "module": "./lib/esm/index.js",
+  "main": "./dist/commonjs/src/index.js",
+  "module": "./dist/esm/src/index.js",
   "files": [
     "lib",
     "src"
   ],
   "scripts": {
-    "build": "rm -rf lib && tsc -p tsconfig.cjs.json && tsc -p tsconfig.esm.json && npm run api-extractor && npm run generate-docs",
+    "build": "rm -rf dist/** && tsc -p tsconfig.cjs.json && tsc -p tsconfig.esm.json && npm run api-extractor && npm run generate-docs",
     "lint": "eslint .",
     "prepublishOnly": "npm run build",
     "test": "jest",
@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.0",
-    "@yext/answers-core": "^1.6.0-beta.3",
+    "@yext/answers-core": "^1.6.0-beta.4",
     "js-levenshtein": "^1.1.6",
     "redux-thunk": "^2.4.1"
   },

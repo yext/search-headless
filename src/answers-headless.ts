@@ -16,7 +16,7 @@ import {
   FilterSearchResponse,
   UniversalLimit,
   VerticalSearchResponse,
-  CustomClientSdk
+  AdditionalHttpHeaders
 } from '@yext/answers-core';
 
 import StateListener from './models/state-listener';
@@ -50,7 +50,7 @@ export default class AnswersHeadless {
     private core: AnswersCore,
     private stateManager: StateManager,
     private httpManager: HttpManager,
-    private customClientSdk?: CustomClientSdk
+    private additionalHttpHeaders?: AdditionalHttpHeaders
   ) {}
 
   /**
@@ -285,11 +285,11 @@ export default class AnswersHeadless {
    * @returns A Promise of a {@link QuestionSubmissionResponse} from the Answers API
    */
   async submitQuestion(
-    request: Omit<QuestionSubmissionRequest, 'customClientSdk'>
+    request: Omit<QuestionSubmissionRequest, 'additionalHttpHeaders'>
   ): Promise<QuestionSubmissionResponse> {
     return this.core.submitQuestion({
       ...request,
-      customClientSdk: this.customClientSdk
+      additionalHttpHeaders: this.additionalHttpHeaders
     });
   }
 
@@ -327,7 +327,7 @@ export default class AnswersHeadless {
       context,
       referrerPageUrl,
       restrictVerticals,
-      customClientSdk: this.customClientSdk
+      additionalHttpHeaders: this.additionalHttpHeaders
     };
 
     let response: UniversalSearchResponse;
@@ -367,7 +367,7 @@ export default class AnswersHeadless {
     const query = this.state.query.input || '';
     return this.core.universalAutocomplete({
       input: query,
-      customClientSdk: this.customClientSdk
+      additionalHttpHeaders: this.additionalHttpHeaders
     });
   }
 
@@ -427,7 +427,7 @@ export default class AnswersHeadless {
       sortBys,
       context,
       referrerPageUrl,
-      customClientSdk: this.customClientSdk
+      additionalHttpHeaders: this.additionalHttpHeaders
     };
 
     let response: VerticalSearchResponse;
@@ -482,7 +482,7 @@ export default class AnswersHeadless {
     return this.core.verticalAutocomplete({
       input: query,
       verticalKey,
-      customClientSdk: this.customClientSdk
+      additionalHttpHeaders: this.additionalHttpHeaders
     });
   }
 
@@ -517,7 +517,7 @@ export default class AnswersHeadless {
       sessionTrackingEnabled: this.state.sessionTracking.enabled,
       sectioned,
       fields,
-      customClientSdk: this.customClientSdk
+      additionalHttpHeaders: this.additionalHttpHeaders
     });
   }
 

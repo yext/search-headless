@@ -16,5 +16,5 @@ export declare interface AnswersRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [customClientSdk?](./answers-headless.answersrequest.customclientsdk.md) | [CustomClientSdk](./answers-headless.customclientsdk.md) | <i>(Optional)</i> Additional agents and their versions used to create the Answers experience. The information for these agents is added to the Client-SDK HTTP header along with that of the ANSWERS\_CORE agent. |
+|  [additionalHttpHeaders?](./answers-headless.answersrequest.additionalhttpheaders.md) | [AdditionalHttpHeaders](./answers-headless.additionalhttpheaders.md) | <i>(Optional)</i> AdditionalHttpHeaders allows users to specify additional values for specific HTTP headers. |
 

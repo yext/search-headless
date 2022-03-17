@@ -1,6 +1,6 @@
 import { UniversalSearchRequest } from '@yext/answers-core';
 import HttpManager from '../../src/http-manager';
-import { getCustomClientSdk } from '../../src/utils/client-sdk-utils';
+import { getAdditionalHttpHeaders } from '../../src/utils/client-sdk-utils';
 import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
 import setTimeout from '../utils/setTimeout';
 
@@ -47,14 +47,14 @@ it('handle a rejected promise from core', async () => {
   expect(httpManager.getLatestResponseId('universalQuery')).toEqual(1);
 });
 
-it('executeUniversalQuery passes the custom client SDK', async () => {
+it('executeUniversalQuery passes the additional HTTP headers', async () => {
   const mockSearch = createMockSearch();
   const answers = createMockedAnswersHeadless({
     universalSearch: mockSearch
   });
   await answers.executeUniversalQuery();
   expect(mockSearch).toHaveBeenLastCalledWith(expect.objectContaining({
-    customClientSdk: getCustomClientSdk()
+    additionalHttpHeaders: getAdditionalHttpHeaders()
   }));
 });
 

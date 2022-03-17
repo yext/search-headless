@@ -1,4 +1,14 @@
-import { CustomClientSdk } from '@yext/answers-core';
+import { AdditionalHttpHeaders, ClientSDKHeaderValues } from '@yext/answers-core';
+
+/**
+ * Allows users to specify additional values for specific HTTP headers.
+ *
+ * @public
+ */
+export interface CustomHttpHeaders extends AdditionalHttpHeaders {
+  /** {@inheritDoc CustomClientSDKHeaderValues} */
+  'Client-SDK'?: CustomClientSDKHeaderValues
+}
 
 /**
  * Additional agents and their versions used to create the Answers experience. The information
@@ -7,7 +17,7 @@ import { CustomClientSdk } from '@yext/answers-core';
  *
  * @public
  */
-export interface CustomAnswersAgents extends CustomClientSdk {
+export interface CustomClientSDKHeaderValues extends ClientSDKHeaderValues {
   /**
    * The ANSWERS_HEADLESS agent should not be supplied. Instead, it will be automatically added to
    * the header and populated with the version of Answers Headless being used.

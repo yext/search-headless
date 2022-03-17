@@ -7,6 +7,11 @@
 import { Unsubscribe } from '@reduxjs/toolkit';
 
 // @public
+export interface AdditionalHttpHeaders {
+    'Client-SDK'?: ClientSDKHeaderValues;
+}
+
+// @public
 export interface AllResultsForVertical {
     facets: DisplayableFacet[];
     results: Result[];
@@ -50,7 +55,7 @@ export class AnswersError extends Error {
 // @public
 export class AnswersHeadless {
     // Warning: (ae-forgotten-export) The symbol "HttpManager" needs to be exported by the entry point index.d.ts
-    constructor(core: AnswersCore, stateManager: StateManager, httpManager: HttpManager, customClientSdk?: CustomClientSdk | undefined);
+    constructor(core: AnswersCore, stateManager: StateManager, httpManager: HttpManager, additionalHttpHeaders?: AdditionalHttpHeaders | undefined);
     addListener<T>(listener: StateListener<T>): Unsubscribe;
     executeFilterSearch(query: string, sectioned: boolean, fields: SearchParameterField[]): Promise<FilterSearchResponse | undefined>;
     executeUniversalAutocomplete(): Promise<AutocompleteResponse>;
@@ -81,13 +86,13 @@ export class AnswersHeadless {
     setVertical(verticalKey: string): void;
     setVerticalLimit(limit: number): void;
     get state(): State;
-    submitQuestion(request: Omit<QuestionSubmissionRequest, 'customClientSdk'>): Promise<QuestionSubmissionResponse>;
+    submitQuestion(request: Omit<QuestionSubmissionRequest, 'additionalHttpHeaders'>): Promise<QuestionSubmissionResponse>;
     readonly utilities: typeof answersUtilities;
 }
 
 // @public
 export interface AnswersRequest {
-    customClientSdk?: CustomClientSdk;
+    additionalHttpHeaders?: AdditionalHttpHeaders;
 }
 
 declare namespace answersUtilities {
@@ -150,6 +155,12 @@ export interface BoundedRange<T> {
 }
 
 // @public
+export interface ClientSDKHeaderValues {
+    [agent: string]: string | undefined;
+    ANSWERS_CORE?: never;
+}
+
+// @public
 export interface CombinedFilter {
     combinator: FilterCombinator;
     filters: (Filter | CombinedFilter)[];
@@ -174,14 +185,13 @@ export function createNearMeFilter(position: NearFilterValue): Filter;
 export function createNumberRangeFilter(fieldId: string, range: BoundedRange<number>): FilterTypes;
 
 // @public
-export interface CustomAnswersAgents extends CustomClientSdk {
+export interface CustomClientSDKHeaderValues extends ClientSDKHeaderValues {
     'ANSWERS_HEADLESS'?: never;
 }
 
 // @public
-export interface CustomClientSdk {
-    [agent: string]: string | undefined;
-    ANSWERS_CORE?: never;
+export interface CustomHttpHeaders extends AdditionalHttpHeaders {
+    'Client-SDK'?: CustomClientSDKHeaderValues;
 }
 
 // @public
@@ -308,12 +318,10 @@ export interface FilterSearchRequest extends AnswersRequest {
 
 // @public
 export interface FilterSearchResponse {
-    inputIntents: SearchIntent[];
+    businessId?: string;
     queryId?: string;
-    results: AutocompleteResult[];
-    sectioned: boolean;
     sections: {
-        label: string;
+        label?: string;
         results: AutocompleteResult[];
     }[];
     uuid: string;
@@ -332,7 +340,7 @@ export type FilterTypes = Filter | CombinedFilter;
 export type HeadlessConfig = AnswersConfig & {
     headlessId?: string;
     verticalKey?: string;
-    additionalAgents?: CustomAnswersAgents;
+    additionalHttpHeaders?: CustomHttpHeaders;
 };
 
 // @public

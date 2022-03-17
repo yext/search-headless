@@ -44,6 +44,7 @@
 
 |  Interface | Description |
 |  --- | --- |
+|  [AdditionalHttpHeaders](./answers-headless.additionalhttpheaders.md) | AdditionalHttpHeaders allows users to specify additional values for specific HTTP headers. |
 |  [AllResultsForVertical](./answers-headless.allresultsforvertical.md) | Represents all results for the current vertical. |
 |  [AnswersConfigWithApiKey](./answers-headless.answersconfigwithapikey.md) | Configuration options for [AnswersCore](./answers-headless.answerscore.md)<!-- -->, which includes the options from [BaseAnswersConfig](./answers-headless.baseanswersconfig.md)<!-- -->, but requires apiKey. |
 |  [AnswersConfigWithToken](./answers-headless.answersconfigwithtoken.md) | Configuration options for [AnswersCore](./answers-headless.answerscore.md)<!-- -->, which includes the options from [BaseAnswersConfig](./answers-headless.baseanswersconfig.md)<!-- -->, but requires token. |
@@ -54,9 +55,10 @@
 |  [AutocompleteService](./answers-headless.autocompleteservice.md) | A service for autocomplete requests. |
 |  [BaseAnswersConfig](./answers-headless.baseanswersconfig.md) | The base configuration options for [AnswersCore](./answers-headless.answerscore.md)<!-- -->. |
 |  [BoundedRange](./answers-headless.boundedrange.md) | An interface representing a range of values of type T. |
+|  [ClientSDKHeaderValues](./answers-headless.clientsdkheadervalues.md) | Additional agents and their versions used to create the Answers experience. The information for these agents is added to the Client-SDK HTTP header along with that of the ANSWERS\_CORE agent. |
 |  [CombinedFilter](./answers-headless.combinedfilter.md) | Represents multiple filters that will be combined to refine results. |
-|  [CustomAnswersAgents](./answers-headless.customanswersagents.md) | Additional agents and their versions used to create the Answers experience. The information for these agents is added to the Client-SDK HTTP header for Answers API requests along with that of the ANSWERS\_HEADLESS and ANSWERS\_CORE agents. |
-|  [CustomClientSdk](./answers-headless.customclientsdk.md) | Additional agents and their versions used to create the Answers experience. The information for these agents is added to the Client-SDK HTTP header along with that of the ANSWERS\_CORE agent. |
+|  [CustomClientSDKHeaderValues](./answers-headless.customclientsdkheadervalues.md) | Additional agents and their versions used to create the Answers experience. The information for these agents is added to the Client-SDK HTTP header for Answers API requests along with that of the ANSWERS\_HEADLESS and ANSWERS\_CORE agents. |
+|  [CustomHttpHeaders](./answers-headless.customhttpheaders.md) | Allows users to specify additional values for specific HTTP headers. |
 |  [DirectAnswer](./answers-headless.directanswer.md) | A direct answer to a search. |
 |  [DirectAnswerState](./answers-headless.directanswerstate.md) | Maintains the direct answer associated with the latest search. |
 |  [DisplayableFacet](./answers-headless.displayablefacet.md) | A [Facet](./answers-headless.facet.md) which contains extra fields meant to be displayed to the end user. |

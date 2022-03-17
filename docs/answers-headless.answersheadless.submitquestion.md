@@ -9,14 +9,14 @@ Submits a question to the Answers API with the specified request data.
 <b>Signature:</b>
 
 ```typescript
-submitQuestion(request: Omit<QuestionSubmissionRequest, 'customClientSdk'>): Promise<QuestionSubmissionResponse>;
+submitQuestion(request: Omit<QuestionSubmissionRequest, 'additionalHttpHeaders'>): Promise<QuestionSubmissionResponse>;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  request | Omit&lt;[QuestionSubmissionRequest](./answers-headless.questionsubmissionrequest.md)<!-- -->, 'customClientSdk'&gt; | The data for the network request |
+|  request | Omit&lt;[QuestionSubmissionRequest](./answers-headless.questionsubmissionrequest.md)<!-- -->, 'additionalHttpHeaders'&gt; | The data for the network request |
 
 <b>Returns:</b>
 

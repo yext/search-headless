@@ -7,8 +7,8 @@ import HeadlessReducerManager from './headless-reducer-manager';
 import { DEFAULT_HEADLESS_ID } from './constants';
 import { SessionTrackingState } from './models/slices/sessiontracking';
 import * as answersUtilities from './answers-utilities';
-import { getCustomClientSdk } from './utils/client-sdk-utils';
-import { CustomAnswersAgents } from './models/client-sdk';
+import { getAdditionalHttpHeaders } from './utils/client-sdk-utils';
+import { CustomHttpHeaders } from './models/client-sdk';
 
 export * from './answers-core-re-exports';
 export * from './models';
@@ -36,9 +36,9 @@ export type HeadlessConfig = AnswersConfig & {
    */
   verticalKey?: string,
   /**
-   * {@inheritDoc CustomAnswersAgents}
+   * {@inheritDoc CustomHttpHeaders}
    */
-  additionalAgents?: CustomAnswersAgents
+  additionalHttpHeaders?: CustomHttpHeaders
 };
 
 let firstHeadlessInstance: AnswersHeadless;
@@ -58,7 +58,7 @@ export function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless 
   const {
     verticalKey,
     headlessId,
-    additionalAgents,
+    additionalHttpHeaders,
     ...answersConfig
   } = config;
   if (headlessId === DEFAULT_HEADLESS_ID) {
@@ -69,7 +69,7 @@ export function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless 
   const stateManager = new ReduxStateManager(
     store, headlessId || DEFAULT_HEADLESS_ID, headlessReducerManager);
   const httpManager = new HttpManager();
-  const customClientSdk = getCustomClientSdk(additionalAgents);
+  const customClientSdk = getAdditionalHttpHeaders(additionalHttpHeaders);
 
   const headless = new AnswersHeadless(answersCore, stateManager, httpManager, customClientSdk);
   verticalKey

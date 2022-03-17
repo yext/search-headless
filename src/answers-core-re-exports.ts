@@ -1,4 +1,5 @@
 export {
+  AdditionalHttpHeaders,
   AnswersConfig,
   AnswersConfigWithApiKey,
   AnswersConfigWithToken,
@@ -12,7 +13,7 @@ export {
   BaseAnswersConfig,
   CombinedFilter,
   Context,
-  CustomClientSdk,
+  ClientSDKHeaderValues,
   DirectAnswer,
   DirectAnswerType,
   Direction,

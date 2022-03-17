@@ -6,7 +6,7 @@ import { ActionWithHeadlessId, createBaseStore } from '../../src/store';
 import { EnhancedStore } from '@reduxjs/toolkit';
 import { DEFAULT_HEADLESS_ID } from '../../src/constants';
 import HeadlessReducerManager from '../../src/headless-reducer-manager';
-import { getCustomClientSdk } from '../../src/utils/client-sdk-utils';
+import { getAdditionalHttpHeaders } from '../../src/utils/client-sdk-utils';
 
 /**
  * Creates an Answers Headless instance with a mocked Answers Core.
@@ -26,7 +26,7 @@ export function createMockedAnswersHeadless(
     store || createBaseStore(), DEFAULT_HEADLESS_ID, headlessReducerManager || new HeadlessReducerManager());
   const headlessHttpManager = httpManager || new HttpManager();
   const answers = new AnswersHeadless(
-    mockedAnswersCore, reduxStateManager, headlessHttpManager, getCustomClientSdk());
+    mockedAnswersCore, reduxStateManager, headlessHttpManager, getAdditionalHttpHeaders());
   answers.setState({
     ...answers.state,
     ...initialState

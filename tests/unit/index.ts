@@ -1,5 +1,5 @@
 import { AnswersHeadless, provideAnswersHeadless } from '../../src';
-import { getCustomClientSdk } from '../../src/utils/client-sdk-utils';
+import { getAdditionalHttpHeaders } from '../../src/utils/client-sdk-utils';
 
 jest.mock('../../src/answers-headless.ts');
 
@@ -9,26 +9,30 @@ const baseConfig = {
   locale: 'en'
 };
 
-const headlessAgent = getCustomClientSdk();
+const headers = getAdditionalHttpHeaders();
 
 it('provideAnswersHeadless passes Headless agent to AnswersHeadless', () => {
   provideAnswersHeadless(baseConfig);
 
   expect(AnswersHeadless).toHaveBeenLastCalledWith(
-    expect.anything(), expect.anything(), expect.anything(), headlessAgent);
+    expect.anything(), expect.anything(), expect.anything(), headers);
 });
 
-it('provideAnswersHeadless passes additional agents to AnswersHeadless', () => {
-  const additionalAgents = {
-    CUSTOM_TEST_SITE: 'test'
+it('provideAnswersHeadless passes additional HTTP headers to AnswersHeadless', () => {
+  const additionalHttpHeaders = {
+    'Client-SDK': {
+      CUSTOM_TEST_SITE: 'test'
+    }
   };
   provideAnswersHeadless({
     ...baseConfig,
-    additionalAgents
+    additionalHttpHeaders
   });
 
   expect(AnswersHeadless).toHaveBeenLastCalledWith(expect.anything(), expect.anything(), expect.anything(), {
-    ...additionalAgents,
-    ...headlessAgent
+    'Client-SDK': {
+      ...additionalHttpHeaders['Client-SDK'],
+      ...headers['Client-SDK']
+    }
   });
 });

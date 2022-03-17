@@ -5,9 +5,9 @@ import { AdditionalHttpHeaders, ClientSDKHeaderValues } from '@yext/answers-core
  *
  * @public
  */
-export interface CustomHttpHeaders extends AdditionalHttpHeaders {
-  /** {@inheritDoc CustomClientSDKHeaderValues} */
-  'Client-SDK'?: CustomClientSDKHeaderValues
+export interface HeadlessAdditionalHttpHeaders extends AdditionalHttpHeaders {
+  /** {@inheritDoc ClientSDKHeaderValuesExcludingHeadless} */
+  'Client-SDK'?: ClientSDKHeaderValuesExcludingHeadless
 }
 
 /**
@@ -17,7 +17,7 @@ export interface CustomHttpHeaders extends AdditionalHttpHeaders {
  *
  * @public
  */
-export interface CustomClientSDKHeaderValues extends ClientSDKHeaderValues {
+export interface ClientSDKHeaderValuesExcludingHeadless extends ClientSDKHeaderValues {
   /**
    * The ANSWERS_HEADLESS agent should not be supplied. Instead, it will be automatically added to
    * the header and populated with the version of Answers Headless being used.

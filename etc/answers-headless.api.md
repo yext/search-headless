@@ -161,6 +161,11 @@ export interface ClientSDKHeaderValues {
 }
 
 // @public
+export interface ClientSDKHeaderValuesExcludingHeadless extends ClientSDKHeaderValues {
+    'ANSWERS_HEADLESS'?: never;
+}
+
+// @public
 export interface CombinedFilter {
     combinator: FilterCombinator;
     filters: (Filter | CombinedFilter)[];
@@ -183,16 +188,6 @@ export function createNearMeFilter(position: NearFilterValue): Filter;
 
 // @public
 export function createNumberRangeFilter(fieldId: string, range: BoundedRange<number>): FilterTypes;
-
-// @public
-export interface CustomClientSDKHeaderValues extends ClientSDKHeaderValues {
-    'ANSWERS_HEADLESS'?: never;
-}
-
-// @public
-export interface CustomHttpHeaders extends AdditionalHttpHeaders {
-    'Client-SDK'?: CustomClientSDKHeaderValues;
-}
 
 // @public
 export const DEFAULT_HEADLESS_ID = "main";
@@ -337,10 +332,15 @@ export interface FiltersState {
 export type FilterTypes = Filter | CombinedFilter;
 
 // @public
+export interface HeadlessAdditionalHttpHeaders extends AdditionalHttpHeaders {
+    'Client-SDK'?: ClientSDKHeaderValuesExcludingHeadless;
+}
+
+// @public
 export type HeadlessConfig = AnswersConfig & {
     headlessId?: string;
     verticalKey?: string;
-    additionalHttpHeaders?: CustomHttpHeaders;
+    additionalHttpHeaders?: HeadlessAdditionalHttpHeaders;
 };
 
 // @public

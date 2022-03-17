@@ -9,13 +9,13 @@ const baseConfig = {
   locale: 'en'
 };
 
-const headers = getAdditionalHttpHeaders();
+const headlessVersionHeader = getAdditionalHttpHeaders();
 
 it('provideAnswersHeadless passes Headless agent to AnswersHeadless', () => {
   provideAnswersHeadless(baseConfig);
 
   expect(AnswersHeadless).toHaveBeenLastCalledWith(
-    expect.anything(), expect.anything(), expect.anything(), headers);
+    expect.anything(), expect.anything(), expect.anything(), headlessVersionHeader);
 });
 
 it('provideAnswersHeadless passes additional HTTP headers to AnswersHeadless', () => {
@@ -32,7 +32,7 @@ it('provideAnswersHeadless passes additional HTTP headers to AnswersHeadless', (
   expect(AnswersHeadless).toHaveBeenLastCalledWith(expect.anything(), expect.anything(), expect.anything(), {
     'Client-SDK': {
       ...additionalHttpHeaders['Client-SDK'],
-      ...headers['Client-SDK']
+      ...headlessVersionHeader['Client-SDK']
     }
   });
 });

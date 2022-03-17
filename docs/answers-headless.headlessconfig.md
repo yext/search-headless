@@ -12,8 +12,8 @@ The configuration for an AnswersHeadless instance.
 export declare type HeadlessConfig = AnswersConfig & {
     headlessId?: string;
     verticalKey?: string;
-    additionalHttpHeaders?: CustomHttpHeaders;
+    additionalHttpHeaders?: HeadlessAdditionalHttpHeaders;
 };
 ```
-<b>References:</b> [AnswersConfig](./answers-headless.answersconfig.md)<!-- -->, [CustomHttpHeaders](./answers-headless.customhttpheaders.md)
+<b>References:</b> [AnswersConfig](./answers-headless.answersconfig.md)<!-- -->, [HeadlessAdditionalHttpHeaders](./answers-headless.headlessadditionalhttpheaders.md)
 

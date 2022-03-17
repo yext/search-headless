@@ -23,4 +23,4 @@ export { SearchTypeEnum, SearchType } from './utils/searchType';
 export { ParentState, State } from './state';
 export { StateListener, StateManager };
 
-export { CustomClientSDKHeaderValues, CustomHttpHeaders } from './client-sdk';
+export { ClientSDKHeaderValuesExcludingHeadless, HeadlessAdditionalHttpHeaders } from './client-sdk';

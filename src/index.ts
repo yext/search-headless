@@ -8,7 +8,7 @@ import { DEFAULT_HEADLESS_ID } from './constants';
 import { SessionTrackingState } from './models/slices/sessiontracking';
 import * as answersUtilities from './answers-utilities';
 import { getAdditionalHttpHeaders } from './utils/client-sdk-utils';
-import { CustomHttpHeaders } from './models/client-sdk';
+import { HeadlessAdditionalHttpHeaders } from './models/client-sdk';
 
 export * from './answers-core-re-exports';
 export * from './models';
@@ -36,9 +36,9 @@ export type HeadlessConfig = AnswersConfig & {
    */
   verticalKey?: string,
   /**
-   * {@inheritDoc CustomHttpHeaders}
+   * {@inheritDoc HeadlessAdditionalHttpHeaders}
    */
-  additionalHttpHeaders?: CustomHttpHeaders
+  additionalHttpHeaders?: HeadlessAdditionalHttpHeaders
 };
 
 let firstHeadlessInstance: AnswersHeadless;

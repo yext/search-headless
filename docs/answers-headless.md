@@ -56,9 +56,8 @@
 |  [BaseAnswersConfig](./answers-headless.baseanswersconfig.md) | The base configuration options for [AnswersCore](./answers-headless.answerscore.md)<!-- -->. |
 |  [BoundedRange](./answers-headless.boundedrange.md) | An interface representing a range of values of type T. |
 |  [ClientSDKHeaderValues](./answers-headless.clientsdkheadervalues.md) | Additional agents and their versions used to create the Answers experience. The information for these agents is added to the Client-SDK HTTP header along with that of the ANSWERS\_CORE agent. |
+|  [ClientSDKHeaderValuesExcludingHeadless](./answers-headless.clientsdkheadervaluesexcludingheadless.md) | Additional agents and their versions used to create the Answers experience. The information for these agents is added to the Client-SDK HTTP header for Answers API requests along with that of the ANSWERS\_HEADLESS and ANSWERS\_CORE agents. |
 |  [CombinedFilter](./answers-headless.combinedfilter.md) | Represents multiple filters that will be combined to refine results. |
-|  [CustomClientSDKHeaderValues](./answers-headless.customclientsdkheadervalues.md) | Additional agents and their versions used to create the Answers experience. The information for these agents is added to the Client-SDK HTTP header for Answers API requests along with that of the ANSWERS\_HEADLESS and ANSWERS\_CORE agents. |
-|  [CustomHttpHeaders](./answers-headless.customhttpheaders.md) | Allows users to specify additional values for specific HTTP headers. |
 |  [DirectAnswer](./answers-headless.directanswer.md) | A direct answer to a search. |
 |  [DirectAnswerState](./answers-headless.directanswerstate.md) | Maintains the direct answer associated with the latest search. |
 |  [DisplayableFacet](./answers-headless.displayablefacet.md) | A [Facet](./answers-headless.facet.md) which contains extra fields meant to be displayed to the end user. |
@@ -72,6 +71,7 @@
 |  [FilterSearchRequest](./answers-headless.filtersearchrequest.md) | Options for a filtersearch request. |
 |  [FilterSearchResponse](./answers-headless.filtersearchresponse.md) | The response of a filtersearch request. |
 |  [FiltersState](./answers-headless.filtersstate.md) | Maintains the current state of facets and filters in the application. |
+|  [HeadlessAdditionalHttpHeaders](./answers-headless.headlessadditionalhttpheaders.md) | Allows users to specify additional values for specific HTTP headers. |
 |  [HighlightedValue](./answers-headless.highlightedvalue.md) | A field value and its substring matches as emphasized by the Answers API. |
 |  [LatLong](./answers-headless.latlong.md) | The latitude and longitude of the user making the request. Used to bias the results. |
 |  [LocationBias](./answers-headless.locationbias.md) | Information about the user's location. |

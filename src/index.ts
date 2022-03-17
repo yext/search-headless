@@ -69,9 +69,9 @@ export function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless 
   const stateManager = new ReduxStateManager(
     store, headlessId || DEFAULT_HEADLESS_ID, headlessReducerManager);
   const httpManager = new HttpManager();
-  const customClientSdk = getAdditionalHttpHeaders(additionalHttpHeaders);
+  const httpHeaders = getAdditionalHttpHeaders(additionalHttpHeaders);
 
-  const headless = new AnswersHeadless(answersCore, stateManager, httpManager, customClientSdk);
+  const headless = new AnswersHeadless(answersCore, stateManager, httpManager, httpHeaders);
   verticalKey
     ? headless.setVertical(verticalKey)
     : headless.setUniversal();

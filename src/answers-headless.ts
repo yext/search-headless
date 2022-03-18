@@ -15,7 +15,8 @@ import {
   SearchParameterField,
   FilterSearchResponse,
   UniversalLimit,
-  VerticalSearchResponse
+  VerticalSearchResponse,
+  AdditionalHttpHeaders
 } from '@yext/answers-core';
 
 import StateListener from './models/state-listener';
@@ -49,6 +50,7 @@ export default class AnswersHeadless {
     private core: AnswersCore,
     private stateManager: StateManager,
     private httpManager: HttpManager,
+    private additionalHttpHeaders?: AdditionalHttpHeaders
   ) {}
 
   /**
@@ -282,8 +284,13 @@ export default class AnswersHeadless {
    * @param request - The data for the network request
    * @returns A Promise of a {@link QuestionSubmissionResponse} from the Answers API
    */
-  async submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse> {
-    return this.core.submitQuestion(request);
+  async submitQuestion(
+    request: Omit<QuestionSubmissionRequest, 'additionalHttpHeaders'>
+  ): Promise<QuestionSubmissionResponse> {
+    return this.core.submitQuestion({
+      ...request,
+      additionalHttpHeaders: this.additionalHttpHeaders
+    });
   }
 
   /**
@@ -319,7 +326,8 @@ export default class AnswersHeadless {
       location: userLocation,
       context,
       referrerPageUrl,
-      restrictVerticals
+      restrictVerticals,
+      additionalHttpHeaders: this.additionalHttpHeaders
     };
 
     let response: UniversalSearchResponse;
@@ -358,7 +366,8 @@ export default class AnswersHeadless {
   async executeUniversalAutocomplete(): Promise<AutocompleteResponse> {
     const query = this.state.query.input || '';
     return this.core.universalAutocomplete({
-      input: query
+      input: query,
+      additionalHttpHeaders: this.additionalHttpHeaders
     });
   }
 
@@ -417,7 +426,8 @@ export default class AnswersHeadless {
       location: userLocation,
       sortBys,
       context,
-      referrerPageUrl
+      referrerPageUrl,
+      additionalHttpHeaders: this.additionalHttpHeaders
     };
 
     let response: VerticalSearchResponse;
@@ -471,7 +481,8 @@ export default class AnswersHeadless {
 
     return this.core.verticalAutocomplete({
       input: query,
-      verticalKey
+      verticalKey,
+      additionalHttpHeaders: this.additionalHttpHeaders
     });
   }
 
@@ -505,7 +516,8 @@ export default class AnswersHeadless {
       verticalKey,
       sessionTrackingEnabled: this.state.sessionTracking.enabled,
       sectioned,
-      fields
+      fields,
+      additionalHttpHeaders: this.additionalHttpHeaders
     });
   }
 

@@ -7,6 +7,11 @@
 import { Unsubscribe } from '@reduxjs/toolkit';
 
 // @public
+export interface AdditionalHttpHeaders {
+    'Client-SDK'?: ClientSDKHeaderValues;
+}
+
+// @public
 export interface AllResultsForVertical {
     facets: DisplayableFacet[];
     results: Result[];
@@ -50,7 +55,7 @@ export class AnswersError extends Error {
 // @public
 export class AnswersHeadless {
     // Warning: (ae-forgotten-export) The symbol "HttpManager" needs to be exported by the entry point index.d.ts
-    constructor(core: AnswersCore, stateManager: StateManager, httpManager: HttpManager);
+    constructor(core: AnswersCore, stateManager: StateManager, httpManager: HttpManager, additionalHttpHeaders?: AdditionalHttpHeaders | undefined);
     addListener<T>(listener: StateListener<T>): Unsubscribe;
     executeFilterSearch(query: string, sectioned: boolean, fields: SearchParameterField[]): Promise<FilterSearchResponse | undefined>;
     executeUniversalAutocomplete(): Promise<AutocompleteResponse>;
@@ -81,8 +86,13 @@ export class AnswersHeadless {
     setVertical(verticalKey: string): void;
     setVerticalLimit(limit: number): void;
     get state(): State;
-    submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse>;
+    submitQuestion(request: Omit<QuestionSubmissionRequest, 'additionalHttpHeaders'>): Promise<QuestionSubmissionResponse>;
     readonly utilities: typeof answersUtilities;
+}
+
+// @public
+export interface AnswersRequest {
+    additionalHttpHeaders?: AdditionalHttpHeaders;
 }
 
 declare namespace answersUtilities {
@@ -142,6 +152,12 @@ export interface BaseAnswersConfig {
 export interface BoundedRange<T> {
     max?: RangeBoundary<T>;
     min?: RangeBoundary<T>;
+}
+
+// @public
+export interface ClientSDKHeaderValues {
+    [agent: string]: string | undefined;
+    ANSWERS_CORE?: never;
 }
 
 // @public
@@ -282,7 +298,7 @@ export enum FilterCombinator {
 }
 
 // @public
-export interface FilterSearchRequest {
+export interface FilterSearchRequest extends AnswersRequest {
     fields: SearchParameterField[];
     input: string;
     sectioned: boolean;
@@ -391,8 +407,13 @@ export interface ParentState {
     [headlessId: string]: State;
 }
 
+// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "provideAnswersHeadless" because one of its declarations is marked as @internal
+//
 // @public
 export function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless;
+
+// @internal
+export function provideAnswersHeadless(config: HeadlessConfig, additionalHttpHeaders: AdditionalHttpHeaders): AnswersHeadless;
 
 // @public
 export interface QueryRulesActionsData {
@@ -434,7 +455,7 @@ export enum QueryTrigger {
 }
 
 // @public
-export interface QuestionSubmissionRequest {
+export interface QuestionSubmissionRequest extends AnswersRequest {
     email: string;
     entityId: string;
     name: string;
@@ -602,7 +623,7 @@ export interface StateManager {
 }
 
 // @public
-export interface UniversalAutocompleteRequest {
+export interface UniversalAutocompleteRequest extends AnswersRequest {
     input: string;
     sessionTrackingEnabled?: boolean;
 }
@@ -614,7 +635,7 @@ export interface UniversalLimit {
 }
 
 // @public
-export interface UniversalSearchRequest {
+export interface UniversalSearchRequest extends AnswersRequest {
     context?: Context;
     limit?: UniversalLimit;
     location?: LatLong;
@@ -648,7 +669,7 @@ export interface UniversalSearchState {
 }
 
 // @public
-export interface VerticalAutocompleteRequest {
+export interface VerticalAutocompleteRequest extends AnswersRequest {
     input: string;
     sessionTrackingEnabled?: boolean;
     verticalKey: string;
@@ -665,7 +686,7 @@ export interface VerticalResults {
 }
 
 // @public
-export interface VerticalSearchRequest {
+export interface VerticalSearchRequest extends AnswersRequest {
     context?: Context;
     facets?: Facet[];
     limit?: number;

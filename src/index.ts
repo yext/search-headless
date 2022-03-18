@@ -1,4 +1,4 @@
-import { provideCore, AnswersConfig } from '@yext/answers-core';
+import { provideCore, AnswersConfig, AdditionalHttpHeaders } from '@yext/answers-core';
 import HttpManager from './http-manager';
 import ReduxStateManager from './redux-state-manager';
 import AnswersHeadless from './answers-headless';
@@ -7,8 +7,7 @@ import HeadlessReducerManager from './headless-reducer-manager';
 import { DEFAULT_HEADLESS_ID } from './constants';
 import { SessionTrackingState } from './models/slices/sessiontracking';
 import * as answersUtilities from './answers-utilities';
-import { getAdditionalHttpHeaders } from './utils/client-sdk-utils';
-import { HeadlessAdditionalHttpHeaders } from './models/client-sdk';
+import { getHttpHeaders } from './utils/client-sdk-utils';
 
 export * from './answers-core-re-exports';
 export * from './models';
@@ -34,11 +33,7 @@ export type HeadlessConfig = AnswersConfig & {
    * The verticalKey associated with the vertical to manage. If none is provided,
    * Answers Headless will manage universal search.
    */
-  verticalKey?: string,
-  /**
-   * {@inheritDoc HeadlessAdditionalHttpHeaders}
-   */
-  additionalHttpHeaders?: HeadlessAdditionalHttpHeaders
+  verticalKey?: string
 };
 
 let firstHeadlessInstance: AnswersHeadless;
@@ -54,11 +49,33 @@ const headlessReducerManager = new HeadlessReducerManager();
  *
  * @public
  */
-export function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless {
+export function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless;
+
+/**
+ * Supplies a new instance of {@link AnswersHeadless}, using the provided configuration,
+ * and accepts additional HTTP headers to pass with API requests.
+ *
+ * @param config - The apiKey, experienceKey, etc. needed to set up a front-end Answers
+ *                 experience
+ * @param additionalHttpHeaders - Additional value for specific HTTP headers
+ * @returns The newly created instance of {@link AnswersHeadless}
+ *
+ * @internal
+ */
+// eslint-disable-next-line @yext/export-star/no-duplicate-exports
+export function provideAnswersHeadless(
+  config: HeadlessConfig,
+  additionalHttpHeaders: AdditionalHttpHeaders
+): AnswersHeadless;
+
+// eslint-disable-next-line @yext/export-star/no-duplicate-exports
+export function provideAnswersHeadless(
+  config: HeadlessConfig,
+  additionalHttpHeaders?: AdditionalHttpHeaders
+): AnswersHeadless {
   const {
     verticalKey,
     headlessId,
-    additionalHttpHeaders,
     ...answersConfig
   } = config;
   if (headlessId === DEFAULT_HEADLESS_ID) {
@@ -69,7 +86,7 @@ export function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless 
   const stateManager = new ReduxStateManager(
     store, headlessId || DEFAULT_HEADLESS_ID, headlessReducerManager);
   const httpManager = new HttpManager();
-  const httpHeaders = getAdditionalHttpHeaders(additionalHttpHeaders);
+  const httpHeaders = getHttpHeaders(additionalHttpHeaders);
 
   const headless = new AnswersHeadless(answersCore, stateManager, httpManager, httpHeaders);
   verticalKey

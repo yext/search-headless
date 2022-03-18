@@ -1,6 +1,6 @@
 import { UniversalSearchRequest } from '@yext/answers-core';
 import HttpManager from '../../src/http-manager';
-import { getAdditionalHttpHeaders } from '../../src/utils/client-sdk-utils';
+import { getHttpHeaders } from '../../src/utils/client-sdk-utils';
 import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
 import setTimeout from '../utils/setTimeout';
 
@@ -54,7 +54,7 @@ it('executeUniversalQuery passes the additional HTTP headers', async () => {
   });
   await answers.executeUniversalQuery();
   expect(mockSearch).toHaveBeenLastCalledWith(expect.objectContaining({
-    additionalHttpHeaders: getAdditionalHttpHeaders()
+    additionalHttpHeaders: getHttpHeaders()
   }));
 });
 

@@ -3,7 +3,7 @@ import HttpManager from '../../src/http-manager';
 import { AllResultsForVertical } from '../../src/models/slices/vertical';
 import { State } from '../../src/models/state';
 import { SearchTypeEnum } from '../../src/models/utils/searchType';
-import { getAdditionalHttpHeaders } from '../../src/utils/client-sdk-utils';
+import { getHttpHeaders } from '../../src/utils/client-sdk-utils';
 import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
 import setTimeout from '../utils/setTimeout';
 
@@ -192,7 +192,7 @@ it('executeVerticalQuery passes the additional HTTP headers', async () => {
   answers.setVertical('vertical-key');
   await answers.executeVerticalQuery();
   expect(mockSearch).toHaveBeenLastCalledWith(expect.objectContaining({
-    additionalHttpHeaders: getAdditionalHttpHeaders()
+    additionalHttpHeaders: getHttpHeaders()
   }));
 });
 

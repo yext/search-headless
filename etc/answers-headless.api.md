@@ -161,11 +161,6 @@ export interface ClientSDKHeaderValues {
 }
 
 // @public
-export interface ClientSDKHeaderValuesExcludingHeadless extends ClientSDKHeaderValues {
-    'ANSWERS_HEADLESS'?: never;
-}
-
-// @public
 export interface CombinedFilter {
     combinator: FilterCombinator;
     filters: (Filter | CombinedFilter)[];
@@ -332,15 +327,9 @@ export interface FiltersState {
 export type FilterTypes = Filter | CombinedFilter;
 
 // @public
-export interface HeadlessAdditionalHttpHeaders extends AdditionalHttpHeaders {
-    'Client-SDK'?: ClientSDKHeaderValuesExcludingHeadless;
-}
-
-// @public
 export type HeadlessConfig = AnswersConfig & {
     headlessId?: string;
     verticalKey?: string;
-    additionalHttpHeaders?: HeadlessAdditionalHttpHeaders;
 };
 
 // @public
@@ -418,8 +407,13 @@ export interface ParentState {
     [headlessId: string]: State;
 }
 
+// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "provideAnswersHeadless" because one of its declarations is marked as @internal
+//
 // @public
 export function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless;
+
+// @internal
+export function provideAnswersHeadless(config: HeadlessConfig, additionalHttpHeaders: AdditionalHttpHeaders): AnswersHeadless;
 
 // @public
 export interface QueryRulesActionsData {

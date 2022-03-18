@@ -1,5 +1,5 @@
 import { AnswersHeadless, provideAnswersHeadless } from '../../src';
-import { getAdditionalHttpHeaders } from '../../src/utils/client-sdk-utils';
+import { getHttpHeaders } from '../../src/utils/client-sdk-utils';
 
 jest.mock('../../src/answers-headless.ts');
 
@@ -9,7 +9,7 @@ const baseConfig = {
   locale: 'en'
 };
 
-const headlessVersionHeader = getAdditionalHttpHeaders();
+const headlessVersionHeader = getHttpHeaders();
 
 it('provideAnswersHeadless passes Headless agent to AnswersHeadless', () => {
   provideAnswersHeadless(baseConfig);
@@ -24,10 +24,7 @@ it('provideAnswersHeadless passes additional HTTP headers to AnswersHeadless', (
       CUSTOM_TEST_SITE: 'test'
     }
   };
-  provideAnswersHeadless({
-    ...baseConfig,
-    additionalHttpHeaders
-  });
+  provideAnswersHeadless(baseConfig, additionalHttpHeaders);
 
   expect(AnswersHeadless).toHaveBeenLastCalledWith(expect.anything(), expect.anything(), expect.anything(), {
     'Client-SDK': {

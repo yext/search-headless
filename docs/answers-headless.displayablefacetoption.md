@@ -21,5 +21,5 @@ export declare interface DisplayableFacetOption extends FacetOption
 |  [displayName](./answers-headless.displayablefacetoption.displayname.md) | string | The name of the facet option which is meant to be displayed to the end user. |
 |  [matcher](./answers-headless.displayablefacetoption.matcher.md) | [Matcher](./answers-headless.matcher.md) | A Matcher is a filtering operation. |
 |  [selected](./answers-headless.displayablefacetoption.selected.md) | boolean | Whether or not the filter is selected in the search results. |
-|  [value](./answers-headless.displayablefacetoption.value.md) | string \| number \| boolean | The value to compare. |
+|  [value](./answers-headless.displayablefacetoption.value.md) | string \| number \| boolean \| [NumberRangeValue](./answers-headless.numberrangevalue.md) | The value to compare. |
 

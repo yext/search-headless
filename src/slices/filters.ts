@@ -2,6 +2,7 @@ import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
 import { FacetOption, DisplayableFacet } from '@yext/answers-core';
 import { SelectableFilter } from '../models/utils/selectableFilter';
 import { FiltersState } from '../models/slices/filters';
+import isEqual from 'lodash/isEqual';
 import { areFiltersEqual } from '../utils/filter-utils';
 
 export const initialState: FiltersState = {};
@@ -42,7 +43,7 @@ const reducers = {
     facetsWithFieldId.forEach(facet => {
       // Mutating is OK because redux-toolkit uses the immer package
       facet.options = facet.options.map(o => {
-        if (o.matcher !== optionToSelect.matcher || o.value !== optionToSelect.value) {
+        if (o.matcher !== optionToSelect.matcher || !isEqual(o.value, optionToSelect.value)) {
           return o;
         }
         return { ...o, selected: shouldSelect };

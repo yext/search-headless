@@ -1,3 +1,5 @@
+import isEqual from 'lodash/isEqual';
+
 import { Filter } from '@yext/answers-core';
 
 /**
@@ -10,5 +12,5 @@ import { Filter } from '@yext/answers-core';
 export function areFiltersEqual(thisFilter: Filter, otherFilter: Filter): boolean {
   return thisFilter.fieldId === otherFilter.fieldId
   && thisFilter.matcher === otherFilter.matcher
-  && thisFilter.value === otherFilter.value;
+  && isEqual(thisFilter.value, otherFilter.value);
 }

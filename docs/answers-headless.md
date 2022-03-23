@@ -74,8 +74,10 @@
 |  [LatLong](./answers-headless.latlong.md) | The latitude and longitude of the user making the request. Used to bias the results. |
 |  [LocationBias](./answers-headless.locationbias.md) | Information about the user's location. |
 |  [LocationState](./answers-headless.locationstate.md) | Maintains the user's location, if given, or the inferred location, that is used to bias search results. |
+|  [LowerNumberRangeLimit](./answers-headless.lowernumberrangelimit.md) | The start limit of [NumberRangeValue](./answers-headless.numberrangevalue.md)<!-- -->. |
 |  [MetaState](./answers-headless.metastate.md) | Maintains the metadata for Answers Headless. |
 |  [NearFilterValue](./answers-headless.nearfiltervalue.md) | A filter value for a filter with a $near [Matcher](./answers-headless.matcher.md)<!-- -->. |
+|  [NumberRangeValue](./answers-headless.numberrangevalue.md) | A filter value for a filter with a $between [Matcher](./answers-headless.matcher.md)<!-- -->. |
 |  [ParentState](./answers-headless.parentstate.md) | The overall shape of the redux state tree, with each key value pair of headlessId to [State](./answers-headless.state.md) representing a single AnswersHeadless instance. |
 |  [QueryRulesActionsData](./answers-headless.queryrulesactionsdata.md) | Data returned from the Answers query rules system. |
 |  [QueryRulesState](./answers-headless.queryrulesstate.md) | Maintains the data from the triggered query rules. |
@@ -102,6 +104,7 @@
 |  [UniversalSearchRequest](./answers-headless.universalsearchrequest.md) | Options which can be specified for a universal search. |
 |  [UniversalSearchResponse](./answers-headless.universalsearchresponse.md) | A representation of a response from a universal search. |
 |  [UniversalSearchState](./answers-headless.universalsearchstate.md) | Maintains the data for the latest universal search. |
+|  [UpperNumberRangeLimit](./answers-headless.uppernumberrangelimit.md) | The end limit of [NumberRangeValue](./answers-headless.numberrangevalue.md)<!-- -->. |
 |  [VerticalAutocompleteRequest](./answers-headless.verticalautocompleterequest.md) | Options for a vertial autocomplete request. |
 |  [VerticalResults](./answers-headless.verticalresults.md) | Represents results from a search vertical. |
 |  [VerticalSearchRequest](./answers-headless.verticalsearchrequest.md) | Options which can be specified for a vertical search. |

@@ -1,4 +1,4 @@
-import { DisplayableFacetOption, FacetOption, Filter, Matcher, NumberRangeValue } from '@yext/answers-core';
+import { DisplayableFacetOption, Filter, Matcher } from '@yext/answers-core';
 import createFiltersSlice from '../../../src/slices/filters';
 import _ from 'lodash';
 import { FiltersState, SelectableFilter } from '../../../src';
@@ -104,7 +104,7 @@ describe('filter slice reducer works as expected', () => {
   it('setFilterOption action is handled properly with a Filter with a NumberRangeValue', () => {
     const selectedFilter: SelectableFilter = {
       fieldId: 'id1',
-      matcher: Matcher.Equals,
+      matcher: Matcher.Between,
       value: {
         start: {
           matcher: Matcher.GreaterThan,
@@ -237,7 +237,7 @@ describe('filter slice reducer works as expected', () => {
 
   it('setFacetOption action is handled properly with a Filter with a NumberRangeValue', () => {
     const selectedFacetOption: DisplayableFacetOption = {
-      matcher: Matcher.Equals,
+      matcher: Matcher.Between,
       value: {
         start: {
           matcher: Matcher.GreaterThan,

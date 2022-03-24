@@ -21,7 +21,7 @@ it('handles multiple facets with the same fieldId', () => {
   initialState.filters.facets.push({
     displayName: 'another test facet',
     fieldId: 'testFieldId',
-    options: [{...facetOption}]
+    options: [{ ...facetOption }]
   });
   const answers = createMockedAnswersHeadless({}, initialState);
   answers.setFacetOption('testFieldId', facetOption, true);

@@ -300,7 +300,7 @@ export default class AnswersHeadless {
    * @returns A Promise of a {@link UniversalSearchResponse} from the Answers API
    */
   async executeUniversalQuery(): Promise<UniversalSearchResponse | undefined> {
-    if(this.state.meta.searchType !== SearchTypeEnum.Universal) {
+    if (this.state.meta.searchType !== SearchTypeEnum.Universal) {
       console.error('The meta.searchType must be set to \'universal\' for universal search. '
         + 'Set the searchType to universal by calling `setUniversal()`');
       return;
@@ -379,7 +379,7 @@ export default class AnswersHeadless {
    *          of undefined if there is no verticalKey defined in state
    */
   async executeVerticalQuery(): Promise<VerticalSearchResponse | undefined> {
-    if(this.state.meta.searchType !== SearchTypeEnum.Vertical) {
+    if (this.state.meta.searchType !== SearchTypeEnum.Vertical) {
       console.error('The meta.searchType must be set to \'vertical\' for vertical search. '
        + 'Set the searchType to vertical by calling `setVertical()`');
       return;
@@ -467,7 +467,7 @@ export default class AnswersHeadless {
    *          of undefined if there is no verticalKey defined in state
    */
   async executeVerticalAutocomplete(): Promise<AutocompleteResponse | undefined> {
-    if(this.state.meta.searchType !== SearchTypeEnum.Vertical) {
+    if (this.state.meta.searchType !== SearchTypeEnum.Vertical) {
       console.error('The meta.searchType must be set to \'vertical\' for vertical autocomplete. '
         + 'Set the searchType to vertical by calling `setVertical()`');
       return;
@@ -501,7 +501,7 @@ export default class AnswersHeadless {
     sectioned: boolean,
     fields: SearchParameterField[]
   ): Promise<FilterSearchResponse | undefined> {
-    if(this.state.meta.searchType !== SearchTypeEnum.Vertical) {
+    if (this.state.meta.searchType !== SearchTypeEnum.Vertical) {
       console.error('The meta.searchType must be set to \'vertical\' for filter search. '
       + 'Set the searchType to vertical by calling `setVertical()`');
       return;

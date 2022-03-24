@@ -17,5 +17,5 @@ export declare interface FacetOption
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [matcher](./answers-headless.facetoption.matcher.md) | [Matcher](./answers-headless.matcher.md) | A Matcher is a filtering operation. |
-|  [value](./answers-headless.facetoption.value.md) | string \| number \| boolean | The value to compare. |
+|  [value](./answers-headless.facetoption.value.md) | string \| number \| boolean \| [NumberRangeValue](./answers-headless.numberrangevalue.md) | The value to compare. |
 

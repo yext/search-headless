@@ -1,10 +1,10 @@
-import { Filter, Matcher } from '@yext/answers-core';
+import { DisplayableFacetOption, Filter, Matcher } from '@yext/answers-core';
 import createFiltersSlice from '../../../src/slices/filters';
 import _ from 'lodash';
 import { FiltersState, SelectableFilter } from '../../../src';
 
 const { actions, reducer } = createFiltersSlice('');
-const { setStatic, setFacets, resetFacets, setFilterOption } = actions;
+const { setStatic, setFacets, resetFacets, setFilterOption, setFacetOption } = actions;
 
 describe('filter slice reducer works as expected', () => {
 
@@ -101,6 +101,44 @@ describe('filter slice reducer works as expected', () => {
     expect(actualState).toEqual(selectedExpectedState);
   });
 
+  it('setFilterOption action is handled properly with a Filter with a NumberRangeValue', () => {
+    const selectedFilter: SelectableFilter = {
+      fieldId: 'id1',
+      matcher: Matcher.Between,
+      value: {
+        start: {
+          matcher: Matcher.GreaterThan,
+          value: 3
+        },
+        end: {
+          matcher: Matcher.LessThan,
+          value: 10
+        }
+      },
+      selected: true,
+      displayName: 'label1'
+    };
+
+    const unselectedFilter = {
+      ...selectedFilter,
+      selected: false
+    };
+
+    const selectedState: FiltersState = {
+      static: [ selectedFilter ]
+    };
+
+    const unselectedState: FiltersState = {
+      static: [ unselectedFilter ]
+    };
+
+    const actualUnselectedState = reducer(selectedState, setFilterOption(unselectedFilter));
+    expect(actualUnselectedState).toEqual(unselectedState);
+
+    const actualSelectedState = reducer(unselectedState, setFilterOption(selectedFilter));
+    expect(actualSelectedState).toEqual(selectedState);
+  });
+
   it('setFilterOption action is handled properly with filter not found in state when select', () => {
     const selectFilterPayload = {
       fieldId: 'invalid field',
@@ -195,5 +233,67 @@ describe('filter slice reducer works as expected', () => {
     };
     const expectedState = _.merge(_.cloneDeep(initialState), unselectedFacets);
     expect(actualState).toEqual(expectedState);
+  });
+
+  it('setFacetOption action is handled properly with a Filter with a NumberRangeValue', () => {
+    const selectedFacetOption: DisplayableFacetOption = {
+      matcher: Matcher.Between,
+      value: {
+        start: {
+          matcher: Matcher.GreaterThan,
+          value: 3
+        },
+        end: {
+          matcher: Matcher.LessThan,
+          value: 10
+        }
+      },
+      selected: true,
+      displayName: 'Facet Option Displayname',
+      count: 3
+    };
+
+    const unselectedFacetOption = {
+      ...selectedFacetOption,
+      selected: false
+    };
+
+    const selectFacetPayload = {
+      fieldId: 'someField',
+      facetOption: selectedFacetOption,
+      shouldSelect: true
+    };
+
+    const unselectFacetPayload = {
+      fieldId: 'someField',
+      facetOption: unselectedFacetOption,
+      shouldSelect: false
+    };
+
+    const selectedState: FiltersState = {
+      facets: [
+        {
+          fieldId: 'someField',
+          options: [ selectedFacetOption ],
+          displayName: 'Facet Displayname'
+        }
+      ]
+    };
+
+    const unselectedState: FiltersState = {
+      facets: [
+        {
+          fieldId: 'someField',
+          options: [ unselectedFacetOption ],
+          displayName: 'Facet Displayname'
+        }
+      ]
+    };
+
+    const actualUnselectedState = reducer(selectedState, setFacetOption(unselectFacetPayload));
+    expect(actualUnselectedState).toEqual(unselectedState);
+
+    const actualSelectedState = reducer(unselectedState, setFacetOption(selectFacetPayload));
+    expect(actualSelectedState).toEqual(selectedState);
   });
 });

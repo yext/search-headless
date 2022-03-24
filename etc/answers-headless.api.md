@@ -226,7 +226,7 @@ export interface DisplayableFacetOption extends FacetOption {
     displayName: string;
     matcher: Matcher;
     selected: boolean;
-    value: string | number | boolean;
+    value: string | number | boolean | NumberRangeValue;
 }
 
 // @public
@@ -259,7 +259,7 @@ export interface Facet {
 // @public
 export interface FacetOption {
     matcher: Matcher;
-    value: string | number | boolean;
+    value: string | number | boolean | NumberRangeValue;
 }
 
 // @public
@@ -288,7 +288,7 @@ export interface FieldValueDirectAnswer extends DirectAnswer {
 export interface Filter {
     fieldId: string;
     matcher: Matcher;
-    value: string | number | boolean | NearFilterValue;
+    value: string | number | boolean | NearFilterValue | NumberRangeValue;
 }
 
 // @public
@@ -377,7 +377,14 @@ export interface LocationState {
 }
 
 // @public
+export interface LowerNumberRangeLimit {
+    matcher: Matcher.GreaterThan | Matcher.GreaterThanOrEqualTo;
+    value: number;
+}
+
+// @public
 export enum Matcher {
+    Between = "$between",
     Equals = "$eq",
     GreaterThan = "$gt",
     GreaterThanOrEqualTo = "$ge",
@@ -400,6 +407,12 @@ export interface NearFilterValue {
     lat: number;
     lng: number;
     radius: number;
+}
+
+// @public
+export interface NumberRangeValue {
+    end?: UpperNumberRangeLimit;
+    start?: LowerNumberRangeLimit;
 }
 
 // @public
@@ -666,6 +679,12 @@ export interface UniversalSearchState {
     limit?: UniversalLimit;
     restrictVerticals?: string[];
     verticals?: VerticalResults[];
+}
+
+// @public
+export interface UpperNumberRangeLimit {
+    matcher: Matcher.LessThan | Matcher.LessThanOrEqualTo;
+    value: number;
 }
 
 // @public

@@ -64,7 +64,7 @@ export interface State {
   /**
    * {@inheritDoc SessionTrackingState}
    */
-  sessionTracking: SessionTrackingState
+  sessionTracking: SessionTrackingState,
   /**
    * {@inheritDoc MetaState}
    */
@@ -72,5 +72,5 @@ export interface State {
   /**
    * {@inheritDoc LocationState}
    */
-  location: LocationState,
+  location: LocationState
 }

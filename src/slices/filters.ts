@@ -8,8 +8,8 @@ import { areFiltersEqual } from '../utils/filter-utils';
 export const initialState: FiltersState = {};
 
 interface FacetPayload {
-  fieldId: string
-  facetOption: FacetOption
+  fieldId: string,
+  facetOption: FacetOption,
   shouldSelect: boolean
 }
 

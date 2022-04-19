@@ -34,7 +34,7 @@ const featuredSnippedDirectAnswer: FeaturedSnippetDirectAnswer = {
   fieldType: 'c_name',
   snippet: {
     value: 'Bob',
-    matchedSubstrings: [{ offset: 0, length: 3}]
+    matchedSubstrings: [{ offset: 0, length: 3 }]
   }
 };
 

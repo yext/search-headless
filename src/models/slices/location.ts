@@ -16,5 +16,5 @@ export interface LocationState {
    * The latitude and longitude of the user making the request. Used to bias
    * the results.
    */
-  userLocation?: LatLong,
+  userLocation?: LatLong
 }

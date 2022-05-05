@@ -17,7 +17,7 @@ export * from './utils/types';
 export { answersUtilities };
 
 /**
- * The configuration for an AnswersHeadless instance.
+ * The configuration for an AnswersHeadless instance. TEST
  *
  * @public
  */

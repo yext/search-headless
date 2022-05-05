@@ -4,7 +4,7 @@
 
 ## HeadlessConfig type
 
-The configuration for an AnswersHeadless instance.
+The configuration for an AnswersHeadless instance. TEST
 
 <b>Signature:</b>
 

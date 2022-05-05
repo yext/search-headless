@@ -132,7 +132,7 @@
 |  [Context](./answers-headless.context.md) | Used to trigger Answers [Query Rules](https://hitchhikers.yext.com/tracks/answers-advanced/ans302-query-rules/)<!-- -->. |
 |  [EnumOrLiteral](./answers-headless.enumorliteral.md) | Produces a union type from the enum passed as a generic which consists of the enum values and the string literals of the enum. |
 |  [FilterTypes](./answers-headless.filtertypes.md) | A union type for the different kinds of filter. |
-|  [HeadlessConfig](./answers-headless.headlessconfig.md) | The configuration for an AnswersHeadless instance. TEST |
+|  [HeadlessConfig](./answers-headless.headlessconfig.md) | The configuration for an AnswersHeadless instance. |
 |  [HighlightedFields](./answers-headless.highlightedfields.md) | A mapping of fields to the values emphasized by the Answers API |
 |  [SearchType](./answers-headless.searchtype.md) | An enum and its corresponding string literals which indicate the type of search that Headless is managing. |
 

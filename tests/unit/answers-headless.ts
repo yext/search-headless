@@ -2,9 +2,15 @@ import { Matcher, QuerySource, QueryTrigger } from '@yext/answers-core';
 import HttpManager from '../../src/http-manager';
 import StateManager from '../../src/models/state-manager';
 import AnswersHeadless from '../../src/answers-headless';
-import { SelectableFilter } from '../../src/models/utils/selectablefilter';
+import { SelectableFilter } from '../../src/models/utils/selectableFilter';
 import { State } from '../../src/models/state';
 import { SearchTypeEnum } from '../../src/models/utils/searchType';
+import { initialState as initialVerticalState } from '../../src/slices/vertical';
+import { initialState as initialUniversalState } from '../../src/slices/universal';
+import { initialState as initialFiltersState } from '../../src/slices/filters';
+import { initialState as initialDirectAnswerState } from '../../src/slices/directanswer';
+import { initialState as initialQueryRulesState } from '../../src/slices/queryrules';
+import { initialState as initialSearchStatusState } from '../../src/slices/searchstatus';
 
 const mockedState: State = {
   query: {
@@ -18,12 +24,16 @@ const mockedState: State = {
     offset: 0,
     limit: 20
   },
+  queryRules: {
+    actions: []
+  },
   filters: {
     static: [{
       fieldId: 'c_someField',
       matcher: Matcher.Equals,
       value: 'some value',
-      selected: true
+      selected: true,
+      displayName: 'some display name'
     }]
   },
   spellCheck: {
@@ -68,7 +78,8 @@ describe('setters work as expected', () => {
       fieldId: 'c_someField',
       matcher: Matcher.Equals,
       value: 'someValue',
-      selected: true
+      selected: true,
+      displayName: 'someLabel'
     };
     const staticFilter = [filter];
     answers.setStaticFilters(staticFilter);
@@ -177,11 +188,21 @@ describe('setters work as expected', () => {
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
 
-    expect(dispatchEventCalls.length).toBe(2);
-    expect(dispatchEventCalls[0][0]).toBe('vertical/setVerticalKey');
-    expect(dispatchEventCalls[0][1]).toBe(verticalKey);
-    expect(dispatchEventCalls[1][0]).toBe('meta/setSearchType');
-    expect(dispatchEventCalls[1][1]).toBe(SearchTypeEnum.Vertical);
+    expect(dispatchEventCalls.length).toBe(3);
+    expect(dispatchEventCalls[0][0]).toBe('set-state');
+    expect(dispatchEventCalls[0][1]).toStrictEqual({
+      ...answers.state,
+      directAnswer: initialDirectAnswerState,
+      filters: initialFiltersState,
+      queryRules: initialQueryRulesState,
+      searchStatus: initialSearchStatusState,
+      vertical: initialVerticalState,
+      universal: initialUniversalState
+    });
+    expect(dispatchEventCalls[1][0]).toBe('vertical/setVerticalKey');
+    expect(dispatchEventCalls[1][1]).toBe(verticalKey);
+    expect(dispatchEventCalls[2][0]).toBe('meta/setSearchType');
+    expect(dispatchEventCalls[2][1]).toBe(SearchTypeEnum.Vertical);
   });
 
   it('setUniversal works as expected', () => {
@@ -190,11 +211,21 @@ describe('setters work as expected', () => {
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
 
-    expect(dispatchEventCalls.length).toBe(2);
-    expect(dispatchEventCalls[0][0]).toBe('vertical/setVerticalKey');
-    expect(dispatchEventCalls[0][1]).toBe(undefined);
-    expect(dispatchEventCalls[1][0]).toBe('meta/setSearchType');
-    expect(dispatchEventCalls[1][1]).toBe(SearchTypeEnum.Universal);
+    expect(dispatchEventCalls.length).toBe(3);
+    expect(dispatchEventCalls[0][0]).toBe('set-state');
+    expect(dispatchEventCalls[0][1]).toStrictEqual({
+      ...answers.state,
+      directAnswer: initialDirectAnswerState,
+      filters: initialFiltersState,
+      queryRules: initialQueryRulesState,
+      searchStatus: initialSearchStatusState,
+      vertical: initialVerticalState,
+      universal: initialUniversalState
+    });
+    expect(dispatchEventCalls[1][0]).toBe('vertical/setVerticalKey');
+    expect(dispatchEventCalls[1][1]).toBe(undefined);
+    expect(dispatchEventCalls[2][0]).toBe('meta/setSearchType');
+    expect(dispatchEventCalls[2][1]).toBe(SearchTypeEnum.Universal);
   });
 
   it('setState works as expected', () => {
@@ -254,38 +285,20 @@ describe('filter functions work as expected', () => {
     jest.clearAllMocks();
   });
 
-  it('setFilterOption works when select filter', async () => {
-    const filter = {
+  it('setFilterOption works', async () => {
+    const filter: SelectableFilter = {
       fieldId: 'c_someField',
       matcher: Matcher.Equals,
-      value: 'someValue'
+      value: 'someValue',
+      displayName: 'someLabel',
+      selected: true
     };
-    answers.setFilterOption({ ...filter, selected: true });
+    answers.setFilterOption(filter);
     const dispatchEventCalls =
     mockedStateManager.dispatchEvent.mock.calls;
     expect(dispatchEventCalls.length).toBe(1);
     expect(dispatchEventCalls[0][0]).toBe('filters/setFilterOption');
-    expect(dispatchEventCalls[0][1]).toEqual({
-      shouldSelect: true,
-      filter: filter
-    });
-  });
-
-  it('setFilterOption works when unselect filter', async () => {
-    const filter = {
-      fieldId: 'c_someField',
-      matcher: Matcher.Equals,
-      value: 'someValue'
-    };
-    answers.setFilterOption({ ...filter, selected: false });
-    const dispatchEventCalls =
-    mockedStateManager.dispatchEvent.mock.calls;
-    expect(dispatchEventCalls.length).toBe(1);
-    expect(dispatchEventCalls[0][0]).toBe('filters/setFilterOption');
-    expect(dispatchEventCalls[0][1]).toEqual({
-      shouldSelect: false,
-      filter: filter
-    });
+    expect(dispatchEventCalls[0][1]).toEqual(filter);
   });
 });
 
@@ -337,14 +350,14 @@ describe('search works as expected', () => {
   it('vertical search works', async () => {
     answers.state.meta.searchType = SearchTypeEnum.Vertical;
     await answers.executeVerticalQuery();
-    const { selected:_, ...filter } = mockedState.filters.static[0];
+    const { fieldId, matcher, value } = mockedState.filters.static[0];
     const coreCalls = mockedCore.verticalSearch.mock.calls;
     const expectedSearchParams = {
       query: mockedState.query.input,
       querySource: mockedState.query.querySource,
       queryTrigger: mockedState.query.queryTrigger,
       verticalKey: mockedState.vertical.verticalKey,
-      staticFilters: filter,
+      staticFilters: { fieldId, matcher, value },
       retrieveFacets: true,
       limit: mockedState.vertical.limit,
       offset: mockedState.vertical.offset,

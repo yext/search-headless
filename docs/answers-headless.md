@@ -44,14 +44,18 @@
 
 |  Interface | Description |
 |  --- | --- |
+|  [AdditionalHttpHeaders](./answers-headless.additionalhttpheaders.md) | AdditionalHttpHeaders allows users to specify additional values for specific HTTP headers. |
 |  [AllResultsForVertical](./answers-headless.allresultsforvertical.md) | Represents all results for the current vertical. |
 |  [AnswersConfigWithApiKey](./answers-headless.answersconfigwithapikey.md) | Configuration options for [AnswersCore](./answers-headless.answerscore.md)<!-- -->, which includes the options from [BaseAnswersConfig](./answers-headless.baseanswersconfig.md)<!-- -->, but requires apiKey. |
 |  [AnswersConfigWithToken](./answers-headless.answersconfigwithtoken.md) | Configuration options for [AnswersCore](./answers-headless.answerscore.md)<!-- -->, which includes the options from [BaseAnswersConfig](./answers-headless.baseanswersconfig.md)<!-- -->, but requires token. |
+|  [AnswersRequest](./answers-headless.answersrequest.md) | Options for an Answers API request. |
 |  [AppliedQueryFilter](./answers-headless.appliedqueryfilter.md) | A filter that the Answers API applied to the search. |
 |  [AutocompleteResponse](./answers-headless.autocompleteresponse.md) | The response of a universal or vertical autocomplete request. |
 |  [AutocompleteResult](./answers-headless.autocompleteresult.md) | An autocomplete suggestion. |
+|  [AutocompleteService](./answers-headless.autocompleteservice.md) | A service for autocomplete requests. |
 |  [BaseAnswersConfig](./answers-headless.baseanswersconfig.md) | The base configuration options for [AnswersCore](./answers-headless.answerscore.md)<!-- -->. |
 |  [BoundedRange](./answers-headless.boundedrange.md) | An interface representing a range of values of type T. |
+|  [ClientSDKHeaderValues](./answers-headless.clientsdkheadervalues.md) | Additional agents and their versions used to create the Answers experience. The information for these agents is added to the Client-SDK HTTP header along with that of the ANSWERS\_CORE agent. |
 |  [CombinedFilter](./answers-headless.combinedfilter.md) | Represents multiple filters that will be combined to refine results. |
 |  [DirectAnswer](./answers-headless.directanswer.md) | A direct answer to a search. |
 |  [DirectAnswerState](./answers-headless.directanswerstate.md) | Maintains the direct answer associated with the latest search. |
@@ -70,17 +74,23 @@
 |  [LatLong](./answers-headless.latlong.md) | The latitude and longitude of the user making the request. Used to bias the results. |
 |  [LocationBias](./answers-headless.locationbias.md) | Information about the user's location. |
 |  [LocationState](./answers-headless.locationstate.md) | Maintains the user's location, if given, or the inferred location, that is used to bias search results. |
+|  [LowerNumberRangeLimit](./answers-headless.lowernumberrangelimit.md) | The start limit of [NumberRangeValue](./answers-headless.numberrangevalue.md)<!-- -->. |
 |  [MetaState](./answers-headless.metastate.md) | Maintains the metadata for Answers Headless. |
 |  [NearFilterValue](./answers-headless.nearfiltervalue.md) | A filter value for a filter with a $near [Matcher](./answers-headless.matcher.md)<!-- -->. |
+|  [NumberRangeValue](./answers-headless.numberrangevalue.md) | A filter value for a filter with a $between [Matcher](./answers-headless.matcher.md)<!-- -->. |
 |  [ParentState](./answers-headless.parentstate.md) | The overall shape of the redux state tree, with each key value pair of headlessId to [State](./answers-headless.state.md) representing a single AnswersHeadless instance. |
+|  [QueryRulesActionsData](./answers-headless.queryrulesactionsdata.md) | Data returned from the Answers query rules system. |
+|  [QueryRulesState](./answers-headless.queryrulesstate.md) | Maintains the data from the triggered query rules. |
 |  [QueryState](./answers-headless.querystate.md) | Maintains the latest query and its associated data. |
 |  [QuestionSubmissionRequest](./answers-headless.questionsubmissionrequest.md) | Options for a QuestionSubmission request. |
 |  [QuestionSubmissionResponse](./answers-headless.questionsubmissionresponse.md) | A representation of a question submission response. |
+|  [QuestionSubmissionService](./answers-headless.questionsubmissionservice.md) | Submits a custom question to the Answers API. |
 |  [RangeBoundary](./answers-headless.rangeboundary.md) | A boundary for a [BoundedRange](./answers-headless.boundedrange.md) of type T. |
 |  [Result](./answers-headless.result.md) | An individual search result. |
 |  [SearchParameterField](./answers-headless.searchparameterfield.md) | Indicates which entity field to perform the autocomplete request on. |
+|  [SearchService](./answers-headless.searchservice.md) | A service which performs Yext Answers searches |
 |  [SearchStatusState](./answers-headless.searchstatusstate.md) | Maintains the status of the latest search. |
-|  [SelectableFilter](./answers-headless.selectablefilter.md) | A [Filter](./answers-headless.filter.md) that can be selected and maintains whether or not it is. |
+|  [SelectableFilter](./answers-headless.selectablefilter.md) | A [Filter](./answers-headless.filter.md) with additional information, such as an optional display name and whether or not it is selected. |
 |  [SessionTrackingState](./answers-headless.sessiontrackingstate.md) | Maintains whether the user session should be tracked and, if so, the session information. |
 |  [Snippet](./answers-headless.snippet.md) | The section of text where a [FeaturedSnippetDirectAnswer](./answers-headless.featuredsnippetdirectanswer.md) was found. |
 |  [SortBy](./answers-headless.sortby.md) | Represents a criterion that can be used to sort results. |
@@ -94,6 +104,7 @@
 |  [UniversalSearchRequest](./answers-headless.universalsearchrequest.md) | Options which can be specified for a universal search. |
 |  [UniversalSearchResponse](./answers-headless.universalsearchresponse.md) | A representation of a response from a universal search. |
 |  [UniversalSearchState](./answers-headless.universalsearchstate.md) | Maintains the data for the latest universal search. |
+|  [UpperNumberRangeLimit](./answers-headless.uppernumberrangelimit.md) | The end limit of [NumberRangeValue](./answers-headless.numberrangevalue.md)<!-- -->. |
 |  [VerticalAutocompleteRequest](./answers-headless.verticalautocompleterequest.md) | Options for a vertial autocomplete request. |
 |  [VerticalResults](./answers-headless.verticalresults.md) | Represents results from a search vertical. |
 |  [VerticalSearchRequest](./answers-headless.verticalsearchrequest.md) | Options which can be specified for a vertical search. |
@@ -101,11 +112,16 @@
 |  [VerticalSearchState](./answers-headless.verticalsearchstate.md) | Maintains the data for the latest vertical search. |
 |  [Visitor](./answers-headless.visitor.md) | Information used to associate requests with a particular user. |
 
+## Namespaces
+
+|  Namespace | Description |
+|  --- | --- |
+|  [answersUtilities](./answers-headless.answersutilities.md) |  |
+
 ## Variables
 
 |  Variable | Description |
 |  --- | --- |
-|  [answersUtilities](./answers-headless.answersutilities.md) |  |
 |  [DEFAULT\_HEADLESS\_ID](./answers-headless.default_headless_id.md) | The headlessId automatically given to the first AnswersHeadless instance created. |
 
 ## Type Aliases

@@ -1,0 +1,5 @@
+{
+  "name": "answers-headless-esm",
+  "module": "../../dist/esm/src",
+  "types": "../../dist/answers-headless.d.ts"
+}

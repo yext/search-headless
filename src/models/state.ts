@@ -8,6 +8,7 @@ import { LocationState } from './slices/location';
 import { SessionTrackingState } from './slices/sessiontracking';
 import { DirectAnswerState } from './slices/directanswer';
 import { SearchStatusState } from './slices/searchstatus';
+import { QueryRulesState } from './slices/queryrules';
 
 /**
  * The overall shape of the redux state tree, with each key value pair of
@@ -45,6 +46,10 @@ export interface State {
    */
   directAnswer: DirectAnswerState,
   /**
+   * {@inheritDoc QueryRulesState}
+   */
+  queryRules: QueryRulesState,
+  /**
    * {@inheritDoc FiltersState}
    */
   filters: FiltersState,
@@ -59,7 +64,7 @@ export interface State {
   /**
    * {@inheritDoc SessionTrackingState}
    */
-  sessionTracking: SessionTrackingState
+  sessionTracking: SessionTrackingState,
   /**
    * {@inheritDoc MetaState}
    */
@@ -67,5 +72,5 @@ export interface State {
   /**
    * {@inheritDoc LocationState}
    */
-  location: LocationState,
+  location: LocationState
 }

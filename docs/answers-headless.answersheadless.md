@@ -12,16 +12,18 @@ Provides the functionality for interacting with an Answers Search experience.
 export default class AnswersHeadless 
 ```
 
-## Remarks
+## Constructors
 
-The constructor for this class is marked as internal. Third-party code should not call the constructor directly or create subclasses that extend the `AnswersHeadless` class.
+|  Constructor | Modifiers | Description |
+|  --- | --- | --- |
+|  [(constructor)(core, stateManager, httpManager, additionalHttpHeaders)](./answers-headless.answersheadless._constructor_.md) |  | Constructs a new instance of the <code>AnswersHeadless</code> class |
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [state](./answers-headless.answersheadless.state.md) |  | [State](./answers-headless.state.md) | Gets the current state of the AnswersHeadless instance. |
-|  [utilities](./answers-headless.answersheadless.utilities.md) |  | { searchThroughFacet(facet: [DisplayableFacet](./answers-headless.displayablefacet.md)<!-- -->, searchTerm: string): [DisplayableFacet](./answers-headless.displayablefacet.md)<!-- -->; } | Common utility functions for manipulating Answers-related data. |
+|  [utilities](./answers-headless.answersheadless.utilities.md) |  | typeof answersUtilities | Common utility functions for manipulating Answers-related data. |
 
 ## Methods
 
@@ -38,7 +40,7 @@ The constructor for this class is marked as internal. Third-party code should no
 |  [setContext(context)](./answers-headless.answersheadless.setcontext.md) |  | Sets [MetaState.context](./answers-headless.metastate.context.md) to the specified context. |
 |  [setFacetOption(fieldId, facetOption, selected)](./answers-headless.answersheadless.setfacetoption.md) |  | Sets a specified facet option to be selected or unselected. |
 |  [setFacets(facets)](./answers-headless.answersheadless.setfacets.md) |  | Sets [FiltersState.facets](./answers-headless.filtersstate.facets.md) to the specified facets. |
-|  [setFilterOption(seletableFilter)](./answers-headless.answersheadless.setfilteroption.md) |  | Sets a static filter option and whether or not it is selected in state. |
+|  [setFilterOption(filter)](./answers-headless.answersheadless.setfilteroption.md) |  | Sets a static filter option and whether or not it is selected in state. |
 |  [setOffset(offset)](./answers-headless.answersheadless.setoffset.md) |  | Sets [VerticalSearchState.offset](./answers-headless.verticalsearchstate.offset.md) to the specified offset. |
 |  [setQuery(input)](./answers-headless.answersheadless.setquery.md) |  | Sets [QueryState.input](./answers-headless.querystate.input.md) to the specified input. |
 |  [setQuerySource(source)](./answers-headless.answersheadless.setquerysource.md) |  | Sets [QueryState.querySource](./answers-headless.querystate.querysource.md) to the specified source. |

@@ -7,6 +7,11 @@
 import { Unsubscribe } from '@reduxjs/toolkit';
 
 // @public
+export interface AdditionalHttpHeaders {
+    'Client-SDK'?: ClientSDKHeaderValues;
+}
+
+// @public
 export interface AllResultsForVertical {
     facets: DisplayableFacet[];
     results: Result[];
@@ -30,6 +35,7 @@ export interface AnswersConfigWithToken extends BaseAnswersConfig {
 
 // @public
 export class AnswersCore {
+    constructor(searchService: SearchService, questionSubmissionService: QuestionSubmissionService, autoCompleteService: AutocompleteService);
     filterSearch(request: FilterSearchRequest): Promise<FilterSearchResponse>;
     submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse>;
     universalAutocomplete(request: UniversalAutocompleteRequest): Promise<AutocompleteResponse>;
@@ -49,9 +55,7 @@ export class AnswersError extends Error {
 // @public
 export class AnswersHeadless {
     // Warning: (ae-forgotten-export) The symbol "HttpManager" needs to be exported by the entry point index.d.ts
-    //
-    // @internal
-    constructor(core: AnswersCore, stateManager: StateManager, httpManager: HttpManager);
+    constructor(core: AnswersCore, stateManager: StateManager, httpManager: HttpManager, additionalHttpHeaders?: AdditionalHttpHeaders | undefined);
     addListener<T>(listener: StateListener<T>): Unsubscribe;
     executeFilterSearch(query: string, sectioned: boolean, fields: SearchParameterField[]): Promise<FilterSearchResponse | undefined>;
     executeUniversalAutocomplete(): Promise<AutocompleteResponse>;
@@ -63,7 +67,7 @@ export class AnswersHeadless {
     setContext(context: Context): void;
     setFacetOption(fieldId: string, facetOption: FacetOption, selected: boolean): void;
     setFacets(facets: DisplayableFacet[]): void;
-    setFilterOption(seletableFilter: SelectableFilter): void;
+    setFilterOption(filter: SelectableFilter): void;
     setOffset(offset: number): void;
     setQuery(input: string): void;
     setQuerySource(source: QuerySource): void;
@@ -82,22 +86,38 @@ export class AnswersHeadless {
     setVertical(verticalKey: string): void;
     setVerticalLimit(limit: number): void;
     get state(): State;
-    submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse>;
-    readonly utilities: {
-        searchThroughFacet(facet: DisplayableFacet, searchTerm: string): DisplayableFacet;
-    };
+    submitQuestion(request: Omit<QuestionSubmissionRequest, 'additionalHttpHeaders'>): Promise<QuestionSubmissionResponse>;
+    readonly utilities: typeof answersUtilities;
 }
 
-// @public (undocumented)
-export const answersUtilities: {
-    searchThroughFacet(facet: DisplayableFacet, searchTerm: string): DisplayableFacet;
-};
+// @public
+export interface AnswersRequest {
+    additionalHttpHeaders?: AdditionalHttpHeaders;
+}
+
+declare namespace answersUtilities {
+    export {
+        searchThroughFacet,
+        isCloseMatch
+    }
+}
+export { answersUtilities }
 
 // @public
 export interface AppliedQueryFilter {
+    // Warning: (ae-forgotten-export) The symbol "LocationFilterDetails" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-unresolved-inheritdoc-reference) The @inheritDoc reference could not be resolved: The package "@yext/answers-headless" does not have an export "LocationFilterDetails"
+    //
+    // (undocumented)
+    details?: LocationFilterDetails;
     displayKey: string;
     displayValue: string;
     filter: Filter;
+    // Warning: (ae-forgotten-export) The symbol "AppliedQueryFilterType" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-unresolved-inheritdoc-reference) The @inheritDoc reference could not be resolved: The package "@yext/answers-headless" does not have an export "AppliedQueryFilterType"
+    //
+    // (undocumented)
+    type: AppliedQueryFilterType;
 }
 
 // @public
@@ -122,6 +142,13 @@ export interface AutocompleteResult {
 }
 
 // @public
+export interface AutocompleteService {
+    filterSearch(request: FilterSearchRequest): Promise<FilterSearchResponse>;
+    universalAutocomplete(request: UniversalAutocompleteRequest): Promise<AutocompleteResponse>;
+    verticalAutocomplete(request: VerticalAutocompleteRequest): Promise<AutocompleteResponse>;
+}
+
+// @public
 export interface BaseAnswersConfig {
     endpoints?: Endpoints;
     experienceKey: string;
@@ -135,6 +162,12 @@ export interface BaseAnswersConfig {
 export interface BoundedRange<T> {
     max?: RangeBoundary<T>;
     min?: RangeBoundary<T>;
+}
+
+// @public
+export interface ClientSDKHeaderValues {
+    [agent: string]: string | undefined;
+    ANSWERS_CORE?: never;
 }
 
 // @public
@@ -203,7 +236,7 @@ export interface DisplayableFacetOption extends FacetOption {
     displayName: string;
     matcher: Matcher;
     selected: boolean;
-    value: string | number | boolean;
+    value: string | number | boolean | NumberRangeValue;
 }
 
 // @public
@@ -236,7 +269,7 @@ export interface Facet {
 // @public
 export interface FacetOption {
     matcher: Matcher;
-    value: string | number | boolean;
+    value: string | number | boolean | NumberRangeValue;
 }
 
 // @public
@@ -265,7 +298,7 @@ export interface FieldValueDirectAnswer extends DirectAnswer {
 export interface Filter {
     fieldId: string;
     matcher: Matcher;
-    value: string | number | boolean | NearFilterValue;
+    value: string | number | boolean | NearFilterValue | NumberRangeValue;
 }
 
 // @public
@@ -275,7 +308,7 @@ export enum FilterCombinator {
 }
 
 // @public
-export interface FilterSearchRequest {
+export interface FilterSearchRequest extends AnswersRequest {
     fields: SearchParameterField[];
     input: string;
     sectioned: boolean;
@@ -285,12 +318,10 @@ export interface FilterSearchRequest {
 
 // @public
 export interface FilterSearchResponse {
-    inputIntents: SearchIntent[];
+    businessId?: string;
     queryId?: string;
-    results: AutocompleteResult[];
-    sectioned: boolean;
     sections: {
-        label: string;
+        label?: string;
         results: AutocompleteResult[];
     }[];
     uuid: string;
@@ -326,6 +357,9 @@ export interface HighlightedValue {
 }
 
 // @public
+function isCloseMatch(value: string, searchTerm: string): boolean;
+
+// @public
 export interface LatLong {
     latitude: number;
     longitude: number;
@@ -353,7 +387,14 @@ export interface LocationState {
 }
 
 // @public
+export interface LowerNumberRangeLimit {
+    matcher: Matcher.GreaterThan | Matcher.GreaterThanOrEqualTo;
+    value: number;
+}
+
+// @public
 export enum Matcher {
+    Between = "$between",
     Equals = "$eq",
     GreaterThan = "$gt",
     GreaterThanOrEqualTo = "$ge",
@@ -379,15 +420,43 @@ export interface NearFilterValue {
 }
 
 // @public
+export interface NumberRangeValue {
+    end?: UpperNumberRangeLimit;
+    start?: LowerNumberRangeLimit;
+}
+
+// @public
 export interface ParentState {
     [headlessId: string]: State;
 }
 
+// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "provideAnswersHeadless" because one of its declarations is marked as @internal
+//
 // @public
 export function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless;
 
+// @internal
+export function provideAnswersHeadless(config: HeadlessConfig, additionalHttpHeaders: AdditionalHttpHeaders): AnswersHeadless;
+
+// @public
+export interface QueryRulesActionsData {
+    data?: Record<string, unknown>;
+    errors?: {
+        uuid: string;
+        type: string;
+        message?: string;
+    }[];
+    key: string;
+}
+
+// @public
+export interface QueryRulesState {
+    actions: QueryRulesActionsData[];
+}
+
 // @public
 export enum QuerySource {
+    Autocomplete = "AUTOCOMPLETE",
     Overlay = "OVERLAY",
     Standard = "STANDARD"
 }
@@ -409,7 +478,7 @@ export enum QueryTrigger {
 }
 
 // @public
-export interface QuestionSubmissionRequest {
+export interface QuestionSubmissionRequest extends AnswersRequest {
     email: string;
     entityId: string;
     name: string;
@@ -421,6 +490,11 @@ export interface QuestionSubmissionRequest {
 // @public
 export interface QuestionSubmissionResponse {
     uuid: string;
+}
+
+// @public
+export interface QuestionSubmissionService {
+    submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse>;
 }
 
 // @public
@@ -457,9 +531,18 @@ export interface SearchParameterField {
 }
 
 // @public
+export interface SearchService {
+    universalSearch(request: UniversalSearchRequest): Promise<UniversalSearchResponse>;
+    verticalSearch(request: VerticalSearchRequest): Promise<VerticalSearchResponse>;
+}
+
+// @public
 export interface SearchStatusState {
     isLoading?: boolean;
 }
+
+// @public
+function searchThroughFacet(facet: DisplayableFacet, searchTerm: string): DisplayableFacet;
 
 // @public
 export type SearchType = EnumOrLiteral<SearchTypeEnum>;
@@ -472,6 +555,7 @@ export enum SearchTypeEnum {
 
 // @public
 export interface SelectableFilter extends Filter {
+    displayName?: string;
     selected: boolean;
 }
 
@@ -508,7 +592,7 @@ export enum SortType {
 export enum Source {
     Algolia = "ALGOLIA",
     Bing = "BING_CSE",
-    Generic = "GENERIC",
+    Custom = "CUSTOM_SEARCHER",
     Google = "GOOGLE_CSE",
     KnowledgeManager = "KNOWLEDGE_MANAGER",
     Zendesk = "ZENDESK"
@@ -540,6 +624,7 @@ export interface State {
     location: LocationState;
     meta: MetaState;
     query: QueryState;
+    queryRules: QueryRulesState;
     searchStatus: SearchStatusState;
     sessionTracking: SessionTrackingState;
     spellCheck: SpellCheckState;
@@ -561,7 +646,7 @@ export interface StateManager {
 }
 
 // @public
-export interface UniversalAutocompleteRequest {
+export interface UniversalAutocompleteRequest extends AnswersRequest {
     input: string;
     sessionTrackingEnabled?: boolean;
 }
@@ -573,7 +658,7 @@ export interface UniversalLimit {
 }
 
 // @public
-export interface UniversalSearchRequest {
+export interface UniversalSearchRequest extends AnswersRequest {
     context?: Context;
     limit?: UniversalLimit;
     location?: LatLong;
@@ -592,6 +677,7 @@ export interface UniversalSearchResponse {
     directAnswer?: FeaturedSnippetDirectAnswer | FieldValueDirectAnswer;
     locationBias?: LocationBias;
     queryId?: string;
+    queryRulesActionsData?: QueryRulesActionsData[];
     searchIntents?: SearchIntent[];
     spellCheck?: SpellCheck;
     uuid: string;
@@ -606,7 +692,13 @@ export interface UniversalSearchState {
 }
 
 // @public
-export interface VerticalAutocompleteRequest {
+export interface UpperNumberRangeLimit {
+    matcher: Matcher.LessThan | Matcher.LessThanOrEqualTo;
+    value: number;
+}
+
+// @public
+export interface VerticalAutocompleteRequest extends AnswersRequest {
     input: string;
     sessionTrackingEnabled?: boolean;
     verticalKey: string;
@@ -623,7 +715,7 @@ export interface VerticalResults {
 }
 
 // @public
-export interface VerticalSearchRequest {
+export interface VerticalSearchRequest extends AnswersRequest {
     context?: Context;
     facets?: Facet[];
     limit?: number;
@@ -652,6 +744,7 @@ export interface VerticalSearchResponse {
     facets?: DisplayableFacet[];
     locationBias?: LocationBias;
     queryId: string;
+    queryRulesActionsData?: QueryRulesActionsData[];
     searchIntents?: SearchIntent[];
     spellCheck?: SpellCheck;
     uuid: string;

@@ -19,6 +19,7 @@ export declare interface UniversalSearchResponse
 |  [directAnswer?](./answers-headless.universalsearchresponse.directanswer.md) | [FeaturedSnippetDirectAnswer](./answers-headless.featuredsnippetdirectanswer.md) \| [FieldValueDirectAnswer](./answers-headless.fieldvaluedirectanswer.md) | <i>(Optional)</i> A direct answer to a search. |
 |  [locationBias?](./answers-headless.universalsearchresponse.locationbias.md) | [LocationBias](./answers-headless.locationbias.md) | <i>(Optional)</i> Information about the user's location. |
 |  [queryId?](./answers-headless.universalsearchresponse.queryid.md) | string | <i>(Optional)</i> The ID of the search query. |
+|  [queryRulesActionsData?](./answers-headless.universalsearchresponse.queryrulesactionsdata.md) | [QueryRulesActionsData](./answers-headless.queryrulesactionsdata.md)<!-- -->\[\] | <i>(Optional)</i> Data returned from the Answers query rules system. |
 |  [searchIntents?](./answers-headless.universalsearchresponse.searchintents.md) | [SearchIntent](./answers-headless.searchintent.md)<!-- -->\[\] | <i>(Optional)</i> An array of [SearchIntent](./answers-headless.searchintent.md)<!-- -->s which represents requests from the API. |
 |  [spellCheck?](./answers-headless.universalsearchresponse.spellcheck.md) | [SpellCheck](./answers-headless.spellcheck.md) | <i>(Optional)</i> A spellcheck response from a search query. |
 |  [uuid](./answers-headless.universalsearchresponse.uuid.md) | string | A unique id which corresponds to the request. |

@@ -87,24 +87,6 @@ describe('ensure correct results from latest request', () => {
     [queries[1]]: 5,
     [queries[2]]: 12
   };
-
-  const mockedCore: any = {
-    verticalSearch: jest.fn( async (request: VerticalSearchRequest) => {
-      const waitTime = requestsTime[request.query];
-      return new Promise(res => setTimeout(() => res(
-        { verticalResults: { results: [request.query] } }), waitTime));
-    }),
-    universalSearch: jest.fn( async (request: UniversalSearchRequest) => {
-      const waitTime = requestsTime[request.query];
-      return new Promise(res => setTimeout(() => res(
-        { verticalResults: [{ results: [request.query] }] }), waitTime));
-    })
-  };
-  const stateManager = new ReduxStateManager(
-    createBaseStore(), DEFAULT_HEADLESS_ID, new HeadlessReducerManager());
-  const httpManager = new HttpManager();
-  const answers = new AnswersHeadless(mockedCore, stateManager, httpManager);
-  answers.setVertical('someKey');
   const updateResult = jest.fn();
 
   beforeEach(() => {
@@ -112,6 +94,8 @@ describe('ensure correct results from latest request', () => {
   });
 
   it('vertical search get correct results based on up-to-date response', async () => {
+    const answers = getAnswersHeadless(requestsTime);
+    answers.setVertical('someKey');
     answers.addListener({
       valueAccessor: state => state.vertical?.results,
       callback: updateResult
@@ -137,6 +121,7 @@ describe('ensure correct results from latest request', () => {
   });
 
   it('universal search get correct results based on up-to-date response', async () => {
+    const answers = getAnswersHeadless(requestsTime);
     answers.setUniversal();
     answers.addListener({
       valueAccessor: state => state.universal.verticals,
@@ -162,3 +147,22 @@ describe('ensure correct results from latest request', () => {
     expect(updateResult.mock.calls).toHaveLength(2);
   });
 });
+
+function getAnswersHeadless(requestsTime: { [x: string]: number }) {
+  const mockedCore: any = {
+    verticalSearch: jest.fn( async (request: VerticalSearchRequest) => {
+      const waitTime = requestsTime[request.query];
+      return new Promise(res => setTimeout(() => res(
+        { verticalResults: { results: [request.query] } }), waitTime));
+    }),
+    universalSearch: jest.fn( async (request: UniversalSearchRequest) => {
+      const waitTime = requestsTime[request.query];
+      return new Promise(res => setTimeout(() => res(
+        { verticalResults: [{ results: [request.query] }] }), waitTime));
+    })
+  };
+  const stateManager = new ReduxStateManager(
+    createBaseStore(), DEFAULT_HEADLESS_ID, new HeadlessReducerManager());
+  const httpManager = new HttpManager();
+  return new AnswersHeadless(mockedCore, stateManager, httpManager);
+}

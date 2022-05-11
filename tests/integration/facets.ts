@@ -21,7 +21,7 @@ it('handles multiple facets with the same fieldId', () => {
   initialState.filters.facets.push({
     displayName: 'another test facet',
     fieldId: 'testFieldId',
-    options: [{...facetOption}]
+    options: [{ ...facetOption }]
   });
   const answers = createMockedAnswersHeadless({}, initialState);
   answers.setFacetOption('testFieldId', facetOption, true);
@@ -146,6 +146,7 @@ it('only selected facets are sent in the vertical search request', () => {
   };
   const answers = createMockedAnswersHeadless(mockedCore, initialState);
   answers.setVertical('vertical-key');
+  answers.setFacets(initialState.filters.facets);
   answers.executeVerticalQuery();
   expect(mockedCore.verticalSearch).toHaveBeenCalledWith(expect.objectContaining({
     facets: [{

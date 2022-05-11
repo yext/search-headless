@@ -2,7 +2,7 @@ import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
 import { FeaturedSnippetDirectAnswer, FieldValueDirectAnswer } from '@yext/answers-core';
 import { DirectAnswerState } from '../models/slices/directanswer';
 
-const initialState: DirectAnswerState = {};
+export const initialState: DirectAnswerState = {};
 
 const reducers = {
   setResult: (

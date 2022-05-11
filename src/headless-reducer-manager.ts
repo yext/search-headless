@@ -12,6 +12,7 @@ import createLocationSlice from './slices/location';
 import { ActionWithHeadlessId } from './store';
 import createDirectAnswerSlice from './slices/directanswer';
 import createSearchStatusSlice from './slices/searchstatus';
+import createQueryRulesSlice from './slices/queryrules';
 
 /**
  * Manages the current map of headless IDs to Reducers.
@@ -46,6 +47,7 @@ function createAnswersReducer(prefix: string): Reducer<State> {
     vertical: createVerticalSlice(prefix).reducer,
     universal: createUniversalSlice(prefix).reducer,
     directAnswer: createDirectAnswerSlice(prefix).reducer,
+    queryRules: createQueryRulesSlice(prefix).reducer,
     filters: createFiltersSlice(prefix).reducer,
     spellCheck: createSpellCheckSlice(prefix).reducer,
     sessionTracking: createSessionTrackingSlice(prefix).reducer,

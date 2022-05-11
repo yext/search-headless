@@ -38,4 +38,22 @@ export default class HttpManager {
   getLatestResponseId(responseName: ServiceType): number {
     return this.latestResponseIds[responseName];
   }
+
+  /**
+   * Update the latest saved response id of the given service type if
+   * the given request id is newer than the latest saved response id.
+   *
+   * @param requestName - the request type.
+   * @param requestId - the request id of a received response.
+   *
+   * @returns Whether the response of the given request id is the latest response.
+   */
+  processRequestId(requestName: ServiceType, requestId: number): boolean {
+    const latestResponseId = this.getLatestResponseId(requestName);
+    if (requestId > latestResponseId) {
+      this.setResponseId(requestName, requestId);
+      return true;
+    }
+    return false;
+  }
 }

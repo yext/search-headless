@@ -11,5 +11,5 @@ export interface DirectAnswerState {
    * Answers API based on whether the answer was found within a document or was a
    * field value in the knowledge graph.
    */
-  result?: FeaturedSnippetDirectAnswer | FieldValueDirectAnswer;
+  result?: FeaturedSnippetDirectAnswer | FieldValueDirectAnswer
 }

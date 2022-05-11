@@ -4,7 +4,7 @@
 
 ## SelectableFilter interface
 
-A [Filter](./answers-headless.filter.md) that can be selected and maintains whether or not it is.
+A [Filter](./answers-headless.filter.md) with additional information, such as an optional display name and whether or not it is selected.
 
 <b>Signature:</b>
 
@@ -17,5 +17,6 @@ export interface SelectableFilter extends Filter
 
 |  Property | Type | Description |
 |  --- | --- | --- |
+|  [displayName?](./answers-headless.selectablefilter.displayname.md) | string | <i>(Optional)</i> The filter's display name. |
 |  [selected](./answers-headless.selectablefilter.selected.md) | boolean | Whether or not the filter is selected. |
 

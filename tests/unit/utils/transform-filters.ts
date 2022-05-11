@@ -1,5 +1,5 @@
 import { CombinedFilter, Filter, FilterCombinator, Matcher } from '@yext/answers-core';
-import { SelectableFilter } from '../../../src/models/utils/selectablefilter';
+import { SelectableFilter } from '../../../src/models/utils/selectableFilter';
 import { transformFiltersToCoreFormat } from '../../../src/utils/transform-filters';
 
 describe('see that transformFiltersToCoreFormat works properly', () => {
@@ -17,6 +17,7 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
         fieldId: 'c_someField',
         matcher: Matcher.Equals,
         value: 'some value',
+        displayName: 'some label',
         selected: false
       }
     ];
@@ -30,6 +31,7 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
         fieldId: 'c_someField',
         matcher: Matcher.Equals,
         value: 'some value',
+        displayName: 'some label',
         selected: true
       }
     ];
@@ -50,6 +52,7 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
     };
     const selectableFilter = {
       ...filter,
+      displayName: 'some label',
       selected: true
     };
     const filters: SelectableFilter[] = [selectableFilter, selectableFilter, selectableFilter];
@@ -88,18 +91,22 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
     const selectableFilters: SelectableFilter[] = [
       {
         ...filters[0],
+        displayName: 'some label',
         selected: true
       },
       {
         ...filters[1],
+        displayName: 'different label',
         selected: true
       },
       {
         ...filters[2],
+        displayName: 'unique label',
         selected: true
       },
       {
         ...filters[3],
+        displayName: 'another label',
         selected: true
       }
     ];
@@ -148,21 +155,26 @@ describe('see that transformFiltersToCoreFormat works properly', () => {
     const selectableFilters: SelectableFilter[] = [
       {
         ...filters[0],
+        displayName: 'some label',
         selected: false
       },
       {
         ...filters[1],
+        displayName: 'different label',
         selected: false
       },
       {
         ...filters[2],
+        displayName: 'unique label',
         selected: true
       },
       {
         ...filters[3],
+        displayName: 'another label',
         selected: true
       }
     ];
+
     const expectedFilters: Filter | CombinedFilter = {
       combinator: FilterCombinator.AND,
       filters: [filters[2], filters[3]]

@@ -15,7 +15,8 @@ import {
   SearchParameterField,
   FilterSearchResponse,
   UniversalLimit,
-  VerticalSearchResponse
+  VerticalSearchResponse,
+  AdditionalHttpHeaders
 } from '@yext/answers-core';
 
 import StateListener from './models/state-listener';
@@ -23,10 +24,16 @@ import { State } from './models/state';
 import StateManager from './models/state-manager';
 import { Unsubscribe } from '@reduxjs/toolkit';
 import HttpManager from './http-manager';
-import answersUtilities from './answers-utilities';
-import { SelectableFilter } from './models/utils/selectablefilter';
+import * as answersUtilities from './answers-utilities';
+import { SelectableFilter } from './models/utils/selectableFilter';
 import { transformFiltersToCoreFormat } from './utils/transform-filters';
 import { SearchTypeEnum } from './models/utils/searchType';
+import { initialState as initialVerticalState } from './slices/vertical';
+import { initialState as initialUniversalState } from './slices/universal';
+import { initialState as initialFiltersState } from './slices/filters';
+import { initialState as initialDirectAnswerState } from './slices/directanswer';
+import { initialState as initialQueryRulesState } from './slices/queryrules';
+import { initialState as initialSearchStatusState } from './slices/searchstatus';
 
 /**
  * Provides the functionality for interacting with an Answers Search experience.
@@ -39,13 +46,11 @@ export default class AnswersHeadless {
    */
   public readonly utilities = answersUtilities;
 
-  /**
-   * @internal
-   */
   constructor(
     private core: AnswersCore,
     private stateManager: StateManager,
     private httpManager: HttpManager,
+    private additionalHttpHeaders?: AdditionalHttpHeaders
   ) {}
 
   /**
@@ -81,6 +86,7 @@ export default class AnswersHeadless {
    * @param verticalKey - The vertical key to set
    */
   setVertical(verticalKey: string): void {
+    this._resetSearcherStates();
     this.stateManager.dispatchEvent('vertical/setVerticalKey', verticalKey);
     this.stateManager.dispatchEvent('meta/setSearchType', SearchTypeEnum.Vertical);
   }
@@ -89,8 +95,25 @@ export default class AnswersHeadless {
    * Sets up Headless to manage universal searches.
    */
   setUniversal(): void {
+    this._resetSearcherStates();
     this.stateManager.dispatchEvent('vertical/setVerticalKey', undefined);
     this.stateManager.dispatchEvent('meta/setSearchType', SearchTypeEnum.Universal);
+  }
+
+  /**
+   * Resets the direct answer, filters, query rules, search status, vertical, and universal states
+   * to their initial values.
+   */
+  private _resetSearcherStates() {
+    this.stateManager.dispatchEvent('set-state', {
+      ...this.state,
+      directAnswer: initialDirectAnswerState,
+      filters: initialFiltersState,
+      queryRules: initialQueryRulesState,
+      searchStatus: initialSearchStatusState,
+      vertical: initialVerticalState,
+      universal: initialUniversalState
+    });
   }
 
   /**
@@ -261,8 +284,13 @@ export default class AnswersHeadless {
    * @param request - The data for the network request
    * @returns A Promise of a {@link QuestionSubmissionResponse} from the Answers API
    */
-  async submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse> {
-    return this.core.submitQuestion(request);
+  async submitQuestion(
+    request: Omit<QuestionSubmissionRequest, 'additionalHttpHeaders'>
+  ): Promise<QuestionSubmissionResponse> {
+    return this.core.submitQuestion({
+      ...request,
+      additionalHttpHeaders: this.additionalHttpHeaders
+    });
   }
 
   /**
@@ -272,7 +300,7 @@ export default class AnswersHeadless {
    * @returns A Promise of a {@link UniversalSearchResponse} from the Answers API
    */
   async executeUniversalQuery(): Promise<UniversalSearchResponse | undefined> {
-    if(this.state.meta.searchType !== SearchTypeEnum.Universal) {
+    if (this.state.meta.searchType !== SearchTypeEnum.Universal) {
       console.error('The meta.searchType must be set to \'universal\' for universal search. '
         + 'Set the searchType to universal by calling `setUniversal()`');
       return;
@@ -287,7 +315,7 @@ export default class AnswersHeadless {
     const { referrerPageUrl, context } = this.state.meta;
     const { userLocation } = this.state.location;
 
-    const response = await this.core.universalSearch({
+    const request = {
       query: input || '',
       querySource,
       queryTrigger,
@@ -298,14 +326,24 @@ export default class AnswersHeadless {
       location: userLocation,
       context,
       referrerPageUrl,
-      restrictVerticals
-    });
+      restrictVerticals,
+      additionalHttpHeaders: this.additionalHttpHeaders
+    };
 
-    const latestResponseId = this.httpManager.getLatestResponseId('universalQuery');
-    if (thisRequestId < latestResponseId) {
+    let response: UniversalSearchResponse;
+    try {
+      response = await this.core.universalSearch(request);
+    } catch (e) {
+      const isLatestResponse = this.httpManager.processRequestId('universalQuery', thisRequestId);
+      if (isLatestResponse) {
+        this.stateManager.dispatchEvent('searchStatus/setIsLoading', false);
+      }
+      return Promise.reject(e);
+    }
+    const isLatestResponse = this.httpManager.processRequestId('universalQuery', thisRequestId);
+    if (!isLatestResponse) {
       return response;
     }
-    this.httpManager.setResponseId('universalQuery', thisRequestId);
     this.stateManager.dispatchEvent('universal/setVerticals', response.verticalResults);
     this.stateManager.dispatchEvent('query/setQueryId', response.queryId);
     this.stateManager.dispatchEvent('query/setMostRecentSearch', input);
@@ -315,6 +353,7 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('searchStatus/setIsLoading', false);
     this.stateManager.dispatchEvent('meta/setUUID', response.uuid);
     this.stateManager.dispatchEvent('directAnswer/setResult', response.directAnswer);
+    this.stateManager.dispatchEvent('queryRules/setActions', response.queryRulesActionsData || []);
     return response;
   }
 
@@ -327,7 +366,8 @@ export default class AnswersHeadless {
   async executeUniversalAutocomplete(): Promise<AutocompleteResponse> {
     const query = this.state.query.input || '';
     return this.core.universalAutocomplete({
-      input: query
+      input: query,
+      additionalHttpHeaders: this.additionalHttpHeaders
     });
   }
 
@@ -339,7 +379,7 @@ export default class AnswersHeadless {
    *          of undefined if there is no verticalKey defined in state
    */
   async executeVerticalQuery(): Promise<VerticalSearchResponse | undefined> {
-    if(this.state.meta.searchType !== SearchTypeEnum.Vertical) {
+    if (this.state.meta.searchType !== SearchTypeEnum.Vertical) {
       console.error('The meta.searchType must be set to \'vertical\' for vertical search. '
        + 'Set the searchType to vertical by calling `setVertical()`');
       return;
@@ -386,14 +426,25 @@ export default class AnswersHeadless {
       location: userLocation,
       sortBys,
       context,
-      referrerPageUrl
+      referrerPageUrl,
+      additionalHttpHeaders: this.additionalHttpHeaders
     };
-    const response = await this.core.verticalSearch(request);
-    const latestResponseId = this.httpManager.getLatestResponseId('verticalQuery');
-    if (thisRequestId < latestResponseId) {
+
+    let response: VerticalSearchResponse;
+    try {
+      response = await this.core.verticalSearch(request);
+    } catch (e) {
+      const isLatestResponse = this.httpManager.processRequestId('verticalQuery', thisRequestId);
+      if (isLatestResponse) {
+        this.stateManager.dispatchEvent('searchStatus/setIsLoading', false);
+      }
+      return Promise.reject(e);
+    }
+
+    const isLatestResponse = this.httpManager.processRequestId('verticalQuery', thisRequestId);
+    if (!isLatestResponse) {
       return response;
     }
-    this.httpManager.setResponseId('verticalQuery', thisRequestId);
     this.stateManager.dispatchEvent('query/setQueryId', response.queryId);
     this.stateManager.dispatchEvent('query/setMostRecentSearch', input);
     this.stateManager.dispatchEvent('filters/setFacets', response.facets);
@@ -404,6 +455,7 @@ export default class AnswersHeadless {
     this.stateManager.dispatchEvent('meta/setUUID', response.uuid);
     this.stateManager.dispatchEvent('searchStatus/setIsLoading', false);
     this.stateManager.dispatchEvent('vertical/handleSearchResponse', response);
+    this.stateManager.dispatchEvent('queryRules/setActions', response.queryRulesActionsData || []);
     return response;
   }
 
@@ -415,7 +467,7 @@ export default class AnswersHeadless {
    *          of undefined if there is no verticalKey defined in state
    */
   async executeVerticalAutocomplete(): Promise<AutocompleteResponse | undefined> {
-    if(this.state.meta.searchType !== SearchTypeEnum.Vertical) {
+    if (this.state.meta.searchType !== SearchTypeEnum.Vertical) {
       console.error('The meta.searchType must be set to \'vertical\' for vertical autocomplete. '
         + 'Set the searchType to vertical by calling `setVertical()`');
       return;
@@ -429,7 +481,8 @@ export default class AnswersHeadless {
 
     return this.core.verticalAutocomplete({
       input: query,
-      verticalKey
+      verticalKey,
+      additionalHttpHeaders: this.additionalHttpHeaders
     });
   }
 
@@ -448,7 +501,7 @@ export default class AnswersHeadless {
     sectioned: boolean,
     fields: SearchParameterField[]
   ): Promise<FilterSearchResponse | undefined> {
-    if(this.state.meta.searchType !== SearchTypeEnum.Vertical) {
+    if (this.state.meta.searchType !== SearchTypeEnum.Vertical) {
       console.error('The meta.searchType must be set to \'vertical\' for filter search. '
       + 'Set the searchType to vertical by calling `setVertical()`');
       return;
@@ -463,7 +516,8 @@ export default class AnswersHeadless {
       verticalKey,
       sessionTrackingEnabled: this.state.sessionTracking.enabled,
       sectioned,
-      fields
+      fields,
+      additionalHttpHeaders: this.additionalHttpHeaders
     });
   }
 
@@ -486,15 +540,10 @@ export default class AnswersHeadless {
   /**
    * Sets a static filter option and whether or not it is selected in state.
    *
-   * @param seletableFilter - The static filter and whether it is selected
+   * @param filter - The static filter and whether it is selected
    */
-  setFilterOption(seletableFilter: SelectableFilter): void {
-    const { selected, ...filter } = seletableFilter;
-    const payload = {
-      filter: filter,
-      shouldSelect: selected
-    };
-    this.stateManager.dispatchEvent('filters/setFilterOption', payload);
+  setFilterOption(filter: SelectableFilter): void {
+    this.stateManager.dispatchEvent('filters/setFilterOption', filter);
   }
 }
 

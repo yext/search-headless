@@ -18,5 +18,5 @@ export declare interface Filter
 |  --- | --- | --- |
 |  [fieldId](./answers-headless.filter.fieldid.md) | string | The fieldId to apply the filter against. |
 |  [matcher](./answers-headless.filter.matcher.md) | [Matcher](./answers-headless.matcher.md) | A Matcher is a filtering operation. |
-|  [value](./answers-headless.filter.value.md) | string \| number \| boolean \| [NearFilterValue](./answers-headless.nearfiltervalue.md) | The value to compare. |
+|  [value](./answers-headless.filter.value.md) | string \| number \| boolean \| [NearFilterValue](./answers-headless.nearfiltervalue.md) \| [NumberRangeValue](./answers-headless.numberrangevalue.md) | The value to compare. |
 

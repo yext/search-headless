@@ -5,7 +5,7 @@ import {
 } from '@yext/answers-core';
 import { AllResultsForVertical, VerticalSearchState } from '../models/slices/vertical';
 
-const initialState: VerticalSearchState = {};
+export const initialState: VerticalSearchState = {};
 
 const reducers = {
   handleSearchResponse: (

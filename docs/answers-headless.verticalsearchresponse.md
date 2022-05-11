@@ -22,6 +22,7 @@ export declare interface VerticalSearchResponse
 |  [facets?](./answers-headless.verticalsearchresponse.facets.md) | [DisplayableFacet](./answers-headless.displayablefacet.md)<!-- -->\[\] | <i>(Optional)</i> An array of [Facet](./answers-headless.facet.md)<!-- -->s associated with the search results. |
 |  [locationBias?](./answers-headless.verticalsearchresponse.locationbias.md) | [LocationBias](./answers-headless.locationbias.md) | <i>(Optional)</i> Information about the user's location. |
 |  [queryId](./answers-headless.verticalsearchresponse.queryid.md) | string | The ID of the query. |
+|  [queryRulesActionsData?](./answers-headless.verticalsearchresponse.queryrulesactionsdata.md) | [QueryRulesActionsData](./answers-headless.queryrulesactionsdata.md)<!-- -->\[\] | <i>(Optional)</i> Data returned from the Answers query rules system. |
 |  [searchIntents?](./answers-headless.verticalsearchresponse.searchintents.md) | [SearchIntent](./answers-headless.searchintent.md)<!-- -->\[\] | <i>(Optional)</i> An array of [SearchIntent](./answers-headless.searchintent.md)<!-- -->s. |
 |  [spellCheck?](./answers-headless.verticalsearchresponse.spellcheck.md) | [SpellCheck](./answers-headless.spellcheck.md) | <i>(Optional)</i> A spellcheck response from a search query. |
 |  [uuid](./answers-headless.verticalsearchresponse.uuid.md) | string | A unique id which corresponds to the request. |

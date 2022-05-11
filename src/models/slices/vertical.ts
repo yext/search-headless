@@ -40,7 +40,7 @@ export interface VerticalSearchState {
   /**
    * Name to be displayed for the vertical.
    */
-  displayName?: string
+  displayName?: string,
   /**
    * The maximum number of results to include for the vertical search.
    */
@@ -56,8 +56,8 @@ export interface VerticalSearchState {
     /**
      * The results from other verticals in the experience.
      */
-    alternativeVerticals: VerticalResults[],
-  }
+    alternativeVerticals: VerticalResults[]
+  },
   /**
    * The number of results that should be skipped when fetching results for the
    * response. Allows for fetching more results with the same query.
@@ -87,5 +87,5 @@ export interface VerticalSearchState {
   /**
    * The key associated with the vertical.
    */
-  verticalKey?: string,
+  verticalKey?: string
 }

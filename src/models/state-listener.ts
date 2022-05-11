@@ -12,11 +12,11 @@ export default interface StateListener<T> {
    * @param state - The current state
    * @returns The value of type T from the state
    */
-  valueAccessor(state: State): T;
+  valueAccessor(state: State): T,
   /**
    * The function to call when the state value updates.
    *
    * @param currentValue - The current state value
    */
-  callback(currentValue: T);
+  callback(currentValue: T)
 }

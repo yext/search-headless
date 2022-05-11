@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
 import { SearchStatusState } from '../models/slices/searchstatus';
 
-const initialState: SearchStatusState = {};
+export const initialState: SearchStatusState = {};
 
 const reducers = {
   setIsLoading: (state, action: PayloadAction<boolean>) => {

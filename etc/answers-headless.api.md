@@ -105,9 +105,19 @@ export { answersUtilities }
 
 // @public
 export interface AppliedQueryFilter {
+    // Warning: (ae-forgotten-export) The symbol "LocationFilterDetails" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-unresolved-inheritdoc-reference) The @inheritDoc reference could not be resolved: The package "@yext/answers-headless" does not have an export "LocationFilterDetails"
+    //
+    // (undocumented)
+    details?: LocationFilterDetails;
     displayKey: string;
     displayValue: string;
     filter: Filter;
+    // Warning: (ae-forgotten-export) The symbol "AppliedQueryFilterType" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-unresolved-inheritdoc-reference) The @inheritDoc reference could not be resolved: The package "@yext/answers-headless" does not have an export "AppliedQueryFilterType"
+    //
+    // (undocumented)
+    type: AppliedQueryFilterType;
 }
 
 // @public
@@ -582,7 +592,7 @@ export enum SortType {
 export enum Source {
     Algolia = "ALGOLIA",
     Bing = "BING_CSE",
-    Generic = "GENERIC",
+    Custom = "CUSTOM_SEARCHER",
     Google = "GOOGLE_CSE",
     KnowledgeManager = "KNOWLEDGE_MANAGER",
     Zendesk = "ZENDESK"

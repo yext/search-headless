@@ -105,9 +105,18 @@ export { answersUtilities }
 
 // @public
 export interface AppliedQueryFilter {
+    details?: LocationFilterDetails;
     displayKey: string;
     displayValue: string;
     filter: Filter;
+    type: AppliedQueryFilterType;
+}
+
+// @public
+export enum AppliedQueryFilterType {
+    FieldValue = "FIELD_VALUE",
+    Intent = "INTENT",
+    Place = "PLACE"
 }
 
 // @public
@@ -251,6 +260,14 @@ export interface Endpoints {
 export type EnumOrLiteral<T extends string> = T | `${T}`;
 
 // @public
+export enum ErrorType {
+    BackendError = "BACKEND_ERROR",
+    InvalidConfig = "INVALID_CONFIG",
+    InvalidQuery = "INVALID_QUERY",
+    Timeout = "TIMEOUT"
+}
+
+// @public
 export interface Facet {
     fieldId: string;
     options: FacetOption[];
@@ -260,6 +277,17 @@ export interface Facet {
 export interface FacetOption {
     matcher: Matcher;
     value: string | number | boolean | NumberRangeValue;
+}
+
+// @public
+export interface FailedVertical {
+    details: {
+        responseCode: number;
+        description: string;
+    };
+    errorType: ErrorType;
+    queryDurationMillis: number;
+    verticalKey: string;
 }
 
 // @public
@@ -368,6 +396,23 @@ export enum LocationBiasMethod {
     Device = "DEVICE",
     Ip = "IP",
     Unknown = "UNKNOWN"
+}
+
+// @public
+export interface LocationBoundingBox {
+    maxLatitude: number;
+    maxLongitude: number;
+    minLatitude: number;
+    minLongitude: number;
+}
+
+// @public
+export interface LocationFilterDetails {
+    boundingBox?: LocationBoundingBox;
+    featureTypes: string[];
+    latitude: number;
+    longitude: number;
+    placeName: string;
 }
 
 // @public
@@ -509,6 +554,9 @@ export interface Result {
 }
 
 // @public
+export const SandboxEndpoints: Required<Endpoints>;
+
+// @public
 export enum SearchIntent {
     NearMe = "NEAR_ME"
 }
@@ -582,7 +630,7 @@ export enum SortType {
 export enum Source {
     Algolia = "ALGOLIA",
     Bing = "BING_CSE",
-    Generic = "GENERIC",
+    Custom = "CUSTOM_SEARCHER",
     Google = "GOOGLE_CSE",
     KnowledgeManager = "KNOWLEDGE_MANAGER",
     Zendesk = "ZENDESK"
@@ -665,6 +713,7 @@ export interface UniversalSearchRequest extends AnswersRequest {
 // @public
 export interface UniversalSearchResponse {
     directAnswer?: FeaturedSnippetDirectAnswer | FieldValueDirectAnswer;
+    failedVerticals?: FailedVertical[];
     locationBias?: LocationBias;
     queryId?: string;
     queryRulesActionsData?: QueryRulesActionsData[];

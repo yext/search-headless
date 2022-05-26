@@ -16,8 +16,10 @@
 
 |  Enumeration | Description |
 |  --- | --- |
+|  [AppliedQueryFilterType](./answers-headless.appliedqueryfiltertype.md) | Represents the type of [AppliedQueryFilter](./answers-headless.appliedqueryfilter.md) applied to a search. |
 |  [DirectAnswerType](./answers-headless.directanswertype.md) | Represents the type of direct answer. |
 |  [Direction](./answers-headless.direction.md) | The direction of a sort. |
+|  [ErrorType](./answers-headless.errortype.md) | Identifier for the type of error causing the failure. |
 |  [FilterCombinator](./answers-headless.filtercombinator.md) | Indicates how the filters in a [CombinedFilter](./answers-headless.combinedfilter.md) should be combined. |
 |  [LocationBiasMethod](./answers-headless.locationbiasmethod.md) | The method used to determine the location. |
 |  [Matcher](./answers-headless.matcher.md) | A Matcher is a filtering operation. |
@@ -64,6 +66,7 @@
 |  [Endpoints](./answers-headless.endpoints.md) | Overrides for the URLs which are used when making requests to the Answers API. |
 |  [Facet](./answers-headless.facet.md) | Represents dynamic filter options for the Answers API. |
 |  [FacetOption](./answers-headless.facetoption.md) | A filter associated with the facet. |
+|  [FailedVertical](./answers-headless.failedvertical.md) | Error information from when a vertical fails to return results. |
 |  [FeaturedSnippetDirectAnswer](./answers-headless.featuredsnippetdirectanswer.md) | A direct answer which was found within a document. |
 |  [FieldValueDirectAnswer](./answers-headless.fieldvaluedirectanswer.md) | A direct answer where the answer came from a field from the knowledge graph. |
 |  [Filter](./answers-headless.filter.md) | Represents a filter which compares values to a single field. |
@@ -73,6 +76,8 @@
 |  [HighlightedValue](./answers-headless.highlightedvalue.md) | A field value and its substring matches as emphasized by the Answers API. |
 |  [LatLong](./answers-headless.latlong.md) | The latitude and longitude of the user making the request. Used to bias the results. |
 |  [LocationBias](./answers-headless.locationbias.md) | Information about the user's location. |
+|  [LocationBoundingBox](./answers-headless.locationboundingbox.md) | Location boundaries for a filter with "Place" for its [AppliedQueryFilterType](./answers-headless.appliedqueryfiltertype.md)<!-- -->. (e.g. boundary for a locality or region specific location filter) |
+|  [LocationFilterDetails](./answers-headless.locationfilterdetails.md) | Additional details relevant to the filter with "PLACE" for its [AppliedQueryFilterType](./answers-headless.appliedqueryfiltertype.md)<!-- -->. |
 |  [LocationState](./answers-headless.locationstate.md) | Maintains the user's location, if given, or the inferred location, that is used to bias search results. |
 |  [LowerNumberRangeLimit](./answers-headless.lowernumberrangelimit.md) | The start limit of [NumberRangeValue](./answers-headless.numberrangevalue.md)<!-- -->. |
 |  [MetaState](./answers-headless.metastate.md) | Maintains the metadata for Answers Headless. |
@@ -123,6 +128,7 @@
 |  Variable | Description |
 |  --- | --- |
 |  [DEFAULT\_HEADLESS\_ID](./answers-headless.default_headless_id.md) | The headlessId automatically given to the first AnswersHeadless instance created. |
+|  [SandboxEndpoints](./answers-headless.sandboxendpoints.md) | The endpoints to use for sandbox experiences. |
 
 ## Type Aliases
 

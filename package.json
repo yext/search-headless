@@ -1,6 +1,6 @@
 {
   "name": "@yext/answers-headless",
-  "version": "1.1.1-alpha.0-95",
+  "version": "1.1.1-alpha.96",
   "description": "",
   "author": "slapshot@yext.com",
   "license": "ISC",
@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
-    "@yext/answers-core": "^1.6.0-beta.7",
+    "@yext/answers-core": "^1.7.0-alpha.165",
     "js-levenshtein": "^1.1.6",
     "lodash": "^4.17.21"
   },

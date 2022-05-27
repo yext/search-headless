@@ -17,6 +17,7 @@ export declare interface UniversalSearchResponse
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [directAnswer?](./answers-headless.universalsearchresponse.directanswer.md) | [FeaturedSnippetDirectAnswer](./answers-headless.featuredsnippetdirectanswer.md) \| [FieldValueDirectAnswer](./answers-headless.fieldvaluedirectanswer.md) | <i>(Optional)</i> A direct answer to a search. |
+|  [failedVerticals?](./answers-headless.universalsearchresponse.failedverticals.md) | [FailedVertical](./answers-headless.failedvertical.md)<!-- -->\[\] | <i>(Optional)</i> Error information from when a vertical fails to return results. |
 |  [locationBias?](./answers-headless.universalsearchresponse.locationbias.md) | [LocationBias](./answers-headless.locationbias.md) | <i>(Optional)</i> Information about the user's location. |
 |  [queryId?](./answers-headless.universalsearchresponse.queryid.md) | string | <i>(Optional)</i> The ID of the search query. |
 |  [queryRulesActionsData?](./answers-headless.universalsearchresponse.queryrulesactionsdata.md) | [QueryRulesActionsData](./answers-headless.queryrulesactionsdata.md)<!-- -->\[\] | <i>(Optional)</i> Data returned from the Answers query rules system. |

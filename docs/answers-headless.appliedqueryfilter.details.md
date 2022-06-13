@@ -4,6 +4,7 @@
 
 ## AppliedQueryFilter.details property
 
+Additional details relevant to the filter with "PLACE" for its [AppliedQueryFilterType](./answers-headless.appliedqueryfiltertype.md)<!-- -->.
 
 <b>Signature:</b>
 

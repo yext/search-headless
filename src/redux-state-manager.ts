@@ -1,9 +1,9 @@
-import { EnhancedStore, Unsubscribe } from '@reduxjs/toolkit';
+import { Unsubscribe } from '@reduxjs/toolkit';
 import StateListener from './models/state-listener';
 import StateManager from './models/state-manager';
-import { ParentState, State } from './models/state';
+import { State } from './models/state';
 import HeadlessReducerManager from './headless-reducer-manager';
-import { ActionWithHeadlessId } from './store';
+import { HeadlessEnhancedStore } from './store';
 
 /**
  * A Redux-backed implementation of the {@link StateManager} interface. Redux is used to
@@ -11,7 +11,7 @@ import { ActionWithHeadlessId } from './store';
  */
 export default class ReduxStateManager implements StateManager {
   constructor(
-    private store: EnhancedStore<ParentState, ActionWithHeadlessId>,
+    private store: HeadlessEnhancedStore,
     private headlessId: string,
     headlessReducerManager: HeadlessReducerManager
   ) {

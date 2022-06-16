@@ -17,6 +17,7 @@ export declare interface FilterSearchRequest extends AnswersRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
+|  [excluded?](./answers-headless.filtersearchrequest.excluded.md) | [Filter](./answers-headless.filter.md)<!-- -->\[\] | <i>(Optional)</i> an array of filters that should be excluded from filter search results. |
 |  [fields](./answers-headless.filtersearchrequest.fields.md) | [SearchParameterField](./answers-headless.searchparameterfield.md)<!-- -->\[\] | An array of [SearchParameterField](./answers-headless.searchparameterfield.md) |
 |  [input](./answers-headless.filtersearchrequest.input.md) | string | The input string for autocomplete. |
 |  [sectioned](./answers-headless.filtersearchrequest.sectioned.md) | boolean | Determines whether or not the results of the [FilterSearchResponse](./answers-headless.filtersearchresponse.md) are separated by field. |

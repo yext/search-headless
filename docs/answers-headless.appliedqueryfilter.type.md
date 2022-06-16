@@ -4,6 +4,7 @@
 
 ## AppliedQueryFilter.type property
 
+Represents the type of [AppliedQueryFilter](./answers-headless.appliedqueryfilter.md) applied to a search.
 
 <b>Signature:</b>
 

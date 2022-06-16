@@ -16,9 +16,9 @@ export declare interface AppliedQueryFilter
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [details?](./answers-headless.appliedqueryfilter.details.md) | LocationFilterDetails | <i>(Optional)</i> |
+|  [details?](./answers-headless.appliedqueryfilter.details.md) | [LocationFilterDetails](./answers-headless.locationfilterdetails.md) | <i>(Optional)</i> Additional details relevant to the filter with "PLACE" for its [AppliedQueryFilterType](./answers-headless.appliedqueryfiltertype.md)<!-- -->. |
 |  [displayKey](./answers-headless.appliedqueryfilter.displaykey.md) | string | The display name of the filter key. |
 |  [displayValue](./answers-headless.appliedqueryfilter.displayvalue.md) | string | The value used in the filter. |
 |  [filter](./answers-headless.appliedqueryfilter.filter.md) | [Filter](./answers-headless.filter.md) | The filter applied to the query results. |
-|  [type](./answers-headless.appliedqueryfilter.type.md) | AppliedQueryFilterType |  |
+|  [type](./answers-headless.appliedqueryfilter.type.md) | [AppliedQueryFilterType](./answers-headless.appliedqueryfiltertype.md) | Represents the type of [AppliedQueryFilter](./answers-headless.appliedqueryfilter.md) applied to a search. |
 

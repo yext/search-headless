@@ -105,19 +105,18 @@ export { answersUtilities }
 
 // @public
 export interface AppliedQueryFilter {
-    // Warning: (ae-forgotten-export) The symbol "LocationFilterDetails" needs to be exported by the entry point index.d.ts
-    // Warning: (ae-unresolved-inheritdoc-reference) The @inheritDoc reference could not be resolved: The package "@yext/answers-headless" does not have an export "LocationFilterDetails"
-    //
-    // (undocumented)
     details?: LocationFilterDetails;
     displayKey: string;
     displayValue: string;
     filter: Filter;
-    // Warning: (ae-forgotten-export) The symbol "AppliedQueryFilterType" needs to be exported by the entry point index.d.ts
-    // Warning: (ae-unresolved-inheritdoc-reference) The @inheritDoc reference could not be resolved: The package "@yext/answers-headless" does not have an export "AppliedQueryFilterType"
-    //
-    // (undocumented)
     type: AppliedQueryFilterType;
+}
+
+// @public
+export enum AppliedQueryFilterType {
+    FieldValue = "FIELD_VALUE",
+    Intent = "INTENT",
+    Place = "PLACE"
 }
 
 // @public
@@ -261,6 +260,14 @@ export interface Endpoints {
 export type EnumOrLiteral<T extends string> = T | `${T}`;
 
 // @public
+export enum ErrorType {
+    BackendError = "BACKEND_ERROR",
+    InvalidConfig = "INVALID_CONFIG",
+    InvalidQuery = "INVALID_QUERY",
+    Timeout = "TIMEOUT"
+}
+
+// @public
 export interface Facet {
     fieldId: string;
     options: FacetOption[];
@@ -270,6 +277,17 @@ export interface Facet {
 export interface FacetOption {
     matcher: Matcher;
     value: string | number | boolean | NumberRangeValue;
+}
+
+// @public
+export interface FailedVertical {
+    details: {
+        responseCode: number;
+        description: string;
+    };
+    errorType: ErrorType;
+    queryDurationMillis: number;
+    verticalKey: string;
 }
 
 // @public
@@ -309,6 +327,7 @@ export enum FilterCombinator {
 
 // @public
 export interface FilterSearchRequest extends AnswersRequest {
+    excluded?: Filter[];
     fields: SearchParameterField[];
     input: string;
     sectioned: boolean;
@@ -378,6 +397,23 @@ export enum LocationBiasMethod {
     Device = "DEVICE",
     Ip = "IP",
     Unknown = "UNKNOWN"
+}
+
+// @public
+export interface LocationBoundingBox {
+    maxLatitude: number;
+    maxLongitude: number;
+    minLatitude: number;
+    minLongitude: number;
+}
+
+// @public
+export interface LocationFilterDetails {
+    boundingBox?: LocationBoundingBox;
+    featureTypes: string[];
+    latitude: number;
+    longitude: number;
+    placeName: string;
 }
 
 // @public
@@ -517,6 +553,9 @@ export interface Result {
     rawData: Record<string, unknown>;
     source: Source;
 }
+
+// @public
+export const SandboxEndpoints: Required<Endpoints>;
 
 // @public
 export enum SearchIntent {
@@ -675,6 +714,7 @@ export interface UniversalSearchRequest extends AnswersRequest {
 // @public
 export interface UniversalSearchResponse {
     directAnswer?: FeaturedSnippetDirectAnswer | FieldValueDirectAnswer;
+    failedVerticals?: FailedVertical[];
     locationBias?: LocationBias;
     queryId?: string;
     queryRulesActionsData?: QueryRulesActionsData[];

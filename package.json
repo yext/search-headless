@@ -3,7 +3,7 @@
   "version": "1.2.0",
   "description": "",
   "author": "slapshot@yext.com",
-  "license": "ISC",
+  "license": "BSD-3-Clause",
   "main": "./dist/commonjs/src/index.js",
   "module": "./dist/esm/src/index.js",
   "files": [

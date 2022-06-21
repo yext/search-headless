@@ -57,7 +57,7 @@ const mockedStateManager: jest.Mocked<StateManager> = {
   addListener: jest.fn()
 };
 
-const mockedSearch = jest.fn(() => { return { queryId: '123' };});
+const mockedSearch = jest.fn(() => { return { queryId: '123' }; });
 const mockedCore: any = {
   verticalAutocomplete: jest.fn(() => { return {}; }),
   universalAutocomplete: jest.fn(() => { return {}; }),
@@ -301,7 +301,6 @@ describe('filter functions work as expected', () => {
     expect(dispatchEventCalls[0][1]).toEqual(filter);
   });
 });
-
 
 describe('auto-complete works as expected', () => {
   beforeEach(() => {

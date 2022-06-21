@@ -59,7 +59,7 @@ const reducers = {
     if (!state.static) {
       state.static = [];
     }
-    const { selected, displayName:_, ...targetFilter } = payload;
+    const { selected, displayName: _, ...targetFilter } = payload;
     const matchingFilter = state.static.find(storedFilter => {
       return areFiltersEqual(storedFilter, targetFilter);
     });

@@ -294,7 +294,6 @@ it('can reset facets correctly', () => {
   );
 });
 
-
 function createInitialState(
   facetIsSelected: boolean
 ): [initialState: Partial<State>, facetOption: DisplayableFacetOption] {

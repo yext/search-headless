@@ -1,20 +1,11 @@
 {
   "name": "@yext/answers-headless",
   "version": "1.2.0",
-  "description": "A library for powering UI components for Yext Answers integrations",
+  "description": "",
   "author": "slapshot@yext.com",
   "license": "ISC",
   "main": "./dist/commonjs/src/index.js",
   "module": "./dist/esm/src/index.js",
-  "keywords": [
-    "search",
-    "nlp",
-    "ai",
-    "answers",
-    "yext",
-    "react",
-    "components"
-  ], 
   "files": [
     "dist",
     "lib",

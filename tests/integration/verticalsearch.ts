@@ -60,13 +60,13 @@ const allResultsForVertical: VerticalSearchResponse = {
 };
 
 it('vertical searches set allResultsForVertical and alternativeVerticals', async () => {
-  const search = createMockedSearchHeadless({
+  const answers = createMockedSearchHeadless({
     verticalSearch: () => Promise.resolve({
       allResultsForVertical,
       alternativeVerticals,
     })
   }, initialState);
-  await search.executeVerticalQuery();
+  await answers.executeVerticalQuery();
   const expectedAllResultsForVertical: AllResultsForVertical = {
     facets: [],
     results: [],
@@ -76,7 +76,7 @@ it('vertical searches set allResultsForVertical and alternativeVerticals', async
     allResultsForVertical: expectedAllResultsForVertical,
     alternativeVerticals
   };
-  expect(search.state.vertical.noResults).toEqual(expectedNoResultsState);
+  expect(answers.state.vertical.noResults).toEqual(expectedNoResultsState);
 });
 
 it('vertical searches set appliedQueryFilters', async () => {
@@ -89,27 +89,27 @@ it('vertical searches set appliedQueryFilters', async () => {
       value: 42
     }
   }];
-  const search = createMockedSearchHeadless({
+  const answers = createMockedSearchHeadless({
     verticalSearch: () => Promise.resolve({
       verticalResults: {
         appliedQueryFilters: mockAppliedQueryFilters
       }
     })
   }, initialState);
-  await search.executeVerticalQuery();
-  expect(search.state.vertical.appliedQueryFilters).toEqual(mockAppliedQueryFilters);
+  await answers.executeVerticalQuery();
+  expect(answers.state.vertical.appliedQueryFilters).toEqual(mockAppliedQueryFilters);
 });
 
 it('vertical searches set queryDurationMillis', async () => {
-  const search = createMockedSearchHeadless({
+  const answers = createMockedSearchHeadless({
     verticalSearch: () => Promise.resolve({
       verticalResults: {
         queryDurationMillis: 42
       }
     })
   }, initialState);
-  await search.executeVerticalQuery();
-  expect(search.state.vertical.queryDurationMillis).toEqual(42);
+  await answers.executeVerticalQuery();
+  expect(answers.state.vertical.queryDurationMillis).toEqual(42);
 });
 
 it('vertical searches set results', async () => {
@@ -117,55 +117,55 @@ it('vertical searches set results', async () => {
     rawData: { test: 'hello' },
     source: Source.KnowledgeManager
   }];
-  const search = createMockedSearchHeadless({
+  const answers = createMockedSearchHeadless({
     verticalSearch: () => Promise.resolve({
       verticalResults: {
         results: mockResults
       }
     })
   }, initialState);
-  await search.executeVerticalQuery();
-  expect(search.state.vertical.results).toEqual(mockResults);
+  await answers.executeVerticalQuery();
+  expect(answers.state.vertical.results).toEqual(mockResults);
 });
 
 it('vertical searches set results count', async () => {
-  const search = createMockedSearchHeadless({
+  const answers = createMockedSearchHeadless({
     verticalSearch: () => Promise.resolve({
       verticalResults: {
         resultsCount: 3
       }
     })
   }, initialState);
-  await search.executeVerticalQuery();
-  expect(search.state.vertical.resultsCount).toEqual(3);
+  await answers.executeVerticalQuery();
+  expect(answers.state.vertical.resultsCount).toEqual(3);
 });
 
 it('vertical searches set the source', async () => {
-  const search = createMockedSearchHeadless({
+  const answers = createMockedSearchHeadless({
     verticalSearch: () => Promise.resolve({
       verticalResults: {
         source: Source.KnowledgeManager
       }
     })
   }, initialState);
-  await search.executeVerticalQuery();
-  expect(search.state.vertical.source).toEqual(Source.KnowledgeManager);
+  await answers.executeVerticalQuery();
+  expect(answers.state.vertical.source).toEqual(Source.KnowledgeManager);
 });
 
 it('vertical searches send blank queries by default', async () => {
   const mockSearch = createMockSearch();
-  const search = createMockedSearchHeadless({
+  const answers = createMockedSearchHeadless({
     verticalSearch: mockSearch
   });
-  search.setVertical('vertical-key');
-  await search.executeVerticalQuery();
+  answers.setVertical('vertical-key');
+  await answers.executeVerticalQuery();
   expect(mockSearch.mock.calls[0][0].query).toEqual('');
 });
 
-it('search.setVerticalLimit sets the vertical limit when a number is passed to it', () => {
-  const search = createMockedSearchHeadless();
-  search.setVerticalLimit(7);
-  expect(search.state.vertical.limit).toEqual(7);
+it('answers.setVerticalLimit sets the vertical limit when a number is passed to it', () => {
+  const answers = createMockedSearchHeadless();
+  answers.setVerticalLimit(7);
+  expect(answers.state.vertical.limit).toEqual(7);
 });
 
 
@@ -173,24 +173,24 @@ it('handle a rejected promise from core', async () => {
   const mockSearch = createMockRejectedSearch();
   const mockCore = { verticalSearch: mockSearch };
   const httpManager = new HttpManager();
-  const search = createMockedSearchHeadless(mockCore, {}, undefined, undefined, httpManager);
-  search.setVertical('vertical-key');
+  const answers = createMockedSearchHeadless(mockCore, {}, undefined, undefined, httpManager);
+  answers.setVertical('vertical-key');
   try {
-    await search.executeVerticalQuery();
+    await answers.executeVerticalQuery();
   } catch (e) {
     expect(e).toEqual('mock error message');
   }
-  expect(search.state.searchStatus.isLoading).toEqual(false);
+  expect(answers.state.searchStatus.isLoading).toEqual(false);
   expect(httpManager.getLatestResponseId('verticalQuery')).toEqual(1);
 });
 
 it('executeVerticalQuery passes the additional HTTP headers', async () => {
   const mockSearch = createMockSearch();
-  const search = createMockedSearchHeadless({
+  const answers = createMockedSearchHeadless({
     verticalSearch: mockSearch
   });
-  search.setVertical('vertical-key');
-  await search.executeVerticalQuery();
+  answers.setVertical('vertical-key');
+  await answers.executeVerticalQuery();
   expect(mockSearch).toHaveBeenLastCalledWith(expect.objectContaining({
     additionalHttpHeaders: getHttpHeaders()
   }));

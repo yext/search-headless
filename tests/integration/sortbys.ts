@@ -3,19 +3,19 @@ import { createMockedSearchHeadless } from '../mocks/createMockedSearchHeadless'
 
 it('executeVerticalQuery properly updates spellcheck state', async () => {
   const mockSearch = jest.fn((_request: VerticalSearchRequest) => Promise.resolve({}));
-  const search = createMockedSearchHeadless({
+  const answers = createMockedSearchHeadless({
     verticalSearch: mockSearch
   });
-  search.setQuery('lol');
-  search.setVertical('vertical-key');
-  search.setSortBys([
+  answers.setQuery('lol');
+  answers.setVertical('vertical-key');
+  answers.setSortBys([
     {
       type: SortType.Field,
       field: 'c_field',
       direction: Direction.Ascending
     }
   ]);
-  await search.executeVerticalQuery();
+  await answers.executeVerticalQuery();
   expect(mockSearch.mock.calls[0][0].sortBys).toMatchObject([
     {
       direction: 'ASC',

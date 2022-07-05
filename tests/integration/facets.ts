@@ -5,9 +5,9 @@ import { createMockedSearchHeadless } from '../mocks/createMockedSearchHeadless'
 
 it('can select a facet option', () => {
   const [initialState, facetOption] = createInitialState(false);
-  const search = createMockedSearchHeadless({}, initialState);
-  search.setFacetOption('testFieldId', facetOption, true);
-  expect(search.state.filters.facets[0].options[0]).toEqual({
+  const answers = createMockedSearchHeadless({}, initialState);
+  answers.setFacetOption('testFieldId', facetOption, true);
+  expect(answers.state.filters.facets[0].options[0]).toEqual({
     matcher: Matcher.Equals,
     value: 'testValue',
     displayName: 'testDisplayName',
@@ -23,9 +23,9 @@ it('handles multiple facets with the same fieldId', () => {
     fieldId: 'testFieldId',
     options: [{ ...facetOption }]
   });
-  const search = createMockedSearchHeadless({}, initialState);
-  search.setFacetOption('testFieldId', facetOption, true);
-  expect(search.state.filters.facets).toEqual([
+  const answers = createMockedSearchHeadless({}, initialState);
+  answers.setFacetOption('testFieldId', facetOption, true);
+  expect(answers.state.filters.facets).toEqual([
     {
       displayName: 'test facet name',
       fieldId: 'testFieldId',
@@ -54,9 +54,9 @@ it('handles multiple facets with the same fieldId', () => {
 it('handles selecting multiple facetOptions at the same time', () => {
   const [initialState, facetOption] = createInitialState(false);
   initialState.filters.facets[0].options.push({ ...facetOption });
-  const search = createMockedSearchHeadless({}, initialState);
-  search.setFacetOption('testFieldId', facetOption, true);
-  expect(search.state.filters.facets[0].options).toEqual([
+  const answers = createMockedSearchHeadless({}, initialState);
+  answers.setFacetOption('testFieldId', facetOption, true);
+  expect(answers.state.filters.facets[0].options).toEqual([
     {
       matcher: Matcher.Equals,
       value: 'testValue',
@@ -76,9 +76,9 @@ it('handles selecting multiple facetOptions at the same time', () => {
 
 it('can unselect a facet option', () => {
   const [initialState, facetOption] = createInitialState(true);
-  const search = createMockedSearchHeadless({}, initialState);
-  search.setFacetOption('testFieldId', facetOption, false);
-  expect(search.state.filters.facets[0].options[0]).toEqual({
+  const answers = createMockedSearchHeadless({}, initialState);
+  answers.setFacetOption('testFieldId', facetOption, false);
+  expect(answers.state.filters.facets[0].options[0]).toEqual({
     matcher: Matcher.Equals,
     value: 'testValue',
     displayName: 'testDisplayName',
@@ -89,8 +89,8 @@ it('can unselect a facet option', () => {
 
 it('gives a console warning when facets do not exist in state', () => {
   const consoleWarnSpy = jest.spyOn(global.console, 'warn').mockImplementation();
-  const search = createMockedSearchHeadless();
-  search.setFacetOption('testFieldId', {} as DisplayableFacetOption, true);
+  const answers = createMockedSearchHeadless();
+  answers.setFacetOption('testFieldId', {} as DisplayableFacetOption, true);
   expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
   consoleWarnSpy.mockClear();
 });
@@ -98,8 +98,8 @@ it('gives a console warning when facets do not exist in state', () => {
 it('gives a console warning when the facet option\'s fieldId is not found in state', () => {
   const consoleWarnSpy = jest.spyOn(global.console, 'warn').mockImplementation();
   const [initialState] = createInitialState(true);
-  const search = createMockedSearchHeadless({}, initialState);
-  search.setFacetOption('fakeFieldId', {} as DisplayableFacetOption, true);
+  const answers = createMockedSearchHeadless({}, initialState);
+  answers.setFacetOption('fakeFieldId', {} as DisplayableFacetOption, true);
   expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
   consoleWarnSpy.mockClear();
 });
@@ -121,11 +121,11 @@ it('facets are updated after a vertical search', async () => {
     query: { input: 'test query' },
     spellCheck: { enabled: true }
   };
-  const search = createMockedSearchHeadless(mockAnswersCore, initialState);
-  expect(search.state.filters.facets).toEqual(undefined);
-  search.setVertical('vertical-key');
-  await search.executeVerticalQuery();
-  expect(search.state.filters.facets).toEqual([ 'mock facets state' ]);
+  const answers = createMockedSearchHeadless(mockAnswersCore, initialState);
+  expect(answers.state.filters.facets).toEqual(undefined);
+  answers.setVertical('vertical-key');
+  await answers.executeVerticalQuery();
+  expect(answers.state.filters.facets).toEqual([ 'mock facets state' ]);
 });
 
 it('only selected facets are sent in the vertical search request', () => {
@@ -144,10 +144,10 @@ it('only selected facets are sent in the vertical search request', () => {
   const mockedCore = {
     verticalSearch: jest.fn(() => { return {}; })
   };
-  const search = createMockedSearchHeadless(mockedCore, initialState);
-  search.setVertical('vertical-key');
-  search.setFacets(initialState.filters.facets);
-  search.executeVerticalQuery();
+  const answers = createMockedSearchHeadless(mockedCore, initialState);
+  answers.setVertical('vertical-key');
+  answers.setFacets(initialState.filters.facets);
+  answers.executeVerticalQuery();
   expect(mockedCore.verticalSearch).toHaveBeenCalledWith(expect.objectContaining({
     facets: [{
       fieldId: 'testFieldId',
@@ -178,9 +178,9 @@ it('searchThroughFacet filters facet options correctly', () => {
     ...facetOption,
     displayName: 'ignore me'
   });
-  const search = createMockedSearchHeadless({}, initialState);
-  const facet = search.state.filters.facets[0];
-  const searchedFacet = search.utilities.searchThroughFacet(facet, 'cation');
+  const answers = createMockedSearchHeadless({}, initialState);
+  const facet = answers.state.filters.facets[0];
+  const searchedFacet = answers.utilities.searchThroughFacet(facet, 'cation');
   expect(searchedFacet).toEqual({
     displayName: 'test facet name',
     fieldId: 'testFieldId',
@@ -211,9 +211,9 @@ it('searchThroughFacet filters facet options correctly for similar searchTerm', 
     ...facetOption,
     displayName: 'Cation'
   });
-  const search = createMockedSearchHeadless({}, initialState);
-  const facet = search.state.filters.facets[0];
-  const searchedFacet = search.utilities.searchThroughFacet(facet, 'car');
+  const answers = createMockedSearchHeadless({}, initialState);
+  const facet = answers.state.filters.facets[0];
+  const searchedFacet = answers.utilities.searchThroughFacet(facet, 'car');
   expect(searchedFacet).toEqual({
     displayName: 'test facet name',
     fieldId: 'testFieldId',
@@ -248,9 +248,9 @@ it('searchThroughFacet filters facet options correctly for short searchTerm', ()
     ...facetOption,
     displayName: 'ignore me'
   });
-  const search = createMockedSearchHeadless({}, initialState);
-  const facet = search.state.filters.facets[0];
-  const searchedFacet = search.utilities.searchThroughFacet(facet, 'ca');
+  const answers = createMockedSearchHeadless({}, initialState);
+  const facet = answers.state.filters.facets[0];
+  const searchedFacet = answers.utilities.searchThroughFacet(facet, 'ca');
   expect(searchedFacet).toEqual({
     displayName: 'test facet name',
     fieldId: 'testFieldId',
@@ -273,7 +273,7 @@ it('searchThroughFacet filters facet options correctly for short searchTerm', ()
 
 it('can set facets correctly', () => {
   const [initialState, facetOption] = createInitialState(true);
-  const search = createMockedSearchHeadless({}, initialState);
+  const answers = createMockedSearchHeadless({}, initialState);
   const facets = [
     {
       fieldId: 'newFieldId',
@@ -281,15 +281,15 @@ it('can set facets correctly', () => {
       options: [facetOption]
     }
   ];
-  search.setFacets(facets);
-  expect(search.state.filters.facets).toEqual(facets);
+  answers.setFacets(facets);
+  expect(answers.state.filters.facets).toEqual(facets);
 });
 
 it('can reset facets correctly', () => {
   const [initialState, ] = createInitialState(true);
-  const search = createMockedSearchHeadless({}, initialState);
-  search.resetFacets();
-  search.state.filters.facets.map(facet =>
+  const answers = createMockedSearchHeadless({}, initialState);
+  answers.resetFacets();
+  answers.state.filters.facets.map(facet =>
     facet.options.map(option => expect(option.selected).toBeFalsy())
   );
 });

@@ -8,12 +8,12 @@ describe('userLocation', () => {
       longitude: 1
     };
     const mockSearch = jest.fn((_request: VerticalSearchRequest) => Promise.resolve({}));
-    const search = createMockedSearchHeadless({
+    const answers = createMockedSearchHeadless({
       verticalSearch: mockSearch
     });
-    search.setVertical('vertical-key');
-    search.setUserLocation(userLocation);
-    await search.executeVerticalQuery();
+    answers.setVertical('vertical-key');
+    answers.setUserLocation(userLocation);
+    await answers.executeVerticalQuery();
     expect(mockSearch.mock.calls[0][0].location).toEqual(userLocation);
   });
 
@@ -23,11 +23,11 @@ describe('userLocation', () => {
       longitude: 1
     };
     const mockSearch = jest.fn((_request: UniversalSearchRequest) => Promise.resolve({}));
-    const search = createMockedSearchHeadless({
+    const answers = createMockedSearchHeadless({
       universalSearch: mockSearch
     });
-    search.setUserLocation(userLocation);
-    await search.executeUniversalQuery();
+    answers.setUserLocation(userLocation);
+    await answers.executeUniversalQuery();
     expect(mockSearch.mock.calls[0][0].location).toEqual(userLocation);
   });
 });
@@ -41,13 +41,13 @@ describe('locationBias', () => {
       method: LocationBiasMethod.Ip
     };
     const mockSearch = jest.fn((_request: VerticalSearchRequest) => Promise.resolve({ locationBias }));
-    const search = createMockedSearchHeadless({
+    const answers = createMockedSearchHeadless({
       verticalSearch: mockSearch
     });
-    search.setVertical('vertical-key');
-    expect(search.state.location.locationBias).toEqual(undefined);
-    await search.executeVerticalQuery();
-    expect(search.state.location.locationBias).toEqual(locationBias);
+    answers.setVertical('vertical-key');
+    expect(answers.state.location.locationBias).toEqual(undefined);
+    await answers.executeVerticalQuery();
+    expect(answers.state.location.locationBias).toEqual(locationBias);
   });
 
   it('universal searches set location bias', async () => {
@@ -58,11 +58,11 @@ describe('locationBias', () => {
       method: LocationBiasMethod.Ip
     };
     const mockSearch = jest.fn((_request: UniversalSearchRequest) => Promise.resolve({ locationBias }));
-    const search = createMockedSearchHeadless({
+    const answers = createMockedSearchHeadless({
       universalSearch: mockSearch
     });
-    expect(search.state.location.locationBias).toEqual(undefined);
-    await search.executeUniversalQuery();
-    expect(search.state.location.locationBias).toEqual(locationBias);
+    expect(answers.state.location.locationBias).toEqual(undefined);
+    await answers.executeUniversalQuery();
+    expect(answers.state.location.locationBias).toEqual(locationBias);
   });
 });

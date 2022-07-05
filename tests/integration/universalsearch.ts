@@ -6,30 +6,30 @@ import setTimeout from '../utils/setTimeout';
 
 it('universal searches send blank queries by default', async () => {
   const mockSearch = createMockSearch();
-  const search = createMockedSearchHeadless({
+  const answers = createMockedSearchHeadless({
     universalSearch: mockSearch
   });
-  await search.executeUniversalQuery();
+  await answers.executeUniversalQuery();
   expect(mockSearch.mock.calls[0][0].query).toEqual('');
 });
 
-it('search.setUniversalLimit sets the universal limit when a UniversalLimit is passed to it', () => {
-  const search = createMockedSearchHeadless();
+it('answers.setUniversalLimit sets the universal limit when a UniversalLimit is passed to it', () => {
+  const answers = createMockedSearchHeadless();
   const universalLimit = {
     faq: 5,
     people: 5
   };
-  search.setUniversalLimit(universalLimit);
-  expect(search.state.universal.limit).toEqual(universalLimit);
+  answers.setUniversalLimit(universalLimit);
+  expect(answers.state.universal.limit).toEqual(universalLimit);
 });
 
-it('search.setRestrictVerticals sets the restrictVerticals param', async () => {
+it('answers.setRestrictVerticals sets the restrictVerticals param', async () => {
   const mockSearch = createMockSearch();
-  const search = createMockedSearchHeadless({
+  const answers = createMockedSearchHeadless({
     universalSearch: mockSearch
   });
-  search.setRestrictVerticals(['KM', 'people']);
-  await search.executeUniversalQuery();
+  answers.setRestrictVerticals(['KM', 'people']);
+  await answers.executeUniversalQuery();
   expect(mockSearch.mock.calls[0][0].restrictVerticals).toEqual(['KM', 'people']);
 });
 
@@ -37,22 +37,22 @@ it('handle a rejected promise from core', async () => {
   const mockSearch = createMockRejectedSearch();
   const mockCore = { universalSearch: mockSearch };
   const httpManager = new HttpManager();
-  const search = createMockedSearchHeadless(mockCore, {}, undefined, undefined, httpManager);
+  const answers = createMockedSearchHeadless(mockCore, {}, undefined, undefined, httpManager);
   try {
-    await search.executeUniversalQuery();
+    await answers.executeUniversalQuery();
   } catch (e) {
     expect(e).toEqual('mock error message');
   }
-  expect(search.state.searchStatus.isLoading).toEqual(false);
+  expect(answers.state.searchStatus.isLoading).toEqual(false);
   expect(httpManager.getLatestResponseId('universalQuery')).toEqual(1);
 });
 
 it('executeUniversalQuery passes the additional HTTP headers', async () => {
   const mockSearch = createMockSearch();
-  const search = createMockedSearchHeadless({
+  const answers = createMockedSearchHeadless({
     universalSearch: mockSearch
   });
-  await search.executeUniversalQuery();
+  await answers.executeUniversalQuery();
   expect(mockSearch).toHaveBeenLastCalledWith(expect.objectContaining({
     additionalHttpHeaders: getHttpHeaders()
   }));

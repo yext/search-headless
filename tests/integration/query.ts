@@ -15,48 +15,48 @@ it('vertical searches set search intents', async () => {
   const mockSearch = jest.fn((_request: VerticalSearchRequest) => Promise.resolve({
     searchIntents: [SearchIntent.NearMe]
   }));
-  const search = createMockedSearchHeadless({
+  const answers = createMockedSearchHeadless({
     verticalSearch: mockSearch
   });
-  search.setVertical('vertical-key');
-  expect(search.state.query.searchIntents).toEqual(undefined);
-  await search.executeVerticalQuery();
-  expect(search.state.query.searchIntents).toEqual(['NEAR_ME']);
+  answers.setVertical('vertical-key');
+  expect(answers.state.query.searchIntents).toEqual(undefined);
+  await answers.executeVerticalQuery();
+  expect(answers.state.query.searchIntents).toEqual(['NEAR_ME']);
 });
 
 it('universal searches set search intents', async () => {
   const mockSearch = jest.fn((_request: UniversalSearchRequest) => Promise.resolve({
     searchIntents: [SearchIntent.NearMe]
   }));
-  const search = createMockedSearchHeadless({
+  const answers = createMockedSearchHeadless({
     universalSearch: mockSearch
   });
-  expect(search.state.query.searchIntents).toEqual(undefined);
-  await search.executeUniversalQuery();
-  expect(search.state.query.searchIntents).toEqual(['NEAR_ME']);
+  expect(answers.state.query.searchIntents).toEqual(undefined);
+  await answers.executeUniversalQuery();
+  expect(answers.state.query.searchIntents).toEqual(['NEAR_ME']);
 });
 
 describe('sessionId to request works as expected', () => {
   const verticalMockSearch = jest.fn().mockReturnValue({});
   const universalMockSearch = jest.fn().mockReturnValue({});
-  const search = createMockedSearchHeadless({
+  const answers = createMockedSearchHeadless({
     verticalSearch: verticalMockSearch,
     universalSearch: universalMockSearch
   });
-  search.setVertical('vertical-key');
+  answers.setVertical('vertical-key');
 
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   it('sessionId is in request when sessionTrackingEnabled is true', async () => {
-    search.setSessionTrackingEnabled(true);
-    search.setSessionId('some-session-id');
+    answers.setSessionTrackingEnabled(true);
+    answers.setSessionId('some-session-id');
 
-    search.setVertical('vertical-key');
-    await search.executeVerticalQuery();
-    search.setUniversal();
-    await search.executeUniversalQuery();
+    answers.setVertical('vertical-key');
+    await answers.executeVerticalQuery();
+    answers.setUniversal();
+    await answers.executeUniversalQuery();
     expect(verticalMockSearch.mock.calls[0][0])
       .toEqual(expect.objectContaining({ sessionId: 'some-session-id' }));
     expect(universalMockSearch.mock.calls[0][0])
@@ -64,13 +64,13 @@ describe('sessionId to request works as expected', () => {
   });
 
   it('sessionId is not in request when sessionTrackingEnabled is false', async () => {
-    search.setSessionTrackingEnabled(false);
-    search.setSessionId('some-session-id');
+    answers.setSessionTrackingEnabled(false);
+    answers.setSessionId('some-session-id');
 
-    search.setVertical('vertical-key');
-    await search.executeVerticalQuery();
-    search.setUniversal();
-    await search.executeUniversalQuery();
+    answers.setVertical('vertical-key');
+    await answers.executeVerticalQuery();
+    answers.setUniversal();
+    await answers.executeUniversalQuery();
 
     expect(verticalMockSearch.mock.calls[0][0])
       .toEqual(expect.not.objectContaining({ sessionId: 'some-session-id' }));
@@ -94,56 +94,56 @@ describe('ensure correct results from latest request', () => {
   });
 
   it('vertical search get correct results based on up-to-date response', async () => {
-    const search = getSearchHeadless(requestsTime);
-    search.setVertical('someKey');
-    search.addListener({
+    const answers = getSearchHeadless(requestsTime);
+    answers.setVertical('someKey');
+    answers.addListener({
       valueAccessor: state => state.vertical?.results,
       callback: updateResult
     });
-    search.setQuery(queries[0]);
-    const firstResponsePromise = search.executeVerticalQuery();
-    search.setQuery(queries[1]);
-    const secondResponsePromise = search.executeVerticalQuery();
-    search.setQuery(queries[2]);
-    const thirdResponsePromise = search.executeVerticalQuery();
+    answers.setQuery(queries[0]);
+    const firstResponsePromise = answers.executeVerticalQuery();
+    answers.setQuery(queries[1]);
+    const secondResponsePromise = answers.executeVerticalQuery();
+    answers.setQuery(queries[2]);
+    const thirdResponsePromise = answers.executeVerticalQuery();
 
     jest.advanceTimersByTime(requestsTime[queries[1]]);
     await secondResponsePromise;
-    expect(search.state.vertical.results).toEqual([queries[1]]);
+    expect(answers.state.vertical.results).toEqual([queries[1]]);
     jest.advanceTimersByTime(requestsTime[queries[2]]);
     await thirdResponsePromise;
     jest.runAllTimers();
     await firstResponsePromise;
 
-    expect(search.state.query.input).toEqual(queries[2]);
-    expect(search.state.vertical.results).toEqual([queries[2]]);
+    expect(answers.state.query.input).toEqual(queries[2]);
+    expect(answers.state.vertical.results).toEqual([queries[2]]);
     expect(updateResult.mock.calls).toHaveLength(2);
   });
 
   it('universal search get correct results based on up-to-date response', async () => {
-    const search = getSearchHeadless(requestsTime);
-    search.setUniversal();
-    search.addListener({
+    const answers = getSearchHeadless(requestsTime);
+    answers.setUniversal();
+    answers.addListener({
       valueAccessor: state => state.universal.verticals,
       callback: updateResult
     });
-    search.setQuery(queries[0]);
-    const firstResponsePromise = search.executeUniversalQuery();
-    search.setQuery(queries[1]);
-    const secondResponsePromise = search.executeUniversalQuery();
-    search.setQuery(queries[2]);
-    const thirdResponsePromise = search.executeUniversalQuery();
+    answers.setQuery(queries[0]);
+    const firstResponsePromise = answers.executeUniversalQuery();
+    answers.setQuery(queries[1]);
+    const secondResponsePromise = answers.executeUniversalQuery();
+    answers.setQuery(queries[2]);
+    const thirdResponsePromise = answers.executeUniversalQuery();
 
     jest.advanceTimersByTime(requestsTime[queries[1]]);
     await secondResponsePromise;
-    expect(search.state.universal.verticals).toEqual([{ results: [queries[1]] }]);
+    expect(answers.state.universal.verticals).toEqual([{ results: [queries[1]] }]);
     jest.advanceTimersByTime(requestsTime[queries[2]]);
     await thirdResponsePromise;
     jest.runAllTimers();
     await firstResponsePromise;
 
-    expect(search.state.query.input).toEqual(queries[2]);
-    expect(search.state.universal.verticals).toEqual([{ results: [queries[2]] }]);
+    expect(answers.state.query.input).toEqual(queries[2]);
+    expect(answers.state.universal.verticals).toEqual([{ results: [queries[2]] }]);
     expect(updateResult.mock.calls).toHaveLength(2);
   });
 });

@@ -30,32 +30,32 @@ function mockSearchWithQueryRules() {
 
 describe('SearchHeadless queryRules interactions properly update state', () => {
   it('executeVerticalQuery properly updates queryRules state', async () => {
-    const search = createMockedSearchHeadless({
+    const answers = createMockedSearchHeadless({
       verticalSearch: mockSearchWithQueryRules
     }, initialState);
-    search.setVertical('123');
-    await search.executeVerticalQuery();
+    answers.setVertical('123');
+    await answers.executeVerticalQuery();
     const expectedState = {
       queryRules: {
         actions: actions
       }
     };
 
-    expect(search.state).toMatchObject(expectedState);
+    expect(answers.state).toMatchObject(expectedState);
   });
 
   it('executeUniversalQuery properly updates queryRules state', async () => {
-    const search = createMockedSearchHeadless({
+    const answers = createMockedSearchHeadless({
       universalSearch: mockSearchWithQueryRules
     }, initialState);
-    search.setUniversal();
-    await search.executeUniversalQuery();
+    answers.setUniversal();
+    await answers.executeUniversalQuery();
     const expectedState = {
       queryRules: {
         actions: actions,
       }
     };
 
-    expect(search.state).toMatchObject(expectedState);
+    expect(answers.state).toMatchObject(expectedState);
   });
 });

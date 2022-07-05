@@ -1,7 +1,7 @@
 import { Matcher, QuerySource, QueryTrigger } from '@yext/answers-core';
 import HttpManager from '../../src/http-manager';
 import StateManager from '../../src/models/state-manager';
-import AnswersHeadless from '../../src/answers-headless';
+import SearchHeadless from '../../src/search-headless';
 import { SelectableFilter } from '../../src/models/utils/selectableFilter';
 import { State } from '../../src/models/state';
 import { SearchTypeEnum } from '../../src/models/utils/searchType';
@@ -66,7 +66,7 @@ const mockedCore: any = {
   filterSearch: jest.fn(() => Promise.resolve({}))
 };
 
-const answers = new AnswersHeadless(mockedCore, mockedStateManager, new HttpManager());
+const answers = new SearchHeadless(mockedCore, mockedStateManager, new HttpManager());
 
 describe('setters work as expected', () => {
   beforeEach(() => {

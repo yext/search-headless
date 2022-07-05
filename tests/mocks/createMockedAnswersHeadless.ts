@@ -1,7 +1,7 @@
 import HttpManager from '../../src/http-manager';
 import { State } from '../../src/models/state';
 import ReduxStateManager from '../../src/redux-state-manager';
-import AnswersHeadless from '../../src/answers-headless';
+import SearchHeadless from '../../src/search-headless';
 import { createBaseStore, HeadlessEnhancedStore } from '../../src/store';
 import { DEFAULT_HEADLESS_ID } from '../../src/constants';
 import HeadlessReducerManager from '../../src/headless-reducer-manager';
@@ -20,11 +20,11 @@ export function createMockedAnswersHeadless(
   store?: HeadlessEnhancedStore,
   headlessReducerManager?: HeadlessReducerManager,
   httpManager?: HttpManager
-): AnswersHeadless {
+): SearchHeadless {
   const reduxStateManager = new ReduxStateManager(
     store || createBaseStore(), DEFAULT_HEADLESS_ID, headlessReducerManager || new HeadlessReducerManager());
   const headlessHttpManager = httpManager || new HttpManager();
-  const answers = new AnswersHeadless(
+  const answers = new SearchHeadless(
     mockedAnswersCore, reduxStateManager, headlessHttpManager, getHttpHeaders());
   answers.setState({
     ...answers.state,

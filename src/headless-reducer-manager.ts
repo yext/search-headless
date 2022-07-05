@@ -25,7 +25,7 @@ export default class HeadlessReducerManager {
   }
 
   getParentReducer(): Reducer<ParentState, ActionWithHeadlessId> {
-    // set-state should only update the state tree for the AnswersHeadless instance
+    // set-state should only update the state tree for the SearchHeadless instance
     // that dispatched it
     const coreReducer = combineReducers(this.headlessIdToReducer);
     return (state, action) => {

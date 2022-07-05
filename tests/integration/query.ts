@@ -5,7 +5,7 @@ import {
 } from '@yext/answers-core';
 import HttpManager from '../../src/http-manager';
 import ReduxStateManager from '../../src/redux-state-manager';
-import AnswersHeadless from '../../src/answers-headless';
+import SearchHeadless from '../../src/search-headless';
 import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
 import { createBaseStore } from '../../src/store';
 import { DEFAULT_HEADLESS_ID } from '../../src/constants';
@@ -164,5 +164,5 @@ function getAnswersHeadless(requestsTime: { [x: string]: number }) {
   const stateManager = new ReduxStateManager(
     createBaseStore(), DEFAULT_HEADLESS_ID, new HeadlessReducerManager());
   const httpManager = new HttpManager();
-  return new AnswersHeadless(mockedCore, stateManager, httpManager);
+  return new SearchHeadless(mockedCore, stateManager, httpManager);
 }

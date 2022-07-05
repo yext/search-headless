@@ -1,5 +1,5 @@
 /**
- * The headlessId automatically given to the first AnswersHeadless instance created.
+ * The headlessId automatically given to the first SearchHeadless instance created.
  *
  * @public
  */

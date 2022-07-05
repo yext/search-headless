@@ -1,6 +1,6 @@
 import isEqual from 'lodash/isEqual';
 
-import { Filter } from '@yext/answers-core';
+import { Filter } from '@yext/search-core';
 
 /**
  * Returns true if the two given filters are the same.

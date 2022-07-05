@@ -1,10 +1,10 @@
-import { AppliedQueryFilter, Matcher, Result, Source, VerticalResults, VerticalSearchRequest, VerticalSearchResponse } from '@yext/answers-core';
+import { AppliedQueryFilter, Matcher, Result, Source, VerticalResults, VerticalSearchRequest, VerticalSearchResponse } from '@yext/search-core';
 import HttpManager from '../../src/http-manager';
 import { AllResultsForVertical } from '../../src/models/slices/vertical';
 import { State } from '../../src/models/state';
 import { SearchTypeEnum } from '../../src/models/utils/searchType';
 import { getHttpHeaders } from '../../src/utils/client-sdk-utils';
-import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
+import { createMockedSearchHeadless } from '../mocks/createMockedSearchHeadless';
 import setTimeout from '../utils/setTimeout';
 
 const initialState: State = {
@@ -60,13 +60,13 @@ const allResultsForVertical: VerticalSearchResponse = {
 };
 
 it('vertical searches set allResultsForVertical and alternativeVerticals', async () => {
-  const answers = createMockedAnswersHeadless({
+  const search = createMockedSearchHeadless({
     verticalSearch: () => Promise.resolve({
       allResultsForVertical,
       alternativeVerticals,
     })
   }, initialState);
-  await answers.executeVerticalQuery();
+  await search.executeVerticalQuery();
   const expectedAllResultsForVertical: AllResultsForVertical = {
     facets: [],
     results: [],
@@ -76,7 +76,7 @@ it('vertical searches set allResultsForVertical and alternativeVerticals', async
     allResultsForVertical: expectedAllResultsForVertical,
     alternativeVerticals
   };
-  expect(answers.state.vertical.noResults).toEqual(expectedNoResultsState);
+  expect(search.state.vertical.noResults).toEqual(expectedNoResultsState);
 });
 
 it('vertical searches set appliedQueryFilters', async () => {
@@ -89,27 +89,27 @@ it('vertical searches set appliedQueryFilters', async () => {
       value: 42
     }
   }];
-  const answers = createMockedAnswersHeadless({
+  const search = createMockedSearchHeadless({
     verticalSearch: () => Promise.resolve({
       verticalResults: {
         appliedQueryFilters: mockAppliedQueryFilters
       }
     })
   }, initialState);
-  await answers.executeVerticalQuery();
-  expect(answers.state.vertical.appliedQueryFilters).toEqual(mockAppliedQueryFilters);
+  await search.executeVerticalQuery();
+  expect(search.state.vertical.appliedQueryFilters).toEqual(mockAppliedQueryFilters);
 });
 
 it('vertical searches set queryDurationMillis', async () => {
-  const answers = createMockedAnswersHeadless({
+  const search = createMockedSearchHeadless({
     verticalSearch: () => Promise.resolve({
       verticalResults: {
         queryDurationMillis: 42
       }
     })
   }, initialState);
-  await answers.executeVerticalQuery();
-  expect(answers.state.vertical.queryDurationMillis).toEqual(42);
+  await search.executeVerticalQuery();
+  expect(search.state.vertical.queryDurationMillis).toEqual(42);
 });
 
 it('vertical searches set results', async () => {
@@ -117,55 +117,55 @@ it('vertical searches set results', async () => {
     rawData: { test: 'hello' },
     source: Source.KnowledgeManager
   }];
-  const answers = createMockedAnswersHeadless({
+  const search = createMockedSearchHeadless({
     verticalSearch: () => Promise.resolve({
       verticalResults: {
         results: mockResults
       }
     })
   }, initialState);
-  await answers.executeVerticalQuery();
-  expect(answers.state.vertical.results).toEqual(mockResults);
+  await search.executeVerticalQuery();
+  expect(search.state.vertical.results).toEqual(mockResults);
 });
 
 it('vertical searches set results count', async () => {
-  const answers = createMockedAnswersHeadless({
+  const search = createMockedSearchHeadless({
     verticalSearch: () => Promise.resolve({
       verticalResults: {
         resultsCount: 3
       }
     })
   }, initialState);
-  await answers.executeVerticalQuery();
-  expect(answers.state.vertical.resultsCount).toEqual(3);
+  await search.executeVerticalQuery();
+  expect(search.state.vertical.resultsCount).toEqual(3);
 });
 
 it('vertical searches set the source', async () => {
-  const answers = createMockedAnswersHeadless({
+  const search = createMockedSearchHeadless({
     verticalSearch: () => Promise.resolve({
       verticalResults: {
         source: Source.KnowledgeManager
       }
     })
   }, initialState);
-  await answers.executeVerticalQuery();
-  expect(answers.state.vertical.source).toEqual(Source.KnowledgeManager);
+  await search.executeVerticalQuery();
+  expect(search.state.vertical.source).toEqual(Source.KnowledgeManager);
 });
 
 it('vertical searches send blank queries by default', async () => {
   const mockSearch = createMockSearch();
-  const answers = createMockedAnswersHeadless({
+  const search = createMockedSearchHeadless({
     verticalSearch: mockSearch
   });
-  answers.setVertical('vertical-key');
-  await answers.executeVerticalQuery();
+  search.setVertical('vertical-key');
+  await search.executeVerticalQuery();
   expect(mockSearch.mock.calls[0][0].query).toEqual('');
 });
 
-it('answers.setVerticalLimit sets the vertical limit when a number is passed to it', () => {
-  const answers = createMockedAnswersHeadless();
-  answers.setVerticalLimit(7);
-  expect(answers.state.vertical.limit).toEqual(7);
+it('search.setVerticalLimit sets the vertical limit when a number is passed to it', () => {
+  const search = createMockedSearchHeadless();
+  search.setVerticalLimit(7);
+  expect(search.state.vertical.limit).toEqual(7);
 });
 
 
@@ -173,24 +173,24 @@ it('handle a rejected promise from core', async () => {
   const mockSearch = createMockRejectedSearch();
   const mockCore = { verticalSearch: mockSearch };
   const httpManager = new HttpManager();
-  const answers = createMockedAnswersHeadless(mockCore, {}, undefined, undefined, httpManager);
-  answers.setVertical('vertical-key');
+  const search = createMockedSearchHeadless(mockCore, {}, undefined, undefined, httpManager);
+  search.setVertical('vertical-key');
   try {
-    await answers.executeVerticalQuery();
+    await search.executeVerticalQuery();
   } catch (e) {
     expect(e).toEqual('mock error message');
   }
-  expect(answers.state.searchStatus.isLoading).toEqual(false);
+  expect(search.state.searchStatus.isLoading).toEqual(false);
   expect(httpManager.getLatestResponseId('verticalQuery')).toEqual(1);
 });
 
 it('executeVerticalQuery passes the additional HTTP headers', async () => {
   const mockSearch = createMockSearch();
-  const answers = createMockedAnswersHeadless({
+  const search = createMockedSearchHeadless({
     verticalSearch: mockSearch
   });
-  answers.setVertical('vertical-key');
-  await answers.executeVerticalQuery();
+  search.setVertical('vertical-key');
+  await search.executeVerticalQuery();
   expect(mockSearch).toHaveBeenLastCalledWith(expect.objectContaining({
     additionalHttpHeaders: getHttpHeaders()
   }));

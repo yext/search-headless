@@ -1,7 +1,7 @@
-import { Matcher, QuerySource, QueryTrigger } from '@yext/answers-core';
+import { Matcher, QuerySource, QueryTrigger } from '@yext/search-core';
 import HttpManager from '../../src/http-manager';
 import StateManager from '../../src/models/state-manager';
-import AnswersHeadless from '../../src/answers-headless';
+import SearchHeadless from '../../src/search-headless';
 import { SelectableFilter } from '../../src/models/utils/selectableFilter';
 import { State } from '../../src/models/state';
 import { SearchTypeEnum } from '../../src/models/utils/searchType';
@@ -66,7 +66,7 @@ const mockedCore: any = {
   filterSearch: jest.fn(() => Promise.resolve({}))
 };
 
-const answers = new AnswersHeadless(mockedCore, mockedStateManager, new HttpManager());
+const search = new SearchHeadless(mockedCore, mockedStateManager, new HttpManager());
 
 describe('setters work as expected', () => {
   beforeEach(() => {
@@ -82,7 +82,7 @@ describe('setters work as expected', () => {
       displayName: 'someLabel'
     };
     const staticFilter = [filter];
-    answers.setStaticFilters(staticFilter);
+    search.setStaticFilters(staticFilter);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
@@ -106,7 +106,7 @@ describe('setters work as expected', () => {
         }]
       }
     ];
-    answers.setFacets(facets);
+    search.setFacets(facets);
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
 
@@ -116,7 +116,7 @@ describe('setters work as expected', () => {
   });
 
   it('resetFacets works as expected', () => {
-    answers.resetFacets();
+    search.resetFacets();
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
@@ -126,7 +126,7 @@ describe('setters work as expected', () => {
   });
 
   it('setSessionTrackingEnabled works as expected', () => {
-    answers.setSessionTrackingEnabled(true);
+    search.setSessionTrackingEnabled(true);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
@@ -137,7 +137,7 @@ describe('setters work as expected', () => {
   });
 
   it('setSessionId works as expected', () => {
-    answers.setSessionId('random-id-number');
+    search.setSessionId('random-id-number');
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
@@ -149,7 +149,7 @@ describe('setters work as expected', () => {
 
   it('setQuery works as expected', () => {
     const query = 'Hello';
-    answers.setQuery(query);
+    search.setQuery(query);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
@@ -160,7 +160,7 @@ describe('setters work as expected', () => {
   });
 
   it('setQueryTrigger works as expected', () => {
-    answers.setQueryTrigger(QueryTrigger.Initialize);
+    search.setQueryTrigger(QueryTrigger.Initialize);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
@@ -171,7 +171,7 @@ describe('setters work as expected', () => {
   });
 
   it('setQuerySource works as expected', () => {
-    answers.setQuerySource(QuerySource.Overlay);
+    search.setQuerySource(QuerySource.Overlay);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
@@ -183,7 +183,7 @@ describe('setters work as expected', () => {
 
   it('setVertical works as expected', () => {
     const verticalKey = 'key';
-    answers.setVertical(verticalKey);
+    search.setVertical(verticalKey);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
@@ -191,7 +191,7 @@ describe('setters work as expected', () => {
     expect(dispatchEventCalls.length).toBe(3);
     expect(dispatchEventCalls[0][0]).toBe('set-state');
     expect(dispatchEventCalls[0][1]).toStrictEqual({
-      ...answers.state,
+      ...search.state,
       directAnswer: initialDirectAnswerState,
       filters: initialFiltersState,
       queryRules: initialQueryRulesState,
@@ -206,7 +206,7 @@ describe('setters work as expected', () => {
   });
 
   it('setUniversal works as expected', () => {
-    answers.setUniversal();
+    search.setUniversal();
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
@@ -214,7 +214,7 @@ describe('setters work as expected', () => {
     expect(dispatchEventCalls.length).toBe(3);
     expect(dispatchEventCalls[0][0]).toBe('set-state');
     expect(dispatchEventCalls[0][1]).toStrictEqual({
-      ...answers.state,
+      ...search.state,
       directAnswer: initialDirectAnswerState,
       filters: initialFiltersState,
       queryRules: initialQueryRulesState,
@@ -230,7 +230,7 @@ describe('setters work as expected', () => {
 
   it('setState works as expected', () => {
     const state: any = { query: {} };
-    answers.setState(state);
+    search.setState(state);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
@@ -242,7 +242,7 @@ describe('setters work as expected', () => {
 
   it('setVerticalLimit works as expected', () => {
     const limit = 12;
-    answers.setVerticalLimit(limit);
+    search.setVerticalLimit(limit);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
@@ -257,7 +257,7 @@ describe('setters work as expected', () => {
       people: 10,
       faqs: 5
     };
-    answers.setUniversalLimit(limit);
+    search.setUniversalLimit(limit);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
@@ -269,7 +269,7 @@ describe('setters work as expected', () => {
 
   it('setOffset works as expected', () => {
     const offset = 12;
-    answers.setOffset(offset);
+    search.setOffset(offset);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
@@ -293,7 +293,7 @@ describe('filter functions work as expected', () => {
       displayName: 'someLabel',
       selected: true
     };
-    answers.setFilterOption(filter);
+    search.setFilterOption(filter);
     const dispatchEventCalls =
     mockedStateManager.dispatchEvent.mock.calls;
     expect(dispatchEventCalls.length).toBe(1);
@@ -309,7 +309,7 @@ describe('auto-complete works as expected', () => {
   });
 
   it('vertical auto-complete works', async () => {
-    await answers.executeVerticalAutocomplete();
+    await search.executeVerticalAutocomplete();
 
     const coreCalls = mockedCore.verticalAutocomplete.mock.calls;
     expect(coreCalls.length).toBe(1);
@@ -318,7 +318,7 @@ describe('auto-complete works as expected', () => {
   });
 
   it('universal auto-complete works', async () => {
-    await answers.executeUniversalAutocomplete();
+    await search.executeUniversalAutocomplete();
 
     const coreCalls = mockedCore.universalAutocomplete.mock.calls;
     expect(coreCalls.length).toBe(1);
@@ -332,8 +332,8 @@ describe('search works as expected', () => {
   });
 
   it('universal search works', async () => {
-    answers.state.meta.searchType = SearchTypeEnum.Universal;
-    await answers.executeUniversalQuery();
+    search.state.meta.searchType = SearchTypeEnum.Universal;
+    await search.executeUniversalQuery();
 
     const coreCalls = mockedCore.universalSearch.mock.calls;
     expect(coreCalls.length).toBe(1);
@@ -348,8 +348,8 @@ describe('search works as expected', () => {
   });
 
   it('vertical search works', async () => {
-    answers.state.meta.searchType = SearchTypeEnum.Vertical;
-    await answers.executeVerticalQuery();
+    search.state.meta.searchType = SearchTypeEnum.Vertical;
+    await search.executeVerticalQuery();
     const { fieldId, matcher, value } = mockedState.filters.static[0];
     const coreCalls = mockedCore.verticalSearch.mock.calls;
     const expectedSearchParams = {
@@ -377,8 +377,8 @@ describe('search works as expected', () => {
         fetchEntities: false
       }
     ];
-    answers.state.meta.searchType = SearchTypeEnum.Vertical;
-    await answers.executeFilterSearch('someInput', false, fields);
+    search.state.meta.searchType = SearchTypeEnum.Vertical;
+    await search.executeFilterSearch('someInput', false, fields);
 
     expect(mockedCore.filterSearch).toHaveBeenCalledTimes(1);
     expect(mockedCore.filterSearch).toHaveBeenCalledWith({

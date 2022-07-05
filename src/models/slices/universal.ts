@@ -1,4 +1,4 @@
-import { UniversalLimit, VerticalResults } from '@yext/answers-core';
+import { UniversalLimit, VerticalResults } from '@yext/search-core';
 
 /**
  * Maintains the data for the latest universal search.

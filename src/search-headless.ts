@@ -17,14 +17,14 @@ import {
   UniversalLimit,
   VerticalSearchResponse,
   AdditionalHttpHeaders
-} from '@yext/answers-core';
+} from '@yext/search-core';
 
 import StateListener from './models/state-listener';
 import { State } from './models/state';
 import StateManager from './models/state-manager';
 import { Unsubscribe } from '@reduxjs/toolkit';
 import HttpManager from './http-manager';
-import * as answersUtilities from './answers-utilities';
+import * as searchUtilities from './search-utilities';
 import { SelectableFilter } from './models/utils/selectableFilter';
 import { transformFiltersToCoreFormat } from './utils/transform-filters';
 import { SearchTypeEnum } from './models/utils/searchType';
@@ -40,11 +40,11 @@ import { initialState as initialSearchStatusState } from './slices/searchstatus'
  *
  * @public
  */
-export default class AnswersHeadless {
+export default class SearchHeadless {
   /**
-   * Common utility functions for manipulating Answers-related data.
+   * Common utility functions for manipulating Search-related data.
    */
-  public readonly utilities = answersUtilities;
+  public readonly utilities = searchUtilities;
 
   constructor(
     private core: AnswersCore,
@@ -262,7 +262,7 @@ export default class AnswersHeadless {
   }
 
   /**
-   * Gets the current state of the AnswersHeadless instance.
+   * Gets the current state of the SearchHeadless instance.
    */
   get state(): State {
     return this.stateManager.getState();
@@ -279,10 +279,10 @@ export default class AnswersHeadless {
   }
 
   /**
-   * Submits a question to the Answers API with the specified request data.
+   * Submits a question to the Search API with the specified request data.
    *
    * @param request - The data for the network request
-   * @returns A Promise of a {@link QuestionSubmissionResponse} from the Answers API
+   * @returns A Promise of a {@link QuestionSubmissionResponse} from the Search API
    */
   async submitQuestion(
     request: Omit<QuestionSubmissionRequest, 'additionalHttpHeaders'>
@@ -294,10 +294,10 @@ export default class AnswersHeadless {
   }
 
   /**
-   * Performs an Answers search across all verticals with relevant parts of the
+   * Performs a Search across all verticals with relevant parts of the
    * state used as input to the search. Updates the state with the response data.
    *
-   * @returns A Promise of a {@link UniversalSearchResponse} from the Answers API
+   * @returns A Promise of a {@link UniversalSearchResponse} from the Search API
    */
   async executeUniversalQuery(): Promise<UniversalSearchResponse | undefined> {
     if (this.state.meta.searchType !== SearchTypeEnum.Universal) {
@@ -361,7 +361,7 @@ export default class AnswersHeadless {
    * Performs an autocomplete request across all verticals using the query input
    * stored in state.
    *
-   * @returns A Promise of an {@link AutocompleteResponse} from the Answers API
+   * @returns A Promise of an {@link AutocompleteResponse} from the Search API
    */
   async executeUniversalAutocomplete(): Promise<AutocompleteResponse> {
     const query = this.state.query.input || '';
@@ -372,10 +372,10 @@ export default class AnswersHeadless {
   }
 
   /**
-   * Perform an Answers search for a single vertical with relevant parts of the
+   * Perform a Search for a single vertical with relevant parts of the
    * state used as input to the search. Updates the state with the response data.
    *
-   * @returns A Promise of a {@link VerticalSearchResponse} from the Answers API or
+   * @returns A Promise of a {@link VerticalSearchResponse} from the Search API or
    *          of undefined if there is no verticalKey defined in state
    */
   async executeVerticalQuery(): Promise<VerticalSearchResponse | undefined> {
@@ -463,7 +463,7 @@ export default class AnswersHeadless {
    * Performs an autocomplete request for a single vertical using the query input
    * and vertical key stored in state.
    *
-   * @returns A Promise of an {@link AutocompleteResponse} from the Answers API or
+   * @returns A Promise of an {@link AutocompleteResponse} from the Search API or
    *          of undefined if there is no verticalKey defined in state
    */
   async executeVerticalAutocomplete(): Promise<AutocompleteResponse | undefined> {
@@ -493,7 +493,7 @@ export default class AnswersHeadless {
    * @param query - The query for which to search
    * @param sectioned - Whether or not the results should be sectioned by field
    * @param fields - The entity fields to search
-   * @returns A Promise of a {@link FilterSearchResponse} from the Answers API or
+   * @returns A Promise of a {@link FilterSearchResponse} from the Search API or
    *          of undefined if there is no verticalKey defined in state
    */
   async executeFilterSearch(

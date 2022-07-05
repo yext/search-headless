@@ -1,5 +1,5 @@
-import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
-import { FeaturedSnippetDirectAnswer, DirectAnswerType, Source } from '@yext/answers-core';
+import { createMockedSearchHeadless } from '../mocks/createMockedSearchHeadless';
+import { FeaturedSnippetDirectAnswer, DirectAnswerType, Source } from '@yext/search-core';
 import { State } from '../../src/models/state';
 import { SearchTypeEnum } from '../../src/models/utils/searchType';
 
@@ -38,13 +38,13 @@ const featuredSnippedDirectAnswer: FeaturedSnippetDirectAnswer = {
   }
 };
 
-describe('AnswersHeadless spellcheck interactions properly update state', () => {
+describe('SearchHeadless spellcheck interactions properly update state', () => {
   it('executeVerticalQuery properly updates direct answer state', async () => {
-    const answers = createMockedAnswersHeadless({
+    const search = createMockedSearchHeadless({
       verticalSearch: () => Promise.resolve({ directAnswer: featuredSnippedDirectAnswer })
     }, initialState);
-    answers.setVertical('123');
-    await answers.executeVerticalQuery();
+    search.setVertical('123');
+    await search.executeVerticalQuery();
     const expectedState = {
       ...initialState,
       directAnswer: {
@@ -55,15 +55,15 @@ describe('AnswersHeadless spellcheck interactions properly update state', () => 
       }
     };
 
-    expect(answers.state).toMatchObject(expectedState);
+    expect(search.state).toMatchObject(expectedState);
   });
 
   it('executeUniversalQuery properly updates direct answer state', async () => {
-    const answers = createMockedAnswersHeadless({
+    const search = createMockedSearchHeadless({
       universalSearch: () => Promise.resolve({ directAnswer: featuredSnippedDirectAnswer })
     }, initialState);
-    answers.setUniversal();
-    await answers.executeUniversalQuery();
+    search.setUniversal();
+    await search.executeUniversalQuery();
     const expectedState = {
       ...initialState,
       directAnswer: {
@@ -71,7 +71,7 @@ describe('AnswersHeadless spellcheck interactions properly update state', () => 
       }
     };
 
-    expect(answers.state).toMatchObject(expectedState);
+    expect(search.state).toMatchObject(expectedState);
   });
 
   it('An undefined direct answer results in an undefined direct answer state', async () => {
@@ -79,11 +79,11 @@ describe('AnswersHeadless spellcheck interactions properly update state', () => 
       ...initialState,
       directAnswer: { result: featuredSnippedDirectAnswer }
     };
-    const answers = createMockedAnswersHeadless({
+    const search = createMockedSearchHeadless({
       universalSearch: () => Promise.resolve({ directAnswer: undefined })
     }, initialStateWithDA);
-    answers.setUniversal();
-    await answers.executeUniversalQuery();
+    search.setUniversal();
+    await search.executeUniversalQuery();
     const expectedState = {
       ...initialState,
       directAnswer: {
@@ -91,6 +91,6 @@ describe('AnswersHeadless spellcheck interactions properly update state', () => 
       }
     };
 
-    expect(answers.state).toMatchObject(expectedState);
+    expect(search.state).toMatchObject(expectedState);
   });
 });

@@ -1,21 +1,21 @@
-import { Direction, SortType, VerticalSearchRequest } from '@yext/answers-core';
-import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
+import { Direction, SortType, VerticalSearchRequest } from '@yext/search-core';
+import { createMockedSearchHeadless } from '../mocks/createMockedSearchHeadless';
 
 it('executeVerticalQuery properly updates spellcheck state', async () => {
   const mockSearch = jest.fn((_request: VerticalSearchRequest) => Promise.resolve({}));
-  const answers = createMockedAnswersHeadless({
+  const search = createMockedSearchHeadless({
     verticalSearch: mockSearch
   });
-  answers.setQuery('lol');
-  answers.setVertical('vertical-key');
-  answers.setSortBys([
+  search.setQuery('lol');
+  search.setVertical('vertical-key');
+  search.setSortBys([
     {
       type: SortType.Field,
       field: 'c_field',
       direction: Direction.Ascending
     }
   ]);
-  await answers.executeVerticalQuery();
+  await search.executeVerticalQuery();
   expect(mockSearch.mock.calls[0][0].sortBys).toMatchObject([
     {
       direction: 'ASC',

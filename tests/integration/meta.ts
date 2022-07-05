@@ -1,33 +1,33 @@
-import { UniversalSearchRequest, VerticalSearchRequest } from '@yext/answers-core';
-import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
+import { UniversalSearchRequest, VerticalSearchRequest } from '@yext/search-core';
+import { createMockedSearchHeadless } from '../mocks/createMockedSearchHeadless';
 
 it('by default no meta attributes are sent', async () => {
   const mockSearch = jest.fn((_request: VerticalSearchRequest) => Promise.resolve({}));
-  const answers = createMockedAnswersHeadless({
+  const search = createMockedSearchHeadless({
     verticalSearch: mockSearch
   });
-  answers.setQuery('lol');
-  answers.setVertical('vertical-key');
-  await answers.executeVerticalQuery();
+  search.setQuery('lol');
+  search.setVertical('vertical-key');
+  await search.executeVerticalQuery();
   expect(mockSearch.mock.calls[0][0].context).toEqual(undefined);
   expect(mockSearch.mock.calls[0][0].referrerPageUrl).toEqual(undefined);
 });
 
 it('vertical searches send meta data', async () => {
   const mockSearch = jest.fn((_request: VerticalSearchRequest) => Promise.resolve({}));
-  const answers = createMockedAnswersHeadless({
+  const search = createMockedSearchHeadless({
     verticalSearch: mockSearch
   });
-  answers.setQuery('lol');
-  answers.setVertical('vertical-key');
-  answers.setContext({
+  search.setQuery('lol');
+  search.setVertical('vertical-key');
+  search.setContext({
     monke: 'cdawg',
     iron: {
       mouse: 'tsun'
     }
   });
-  answers.setReferrerPageUrl('monkey');
-  await answers.executeVerticalQuery();
+  search.setReferrerPageUrl('monkey');
+  await search.executeVerticalQuery();
   expect(mockSearch.mock.calls[0][0].context).toEqual({
     monke: 'cdawg',
     iron: {
@@ -39,19 +39,19 @@ it('vertical searches send meta data', async () => {
 
 it('universal searches send context', async () => {
   const mockSearch = jest.fn((_request: UniversalSearchRequest) => Promise.resolve({}));
-  const answers = createMockedAnswersHeadless({
+  const search = createMockedSearchHeadless({
     universalSearch: mockSearch
   });
-  answers.setQuery('lol');
-  answers.setUniversal();
-  answers.setContext({
+  search.setQuery('lol');
+  search.setUniversal();
+  search.setContext({
     monke: 'cdawg',
     iron: {
       mouse: 'tsun'
     }
   });
-  answers.setReferrerPageUrl('monkey');
-  await answers.executeUniversalQuery();
+  search.setReferrerPageUrl('monkey');
+  await search.executeUniversalQuery();
   expect(mockSearch.mock.calls[0][0].context).toEqual({
     monke: 'cdawg',
     iron: {
@@ -65,24 +65,24 @@ it('universal searches update the uuid', async () => {
   const mockSearch = jest.fn((_request: UniversalSearchRequest) => Promise.resolve({
     uuid: 123
   }));
-  const answers = createMockedAnswersHeadless({
+  const search = createMockedSearchHeadless({
     universalSearch: mockSearch
   });
-  answers.setUniversal();
-  answers.setQuery('lol');
-  await answers.executeUniversalQuery();
-  expect(answers.state.meta.uuid).toEqual(123);
+  search.setUniversal();
+  search.setQuery('lol');
+  await search.executeUniversalQuery();
+  expect(search.state.meta.uuid).toEqual(123);
 });
 
 it('vertical searches update the uuid', async () => {
   const mockSearch = jest.fn((_request: UniversalSearchRequest) => Promise.resolve({
     uuid: 456
   }));
-  const answers = createMockedAnswersHeadless({
+  const search = createMockedSearchHeadless({
     verticalSearch: mockSearch
   });
-  answers.setQuery('lol');
-  answers.setVertical('test');
-  await answers.executeVerticalQuery();
-  expect(answers.state.meta.uuid).toEqual(456);
+  search.setQuery('lol');
+  search.setVertical('test');
+  await search.executeVerticalQuery();
+  expect(search.state.meta.uuid).toEqual(456);
 });

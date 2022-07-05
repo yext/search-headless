@@ -1,14 +1,14 @@
-import { Context } from '@yext/answers-core';
+import { Context } from '@yext/search-core';
 import { SearchType } from '../utils/searchType';
 
 /**
- * Maintains the metadata for Answers Headless.
+ * Maintains the metadata for Search Headless.
  *
  * @public
  */
 export interface MetaState {
   /**
-   * A JSON object used for passing data to and triggering Answers
+   * A JSON object used for passing data to and triggering Search
    * {@link https://hitchhikers.yext.com/tracks/answers-advanced/ans302-query-rules/ | Query Rules}.
    */
   context?: Context,
@@ -22,7 +22,7 @@ export interface MetaState {
    */
   uuid?: string,
   /**
-   * Indicates the type of search that Answers Headless is managing.
+   * Indicates the type of search that Search Headless is managing.
   */
   searchType: SearchType
 }

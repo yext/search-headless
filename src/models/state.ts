@@ -12,19 +12,19 @@ import { QueryRulesState } from './slices/queryrules';
 
 /**
  * The overall shape of the redux state tree, with each key value pair of
- * headlessId to {@link State} representing a single AnswersHeadless instance.
+ * headlessId to {@link State} representing a single SearchHeadless instance.
  *
  * @public
  */
 export interface ParentState {
   /**
-   * A mapping of the ID of an AnswersHeadless instance to its {@link State}.
+   * A mapping of the ID of an SearchHeadless instance to its {@link State}.
    */
   [headlessId: string]: State
 }
 
 /**
- * The state representing an AnswersHeadless instance.
+ * The state representing an SearchHeadless instance.
  *
  * @public
  */

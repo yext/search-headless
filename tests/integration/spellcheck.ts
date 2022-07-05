@@ -1,4 +1,4 @@
-import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
+import { createMockedSearchHeadless } from '../mocks/createMockedSearchHeadless';
 
 const initialState = {
   query: {
@@ -25,13 +25,13 @@ function mockSearchWithSpellcheck() {
   });
 }
 
-describe('AnswersHeadless spellcheck interactions properly update state', () => {
+describe('SearchHeadless spellcheck interactions properly update state', () => {
   it('executeVerticalQuery properly updates spellcheck state', async () => {
-    const answers = createMockedAnswersHeadless({
+    const search = createMockedSearchHeadless({
       verticalSearch: mockSearchWithSpellcheck
     }, initialState);
-    answers.setVertical('123');
-    await answers.executeVerticalQuery();
+    search.setVertical('123');
+    await search.executeVerticalQuery();
     const expectedState = {
       vertical: {
         ...initialState.vertical
@@ -42,15 +42,15 @@ describe('AnswersHeadless spellcheck interactions properly update state', () => 
       }
     };
 
-    expect(answers.state).toMatchObject(expectedState);
+    expect(search.state).toMatchObject(expectedState);
   });
 
   it('executeUniversalQuery properly updates spellcheck state', async () => {
-    const answers = createMockedAnswersHeadless({
+    const search = createMockedSearchHeadless({
       universalSearch: mockSearchWithSpellcheck
     }, initialState);
-    answers.setUniversal();
-    await answers.executeUniversalQuery();
+    search.setUniversal();
+    await search.executeUniversalQuery();
     const expectedState = {
       spellCheck: {
         ...initialState.spellCheck,
@@ -58,18 +58,18 @@ describe('AnswersHeadless spellcheck interactions properly update state', () => 
       }
     };
 
-    expect(answers.state).toMatchObject(expectedState);
+    expect(search.state).toMatchObject(expectedState);
   });
 
   it('setSpellCheckEnabled properly updates state', async () => {
-    const answers = createMockedAnswersHeadless({}, initialState);
-    await answers.setSpellCheckEnabled(false);
+    const search = createMockedSearchHeadless({}, initialState);
+    await search.setSpellCheckEnabled(false);
     const expectedState = {
       spellCheck: {
         enabled: false
       }
     };
 
-    expect(answers.state).toMatchObject(expectedState);
+    expect(search.state).toMatchObject(expectedState);
   });
 });

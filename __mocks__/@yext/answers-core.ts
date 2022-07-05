@@ -1,4 +1,4 @@
-export * from '@yext/answers-core';
+export * from '@yext/search-core';
 
 export function provideCore(): unknown {
   return {

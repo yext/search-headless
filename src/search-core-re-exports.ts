@@ -69,4 +69,4 @@ export {
   VerticalSearchRequest,
   VerticalSearchResponse,
   Visitor
-} from '@yext/answers-core';
+} from '@yext/search-core';

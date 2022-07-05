@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
-import { QuerySource, QueryTrigger, SearchIntent } from '@yext/answers-core';
+import { QuerySource, QueryTrigger, SearchIntent } from '@yext/search-core';
 import { QueryState } from '../models/slices/query';
 
 const initialState: QueryState = {};

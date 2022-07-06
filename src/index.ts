@@ -122,7 +122,11 @@ function linkSessionTracking(firstHeadless: SearchHeadless, secondHeadless: Sear
 
 export { SearchHeadless };
 
-/** @deprecated answersUtilities has been deprecated and renamed to searchUtilities */
+/** 
+ * @public 
+ * 
+ * @deprecated answersUtilities has been deprecated and renamed to searchUtilities 
+ */
 export const answersUtilities = searchUtilities;
 
 /**
@@ -138,5 +142,9 @@ export const answersUtilities = searchUtilities;
  */
 export const provideAnswersHeadless = provideSearchHeadless;
 
-/** @deprecated AnswersHeadless has been deprecated and renamed to SearchHeadless */
+/** 
+ * @public
+ * 
+ * @deprecated AnswersHeadless has been deprecated and renamed to SearchHeadless 
+ */
 export const AnswersHeadless = SearchHeadless;

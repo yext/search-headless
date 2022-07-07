@@ -7,10 +7,10 @@
   "main": "./dist/commonjs/src/index.js",
   "module": "./dist/esm/src/index.js",
   "keywords": [
-    "Search",
-    "Yext",
-    "Redux",
-    "State Management"
+    "search",
+    "yext",
+    "redux",
+    "state management"
   ], 
   "files": [
     "dist",

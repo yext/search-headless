@@ -1,7 +1,7 @@
 {
   "name": "@yext/answers-headless",
   "version": "1.2.0",
-  "description": "A library for powering UI components for Yext Answers integrations",
+  "description": "A library for powering UI components for Yext Search integrations",
   "author": "slapshot@yext.com",
   "license": "ISC",
   "main": "./dist/commonjs/src/index.js",

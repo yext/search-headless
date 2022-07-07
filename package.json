@@ -7,13 +7,10 @@
   "main": "./dist/commonjs/src/index.js",
   "module": "./dist/esm/src/index.js",
   "keywords": [
-    "search",
-    "nlp",
-    "ai",
-    "answers",
-    "yext",
-    "react",
-    "components"
+    "Search",
+    "Yext",
+    "Redux",
+    "State Management"
   ], 
   "files": [
     "dist",

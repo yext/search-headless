@@ -1,11 +1,17 @@
 {
   "name": "@yext/answers-headless",
   "version": "1.2.0",
-  "description": "",
+  "description": "A library for powering UI components for Yext Search integrations",
   "author": "slapshot@yext.com",
   "license": "BSD-3-Clause",
   "main": "./dist/commonjs/src/index.js",
   "module": "./dist/esm/src/index.js",
+  "keywords": [
+    "search",
+    "yext",
+    "redux",
+    "state management"
+  ], 
   "files": [
     "dist",
     "lib",

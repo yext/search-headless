@@ -15,5 +15,5 @@ executeVerticalAutocomplete(): Promise<AutocompleteResponse | undefined>;
 
 Promise&lt;[AutocompleteResponse](./search-headless.autocompleteresponse.md) \| undefined&gt;
 
-A Promise of an [AutocompleteResponse](./search-headless.autocompleteresponse.md) from the Answers API or of undefined if there is no verticalKey defined in state
+A Promise of an [AutocompleteResponse](./search-headless.autocompleteresponse.md) from the Search API or of undefined if there is no verticalKey defined in state
 

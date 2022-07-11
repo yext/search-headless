@@ -4,7 +4,7 @@
 
 ## SearchHeadless class
 
-Provides the functionality for interacting with an Answers Search experience.
+Provides the functionality for interacting with an Search experience.
 
 <b>Signature:</b>
 
@@ -23,7 +23,7 @@ export default class SearchHeadless
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [state](./search-headless.searchheadless.state.md) |  | [State](./search-headless.state.md) | Gets the current state of the SearchHeadless instance. |
-|  [utilities](./search-headless.searchheadless.utilities.md) |  | typeof answersUtilities | Common utility functions for manipulating Answers-related data. |
+|  [utilities](./search-headless.searchheadless.utilities.md) |  | typeof answersUtilities | Common utility functions for manipulating Search-related data. |
 
 ## Methods
 
@@ -32,9 +32,9 @@ export default class SearchHeadless
 |  [addListener(listener)](./search-headless.searchheadless.addlistener.md) |  | Adds a listener for a specific state value of type T. |
 |  [executeFilterSearch(query, sectioned, fields)](./search-headless.searchheadless.executefiltersearch.md) |  | Performs a filtersearch request against specified fields within a single vertical using the vertical key stored in state. |
 |  [executeUniversalAutocomplete()](./search-headless.searchheadless.executeuniversalautocomplete.md) |  | Performs an autocomplete request across all verticals using the query input stored in state. |
-|  [executeUniversalQuery()](./search-headless.searchheadless.executeuniversalquery.md) |  | Performs an Answers search across all verticals with relevant parts of the state used as input to the search. Updates the state with the response data. |
+|  [executeUniversalQuery()](./search-headless.searchheadless.executeuniversalquery.md) |  | Performs a Search across all verticals with relevant parts of the state used as input to the search. Updates the state with the response data. |
 |  [executeVerticalAutocomplete()](./search-headless.searchheadless.executeverticalautocomplete.md) |  | Performs an autocomplete request for a single vertical using the query input and vertical key stored in state. |
-|  [executeVerticalQuery()](./search-headless.searchheadless.executeverticalquery.md) |  | Perform an Answers search for a single vertical with relevant parts of the state used as input to the search. Updates the state with the response data. |
+|  [executeVerticalQuery()](./search-headless.searchheadless.executeverticalquery.md) |  | Perform a Search for a single vertical with relevant parts of the state used as input to the search. Updates the state with the response data. |
 |  [resetFacets()](./search-headless.searchheadless.resetfacets.md) |  | Unselects all [facets](./search-headless.filtersstate.facets.md)<!-- -->. |
 |  [setAlternativeVerticals(alternativeVerticals)](./search-headless.searchheadless.setalternativeverticals.md) |  | Sets the alternativeVerticals for [VerticalSearchState.noResults](./search-headless.verticalsearchstate.noresults.md) to the specified verticals. |
 |  [setContext(context)](./search-headless.searchheadless.setcontext.md) |  | Sets [MetaState.context](./search-headless.metastate.context.md) to the specified context. |
@@ -58,5 +58,5 @@ export default class SearchHeadless
 |  [setUserLocation(latLong)](./search-headless.searchheadless.setuserlocation.md) |  | Sets [LocationState.userLocation](./search-headless.locationstate.userlocation.md) to the specified latitude and longitude. |
 |  [setVertical(verticalKey)](./search-headless.searchheadless.setvertical.md) |  | Sets up Headless to manage the vertical indicated by the verticalKey. |
 |  [setVerticalLimit(limit)](./search-headless.searchheadless.setverticallimit.md) |  | Sets [VerticalSearchState.limit](./search-headless.verticalsearchstate.limit.md) to the specified limit. |
-|  [submitQuestion(request)](./search-headless.searchheadless.submitquestion.md) |  | Submits a question to the Answers API with the specified request data. |
+|  [submitQuestion(request)](./search-headless.searchheadless.submitquestion.md) |  | Submits a question to the Search API with the specified request data. |
 

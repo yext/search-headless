@@ -4,7 +4,7 @@
 
 ## SearchHeadless.executeUniversalQuery() method
 
-Performs an Answers search across all verticals with relevant parts of the state used as input to the search. Updates the state with the response data.
+Performs a Search across all verticals with relevant parts of the state used as input to the search. Updates the state with the response data.
 
 <b>Signature:</b>
 
@@ -15,5 +15,5 @@ executeUniversalQuery(): Promise<UniversalSearchResponse | undefined>;
 
 Promise&lt;[UniversalSearchResponse](./search-headless.universalsearchresponse.md) \| undefined&gt;
 
-A Promise of a [UniversalSearchResponse](./search-headless.universalsearchresponse.md) from the Answers API
+A Promise of a [UniversalSearchResponse](./search-headless.universalsearchresponse.md) from the Search API
 

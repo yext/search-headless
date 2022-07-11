@@ -4,7 +4,7 @@
 
 ## SearchHeadless.submitQuestion() method
 
-Submits a question to the Answers API with the specified request data.
+Submits a question to the Search API with the specified request data.
 
 <b>Signature:</b>
 
@@ -22,5 +22,5 @@ submitQuestion(request: Omit<QuestionSubmissionRequest, 'additionalHttpHeaders'>
 
 Promise&lt;[QuestionSubmissionResponse](./search-headless.questionsubmissionresponse.md)<!-- -->&gt;
 
-A Promise of a [QuestionSubmissionResponse](./search-headless.questionsubmissionresponse.md) from the Answers API
+A Promise of a [QuestionSubmissionResponse](./search-headless.questionsubmissionresponse.md) from the Search API
 

@@ -10,7 +10,7 @@
 |  --- | --- |
 |  [AnswersCore](./search-headless.answerscore.md) | Provides methods for executing searches, submitting questions, and performing autocompletes. |
 |  [AnswersError](./search-headless.answerserror.md) | Represents an error |
-|  [SearchHeadless](./search-headless.searchheadless.md) | Provides the functionality for interacting with an Answers Search experience. |
+|  [SearchHeadless](./search-headless.searchheadless.md) | Provides the functionality for interacting with an Search experience. |
 
 ## Enumerations
 

@@ -24,5 +24,5 @@ executeFilterSearch(query: string, sectioned: boolean, fields: SearchParameterFi
 
 Promise&lt;[FilterSearchResponse](./search-headless.filtersearchresponse.md) \| undefined&gt;
 
-A Promise of a [FilterSearchResponse](./search-headless.filtersearchresponse.md) from the Answers API or of undefined if there is no verticalKey defined in state
+A Promise of a [FilterSearchResponse](./search-headless.filtersearchresponse.md) from the Search API or of undefined if there is no verticalKey defined in state
 

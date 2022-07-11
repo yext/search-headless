@@ -15,5 +15,5 @@ executeUniversalAutocomplete(): Promise<AutocompleteResponse>;
 
 Promise&lt;[AutocompleteResponse](./search-headless.autocompleteresponse.md)<!-- -->&gt;
 
-A Promise of an [AutocompleteResponse](./search-headless.autocompleteresponse.md) from the Answers API
+A Promise of an [AutocompleteResponse](./search-headless.autocompleteresponse.md) from the Search API
 

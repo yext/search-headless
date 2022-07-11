@@ -4,7 +4,7 @@
 
 ## SearchHeadless.utilities property
 
-Common utility functions for manipulating Answers-related data.
+Common utility functions for manipulating Search-related data.
 
 <b>Signature:</b>
 

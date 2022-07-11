@@ -4,7 +4,7 @@
 
 ## QueryState.querySource property
 
-The source of the query (from a standard Answers integration, an Answers overlay, or from visual autocomplete).
+The source of the query (from a standard Search integration, an Search overlay, or from visual autocomplete).
 
 <b>Signature:</b>
 

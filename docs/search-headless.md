@@ -80,7 +80,7 @@
 |  [LocationFilterDetails](./search-headless.locationfilterdetails.md) | Additional details relevant to the filter with "PLACE" for its [AppliedQueryFilterType](./search-headless.appliedqueryfiltertype.md)<!-- -->. |
 |  [LocationState](./search-headless.locationstate.md) | Maintains the user's location, if given, or the inferred location, that is used to bias search results. |
 |  [LowerNumberRangeLimit](./search-headless.lowernumberrangelimit.md) | The start limit of [NumberRangeValue](./search-headless.numberrangevalue.md)<!-- -->. |
-|  [MetaState](./search-headless.metastate.md) | Maintains the metadata for Answers Headless. |
+|  [MetaState](./search-headless.metastate.md) | Maintains the metadata for Search Headless. |
 |  [NearFilterValue](./search-headless.nearfiltervalue.md) | A filter value for a filter with a $near [Matcher](./search-headless.matcher.md)<!-- -->. |
 |  [NumberRangeValue](./search-headless.numberrangevalue.md) | A filter value for a filter with a $between [Matcher](./search-headless.matcher.md)<!-- -->. |
 |  [ParentState](./search-headless.parentstate.md) | The overall shape of the redux state tree, with each key value pair of headlessId to [State](./search-headless.state.md) representing a single SearchHeadless instance. |

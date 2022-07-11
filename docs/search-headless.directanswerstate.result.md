@@ -4,7 +4,7 @@
 
 ## DirectAnswerState.result property
 
-The data for the direct answer. The type of the data is determined by the Answers API based on whether the answer was found within a document or was a field value in the knowledge graph.
+The data for the direct answer. The type of the data is determined by the Search API based on whether the answer was found within a document or was a field value in the knowledge graph.
 
 <b>Signature:</b>
 

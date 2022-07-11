@@ -8,11 +8,11 @@ import HeadlessReducerManager from '../../src/headless-reducer-manager';
 import { getHttpHeaders } from '../../src/utils/client-sdk-utils';
 
 /**
- * Creates an Answers Headless instance with a mocked Answers Core.
+ * Creates an Search Headless instance with a mocked Search Core.
  *
- * @param mockedAnswersCore - Answers Core overrides
- * @param initialState - The initial state of Answers Headless
- * @returns The new Answers Headless instance
+ * @param mockedAnswersCore - Search Core overrides
+ * @param initialState - The initial state of Search Headless
+ * @returns The new Search Headless instance
  */
 export function createMockedAnswersHeadless(
   mockedAnswersCore: any = {},

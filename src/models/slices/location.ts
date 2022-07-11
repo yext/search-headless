@@ -9,7 +9,7 @@ import { LatLong, LocationBias } from '@yext/search-core';
 export interface LocationState {
   /**
    * The geographical location bias used in the search, returned from the
-   * Answers API.
+   * Search API.
    */
   locationBias?: LocationBias,
   /**

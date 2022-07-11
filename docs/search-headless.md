@@ -40,7 +40,7 @@
 |  [createEqualsFilter(fieldId, value)](./search-headless.createequalsfilter.md) | Creates a simple [Filter](./search-headless.filter.md) that ensures all results will match a specific field value. |
 |  [createNearMeFilter(position)](./search-headless.createnearmefilter.md) | Creates a [Filter](./search-headless.filter.md) that matches all results within a certain radius of the given position. |
 |  [createNumberRangeFilter(fieldId, range)](./search-headless.createnumberrangefilter.md) | Creates a [Filter](./search-headless.filter.md) or [CombinedFilter](./search-headless.combinedfilter.md) that matches all results where the given field value falls in a specific number [BoundedRange](./search-headless.boundedrange.md)<!-- -->. |
-|  [provideSearchHeadless(config)](./search-headless.providesearchheadless.md) | Supplies a new instance of [SearchHeadless](./search-headless.searchheadless.md)<!-- -->, using the provided configuration. |
+|  [provideHeadless(config)](./search-headless.provideheadless.md) | Supplies a new instance of [SearchHeadless](./search-headless.searchheadless.md)<!-- -->, using the provided configuration. |
 
 ## Interfaces
 
@@ -127,10 +127,7 @@
 
 |  Variable | Description |
 |  --- | --- |
-|  [AnswersHeadless](./search-headless.answersheadless.md) |  |
-|  [answersUtilities](./search-headless.answersutilities.md) |  |
 |  [DEFAULT\_HEADLESS\_ID](./search-headless.default_headless_id.md) | The headlessId automatically given to the first SearchHeadless instance created. |
-|  [provideAnswersHeadless](./search-headless.provideanswersheadless.md) | Supplies a new instance of [SearchHeadless](./search-headless.searchheadless.md)<!-- -->, using the provided configuration. |
 |  [SandboxEndpoints](./search-headless.sandboxendpoints.md) | The endpoints to use for sandbox experiences. |
 
 ## Type Aliases

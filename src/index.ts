@@ -49,7 +49,7 @@ const headlessReducerManager = new HeadlessReducerManager();
  *
  * @public
  */
-export function provideSearchHeadless(config: HeadlessConfig): SearchHeadless;
+export function provideHeadless(config: HeadlessConfig): SearchHeadless;
 
 /**
  * Supplies a new instance of {@link SearchHeadless}, using the provided configuration,
@@ -63,13 +63,13 @@ export function provideSearchHeadless(config: HeadlessConfig): SearchHeadless;
  * @internal
  */
 // eslint-disable-next-line @yext/export-star/no-duplicate-exports
-export function provideSearchHeadless(
+export function provideHeadless(
   config: HeadlessConfig,
   additionalHttpHeaders: AdditionalHttpHeaders
 ): SearchHeadless;
 
 // eslint-disable-next-line @yext/export-star/no-duplicate-exports
-export function provideSearchHeadless(
+export function provideHeadless(
   config: HeadlessConfig,
   additionalHttpHeaders?: AdditionalHttpHeaders
 ): SearchHeadless {
@@ -121,30 +121,3 @@ function linkSessionTracking(firstHeadless: SearchHeadless, secondHeadless: Sear
 }
 
 export { SearchHeadless };
-
-/** 
- * @public 
- * 
- * @deprecated answersUtilities has been deprecated and renamed to searchUtilities 
- */
-export const answersUtilities = searchUtilities;
-
-/**
- * Supplies a new instance of {@link SearchHeadless}, using the provided configuration.
- *
- * @param config - The apiKey, experienceKey, etc. needed to set up a front-end Answers
- *                 experience.
- * @returns The newly created instance of {@link SearchHeadless}
- *
- * @public
- *
- * @deprecated provideAnswersHeadless has been deprecated and renamed to provideSearchHeadless
- */
-export const provideAnswersHeadless = provideSearchHeadless;
-
-/** 
- * @public
- * 
- * @deprecated AnswersHeadless has been deprecated and renamed to SearchHeadless 
- */
-export const AnswersHeadless = SearchHeadless;

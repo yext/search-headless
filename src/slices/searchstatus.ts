@@ -11,7 +11,7 @@ const reducers = {
 
 /**
  * Registers with Redux the slice of {@link State} pertaining to the loading status
- * of Answers Headless.
+ * of Search Headless.
  */
 export default function createSearchStatusSlice(prefix: string): Slice<SearchStatusState, typeof reducers> {
   return createSlice({

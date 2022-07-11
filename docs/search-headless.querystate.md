@@ -19,7 +19,7 @@ export interface QueryState
 |  [input?](./search-headless.querystate.input.md) | string | <i>(Optional)</i> The user input used for the next search query. |
 |  [mostRecentSearch?](./search-headless.querystate.mostrecentsearch.md) | string | <i>(Optional)</i> The query of the most recent search. |
 |  [queryId?](./search-headless.querystate.queryid.md) | string | <i>(Optional)</i> The ID of the query from the latest search. |
-|  [querySource?](./search-headless.querystate.querysource.md) | [QuerySource](./search-headless.querysource.md) | <i>(Optional)</i> The source of the query (from a standard Answers integration, an Answers overlay, or from visual autocomplete). |
+|  [querySource?](./search-headless.querystate.querysource.md) | [QuerySource](./search-headless.querysource.md) | <i>(Optional)</i> The source of the query (from a standard Search integration, an Search overlay, or from visual autocomplete). |
 |  [queryTrigger?](./search-headless.querystate.querytrigger.md) | [QueryTrigger](./search-headless.querytrigger.md) | <i>(Optional)</i> How the query was triggered (besides user input). |
-|  [searchIntents?](./search-headless.querystate.searchintents.md) | [SearchIntent](./search-headless.searchintent.md)<!-- -->\[\] | <i>(Optional)</i> The computed intents of the mostRecentSearch, as returned by the Answers API. |
+|  [searchIntents?](./search-headless.querystate.searchintents.md) | [SearchIntent](./search-headless.searchintent.md)<!-- -->\[\] | <i>(Optional)</i> The computed intents of the mostRecentSearch, as returned by the Search API. |
 

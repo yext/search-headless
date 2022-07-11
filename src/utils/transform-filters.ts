@@ -19,8 +19,8 @@ function combineFiltersWithOR(filters: Filter[]): Filter | CombinedFilter {
 }
 
 /**
- * Converts a list of {@link SelectableFilter}s used in Answers Headless
- * to a single nested filter stucture used in Answers Core.
+ * Converts a list of {@link SelectableFilter}s used in Search Headless
+ * to a single nested filter stucture used in Search Core.
  *
  * @param selectableFilters - The filters to be transformed
  * @returns The filters in a singly-nested {@link CombinedFilter}, or if there

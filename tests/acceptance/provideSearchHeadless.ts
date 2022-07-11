@@ -1,4 +1,4 @@
-import { provideSearchHeadless } from '../../src';
+import { provideHeadless } from '../../src';
 
 const baseConfig = {
   apiKey: 'api-key',
@@ -7,7 +7,7 @@ const baseConfig = {
 };
 
 it('if apiKey is passed into the headless config, the searchType is set to \'vertical\'', () => {
-  const headless = provideSearchHeadless({
+  const headless = provideHeadless({
     ...baseConfig,
     verticalKey: 'test'
   });
@@ -17,7 +17,7 @@ it('if apiKey is passed into the headless config, the searchType is set to \'ver
 });
 
 it('if no apiKey is passed into the headless config, the searchType is \'universal\'', () => {
-  const headless = provideSearchHeadless(baseConfig);
+  const headless = provideHeadless(baseConfig);
 
   expect(headless.state.vertical.verticalKey).toBeUndefined();
   expect(headless.state.meta.searchType).toEqual('universal');

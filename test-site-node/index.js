@@ -1,6 +1,6 @@
-const { provideSearchHeadless } = require('@yext/search-headless');
+const { provideHeadless } = require('@yext/search-headless');
 
-const answers = provideSearchHeadless({
+const answers = provideHeadless({
   apiKey: '2d8c550071a64ea23e263118a2b0680b',
   experienceKey: 'slanswers',
   locale: 'en'

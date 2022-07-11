@@ -1,4 +1,4 @@
-import { provideSearchHeadless } from '../../src';
+import { provideHeadless } from '../../src';
 import { DEFAULT_HEADLESS_ID } from '../../src/constants';
 import { expectedInitialState } from '../mocks/expectedInitialState';
 
@@ -9,12 +9,12 @@ const config = {
 };
 
 it('multiple SearchHeadless instances link SessionTrackingState together', () => {
-  const firstHeadless = provideSearchHeadless(config);
-  const secondHeadless = provideSearchHeadless({
+  const firstHeadless = provideHeadless(config);
+  const secondHeadless = provideHeadless({
     ...config,
     headlessId: 'second'
   });
-  const thirdHeadless = provideSearchHeadless({
+  const thirdHeadless = provideHeadless({
     ...config,
     headlessId: 'third'
   });
@@ -49,7 +49,7 @@ it('multiple SearchHeadless instances link SessionTrackingState together', () =>
 
 it('an error is thrown if you manually specify a headlessId equal to the default id', () => {
   expect(() => {
-    provideSearchHeadless({
+    provideHeadless({
       ...config,
       headlessId: DEFAULT_HEADLESS_ID
     });

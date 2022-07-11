@@ -31,7 +31,7 @@ export type HeadlessConfig = AnswersConfig & {
   headlessId?: string,
   /**
    * The verticalKey associated with the vertical to manage. If none is provided,
-   * Answers Headless will manage universal search.
+   * Search Headless will manage universal search.
    */
   verticalKey?: string
 };

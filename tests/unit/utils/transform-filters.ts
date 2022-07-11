@@ -1,4 +1,4 @@
-import { CombinedFilter, Filter, FilterCombinator, Matcher } from '@yext/answers-core';
+import { CombinedFilter, Filter, FilterCombinator, Matcher } from '@yext/search-core';
 import { SelectableFilter } from '../../../src/models/utils/selectableFilter';
 import { transformFiltersToCoreFormat } from '../../../src/utils/transform-filters';
 

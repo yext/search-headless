@@ -1,4 +1,4 @@
-import { Context } from '@yext/answers-core';
+import { Context } from '@yext/search-core';
 import { SearchType } from '../utils/searchType';
 
 /**

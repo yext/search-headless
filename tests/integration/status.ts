@@ -1,4 +1,4 @@
-import { UniversalSearchRequest, VerticalSearchRequest } from '@yext/answers-core';
+import { UniversalSearchRequest, VerticalSearchRequest } from '@yext/search-core';
 import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
 import setTimeout from '../utils/setTimeout';
 

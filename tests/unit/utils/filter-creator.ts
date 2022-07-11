@@ -1,4 +1,4 @@
-import { FilterCombinator, Matcher } from '@yext/answers-core';
+import { FilterCombinator, Matcher } from '@yext/search-core';
 import { combineFilters, createDateRangeFilter, createEqualsFilter, createNearMeFilter, createNumberRangeFilter } from '../../../src/utils/filter-creators';
 
 describe('filter creators work properly', () => {

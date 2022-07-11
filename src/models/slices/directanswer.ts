@@ -1,4 +1,4 @@
-import { FeaturedSnippetDirectAnswer, FieldValueDirectAnswer } from '@yext/answers-core';
+import { FeaturedSnippetDirectAnswer, FieldValueDirectAnswer } from '@yext/search-core';
 
 /**
  * Maintains the direct answer associated with the latest search.

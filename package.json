@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
-    "@yext/answers-core": "^1.7.0",
+    "@yext/search-core": "^1.8.0",
     "js-levenshtein": "^1.1.6",
     "lodash": "^4.17.21"
   },

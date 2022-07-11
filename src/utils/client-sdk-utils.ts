@@ -1,4 +1,4 @@
-import { AdditionalHttpHeaders, ClientSDKHeaderValues } from '@yext/answers-core';
+import { AdditionalHttpHeaders, ClientSDKHeaderValues } from '@yext/search-core';
 import packageJson from '../../package.json';
 
 const CLIENT_SDK_HEADER = 'Client-SDK';

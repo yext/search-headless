@@ -2,7 +2,7 @@ import {
   VerticalSearchRequest,
   UniversalSearchRequest,
   SearchIntent
-} from '@yext/answers-core';
+} from '@yext/search-core';
 import HttpManager from '../../src/http-manager';
 import ReduxStateManager from '../../src/redux-state-manager';
 import SearchHeadless from '../../src/search-headless';

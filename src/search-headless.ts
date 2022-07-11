@@ -1,5 +1,5 @@
 import {
-  AnswersCore,
+  SearchCore,
   QueryTrigger,
   QuerySource,
   QuestionSubmissionRequest,
@@ -17,7 +17,7 @@ import {
   UniversalLimit,
   VerticalSearchResponse,
   AdditionalHttpHeaders
-} from '@yext/answers-core';
+} from '@yext/search-core';
 
 import StateListener from './models/state-listener';
 import { State } from './models/state';
@@ -47,7 +47,7 @@ export default class SearchHeadless {
   public readonly utilities = answersUtilities;
 
   constructor(
-    private core: AnswersCore,
+    private core: SearchCore,
     private stateManager: StateManager,
     private httpManager: HttpManager,
     private additionalHttpHeaders?: AdditionalHttpHeaders

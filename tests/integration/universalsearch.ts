@@ -1,4 +1,4 @@
-import { UniversalSearchRequest } from '@yext/answers-core';
+import { UniversalSearchRequest } from '@yext/search-core';
 import HttpManager from '../../src/http-manager';
 import { getHttpHeaders } from '../../src/utils/client-sdk-utils';
 import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';

@@ -1,4 +1,4 @@
-import { DisplayableFacetOption, Filter, Matcher } from '@yext/answers-core';
+import { DisplayableFacetOption, Filter, Matcher } from '@yext/search-core';
 import createFiltersSlice from '../../../src/slices/filters';
 import _ from 'lodash';
 import { FiltersState, SelectableFilter } from '../../../src';

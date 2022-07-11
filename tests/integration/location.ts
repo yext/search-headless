@@ -1,4 +1,4 @@
-import { VerticalSearchRequest, UniversalSearchRequest, LocationBias, LocationBiasMethod, LatLong } from '@yext/answers-core';
+import { VerticalSearchRequest, UniversalSearchRequest, LocationBias, LocationBiasMethod, LatLong } from '@yext/search-core';
 import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
 
 describe('userLocation', () => {

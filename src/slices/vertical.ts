@@ -2,7 +2,7 @@ import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
 import {
   SortBy,
   VerticalSearchResponse
-} from '@yext/answers-core';
+} from '@yext/search-core';
 import { AllResultsForVertical, VerticalSearchState } from '../models/slices/vertical';
 
 export const initialState: VerticalSearchState = {};

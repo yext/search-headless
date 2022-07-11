@@ -1,5 +1,5 @@
 {
-  "name": "@yext/answers-headless",
+  "name": "@yext/search-headless",
   "version": "1.2.0",
   "description": "",
   "author": "slapshot@yext.com",
@@ -75,6 +75,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yext/answers-headless.git"
+    "url": "https://github.com/yext/search-headless.git"
   }
 }

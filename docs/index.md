@@ -8,5 +8,5 @@
 
 |  Package | Description |
 |  --- | --- |
-|  [@yext/answers-headless](./answers-headless.md) |  |
+|  [@yext/search-headless](./search-headless.md) |  |
 

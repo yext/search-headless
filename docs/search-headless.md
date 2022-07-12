@@ -103,7 +103,7 @@
 |  [SpellCheckState](./search-headless.spellcheckstate.md) | Maintains whether spellcheck is enabled and the spellcheck response from the latest search. |
 |  [State](./search-headless.state.md) | The state representing a SearchHeadless instance. |
 |  [StateListener](./search-headless.statelistener.md) | Represents a listener for a specific value of type T in the state. |
-|  [StateManager](./search-headless.statemanager.md) | Manages the information contained in the state for an SearchHeadless instance. |
+|  [StateManager](./search-headless.statemanager.md) | Manages the information contained in the state for a SearchHeadless instance. |
 |  [UniversalAutocompleteRequest](./search-headless.universalautocompleterequest.md) | Options for a universal autocomplete request. |
 |  [UniversalLimit](./search-headless.universallimit.md) | The maximum limit of results per vertical. Each limit can be set from 1-50, inclusive. |
 |  [UniversalSearchRequest](./search-headless.universalsearchrequest.md) | Options which can be specified for a universal search. |
@@ -141,7 +141,7 @@
 |  [Context](./search-headless.context.md) | Used to trigger Answers [Query Rules](https://hitchhikers.yext.com/tracks/answers-advanced/ans302-query-rules/)<!-- -->. |
 |  [EnumOrLiteral](./search-headless.enumorliteral.md) | Produces a union type from the enum passed as a generic which consists of the enum values and the string literals of the enum. |
 |  [FilterTypes](./search-headless.filtertypes.md) | A union type for the different kinds of filter. |
-|  [HeadlessConfig](./search-headless.headlessconfig.md) | The configuration for an SearchHeadless instance. |
+|  [HeadlessConfig](./search-headless.headlessconfig.md) | The configuration for a SearchHeadless instance. |
 |  [HighlightedFields](./search-headless.highlightedfields.md) | A mapping of fields to the values emphasized by the Answers API |
 |  [SearchType](./search-headless.searchtype.md) | An enum and its corresponding string literals which indicate the type of search that Headless is managing. |
 

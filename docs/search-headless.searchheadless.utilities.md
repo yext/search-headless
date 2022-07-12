@@ -9,5 +9,5 @@ Common utility functions for manipulating Search-related data.
 <b>Signature:</b>
 
 ```typescript
-readonly utilities: typeof answersUtilities;
+readonly utilities: typeof searchUtilities;
 ```

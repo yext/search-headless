@@ -77,13 +77,13 @@ export function provideHeadless(
   const {
     verticalKey,
     headlessId,
-    ...answersConfig
+    ...searchConfig
   } = config;
   if (headlessId === DEFAULT_HEADLESS_ID) {
     throw new Error(`Cannot instantiate a SearchHeadless using the default headlessId "${headlessId}". `
       + 'Specify a different headlessId.');
   }
-  const answersCore = provideCore(answersConfig);
+  const answersCore = provideCore(searchConfig);
   const stateManager = new ReduxStateManager(
     store, headlessId || DEFAULT_HEADLESS_ID, headlessReducerManager);
   const httpManager = new HttpManager();

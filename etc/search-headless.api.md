@@ -19,7 +19,30 @@ export interface AllResultsForVertical {
 }
 
 // @public @deprecated (undocumented)
+export type AnswersConfig = SearchConfig;
+
+// @public @deprecated (undocumented)
+export interface AnswersConfigWithApiKey extends SearchConfigWithApiKey {
+}
+
+// @public @deprecated (undocumented)
+export interface AnswersConfigWithToken extends SearchConfigWithToken {
+}
+
+// @public @deprecated (undocumented)
+export class AnswersCore extends SearchCore {
+}
+
+// @public @deprecated (undocumented)
+export interface AnswersError extends SearchError {
+}
+
+// @public @deprecated (undocumented)
 export const AnswersHeadless: typeof SearchHeadless;
+
+// @public @deprecated (undocumented)
+export interface AnswersRequest extends SearchRequest {
+}
 
 // @public @deprecated (undocumented)
 export const answersUtilities: typeof searchUtilities;
@@ -66,6 +89,10 @@ export interface AutocompleteService {
     filterSearch(request: FilterSearchRequest): Promise<FilterSearchResponse>;
     universalAutocomplete(request: UniversalAutocompleteRequest): Promise<AutocompleteResponse>;
     verticalAutocomplete(request: VerticalAutocompleteRequest): Promise<AutocompleteResponse>;
+}
+
+// @public @deprecated (undocumented)
+export interface BaseAnswersConfig extends BaseSearchConfig {
 }
 
 // @public

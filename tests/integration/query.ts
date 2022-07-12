@@ -6,7 +6,7 @@ import {
 import HttpManager from '../../src/http-manager';
 import ReduxStateManager from '../../src/redux-state-manager';
 import SearchHeadless from '../../src/search-headless';
-import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
+import { createMockedHeadless } from '../mocks/createMockedHeadless';
 import { createBaseStore } from '../../src/store';
 import { DEFAULT_HEADLESS_ID } from '../../src/constants';
 import HeadlessReducerManager from '../../src/headless-reducer-manager';
@@ -15,7 +15,7 @@ it('vertical searches set search intents', async () => {
   const mockSearch = jest.fn((_request: VerticalSearchRequest) => Promise.resolve({
     searchIntents: [SearchIntent.NearMe]
   }));
-  const answers = createMockedAnswersHeadless({
+  const answers = createMockedHeadless({
     verticalSearch: mockSearch
   });
   answers.setVertical('vertical-key');
@@ -28,7 +28,7 @@ it('universal searches set search intents', async () => {
   const mockSearch = jest.fn((_request: UniversalSearchRequest) => Promise.resolve({
     searchIntents: [SearchIntent.NearMe]
   }));
-  const answers = createMockedAnswersHeadless({
+  const answers = createMockedHeadless({
     universalSearch: mockSearch
   });
   expect(answers.state.query.searchIntents).toEqual(undefined);
@@ -39,7 +39,7 @@ it('universal searches set search intents', async () => {
 describe('sessionId to request works as expected', () => {
   const verticalMockSearch = jest.fn().mockReturnValue({});
   const universalMockSearch = jest.fn().mockReturnValue({});
-  const answers = createMockedAnswersHeadless({
+  const answers = createMockedHeadless({
     verticalSearch: verticalMockSearch,
     universalSearch: universalMockSearch
   });

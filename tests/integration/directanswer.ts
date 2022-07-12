@@ -1,5 +1,5 @@
-import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
 import { FeaturedSnippetDirectAnswer, DirectAnswerType, Source } from '@yext/search-core';
+import { createMockedHeadless } from '../mocks/createMockedHeadless';
 import { State } from '../../src/models/state';
 import { SearchTypeEnum } from '../../src/models/utils/searchType';
 
@@ -40,7 +40,7 @@ const featuredSnippedDirectAnswer: FeaturedSnippetDirectAnswer = {
 
 describe('AnswersHeadless spellcheck interactions properly update state', () => {
   it('executeVerticalQuery properly updates direct answer state', async () => {
-    const answers = createMockedAnswersHeadless({
+    const answers = createMockedHeadless({
       verticalSearch: () => Promise.resolve({ directAnswer: featuredSnippedDirectAnswer })
     }, initialState);
     answers.setVertical('123');
@@ -59,7 +59,7 @@ describe('AnswersHeadless spellcheck interactions properly update state', () => 
   });
 
   it('executeUniversalQuery properly updates direct answer state', async () => {
-    const answers = createMockedAnswersHeadless({
+    const answers = createMockedHeadless({
       universalSearch: () => Promise.resolve({ directAnswer: featuredSnippedDirectAnswer })
     }, initialState);
     answers.setUniversal();
@@ -79,7 +79,7 @@ describe('AnswersHeadless spellcheck interactions properly update state', () => 
       ...initialState,
       directAnswer: { result: featuredSnippedDirectAnswer }
     };
-    const answers = createMockedAnswersHeadless({
+    const answers = createMockedHeadless({
       universalSearch: () => Promise.resolve({ directAnswer: undefined })
     }, initialStateWithDA);
     answers.setUniversal();

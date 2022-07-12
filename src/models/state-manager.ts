@@ -3,7 +3,7 @@ import { State } from './state';
 import StateListener from './state-listener';
 
 /**
- * Manages the information contained in the state for an SearchHeadless instance.
+ * Manages the information contained in the state for a SearchHeadless instance.
  *
  * @remarks
  * The {@link State} is immutable, and can only be updated by dispatched events.

@@ -19,7 +19,7 @@ export interface QueryState {
    */
   queryTrigger?: QueryTrigger,
   /**
-   * The source of the query (from a standard Search integration, an Search
+   * The source of the query (from a standard Search integration, a Search
    * overlay, or from visual autocomplete).
    */
   querySource?: QuerySource,

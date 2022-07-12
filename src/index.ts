@@ -14,10 +14,11 @@ export * from './models';
 export * from './constants';
 export * from './utils/filter-creators';
 export * from './utils/types';
+export * from './deprecated';
 export { searchUtilities };
 
 /**
- * The configuration for an SearchHeadless instance.
+ * The configuration for a SearchHeadless instance.
  *
  * @public
  */
@@ -43,7 +44,7 @@ const headlessReducerManager = new HeadlessReducerManager();
 /**
  * Supplies a new instance of {@link SearchHeadless}, using the provided configuration.
  *
- * @param config - The apiKey, experienceKey, etc. needed to set up a front-end Answers
+ * @param config - The apiKey, experienceKey, etc. needed to set up a front-end Search
  *                 experience.
  * @returns The newly created instance of {@link SearchHeadless}
  *
@@ -55,7 +56,7 @@ export function provideHeadless(config: HeadlessConfig): SearchHeadless;
  * Supplies a new instance of {@link SearchHeadless}, using the provided configuration,
  * and accepts additional HTTP headers to pass with API requests.
  *
- * @param config - The apiKey, experienceKey, etc. needed to set up a front-end Answers
+ * @param config - The apiKey, experienceKey, etc. needed to set up a front-end Search
  *                 experience
  * @param additionalHttpHeaders - Additional value for specific HTTP headers
  * @returns The newly created instance of {@link SearchHeadless}
@@ -79,7 +80,7 @@ export function provideHeadless(
     ...answersConfig
   } = config;
   if (headlessId === DEFAULT_HEADLESS_ID) {
-    throw new Error(`Cannot instantiate an SearchHeadless using the default headlessId "${headlessId}". `
+    throw new Error(`Cannot instantiate a SearchHeadless using the default headlessId "${headlessId}". `
       + 'Specify a different headlessId.');
   }
   const answersCore = provideCore(answersConfig);

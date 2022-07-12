@@ -1,9 +1,9 @@
 import { Direction, SortType, VerticalSearchRequest } from '@yext/search-core';
-import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
+import { createMockedHeadless } from '../mocks/createMockedHeadless';
 
 it('executeVerticalQuery properly updates spellcheck state', async () => {
   const mockSearch = jest.fn((_request: VerticalSearchRequest) => Promise.resolve({}));
-  const answers = createMockedAnswersHeadless({
+  const answers = createMockedHeadless({
     verticalSearch: mockSearch
   });
   answers.setQuery('lol');

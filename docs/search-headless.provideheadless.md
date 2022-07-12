@@ -16,7 +16,7 @@ export declare function provideHeadless(config: HeadlessConfig): SearchHeadless;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  config | [HeadlessConfig](./search-headless.headlessconfig.md) | The apiKey, experienceKey, etc. needed to set up a front-end Answers experience. |
+|  config | [HeadlessConfig](./search-headless.headlessconfig.md) | The apiKey, experienceKey, etc. needed to set up a front-end Search experience. |
 
 <b>Returns:</b>
 

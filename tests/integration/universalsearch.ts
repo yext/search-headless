@@ -1,12 +1,12 @@
 import { UniversalSearchRequest } from '@yext/search-core';
 import HttpManager from '../../src/http-manager';
 import { getHttpHeaders } from '../../src/utils/client-sdk-utils';
-import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
+import { createMockedHeadless } from '../mocks/createMockedHeadless';
 import setTimeout from '../utils/setTimeout';
 
 it('universal searches send blank queries by default', async () => {
   const mockSearch = createMockSearch();
-  const answers = createMockedAnswersHeadless({
+  const answers = createMockedHeadless({
     universalSearch: mockSearch
   });
   await answers.executeUniversalQuery();
@@ -14,7 +14,7 @@ it('universal searches send blank queries by default', async () => {
 });
 
 it('answers.setUniversalLimit sets the universal limit when a UniversalLimit is passed to it', () => {
-  const answers = createMockedAnswersHeadless();
+  const answers = createMockedHeadless();
   const universalLimit = {
     faq: 5,
     people: 5
@@ -25,7 +25,7 @@ it('answers.setUniversalLimit sets the universal limit when a UniversalLimit is 
 
 it('answers.setRestrictVerticals sets the restrictVerticals param', async () => {
   const mockSearch = createMockSearch();
-  const answers = createMockedAnswersHeadless({
+  const answers = createMockedHeadless({
     universalSearch: mockSearch
   });
   answers.setRestrictVerticals(['KM', 'people']);
@@ -37,7 +37,7 @@ it('handle a rejected promise from core', async () => {
   const mockSearch = createMockRejectedSearch();
   const mockCore = { universalSearch: mockSearch };
   const httpManager = new HttpManager();
-  const answers = createMockedAnswersHeadless(mockCore, {}, undefined, undefined, httpManager);
+  const answers = createMockedHeadless(mockCore, {}, undefined, undefined, httpManager);
   try {
     await answers.executeUniversalQuery();
   } catch (e) {
@@ -49,7 +49,7 @@ it('handle a rejected promise from core', async () => {
 
 it('executeUniversalQuery passes the additional HTTP headers', async () => {
   const mockSearch = createMockSearch();
-  const answers = createMockedAnswersHeadless({
+  const answers = createMockedHeadless({
     universalSearch: mockSearch
   });
   await answers.executeUniversalQuery();

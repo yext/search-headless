@@ -52,10 +52,16 @@ export class AnswersError extends Error {
     /* Excluded from this release type: __constructor */
 }
 
+// @public @deprecated (undocumented)
+export const AnswersHeadless: typeof SearchHeadless;
+
 // @public
 export interface AnswersRequest {
     additionalHttpHeaders?: AdditionalHttpHeaders;
 }
+
+// @public @deprecated (undocumented)
+export const answersUtilities: typeof searchUtilities;
 
 // @public
 export interface AppliedQueryFilter {
@@ -419,6 +425,9 @@ export interface NumberRangeValue {
 export interface ParentState {
     [headlessId: string]: State;
 }
+
+// @public @deprecated
+export const provideAnswersHeadless: typeof provideHeadless;
 
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "provideHeadless" because one of its declarations is marked as @internal
 //

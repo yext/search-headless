@@ -9,15 +9,15 @@ Options which can be specified for a universal search.
 <b>Signature:</b>
 
 ```typescript
-export declare interface UniversalSearchRequest extends AnswersRequest 
+export declare interface UniversalSearchRequest extends SearchRequest 
 ```
-<b>Extends:</b> [AnswersRequest](./search-headless.answersrequest.md)
+<b>Extends:</b> [SearchRequest](./search-headless.searchrequest.md)
 
 ## Properties
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [context?](./search-headless.universalsearchrequest.context.md) | [Context](./search-headless.context.md) | <i>(Optional)</i> Used to trigger Answers [Query Rules](https://hitchhikers.yext.com/tracks/answers-advanced/ans302-query-rules/)<!-- -->. |
+|  [context?](./search-headless.universalsearchrequest.context.md) | [Context](./search-headless.context.md) | <i>(Optional)</i> Used to trigger Search [Query Rules](https://hitchhikers.yext.com/tracks/answers-advanced/ans302-query-rules/)<!-- -->. |
 |  [limit?](./search-headless.universalsearchrequest.limit.md) | [UniversalLimit](./search-headless.universallimit.md) | <i>(Optional)</i> The maximum limit of results per vertical. Each limit can be set from 1-50, inclusive. |
 |  [location?](./search-headless.universalsearchrequest.location.md) | [LatLong](./search-headless.latlong.md) | <i>(Optional)</i> The latitude and longitude of the user making the request. Used to bias the results. |
 |  [query](./search-headless.universalsearchrequest.query.md) | string | The search query. |

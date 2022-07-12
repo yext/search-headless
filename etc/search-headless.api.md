@@ -18,47 +18,8 @@ export interface AllResultsForVertical {
     resultsCount: number;
 }
 
-// @public
-export type AnswersConfig = AnswersConfigWithApiKey | AnswersConfigWithToken;
-
-// @public
-export interface AnswersConfigWithApiKey extends BaseAnswersConfig {
-    apiKey: string;
-    token?: never;
-}
-
-// @public
-export interface AnswersConfigWithToken extends BaseAnswersConfig {
-    apiKey?: never;
-    token: string;
-}
-
-// @public
-export class AnswersCore {
-    constructor(searchService: SearchService, questionSubmissionService: QuestionSubmissionService, autoCompleteService: AutocompleteService);
-    filterSearch(request: FilterSearchRequest): Promise<FilterSearchResponse>;
-    submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse>;
-    universalAutocomplete(request: UniversalAutocompleteRequest): Promise<AutocompleteResponse>;
-    universalSearch(request: UniversalSearchRequest): Promise<UniversalSearchResponse>;
-    verticalAutocomplete(request: VerticalAutocompleteRequest): Promise<AutocompleteResponse>;
-    verticalSearch(request: VerticalSearchRequest): Promise<VerticalSearchResponse>;
-}
-
-// @public
-export class AnswersError extends Error {
-    code?: number;
-    message: string;
-    type?: string;
-    /* Excluded from this release type: __constructor */
-}
-
 // @public @deprecated (undocumented)
 export const AnswersHeadless: typeof SearchHeadless;
-
-// @public
-export interface AnswersRequest {
-    additionalHttpHeaders?: AdditionalHttpHeaders;
-}
 
 // @public @deprecated (undocumented)
 export const answersUtilities: typeof searchUtilities;
@@ -108,7 +69,7 @@ export interface AutocompleteService {
 }
 
 // @public
-export interface BaseAnswersConfig {
+export interface BaseSearchConfig {
     endpoints?: Endpoints;
     experienceKey: string;
     experienceVersion?: 'STAGING' | 'PRODUCTION' | string | number;
@@ -286,7 +247,7 @@ export enum FilterCombinator {
 }
 
 // @public
-export interface FilterSearchRequest extends AnswersRequest {
+export interface FilterSearchRequest extends SearchRequest {
     excluded?: Filter[];
     fields: SearchParameterField[];
     input: string;
@@ -316,7 +277,7 @@ export interface FiltersState {
 export type FilterTypes = Filter | CombinedFilter;
 
 // @public
-export type HeadlessConfig = AnswersConfig & {
+export type HeadlessConfig = SearchConfig & {
     headlessId?: string;
     verticalKey?: string;
 };
@@ -477,7 +438,7 @@ export enum QueryTrigger {
 }
 
 // @public
-export interface QuestionSubmissionRequest extends AnswersRequest {
+export interface QuestionSubmissionRequest extends SearchRequest {
     email: string;
     entityId: string;
     name: string;
@@ -521,9 +482,43 @@ export interface Result {
 export const SandboxEndpoints: Required<Endpoints>;
 
 // @public
+export type SearchConfig = SearchConfigWithApiKey | SearchConfigWithToken;
+
+// @public
+export interface SearchConfigWithApiKey extends BaseSearchConfig {
+    apiKey: string;
+    token?: never;
+}
+
+// @public
+export interface SearchConfigWithToken extends BaseSearchConfig {
+    apiKey?: never;
+    token: string;
+}
+
+// @public
+export class SearchCore {
+    constructor(searchService: SearchService, questionSubmissionService: QuestionSubmissionService, autoCompleteService: AutocompleteService);
+    filterSearch(request: FilterSearchRequest): Promise<FilterSearchResponse>;
+    submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse>;
+    universalAutocomplete(request: UniversalAutocompleteRequest): Promise<AutocompleteResponse>;
+    universalSearch(request: UniversalSearchRequest): Promise<UniversalSearchResponse>;
+    verticalAutocomplete(request: VerticalAutocompleteRequest): Promise<AutocompleteResponse>;
+    verticalSearch(request: VerticalSearchRequest): Promise<VerticalSearchResponse>;
+}
+
+// @public
+export class SearchError extends Error {
+    code?: number;
+    message: string;
+    type?: string;
+    /* Excluded from this release type: __constructor */
+}
+
+// @public
 export class SearchHeadless {
     // Warning: (ae-forgotten-export) The symbol "HttpManager" needs to be exported by the entry point index.d.ts
-    constructor(core: AnswersCore, stateManager: StateManager, httpManager: HttpManager, additionalHttpHeaders?: AdditionalHttpHeaders | undefined);
+    constructor(core: SearchCore, stateManager: StateManager, httpManager: HttpManager, additionalHttpHeaders?: AdditionalHttpHeaders | undefined);
     addListener<T>(listener: StateListener<T>): Unsubscribe;
     executeFilterSearch(query: string, sectioned: boolean, fields: SearchParameterField[]): Promise<FilterSearchResponse | undefined>;
     executeUniversalAutocomplete(): Promise<AutocompleteResponse>;
@@ -568,6 +563,11 @@ export interface SearchParameterField {
     entityType: string;
     fetchEntities: boolean;
     fieldApiName: string;
+}
+
+// @public
+export interface SearchRequest {
+    additionalHttpHeaders?: AdditionalHttpHeaders;
 }
 
 // @public
@@ -694,7 +694,7 @@ export interface StateManager {
 }
 
 // @public
-export interface UniversalAutocompleteRequest extends AnswersRequest {
+export interface UniversalAutocompleteRequest extends SearchRequest {
     input: string;
     sessionTrackingEnabled?: boolean;
 }
@@ -706,7 +706,7 @@ export interface UniversalLimit {
 }
 
 // @public
-export interface UniversalSearchRequest extends AnswersRequest {
+export interface UniversalSearchRequest extends SearchRequest {
     context?: Context;
     limit?: UniversalLimit;
     location?: LatLong;
@@ -747,7 +747,7 @@ export interface UpperNumberRangeLimit {
 }
 
 // @public
-export interface VerticalAutocompleteRequest extends AnswersRequest {
+export interface VerticalAutocompleteRequest extends SearchRequest {
     input: string;
     sessionTrackingEnabled?: boolean;
     verticalKey: string;
@@ -764,7 +764,7 @@ export interface VerticalResults {
 }
 
 // @public
-export interface VerticalSearchRequest extends AnswersRequest {
+export interface VerticalSearchRequest extends SearchRequest {
     context?: Context;
     facets?: Facet[];
     limit?: number;

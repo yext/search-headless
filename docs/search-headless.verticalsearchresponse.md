@@ -22,7 +22,7 @@ export declare interface VerticalSearchResponse
 |  [facets?](./search-headless.verticalsearchresponse.facets.md) | [DisplayableFacet](./search-headless.displayablefacet.md)<!-- -->\[\] | <i>(Optional)</i> An array of [Facet](./search-headless.facet.md)<!-- -->s associated with the search results. |
 |  [locationBias?](./search-headless.verticalsearchresponse.locationbias.md) | [LocationBias](./search-headless.locationbias.md) | <i>(Optional)</i> Information about the user's location. |
 |  [queryId](./search-headless.verticalsearchresponse.queryid.md) | string | The ID of the query. |
-|  [queryRulesActionsData?](./search-headless.verticalsearchresponse.queryrulesactionsdata.md) | [QueryRulesActionsData](./search-headless.queryrulesactionsdata.md)<!-- -->\[\] | <i>(Optional)</i> Data returned from the Answers query rules system. |
+|  [queryRulesActionsData?](./search-headless.verticalsearchresponse.queryrulesactionsdata.md) | [QueryRulesActionsData](./search-headless.queryrulesactionsdata.md)<!-- -->\[\] | <i>(Optional)</i> Data returned from the Search query rules system. |
 |  [searchIntents?](./search-headless.verticalsearchresponse.searchintents.md) | [SearchIntent](./search-headless.searchintent.md)<!-- -->\[\] | <i>(Optional)</i> An array of [SearchIntent](./search-headless.searchintent.md)<!-- -->s. |
 |  [spellCheck?](./search-headless.verticalsearchresponse.spellcheck.md) | [SpellCheck](./search-headless.spellcheck.md) | <i>(Optional)</i> A spellcheck response from a search query. |
 |  [uuid](./search-headless.verticalsearchresponse.uuid.md) | string | A unique id which corresponds to the request. |

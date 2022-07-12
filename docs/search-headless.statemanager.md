@@ -4,7 +4,7 @@
 
 ## StateManager interface
 
-Manages the information contained in the state for an SearchHeadless instance.
+Manages the information contained in the state for a SearchHeadless instance.
 
 <b>Signature:</b>
 

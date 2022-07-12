@@ -8,9 +8,9 @@
 
 |  Class | Description |
 |  --- | --- |
-|  [AnswersCore](./search-headless.answerscore.md) | Provides methods for executing searches, submitting questions, and performing autocompletes. |
-|  [AnswersError](./search-headless.answerserror.md) | Represents an error |
-|  [SearchHeadless](./search-headless.searchheadless.md) | Provides the functionality for interacting with an Search experience. |
+|  [SearchCore](./search-headless.searchcore.md) | Provides methods for executing searches, submitting questions, and performing autocompletes. |
+|  [SearchError](./search-headless.searcherror.md) | Represents an error |
+|  [SearchHeadless](./search-headless.searchheadless.md) | Provides the functionality for interacting with a Search experience. |
 
 ## Enumerations
 
@@ -25,7 +25,7 @@
 |  [Matcher](./search-headless.matcher.md) | A Matcher is a filtering operation. |
 |  [QuerySource](./search-headless.querysource.md) | The source of the search request. |
 |  [QueryTrigger](./search-headless.querytrigger.md) | Describes the ways a search can be executed besides user input. |
-|  [SearchIntent](./search-headless.searchintent.md) | Represents intents from the Answers API. |
+|  [SearchIntent](./search-headless.searchintent.md) | Represents intents from the Search API. |
 |  [SearchTypeEnum](./search-headless.searchtypeenum.md) | An enum which indicates the type of search that Headless is managing. |
 |  [SortType](./search-headless.sorttype.md) | The method of sorting. |
 |  [Source](./search-headless.source.md) | Represents the source of a [Result](./search-headless.result.md)<!-- -->. |
@@ -48,23 +48,20 @@
 |  --- | --- |
 |  [AdditionalHttpHeaders](./search-headless.additionalhttpheaders.md) | AdditionalHttpHeaders allows users to specify additional values for specific HTTP headers. |
 |  [AllResultsForVertical](./search-headless.allresultsforvertical.md) | Represents all results for the current vertical. |
-|  [AnswersConfigWithApiKey](./search-headless.answersconfigwithapikey.md) | Configuration options for [AnswersCore](./search-headless.answerscore.md)<!-- -->, which includes the options from [BaseAnswersConfig](./search-headless.baseanswersconfig.md)<!-- -->, but requires apiKey. |
-|  [AnswersConfigWithToken](./search-headless.answersconfigwithtoken.md) | Configuration options for [AnswersCore](./search-headless.answerscore.md)<!-- -->, which includes the options from [BaseAnswersConfig](./search-headless.baseanswersconfig.md)<!-- -->, but requires token. |
-|  [AnswersRequest](./search-headless.answersrequest.md) | Options for an Answers API request. |
-|  [AppliedQueryFilter](./search-headless.appliedqueryfilter.md) | A filter that the Answers API applied to the search. |
+|  [AppliedQueryFilter](./search-headless.appliedqueryfilter.md) | A filter that the Search API applied to the search. |
 |  [AutocompleteResponse](./search-headless.autocompleteresponse.md) | The response of a universal or vertical autocomplete request. |
 |  [AutocompleteResult](./search-headless.autocompleteresult.md) | An autocomplete suggestion. |
 |  [AutocompleteService](./search-headless.autocompleteservice.md) | A service for autocomplete requests. |
-|  [BaseAnswersConfig](./search-headless.baseanswersconfig.md) | The base configuration options for [AnswersCore](./search-headless.answerscore.md)<!-- -->. |
+|  [BaseSearchConfig](./search-headless.basesearchconfig.md) | The base configuration options for [SearchCore](./search-headless.searchcore.md)<!-- -->. |
 |  [BoundedRange](./search-headless.boundedrange.md) | An interface representing a range of values of type T. |
-|  [ClientSDKHeaderValues](./search-headless.clientsdkheadervalues.md) | Additional agents and their versions used to create the Answers experience. The information for these agents is added to the Client-SDK HTTP header along with that of the ANSWERS\_CORE agent. |
+|  [ClientSDKHeaderValues](./search-headless.clientsdkheadervalues.md) | Additional agents and their versions used to create the Search experience. The information for these agents is added to the Client-SDK HTTP header along with that of the ANSWERS\_CORE agent. |
 |  [CombinedFilter](./search-headless.combinedfilter.md) | Represents multiple filters that will be combined to refine results. |
 |  [DirectAnswer](./search-headless.directanswer.md) | A direct answer to a search. |
 |  [DirectAnswerState](./search-headless.directanswerstate.md) | Maintains the direct answer associated with the latest search. |
 |  [DisplayableFacet](./search-headless.displayablefacet.md) | A [Facet](./search-headless.facet.md) which contains extra fields meant to be displayed to the end user. |
 |  [DisplayableFacetOption](./search-headless.displayablefacetoption.md) | A [FacetOption](./search-headless.facetoption.md) with extra data meant to be displayed to the end user. |
-|  [Endpoints](./search-headless.endpoints.md) | Overrides for the URLs which are used when making requests to the Answers API. |
-|  [Facet](./search-headless.facet.md) | Represents dynamic filter options for the Answers API. |
+|  [Endpoints](./search-headless.endpoints.md) | Overrides for the URLs which are used when making requests to the Search API. |
+|  [Facet](./search-headless.facet.md) | Represents dynamic filter options for the Search API. |
 |  [FacetOption](./search-headless.facetoption.md) | A filter associated with the facet. |
 |  [FailedVertical](./search-headless.failedvertical.md) | Error information from when a vertical fails to return results. |
 |  [FeaturedSnippetDirectAnswer](./search-headless.featuredsnippetdirectanswer.md) | A direct answer which was found within a document. |
@@ -73,7 +70,7 @@
 |  [FilterSearchRequest](./search-headless.filtersearchrequest.md) | Options for a filtersearch request. |
 |  [FilterSearchResponse](./search-headless.filtersearchresponse.md) | The response of a filtersearch request. |
 |  [FiltersState](./search-headless.filtersstate.md) | Maintains the current state of facets and filters in the application. |
-|  [HighlightedValue](./search-headless.highlightedvalue.md) | A field value and its substring matches as emphasized by the Answers API. |
+|  [HighlightedValue](./search-headless.highlightedvalue.md) | A field value and its substring matches as emphasized by the Search API. |
 |  [LatLong](./search-headless.latlong.md) | The latitude and longitude of the user making the request. Used to bias the results. |
 |  [LocationBias](./search-headless.locationbias.md) | Information about the user's location. |
 |  [LocationBoundingBox](./search-headless.locationboundingbox.md) | Location boundaries for a filter with "Place" for its [AppliedQueryFilterType](./search-headless.appliedqueryfiltertype.md)<!-- -->. (e.g. boundary for a locality or region specific location filter) |
@@ -84,16 +81,19 @@
 |  [NearFilterValue](./search-headless.nearfiltervalue.md) | A filter value for a filter with a $near [Matcher](./search-headless.matcher.md)<!-- -->. |
 |  [NumberRangeValue](./search-headless.numberrangevalue.md) | A filter value for a filter with a $between [Matcher](./search-headless.matcher.md)<!-- -->. |
 |  [ParentState](./search-headless.parentstate.md) | The overall shape of the redux state tree, with each key value pair of headlessId to [State](./search-headless.state.md) representing a single SearchHeadless instance. |
-|  [QueryRulesActionsData](./search-headless.queryrulesactionsdata.md) | Data returned from the Answers query rules system. |
+|  [QueryRulesActionsData](./search-headless.queryrulesactionsdata.md) | Data returned from the Search query rules system. |
 |  [QueryRulesState](./search-headless.queryrulesstate.md) | Maintains the data from the triggered query rules. |
 |  [QueryState](./search-headless.querystate.md) | Maintains the latest query and its associated data. |
 |  [QuestionSubmissionRequest](./search-headless.questionsubmissionrequest.md) | Options for a QuestionSubmission request. |
 |  [QuestionSubmissionResponse](./search-headless.questionsubmissionresponse.md) | A representation of a question submission response. |
-|  [QuestionSubmissionService](./search-headless.questionsubmissionservice.md) | Submits a custom question to the Answers API. |
+|  [QuestionSubmissionService](./search-headless.questionsubmissionservice.md) | Submits a custom question to the Search API. |
 |  [RangeBoundary](./search-headless.rangeboundary.md) | A boundary for a [BoundedRange](./search-headless.boundedrange.md) of type T. |
 |  [Result](./search-headless.result.md) | An individual search result. |
+|  [SearchConfigWithApiKey](./search-headless.searchconfigwithapikey.md) | Configuration options for [SearchCore](./search-headless.searchcore.md)<!-- -->, which includes the options from [BaseSearchConfig](./search-headless.basesearchconfig.md)<!-- -->, but requires apiKey. |
+|  [SearchConfigWithToken](./search-headless.searchconfigwithtoken.md) | Configuration options for [SearchCore](./search-headless.searchcore.md)<!-- -->, which includes the options from [BaseSearchConfig](./search-headless.basesearchconfig.md)<!-- -->, but requires token. |
 |  [SearchParameterField](./search-headless.searchparameterfield.md) | Indicates which entity field to perform the autocomplete request on. |
-|  [SearchService](./search-headless.searchservice.md) | A service which performs Yext Answers searches |
+|  [SearchRequest](./search-headless.searchrequest.md) | Options for a Search API request. |
+|  [SearchService](./search-headless.searchservice.md) | A service which performs Yext Search. |
 |  [SearchStatusState](./search-headless.searchstatusstate.md) | Maintains the status of the latest search. |
 |  [SelectableFilter](./search-headless.selectablefilter.md) | A [Filter](./search-headless.filter.md) with additional information, such as an optional display name and whether or not it is selected. |
 |  [SessionTrackingState](./search-headless.sessiontrackingstate.md) | Maintains whether the user session should be tracked and, if so, the session information. |
@@ -103,7 +103,7 @@
 |  [SpellCheckState](./search-headless.spellcheckstate.md) | Maintains whether spellcheck is enabled and the spellcheck response from the latest search. |
 |  [State](./search-headless.state.md) | The state representing a SearchHeadless instance. |
 |  [StateListener](./search-headless.statelistener.md) | Represents a listener for a specific value of type T in the state. |
-|  [StateManager](./search-headless.statemanager.md) | Manages the information contained in the state for an SearchHeadless instance. |
+|  [StateManager](./search-headless.statemanager.md) | Manages the information contained in the state for a SearchHeadless instance. |
 |  [UniversalAutocompleteRequest](./search-headless.universalautocompleterequest.md) | Options for a universal autocomplete request. |
 |  [UniversalLimit](./search-headless.universallimit.md) | The maximum limit of results per vertical. Each limit can be set from 1-50, inclusive. |
 |  [UniversalSearchRequest](./search-headless.universalsearchrequest.md) | Options which can be specified for a universal search. |
@@ -137,11 +137,11 @@
 
 |  Type Alias | Description |
 |  --- | --- |
-|  [AnswersConfig](./search-headless.answersconfig.md) | The main configuration options for [AnswersCore](./search-headless.answerscore.md)<!-- -->. For a full description of the options, see [BaseAnswersConfig](./search-headless.baseanswersconfig.md)<!-- -->. The config requires either an apiKey or a token. |
-|  [Context](./search-headless.context.md) | Used to trigger Answers [Query Rules](https://hitchhikers.yext.com/tracks/answers-advanced/ans302-query-rules/)<!-- -->. |
+|  [Context](./search-headless.context.md) | Used to trigger Search [Query Rules](https://hitchhikers.yext.com/tracks/answers-advanced/ans302-query-rules/)<!-- -->. |
 |  [EnumOrLiteral](./search-headless.enumorliteral.md) | Produces a union type from the enum passed as a generic which consists of the enum values and the string literals of the enum. |
 |  [FilterTypes](./search-headless.filtertypes.md) | A union type for the different kinds of filter. |
-|  [HeadlessConfig](./search-headless.headlessconfig.md) | The configuration for an SearchHeadless instance. |
-|  [HighlightedFields](./search-headless.highlightedfields.md) | A mapping of fields to the values emphasized by the Answers API |
+|  [HeadlessConfig](./search-headless.headlessconfig.md) | The configuration for a SearchHeadless instance. |
+|  [HighlightedFields](./search-headless.highlightedfields.md) | A mapping of fields to the values emphasized by the Search API. |
+|  [SearchConfig](./search-headless.searchconfig.md) | The main configuration options for [SearchCore](./search-headless.searchcore.md)<!-- -->. For a full description of the options, see [BaseSearchConfig](./search-headless.basesearchconfig.md)<!-- -->. The config requires either an apiKey or a token. |
 |  [SearchType](./search-headless.searchtype.md) | An enum and its corresponding string literals which indicate the type of search that Headless is managing. |
 

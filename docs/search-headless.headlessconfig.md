@@ -4,15 +4,15 @@
 
 ## HeadlessConfig type
 
-The configuration for an SearchHeadless instance.
+The configuration for a SearchHeadless instance.
 
 <b>Signature:</b>
 
 ```typescript
-export declare type HeadlessConfig = AnswersConfig & {
+export declare type HeadlessConfig = SearchConfig & {
     headlessId?: string;
     verticalKey?: string;
 };
 ```
-<b>References:</b> [AnswersConfig](./search-headless.answersconfig.md)
+<b>References:</b> [SearchConfig](./search-headless.searchconfig.md)
 

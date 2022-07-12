@@ -24,7 +24,7 @@ import { State } from './models/state';
 import StateManager from './models/state-manager';
 import { Unsubscribe } from '@reduxjs/toolkit';
 import HttpManager from './http-manager';
-import * as answersUtilities from './search-utilities';
+import * as searchUtilities from './search-utilities';
 import { SelectableFilter } from './models/utils/selectableFilter';
 import { transformFiltersToCoreFormat } from './utils/transform-filters';
 import { SearchTypeEnum } from './models/utils/searchType';
@@ -44,7 +44,7 @@ export default class SearchHeadless {
   /**
    * Common utility functions for manipulating Search-related data.
    */
-  public readonly utilities = answersUtilities;
+  public readonly utilities = searchUtilities;
 
   constructor(
     private core: AnswersCore,

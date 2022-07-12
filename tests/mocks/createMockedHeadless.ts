@@ -8,7 +8,7 @@ import HeadlessReducerManager from '../../src/headless-reducer-manager';
 import { getHttpHeaders } from '../../src/utils/client-sdk-utils';
 
 /**
- * Creates an Search Headless instance with a mocked Search Core.
+ * Creates a Search Headless instance with a mocked Search Core.
  *
  * @param mockedAnswersCore - Search Core overrides
  * @param initialState - The initial state of Search Headless

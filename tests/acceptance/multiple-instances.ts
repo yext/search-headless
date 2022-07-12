@@ -53,5 +53,5 @@ it('an error is thrown if you manually specify a headlessId equal to the default
       ...config,
       headlessId: DEFAULT_HEADLESS_ID
     });
-  }).toThrow('Cannot instantiate an SearchHeadless using the default headlessId');
+  }).toThrow('Cannot instantiate a SearchHeadless using the default headlessId');
 });

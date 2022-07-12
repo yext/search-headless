@@ -18,7 +18,7 @@ export * from './deprecated';
 export { searchUtilities };
 
 /**
- * The configuration for an SearchHeadless instance.
+ * The configuration for a SearchHeadless instance.
  *
  * @public
  */
@@ -80,7 +80,7 @@ export function provideHeadless(
     ...answersConfig
   } = config;
   if (headlessId === DEFAULT_HEADLESS_ID) {
-    throw new Error(`Cannot instantiate an SearchHeadless using the default headlessId "${headlessId}". `
+    throw new Error(`Cannot instantiate a SearchHeadless using the default headlessId "${headlessId}". `
       + 'Specify a different headlessId.');
   }
   const answersCore = provideCore(answersConfig);

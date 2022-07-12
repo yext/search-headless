@@ -10,3 +10,4 @@ Common utility functions for manipulating Search-related data.
 
 ```typescript
 readonly utilities: typeof searchUtilities;
+```

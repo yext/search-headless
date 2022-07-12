@@ -4,7 +4,7 @@
 
 ## SearchHeadless class
 
-Provides the functionality for interacting with an Search experience.
+Provides the functionality for interacting with a Search experience.
 
 <b>Signature:</b>
 

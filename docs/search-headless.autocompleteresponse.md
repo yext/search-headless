@@ -16,7 +16,7 @@ export declare interface AutocompleteResponse
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [inputIntents](./search-headless.autocompleteresponse.inputintents.md) | [SearchIntent](./search-headless.searchintent.md)<!-- -->\[\] | Represents intents from the Answers API. |
+|  [inputIntents](./search-headless.autocompleteresponse.inputintents.md) | [SearchIntent](./search-headless.searchintent.md)<!-- -->\[\] | Represents intents from the Search API. |
 |  [queryId?](./search-headless.autocompleteresponse.queryid.md) | string | <i>(Optional)</i> The ID of the search query. |
 |  [results](./search-headless.autocompleteresponse.results.md) | [AutocompleteResult](./search-headless.autocompleteresult.md)<!-- -->\[\] | An array of [AutocompleteResult](./search-headless.autocompleteresult.md)<!-- -->s. |
 |  [uuid](./search-headless.autocompleteresponse.uuid.md) | string | A unique id which corresponds to the request. |

@@ -4,7 +4,7 @@ import { AllResultsForVertical } from '../../src/models/slices/vertical';
 import { State } from '../../src/models/state';
 import { SearchTypeEnum } from '../../src/models/utils/searchType';
 import { getHttpHeaders } from '../../src/utils/client-sdk-utils';
-import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
+import { createMockedHeadless } from '../mocks/createMockedHeadless';
 import setTimeout from '../utils/setTimeout';
 
 const initialState: State = {
@@ -60,7 +60,7 @@ const allResultsForVertical: VerticalSearchResponse = {
 };
 
 it('vertical searches set allResultsForVertical and alternativeVerticals', async () => {
-  const answers = createMockedAnswersHeadless({
+  const answers = createMockedHeadless({
     verticalSearch: () => Promise.resolve({
       allResultsForVertical,
       alternativeVerticals,
@@ -89,7 +89,7 @@ it('vertical searches set appliedQueryFilters', async () => {
       value: 42
     }
   }];
-  const answers = createMockedAnswersHeadless({
+  const answers = createMockedHeadless({
     verticalSearch: () => Promise.resolve({
       verticalResults: {
         appliedQueryFilters: mockAppliedQueryFilters
@@ -101,7 +101,7 @@ it('vertical searches set appliedQueryFilters', async () => {
 });
 
 it('vertical searches set queryDurationMillis', async () => {
-  const answers = createMockedAnswersHeadless({
+  const answers = createMockedHeadless({
     verticalSearch: () => Promise.resolve({
       verticalResults: {
         queryDurationMillis: 42
@@ -117,7 +117,7 @@ it('vertical searches set results', async () => {
     rawData: { test: 'hello' },
     source: Source.KnowledgeManager
   }];
-  const answers = createMockedAnswersHeadless({
+  const answers = createMockedHeadless({
     verticalSearch: () => Promise.resolve({
       verticalResults: {
         results: mockResults
@@ -129,7 +129,7 @@ it('vertical searches set results', async () => {
 });
 
 it('vertical searches set results count', async () => {
-  const answers = createMockedAnswersHeadless({
+  const answers = createMockedHeadless({
     verticalSearch: () => Promise.resolve({
       verticalResults: {
         resultsCount: 3
@@ -141,7 +141,7 @@ it('vertical searches set results count', async () => {
 });
 
 it('vertical searches set the source', async () => {
-  const answers = createMockedAnswersHeadless({
+  const answers = createMockedHeadless({
     verticalSearch: () => Promise.resolve({
       verticalResults: {
         source: Source.KnowledgeManager
@@ -154,7 +154,7 @@ it('vertical searches set the source', async () => {
 
 it('vertical searches send blank queries by default', async () => {
   const mockSearch = createMockSearch();
-  const answers = createMockedAnswersHeadless({
+  const answers = createMockedHeadless({
     verticalSearch: mockSearch
   });
   answers.setVertical('vertical-key');
@@ -163,7 +163,7 @@ it('vertical searches send blank queries by default', async () => {
 });
 
 it('answers.setVerticalLimit sets the vertical limit when a number is passed to it', () => {
-  const answers = createMockedAnswersHeadless();
+  const answers = createMockedHeadless();
   answers.setVerticalLimit(7);
   expect(answers.state.vertical.limit).toEqual(7);
 });
@@ -173,7 +173,7 @@ it('handle a rejected promise from core', async () => {
   const mockSearch = createMockRejectedSearch();
   const mockCore = { verticalSearch: mockSearch };
   const httpManager = new HttpManager();
-  const answers = createMockedAnswersHeadless(mockCore, {}, undefined, undefined, httpManager);
+  const answers = createMockedHeadless(mockCore, {}, undefined, undefined, httpManager);
   answers.setVertical('vertical-key');
   try {
     await answers.executeVerticalQuery();
@@ -186,7 +186,7 @@ it('handle a rejected promise from core', async () => {
 
 it('executeVerticalQuery passes the additional HTTP headers', async () => {
   const mockSearch = createMockSearch();
-  const answers = createMockedAnswersHeadless({
+  const answers = createMockedHeadless({
     verticalSearch: mockSearch
   });
   answers.setVertical('vertical-key');

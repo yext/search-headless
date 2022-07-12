@@ -14,7 +14,7 @@ export * from './models';
 export * from './constants';
 export * from './utils/filter-creators';
 export * from './utils/types';
-export * from './deprecated'
+export * from './deprecated';
 export { searchUtilities };
 
 /**

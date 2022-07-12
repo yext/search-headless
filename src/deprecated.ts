@@ -1,5 +1,5 @@
 import { searchUtilities, provideHeadless } from '.';
-import SearchHeadless from './search-headless'
+import SearchHeadless from './search-headless';
 
 /**
  * @public

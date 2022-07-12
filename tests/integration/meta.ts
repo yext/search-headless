@@ -1,9 +1,9 @@
 import { UniversalSearchRequest, VerticalSearchRequest } from '@yext/answers-core';
-import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
+import { createMockedHeadless } from '../mocks/createMockedHeadless';
 
 it('by default no meta attributes are sent', async () => {
   const mockSearch = jest.fn((_request: VerticalSearchRequest) => Promise.resolve({}));
-  const answers = createMockedAnswersHeadless({
+  const answers = createMockedHeadless({
     verticalSearch: mockSearch
   });
   answers.setQuery('lol');
@@ -15,7 +15,7 @@ it('by default no meta attributes are sent', async () => {
 
 it('vertical searches send meta data', async () => {
   const mockSearch = jest.fn((_request: VerticalSearchRequest) => Promise.resolve({}));
-  const answers = createMockedAnswersHeadless({
+  const answers = createMockedHeadless({
     verticalSearch: mockSearch
   });
   answers.setQuery('lol');
@@ -39,7 +39,7 @@ it('vertical searches send meta data', async () => {
 
 it('universal searches send context', async () => {
   const mockSearch = jest.fn((_request: UniversalSearchRequest) => Promise.resolve({}));
-  const answers = createMockedAnswersHeadless({
+  const answers = createMockedHeadless({
     universalSearch: mockSearch
   });
   answers.setQuery('lol');
@@ -65,7 +65,7 @@ it('universal searches update the uuid', async () => {
   const mockSearch = jest.fn((_request: UniversalSearchRequest) => Promise.resolve({
     uuid: 123
   }));
-  const answers = createMockedAnswersHeadless({
+  const answers = createMockedHeadless({
     universalSearch: mockSearch
   });
   answers.setUniversal();
@@ -78,7 +78,7 @@ it('vertical searches update the uuid', async () => {
   const mockSearch = jest.fn((_request: UniversalSearchRequest) => Promise.resolve({
     uuid: 456
   }));
-  const answers = createMockedAnswersHeadless({
+  const answers = createMockedHeadless({
     verticalSearch: mockSearch
   });
   answers.setQuery('lol');

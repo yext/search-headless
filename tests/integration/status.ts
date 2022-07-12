@@ -1,10 +1,10 @@
 import { UniversalSearchRequest, VerticalSearchRequest } from '@yext/answers-core';
-import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
+import { createMockedHeadless } from '../mocks/createMockedHeadless';
 import setTimeout from '../utils/setTimeout';
 
 it('universal searches update the search loading state', async () => {
   const mockSearch = createMockSearch();
-  const answers = createMockedAnswersHeadless({
+  const answers = createMockedHeadless({
     universalSearch: mockSearch
   });
 
@@ -16,7 +16,7 @@ it('universal searches update the search loading state', async () => {
 
 it('vertical searches update the search loading state', async () => {
   const mockSearch = createMockSearch();
-  const answers = createMockedAnswersHeadless({
+  const answers = createMockedHeadless({
     verticalSearch: mockSearch
   });
   answers.setVertical('vertical-key');

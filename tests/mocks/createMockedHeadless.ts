@@ -14,7 +14,7 @@ import { getHttpHeaders } from '../../src/utils/client-sdk-utils';
  * @param initialState - The initial state of Search Headless
  * @returns The new Search Headless instance
  */
-export function createMockedAnswersHeadless(
+export function createMockedHeadless(
   mockedAnswersCore: any = {},
   initialState: Partial<State> = {},
   store?: HeadlessEnhancedStore,

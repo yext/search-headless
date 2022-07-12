@@ -8,6 +8,7 @@
 
 |  Class | Description |
 |  --- | --- |
+|  [AnswersCore](./search-headless.answerscore.md) |  |
 |  [SearchCore](./search-headless.searchcore.md) | Provides methods for executing searches, submitting questions, and performing autocompletes. |
 |  [SearchError](./search-headless.searcherror.md) | Represents an error |
 |  [SearchHeadless](./search-headless.searchheadless.md) | Provides the functionality for interacting with a Search experience. |
@@ -48,10 +49,15 @@
 |  --- | --- |
 |  [AdditionalHttpHeaders](./search-headless.additionalhttpheaders.md) | AdditionalHttpHeaders allows users to specify additional values for specific HTTP headers. |
 |  [AllResultsForVertical](./search-headless.allresultsforvertical.md) | Represents all results for the current vertical. |
+|  [AnswersConfigWithApiKey](./search-headless.answersconfigwithapikey.md) |  |
+|  [AnswersConfigWithToken](./search-headless.answersconfigwithtoken.md) |  |
+|  [AnswersError](./search-headless.answerserror.md) |  |
+|  [AnswersRequest](./search-headless.answersrequest.md) |  |
 |  [AppliedQueryFilter](./search-headless.appliedqueryfilter.md) | A filter that the Search API applied to the search. |
 |  [AutocompleteResponse](./search-headless.autocompleteresponse.md) | The response of a universal or vertical autocomplete request. |
 |  [AutocompleteResult](./search-headless.autocompleteresult.md) | An autocomplete suggestion. |
 |  [AutocompleteService](./search-headless.autocompleteservice.md) | A service for autocomplete requests. |
+|  [BaseAnswersConfig](./search-headless.baseanswersconfig.md) |  |
 |  [BaseSearchConfig](./search-headless.basesearchconfig.md) | The base configuration options for [SearchCore](./search-headless.searchcore.md)<!-- -->. |
 |  [BoundedRange](./search-headless.boundedrange.md) | An interface representing a range of values of type T. |
 |  [ClientSDKHeaderValues](./search-headless.clientsdkheadervalues.md) | Additional agents and their versions used to create the Search experience. The information for these agents is added to the Client-SDK HTTP header along with that of the ANSWERS\_CORE agent. |
@@ -137,6 +143,7 @@
 
 |  Type Alias | Description |
 |  --- | --- |
+|  [AnswersConfig](./search-headless.answersconfig.md) |  |
 |  [Context](./search-headless.context.md) | Used to trigger Search [Query Rules](https://hitchhikers.yext.com/tracks/answers-advanced/ans302-query-rules/)<!-- -->. |
 |  [EnumOrLiteral](./search-headless.enumorliteral.md) | Produces a union type from the enum passed as a generic which consists of the enum values and the string literals of the enum. |
 |  [FilterTypes](./search-headless.filtertypes.md) | A union type for the different kinds of filter. |

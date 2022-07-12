@@ -52,56 +52,16 @@ export class AnswersError extends Error {
     /* Excluded from this release type: __constructor */
 }
 
-// @public
-export class AnswersHeadless {
-    // Warning: (ae-forgotten-export) The symbol "HttpManager" needs to be exported by the entry point index.d.ts
-    constructor(core: AnswersCore, stateManager: StateManager, httpManager: HttpManager, additionalHttpHeaders?: AdditionalHttpHeaders | undefined);
-    addListener<T>(listener: StateListener<T>): Unsubscribe;
-    executeFilterSearch(query: string, sectioned: boolean, fields: SearchParameterField[]): Promise<FilterSearchResponse | undefined>;
-    executeUniversalAutocomplete(): Promise<AutocompleteResponse>;
-    executeUniversalQuery(): Promise<UniversalSearchResponse | undefined>;
-    executeVerticalAutocomplete(): Promise<AutocompleteResponse | undefined>;
-    executeVerticalQuery(): Promise<VerticalSearchResponse | undefined>;
-    resetFacets(): void;
-    setAlternativeVerticals(alternativeVerticals: VerticalResults[]): void;
-    setContext(context: Context): void;
-    setFacetOption(fieldId: string, facetOption: FacetOption, selected: boolean): void;
-    setFacets(facets: DisplayableFacet[]): void;
-    setFilterOption(filter: SelectableFilter): void;
-    setOffset(offset: number): void;
-    setQuery(input: string): void;
-    setQuerySource(source: QuerySource): void;
-    setQueryTrigger(trigger: QueryTrigger): void;
-    setReferrerPageUrl(referrerPageUrl: string): void;
-    setRestrictVerticals(restrictVerticals: string[]): void;
-    setSessionId(sessionId: string): void;
-    setSessionTrackingEnabled(enabled: boolean): void;
-    setSortBys(sortBys: SortBy[]): void;
-    setSpellCheckEnabled(enabled: boolean): void;
-    setState(state: State): void;
-    setStaticFilters(filters: SelectableFilter[]): void;
-    setUniversal(): void;
-    setUniversalLimit(limit: UniversalLimit): void;
-    setUserLocation(latLong: LatLong): void;
-    setVertical(verticalKey: string): void;
-    setVerticalLimit(limit: number): void;
-    get state(): State;
-    submitQuestion(request: Omit<QuestionSubmissionRequest, 'additionalHttpHeaders'>): Promise<QuestionSubmissionResponse>;
-    readonly utilities: typeof answersUtilities;
-}
+// @public @deprecated (undocumented)
+export const AnswersHeadless: typeof SearchHeadless;
 
 // @public
 export interface AnswersRequest {
     additionalHttpHeaders?: AdditionalHttpHeaders;
 }
 
-declare namespace answersUtilities {
-    export {
-        searchThroughFacet,
-        isCloseMatch
-    }
-}
-export { answersUtilities }
+// @public @deprecated (undocumented)
+export const answersUtilities: typeof searchUtilities;
 
 // @public
 export interface AppliedQueryFilter {
@@ -466,13 +426,16 @@ export interface ParentState {
     [headlessId: string]: State;
 }
 
-// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "provideAnswersHeadless" because one of its declarations is marked as @internal
+// @public @deprecated
+export const provideAnswersHeadless: typeof provideHeadless;
+
+// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "provideHeadless" because one of its declarations is marked as @internal
 //
 // @public
-export function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless;
+export function provideHeadless(config: HeadlessConfig): SearchHeadless;
 
 // @internal
-export function provideAnswersHeadless(config: HeadlessConfig, additionalHttpHeaders: AdditionalHttpHeaders): AnswersHeadless;
+export function provideHeadless(config: HeadlessConfig, additionalHttpHeaders: AdditionalHttpHeaders): SearchHeadless;
 
 // @public
 export interface QueryRulesActionsData {
@@ -558,6 +521,44 @@ export interface Result {
 export const SandboxEndpoints: Required<Endpoints>;
 
 // @public
+export class SearchHeadless {
+    // Warning: (ae-forgotten-export) The symbol "HttpManager" needs to be exported by the entry point index.d.ts
+    constructor(core: AnswersCore, stateManager: StateManager, httpManager: HttpManager, additionalHttpHeaders?: AdditionalHttpHeaders | undefined);
+    addListener<T>(listener: StateListener<T>): Unsubscribe;
+    executeFilterSearch(query: string, sectioned: boolean, fields: SearchParameterField[]): Promise<FilterSearchResponse | undefined>;
+    executeUniversalAutocomplete(): Promise<AutocompleteResponse>;
+    executeUniversalQuery(): Promise<UniversalSearchResponse | undefined>;
+    executeVerticalAutocomplete(): Promise<AutocompleteResponse | undefined>;
+    executeVerticalQuery(): Promise<VerticalSearchResponse | undefined>;
+    resetFacets(): void;
+    setAlternativeVerticals(alternativeVerticals: VerticalResults[]): void;
+    setContext(context: Context): void;
+    setFacetOption(fieldId: string, facetOption: FacetOption, selected: boolean): void;
+    setFacets(facets: DisplayableFacet[]): void;
+    setFilterOption(filter: SelectableFilter): void;
+    setOffset(offset: number): void;
+    setQuery(input: string): void;
+    setQuerySource(source: QuerySource): void;
+    setQueryTrigger(trigger: QueryTrigger): void;
+    setReferrerPageUrl(referrerPageUrl: string): void;
+    setRestrictVerticals(restrictVerticals: string[]): void;
+    setSessionId(sessionId: string): void;
+    setSessionTrackingEnabled(enabled: boolean): void;
+    setSortBys(sortBys: SortBy[]): void;
+    setSpellCheckEnabled(enabled: boolean): void;
+    setState(state: State): void;
+    setStaticFilters(filters: SelectableFilter[]): void;
+    setUniversal(): void;
+    setUniversalLimit(limit: UniversalLimit): void;
+    setUserLocation(latLong: LatLong): void;
+    setVertical(verticalKey: string): void;
+    setVerticalLimit(limit: number): void;
+    get state(): State;
+    submitQuestion(request: Omit<QuestionSubmissionRequest, 'additionalHttpHeaders'>): Promise<QuestionSubmissionResponse>;
+    readonly utilities: typeof searchUtilities;
+}
+
+// @public
 export enum SearchIntent {
     NearMe = "NEAR_ME"
 }
@@ -591,6 +592,14 @@ export enum SearchTypeEnum {
     Universal = "universal",
     Vertical = "vertical"
 }
+
+declare namespace searchUtilities {
+    export {
+        searchThroughFacet,
+        isCloseMatch
+    }
+}
+export { searchUtilities }
 
 // @public
 export interface SelectableFilter extends Filter {

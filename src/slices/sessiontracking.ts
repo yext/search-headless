@@ -16,7 +16,7 @@ const reducers = {
 
 /**
  * Registers with Redux the slice of {@link State} pertaining to session tracking of
- * an Answers experience.
+ * a Search experience.
  */
 export default function createSessionTrackingSlice(
   prefix: string

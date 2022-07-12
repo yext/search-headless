@@ -4,7 +4,7 @@
 
 ## State.meta property
 
-Maintains the metadata for Answers Headless.
+Maintains the metadata for Search Headless.
 
 <b>Signature:</b>
 

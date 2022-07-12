@@ -2,7 +2,7 @@ import { Context } from '@yext/answers-core';
 import { SearchType } from '../utils/searchType';
 
 /**
- * Maintains the metadata for Answers Headless.
+ * Maintains the metadata for Search Headless.
  *
  * @public
  */
@@ -22,7 +22,7 @@ export interface MetaState {
    */
   uuid?: string,
   /**
-   * Indicates the type of search that Answers Headless is managing.
+   * Indicates the type of search that Search Headless is managing.
   */
   searchType: SearchType
 }

@@ -4,7 +4,7 @@
 
 ## ParentState interface
 
-The overall shape of the redux state tree, with each key value pair of headlessId to [State](./search-headless.state.md) representing a single AnswersHeadless instance.
+The overall shape of the redux state tree, with each key value pair of headlessId to [State](./search-headless.state.md) representing a single SearchHeadless instance.
 
 <b>Signature:</b>
 

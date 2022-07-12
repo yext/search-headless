@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@yext/answers-headless": "file:.."
+    "@yext/search-headless": "file:.."
   }
 }

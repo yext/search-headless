@@ -2,25 +2,17 @@
 
 [Home](./index.md) &gt; [@yext/search-headless](./search-headless.md) &gt; [provideAnswersHeadless](./search-headless.provideanswersheadless.md)
 
-## provideAnswersHeadless() function
+## provideAnswersHeadless variable
 
-Supplies a new instance of [AnswersHeadless](./search-headless.answersheadless.md)<!-- -->, using the provided configuration.
+> Warning: This API is now obsolete.
+> 
+> provideAnswersHeadless has been deprecated and renamed to provideHeadless
+> 
+
+Supplies a new instance of [SearchHeadless](./search-headless.searchheadless.md)<!-- -->, using the provided configuration.
 
 <b>Signature:</b>
 
 ```typescript
-export declare function provideAnswersHeadless(config: HeadlessConfig): AnswersHeadless;
+provideAnswersHeadless: typeof provideHeadless
 ```
-
-## Parameters
-
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  config | [HeadlessConfig](./search-headless.headlessconfig.md) | The apiKey, experienceKey, etc. needed to set up a front-end Answers experience. |
-
-<b>Returns:</b>
-
-AnswersHeadless
-
-The newly created instance of [AnswersHeadless](./search-headless.answersheadless.md)
-

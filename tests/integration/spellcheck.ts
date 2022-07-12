@@ -1,4 +1,4 @@
-import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
+import { createMockedHeadless } from '../mocks/createMockedHeadless';
 
 const initialState = {
   query: {
@@ -27,7 +27,7 @@ function mockSearchWithSpellcheck() {
 
 describe('AnswersHeadless spellcheck interactions properly update state', () => {
   it('executeVerticalQuery properly updates spellcheck state', async () => {
-    const answers = createMockedAnswersHeadless({
+    const answers = createMockedHeadless({
       verticalSearch: mockSearchWithSpellcheck
     }, initialState);
     answers.setVertical('123');
@@ -46,7 +46,7 @@ describe('AnswersHeadless spellcheck interactions properly update state', () => 
   });
 
   it('executeUniversalQuery properly updates spellcheck state', async () => {
-    const answers = createMockedAnswersHeadless({
+    const answers = createMockedHeadless({
       universalSearch: mockSearchWithSpellcheck
     }, initialState);
     answers.setUniversal();
@@ -62,7 +62,7 @@ describe('AnswersHeadless spellcheck interactions properly update state', () => 
   });
 
   it('setSpellCheckEnabled properly updates state', async () => {
-    const answers = createMockedAnswersHeadless({}, initialState);
+    const answers = createMockedHeadless({}, initialState);
     await answers.setSpellCheckEnabled(false);
     const expectedState = {
       spellCheck: {

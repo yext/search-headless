@@ -2,12 +2,15 @@
 
 [Home](./index.md) &gt; [@yext/search-headless](./search-headless.md) &gt; [answersUtilities](./search-headless.answersutilities.md)
 
-## answersUtilities namespace
+## answersUtilities variable
 
-## Functions
+> Warning: This API is now obsolete.
+> 
+> answersUtilities has been deprecated and renamed to searchUtilities
+> 
 
-|  Function | Description |
-|  --- | --- |
-|  [isCloseMatch(value, searchTerm)](./search-headless.answersutilities.isclosematch.md) | Checks if the searchTerm is a case-insensitive, Levenshtein match for the value. |
-|  [searchThroughFacet(facet, searchTerm)](./search-headless.answersutilities.searchthroughfacet.md) | Searches through the specified facet and filters out the options that aren't a close match for the given searchTerm. The comparison is case insensitive. |
+<b>Signature:</b>
 
+```typescript
+answersUtilities: typeof searchUtilities
+```

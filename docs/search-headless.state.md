@@ -4,7 +4,7 @@
 
 ## State interface
 
-The state representing an AnswersHeadless instance.
+The state representing a SearchHeadless instance.
 
 <b>Signature:</b>
 
@@ -19,7 +19,7 @@ export interface State
 |  [directAnswer](./search-headless.state.directanswer.md) | [DirectAnswerState](./search-headless.directanswerstate.md) | Maintains the direct answer associated with the latest search. |
 |  [filters](./search-headless.state.filters.md) | [FiltersState](./search-headless.filtersstate.md) | Maintains the current state of facets and filters in the application. |
 |  [location](./search-headless.state.location.md) | [LocationState](./search-headless.locationstate.md) | Maintains the user's location, if given, or the inferred location, that is used to bias search results. |
-|  [meta](./search-headless.state.meta.md) | [MetaState](./search-headless.metastate.md) | Maintains the metadata for Answers Headless. |
+|  [meta](./search-headless.state.meta.md) | [MetaState](./search-headless.metastate.md) | Maintains the metadata for Search Headless. |
 |  [query](./search-headless.state.query.md) | [QueryState](./search-headless.querystate.md) | Maintains the latest query and its associated data. |
 |  [queryRules](./search-headless.state.queryrules.md) | [QueryRulesState](./search-headless.queryrulesstate.md) | Maintains the data from the triggered query rules. |
 |  [searchStatus](./search-headless.state.searchstatus.md) | [SearchStatusState](./search-headless.searchstatusstate.md) | Maintains the status of the latest search. |

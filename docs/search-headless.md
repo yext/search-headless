@@ -10,7 +10,7 @@
 |  --- | --- |
 |  [AnswersCore](./search-headless.answerscore.md) | Provides methods for executing searches, submitting questions, and performing autocompletes. |
 |  [AnswersError](./search-headless.answerserror.md) | Represents an error |
-|  [AnswersHeadless](./search-headless.answersheadless.md) | Provides the functionality for interacting with an Answers Search experience. |
+|  [SearchHeadless](./search-headless.searchheadless.md) | Provides the functionality for interacting with an Search experience. |
 
 ## Enumerations
 
@@ -40,7 +40,7 @@
 |  [createEqualsFilter(fieldId, value)](./search-headless.createequalsfilter.md) | Creates a simple [Filter](./search-headless.filter.md) that ensures all results will match a specific field value. |
 |  [createNearMeFilter(position)](./search-headless.createnearmefilter.md) | Creates a [Filter](./search-headless.filter.md) that matches all results within a certain radius of the given position. |
 |  [createNumberRangeFilter(fieldId, range)](./search-headless.createnumberrangefilter.md) | Creates a [Filter](./search-headless.filter.md) or [CombinedFilter](./search-headless.combinedfilter.md) that matches all results where the given field value falls in a specific number [BoundedRange](./search-headless.boundedrange.md)<!-- -->. |
-|  [provideAnswersHeadless(config)](./search-headless.provideanswersheadless.md) | Supplies a new instance of [AnswersHeadless](./search-headless.answersheadless.md)<!-- -->, using the provided configuration. |
+|  [provideHeadless(config)](./search-headless.provideheadless.md) | Supplies a new instance of [SearchHeadless](./search-headless.searchheadless.md)<!-- -->, using the provided configuration. |
 
 ## Interfaces
 
@@ -80,10 +80,10 @@
 |  [LocationFilterDetails](./search-headless.locationfilterdetails.md) | Additional details relevant to the filter with "PLACE" for its [AppliedQueryFilterType](./search-headless.appliedqueryfiltertype.md)<!-- -->. |
 |  [LocationState](./search-headless.locationstate.md) | Maintains the user's location, if given, or the inferred location, that is used to bias search results. |
 |  [LowerNumberRangeLimit](./search-headless.lowernumberrangelimit.md) | The start limit of [NumberRangeValue](./search-headless.numberrangevalue.md)<!-- -->. |
-|  [MetaState](./search-headless.metastate.md) | Maintains the metadata for Answers Headless. |
+|  [MetaState](./search-headless.metastate.md) | Maintains the metadata for Search Headless. |
 |  [NearFilterValue](./search-headless.nearfiltervalue.md) | A filter value for a filter with a $near [Matcher](./search-headless.matcher.md)<!-- -->. |
 |  [NumberRangeValue](./search-headless.numberrangevalue.md) | A filter value for a filter with a $between [Matcher](./search-headless.matcher.md)<!-- -->. |
-|  [ParentState](./search-headless.parentstate.md) | The overall shape of the redux state tree, with each key value pair of headlessId to [State](./search-headless.state.md) representing a single AnswersHeadless instance. |
+|  [ParentState](./search-headless.parentstate.md) | The overall shape of the redux state tree, with each key value pair of headlessId to [State](./search-headless.state.md) representing a single SearchHeadless instance. |
 |  [QueryRulesActionsData](./search-headless.queryrulesactionsdata.md) | Data returned from the Answers query rules system. |
 |  [QueryRulesState](./search-headless.queryrulesstate.md) | Maintains the data from the triggered query rules. |
 |  [QueryState](./search-headless.querystate.md) | Maintains the latest query and its associated data. |
@@ -101,9 +101,9 @@
 |  [SortBy](./search-headless.sortby.md) | Represents a criterion that can be used to sort results. |
 |  [SpellCheck](./search-headless.spellcheck.md) | A spellcheck response from a search query. |
 |  [SpellCheckState](./search-headless.spellcheckstate.md) | Maintains whether spellcheck is enabled and the spellcheck response from the latest search. |
-|  [State](./search-headless.state.md) | The state representing an AnswersHeadless instance. |
+|  [State](./search-headless.state.md) | The state representing a SearchHeadless instance. |
 |  [StateListener](./search-headless.statelistener.md) | Represents a listener for a specific value of type T in the state. |
-|  [StateManager](./search-headless.statemanager.md) | Manages the information contained in the state for an AnswersHeadless instance. |
+|  [StateManager](./search-headless.statemanager.md) | Manages the information contained in the state for a SearchHeadless instance. |
 |  [UniversalAutocompleteRequest](./search-headless.universalautocompleterequest.md) | Options for a universal autocomplete request. |
 |  [UniversalLimit](./search-headless.universallimit.md) | The maximum limit of results per vertical. Each limit can be set from 1-50, inclusive. |
 |  [UniversalSearchRequest](./search-headless.universalsearchrequest.md) | Options which can be specified for a universal search. |
@@ -121,13 +121,16 @@
 
 |  Namespace | Description |
 |  --- | --- |
-|  [answersUtilities](./search-headless.answersutilities.md) |  |
+|  [searchUtilities](./search-headless.searchutilities.md) |  |
 
 ## Variables
 
 |  Variable | Description |
 |  --- | --- |
-|  [DEFAULT\_HEADLESS\_ID](./search-headless.default_headless_id.md) | The headlessId automatically given to the first AnswersHeadless instance created. |
+|  [AnswersHeadless](./search-headless.answersheadless.md) |  |
+|  [answersUtilities](./search-headless.answersutilities.md) |  |
+|  [DEFAULT\_HEADLESS\_ID](./search-headless.default_headless_id.md) | The headlessId automatically given to the first SearchHeadless instance created. |
+|  [provideAnswersHeadless](./search-headless.provideanswersheadless.md) | Supplies a new instance of [SearchHeadless](./search-headless.searchheadless.md)<!-- -->, using the provided configuration. |
 |  [SandboxEndpoints](./search-headless.sandboxendpoints.md) | The endpoints to use for sandbox experiences. |
 
 ## Type Aliases
@@ -138,7 +141,7 @@
 |  [Context](./search-headless.context.md) | Used to trigger Answers [Query Rules](https://hitchhikers.yext.com/tracks/answers-advanced/ans302-query-rules/)<!-- -->. |
 |  [EnumOrLiteral](./search-headless.enumorliteral.md) | Produces a union type from the enum passed as a generic which consists of the enum values and the string literals of the enum. |
 |  [FilterTypes](./search-headless.filtertypes.md) | A union type for the different kinds of filter. |
-|  [HeadlessConfig](./search-headless.headlessconfig.md) | The configuration for an AnswersHeadless instance. |
+|  [HeadlessConfig](./search-headless.headlessconfig.md) | The configuration for a SearchHeadless instance. |
 |  [HighlightedFields](./search-headless.highlightedfields.md) | A mapping of fields to the values emphasized by the Answers API |
 |  [SearchType](./search-headless.searchtype.md) | An enum and its corresponding string literals which indicate the type of search that Headless is managing. |
 

@@ -4,7 +4,7 @@
 
 ## MetaState.searchType property
 
-Indicates the type of search that Answers Headless is managing.
+Indicates the type of search that Search Headless is managing.
 
 <b>Signature:</b>
 

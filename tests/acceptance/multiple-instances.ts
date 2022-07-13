@@ -1,4 +1,4 @@
-import { provideAnswersHeadless } from '../../src';
+import { provideHeadless } from '../../src';
 import { DEFAULT_HEADLESS_ID } from '../../src/constants';
 import { expectedInitialState } from '../mocks/expectedInitialState';
 
@@ -8,13 +8,13 @@ const config = {
   locale: 'en'
 };
 
-it('multiple AnswersHeadless instances link SessionTrackingState together', () => {
-  const firstHeadless = provideAnswersHeadless(config);
-  const secondHeadless = provideAnswersHeadless({
+it('multiple SearchHeadless instances link SessionTrackingState together', () => {
+  const firstHeadless = provideHeadless(config);
+  const secondHeadless = provideHeadless({
     ...config,
     headlessId: 'second'
   });
-  const thirdHeadless = provideAnswersHeadless({
+  const thirdHeadless = provideHeadless({
     ...config,
     headlessId: 'third'
   });
@@ -49,9 +49,9 @@ it('multiple AnswersHeadless instances link SessionTrackingState together', () =
 
 it('an error is thrown if you manually specify a headlessId equal to the default id', () => {
   expect(() => {
-    provideAnswersHeadless({
+    provideHeadless({
       ...config,
       headlessId: DEFAULT_HEADLESS_ID
     });
-  }).toThrow('Cannot instantiate an AnswersHeadless using the default headlessId');
+  }).toThrow('Cannot instantiate a SearchHeadless using the default headlessId');
 });

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
-import { UniversalLimit, VerticalResults } from '@yext/answers-core';
+import { UniversalLimit, VerticalResults } from '@yext/search-core';
 import { UniversalSearchState } from '../models/slices/universal';
 
 export const initialState: UniversalSearchState = {};

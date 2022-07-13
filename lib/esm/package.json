@@ -1,5 +1,5 @@
 {
-  "name": "answers-headless-esm",
+  "name": "search-headless-esm",
   "module": "../../dist/esm/src",
-  "types": "../../dist/answers-headless.d.ts"
+  "types": "../../dist/search-headless.d.ts"
 }

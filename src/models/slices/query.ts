@@ -1,4 +1,4 @@
-import { QuerySource, QueryTrigger, SearchIntent } from '@yext/answers-core';
+import { QuerySource, QueryTrigger, SearchIntent } from '@yext/search-core';
 
 /**
  * Maintains the latest query and its associated data.
@@ -19,7 +19,7 @@ export interface QueryState {
    */
   queryTrigger?: QueryTrigger,
   /**
-   * The source of the query (from a standard Answers integration, an Answers
+   * The source of the query (from a standard Search integration, a Search
    * overlay, or from visual autocomplete).
    */
   querySource?: QuerySource,
@@ -28,7 +28,7 @@ export interface QueryState {
    */
   mostRecentSearch?: string,
   /**
-   * The computed intents of the mostRecentSearch, as returned by the Answers API.
+   * The computed intents of the mostRecentSearch, as returned by the Search API.
    */
   searchIntents?: SearchIntent[]
 }

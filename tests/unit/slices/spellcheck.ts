@@ -1,4 +1,4 @@
-import { SpellCheck, SpellCheckType } from '@yext/answers-core';
+import { SpellCheck, SpellCheckType } from '@yext/search-core';
 import createSpellCheckSlice from '../../../src/slices/spellcheck';
 
 const { reducer, actions } = createSpellCheckSlice('');

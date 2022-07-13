@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
-import { LatLong, LocationBias } from '@yext/answers-core';
+import { LatLong, LocationBias } from '@yext/search-core';
 import { LocationState } from '../models/slices/location';
 
 const initialState: LocationState = {};

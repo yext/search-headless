@@ -1,4 +1,4 @@
-import { Filter } from '@yext/answers-core';
+import { Filter } from '@yext/search-core';
 
 /**
  * A {@link Filter} with additional information, such as an

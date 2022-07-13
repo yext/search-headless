@@ -5,7 +5,7 @@ import {
   SortBy,
   Source,
   VerticalResults
-} from '@yext/answers-core';
+} from '@yext/search-core';
 
 /**
  * Represents all results for the current vertical.

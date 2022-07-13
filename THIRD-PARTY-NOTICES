@@ -62,11 +62,11 @@ SOFTWARE.
 
 The following NPM package may be included in this product:
 
- - @yext/answers-core@1.7.0
+ - @yext/search-core@1.8.0
 
 This package contains the following license and notice below:
 
-The Answers Core files listed in this repository are licensed under the below license.  All other features and products are subject to separate agreements
+The Search Core files listed in this repository are licensed under the below license.  All other features and products are subject to separate agreements
 and certain functionality requires paid subscriptions to Yext products.
 
 Contains information from the language-subtag-registry JSON Database (https://github.com/mattcg/language-subtag-registry/tree/master/data/json)

@@ -1,17 +1,17 @@
 export {
   AdditionalHttpHeaders,
-  AnswersConfig,
-  AnswersConfigWithApiKey,
-  AnswersConfigWithToken,
-  AnswersCore,
-  AnswersError,
-  AnswersRequest,
+  SearchConfig,
+  SearchConfigWithApiKey,
+  SearchConfigWithToken,
+  SearchCore,
+  SearchError,
+  SearchRequest,
   AppliedQueryFilter,
   AppliedQueryFilterType,
   AutocompleteResponse,
   AutocompleteResult,
   AutocompleteService,
-  BaseAnswersConfig,
+  BaseSearchConfig,
   CombinedFilter,
   Context,
   ClientSDKHeaderValues,
@@ -69,4 +69,4 @@ export {
   VerticalSearchRequest,
   VerticalSearchResponse,
   Visitor
-} from '@yext/answers-core';
+} from '@yext/search-core';

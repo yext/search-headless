@@ -4,7 +4,7 @@ import HeadlessReducerManager from '../../src/headless-reducer-manager';
 import SearchHeadless from '../../src/search-headless';
 import { expectedInitialState } from '../mocks/expectedInitialState';
 import HttpManager from '../../src/http-manager';
-import { AnswersCore } from '@yext/answers-core';
+import { SearchCore } from '@yext/search-core';
 
 it('instantiating a ReduxStateManager creates adjacent state subtrees', () => {
   const store = createBaseStore();
@@ -57,7 +57,7 @@ it('dispatching answers actions through SearchHeadless', () => {
   const store = createBaseStore();
   const headlessReducerManager = new HeadlessReducerManager();
   const stateManager = new ReduxStateManager(store, 'anId', headlessReducerManager);
-  const headless = new SearchHeadless({} as AnswersCore, stateManager, new HttpManager());
+  const headless = new SearchHeadless({} as SearchCore, stateManager, new HttpManager());
   headless.setQuery('yo');
   expect(store.getState()).toEqual({
     anId: {
@@ -73,7 +73,7 @@ it('addListener works with multiple headless instances', () => {
   const store = createBaseStore();
   const headlessReducerManager = new HeadlessReducerManager();
   const stateManager = new ReduxStateManager(store, 'anId', headlessReducerManager);
-  const headless = new SearchHeadless({} as AnswersCore, stateManager, new HttpManager());
+  const headless = new SearchHeadless({} as SearchCore, stateManager, new HttpManager());
   const callback = jest.fn();
   headless.addListener({
     valueAccessor: state => state.query.input,
@@ -93,12 +93,12 @@ it('addListener can be used to link together different headless instances', () =
   const store = createBaseStore();
   const headlessReducerManager = new HeadlessReducerManager();
   const firstHeadless = new SearchHeadless(
-    {} as AnswersCore,
+    {} as SearchCore,
     new ReduxStateManager(store, 'first', headlessReducerManager),
     new HttpManager()
   );
   const secondHeadless = new SearchHeadless(
-    {} as AnswersCore,
+    {} as SearchCore,
     new ReduxStateManager(store, 'second', headlessReducerManager),
     new HttpManager()
   );

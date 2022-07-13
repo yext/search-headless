@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
-import { SpellCheck } from '@yext/answers-core';
+import { SpellCheck } from '@yext/search-core';
 import { SpellCheckState } from '../models/slices/spellcheck';
 
 const initialState: SpellCheckState = {

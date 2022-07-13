@@ -4,12 +4,15 @@
 
 ## AnswersConfig type
 
-The main configuration options for [AnswersCore](./search-headless.answerscore.md)<!-- -->. For a full description of the options, see [BaseAnswersConfig](./search-headless.baseanswersconfig.md)<!-- -->. The config requires either an apiKey or a token.
+> Warning: This API is now obsolete.
+> 
+> AnswersConfig is deprecated and has been replaced by [SearchConfig](./search-headless.searchconfig.md)
+> 
 
 <b>Signature:</b>
 
 ```typescript
-export declare type AnswersConfig = AnswersConfigWithApiKey | AnswersConfigWithToken;
+export declare type AnswersConfig = SearchConfig;
 ```
-<b>References:</b> [AnswersConfigWithApiKey](./search-headless.answersconfigwithapikey.md)<!-- -->, [AnswersConfigWithToken](./search-headless.answersconfigwithtoken.md)
+<b>References:</b> [SearchConfig](./search-headless.searchconfig.md)
 

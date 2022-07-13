@@ -4,19 +4,15 @@
 
 ## AnswersConfigWithToken interface
 
-Configuration options for [AnswersCore](./search-headless.answerscore.md)<!-- -->, which includes the options from [BaseAnswersConfig](./search-headless.baseanswersconfig.md)<!-- -->, but requires token.
+> Warning: This API is now obsolete.
+> 
+> AnswersConfigWithToken is deprecated and has been replaced by [SearchConfigWithToken](./search-headless.searchconfigwithtoken.md)
+> 
 
 <b>Signature:</b>
 
 ```typescript
-export declare interface AnswersConfigWithToken extends BaseAnswersConfig 
+export declare interface AnswersConfigWithToken extends SearchConfigWithToken 
 ```
-<b>Extends:</b> [BaseAnswersConfig](./search-headless.baseanswersconfig.md)
-
-## Properties
-
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [apiKey?](./search-headless.answersconfigwithtoken.apikey.md) | never | <i>(Optional)</i> apiKey should NOT be provided along with token. |
-|  [token](./search-headless.answersconfigwithtoken.token.md) | string | The authentication token of the answers experience which will be passed in the Auth header as a Bearer token. |
+<b>Extends:</b> [SearchConfigWithToken](./search-headless.searchconfigwithtoken.md)
 

@@ -1,4 +1,4 @@
-import { Source, VerticalResults } from '@yext/answers-core';
+import { Source, VerticalResults } from '@yext/search-core';
 import createUniversalSlice from '../../../src/slices/universal';
 
 const { reducer, actions } = createUniversalSlice('');

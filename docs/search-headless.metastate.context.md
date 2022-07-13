@@ -4,7 +4,7 @@
 
 ## MetaState.context property
 
-A JSON object used for passing data to and triggering Answers [Query Rules](https://hitchhikers.yext.com/tracks/answers-advanced/ans302-query-rules/)<!-- -->.
+A JSON object used for passing data to and triggering Search [Query Rules](https://hitchhikers.yext.com/tracks/answers-advanced/ans302-query-rules/)<!-- -->.
 
 <b>Signature:</b>
 

@@ -4,28 +4,15 @@
 
 ## AnswersCore class
 
-Provides methods for executing searches, submitting questions, and performing autocompletes.
+> Warning: This API is now obsolete.
+> 
+> AnswersCore is deprecated and has been replaced by [SearchCore](./search-headless.searchcore.md)
+> 
 
 <b>Signature:</b>
 
 ```typescript
-export declare class AnswersCore 
+export declare class AnswersCore extends SearchCore 
 ```
-
-## Constructors
-
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(searchService, questionSubmissionService, autoCompleteService)](./search-headless.answerscore._constructor_.md) |  | Constructs a new instance of the <code>AnswersCore</code> class |
-
-## Methods
-
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [filterSearch(request)](./search-headless.answerscore.filtersearch.md) |  | Performs a filtersearch request against specified fields within a single vertical. |
-|  [submitQuestion(request)](./search-headless.answerscore.submitquestion.md) |  | Submits a custom question to the Answers API. |
-|  [universalAutocomplete(request)](./search-headless.answerscore.universalautocomplete.md) |  | Performs an autocomplete request across all verticals. |
-|  [universalSearch(request)](./search-headless.answerscore.universalsearch.md) |  | Performs an Answers search across all verticals. |
-|  [verticalAutocomplete(request)](./search-headless.answerscore.verticalautocomplete.md) |  | Performs an autocomplete request for a single vertical. |
-|  [verticalSearch(request)](./search-headless.answerscore.verticalsearch.md) |  | Performs an Answers search for a single vertical. |
+<b>Extends:</b> [SearchCore](./search-headless.searchcore.md)
 

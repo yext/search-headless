@@ -1,4 +1,4 @@
-import { Context } from '@yext/answers-core';
+import { Context } from '@yext/search-core';
 import { SearchType } from '../utils/searchType';
 
 /**
@@ -8,7 +8,7 @@ import { SearchType } from '../utils/searchType';
  */
 export interface MetaState {
   /**
-   * A JSON object used for passing data to and triggering Answers
+   * A JSON object used for passing data to and triggering Search
    * {@link https://hitchhikers.yext.com/tracks/answers-advanced/ans302-query-rules/ | Query Rules}.
    */
   context?: Context,

@@ -4,19 +4,15 @@
 
 ## AnswersConfigWithApiKey interface
 
-Configuration options for [AnswersCore](./search-headless.answerscore.md)<!-- -->, which includes the options from [BaseAnswersConfig](./search-headless.baseanswersconfig.md)<!-- -->, but requires apiKey.
+> Warning: This API is now obsolete.
+> 
+> AnswersConfigWithApiKey is deprecated and has been replaced by [SearchConfigWithApiKey](./search-headless.searchconfigwithapikey.md)
+> 
 
 <b>Signature:</b>
 
 ```typescript
-export declare interface AnswersConfigWithApiKey extends BaseAnswersConfig 
+export declare interface AnswersConfigWithApiKey extends SearchConfigWithApiKey 
 ```
-<b>Extends:</b> [BaseAnswersConfig](./search-headless.baseanswersconfig.md)
-
-## Properties
-
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [apiKey](./search-headless.answersconfigwithapikey.apikey.md) | string | The api key of the answers experience which will be sent as a query param. |
-|  [token?](./search-headless.answersconfigwithapikey.token.md) | never | <i>(Optional)</i> token should NOT be provided along with apiKey. |
+<b>Extends:</b> [SearchConfigWithApiKey](./search-headless.searchconfigwithapikey.md)
 

@@ -9,9 +9,9 @@ Options for a universal autocomplete request.
 <b>Signature:</b>
 
 ```typescript
-export declare interface UniversalAutocompleteRequest extends AnswersRequest 
+export declare interface UniversalAutocompleteRequest extends SearchRequest 
 ```
-<b>Extends:</b> [AnswersRequest](./search-headless.answersrequest.md)
+<b>Extends:</b> [SearchRequest](./search-headless.searchrequest.md)
 
 ## Properties
 

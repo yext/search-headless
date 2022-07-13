@@ -2,26 +2,17 @@
 
 [Home](./index.md) &gt; [@yext/search-headless](./search-headless.md) &gt; [AnswersError](./search-headless.answerserror.md)
 
-## AnswersError class
+## AnswersError interface
 
-Represents an error
+> Warning: This API is now obsolete.
+> 
+> AnswersError is deprecated and has been replaced by [SearchError](./search-headless.searcherror.md)
+> 
 
 <b>Signature:</b>
 
 ```typescript
-export declare class AnswersError extends Error 
+export declare interface AnswersError extends SearchError 
 ```
-<b>Extends:</b> Error
-
-## Remarks
-
-If the error originates from the Answer API, the code and type property will be present.
-
-## Properties
-
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [code?](./search-headless.answerserror.code.md) |  | number | <i>(Optional)</i> Answers API error code. |
-|  [message](./search-headless.answerserror.message.md) |  | string | The error message. |
-|  [type?](./search-headless.answerserror.type.md) |  | string | <i>(Optional)</i> Answers API error type. |
+<b>Extends:</b> [SearchError](./search-headless.searcherror.md)
 

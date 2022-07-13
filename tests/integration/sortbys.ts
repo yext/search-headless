@@ -1,4 +1,4 @@
-import { Direction, SortType, VerticalSearchRequest } from '@yext/answers-core';
+import { Direction, SortType, VerticalSearchRequest } from '@yext/search-core';
 import { createMockedHeadless } from '../mocks/createMockedHeadless';
 
 it('executeVerticalQuery properly updates spellcheck state', async () => {

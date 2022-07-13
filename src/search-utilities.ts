@@ -1,4 +1,4 @@
-import { DisplayableFacet } from '@yext/answers-core';
+import { DisplayableFacet } from '@yext/search-core';
 import { isLevenshteinMatch } from './utils/searchable-facets';
 
 /**

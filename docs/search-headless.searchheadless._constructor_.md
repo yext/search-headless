@@ -9,14 +9,14 @@ Constructs a new instance of the `SearchHeadless` class
 <b>Signature:</b>
 
 ```typescript
-constructor(core: AnswersCore, stateManager: StateManager, httpManager: HttpManager, additionalHttpHeaders?: AdditionalHttpHeaders | undefined);
+constructor(core: SearchCore, stateManager: StateManager, httpManager: HttpManager, additionalHttpHeaders?: AdditionalHttpHeaders | undefined);
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  core | [AnswersCore](./search-headless.answerscore.md) |  |
+|  core | [SearchCore](./search-headless.searchcore.md) |  |
 |  stateManager | StateManager |  |
 |  httpManager | HttpManager |  |
 |  additionalHttpHeaders | [AdditionalHttpHeaders](./search-headless.additionalhttpheaders.md) \| undefined |  |

@@ -1,4 +1,4 @@
-import { LatLong, LocationBias } from '@yext/answers-core';
+import { LatLong, LocationBias } from '@yext/search-core';
 
 /**
  * Maintains the user's location, if given, or the inferred location, that is

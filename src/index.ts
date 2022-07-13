@@ -1,4 +1,4 @@
-import { provideCore, AnswersConfig, AdditionalHttpHeaders } from '@yext/answers-core';
+import { provideCore, SearchConfig, AdditionalHttpHeaders } from '@yext/search-core';
 import HttpManager from './http-manager';
 import ReduxStateManager from './redux-state-manager';
 import SearchHeadless from './search-headless';
@@ -9,7 +9,7 @@ import { SessionTrackingState } from './models/slices/sessiontracking';
 import * as searchUtilities from './search-utilities';
 import { getHttpHeaders } from './utils/client-sdk-utils';
 
-export * from './answers-core-re-exports';
+export * from './search-core-re-exports';
 export * from './models';
 export * from './constants';
 export * from './utils/filter-creators';
@@ -22,7 +22,7 @@ export { searchUtilities };
  *
  * @public
  */
-export type HeadlessConfig = AnswersConfig & {
+export type HeadlessConfig = SearchConfig & {
   /**
    * The ID of the SearchHeadless instance.
    *
@@ -77,13 +77,13 @@ export function provideHeadless(
   const {
     verticalKey,
     headlessId,
-    ...answersConfig
+    ...searchConfig
   } = config;
   if (headlessId === DEFAULT_HEADLESS_ID) {
     throw new Error(`Cannot instantiate a SearchHeadless using the default headlessId "${headlessId}". `
       + 'Specify a different headlessId.');
   }
-  const answersCore = provideCore(answersConfig);
+  const answersCore = provideCore(searchConfig);
   const stateManager = new ReduxStateManager(
     store, headlessId || DEFAULT_HEADLESS_ID, headlessReducerManager);
   const httpManager = new HttpManager();

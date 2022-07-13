@@ -1,4 +1,4 @@
-import { UniversalSearchRequest, VerticalSearchRequest } from '@yext/answers-core';
+import { UniversalSearchRequest, VerticalSearchRequest } from '@yext/search-core';
 import { createMockedHeadless } from '../mocks/createMockedHeadless';
 
 it('by default no meta attributes are sent', async () => {

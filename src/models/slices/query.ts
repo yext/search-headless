@@ -1,4 +1,4 @@
-import { QuerySource, QueryTrigger, SearchIntent } from '@yext/answers-core';
+import { QuerySource, QueryTrigger, SearchIntent } from '@yext/search-core';
 
 /**
  * Maintains the latest query and its associated data.

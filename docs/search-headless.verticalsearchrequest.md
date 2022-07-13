@@ -9,15 +9,15 @@ Options which can be specified for a vertical search.
 <b>Signature:</b>
 
 ```typescript
-export declare interface VerticalSearchRequest extends AnswersRequest 
+export declare interface VerticalSearchRequest extends SearchRequest 
 ```
-<b>Extends:</b> [AnswersRequest](./search-headless.answersrequest.md)
+<b>Extends:</b> [SearchRequest](./search-headless.searchrequest.md)
 
 ## Properties
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [context?](./search-headless.verticalsearchrequest.context.md) | [Context](./search-headless.context.md) | <i>(Optional)</i> Used to trigger Answers [Query Rules](https://hitchhikers.yext.com/tracks/answers-advanced/ans302-query-rules/)<!-- -->. |
+|  [context?](./search-headless.verticalsearchrequest.context.md) | [Context](./search-headless.context.md) | <i>(Optional)</i> Used to trigger Search [Query Rules](https://hitchhikers.yext.com/tracks/answers-advanced/ans302-query-rules/)<!-- -->. |
 |  [facets?](./search-headless.verticalsearchrequest.facets.md) | [Facet](./search-headless.facet.md)<!-- -->\[\] | <i>(Optional)</i> The facet filters to apply to the search. |
 |  [limit?](./search-headless.verticalsearchrequest.limit.md) | number | <i>(Optional)</i> The maximum number of results to include with a max of 50. |
 |  [location?](./search-headless.verticalsearchrequest.location.md) | [LatLong](./search-headless.latlong.md) | <i>(Optional)</i> The latitude and longitude of the user making the request. Used to bias the results. |

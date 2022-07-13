@@ -1,5 +1,5 @@
+import { FeaturedSnippetDirectAnswer, DirectAnswerType, Source } from '@yext/search-core';
 import { createMockedHeadless } from '../mocks/createMockedHeadless';
-import { FeaturedSnippetDirectAnswer, DirectAnswerType, Source } from '@yext/answers-core';
 import { State } from '../../src/models/state';
 import { SearchTypeEnum } from '../../src/models/utils/searchType';
 

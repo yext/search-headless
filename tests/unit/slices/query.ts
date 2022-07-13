@@ -1,4 +1,4 @@
-import { QuerySource, QueryTrigger } from '@yext/answers-core';
+import { QuerySource, QueryTrigger } from '@yext/search-core';
 import createQuerySlice from '../../../src/slices/query';
 
 const { reducer, actions } = createQuerySlice('');

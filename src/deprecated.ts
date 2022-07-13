@@ -1,6 +1,16 @@
 import { searchUtilities, provideHeadless } from '.';
 import SearchHeadless from './search-headless';
 
+export {
+  AnswersConfig,
+  AnswersConfigWithToken,
+  AnswersConfigWithApiKey,
+  AnswersCore,
+  AnswersError,
+  AnswersRequest,
+  BaseAnswersConfig
+} from '@yext/search-core';
+
 /**
  * @public
  *

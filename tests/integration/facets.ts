@@ -1,4 +1,4 @@
-import { DisplayableFacet, DisplayableFacetOption, Matcher } from '@yext/answers-core';
+import { DisplayableFacet, DisplayableFacetOption, Matcher } from '@yext/search-core';
 import { State } from '../../src/models/state';
 import { SearchTypeEnum } from '../../src/models/utils/searchType';
 import { createMockedHeadless } from '../mocks/createMockedHeadless';

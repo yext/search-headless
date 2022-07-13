@@ -4,21 +4,15 @@
 
 ## BaseAnswersConfig interface
 
-The base configuration options for [AnswersCore](./search-headless.answerscore.md)<!-- -->.
+> Warning: This API is now obsolete.
+> 
+> BaseAnswersConfig is deprecated and has been replaced by [BaseSearchConfig](./search-headless.basesearchconfig.md)
+> 
 
 <b>Signature:</b>
 
 ```typescript
-export declare interface BaseAnswersConfig 
+export declare interface BaseAnswersConfig extends BaseSearchConfig 
 ```
-
-## Properties
-
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [endpoints?](./search-headless.baseanswersconfig.endpoints.md) | [Endpoints](./search-headless.endpoints.md) | <i>(Optional)</i> Overrides for the URLs which are used when making requests to the Answers API. |
-|  [experienceKey](./search-headless.baseanswersconfig.experiencekey.md) | string | The experience key of the answers experience. |
-|  [experienceVersion?](./search-headless.baseanswersconfig.experienceversion.md) | 'STAGING' \| 'PRODUCTION' \| string \| number | <i>(Optional)</i> The version of the answers experience configuration. |
-|  [locale](./search-headless.baseanswersconfig.locale.md) | string | The locale of the answers experience. |
-|  [visitor?](./search-headless.baseanswersconfig.visitor.md) | [Visitor](./search-headless.visitor.md) | <i>(Optional)</i> Information used to associate requests with a particular user. |
+<b>Extends:</b> [BaseSearchConfig](./search-headless.basesearchconfig.md)
 

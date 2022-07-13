@@ -491,7 +491,7 @@ export interface RangeBoundary<T> {
 }
 
 // @public
-export interface Result {
+export interface Result<T = Record<string, unknown>> {
     description?: string;
     distance?: number;
     distanceFromFilter?: number;
@@ -501,7 +501,7 @@ export interface Result {
     index?: number;
     link?: string;
     name?: string;
-    rawData: Record<string, unknown>;
+    rawData: T;
     source: Source;
 }
 

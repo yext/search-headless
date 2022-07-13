@@ -1,11 +1,17 @@
 {
   "name": "@yext/search-headless",
   "version": "1.2.0",
-  "description": "",
+  "description": "A library for powering UI components for Yext Search integrations",
   "author": "slapshot@yext.com",
-  "license": "ISC",
+  "license": "BSD-3-Clause",
   "main": "./dist/commonjs/src/index.js",
   "module": "./dist/esm/src/index.js",
+  "keywords": [
+    "search",
+    "yext",
+    "redux",
+    "state management"
+  ], 
   "files": [
     "dist",
     "lib",
@@ -37,11 +43,11 @@
     "@types/node": "^16.11.12",
     "@typescript-eslint/eslint-plugin": "^5.16.0",
     "@typescript-eslint/parser": "^5.16.0",
-    "@yext/eslint-config-slapshot": "^0.2.0",
+    "@yext/eslint-config-slapshot": "^0.4.0",
     "@yext/eslint-plugin-export-star": "^1.0.0",
     "babel-jest": "^27.4.5",
     "eslint": "^8.11.0",
-    "eslint-config-react-app": "^7.0.0",
+    "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-tsdoc": "^0.2.14",
     "generate-license-file": "^1.3.0",
     "jest": "^28.1.0",

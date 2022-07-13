@@ -37,12 +37,12 @@ export function transformFiltersToCoreFormat(
     return null;
   }
   if (selectableFilters.length === 1) {
-    const { selected, displayName:_, ...filter } = selectableFilters[0];
+    const { selected, displayName: _, ...filter } = selectableFilters[0];
     return selected ? filter : null;
   }
   const selectedFilters = selectableFilters.filter(selectableFilter => selectableFilter.selected);
   const groupedFilters: Record<string, Filter[]> = selectedFilters.reduce((groups, element) => {
-    const { selected:_, displayName:__, ...filter } = element;
+    const { selected: _, displayName: __, ...filter } = element;
     groups[filter.fieldId]
       ? groups[filter.fieldId].push(filter)
       : groups[filter.fieldId] = [filter];

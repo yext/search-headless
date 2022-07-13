@@ -168,7 +168,6 @@ it('answers.setVerticalLimit sets the vertical limit when a number is passed to 
   expect(answers.state.vertical.limit).toEqual(7);
 });
 
-
 it('handle a rejected promise from core', async () => {
   const mockSearch = createMockRejectedSearch();
   const mockCore = { verticalSearch: mockSearch };

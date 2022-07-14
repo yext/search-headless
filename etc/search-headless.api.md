@@ -38,7 +38,8 @@ export interface AnswersError extends SearchError {
 }
 
 // @public @deprecated (undocumented)
-export const AnswersHeadless: typeof SearchHeadless;
+export class AnswersHeadless extends SearchHeadless {
+}
 
 // @public @deprecated (undocumented)
 export interface AnswersRequest extends SearchRequest {

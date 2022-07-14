@@ -36,4 +36,4 @@ export const provideAnswersHeadless = provideHeadless;
  *
  * @deprecated AnswersHeadless has been deprecated and renamed to SearchHeadless
  */
-export const AnswersHeadless = SearchHeadless;
+export class AnswersHeadless extends SearchHeadless {}

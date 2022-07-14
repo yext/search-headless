@@ -46,7 +46,7 @@ export interface AnswersRequest extends SearchRequest {
 }
 
 // @public @deprecated (undocumented)
-export const answersUtilities: typeof searchUtilities;
+export namespace answersUtilities { }
 
 // @public
 export interface AppliedQueryFilter {

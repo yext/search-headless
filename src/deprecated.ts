@@ -16,7 +16,7 @@ export {
  *
  * @deprecated answersUtilities has been deprecated and renamed to searchUtilities
  */
-export const answersUtilities = searchUtilities;
+export namespace answersUtilities { searchUtilities };
 
 /**
  * Supplies a new instance of {@link SearchHeadless}, using the provided configuration.

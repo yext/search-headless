@@ -2,7 +2,7 @@
 
 [Home](./index.md) &gt; [@yext/search-headless](./search-headless.md) &gt; [AnswersHeadless](./search-headless.answersheadless.md)
 
-## AnswersHeadless variable
+## AnswersHeadless class
 
 > Warning: This API is now obsolete.
 > 
@@ -12,5 +12,7 @@
 <b>Signature:</b>
 
 ```typescript
-AnswersHeadless: typeof SearchHeadless
+export declare class AnswersHeadless extends SearchHeadless 
 ```
+<b>Extends:</b> SearchHeadless
+

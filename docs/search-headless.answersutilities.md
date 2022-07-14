@@ -2,7 +2,7 @@
 
 [Home](./index.md) &gt; [@yext/search-headless](./search-headless.md) &gt; [answersUtilities](./search-headless.answersutilities.md)
 
-## answersUtilities variable
+## answersUtilities namespace
 
 > Warning: This API is now obsolete.
 > 
@@ -12,5 +12,5 @@
 <b>Signature:</b>
 
 ```typescript
-answersUtilities: typeof searchUtilities
+export declare namespace answersUtilities 
 ```

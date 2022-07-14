@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
-import { FeaturedSnippetDirectAnswer, FieldValueDirectAnswer } from '@yext/answers-core';
+import { FeaturedSnippetDirectAnswer, FieldValueDirectAnswer } from '@yext/search-core';
 import { DirectAnswerState } from '../models/slices/directanswer';
 
 export const initialState: DirectAnswerState = {};

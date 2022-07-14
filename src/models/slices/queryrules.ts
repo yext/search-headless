@@ -1,4 +1,4 @@
-import { QueryRulesActionsData } from '@yext/answers-core';
+import { QueryRulesActionsData } from '@yext/search-core';
 
 /**
  * Maintains the data from the triggered query rules.

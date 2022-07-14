@@ -1,4 +1,4 @@
-import { SpellCheck } from '@yext/answers-core';
+import { SpellCheck } from '@yext/search-core';
 
 /**
  * Maintains whether spellcheck is enabled and the spellcheck response from the

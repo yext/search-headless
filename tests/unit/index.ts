@@ -1,7 +1,7 @@
-import { AnswersHeadless, provideAnswersHeadless } from '../../src';
+import { SearchHeadless, provideHeadless } from '../../src';
 import { getHttpHeaders } from '../../src/utils/client-sdk-utils';
 
-jest.mock('../../src/answers-headless.ts');
+jest.mock('../../src/search-headless.ts');
 
 const baseConfig = {
   apiKey: 'api-key',
@@ -11,22 +11,22 @@ const baseConfig = {
 
 const headlessVersionHeader = getHttpHeaders();
 
-it('provideAnswersHeadless passes Headless agent to AnswersHeadless', () => {
-  provideAnswersHeadless(baseConfig);
+it('provideHeadless passes Headless agent to SearchHeadless', () => {
+  provideHeadless(baseConfig);
 
-  expect(AnswersHeadless).toHaveBeenLastCalledWith(
+  expect(SearchHeadless).toHaveBeenLastCalledWith(
     expect.anything(), expect.anything(), expect.anything(), headlessVersionHeader);
 });
 
-it('provideAnswersHeadless passes additional HTTP headers to AnswersHeadless', () => {
+it('provideHeadless passes additional HTTP headers to SearchHeadless', () => {
   const additionalHttpHeaders = {
     'Client-SDK': {
       CUSTOM_TEST_SITE: 'test'
     }
   };
-  provideAnswersHeadless(baseConfig, additionalHttpHeaders);
+  provideHeadless(baseConfig, additionalHttpHeaders);
 
-  expect(AnswersHeadless).toHaveBeenLastCalledWith(expect.anything(), expect.anything(), expect.anything(), {
+  expect(SearchHeadless).toHaveBeenLastCalledWith(expect.anything(), expect.anything(), expect.anything(), {
     'Client-SDK': {
       ...additionalHttpHeaders['Client-SDK'],
       ...headlessVersionHeader['Client-SDK']

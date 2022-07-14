@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
-import { QueryRulesActionsData } from '@yext/answers-core';
+import { QueryRulesActionsData } from '@yext/search-core';
 import { QueryRulesState } from '../models/slices/queryrules';
 
 export const initialState: QueryRulesState = { actions: [] };

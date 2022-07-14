@@ -1,4 +1,4 @@
-import { CombinedFilter, Filter, FilterCombinator, Matcher, NearFilterValue } from '@yext/answers-core';
+import { CombinedFilter, Filter, FilterCombinator, Matcher, NearFilterValue } from '@yext/search-core';
 import { BoundedRange } from '../models/utils/boundedrange';
 
 /**

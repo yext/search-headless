@@ -1,4 +1,4 @@
-import { createMockedAnswersHeadless } from '../mocks/createMockedAnswersHeadless';
+import { createMockedHeadless } from '../mocks/createMockedHeadless';
 
 const initialState = {
   queryRules: {
@@ -30,7 +30,7 @@ function mockSearchWithQueryRules() {
 
 describe('AnswersHeadless queryRules interactions properly update state', () => {
   it('executeVerticalQuery properly updates queryRules state', async () => {
-    const answers = createMockedAnswersHeadless({
+    const answers = createMockedHeadless({
       verticalSearch: mockSearchWithQueryRules
     }, initialState);
     answers.setVertical('123');
@@ -45,7 +45,7 @@ describe('AnswersHeadless queryRules interactions properly update state', () => 
   });
 
   it('executeUniversalQuery properly updates queryRules state', async () => {
-    const answers = createMockedAnswersHeadless({
+    const answers = createMockedHeadless({
       universalSearch: mockSearchWithQueryRules
     }, initialState);
     answers.setUniversal();

@@ -1,4 +1,4 @@
-import { CombinedFilter, Filter, FilterCombinator } from '@yext/answers-core';
+import { CombinedFilter, Filter, FilterCombinator } from '@yext/search-core';
 import { SelectableFilter } from '../models/utils/selectableFilter';
 
 /**
@@ -19,8 +19,8 @@ function combineFiltersWithOR(filters: Filter[]): Filter | CombinedFilter {
 }
 
 /**
- * Converts a list of {@link SelectableFilter}s used in Answers Headless
- * to a single nested filter stucture used in Answers Core.
+ * Converts a list of {@link SelectableFilter}s used in Search Headless
+ * to a single nested filter stucture used in Search Core.
  *
  * @param selectableFilters - The filters to be transformed
  * @returns The filters in a singly-nested {@link CombinedFilter}, or if there
@@ -37,12 +37,12 @@ export function transformFiltersToCoreFormat(
     return null;
   }
   if (selectableFilters.length === 1) {
-    const { selected, displayName:_, ...filter } = selectableFilters[0];
+    const { selected, displayName: _, ...filter } = selectableFilters[0];
     return selected ? filter : null;
   }
   const selectedFilters = selectableFilters.filter(selectableFilter => selectableFilter.selected);
   const groupedFilters: Record<string, Filter[]> = selectedFilters.reduce((groups, element) => {
-    const { selected:_, displayName:__, ...filter } = element;
+    const { selected: _, displayName: __, ...filter } = element;
     groups[filter.fieldId]
       ? groups[filter.fieldId].push(filter)
       : groups[filter.fieldId] = [filter];

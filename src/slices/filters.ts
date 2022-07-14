@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
-import { FacetOption, DisplayableFacet } from '@yext/answers-core';
+import { FacetOption, DisplayableFacet } from '@yext/search-core';
 import { SelectableFilter } from '../models/utils/selectableFilter';
 import { FiltersState } from '../models/slices/filters';
 import isEqual from 'lodash/isEqual';
@@ -59,7 +59,7 @@ const reducers = {
     if (!state.static) {
       state.static = [];
     }
-    const { selected, displayName:_, ...targetFilter } = payload;
+    const { selected, displayName: _, ...targetFilter } = payload;
     const matchingFilter = state.static.find(storedFilter => {
       return areFiltersEqual(storedFilter, targetFilter);
     });

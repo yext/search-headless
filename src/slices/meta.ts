@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
-import { Context } from '@yext/answers-core';
+import { Context } from '@yext/search-core';
 import { MetaState } from '../models/slices/meta';
 import { SearchTypeEnum } from '../models/utils/searchType';
 

@@ -16,7 +16,8 @@ export {
  *
  * @deprecated answersUtilities has been deprecated and renamed to searchUtilities
  */
-export namespace answersUtilities { searchUtilities };
+// eslint-disable-next-line @typescript-eslint/no-namespace
+export namespace answersUtilities { searchUtilities; }
 
 /**
  * Supplies a new instance of {@link SearchHeadless}, using the provided configuration.

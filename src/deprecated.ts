@@ -16,7 +16,8 @@ export {
  *
  * @deprecated answersUtilities has been deprecated and renamed to searchUtilities
  */
-export const answersUtilities = searchUtilities;
+// eslint-disable-next-line @typescript-eslint/no-namespace
+export namespace answersUtilities { searchUtilities; }
 
 /**
  * Supplies a new instance of {@link SearchHeadless}, using the provided configuration.
@@ -36,4 +37,4 @@ export const provideAnswersHeadless = provideHeadless;
  *
  * @deprecated AnswersHeadless has been deprecated and renamed to SearchHeadless
  */
-export const AnswersHeadless = SearchHeadless;
+export class AnswersHeadless extends SearchHeadless {}

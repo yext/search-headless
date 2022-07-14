@@ -9,6 +9,7 @@
 |  Class | Description |
 |  --- | --- |
 |  [AnswersCore](./search-headless.answerscore.md) |  |
+|  [AnswersHeadless](./search-headless.answersheadless.md) |  |
 |  [SearchCore](./search-headless.searchcore.md) | Provides methods for executing searches, submitting questions, and performing autocompletes. |
 |  [SearchError](./search-headless.searcherror.md) | Represents an error |
 |  [SearchHeadless](./search-headless.searchheadless.md) | Provides the functionality for interacting with a Search experience. |
@@ -127,14 +128,13 @@
 
 |  Namespace | Description |
 |  --- | --- |
+|  [answersUtilities](./search-headless.answersutilities.md) |  |
 |  [searchUtilities](./search-headless.searchutilities.md) |  |
 
 ## Variables
 
 |  Variable | Description |
 |  --- | --- |
-|  [AnswersHeadless](./search-headless.answersheadless.md) |  |
-|  [answersUtilities](./search-headless.answersutilities.md) |  |
 |  [DEFAULT\_HEADLESS\_ID](./search-headless.default_headless_id.md) | The headlessId automatically given to the first SearchHeadless instance created. |
 |  [provideAnswersHeadless](./search-headless.provideanswersheadless.md) | Supplies a new instance of [SearchHeadless](./search-headless.searchheadless.md)<!-- -->, using the provided configuration. |
 |  [SandboxEndpoints](./search-headless.sandboxendpoints.md) | The endpoints to use for sandbox experiences. |

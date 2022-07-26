@@ -16,7 +16,11 @@ const initialState = {
 const spellCheckResult = {
   correctedQuery: 'yext',
   originalQuery: 'yeet',
-  type: 'SUGGEST'
+  type: 'SUGGEST',
+  matchedSubstrings: [{
+    offset: 0,
+    length: 4
+  }]
 };
 
 function mockSearchWithSpellcheck() {

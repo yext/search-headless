@@ -1,6 +1,6 @@
 {
   "name": "@yext/search-headless",
-  "version": "1.4.0-alpha.120",
+  "version": "1.4.0",
   "description": "A library for powering UI components for Yext Search integrations",
   "author": "slapshot@yext.com",
   "license": "BSD-3-Clause",

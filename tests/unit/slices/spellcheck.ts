@@ -12,7 +12,11 @@ describe('spellCheck slice reducer works as expected', () => {
     const spellCheck: SpellCheck = {
       correctedQuery: 'yext',
       originalQuery: 'yeet',
-      type: SpellCheckType.Suggest
+      type: SpellCheckType.Suggest,
+      matchedSubstrings: [{
+        offset: 0,
+        length: 4
+      }]
     };
     const expectedState = { ...initialState, ...spellCheck };
     const actualState = reducer({ enabled: true }, setResult(spellCheck));

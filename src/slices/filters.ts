@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
 import { FacetOption, DisplayableFacet } from '@yext/search-core';
-import { SelectableFilter } from '../models/utils/selectableFilter';
+import { SelectableCombinedFilter, SelectableFilter } from '../models/utils/selectableFilter';
 import { FiltersState } from '../models/slices/filters';
 import isEqual from 'lodash/isEqual';
-import { areFiltersEqual } from '../utils/filter-utils';
+import { areCombinedFiltersEqual, areFiltersEqual, isCombinedFilter } from '../utils/filter-utils';
 
 export const initialState: FiltersState = {};
 
@@ -16,7 +16,7 @@ interface FacetPayload {
 const reducers = {
   setStatic: (
     state: FiltersState,
-    action: PayloadAction<SelectableFilter[]>
+    action: PayloadAction<(SelectableFilter | SelectableCombinedFilter)[]>
   ) => {
     state.static = action.payload;
   },
@@ -55,13 +55,22 @@ const reducers = {
    * If the specified static filter should be selected, but is not in state, it will
    * be added to the state.
    */
-  setFilterOption: (state: FiltersState, { payload }: PayloadAction<SelectableFilter>) => {
+  setFilterOption: (
+    state: FiltersState,
+    { payload }: PayloadAction<SelectableFilter | SelectableCombinedFilter>
+  ) => {
     if (!state.static) {
       state.static = [];
     }
     const { selected, displayName: _, ...targetFilter } = payload;
     const matchingFilter = state.static.find(storedFilter => {
-      return areFiltersEqual(storedFilter, targetFilter);
+      if (isCombinedFilter(storedFilter) && isCombinedFilter(targetFilter)) {
+        return areCombinedFiltersEqual(storedFilter, targetFilter);
+      }
+      if (!isCombinedFilter(storedFilter) && !isCombinedFilter(targetFilter)) {
+        return areFiltersEqual(storedFilter, targetFilter);
+      }
+      return false;
     });
     if (matchingFilter) {
       matchingFilter.selected = selected;

@@ -298,7 +298,7 @@ export interface FilterSearchResponse {
 // @public
 export interface FiltersState {
     facets?: DisplayableFacet[];
-    static?: SelectableFilter[];
+    static?: (SelectableFilter | SelectableCombinedFilter)[];
 }
 
 // @public
@@ -558,7 +558,7 @@ export class SearchHeadless {
     setContext(context: Context): void;
     setFacetOption(fieldId: string, facetOption: FacetOption, selected: boolean): void;
     setFacets(facets: DisplayableFacet[]): void;
-    setFilterOption(filter: SelectableFilter): void;
+    setFilterOption(filter: SelectableFilter | SelectableCombinedFilter): void;
     setOffset(offset: number): void;
     setQuery(input: string): void;
     setQuerySource(source: QuerySource): void;
@@ -570,7 +570,7 @@ export class SearchHeadless {
     setSortBys(sortBys: SortBy[]): void;
     setSpellCheckEnabled(enabled: boolean): void;
     setState(state: State): void;
-    setStaticFilters(filters: SelectableFilter[]): void;
+    setStaticFilters(filters: (SelectableFilter | SelectableCombinedFilter)[]): void;
     setUniversal(): void;
     setUniversalLimit(limit: UniversalLimit): void;
     setUserLocation(latLong: LatLong): void;
@@ -628,6 +628,12 @@ declare namespace searchUtilities {
     }
 }
 export { searchUtilities }
+
+// @public
+export interface SelectableCombinedFilter extends CombinedFilter {
+    displayName?: string;
+    selected: boolean;
+}
 
 // @public
 export interface SelectableFilter extends Filter {

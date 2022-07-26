@@ -9,14 +9,14 @@ Sets [FiltersState.static](./search-headless.filtersstate.static.md) to the spec
 <b>Signature:</b>
 
 ```typescript
-setStaticFilters(filters: SelectableFilter[]): void;
+setStaticFilters(filters: (SelectableFilter | SelectableCombinedFilter)[]): void;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  filters | [SelectableFilter](./search-headless.selectablefilter.md)<!-- -->\[\] | The static filters to set |
+|  filters | ([SelectableFilter](./search-headless.selectablefilter.md) \| [SelectableCombinedFilter](./search-headless.selectablecombinedfilter.md)<!-- -->)\[\] | The static filters to set |
 
 <b>Returns:</b>
 

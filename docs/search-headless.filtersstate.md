@@ -17,5 +17,5 @@ export interface FiltersState
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [facets?](./search-headless.filtersstate.facets.md) | [DisplayableFacet](./search-headless.displayablefacet.md)<!-- -->\[\] | <i>(Optional)</i> The dynamic collection of facets that can be applied to filter the search results and whether each of them is currently selected. |
-|  [static?](./search-headless.filtersstate.static.md) | [SelectableFilter](./search-headless.selectablefilter.md)<!-- -->\[\] | <i>(Optional)</i> The collection of possible static filters that can be applied to the search results and whether each of them is currently selected. |
+|  [static?](./search-headless.filtersstate.static.md) | ([SelectableFilter](./search-headless.selectablefilter.md) \| [SelectableCombinedFilter](./search-headless.selectablecombinedfilter.md)<!-- -->)\[\] | <i>(Optional)</i> The collection of possible static filters that can be applied to the search results and whether each of them is currently selected. |
 

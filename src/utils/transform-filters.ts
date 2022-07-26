@@ -1,5 +1,6 @@
 import { CombinedFilter, Filter, FilterCombinator } from '@yext/search-core';
-import { SelectableFilter } from '../models/utils/selectableFilter';
+import { SelectableCombinedFilter, SelectableFilter } from '../models/utils/selectableFilter';
+import { isCombinedFilter } from './filter-utils';
 
 /**
  * Combines a list of Filters using the logical OR operator into a
@@ -28,33 +29,42 @@ function combineFiltersWithOR(filters: Filter[]): Filter | CombinedFilter {
  *          {@link Filter}
  */
 export function transformFiltersToCoreFormat(
-  selectableFilters: SelectableFilter[] | undefined
+  selectableFilters: (SelectableFilter | SelectableCombinedFilter)[] | undefined
 ): Filter | CombinedFilter | null {
   if (!selectableFilters) {
     return null;
   }
-  if (selectableFilters.length === 0) {
+
+  const selectedFilters = selectableFilters.filter(selectableFilter => selectableFilter.selected);
+  if (selectedFilters.length === 0) {
     return null;
   }
-  if (selectableFilters.length === 1) {
-    const { selected, displayName: _, ...filter } = selectableFilters[0];
-    return selected ? filter : null;
+  if (selectedFilters.length === 1) {
+    const { selected: _, displayName: __, ...filter } = selectedFilters[0];
+    return filter;
   }
-  const selectedFilters = selectableFilters.filter(selectableFilter => selectableFilter.selected);
+
+  const combinedFilters: CombinedFilter[] = [];
   const groupedFilters: Record<string, Filter[]> = selectedFilters.reduce((groups, element) => {
     const { selected: _, displayName: __, ...filter } = element;
-    groups[filter.fieldId]
-      ? groups[filter.fieldId].push(filter)
-      : groups[filter.fieldId] = [filter];
+    if (isCombinedFilter(filter)) {
+      combinedFilters.push(filter);
+    } else {
+      groups[filter.fieldId]
+        ? groups[filter.fieldId].push(filter)
+        : groups[filter.fieldId] = [filter];
+    }
     return groups;
   }, {});
 
   const groupedFilterLabels = Object.keys(groupedFilters);
-  if (groupedFilterLabels.length === 1) {
+  if (groupedFilterLabels.length === 1 && combinedFilters.length === 0) {
     return combineFiltersWithOR(groupedFilters[groupedFilterLabels[0]]);
   }
   return {
     combinator: FilterCombinator.AND,
-    filters: Object.values(groupedFilters).map((filters: Filter[]) => combineFiltersWithOR(filters))
+    filters: Object.values(groupedFilters)
+      .map((filters: Filter[]) => combineFiltersWithOR(filters))
+      .concat(combinedFilters)
   };
 }

@@ -1,8 +1,8 @@
-import { Matcher, QuerySource, QueryTrigger } from '@yext/search-core';
+import { FilterCombinator, Matcher, QuerySource, QueryTrigger } from '@yext/search-core';
 import HttpManager from '../../src/http-manager';
 import StateManager from '../../src/models/state-manager';
 import SearchHeadless from '../../src/search-headless';
-import { SelectableFilter } from '../../src/models/utils/selectableFilter';
+import { SelectableCombinedFilter, SelectableFilter } from '../../src/models/utils/selectableFilter';
 import { State } from '../../src/models/state';
 import { SearchTypeEnum } from '../../src/models/utils/searchType';
 import { initialState as initialVerticalState } from '../../src/slices/vertical';
@@ -34,6 +34,19 @@ const mockedState: State = {
       value: 'some value',
       selected: true,
       displayName: 'some display name'
+    }, {
+      combinator: FilterCombinator.OR,
+      filters: [{
+        fieldId: 'c_someField',
+        matcher: Matcher.Equals,
+        value: 'different value',
+      }, {
+        fieldId: 'c_anotherField',
+        matcher: Matcher.Equals,
+        value: 'another value',
+      }],
+      selected: true,
+      displayName: 'other display name'
     }]
   },
   spellCheck: {
@@ -81,15 +94,29 @@ describe('setters work as expected', () => {
       selected: true,
       displayName: 'someLabel'
     };
-    const staticFilter = [filter];
-    answers.setStaticFilters(staticFilter);
+    const combinedFilter: SelectableCombinedFilter = {
+      combinator: FilterCombinator.OR,
+      filters: [{
+        fieldId: 'c_someField',
+        matcher: Matcher.Equals,
+        value: 'different value',
+      }, {
+        fieldId: 'c_anotherField',
+        matcher: Matcher.Equals,
+        value: 'another value',
+      }],
+      selected: true,
+      displayName: 'other display name'
+    };
+    const staticFilters = [filter, combinedFilter];
+    answers.setStaticFilters(staticFilters);
 
     const dispatchEventCalls =
       mockedStateManager.dispatchEvent.mock.calls;
 
     expect(dispatchEventCalls.length).toBe(1);
     expect(dispatchEventCalls[0][0]).toBe('filters/setStatic');
-    expect(dispatchEventCalls[0][1]).toBe(staticFilter);
+    expect(dispatchEventCalls[0][1]).toBe(staticFilters);
   });
 
   it('setFacets works as expected', () => {
@@ -285,7 +312,7 @@ describe('filter functions work as expected', () => {
     jest.clearAllMocks();
   });
 
-  it('setFilterOption works', async () => {
+  it('setFilterOption works with a regular filter', async () => {
     const filter: SelectableFilter = {
       fieldId: 'c_someField',
       matcher: Matcher.Equals,
@@ -299,6 +326,29 @@ describe('filter functions work as expected', () => {
     expect(dispatchEventCalls.length).toBe(1);
     expect(dispatchEventCalls[0][0]).toBe('filters/setFilterOption');
     expect(dispatchEventCalls[0][1]).toEqual(filter);
+  });
+
+  it('setFilterOption works with a combined filter', async () => {
+    const combinedFilter: SelectableCombinedFilter = {
+      combinator: FilterCombinator.OR,
+      filters: [{
+        fieldId: 'c_someField',
+        matcher: Matcher.Equals,
+        value: 'different value',
+      }, {
+        fieldId: 'c_anotherField',
+        matcher: Matcher.Equals,
+        value: 'another value',
+      }],
+      selected: true,
+      displayName: 'other display name'
+    };
+    answers.setFilterOption(combinedFilter);
+    const dispatchEventCalls =
+    mockedStateManager.dispatchEvent.mock.calls;
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('filters/setFilterOption');
+    expect(dispatchEventCalls[0][1]).toEqual(combinedFilter);
   });
 });
 
@@ -349,14 +399,18 @@ describe('search works as expected', () => {
   it('vertical search works', async () => {
     answers.state.meta.searchType = SearchTypeEnum.Vertical;
     await answers.executeVerticalQuery();
-    const { fieldId, matcher, value } = mockedState.filters.static[0];
+    const { fieldId, matcher, value } = mockedState.filters.static[0] as SelectableFilter;
+    const { combinator, filters } = mockedState.filters.static[1] as SelectableCombinedFilter;
     const coreCalls = mockedCore.verticalSearch.mock.calls;
     const expectedSearchParams = {
       query: mockedState.query.input,
       querySource: mockedState.query.querySource,
       queryTrigger: mockedState.query.queryTrigger,
       verticalKey: mockedState.vertical.verticalKey,
-      staticFilters: { fieldId, matcher, value },
+      staticFilters: { combinator: FilterCombinator.AND, filters: [
+        { fieldId, matcher, value },
+        { combinator, filters }
+      ] },
       retrieveFacets: true,
       limit: mockedState.vertical.limit,
       offset: mockedState.vertical.offset,

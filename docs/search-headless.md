@@ -102,6 +102,7 @@
 |  [SearchRequest](./search-headless.searchrequest.md) | Options for a Search API request. |
 |  [SearchService](./search-headless.searchservice.md) | A service which performs Yext Search. |
 |  [SearchStatusState](./search-headless.searchstatusstate.md) | Maintains the status of the latest search. |
+|  [SelectableCombinedFilter](./search-headless.selectablecombinedfilter.md) | A [CombinedFilter](./search-headless.combinedfilter.md) with additional information, such as an optional display name and whether or not it is selected. |
 |  [SelectableFilter](./search-headless.selectablefilter.md) | A [Filter](./search-headless.filter.md) with additional information, such as an optional display name and whether or not it is selected. |
 |  [SessionTrackingState](./search-headless.sessiontrackingstate.md) | Maintains whether the user session should be tracked and, if so, the session information. |
 |  [Snippet](./search-headless.snippet.md) | The section of text where a [FeaturedSnippetDirectAnswer](./search-headless.featuredsnippetdirectanswer.md) was found. |

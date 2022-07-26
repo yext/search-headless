@@ -1,7 +1,7 @@
-import { DisplayableFacetOption, Filter, Matcher } from '@yext/search-core';
+import { CombinedFilter, DisplayableFacetOption, Filter, FilterCombinator, Matcher } from '@yext/search-core';
 import createFiltersSlice from '../../../src/slices/filters';
 import _ from 'lodash';
-import { FiltersState, SelectableFilter } from '../../../src';
+import { FiltersState, SelectableCombinedFilter, SelectableFilter } from '../../../src';
 
 const { actions, reducer } = createFiltersSlice('');
 const { setStatic, setFacets, resetFacets, setFilterOption, setFacetOption } = actions;
@@ -17,6 +17,31 @@ describe('filter slice reducer works as expected', () => {
     ...filter,
     selected: false,
     displayName: 'some label'
+  };
+
+  const combinedFilter: CombinedFilter = {
+    combinator: FilterCombinator.OR,
+    filters: [{
+      fieldId: 'c_someField',
+      matcher: Matcher.Equals,
+      value: 'different value'
+    }, {
+      combinator: FilterCombinator.AND,
+      filters: [{
+        fieldId: 'c_anotherField',
+        matcher: Matcher.Equals,
+        value: 'another value'
+      }, {
+        fieldId: 'c_uniqueField',
+        matcher: Matcher.Equals,
+        value: 'unique value'
+      }]
+    }]
+  };
+  const selectedCombinedFilter: SelectableCombinedFilter = {
+    ...combinedFilter,
+    selected: true,
+    displayName: 'other display name'
   };
 
   const initialState: FiltersState = {
@@ -41,15 +66,16 @@ describe('filter slice reducer works as expected', () => {
         value: 'value3',
         selected: false,
         displayName: 'label3'
-      }
+      },
+      selectedCombinedFilter
     ]
   };
 
   it('setStatic action is handled properly', () => {
-    const staticFilter = [selectableFilter];
-    const actualState = reducer({}, setStatic(staticFilter));
+    const staticFilters = [selectableFilter, selectedCombinedFilter];
+    const actualState = reducer({}, setStatic(staticFilters));
     const expectedState = {
-      static: staticFilter
+      static: staticFilters
     };
 
     expect(actualState).toEqual(expectedState);
@@ -136,6 +162,27 @@ describe('filter slice reducer works as expected', () => {
     expect(actualUnselectedState).toEqual(unselectedState);
 
     const actualSelectedState = reducer(unselectedState, setFilterOption(selectedFilter));
+    expect(actualSelectedState).toEqual(selectedState);
+  });
+
+  it('setFilterOption action is handled properly with a CombinedFilter', () => {
+    const unselectedCombinedFilter = {
+      ...selectedCombinedFilter,
+      selected: false
+    };
+
+    const selectedState: FiltersState = {
+      static: [ selectableFilter, selectedCombinedFilter ]
+    };
+
+    const unselectedState: FiltersState = {
+      static: [ selectableFilter, unselectedCombinedFilter ]
+    };
+
+    const actualUnselectedState = reducer(selectedState, setFilterOption(unselectedCombinedFilter));
+    expect(actualUnselectedState).toEqual(unselectedState);
+
+    const actualSelectedState = reducer(unselectedState, setFilterOption(selectedCombinedFilter));
     expect(actualSelectedState).toEqual(selectedState);
   });
 

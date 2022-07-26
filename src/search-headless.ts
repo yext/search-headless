@@ -25,7 +25,7 @@ import StateManager from './models/state-manager';
 import { Unsubscribe } from '@reduxjs/toolkit';
 import HttpManager from './http-manager';
 import * as searchUtilities from './search-utilities';
-import { SelectableFilter } from './models/utils/selectableFilter';
+import { SelectableCombinedFilter, SelectableFilter } from './models/utils/selectableFilter';
 import { transformFiltersToCoreFormat } from './utils/transform-filters';
 import { SearchTypeEnum } from './models/utils/searchType';
 import { initialState as initialVerticalState } from './slices/vertical';
@@ -148,7 +148,7 @@ export default class SearchHeadless {
    *
    * @param filters - The static filters to set
    */
-  setStaticFilters(filters: SelectableFilter[]): void {
+  setStaticFilters(filters: (SelectableFilter | SelectableCombinedFilter)[]): void {
     this.stateManager.dispatchEvent('filters/setStatic', filters);
   }
 
@@ -542,7 +542,7 @@ export default class SearchHeadless {
    *
    * @param filter - The static filter and whether it is selected
    */
-  setFilterOption(filter: SelectableFilter): void {
+  setFilterOption(filter: SelectableFilter | SelectableCombinedFilter): void {
     this.stateManager.dispatchEvent('filters/setFilterOption', filter);
   }
 }

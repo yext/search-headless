@@ -9,7 +9,7 @@ An individual search result.
 <b>Signature:</b>
 
 ```typescript
-export declare interface Result 
+export declare interface Result<T = Record<string, unknown>> 
 ```
 
 ## Properties
@@ -19,12 +19,12 @@ export declare interface Result
 |  [description?](./search-headless.result.description.md) | string | <i>(Optional)</i> A description of the result. |
 |  [distance?](./search-headless.result.distance.md) | number | <i>(Optional)</i> The distance from the user to the result in meters. |
 |  [distanceFromFilter?](./search-headless.result.distancefromfilter.md) | number | <i>(Optional)</i> The distance from a [AppliedQueryFilter](./search-headless.appliedqueryfilter.md) location to the result in meters. |
-|  [entityType?](./search-headless.result.entitytype.md) | string | <i>(Optional)</i> The entity type of the result |
+|  [entityType?](./search-headless.result.entitytype.md) | string | <i>(Optional)</i> The entity type of the result. |
 |  [highlightedFields?](./search-headless.result.highlightedfields.md) | [HighlightedFields](./search-headless.highlightedfields.md) | <i>(Optional)</i> The [highlighted fields](./search-headless.highlightedfields.md) emphasized by the api. |
 |  [id?](./search-headless.result.id.md) | string | <i>(Optional)</i> The result ID which depends on the Result Source. |
 |  [index?](./search-headless.result.index.md) | number | <i>(Optional)</i> The index of the result among the other results in the search. |
 |  [link?](./search-headless.result.link.md) | string | <i>(Optional)</i> A hyperlink associated with the result. |
 |  [name?](./search-headless.result.name.md) | string | <i>(Optional)</i> The name of the result. |
-|  [rawData](./search-headless.result.rawdata.md) | Record&lt;string, unknown&gt; | Raw entity profile data in the shape of key-value pairs. |
+|  [rawData](./search-headless.result.rawdata.md) | T | Raw entity profile data in the shape of key-value pairs. |
 |  [source](./search-headless.result.source.md) | [Source](./search-headless.source.md) | Represents the source of a [Result](./search-headless.result.md)<!-- -->. |
 

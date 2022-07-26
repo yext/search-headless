@@ -10,7 +10,9 @@ const reducers = {
   setResult: (state, action: PayloadAction<SpellCheck>) => {
     return {
       enabled: state.enabled,
-      ...action.payload
+      originalQuery: action.payload.originalQuery,
+      correctedQuery: action.payload.correctedQuery,
+      matchedSubstrings: action.payload.matchedSubstrings
     };
   },
   setEnabled: (state, action: PayloadAction<boolean>) => {

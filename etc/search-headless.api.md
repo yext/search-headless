@@ -492,7 +492,7 @@ export interface RangeBoundary<T> {
 }
 
 // @public
-export interface Result {
+export interface Result<T = Record<string, unknown>> {
     description?: string;
     distance?: number;
     distanceFromFilter?: number;
@@ -502,7 +502,7 @@ export interface Result {
     index?: number;
     link?: string;
     name?: string;
-    rawData: Record<string, unknown>;
+    rawData: T;
     source: Source;
 }
 
@@ -677,6 +677,10 @@ export enum Source {
 // @public
 export interface SpellCheck {
     correctedQuery: string;
+    matchedSubstrings: {
+        length: number;
+        offset: number;
+    }[];
     originalQuery: string;
     type: SpellCheckType;
 }

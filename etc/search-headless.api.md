@@ -53,7 +53,7 @@ export interface AppliedQueryFilter {
     details?: LocationFilterDetails;
     displayKey: string;
     displayValue: string;
-    filter: Filter;
+    filter: FieldValueFilter;
     type: AppliedQueryFilterType;
 }
 
@@ -74,7 +74,7 @@ export interface AutocompleteResponse {
 
 // @public
 export interface AutocompleteResult {
-    filter?: Filter;
+    filter?: FieldValueFilter;
     key?: string;
     matchedSubstrings?: {
         length: number;
@@ -119,38 +119,40 @@ export interface ClientSDKHeaderValues {
 }
 
 // @public
-export interface CombinedFilter {
-    combinator: FilterCombinator;
-    filters: (Filter | CombinedFilter)[];
-}
+export function combineStaticFilters(filterA: StaticFilter, filterB: StaticFilter, combinator: FilterCombinator): StaticFilter;
 
 // @public
-export function combineFilters(filterA: FilterTypes, filterB: FilterTypes, combinator: FilterCombinator): CombinedFilter;
+export interface ConjunctionStaticFilter {
+    combinator: FilterCombinator.AND;
+    filters: StaticFilter[];
+    kind: 'conjunction';
+}
 
 // @public
 export type Context = any;
 
 // @public
-export function createDateRangeFilter(fieldId: string, range: BoundedRange<Date>): FilterTypes;
+export function createDateRangeStaticFilter(fieldId: string, range: BoundedRange<Date>): StaticFilter;
 
 // @public
-export function createEqualsFilter(fieldId: string, value: string | number | boolean): Filter;
+export function createEqualsStaticFilter(fieldId: string, value: string | number | boolean): FieldValueStaticFilter;
 
 // @public
-export function createNearMeFilter(position: NearFilterValue): Filter;
+export function createNearMeStaticFilter(position: NearFilterValue): FieldValueStaticFilter;
 
 // @public
-export function createNumberRangeFilter(fieldId: string, range: BoundedRange<number>): FilterTypes;
+export function createNumberRangeStaticFilter(fieldId: string, range: BoundedRange<number>): StaticFilter;
 
 // @public
 export const DEFAULT_HEADLESS_ID = "main";
 
 // @public
-export interface DirectAnswer {
-    fieldType: string;
+export interface DirectAnswer<T = unknown> {
+    // Warning: (ae-forgotten-export) The symbol "BuiltInFieldType" needs to be exported by the entry point index.d.ts
+    fieldType: BuiltInFieldType | string;
     relatedResult: Result;
     type: DirectAnswerType;
-    value?: string;
+    value?: T;
     verticalKey: string;
 }
 
@@ -172,9 +174,15 @@ export enum Direction {
 }
 
 // @public
+export interface DisjunctionStaticFilter {
+    combinator: FilterCombinator.OR;
+    filters: (DisjunctionStaticFilter | FieldValueStaticFilter)[];
+    kind: 'disjunction';
+}
+
+// @public
 export interface DisplayableFacet extends Facet {
     displayName: string;
-    fieldId: string;
     options: DisplayableFacetOption[];
 }
 
@@ -182,9 +190,7 @@ export interface DisplayableFacet extends Facet {
 export interface DisplayableFacetOption extends FacetOption {
     count: number;
     displayName: string;
-    matcher: Matcher;
     selected: boolean;
-    value: string | number | boolean | NumberRangeValue;
 }
 
 // @public
@@ -223,9 +229,8 @@ export interface Facet {
 }
 
 // @public
-export interface FacetOption {
-    matcher: Matcher;
-    value: string | number | boolean | NumberRangeValue;
+export interface FacetOption extends Omit<FieldValueFilter, 'fieldId'> {
+    value: Exclude<FieldValueFilter['value'], NearFilterValue>;
 }
 
 // @public
@@ -240,32 +245,37 @@ export interface FailedVertical {
 }
 
 // @public
-export interface FeaturedSnippetDirectAnswer extends DirectAnswer {
-    fieldType: string;
+export interface FeaturedSnippetDirectAnswer<T = unknown> extends DirectAnswer<T> {
+    fieldType: BuiltInFieldType | string;
     relatedResult: Result;
     snippet: Snippet;
     type: DirectAnswerType.FeaturedSnippet;
-    value?: string;
+    value?: T;
     verticalKey: string;
 }
 
 // @public
-export interface FieldValueDirectAnswer extends DirectAnswer {
+export interface FieldValueDirectAnswer<T = unknown> extends DirectAnswer<T> {
     entityName: string;
     fieldApiName: string;
     fieldName: string;
-    fieldType: string;
+    fieldType: BuiltInFieldType | string;
     relatedResult: Result;
     type: DirectAnswerType.FieldValue;
-    value: string;
+    value: T;
     verticalKey: string;
 }
 
 // @public
-export interface Filter {
+export interface FieldValueFilter {
     fieldId: string;
     matcher: Matcher;
     value: string | number | boolean | NearFilterValue | NumberRangeValue;
+}
+
+// @public
+export interface FieldValueStaticFilter extends FieldValueFilter {
+    kind: 'fieldValue';
 }
 
 // @public
@@ -276,7 +286,7 @@ export enum FilterCombinator {
 
 // @public
 export interface FilterSearchRequest extends SearchRequest {
-    excluded?: Filter[];
+    excluded?: FieldValueFilter[];
     fields: SearchParameterField[];
     input: string;
     sectioned: boolean;
@@ -298,11 +308,8 @@ export interface FilterSearchResponse {
 // @public
 export interface FiltersState {
     facets?: DisplayableFacet[];
-    static?: SelectableFilter[];
+    static?: SelectableStaticFilter[];
 }
-
-// @public
-export type FilterTypes = Filter | CombinedFilter;
 
 // @public
 export type HeadlessConfig = SearchConfig & {
@@ -558,7 +565,7 @@ export class SearchHeadless {
     setContext(context: Context): void;
     setFacetOption(fieldId: string, facetOption: FacetOption, selected: boolean): void;
     setFacets(facets: DisplayableFacet[]): void;
-    setFilterOption(filter: SelectableFilter): void;
+    setFilterOption(filter: SelectableStaticFilter): void;
     setOffset(offset: number): void;
     setQuery(input: string): void;
     setQuerySource(source: QuerySource): void;
@@ -570,7 +577,7 @@ export class SearchHeadless {
     setSortBys(sortBys: SortBy[]): void;
     setSpellCheckEnabled(enabled: boolean): void;
     setState(state: State): void;
-    setStaticFilters(filters: SelectableFilter[]): void;
+    setStaticFilters(filters: SelectableStaticFilter[]): void;
     setUniversal(): void;
     setUniversalLimit(limit: UniversalLimit): void;
     setUserLocation(latLong: LatLong): void;
@@ -630,8 +637,9 @@ declare namespace searchUtilities {
 export { searchUtilities }
 
 // @public
-export interface SelectableFilter extends Filter {
+export interface SelectableStaticFilter {
     displayName?: string;
+    filter: StaticFilter;
     selected: boolean;
 }
 
@@ -726,6 +734,9 @@ export interface StateManager {
 }
 
 // @public
+export type StaticFilter = FieldValueStaticFilter | DisjunctionStaticFilter | ConjunctionStaticFilter;
+
+// @public
 export interface UniversalAutocompleteRequest extends SearchRequest {
     input: string;
     sessionTrackingEnabled?: boolean;
@@ -813,7 +824,7 @@ export interface VerticalSearchRequest extends SearchRequest {
     sessionTrackingEnabled?: boolean;
     skipSpellCheck?: boolean;
     sortBys?: SortBy[];
-    staticFilters?: CombinedFilter | Filter;
+    staticFilter?: StaticFilter;
     verticalKey: string;
 }
 

@@ -16,7 +16,9 @@ import {
   FilterSearchResponse,
   UniversalLimit,
   VerticalSearchResponse,
-  AdditionalHttpHeaders
+  AdditionalHttpHeaders,
+  VerticalSearchRequest,
+  UniversalSearchRequest
 } from '@yext/search-core';
 
 import StateListener from './models/state-listener';
@@ -25,7 +27,7 @@ import StateManager from './models/state-manager';
 import { Unsubscribe } from '@reduxjs/toolkit';
 import HttpManager from './http-manager';
 import * as searchUtilities from './search-utilities';
-import { SelectableFilter } from './models/utils/selectableFilter';
+import { SelectableStaticFilter } from './models/utils/selectableStaticFilter';
 import { transformFiltersToCoreFormat } from './utils/transform-filters';
 import { SearchTypeEnum } from './models/utils/searchType';
 import { initialState as initialVerticalState } from './slices/vertical';
@@ -148,7 +150,7 @@ export default class SearchHeadless {
    *
    * @param filters - The static filters to set
    */
-  setStaticFilters(filters: SelectableFilter[]): void {
+  setStaticFilters(filters: SelectableStaticFilter[]): void {
     this.stateManager.dispatchEvent('filters/setStatic', filters);
   }
 
@@ -315,7 +317,7 @@ export default class SearchHeadless {
     const { referrerPageUrl, context } = this.state.meta;
     const { userLocation } = this.state.location;
 
-    const request = {
+    const request: UniversalSearchRequest = {
       query: input || '',
       querySource,
       queryTrigger,
@@ -395,7 +397,7 @@ export default class SearchHeadless {
     const skipSpellCheck = !this.state.spellCheck.enabled;
     const sessionTrackingEnabled = this.state.sessionTracking.enabled;
     const sessionId = this.state.sessionTracking.sessionId;
-    const staticFilters = transformFiltersToCoreFormat(this.state.filters.static) || undefined;
+    const staticFilter = transformFiltersToCoreFormat(this.state.filters.static) || undefined;
     const facets = this.state.filters?.facets;
     const limit = this.state.vertical.limit;
     const offset = this.state.vertical.offset;
@@ -410,12 +412,12 @@ export default class SearchHeadless {
       };
     });
 
-    const request = {
+    const request: VerticalSearchRequest = {
       query: input || '',
       querySource,
       queryTrigger,
       verticalKey,
-      staticFilters,
+      staticFilter,
       facets: facetsToApply,
       retrieveFacets: true,
       limit,
@@ -542,7 +544,7 @@ export default class SearchHeadless {
    *
    * @param filter - The static filter and whether it is selected
    */
-  setFilterOption(filter: SelectableFilter): void {
+  setFilterOption(filter: SelectableStaticFilter): void {
     this.stateManager.dispatchEvent('filters/setFilterOption', filter);
   }
 }

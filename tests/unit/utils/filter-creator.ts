@@ -1,25 +1,33 @@
-import { FilterCombinator, Matcher } from '@yext/search-core';
-import { combineFilters, createDateRangeFilter, createEqualsFilter, createNearMeFilter, createNumberRangeFilter } from '../../../src/utils/filter-creators';
+import { ConjunctionStaticFilter, FilterCombinator, Matcher, StaticFilter } from '@yext/search-core';
+import {
+  combineStaticFilters,
+  createDateRangeStaticFilter,
+  createEqualsStaticFilter,
+  createNearMeStaticFilter,
+  createNumberRangeStaticFilter
+} from '../../../src/utils/filter-creators';
 
 describe('filter creators work properly', () => {
   it('builds an equality filter properly', () => {
     const expectedFilter = {
+      kind: 'fieldValue',
       fieldId: 'someField',
       value: 'some value',
       matcher: Matcher.Equals
     };
-    const actualFilter = createEqualsFilter('someField', 'some value');
+    const actualFilter = createEqualsStaticFilter('someField', 'some value');
 
     expect(actualFilter).toEqual(expectedFilter);
   });
 
   it('builds a number range filter properly', () => {
     const expectedFilter = {
+      kind: 'fieldValue',
       fieldId: 'someField',
       value: 5,
       matcher: Matcher.GreaterThan
     };
-    const actualFilter = createNumberRangeFilter(
+    const actualFilter = createNumberRangeStaticFilter(
       'someField',
       {
         min: {
@@ -36,11 +44,12 @@ describe('filter creators work properly', () => {
     const endDate = new Date('September 22, 2014');
 
     const expectedFilter = {
+      kind: 'fieldValue',
       fieldId: 'someField',
       value: endDate,
       matcher: Matcher.LessThan
     };
-    const actualFilter = createDateRangeFilter(
+    const actualFilter = createDateRangeStaticFilter(
       'someField',
       {
         max: {
@@ -61,25 +70,84 @@ describe('filter creators work properly', () => {
     };
 
     const expectedFilter = {
+      kind: 'fieldValue',
       fieldId: 'builtin.location',
       value: location,
       matcher: Matcher.Near
     };
-    const actualFilter = createNearMeFilter(location);
+    const actualFilter = createNearMeStaticFilter(location);
 
     expect(actualFilter).toEqual(expectedFilter);
   });
 
-  it('builds a combined filter properly', () => {
-    const filterA = createEqualsFilter('someField', 'some value');
-    const filterB = createEqualsFilter('otherField', 'other value');
+  it('combines static filters into a conjunction properly', () => {
+    const filterA = createEqualsStaticFilter('someField', 'some value');
+    const filterB: StaticFilter = {
+      kind: 'disjunction',
+      combinator: FilterCombinator.OR,
+      filters: [
+        createEqualsStaticFilter('otherField', 'other value'),
+        createEqualsStaticFilter('differentField', 'different value')
+      ]
+    };
 
-    const expectedFilter = {
+    const expectedConjunctionFilter = {
+      kind: 'conjunction',
       filters: [filterA, filterB],
       combinator: FilterCombinator.AND
     };
-    const actualFilter = combineFilters(filterA, filterB, FilterCombinator.AND);
+    const actualFilter = combineStaticFilters(filterA, filterB, FilterCombinator.AND);
 
-    expect(actualFilter).toEqual(expectedFilter);
+    expect(actualFilter).toEqual(expectedConjunctionFilter);
+
+    const filterC = createEqualsStaticFilter('separateField', 'separate value');
+    const expectedNestedFilter = {
+      kind: 'conjunction',
+      filters: [expectedConjunctionFilter, filterC],
+      combinator: FilterCombinator.AND
+    };
+    const actualNestedFilter = combineStaticFilters(actualFilter, filterC, FilterCombinator.AND);
+
+    expect(actualNestedFilter).toEqual(expectedNestedFilter);
+  });
+
+  it('combines static filters into a disjunction properly', () => {
+    const filterA = createEqualsStaticFilter('someField', 'some value');
+    const filterB = createEqualsStaticFilter('otherField', 'other value');
+
+    const expectedDisjunctionFilter = {
+      kind: 'disjunction',
+      filters: [filterA, filterB],
+      combinator: FilterCombinator.OR
+    };
+    const actualFilter = combineStaticFilters(filterA, filterB, FilterCombinator.OR);
+
+    expect(actualFilter).toEqual(expectedDisjunctionFilter);
+
+    const filterC = createEqualsStaticFilter('separateField', 'separate value');
+    const expectedNestedFilter = {
+      kind: 'disjunction',
+      filters: [expectedDisjunctionFilter, filterC],
+      combinator: FilterCombinator.OR
+    };
+    const actualNestedFilter = combineStaticFilters(actualFilter, filterC, FilterCombinator.OR);
+
+    expect(actualNestedFilter).toEqual(expectedNestedFilter);
+  });
+
+  it('throws an error when trying to combine conjunction static filters into a disjunction', () => {
+    const filterA = createEqualsStaticFilter('someField', 'some value');
+    const filterB = createEqualsStaticFilter('otherField', 'other value');
+    const filterC = createEqualsStaticFilter('separateField', 'separate value');
+
+    const conjunctionFilter: ConjunctionStaticFilter = {
+      kind: 'conjunction',
+      filters: [filterA, filterB],
+      combinator: FilterCombinator.AND
+    };
+
+    expect(() => {
+      combineStaticFilters(conjunctionFilter, filterC, FilterCombinator.OR);
+    }).toThrow('Cannot combine conjunction filters in a disjunction');
   });
 });

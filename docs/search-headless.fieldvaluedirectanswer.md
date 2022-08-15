@@ -9,9 +9,9 @@ A direct answer where the answer came from a field from the knowledge graph.
 <b>Signature:</b>
 
 ```typescript
-export declare interface FieldValueDirectAnswer extends DirectAnswer 
+export declare interface FieldValueDirectAnswer<T = unknown> extends DirectAnswer<T> 
 ```
-<b>Extends:</b> [DirectAnswer](./search-headless.directanswer.md)
+<b>Extends:</b> [DirectAnswer](./search-headless.directanswer.md)<!-- -->&lt;T&gt;
 
 ## Properties
 
@@ -20,9 +20,9 @@ export declare interface FieldValueDirectAnswer extends DirectAnswer
 |  [entityName](./search-headless.fieldvaluedirectanswer.entityname.md) | string | The name of the entity that direct answer came from. |
 |  [fieldApiName](./search-headless.fieldvaluedirectanswer.fieldapiname.md) | string | The field api name of the direct answer. |
 |  [fieldName](./search-headless.fieldvaluedirectanswer.fieldname.md) | string | The field name of the direct answer. |
-|  [fieldType](./search-headless.fieldvaluedirectanswer.fieldtype.md) | string | The field type of the direct answer. |
+|  [fieldType](./search-headless.fieldvaluedirectanswer.fieldtype.md) | BuiltInFieldType \| string | The field type of the direct answer. |
 |  [relatedResult](./search-headless.fieldvaluedirectanswer.relatedresult.md) | [Result](./search-headless.result.md) | The entity associated with the direct answer. |
 |  [type](./search-headless.fieldvaluedirectanswer.type.md) | [DirectAnswerType.FieldValue](./search-headless.directanswertype.md) | [DirectAnswerType](./search-headless.directanswertype.md)<!-- -->.FieldValue. |
-|  [value](./search-headless.fieldvaluedirectanswer.value.md) | string | The result of the direct answer. |
+|  [value](./search-headless.fieldvaluedirectanswer.value.md) | T | The result of the direct answer. |
 |  [verticalKey](./search-headless.fieldvaluedirectanswer.verticalkey.md) | string | The vertical key of the direct answer. |
 

@@ -1,8 +1,8 @@
-import { Matcher, QuerySource, QueryTrigger } from '@yext/search-core';
+import { DisjunctionStaticFilter, FieldValueStaticFilter, FilterCombinator, Matcher, QuerySource, QueryTrigger } from '@yext/search-core';
 import HttpManager from '../../src/http-manager';
 import StateManager from '../../src/models/state-manager';
 import SearchHeadless from '../../src/search-headless';
-import { SelectableFilter } from '../../src/models/utils/selectableFilter';
+import { SelectableStaticFilter } from '../../src/models/utils/selectableStaticFilter';
 import { State } from '../../src/models/state';
 import { SearchTypeEnum } from '../../src/models/utils/searchType';
 import { initialState as initialVerticalState } from '../../src/slices/vertical';
@@ -29,11 +29,32 @@ const mockedState: State = {
   },
   filters: {
     static: [{
-      fieldId: 'c_someField',
-      matcher: Matcher.Equals,
-      value: 'some value',
+      filter: {
+        kind: 'fieldValue',
+        fieldId: 'c_someField',
+        matcher: Matcher.Equals,
+        value: 'some value',
+      },
       selected: true,
       displayName: 'some display name'
+    }, {
+      filter: {
+        kind: 'disjunction',
+        combinator: FilterCombinator.OR,
+        filters: [{
+          kind: 'fieldValue',
+          fieldId: 'c_someField',
+          matcher: Matcher.Equals,
+          value: 'different value',
+        }, {
+          kind: 'fieldValue',
+          fieldId: 'c_anotherField',
+          matcher: Matcher.Equals,
+          value: 'another value',
+        }],
+      },
+      selected: true,
+      displayName: 'other display name'
     }]
   },
   spellCheck: {
@@ -74,10 +95,13 @@ describe('setters work as expected', () => {
   });
 
   it('setStaticFilters works as expected', () => {
-    const filter: SelectableFilter = {
-      fieldId: 'c_someField',
-      matcher: Matcher.Equals,
-      value: 'someValue',
+    const filter: SelectableStaticFilter = {
+      filter: {
+        kind: 'fieldValue',
+        fieldId: 'c_someField',
+        matcher: Matcher.Equals,
+        value: 'someValue',
+      },
       selected: true,
       displayName: 'someLabel'
     };
@@ -286,10 +310,13 @@ describe('filter functions work as expected', () => {
   });
 
   it('setFilterOption works', async () => {
-    const filter: SelectableFilter = {
-      fieldId: 'c_someField',
-      matcher: Matcher.Equals,
-      value: 'someValue',
+    const filter: SelectableStaticFilter = {
+      filter: {
+        kind: 'fieldValue',
+        fieldId: 'c_someField',
+        matcher: Matcher.Equals,
+        value: 'someValue'
+      },
       displayName: 'someLabel',
       selected: true
     };
@@ -349,14 +376,26 @@ describe('search works as expected', () => {
   it('vertical search works', async () => {
     answers.state.meta.searchType = SearchTypeEnum.Vertical;
     await answers.executeVerticalQuery();
-    const { fieldId, matcher, value } = mockedState.filters.static[0];
+    const { kind, fieldId, matcher, value } = mockedState.filters.static[0].filter as FieldValueStaticFilter;
+    const {
+      kind: disjunctionKind,
+      combinator,
+      filters
+    } = mockedState.filters.static[1].filter as DisjunctionStaticFilter;
     const coreCalls = mockedCore.verticalSearch.mock.calls;
     const expectedSearchParams = {
       query: mockedState.query.input,
       querySource: mockedState.query.querySource,
       queryTrigger: mockedState.query.queryTrigger,
       verticalKey: mockedState.vertical.verticalKey,
-      staticFilters: { fieldId, matcher, value },
+      staticFilter: {
+        kind: 'conjunction',
+        combinator: FilterCombinator.AND,
+        filters: [
+          { kind, fieldId, matcher, value },
+          { kind: disjunctionKind, combinator, filters }
+        ]
+      },
       retrieveFacets: true,
       limit: mockedState.vertical.limit,
       offset: mockedState.vertical.offset,

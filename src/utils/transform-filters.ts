@@ -56,13 +56,13 @@ export function transformFiltersToCoreFormat(
     }, {}
   );
 
-  const filters = Object.values(fieldIdToFilters);
-  if (filters.length === 1 && combinationFilters.length === 0) {
-    return combineFiltersWithOR(filters[0]);
+  const groupedfieldValueFilters = Object.values(fieldIdToFilters);
+  if (groupedfieldValueFilters.length === 1 && combinationFilters.length === 0) {
+    return combineFiltersWithOR(groupedfieldValueFilters[0]);
   }
   return {
     kind: 'conjunction',
     combinator: FilterCombinator.AND,
-    filters: filters.map(filters => combineFiltersWithOR(filters)).concat(combinationFilters)
+    filters: groupedfieldValueFilters.map(filters => combineFiltersWithOR(filters)).concat(combinationFilters)
   };
 }

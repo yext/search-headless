@@ -19,6 +19,6 @@ export declare interface AppliedQueryFilter
 |  [details?](./search-headless.appliedqueryfilter.details.md) | [LocationFilterDetails](./search-headless.locationfilterdetails.md) | <i>(Optional)</i> Additional details relevant to the filter with "PLACE" for its [AppliedQueryFilterType](./search-headless.appliedqueryfiltertype.md)<!-- -->. |
 |  [displayKey](./search-headless.appliedqueryfilter.displaykey.md) | string | The display name of the filter key. |
 |  [displayValue](./search-headless.appliedqueryfilter.displayvalue.md) | string | The value used in the filter. |
-|  [filter](./search-headless.appliedqueryfilter.filter.md) | [Filter](./search-headless.filter.md) | The filter applied to the query results. |
+|  [filter](./search-headless.appliedqueryfilter.filter.md) | [FieldValueFilter](./search-headless.fieldvaluefilter.md) | The filter applied to the query results. |
 |  [type](./search-headless.appliedqueryfilter.type.md) | [AppliedQueryFilterType](./search-headless.appliedqueryfiltertype.md) | Represents the type of [AppliedQueryFilter](./search-headless.appliedqueryfilter.md) applied to a search. |
 

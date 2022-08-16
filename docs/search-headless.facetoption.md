@@ -9,13 +9,13 @@ A filter associated with the facet.
 <b>Signature:</b>
 
 ```typescript
-export declare interface FacetOption 
+export declare interface FacetOption extends Omit<FieldValueFilter, 'fieldId'> 
 ```
+<b>Extends:</b> Omit&lt;[FieldValueFilter](./search-headless.fieldvaluefilter.md)<!-- -->, 'fieldId'&gt;
 
 ## Properties
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [matcher](./search-headless.facetoption.matcher.md) | [Matcher](./search-headless.matcher.md) | A Matcher is a filtering operation. |
-|  [value](./search-headless.facetoption.value.md) | string \| number \| boolean \| [NumberRangeValue](./search-headless.numberrangevalue.md) | The value to compare. |
+|  [value](./search-headless.facetoption.value.md) | Exclude&lt;[FieldValueFilter](./search-headless.fieldvaluefilter.md)<!-- -->\['value'\], [NearFilterValue](./search-headless.nearfiltervalue.md)<!-- -->&gt; | The value to compare. |
 

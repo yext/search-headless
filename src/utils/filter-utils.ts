@@ -38,5 +38,6 @@ export function areStaticFiltersEqual(thisFilter: StaticFilter, otherFilter: Sta
 
   return thisFilter.combinator === otherFilter.combinator
     && thisFilter.filters.length === otherFilter.filters.length
-    && thisFilter.filters.every((f, index) => areStaticFiltersEqual(f, otherFilter.filters[index]));
+    && thisFilter.filters.every(t => otherFilter.filters.some(o => areStaticFiltersEqual(t, o)))
+    && otherFilter.filters.every(o => thisFilter.filters.some(t => areStaticFiltersEqual(o, t)));
 }

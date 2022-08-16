@@ -376,12 +376,6 @@ describe('search works as expected', () => {
   it('vertical search works', async () => {
     answers.state.meta.searchType = SearchTypeEnum.Vertical;
     await answers.executeVerticalQuery();
-    const { kind, fieldId, matcher, value } = mockedState.filters.static[0].filter as FieldValueStaticFilter;
-    const {
-      kind: disjunctionKind,
-      combinator,
-      filters
-    } = mockedState.filters.static[1].filter as DisjunctionStaticFilter;
     const coreCalls = mockedCore.verticalSearch.mock.calls;
     const expectedSearchParams = {
       query: mockedState.query.input,
@@ -392,8 +386,8 @@ describe('search works as expected', () => {
         kind: 'conjunction',
         combinator: FilterCombinator.AND,
         filters: [
-          { kind, fieldId, matcher, value },
-          { kind: disjunctionKind, combinator, filters }
+          mockedState.filters.static?.[0].filter,
+          mockedState.filters.static?.[1].filter
         ]
       },
       retrieveFacets: true,

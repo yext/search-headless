@@ -43,27 +43,27 @@ export function transformFiltersToCoreFormat(
   }
 
   const combinationFilters: StaticFilter[] = [];
-  const groupedFilters: Record<string, FieldValueStaticFilter[]> = selectedFilters.reduce(
-    (groups, filter) => {
+  const fieldIdToFilters: Record<string, FieldValueStaticFilter[]> = selectedFilters.reduce(
+    (fieldIdToFilters, filter) => {
       if (filter.kind !== 'fieldValue') {
         combinationFilters.push(filter);
       } else {
-        groups[filter.fieldId]
-          ? groups[filter.fieldId].push(filter)
-          : groups[filter.fieldId] = [filter];
+        fieldIdToFilters[filter.fieldId]
+          ? fieldIdToFilters[filter.fieldId].push(filter)
+          : fieldIdToFilters[filter.fieldId] = [filter];
       }
-      return groups;
+      return fieldIdToFilters;
     }, {}
   );
 
-  const groupedFilterLabels = Object.keys(groupedFilters);
+  const groupedFilterLabels = Object.keys(fieldIdToFilters);
   if (groupedFilterLabels.length === 1 && combinationFilters.length === 0) {
-    return combineFiltersWithOR(groupedFilters[groupedFilterLabels[0]]);
+    return combineFiltersWithOR(fieldIdToFilters[groupedFilterLabels[0]]);
   }
   return {
     kind: 'conjunction',
     combinator: FilterCombinator.AND,
-    filters: Object.values(groupedFilters)
+    filters: Object.values(fieldIdToFilters)
       .map(filters => combineFiltersWithOR(filters))
       .concat(combinationFilters)
   };

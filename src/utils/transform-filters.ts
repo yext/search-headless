@@ -56,9 +56,9 @@ export function transformFiltersToCoreFormat(
     }, {}
   );
 
-  const groupedFilterLabels = Object.keys(fieldIdToFilters);
-  if (groupedFilterLabels.length === 1 && combinationFilters.length === 0) {
-    return combineFiltersWithOR(fieldIdToFilters[groupedFilterLabels[0]]);
+  const fieldIds = Object.keys(fieldIdToFilters);
+  if (fieldIds.length === 1 && combinationFilters.length === 0) {
+    return combineFiltersWithOR(fieldIdToFilters[fieldIds[0]]);
   }
   return {
     kind: 'conjunction',

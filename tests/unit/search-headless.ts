@@ -1,4 +1,4 @@
-import { DisjunctionStaticFilter, FieldValueStaticFilter, FilterCombinator, Matcher, QuerySource, QueryTrigger } from '@yext/search-core';
+import { FilterCombinator, Matcher, QuerySource, QueryTrigger } from '@yext/search-core';
 import HttpManager from '../../src/http-manager';
 import StateManager from '../../src/models/state-manager';
 import SearchHeadless from '../../src/search-headless';

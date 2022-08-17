@@ -44,6 +44,7 @@ export {
   IosAppUrlDirectAnswer,
   AndroidAppUrlDirectAnswer,
   ComplexUrlDirectAnswer,
+  ComplexURL,
   IntegerDirectAnswer,
   PhoneDirectAnswer,
   EmailDirectAnswer,

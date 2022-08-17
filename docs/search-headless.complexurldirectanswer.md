@@ -11,7 +11,7 @@ A direct answer for a complex url field.
 ```typescript
 export declare interface ComplexUrlDirectAnswer extends BaseFieldValueDirectAnswer<ComplexURL> 
 ```
-<b>Extends:</b> [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md)<!-- -->&lt;ComplexURL&gt;
+<b>Extends:</b> [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md)<!-- -->&lt;[ComplexURL](./search-headless.complexurl.md)<!-- -->&gt;
 
 ## Properties
 

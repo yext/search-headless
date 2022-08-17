@@ -68,6 +68,7 @@
 |  [BaseSearchConfig](./search-headless.basesearchconfig.md) | The base configuration options for [SearchCore](./search-headless.searchcore.md)<!-- -->. |
 |  [BoundedRange](./search-headless.boundedrange.md) | An interface representing a range of values of type T. |
 |  [ClientSDKHeaderValues](./search-headless.clientsdkheadervalues.md) | Additional agents and their versions used to create the Search experience. The information for these agents is added to the Client-SDK HTTP header along with that of the ANSWERS\_CORE agent. |
+|  [ComplexURL](./search-headless.complexurl.md) | The shape of a [BuiltInFieldType.ComplexURL](./search-headless.builtinfieldtype.md) DirectAnswer value |
 |  [ComplexUrlDirectAnswer](./search-headless.complexurldirectanswer.md) | A direct answer for a complex url field. |
 |  [ConjunctionStaticFilter](./search-headless.conjunctionstaticfilter.md) | A static filter composed by combining other static filters with the logical AND operator. |
 |  [DecimalDirectAnswer](./search-headless.decimaldirectanswer.md) | A direct answer for a decimal field, which is a number represented using a string. |

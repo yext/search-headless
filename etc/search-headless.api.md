@@ -205,8 +205,16 @@ export interface ClientSDKHeaderValues {
 // @public
 export function combineStaticFilters(filterA: StaticFilter, filterB: StaticFilter, combinator: FilterCombinator): StaticFilter;
 
-// Warning: (ae-forgotten-export) The symbol "ComplexURL" needs to be exported by the entry point index.d.ts
-//
+// @public
+export interface ComplexURL {
+    // (undocumented)
+    displayUrl?: string;
+    // (undocumented)
+    preferDisplayUrl: boolean;
+    // (undocumented)
+    url: string;
+}
+
 // @public
 export interface ComplexUrlDirectAnswer extends BaseFieldValueDirectAnswer<ComplexURL> {
     // (undocumented)

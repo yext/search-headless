@@ -18,36 +18,6 @@ export interface AllResultsForVertical {
     resultsCount: number;
 }
 
-// @public @deprecated (undocumented)
-export type AnswersConfig = SearchConfig;
-
-// @public @deprecated (undocumented)
-export interface AnswersConfigWithApiKey extends SearchConfigWithApiKey {
-}
-
-// @public @deprecated (undocumented)
-export interface AnswersConfigWithToken extends SearchConfigWithToken {
-}
-
-// @public @deprecated (undocumented)
-export class AnswersCore extends SearchCore {
-}
-
-// @public @deprecated (undocumented)
-export interface AnswersError extends SearchError {
-}
-
-// @public @deprecated (undocumented)
-export class AnswersHeadless extends SearchHeadless {
-}
-
-// @public @deprecated (undocumented)
-export interface AnswersRequest extends SearchRequest {
-}
-
-// @public @deprecated (undocumented)
-export namespace answersUtilities { }
-
 // @public
 export interface AppliedQueryFilter {
     details?: LocationFilterDetails;
@@ -90,10 +60,6 @@ export interface AutocompleteService {
     filterSearch(request: FilterSearchRequest): Promise<FilterSearchResponse>;
     universalAutocomplete(request: UniversalAutocompleteRequest): Promise<AutocompleteResponse>;
     verticalAutocomplete(request: VerticalAutocompleteRequest): Promise<AutocompleteResponse>;
-}
-
-// @public @deprecated (undocumented)
-export interface BaseAnswersConfig extends BaseSearchConfig {
 }
 
 // @public
@@ -414,9 +380,6 @@ export interface NumberRangeValue {
 export interface ParentState {
     [headlessId: string]: State;
 }
-
-// @public @deprecated
-export const provideAnswersHeadless: typeof provideHeadless;
 
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "provideHeadless" because one of its declarations is marked as @internal
 //

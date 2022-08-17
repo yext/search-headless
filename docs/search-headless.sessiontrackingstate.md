@@ -14,8 +14,8 @@ export interface SessionTrackingState
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [enabled?](./search-headless.sessiontrackingstate.enabled.md) | boolean | <i>(Optional)</i> Whether or not session tracking is enabled. |
-|  [sessionId?](./search-headless.sessiontrackingstate.sessionid.md) | string | <i>(Optional)</i> The ID of the current session. Used to track session state when cookies are blocked. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [enabled?](./search-headless.sessiontrackingstate.enabled.md) |  | boolean | <i>(Optional)</i> Whether or not session tracking is enabled. |
+|  [sessionId?](./search-headless.sessiontrackingstate.sessionid.md) |  | string | <i>(Optional)</i> The ID of the current session. Used to track session state when cookies are blocked. |
 

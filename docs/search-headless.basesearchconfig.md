@@ -14,11 +14,11 @@ export declare interface BaseSearchConfig
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [endpoints?](./search-headless.basesearchconfig.endpoints.md) | [Endpoints](./search-headless.endpoints.md) | <i>(Optional)</i> Overrides for the URLs which are used when making requests to the Search API. |
-|  [experienceKey](./search-headless.basesearchconfig.experiencekey.md) | string | The experience key of the search experience. |
-|  [experienceVersion?](./search-headless.basesearchconfig.experienceversion.md) | 'STAGING' \| 'PRODUCTION' \| string \| number | <i>(Optional)</i> The version of the search experience configuration. |
-|  [locale](./search-headless.basesearchconfig.locale.md) | string | The locale of the search experience. |
-|  [visitor?](./search-headless.basesearchconfig.visitor.md) | [Visitor](./search-headless.visitor.md) | <i>(Optional)</i> Information used to associate requests with a particular user. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [endpoints?](./search-headless.basesearchconfig.endpoints.md) |  | [Endpoints](./search-headless.endpoints.md) | <i>(Optional)</i> Overrides for the URLs which are used when making requests to the Search API. |
+|  [experienceKey](./search-headless.basesearchconfig.experiencekey.md) |  | string | The experience key of the search experience. |
+|  [experienceVersion?](./search-headless.basesearchconfig.experienceversion.md) |  | 'STAGING' \| 'PRODUCTION' \| string \| number | <i>(Optional)</i> The version of the search experience configuration. |
+|  [locale](./search-headless.basesearchconfig.locale.md) |  | string | The locale of the search experience. |
+|  [visitor?](./search-headless.basesearchconfig.visitor.md) |  | [Visitor](./search-headless.visitor.md) | <i>(Optional)</i> Information used to associate requests with a particular user. |
 

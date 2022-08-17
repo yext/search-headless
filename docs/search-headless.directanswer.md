@@ -14,11 +14,11 @@ export declare interface DirectAnswer
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [fieldType](./search-headless.directanswer.fieldtype.md) | string | The field type of the direct answer. |
-|  [relatedResult](./search-headless.directanswer.relatedresult.md) | [Result](./search-headless.result.md) | The entity associated with the direct answer. |
-|  [type](./search-headless.directanswer.type.md) | [DirectAnswerType](./search-headless.directanswertype.md) | The [DirectAnswerType](./search-headless.directanswertype.md)<!-- -->. |
-|  [value?](./search-headless.directanswer.value.md) | string | <i>(Optional)</i> The result of the direct answer. |
-|  [verticalKey](./search-headless.directanswer.verticalkey.md) | string | The vertical key of the direct answer. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [fieldType](./search-headless.directanswer.fieldtype.md) |  | string | The field type of the direct answer. |
+|  [relatedResult](./search-headless.directanswer.relatedresult.md) |  | [Result](./search-headless.result.md) | The entity associated with the direct answer. |
+|  [type](./search-headless.directanswer.type.md) |  | [DirectAnswerType](./search-headless.directanswertype.md) | The [DirectAnswerType](./search-headless.directanswertype.md)<!-- -->. |
+|  [value?](./search-headless.directanswer.value.md) |  | string | <i>(Optional)</i> The result of the direct answer. |
+|  [verticalKey](./search-headless.directanswer.verticalkey.md) |  | string | The vertical key of the direct answer. |
 

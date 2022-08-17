@@ -14,7 +14,7 @@ export interface SearchStatusState
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [isLoading?](./search-headless.searchstatusstate.isloading.md) | boolean | <i>(Optional)</i> Whether a search is currently loading or has finished loading. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [isLoading?](./search-headless.searchstatusstate.isloading.md) |  | boolean | <i>(Optional)</i> Whether a search is currently loading or has finished loading. |
 

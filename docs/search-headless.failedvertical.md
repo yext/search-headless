@@ -14,10 +14,10 @@ export declare interface FailedVertical
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [details](./search-headless.failedvertical.details.md) | { responseCode: number; description: string; } | Detailed information about the error. |
-|  [errorType](./search-headless.failedvertical.errortype.md) | [ErrorType](./search-headless.errortype.md) | Identifier for the type of error causing the failure. |
-|  [queryDurationMillis](./search-headless.failedvertical.querydurationmillis.md) | number | The duration of the query in milliseconds. |
-|  [verticalKey](./search-headless.failedvertical.verticalkey.md) | string | The vertical key associated with the failed vertical. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [details](./search-headless.failedvertical.details.md) |  | { responseCode: number; description: string; } | Detailed information about the error. |
+|  [errorType](./search-headless.failedvertical.errortype.md) |  | [ErrorType](./search-headless.errortype.md) | Identifier for the type of error causing the failure. |
+|  [queryDurationMillis](./search-headless.failedvertical.querydurationmillis.md) |  | number | The duration of the query in milliseconds. |
+|  [verticalKey](./search-headless.failedvertical.verticalkey.md) |  | string | The vertical key associated with the failed vertical. |
 

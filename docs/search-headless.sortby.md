@@ -18,9 +18,9 @@ Overrides the sort options that are configured on the experience configuration.
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [direction?](./search-headless.sortby.direction.md) | [Direction](./search-headless.direction.md) | <i>(Optional)</i> The direction of the sort. Required if the SortBy type is [SortType.Field](./search-headless.sorttype.md)<!-- -->. |
-|  [field?](./search-headless.sortby.field.md) | string | <i>(Optional)</i> The field name to sort by. Required if the SortBy type is [SortType.Field](./search-headless.sorttype.md)<!-- -->. |
-|  [type](./search-headless.sortby.type.md) | [SortType](./search-headless.sorttype.md) | The method of sorting. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [direction?](./search-headless.sortby.direction.md) |  | [Direction](./search-headless.direction.md) | <i>(Optional)</i> The direction of the sort. Required if the SortBy type is [SortType.Field](./search-headless.sorttype.md)<!-- -->. |
+|  [field?](./search-headless.sortby.field.md) |  | string | <i>(Optional)</i> The field name to sort by. Required if the SortBy type is [SortType.Field](./search-headless.sorttype.md)<!-- -->. |
+|  [type](./search-headless.sortby.type.md) |  | [SortType](./search-headless.sorttype.md) | The method of sorting. |
 

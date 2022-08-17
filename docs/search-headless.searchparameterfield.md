@@ -14,9 +14,9 @@ export declare interface SearchParameterField
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [entityType](./search-headless.searchparameterfield.entitytype.md) | string | The entityType to perform the autocomplete on. |
-|  [fetchEntities](./search-headless.searchparameterfield.fetchentities.md) | boolean | Indicates whether or not to return the [AutocompleteResult.relatedItem](./search-headless.autocompleteresult.relateditem.md) associated with the autocomplete result. |
-|  [fieldApiName](./search-headless.searchparameterfield.fieldapiname.md) | string | The fieldApiName to perform the autocomplete on. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [entityType](./search-headless.searchparameterfield.entitytype.md) |  | string | The entityType to perform the autocomplete on. |
+|  [fetchEntities](./search-headless.searchparameterfield.fetchentities.md) |  | boolean | Indicates whether or not to return the [AutocompleteResult.relatedItem](./search-headless.autocompleteresult.relateditem.md) associated with the autocomplete result. |
+|  [fieldApiName](./search-headless.searchparameterfield.fieldapiname.md) |  | string | The fieldApiName to perform the autocomplete on. |
 

@@ -15,9 +15,9 @@ export declare interface VerticalAutocompleteRequest extends SearchRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [input](./search-headless.verticalautocompleterequest.input.md) | string | The input string for autocomplete. |
-|  [sessionTrackingEnabled?](./search-headless.verticalautocompleterequest.sessiontrackingenabled.md) | boolean | <i>(Optional)</i> Enables session tracking. |
-|  [verticalKey](./search-headless.verticalautocompleterequest.verticalkey.md) | string | The key for the vertical to get autocomplete suggestions from. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [input](./search-headless.verticalautocompleterequest.input.md) |  | string | The input string for autocomplete. |
+|  [sessionTrackingEnabled?](./search-headless.verticalautocompleterequest.sessiontrackingenabled.md) |  | boolean | <i>(Optional)</i> Enables session tracking. |
+|  [verticalKey](./search-headless.verticalautocompleterequest.verticalkey.md) |  | string | The key for the vertical to get autocomplete suggestions from. |
 

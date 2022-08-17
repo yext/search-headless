@@ -14,8 +14,8 @@ export declare interface Snippet
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [matchedSubstrings](./search-headless.snippet.matchedsubstrings.md) | { offset: number; length: number; }\[\] | The locations in the document text of the [FeaturedSnippetDirectAnswer.value](./search-headless.featuredsnippetdirectanswer.value.md) |
-|  [value](./search-headless.snippet.value.md) | string | The snippet's body of text |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [matchedSubstrings](./search-headless.snippet.matchedsubstrings.md) |  | { offset: number; length: number; }\[\] | The locations in the document text of the [FeaturedSnippetDirectAnswer.value](./search-headless.featuredsnippetdirectanswer.value.md) |
+|  [value](./search-headless.snippet.value.md) |  | string | The snippet's body of text |
 

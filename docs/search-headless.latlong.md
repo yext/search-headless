@@ -18,8 +18,8 @@ If omitted from a request, Yext will attempt to determine the location.
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [latitude](./search-headless.latlong.latitude.md) | number | Latitude formatted as a decimal degree number. |
-|  [longitude](./search-headless.latlong.longitude.md) | number | Longitude formatted as a decimal degree number. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [latitude](./search-headless.latlong.latitude.md) |  | number | Latitude formatted as a decimal degree number. |
+|  [longitude](./search-headless.latlong.longitude.md) |  | number | Longitude formatted as a decimal degree number. |
 

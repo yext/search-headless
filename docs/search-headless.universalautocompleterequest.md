@@ -15,8 +15,8 @@ export declare interface UniversalAutocompleteRequest extends SearchRequest
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [input](./search-headless.universalautocompleterequest.input.md) | string | The input string for autocomplete. |
-|  [sessionTrackingEnabled?](./search-headless.universalautocompleterequest.sessiontrackingenabled.md) | boolean | <i>(Optional)</i> Enables session tracking. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [input](./search-headless.universalautocompleterequest.input.md) |  | string | The input string for autocomplete. |
+|  [sessionTrackingEnabled?](./search-headless.universalautocompleterequest.sessiontrackingenabled.md) |  | boolean | <i>(Optional)</i> Enables session tracking. |
 

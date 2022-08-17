@@ -14,8 +14,8 @@ export interface LocationState
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [locationBias?](./search-headless.locationstate.locationbias.md) | [LocationBias](./search-headless.locationbias.md) | <i>(Optional)</i> The geographical location bias used in the search, returned from the Search API. |
-|  [userLocation?](./search-headless.locationstate.userlocation.md) | [LatLong](./search-headless.latlong.md) | <i>(Optional)</i> The latitude and longitude of the user making the request. Used to bias the results. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [locationBias?](./search-headless.locationstate.locationbias.md) |  | [LocationBias](./search-headless.locationbias.md) | <i>(Optional)</i> The geographical location bias used in the search, returned from the Search API. |
+|  [userLocation?](./search-headless.locationstate.userlocation.md) |  | [LatLong](./search-headless.latlong.md) | <i>(Optional)</i> The latitude and longitude of the user making the request. Used to bias the results. |
 

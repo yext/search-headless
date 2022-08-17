@@ -15,8 +15,8 @@ export interface SelectableFilter extends Filter
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [displayName?](./search-headless.selectablefilter.displayname.md) | string | <i>(Optional)</i> The filter's display name. |
-|  [selected](./search-headless.selectablefilter.selected.md) | boolean | Whether or not the filter is selected. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [displayName?](./search-headless.selectablefilter.displayname.md) |  | string | <i>(Optional)</i> The filter's display name. |
+|  [selected](./search-headless.selectablefilter.selected.md) |  | boolean | Whether or not the filter is selected. |
 

@@ -14,9 +14,9 @@ export interface AllResultsForVertical
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [facets](./search-headless.allresultsforvertical.facets.md) | [DisplayableFacet](./search-headless.displayablefacet.md)<!-- -->\[\] | The dynamic collection of facets that can be applied to filter the search results and whether each of them is currently selected. |
-|  [results](./search-headless.allresultsforvertical.results.md) | [Result](./search-headless.result.md)<!-- -->\[\] | The array of all results for the vertical. |
-|  [resultsCount](./search-headless.allresultsforvertical.resultscount.md) | number | The total number of results for the vertical. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [facets](./search-headless.allresultsforvertical.facets.md) |  | [DisplayableFacet](./search-headless.displayablefacet.md)<!-- -->\[\] | The dynamic collection of facets that can be applied to filter the search results and whether each of them is currently selected. |
+|  [results](./search-headless.allresultsforvertical.results.md) |  | [Result](./search-headless.result.md)<!-- -->\[\] | The array of all results for the vertical. |
+|  [resultsCount](./search-headless.allresultsforvertical.resultscount.md) |  | number | The total number of results for the vertical. |
 

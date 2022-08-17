@@ -17,7 +17,7 @@ dispatchEvent(type: string, payload?: unknown): void;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  type | string | The type of action to dispatch |
-|  payload | unknown | The payload of the action to dispatch |
+|  payload | unknown | <i>(Optional)</i> The payload of the action to dispatch |
 
 <b>Returns:</b>
 

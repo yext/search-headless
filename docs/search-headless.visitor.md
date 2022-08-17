@@ -18,8 +18,8 @@ Visitor information is included with every request with the exception of questio
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [id](./search-headless.visitor.id.md) | string | The ID associated with the user |
-|  [idMethod?](./search-headless.visitor.idmethod.md) | string | <i>(Optional)</i> The type of visitor |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [id](./search-headless.visitor.id.md) |  | string | The ID associated with the user |
+|  [idMethod?](./search-headless.visitor.idmethod.md) |  | string | <i>(Optional)</i> The type of visitor |
 

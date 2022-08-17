@@ -14,8 +14,8 @@ export declare interface NumberRangeValue
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [end?](./search-headless.numberrangevalue.end.md) | [UpperNumberRangeLimit](./search-headless.uppernumberrangelimit.md) | <i>(Optional)</i> End limit of the number range value. |
-|  [start?](./search-headless.numberrangevalue.start.md) | [LowerNumberRangeLimit](./search-headless.lowernumberrangelimit.md) | <i>(Optional)</i> Start limit of the number range value. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [end?](./search-headless.numberrangevalue.end.md) |  | [UpperNumberRangeLimit](./search-headless.uppernumberrangelimit.md) | <i>(Optional)</i> End limit of the number range value. |
+|  [start?](./search-headless.numberrangevalue.start.md) |  | [LowerNumberRangeLimit](./search-headless.lowernumberrangelimit.md) | <i>(Optional)</i> Start limit of the number range value. |
 

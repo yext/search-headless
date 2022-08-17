@@ -14,7 +14,7 @@ export declare interface QuestionSubmissionResponse
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [uuid](./search-headless.questionsubmissionresponse.uuid.md) | string | A unique id which corresponds to the request. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [uuid](./search-headless.questionsubmissionresponse.uuid.md) |  | string | A unique id which corresponds to the request. |
 

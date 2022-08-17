@@ -14,8 +14,8 @@ export declare interface HighlightedValue
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [matchedSubstrings](./search-headless.highlightedvalue.matchedsubstrings.md) | { length: number; offset: number; }\[\] | An array of substring matches which correspond to the highlighting. |
-|  [value](./search-headless.highlightedvalue.value.md) | string | The value of the field which should be highlighted. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [matchedSubstrings](./search-headless.highlightedvalue.matchedsubstrings.md) |  | { length: number; offset: number; }\[\] | An array of substring matches which correspond to the highlighting. |
+|  [value](./search-headless.highlightedvalue.value.md) |  | string | The value of the field which should be highlighted. |
 

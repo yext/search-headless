@@ -14,7 +14,7 @@ export interface QueryRulesState
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [actions](./search-headless.queryrulesstate.actions.md) | [QueryRulesActionsData](./search-headless.queryrulesactionsdata.md)<!-- -->\[\] | Any actions triggered by meeting criteria for query rules. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [actions](./search-headless.queryrulesstate.actions.md) |  | [QueryRulesActionsData](./search-headless.queryrulesactionsdata.md)<!-- -->\[\] | Any actions triggered by meeting criteria for query rules. |
 

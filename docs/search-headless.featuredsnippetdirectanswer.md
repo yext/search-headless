@@ -15,12 +15,12 @@ export declare interface FeaturedSnippetDirectAnswer extends DirectAnswer
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [fieldType](./search-headless.featuredsnippetdirectanswer.fieldtype.md) | string | The field type of the direct answer. |
-|  [relatedResult](./search-headless.featuredsnippetdirectanswer.relatedresult.md) | [Result](./search-headless.result.md) | The entity associated with the direct answer. |
-|  [snippet](./search-headless.featuredsnippetdirectanswer.snippet.md) | [Snippet](./search-headless.snippet.md) | The snippet where the direct answer was found. |
-|  [type](./search-headless.featuredsnippetdirectanswer.type.md) | [DirectAnswerType.FeaturedSnippet](./search-headless.directanswertype.md) | [DirectAnswerType](./search-headless.directanswertype.md)<!-- -->.FeaturedSnippet. |
-|  [value?](./search-headless.featuredsnippetdirectanswer.value.md) | string | <i>(Optional)</i> The result of the direct answer. |
-|  [verticalKey](./search-headless.featuredsnippetdirectanswer.verticalkey.md) | string | The vertical key of the direct answer. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [fieldType](./search-headless.featuredsnippetdirectanswer.fieldtype.md) |  | string | The field type of the direct answer. |
+|  [relatedResult](./search-headless.featuredsnippetdirectanswer.relatedresult.md) |  | [Result](./search-headless.result.md) | The entity associated with the direct answer. |
+|  [snippet](./search-headless.featuredsnippetdirectanswer.snippet.md) |  | [Snippet](./search-headless.snippet.md) | The snippet where the direct answer was found. |
+|  [type](./search-headless.featuredsnippetdirectanswer.type.md) |  | [DirectAnswerType.FeaturedSnippet](./search-headless.directanswertype.md) | [DirectAnswerType](./search-headless.directanswertype.md)<!-- -->.FeaturedSnippet. |
+|  [value?](./search-headless.featuredsnippetdirectanswer.value.md) |  | string | <i>(Optional)</i> The result of the direct answer. |
+|  [verticalKey](./search-headless.featuredsnippetdirectanswer.verticalkey.md) |  | string | The vertical key of the direct answer. |
 

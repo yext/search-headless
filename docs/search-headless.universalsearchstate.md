@@ -14,9 +14,9 @@ export interface UniversalSearchState
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [limit?](./search-headless.universalsearchstate.limit.md) | [UniversalLimit](./search-headless.universallimit.md) | <i>(Optional)</i> An object defining the limit (up to how many results should be returned) for each vertical. |
-|  [restrictVerticals?](./search-headless.universalsearchstate.restrictverticals.md) | string\[\] | <i>(Optional)</i> If included, the verticals to which the universal search should be restricted. |
-|  [verticals?](./search-headless.universalsearchstate.verticals.md) | [VerticalResults](./search-headless.verticalresults.md)<!-- -->\[\] | <i>(Optional)</i> The results from each vertical included in the universal search. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [limit?](./search-headless.universalsearchstate.limit.md) |  | [UniversalLimit](./search-headless.universallimit.md) | <i>(Optional)</i> An object defining the limit (up to how many results should be returned) for each vertical. |
+|  [restrictVerticals?](./search-headless.universalsearchstate.restrictverticals.md) |  | string\[\] | <i>(Optional)</i> If included, the verticals to which the universal search should be restricted. |
+|  [verticals?](./search-headless.universalsearchstate.verticals.md) |  | [VerticalResults](./search-headless.verticalresults.md)<!-- -->\[\] | <i>(Optional)</i> The results from each vertical included in the universal search. |
 

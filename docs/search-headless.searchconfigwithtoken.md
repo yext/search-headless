@@ -15,8 +15,8 @@ export declare interface SearchConfigWithToken extends BaseSearchConfig
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [apiKey?](./search-headless.searchconfigwithtoken.apikey.md) | never | <i>(Optional)</i> apiKey should NOT be provided along with token. |
-|  [token](./search-headless.searchconfigwithtoken.token.md) | string | The authentication token of the search experience which will be passed in the Auth header as a Bearer token. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [apiKey?](./search-headless.searchconfigwithtoken.apikey.md) |  | never | <i>(Optional)</i> apiKey should NOT be provided along with token. |
+|  [token](./search-headless.searchconfigwithtoken.token.md) |  | string | The authentication token of the search experience which will be passed in the Auth header as a Bearer token. |
 

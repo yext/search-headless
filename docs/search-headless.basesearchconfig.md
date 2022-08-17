@@ -16,6 +16,7 @@ export declare interface BaseSearchConfig
 
 |  Property | Type | Description |
 |  --- | --- | --- |
+|  [additionalQueryParams?](./search-headless.basesearchconfig.additionalqueryparams.md) | { \[key: string\]: string \| number \| boolean; } | <i>(Optional)</i> Additional query params added on to every request. |
 |  [endpoints?](./search-headless.basesearchconfig.endpoints.md) | [Endpoints](./search-headless.endpoints.md) | <i>(Optional)</i> Overrides for the URLs which are used when making requests to the Search API. |
 |  [experienceKey](./search-headless.basesearchconfig.experiencekey.md) | string | The experience key of the search experience. |
 |  [experienceVersion?](./search-headless.basesearchconfig.experienceversion.md) | 'STAGING' \| 'PRODUCTION' \| string \| number | <i>(Optional)</i> The version of the search experience configuration. |

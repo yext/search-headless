@@ -114,12 +114,14 @@ export interface BaseFieldValueDirectAnswer<T = unknown> extends DirectAnswer<T>
 
 // @public
 export interface BaseSearchConfig {
+    additionalQueryParams?: {
+        [key: string]: string | number | boolean;
+    };
     endpoints?: Endpoints;
     experienceKey: string;
     experienceVersion?: 'STAGING' | 'PRODUCTION' | string | number;
     locale: string;
     visitor?: Visitor;
-    /* Excluded from this release type: additionalQueryParams */
 }
 
 // @public

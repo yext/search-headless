@@ -1,4 +1,4 @@
-import { EnumOrLiteral } from '../../utils/types';
+import { EnumOrLiteral } from '@yext/search-core';
 
 /**
  * An enum which indicates the type of search that Headless is managing.

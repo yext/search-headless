@@ -1,0 +1,1 @@
+{"version":3,"file":"universal.d.ts","sourceRoot":"","sources":["../../../../src/models/slices/universal.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAE,eAAe,EAAE,MAAM,oBAAoB,CAAC;AAErE;;;;GAIG;AACH,MAAM,WAAW,oBAAoB;IACnC;;;OAGG;IACH,KAAK,CAAC,EAAE,cAAc,CAAC;IACvB;;OAEG;IACH,SAAS,CAAC,EAAE,eAAe,EAAE,CAAC;IAC9B;;OAEG;IACH,iBAAiB,CAAC,EAAE,MAAM,EAAE,CAAA;CAC7B"}

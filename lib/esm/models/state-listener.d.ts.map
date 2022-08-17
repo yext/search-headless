@@ -1,0 +1,1 @@
+{"version":3,"file":"state-listener.d.ts","sourceRoot":"","sources":["../../../src/models/state-listener.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,KAAK,EAAE,MAAM,SAAS,CAAC;AAEhC;;;;GAIG;AACH,MAAM,CAAC,OAAO,WAAW,aAAa,CAAC,CAAC;IACtC;;;;;OAKG;IACH,aAAa,CAAC,KAAK,EAAE,KAAK,GAAG,CAAC,CAAC;IAC/B;;;;OAIG;IACH,QAAQ,CAAC,YAAY,EAAE,CAAC,OAAE;CAC3B"}

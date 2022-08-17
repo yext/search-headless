@@ -2,25 +2,14 @@
 
 [Home](./index.md) &gt; [@yext/search-headless](./search-headless.md) &gt; [FeaturedSnippetDirectAnswer](./search-headless.featuredsnippetdirectanswer.md)
 
-## FeaturedSnippetDirectAnswer interface
+## FeaturedSnippetDirectAnswer type
 
-A direct answer which was found within a document.
+All possible built-in [BaseFeaturedSnippetDirectAnswer](./search-headless.basefeaturedsnippetdirectanswer.md) interfaces.
 
 <b>Signature:</b>
 
 ```typescript
-export declare interface FeaturedSnippetDirectAnswer<T = unknown> extends DirectAnswer<T> 
+export declare type FeaturedSnippetDirectAnswer = MultiLineTextSnippetDirectAnswer | RichTextSnippetDirectAnswer;
 ```
-<b>Extends:</b> [DirectAnswer](./search-headless.directanswer.md)<!-- -->&lt;T&gt;
-
-## Properties
-
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [fieldType](./search-headless.featuredsnippetdirectanswer.fieldtype.md) | BuiltInFieldType \| string | The field type of the direct answer. |
-|  [relatedResult](./search-headless.featuredsnippetdirectanswer.relatedresult.md) | [Result](./search-headless.result.md) | The entity associated with the direct answer. |
-|  [snippet](./search-headless.featuredsnippetdirectanswer.snippet.md) | [Snippet](./search-headless.snippet.md) | The snippet where the direct answer was found. |
-|  [type](./search-headless.featuredsnippetdirectanswer.type.md) | [DirectAnswerType.FeaturedSnippet](./search-headless.directanswertype.md) | [DirectAnswerType](./search-headless.directanswertype.md)<!-- -->.FeaturedSnippet. |
-|  [value?](./search-headless.featuredsnippetdirectanswer.value.md) | T | <i>(Optional)</i> The result of the direct answer. |
-|  [verticalKey](./search-headless.featuredsnippetdirectanswer.verticalkey.md) | string | The vertical key of the direct answer. |
+<b>References:</b> [MultiLineTextSnippetDirectAnswer](./search-headless.multilinetextsnippetdirectanswer.md)<!-- -->, [RichTextSnippetDirectAnswer](./search-headless.richtextsnippetdirectanswer.md)
 

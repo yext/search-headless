@@ -97,5 +97,5 @@ export {
   TextDirectAnswer,
   TwitterHandleDirectAnswer,
   UnknownFieldValueDirectAnswer,
-  UrlDirectAnswer,
+  UrlDirectAnswer
 } from '@yext/search-core';

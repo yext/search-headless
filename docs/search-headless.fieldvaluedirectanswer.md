@@ -15,14 +15,14 @@ export declare interface FieldValueDirectAnswer extends DirectAnswer
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [entityName](./search-headless.fieldvaluedirectanswer.entityname.md) |  | string | The name of the entity that direct answer came from. |
-|  [fieldApiName](./search-headless.fieldvaluedirectanswer.fieldapiname.md) |  | string | The field api name of the direct answer. |
-|  [fieldName](./search-headless.fieldvaluedirectanswer.fieldname.md) |  | string | The field name of the direct answer. |
-|  [fieldType](./search-headless.fieldvaluedirectanswer.fieldtype.md) |  | string | The field type of the direct answer. |
-|  [relatedResult](./search-headless.fieldvaluedirectanswer.relatedresult.md) |  | [Result](./search-headless.result.md) | The entity associated with the direct answer. |
-|  [type](./search-headless.fieldvaluedirectanswer.type.md) |  | [DirectAnswerType.FieldValue](./search-headless.directanswertype.md) | [DirectAnswerType](./search-headless.directanswertype.md)<!-- -->.FieldValue. |
-|  [value](./search-headless.fieldvaluedirectanswer.value.md) |  | string | The result of the direct answer. |
-|  [verticalKey](./search-headless.fieldvaluedirectanswer.verticalkey.md) |  | string | The vertical key of the direct answer. |
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [entityName](./search-headless.fieldvaluedirectanswer.entityname.md) | string | The name of the entity that direct answer came from. |
+|  [fieldApiName](./search-headless.fieldvaluedirectanswer.fieldapiname.md) | string | The field api name of the direct answer. |
+|  [fieldName](./search-headless.fieldvaluedirectanswer.fieldname.md) | string | The field name of the direct answer. |
+|  [fieldType](./search-headless.fieldvaluedirectanswer.fieldtype.md) | string | The field type of the direct answer. |
+|  [relatedResult](./search-headless.fieldvaluedirectanswer.relatedresult.md) | [Result](./search-headless.result.md) | The entity associated with the direct answer. |
+|  [type](./search-headless.fieldvaluedirectanswer.type.md) | [DirectAnswerType.FieldValue](./search-headless.directanswertype.md) | [DirectAnswerType](./search-headless.directanswertype.md)<!-- -->.FieldValue. |
+|  [value](./search-headless.fieldvaluedirectanswer.value.md) | string | The result of the direct answer. |
+|  [verticalKey](./search-headless.fieldvaluedirectanswer.verticalkey.md) | string | The vertical key of the direct answer. |
 

@@ -15,8 +15,8 @@ export declare interface SearchConfigWithApiKey extends BaseSearchConfig
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [apiKey](./search-headless.searchconfigwithapikey.apikey.md) |  | string | The api key of the search experience which will be sent as a query param. |
-|  [token?](./search-headless.searchconfigwithapikey.token.md) |  | never | <i>(Optional)</i> token should NOT be provided along with apiKey. |
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [apiKey](./search-headless.searchconfigwithapikey.apikey.md) | string | The api key of the search experience which will be sent as a query param. |
+|  [token?](./search-headless.searchconfigwithapikey.token.md) | never | <i>(Optional)</i> token should NOT be provided along with apiKey. |
 

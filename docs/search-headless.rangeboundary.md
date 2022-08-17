@@ -14,8 +14,8 @@ export interface RangeBoundary<T>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [inclusive](./search-headless.rangeboundary.inclusive.md) |  | boolean | Whether or not the range includes the boundary value. |
-|  [value](./search-headless.rangeboundary.value.md) |  | T | The value of the boundary. |
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [inclusive](./search-headless.rangeboundary.inclusive.md) | boolean | Whether or not the range includes the boundary value. |
+|  [value](./search-headless.rangeboundary.value.md) | T | The value of the boundary. |
 

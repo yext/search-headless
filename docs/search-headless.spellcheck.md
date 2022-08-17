@@ -14,10 +14,10 @@ export declare interface SpellCheck
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [correctedQuery](./search-headless.spellcheck.correctedquery.md) |  | string | The corrected version of the originalQuery. |
-|  [matchedSubstrings](./search-headless.spellcheck.matchedsubstrings.md) |  | { length: number; offset: number; }\[\] | An array of substring matches which correspond to the highlighting. Offset indicates the index of the match, and the length indicates the number of characters of the match. |
-|  [originalQuery](./search-headless.spellcheck.originalquery.md) |  | string | The query that was input into the spell checker. |
-|  [type](./search-headless.spellcheck.type.md) |  | [SpellCheckType](./search-headless.spellchecktype.md) | The type of spell check. |
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [correctedQuery](./search-headless.spellcheck.correctedquery.md) | string | The corrected version of the originalQuery. |
+|  [matchedSubstrings](./search-headless.spellcheck.matchedsubstrings.md) | { length: number; offset: number; }\[\] | An array of substring matches which correspond to the highlighting. Offset indicates the index of the match, and the length indicates the number of characters of the match. |
+|  [originalQuery](./search-headless.spellcheck.originalquery.md) | string | The query that was input into the spell checker. |
+|  [type](./search-headless.spellcheck.type.md) | [SpellCheckType](./search-headless.spellchecktype.md) | The type of spell check. |
 

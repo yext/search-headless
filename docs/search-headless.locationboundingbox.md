@@ -14,10 +14,10 @@ export declare interface LocationBoundingBox
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [maxLatitude](./search-headless.locationboundingbox.maxlatitude.md) |  | number | The location's highest latitude degree. |
-|  [maxLongitude](./search-headless.locationboundingbox.maxlongitude.md) |  | number | The location's highest longitude degree. |
-|  [minLatitude](./search-headless.locationboundingbox.minlatitude.md) |  | number | The location's lowest latitude degree. |
-|  [minLongitude](./search-headless.locationboundingbox.minlongitude.md) |  | number | The location's lowest longitude degree. |
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [maxLatitude](./search-headless.locationboundingbox.maxlatitude.md) | number | The location's highest latitude degree. |
+|  [maxLongitude](./search-headless.locationboundingbox.maxlongitude.md) | number | The location's highest longitude degree. |
+|  [minLatitude](./search-headless.locationboundingbox.minlatitude.md) | number | The location's lowest latitude degree. |
+|  [minLongitude](./search-headless.locationboundingbox.minlongitude.md) | number | The location's lowest longitude degree. |
 

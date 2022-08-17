@@ -14,10 +14,10 @@ export declare interface LocationBias
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [displayName](./search-headless.locationbias.displayname.md) |  | string | The name of the location. |
-|  [latitude](./search-headless.locationbias.latitude.md) |  | number | The location's latitude. |
-|  [longitude](./search-headless.locationbias.longitude.md) |  | number | The location's longitude. |
-|  [method](./search-headless.locationbias.method.md) |  | [LocationBiasMethod](./search-headless.locationbiasmethod.md) | The method used to determine the location. |
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [displayName](./search-headless.locationbias.displayname.md) | string | The name of the location. |
+|  [latitude](./search-headless.locationbias.latitude.md) | number | The location's latitude. |
+|  [longitude](./search-headless.locationbias.longitude.md) | number | The location's longitude. |
+|  [method](./search-headless.locationbias.method.md) | [LocationBiasMethod](./search-headless.locationbiasmethod.md) | The method used to determine the location. |
 

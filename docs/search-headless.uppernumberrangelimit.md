@@ -14,8 +14,8 @@ export declare interface UpperNumberRangeLimit
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [matcher](./search-headless.uppernumberrangelimit.matcher.md) |  | [Matcher.LessThan](./search-headless.matcher.md) \| [Matcher.LessThanOrEqualTo](./search-headless.matcher.md) | [Matcher](./search-headless.matcher.md) for the end limit |
-|  [value](./search-headless.uppernumberrangelimit.value.md) |  | number | Value of the limit. |
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [matcher](./search-headless.uppernumberrangelimit.matcher.md) | [Matcher.LessThan](./search-headless.matcher.md) \| [Matcher.LessThanOrEqualTo](./search-headless.matcher.md) | [Matcher](./search-headless.matcher.md) for the end limit |
+|  [value](./search-headless.uppernumberrangelimit.value.md) | number | Value of the limit. |
 

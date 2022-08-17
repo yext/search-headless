@@ -15,12 +15,12 @@ export declare interface FilterSearchRequest extends SearchRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [excluded?](./search-headless.filtersearchrequest.excluded.md) |  | [Filter](./search-headless.filter.md)<!-- -->\[\] | <i>(Optional)</i> an array of filters that should be excluded from filter search results. |
-|  [fields](./search-headless.filtersearchrequest.fields.md) |  | [SearchParameterField](./search-headless.searchparameterfield.md)<!-- -->\[\] | An array of [SearchParameterField](./search-headless.searchparameterfield.md) |
-|  [input](./search-headless.filtersearchrequest.input.md) |  | string | The input string for autocomplete. |
-|  [sectioned](./search-headless.filtersearchrequest.sectioned.md) |  | boolean | Determines whether or not the results of the [FilterSearchResponse](./search-headless.filtersearchresponse.md) are separated by field. |
-|  [sessionTrackingEnabled?](./search-headless.filtersearchrequest.sessiontrackingenabled.md) |  | boolean | <i>(Optional)</i> Enables session tracking. |
-|  [verticalKey](./search-headless.filtersearchrequest.verticalkey.md) |  | string | The key for the vertical to get autocomplete suggestions from. |
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [excluded?](./search-headless.filtersearchrequest.excluded.md) | [Filter](./search-headless.filter.md)<!-- -->\[\] | <i>(Optional)</i> an array of filters that should be excluded from filter search results. |
+|  [fields](./search-headless.filtersearchrequest.fields.md) | [SearchParameterField](./search-headless.searchparameterfield.md)<!-- -->\[\] | An array of [SearchParameterField](./search-headless.searchparameterfield.md) |
+|  [input](./search-headless.filtersearchrequest.input.md) | string | The input string for autocomplete. |
+|  [sectioned](./search-headless.filtersearchrequest.sectioned.md) | boolean | Determines whether or not the results of the [FilterSearchResponse](./search-headless.filtersearchresponse.md) are separated by field. |
+|  [sessionTrackingEnabled?](./search-headless.filtersearchrequest.sessiontrackingenabled.md) | boolean | <i>(Optional)</i> Enables session tracking. |
+|  [verticalKey](./search-headless.filtersearchrequest.verticalkey.md) | string | The key for the vertical to get autocomplete suggestions from. |
 

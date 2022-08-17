@@ -14,8 +14,8 @@ export declare interface FacetOption
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [matcher](./search-headless.facetoption.matcher.md) |  | [Matcher](./search-headless.matcher.md) | A Matcher is a filtering operation. |
-|  [value](./search-headless.facetoption.value.md) |  | string \| number \| boolean \| [NumberRangeValue](./search-headless.numberrangevalue.md) | The value to compare. |
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [matcher](./search-headless.facetoption.matcher.md) | [Matcher](./search-headless.matcher.md) | A Matcher is a filtering operation. |
+|  [value](./search-headless.facetoption.value.md) | string \| number \| boolean \| [NumberRangeValue](./search-headless.numberrangevalue.md) | The value to compare. |
 

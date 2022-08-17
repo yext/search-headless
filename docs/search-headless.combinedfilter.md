@@ -14,8 +14,8 @@ export declare interface CombinedFilter
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [combinator](./search-headless.combinedfilter.combinator.md) |  | [FilterCombinator](./search-headless.filtercombinator.md) | The logical operator used to combine the filters. |
-|  [filters](./search-headless.combinedfilter.filters.md) |  | ([Filter](./search-headless.filter.md) \| [CombinedFilter](./search-headless.combinedfilter.md)<!-- -->)\[\] | An array of filters applied to the search. |
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [combinator](./search-headless.combinedfilter.combinator.md) | [FilterCombinator](./search-headless.filtercombinator.md) | The logical operator used to combine the filters. |
+|  [filters](./search-headless.combinedfilter.filters.md) | ([Filter](./search-headless.filter.md) \| [CombinedFilter](./search-headless.combinedfilter.md)<!-- -->)\[\] | An array of filters applied to the search. |
 

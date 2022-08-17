@@ -14,8 +14,8 @@ export declare interface Facet
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [fieldId](./search-headless.facet.fieldid.md) |  | string | The associated fieldId. |
-|  [options](./search-headless.facet.options.md) |  | [FacetOption](./search-headless.facetoption.md)<!-- -->\[\] | An array of [FacetOption](./search-headless.facetoption.md) |
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [fieldId](./search-headless.facet.fieldid.md) | string | The associated fieldId. |
+|  [options](./search-headless.facet.options.md) | [FacetOption](./search-headless.facetoption.md)<!-- -->\[\] | An array of [FacetOption](./search-headless.facetoption.md) |
 

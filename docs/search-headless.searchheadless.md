@@ -22,8 +22,8 @@ export default class SearchHeadless
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [state](./search-headless.searchheadless.state.md) | <code>readonly</code> | [State](./search-headless.state.md) | Gets the current state of the SearchHeadless instance. |
-|  [utilities](./search-headless.searchheadless.utilities.md) | <code>readonly</code> | typeof searchUtilities | Common utility functions for manipulating Search-related data. |
+|  [state](./search-headless.searchheadless.state.md) |  | [State](./search-headless.state.md) | Gets the current state of the SearchHeadless instance. |
+|  [utilities](./search-headless.searchheadless.utilities.md) |  | typeof searchUtilities | Common utility functions for manipulating Search-related data. |
 
 ## Methods
 

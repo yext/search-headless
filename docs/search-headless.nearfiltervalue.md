@@ -14,9 +14,9 @@ export declare interface NearFilterValue
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [lat](./search-headless.nearfiltervalue.lat.md) |  | number | The latitude of the location. |
-|  [lng](./search-headless.nearfiltervalue.lng.md) |  | number | The longitude of the location. |
-|  [radius](./search-headless.nearfiltervalue.radius.md) |  | number | The radius (in meters) around the latitude and longitude. |
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [lat](./search-headless.nearfiltervalue.lat.md) | number | The latitude of the location. |
+|  [lng](./search-headless.nearfiltervalue.lng.md) | number | The longitude of the location. |
+|  [radius](./search-headless.nearfiltervalue.radius.md) | number | The radius (in meters) around the latitude and longitude. |
 

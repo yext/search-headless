@@ -11,11 +11,11 @@ Maintains whether spellcheck is enabled and the spellcheck response from the lat
 ```typescript
 export interface SpellCheckState extends Partial<SpellCheck> 
 ```
-<b>Extends:</b> Partial&lt;[SpellCheck](./search-headless.spellcheck.md)
+<b>Extends:</b> Partial&lt;[SpellCheck](./search-headless.spellcheck.md)<!-- -->&gt;
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [enabled](./search-headless.spellcheckstate.enabled.md) |  | boolean | Whether or not spellcheck is enabled. |
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [enabled](./search-headless.spellcheckstate.enabled.md) | boolean | Whether or not spellcheck is enabled. |
 

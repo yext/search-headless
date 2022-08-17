@@ -14,11 +14,11 @@ export declare interface LocationFilterDetails
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [boundingBox?](./search-headless.locationfilterdetails.boundingbox.md) |  | [LocationBoundingBox](./search-headless.locationboundingbox.md) | <i>(Optional)</i> The location's coordinate boundaries. |
-|  [featureTypes](./search-headless.locationfilterdetails.featuretypes.md) |  | string\[\] | The location's classification (e.g. locality, region, address). |
-|  [latitude](./search-headless.locationfilterdetails.latitude.md) |  | number | The location's latitude. |
-|  [longitude](./search-headless.locationfilterdetails.longitude.md) |  | number | The location's longitude. |
-|  [placeName](./search-headless.locationfilterdetails.placename.md) |  | string | The location's name. |
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [boundingBox?](./search-headless.locationfilterdetails.boundingbox.md) | [LocationBoundingBox](./search-headless.locationboundingbox.md) | <i>(Optional)</i> The location's coordinate boundaries. |
+|  [featureTypes](./search-headless.locationfilterdetails.featuretypes.md) | string\[\] | The location's classification (e.g. locality, region, address). |
+|  [latitude](./search-headless.locationfilterdetails.latitude.md) | number | The location's latitude. |
+|  [longitude](./search-headless.locationfilterdetails.longitude.md) | number | The location's longitude. |
+|  [placeName](./search-headless.locationfilterdetails.placename.md) | string | The location's name. |
 

@@ -15,9 +15,9 @@ export declare interface DisplayableFacet extends Facet
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [displayName](./search-headless.displayablefacet.displayname.md) |  | string | The name of the facet which is meant to be displayed to the user. |
-|  [fieldId](./search-headless.displayablefacet.fieldid.md) |  | string | The associated fieldId. |
-|  [options](./search-headless.displayablefacet.options.md) |  | [DisplayableFacetOption](./search-headless.displayablefacetoption.md)<!-- -->\[\] | An array of [DisplayableFacetOption](./search-headless.displayablefacetoption.md) |
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [displayName](./search-headless.displayablefacet.displayname.md) | string | The name of the facet which is meant to be displayed to the user. |
+|  [fieldId](./search-headless.displayablefacet.fieldid.md) | string | The associated fieldId. |
+|  [options](./search-headless.displayablefacet.options.md) | [DisplayableFacetOption](./search-headless.displayablefacetoption.md)<!-- -->\[\] | An array of [DisplayableFacetOption](./search-headless.displayablefacetoption.md) |
 

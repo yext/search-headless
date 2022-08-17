@@ -14,9 +14,9 @@ export declare interface Filter
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [fieldId](./search-headless.filter.fieldid.md) |  | string | The fieldId to apply the filter against. |
-|  [matcher](./search-headless.filter.matcher.md) |  | [Matcher](./search-headless.matcher.md) | A Matcher is a filtering operation. |
-|  [value](./search-headless.filter.value.md) |  | string \| number \| boolean \| [NearFilterValue](./search-headless.nearfiltervalue.md) \| [NumberRangeValue](./search-headless.numberrangevalue.md) | The value to compare. |
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [fieldId](./search-headless.filter.fieldid.md) | string | The fieldId to apply the filter against. |
+|  [matcher](./search-headless.filter.matcher.md) | [Matcher](./search-headless.matcher.md) | A Matcher is a filtering operation. |
+|  [value](./search-headless.filter.value.md) | string \| number \| boolean \| [NearFilterValue](./search-headless.nearfiltervalue.md) \| [NumberRangeValue](./search-headless.numberrangevalue.md) | The value to compare. |
 

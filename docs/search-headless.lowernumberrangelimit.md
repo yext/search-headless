@@ -14,8 +14,8 @@ export declare interface LowerNumberRangeLimit
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [matcher](./search-headless.lowernumberrangelimit.matcher.md) |  | [Matcher.GreaterThan](./search-headless.matcher.md) \| [Matcher.GreaterThanOrEqualTo](./search-headless.matcher.md) | [Matcher](./search-headless.matcher.md) for the start limit |
-|  [value](./search-headless.lowernumberrangelimit.value.md) |  | number | Value of the limit. |
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [matcher](./search-headless.lowernumberrangelimit.matcher.md) | [Matcher.GreaterThan](./search-headless.matcher.md) \| [Matcher.GreaterThanOrEqualTo](./search-headless.matcher.md) | [Matcher](./search-headless.matcher.md) for the start limit |
+|  [value](./search-headless.lowernumberrangelimit.value.md) | number | Value of the limit. |
 

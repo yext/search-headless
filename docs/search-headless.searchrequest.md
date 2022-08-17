@@ -14,7 +14,7 @@ export declare interface SearchRequest
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [additionalHttpHeaders?](./search-headless.searchrequest.additionalhttpheaders.md) |  | [AdditionalHttpHeaders](./search-headless.additionalhttpheaders.md) | <i>(Optional)</i> AdditionalHttpHeaders allows users to specify additional values for specific HTTP headers. |
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [additionalHttpHeaders?](./search-headless.searchrequest.additionalhttpheaders.md) | [AdditionalHttpHeaders](./search-headless.additionalhttpheaders.md) | <i>(Optional)</i> AdditionalHttpHeaders allows users to specify additional values for specific HTTP headers. |
 

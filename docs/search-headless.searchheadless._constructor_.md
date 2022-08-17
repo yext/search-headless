@@ -19,5 +19,5 @@ constructor(core: SearchCore, stateManager: StateManager, httpManager: HttpManag
 |  core | [SearchCore](./search-headless.searchcore.md) |  |
 |  stateManager | StateManager |  |
 |  httpManager | HttpManager |  |
-|  additionalHttpHeaders | [AdditionalHttpHeaders](./search-headless.additionalhttpheaders.md) \| undefined | <i>(Optional)</i> |
+|  additionalHttpHeaders | [AdditionalHttpHeaders](./search-headless.additionalhttpheaders.md) \| undefined |  |
 

@@ -14,9 +14,9 @@ export declare interface QueryRulesActionsData
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [data?](./search-headless.queryrulesactionsdata.data.md) |  | Record&lt;string, unknown&gt; | <i>(Optional)</i> The data returned from the query rule. |
-|  [errors?](./search-headless.queryrulesactionsdata.errors.md) |  | { uuid: string; type: string; message?: string; }\[\] | <i>(Optional)</i> Any errors returned from the query rule. |
-|  [key](./search-headless.queryrulesactionsdata.key.md) |  | string | The unique identifier for this query rule. |
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [data?](./search-headless.queryrulesactionsdata.data.md) | Record&lt;string, unknown&gt; | <i>(Optional)</i> The data returned from the query rule. |
+|  [errors?](./search-headless.queryrulesactionsdata.errors.md) | { uuid: string; type: string; message?: string; }\[\] | <i>(Optional)</i> Any errors returned from the query rule. |
+|  [key](./search-headless.queryrulesactionsdata.key.md) | string | The unique identifier for this query rule. |
 

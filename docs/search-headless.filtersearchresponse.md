@@ -14,10 +14,10 @@ export declare interface FilterSearchResponse
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [businessId?](./search-headless.filtersearchresponse.businessid.md) |  | string | <i>(Optional)</i> ID of the account associated with this Search experience. |
-|  [queryId?](./search-headless.filtersearchresponse.queryid.md) |  | string | <i>(Optional)</i> The ID of the search query. |
-|  [sections](./search-headless.filtersearchresponse.sections.md) |  | { label?: string; results: [AutocompleteResult](./search-headless.autocompleteresult.md)<!-- -->\[\]; }\[\] | Represents autocomplete results separated by field. |
-|  [uuid](./search-headless.filtersearchresponse.uuid.md) |  | string | A unique id which corresponds to the request. |
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [businessId?](./search-headless.filtersearchresponse.businessid.md) | string | <i>(Optional)</i> ID of the account associated with this Search experience. |
+|  [queryId?](./search-headless.filtersearchresponse.queryid.md) | string | <i>(Optional)</i> The ID of the search query. |
+|  [sections](./search-headless.filtersearchresponse.sections.md) | { label?: string; results: [AutocompleteResult](./search-headless.autocompleteresult.md)<!-- -->\[\]; }\[\] | Represents autocomplete results separated by field. |
+|  [uuid](./search-headless.filtersearchresponse.uuid.md) | string | A unique id which corresponds to the request. |
 

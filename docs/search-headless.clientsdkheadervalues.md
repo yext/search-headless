@@ -14,7 +14,7 @@ export declare interface ClientSDKHeaderValues
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [ANSWERS\_CORE?](./search-headless.clientsdkheadervalues.answers_core.md) |  | never | <i>(Optional)</i> The ANSWERS\_CORE agent should not be supplied. Instead, it will be automatically added to the header and populated with the version of Search Core being used. |
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [ANSWERS\_CORE?](./search-headless.clientsdkheadervalues.answers_core.md) | never | <i>(Optional)</i> The ANSWERS\_CORE agent should not be supplied. Instead, it will be automatically added to the header and populated with the version of Search Core being used. |
 

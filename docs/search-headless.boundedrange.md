@@ -14,8 +14,8 @@ export interface BoundedRange<T>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [max?](./search-headless.boundedrange.max.md) |  | [RangeBoundary](./search-headless.rangeboundary.md)<!-- -->&lt;T&gt; | <i>(Optional)</i> The maximum value bounding the range. |
-|  [min?](./search-headless.boundedrange.min.md) |  | [RangeBoundary](./search-headless.rangeboundary.md)<!-- -->&lt;T&gt; | <i>(Optional)</i> The minimum value bounding the range. |
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [max?](./search-headless.boundedrange.max.md) | [RangeBoundary](./search-headless.rangeboundary.md)<!-- -->&lt;T&gt; | <i>(Optional)</i> The maximum value bounding the range. |
+|  [min?](./search-headless.boundedrange.min.md) | [RangeBoundary](./search-headless.rangeboundary.md)<!-- -->&lt;T&gt; | <i>(Optional)</i> The minimum value bounding the range. |
 

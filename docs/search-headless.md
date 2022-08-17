@@ -51,15 +51,10 @@
 |  [AddressDirectAnswer](./search-headless.addressdirectanswer.md) | A [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md) interface with 'address' field type. |
 |  [AllResultsForVertical](./search-headless.allresultsforvertical.md) | Represents all results for the current vertical. |
 |  [AndroidAppUrlDirectAnswer](./search-headless.androidappurldirectanswer.md) | A direct answer for an android app url field. |
-|  [AnswersConfigWithApiKey](./search-headless.answersconfigwithapikey.md) |  |
-|  [AnswersConfigWithToken](./search-headless.answersconfigwithtoken.md) |  |
-|  [AnswersError](./search-headless.answerserror.md) |  |
-|  [AnswersRequest](./search-headless.answersrequest.md) |  |
 |  [AppliedQueryFilter](./search-headless.appliedqueryfilter.md) | A filter that the Search API applied to the search. |
 |  [AutocompleteResponse](./search-headless.autocompleteresponse.md) | The response of a universal or vertical autocomplete request. |
 |  [AutocompleteResult](./search-headless.autocompleteresult.md) | An autocomplete suggestion. |
 |  [AutocompleteService](./search-headless.autocompleteservice.md) | A service for autocomplete requests. |
-|  [BaseAnswersConfig](./search-headless.baseanswersconfig.md) |  |
 |  [BaseFeaturedSnippetDirectAnswer](./search-headless.basefeaturedsnippetdirectanswer.md) | A direct answer which was found within a document. |
 |  [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md) | A direct answer where the answer came from a field from the knowledge graph. |
 |  [BaseSearchConfig](./search-headless.basesearchconfig.md) | The base configuration options for [SearchCore](./search-headless.searchcore.md)<!-- -->. |

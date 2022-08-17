@@ -11,7 +11,7 @@ A [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md) 
 ```typescript
 export declare interface AddressDirectAnswer extends BaseFieldValueDirectAnswer<Address> 
 ```
-<b>Extends:</b> [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md)<!-- -->&lt;Address&gt;
+<b>Extends:</b> [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md)<!-- -->&lt;[Address](./search-headless.address.md)<!-- -->&gt;
 
 ## Properties
 

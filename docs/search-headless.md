@@ -50,6 +50,7 @@
 |  Interface | Description |
 |  --- | --- |
 |  [AdditionalHttpHeaders](./search-headless.additionalhttpheaders.md) | AdditionalHttpHeaders allows users to specify additional values for specific HTTP headers. |
+|  [Address](./search-headless.address.md) | An interface with address fields to use in [BaseFieldValueDirectAnswer.value](./search-headless.basefieldvaluedirectanswer.value.md)<!-- -->. |
 |  [AddressDirectAnswer](./search-headless.addressdirectanswer.md) | A [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md) interface with 'address' field type. |
 |  [AllResultsForVertical](./search-headless.allresultsforvertical.md) | Represents all results for the current vertical. |
 |  [AndroidAppUrlDirectAnswer](./search-headless.androidappurldirectanswer.md) | A direct answer for an android app url field. |

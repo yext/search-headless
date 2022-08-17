@@ -48,6 +48,8 @@ export {
   PhoneDirectAnswer,
   EmailDirectAnswer,
   AddressDirectAnswer,
+  Address,
+  EnumOrLiteral,
   FieldValueFilter,
   FieldValueStaticFilter,
   FilterCombinator,

@@ -33,6 +33,6 @@ export declare interface VerticalSearchRequest extends SearchRequest
 |  [sessionTrackingEnabled?](./search-headless.verticalsearchrequest.sessiontrackingenabled.md) | boolean | <i>(Optional)</i> Enables session tracking. |
 |  [skipSpellCheck?](./search-headless.verticalsearchrequest.skipspellcheck.md) | boolean | <i>(Optional)</i> Skips spell checking if true. |
 |  [sortBys?](./search-headless.verticalsearchrequest.sortbys.md) | [SortBy](./search-headless.sortby.md)<!-- -->\[\] | <i>(Optional)</i> Determines how results are sorted. \* |
-|  [staticFilters?](./search-headless.verticalsearchrequest.staticfilters.md) | [CombinedFilter](./search-headless.combinedfilter.md) \| [Filter](./search-headless.filter.md) | <i>(Optional)</i> The static filters to apply to the search. |
+|  [staticFilter?](./search-headless.verticalsearchrequest.staticfilter.md) | [StaticFilter](./search-headless.staticfilter.md) | <i>(Optional)</i> The static filter to apply to the search. |
 |  [verticalKey](./search-headless.verticalsearchrequest.verticalkey.md) | string | The key associated with the vertical. |
 

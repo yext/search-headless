@@ -1,4 +1,4 @@
-import { AppliedQueryFilter, Matcher, Result, Source, VerticalResults, VerticalSearchRequest, VerticalSearchResponse } from '@yext/search-core';
+import { AppliedQueryFilter, AppliedQueryFilterType, Matcher, Result, Source, VerticalResults, VerticalSearchRequest, VerticalSearchResponse } from '@yext/search-core';
 import HttpManager from '../../src/http-manager';
 import { AllResultsForVertical } from '../../src/models/slices/vertical';
 import { State } from '../../src/models/state';
@@ -83,6 +83,7 @@ it('vertical searches set appliedQueryFilters', async () => {
   const mockAppliedQueryFilters: AppliedQueryFilter[] = [{
     displayKey: 'tesKey',
     displayValue: 'testValue',
+    type: AppliedQueryFilterType.FieldValue,
     filter: {
       fieldId: 'test',
       matcher: Matcher.Equals,

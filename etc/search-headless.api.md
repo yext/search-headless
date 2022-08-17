@@ -11,11 +11,27 @@ export interface AdditionalHttpHeaders {
     'Client-SDK'?: ClientSDKHeaderValues;
 }
 
+// Warning: (ae-forgotten-export) The symbol "Address" needs to be exported by the entry point index.d.ts
+//
+// @public
+export interface AddressDirectAnswer extends BaseFieldValueDirectAnswer<Address> {
+    // Warning: (ae-forgotten-export) The symbol "EnumOrLiteral" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    fieldType: EnumOrLiteral_2<BuiltInFieldType.Address>;
+}
+
 // @public
 export interface AllResultsForVertical {
     facets: DisplayableFacet[];
     results: Result[];
     resultsCount: number;
+}
+
+// @public
+export interface AndroidAppUrlDirectAnswer extends BaseFieldValueDirectAnswer<string> {
+    // (undocumented)
+    fieldType: EnumOrLiteral_2<BuiltInFieldType.AndroidAppURL>;
 }
 
 // @public @deprecated (undocumented)
@@ -97,6 +113,22 @@ export interface BaseAnswersConfig extends BaseSearchConfig {
 }
 
 // @public
+export interface BaseFeaturedSnippetDirectAnswer<T = unknown> extends DirectAnswer<T> {
+    fieldType: EnumOrLiteral_2<BuiltInFieldType.MultiLineText | BuiltInFieldType.RichText>;
+    snippet: Snippet;
+    type: DirectAnswerType.FeaturedSnippet;
+}
+
+// @public
+export interface BaseFieldValueDirectAnswer<T = unknown> extends DirectAnswer<T> {
+    entityName: string;
+    fieldApiName: string;
+    fieldName: string;
+    type: DirectAnswerType.FieldValue;
+    value: T;
+}
+
+// @public
 export interface BaseSearchConfig {
     endpoints?: Endpoints;
     experienceKey: string;
@@ -113,6 +145,40 @@ export interface BoundedRange<T> {
 }
 
 // @public
+export enum BuiltInFieldType {
+    // (undocumented)
+    Address = "address",
+    // (undocumented)
+    AndroidAppURL = "android_app_url",
+    // (undocumented)
+    ComplexURL = "complex_url",
+    // (undocumented)
+    Decimal = "decimal",
+    // (undocumented)
+    Email = "email",
+    // (undocumented)
+    FacebookURL = "facebook_url",
+    // (undocumented)
+    InstagramHandle = "instagram_handle",
+    // (undocumented)
+    Integer = "integer",
+    // (undocumented)
+    IOSAppURL = "ios_app_url",
+    // (undocumented)
+    MultiLineText = "multi_line_text",
+    // (undocumented)
+    Phone = "phone",
+    // (undocumented)
+    RichText = "rich_text",
+    // (undocumented)
+    SingleLineText = "single_line_text",
+    // (undocumented)
+    TwitterHandle = "twitter_handle",
+    // (undocumented)
+    URL = "url"
+}
+
+// @public
 export interface ClientSDKHeaderValues {
     [agent: string]: string | undefined;
     ANSWERS_CORE?: never;
@@ -120,6 +186,14 @@ export interface ClientSDKHeaderValues {
 
 // @public
 export function combineStaticFilters(filterA: StaticFilter, filterB: StaticFilter, combinator: FilterCombinator): StaticFilter;
+
+// Warning: (ae-forgotten-export) The symbol "ComplexURL" needs to be exported by the entry point index.d.ts
+//
+// @public
+export interface ComplexUrlDirectAnswer extends BaseFieldValueDirectAnswer<ComplexURL> {
+    // (undocumented)
+    fieldType: EnumOrLiteral_2<BuiltInFieldType.ComplexURL>;
+}
 
 // @public
 export interface ConjunctionStaticFilter {
@@ -144,12 +218,17 @@ export function createNearMeStaticFilter(position: NearFilterValue): FieldValueS
 export function createNumberRangeStaticFilter(fieldId: string, range: BoundedRange<number>): StaticFilter;
 
 // @public
+export interface DecimalDirectAnswer extends BaseFieldValueDirectAnswer<string | string[]> {
+    // (undocumented)
+    fieldType: EnumOrLiteral_2<BuiltInFieldType.Decimal>;
+}
+
+// @public
 export const DEFAULT_HEADLESS_ID = "main";
 
 // @public
 export interface DirectAnswer<T = unknown> {
-    // Warning: (ae-forgotten-export) The symbol "BuiltInFieldType" needs to be exported by the entry point index.d.ts
-    fieldType: BuiltInFieldType | string;
+    fieldType: EnumOrLiteral_2<BuiltInFieldType> | 'unknown';
     relatedResult: Result;
     type: DirectAnswerType;
     value?: T;
@@ -194,6 +273,12 @@ export interface DisplayableFacetOption extends FacetOption {
 }
 
 // @public
+export interface EmailDirectAnswer extends BaseFieldValueDirectAnswer<string[]> {
+    // (undocumented)
+    fieldType: EnumOrLiteral_2<BuiltInFieldType.Email>;
+}
+
+// @public
 export interface Endpoints {
     // (undocumented)
     filterSearch?: string;
@@ -223,6 +308,12 @@ export enum ErrorType {
 }
 
 // @public
+export interface FacebookUrlDirectAnswer extends BaseFieldValueDirectAnswer<string> {
+    // (undocumented)
+    fieldType: EnumOrLiteral_2<BuiltInFieldType.FacebookURL>;
+}
+
+// @public
 export interface Facet {
     fieldId: string;
     options: FacetOption[];
@@ -245,26 +336,10 @@ export interface FailedVertical {
 }
 
 // @public
-export interface FeaturedSnippetDirectAnswer<T = unknown> extends DirectAnswer<T> {
-    fieldType: BuiltInFieldType | string;
-    relatedResult: Result;
-    snippet: Snippet;
-    type: DirectAnswerType.FeaturedSnippet;
-    value?: T;
-    verticalKey: string;
-}
+export type FeaturedSnippetDirectAnswer = MultiLineTextSnippetDirectAnswer | RichTextSnippetDirectAnswer;
 
 // @public
-export interface FieldValueDirectAnswer<T = unknown> extends DirectAnswer<T> {
-    entityName: string;
-    fieldApiName: string;
-    fieldName: string;
-    fieldType: BuiltInFieldType | string;
-    relatedResult: Result;
-    type: DirectAnswerType.FieldValue;
-    value: T;
-    verticalKey: string;
-}
+export type FieldValueDirectAnswer = UnknownFieldValueDirectAnswer | TextDirectAnswer | UrlDirectAnswer | RichTextDirectAnswer | DecimalDirectAnswer | FacebookUrlDirectAnswer | InstagramHandleDirectAnswer | TwitterHandleDirectAnswer | IosAppUrlDirectAnswer | AndroidAppUrlDirectAnswer | ComplexUrlDirectAnswer | IntegerDirectAnswer | PhoneDirectAnswer | EmailDirectAnswer | AddressDirectAnswer;
 
 // @public
 export interface FieldValueFilter {
@@ -329,6 +404,24 @@ export interface HighlightedValue {
         offset: number;
     }[];
     value: string;
+}
+
+// @public
+export interface InstagramHandleDirectAnswer extends BaseFieldValueDirectAnswer<string> {
+    // (undocumented)
+    fieldType: EnumOrLiteral_2<BuiltInFieldType.InstagramHandle>;
+}
+
+// @public
+export interface IntegerDirectAnswer extends BaseFieldValueDirectAnswer<number> {
+    // (undocumented)
+    fieldType: EnumOrLiteral_2<BuiltInFieldType.Integer>;
+}
+
+// @public
+export interface IosAppUrlDirectAnswer extends BaseFieldValueDirectAnswer<string> {
+    // (undocumented)
+    fieldType: EnumOrLiteral_2<BuiltInFieldType.IOSAppURL>;
 }
 
 // @public
@@ -405,6 +498,12 @@ export interface MetaState {
 }
 
 // @public
+export interface MultiLineTextSnippetDirectAnswer extends BaseFeaturedSnippetDirectAnswer<string> {
+    fieldType: EnumOrLiteral_2<BuiltInFieldType.MultiLineText>;
+    value: string;
+}
+
+// @public
 export interface NearFilterValue {
     lat: number;
     lng: number;
@@ -420,6 +519,12 @@ export interface NumberRangeValue {
 // @public
 export interface ParentState {
     [headlessId: string]: State;
+}
+
+// @public
+export interface PhoneDirectAnswer extends BaseFieldValueDirectAnswer<string> {
+    // (undocumented)
+    fieldType: BuiltInFieldType.Phone;
 }
 
 // @public @deprecated
@@ -511,6 +616,17 @@ export interface Result<T = Record<string, unknown>> {
     name?: string;
     rawData: T;
     source: Source;
+}
+
+// @public
+export interface RichTextDirectAnswer extends BaseFieldValueDirectAnswer<string | string[]> {
+    // (undocumented)
+    fieldType: EnumOrLiteral_2<BuiltInFieldType.RichText>;
+}
+
+// @public
+export interface RichTextSnippetDirectAnswer extends Omit<BaseFeaturedSnippetDirectAnswer<string>, 'value'> {
+    fieldType: EnumOrLiteral_2<BuiltInFieldType.RichText>;
 }
 
 // @public
@@ -737,6 +853,18 @@ export interface StateManager {
 export type StaticFilter = FieldValueStaticFilter | DisjunctionStaticFilter | ConjunctionStaticFilter;
 
 // @public
+export interface TextDirectAnswer extends BaseFieldValueDirectAnswer<string | string[]> {
+    // (undocumented)
+    fieldType: EnumOrLiteral_2<BuiltInFieldType.SingleLineText | BuiltInFieldType.MultiLineText>;
+}
+
+// @public
+export interface TwitterHandleDirectAnswer extends BaseFieldValueDirectAnswer<string> {
+    // (undocumented)
+    fieldType: EnumOrLiteral_2<BuiltInFieldType.TwitterHandle>;
+}
+
+// @public
 export interface UniversalAutocompleteRequest extends SearchRequest {
     input: string;
     sessionTrackingEnabled?: boolean;
@@ -784,9 +912,20 @@ export interface UniversalSearchState {
 }
 
 // @public
+export interface UnknownFieldValueDirectAnswer<T = unknown> extends BaseFieldValueDirectAnswer<T> {
+    fieldType: 'unknown';
+}
+
+// @public
 export interface UpperNumberRangeLimit {
     matcher: Matcher.LessThan | Matcher.LessThanOrEqualTo;
     value: number;
+}
+
+// @public
+export interface UrlDirectAnswer extends BaseFieldValueDirectAnswer<string | string[]> {
+    // (undocumented)
+    fieldType: EnumOrLiteral_2<BuiltInFieldType.URL>;
 }
 
 // @public

@@ -52,36 +52,6 @@ export interface AndroidAppUrlDirectAnswer extends BaseFieldValueDirectAnswer<st
     fieldType: EnumOrLiteral<BuiltInFieldType.AndroidAppURL>;
 }
 
-// @public @deprecated (undocumented)
-export type AnswersConfig = SearchConfig;
-
-// @public @deprecated (undocumented)
-export interface AnswersConfigWithApiKey extends SearchConfigWithApiKey {
-}
-
-// @public @deprecated (undocumented)
-export interface AnswersConfigWithToken extends SearchConfigWithToken {
-}
-
-// @public @deprecated (undocumented)
-export class AnswersCore extends SearchCore {
-}
-
-// @public @deprecated (undocumented)
-export interface AnswersError extends SearchError {
-}
-
-// @public @deprecated (undocumented)
-export class AnswersHeadless extends SearchHeadless {
-}
-
-// @public @deprecated (undocumented)
-export interface AnswersRequest extends SearchRequest {
-}
-
-// @public @deprecated (undocumented)
-export namespace answersUtilities { }
-
 // @public
 export interface AppliedQueryFilter {
     details?: LocationFilterDetails;
@@ -126,10 +96,6 @@ export interface AutocompleteService {
     verticalAutocomplete(request: VerticalAutocompleteRequest): Promise<AutocompleteResponse>;
 }
 
-// @public @deprecated (undocumented)
-export interface BaseAnswersConfig extends BaseSearchConfig {
-}
-
 // @public
 export interface BaseFeaturedSnippetDirectAnswer<T = unknown> extends DirectAnswer<T> {
     fieldType: EnumOrLiteral<BuiltInFieldType.MultiLineText | BuiltInFieldType.RichText>;
@@ -148,12 +114,14 @@ export interface BaseFieldValueDirectAnswer<T = unknown> extends DirectAnswer<T>
 
 // @public
 export interface BaseSearchConfig {
+    additionalQueryParams?: {
+        [key: string]: string | number | boolean;
+    };
     endpoints?: Endpoints;
     experienceKey: string;
     experienceVersion?: 'STAGING' | 'PRODUCTION' | string | number;
     locale: string;
     visitor?: Visitor;
-    /* Excluded from this release type: additionalQueryParams */
 }
 
 // @public
@@ -552,9 +520,6 @@ export interface PhoneDirectAnswer extends BaseFieldValueDirectAnswer<string> {
     // (undocumented)
     fieldType: BuiltInFieldType.Phone;
 }
-
-// @public @deprecated
-export const provideAnswersHeadless: typeof provideHeadless;
 
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "provideHeadless" because one of its declarations is marked as @internal
 //

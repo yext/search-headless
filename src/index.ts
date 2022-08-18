@@ -13,7 +13,6 @@ export * from './search-core-re-exports';
 export * from './models';
 export * from './constants';
 export * from './utils/filter-creators';
-export * from './deprecated';
 export { searchUtilities };
 
 /**
@@ -82,13 +81,13 @@ export function provideHeadless(
     throw new Error(`Cannot instantiate a SearchHeadless using the default headlessId "${headlessId}". `
       + 'Specify a different headlessId.');
   }
-  const answersCore = provideCore(searchConfig);
+  const searchCore = provideCore(searchConfig);
   const stateManager = new ReduxStateManager(
     store, headlessId || DEFAULT_HEADLESS_ID, headlessReducerManager);
   const httpManager = new HttpManager();
   const httpHeaders = getHttpHeaders(additionalHttpHeaders);
 
-  const headless = new SearchHeadless(answersCore, stateManager, httpManager, httpHeaders);
+  const headless = new SearchHeadless(searchCore, stateManager, httpManager, httpHeaders);
   verticalKey
     ? headless.setVertical(verticalKey)
     : headless.setUniversal();

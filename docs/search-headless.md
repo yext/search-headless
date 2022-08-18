@@ -8,8 +8,6 @@
 
 |  Class | Description |
 |  --- | --- |
-|  [AnswersCore](./search-headless.answerscore.md) |  |
-|  [AnswersHeadless](./search-headless.answersheadless.md) |  |
 |  [SearchCore](./search-headless.searchcore.md) | Provides methods for executing searches, submitting questions, and performing autocompletes. |
 |  [SearchError](./search-headless.searcherror.md) | Represents an error |
 |  [SearchHeadless](./search-headless.searchheadless.md) | Provides the functionality for interacting with a Search experience. |
@@ -54,15 +52,10 @@
 |  [AddressDirectAnswer](./search-headless.addressdirectanswer.md) | A [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md) interface with 'address' field type. |
 |  [AllResultsForVertical](./search-headless.allresultsforvertical.md) | Represents all results for the current vertical. |
 |  [AndroidAppUrlDirectAnswer](./search-headless.androidappurldirectanswer.md) | A direct answer for an android app url field. |
-|  [AnswersConfigWithApiKey](./search-headless.answersconfigwithapikey.md) |  |
-|  [AnswersConfigWithToken](./search-headless.answersconfigwithtoken.md) |  |
-|  [AnswersError](./search-headless.answerserror.md) |  |
-|  [AnswersRequest](./search-headless.answersrequest.md) |  |
 |  [AppliedQueryFilter](./search-headless.appliedqueryfilter.md) | A filter that the Search API applied to the search. |
 |  [AutocompleteResponse](./search-headless.autocompleteresponse.md) | The response of a universal or vertical autocomplete request. |
 |  [AutocompleteResult](./search-headless.autocompleteresult.md) | An autocomplete suggestion. |
 |  [AutocompleteService](./search-headless.autocompleteservice.md) | A service for autocomplete requests. |
-|  [BaseAnswersConfig](./search-headless.baseanswersconfig.md) |  |
 |  [BaseFeaturedSnippetDirectAnswer](./search-headless.basefeaturedsnippetdirectanswer.md) | A direct answer which was found within a document. |
 |  [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md) | A direct answer where the answer came from a field from the knowledge graph. |
 |  [BaseSearchConfig](./search-headless.basesearchconfig.md) | The base configuration options for [SearchCore](./search-headless.searchcore.md)<!-- -->. |
@@ -150,7 +143,6 @@
 
 |  Namespace | Description |
 |  --- | --- |
-|  [answersUtilities](./search-headless.answersutilities.md) |  |
 |  [searchUtilities](./search-headless.searchutilities.md) |  |
 
 ## Variables
@@ -158,14 +150,12 @@
 |  Variable | Description |
 |  --- | --- |
 |  [DEFAULT\_HEADLESS\_ID](./search-headless.default_headless_id.md) | The headlessId automatically given to the first SearchHeadless instance created. |
-|  [provideAnswersHeadless](./search-headless.provideanswersheadless.md) | Supplies a new instance of [SearchHeadless](./search-headless.searchheadless.md)<!-- -->, using the provided configuration. |
 |  [SandboxEndpoints](./search-headless.sandboxendpoints.md) | The endpoints to use for sandbox experiences. |
 
 ## Type Aliases
 
 |  Type Alias | Description |
 |  --- | --- |
-|  [AnswersConfig](./search-headless.answersconfig.md) |  |
 |  [Context](./search-headless.context.md) | Used to trigger Search [Query Rules](https://hitchhikers.yext.com/tracks/answers-advanced/ans302-query-rules/)<!-- -->. |
 |  [EnumOrLiteral](./search-headless.enumorliteral.md) | Produces a union type from the enum passed as a generic which consists of the enum values and the string literals of the enum. |
 |  [FeaturedSnippetDirectAnswer](./search-headless.featuredsnippetdirectanswer.md) | All possible built-in [BaseFeaturedSnippetDirectAnswer](./search-headless.basefeaturedsnippetdirectanswer.md) interfaces. |

@@ -112,7 +112,7 @@ it('facets are updated after a vertical search', async () => {
       ]
     });
   }
-  const mockAnswersCore = {
+  const mockSearchCore = {
     verticalSearch: jest.fn().mockImplementation(mockSearchWithFacets)
   };
   const initialState = {
@@ -121,7 +121,7 @@ it('facets are updated after a vertical search', async () => {
     query: { input: 'test query' },
     spellCheck: { enabled: true }
   };
-  const answers = createMockedHeadless(mockAnswersCore, initialState);
+  const answers = createMockedHeadless(mockSearchCore, initialState);
   expect(answers.state.filters.facets).toEqual(undefined);
   answers.setVertical('vertical-key');
   await answers.executeVerticalQuery();

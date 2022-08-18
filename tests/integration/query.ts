@@ -94,7 +94,7 @@ describe('ensure correct results from latest request', () => {
   });
 
   it('vertical search get correct results based on up-to-date response', async () => {
-    const answers = getAnswersHeadless(requestsTime);
+    const answers = getSearchHeadless(requestsTime);
     answers.setVertical('someKey');
     answers.addListener({
       valueAccessor: state => state.vertical?.results,
@@ -121,7 +121,7 @@ describe('ensure correct results from latest request', () => {
   });
 
   it('universal search get correct results based on up-to-date response', async () => {
-    const answers = getAnswersHeadless(requestsTime);
+    const answers = getSearchHeadless(requestsTime);
     answers.setUniversal();
     answers.addListener({
       valueAccessor: state => state.universal.verticals,
@@ -148,7 +148,7 @@ describe('ensure correct results from latest request', () => {
   });
 });
 
-function getAnswersHeadless(requestsTime: { [x: string]: number }) {
+function getSearchHeadless(requestsTime: { [x: string]: number }) {
   const mockedCore: any = {
     verticalSearch: jest.fn( async (request: VerticalSearchRequest) => {
       const waitTime = requestsTime[request.query];

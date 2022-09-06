@@ -64,6 +64,7 @@
 |  [ComplexURL](./search-headless.complexurl.md) | The shape of a [BuiltInFieldType.ComplexURL](./search-headless.builtinfieldtype.md) DirectAnswer value |
 |  [ComplexUrlDirectAnswer](./search-headless.complexurldirectanswer.md) | A direct answer for a complex url field. |
 |  [ConjunctionStaticFilter](./search-headless.conjunctionstaticfilter.md) | A static filter composed by combining other static filters with the logical AND operator. |
+|  [DayHour](./search-headless.dayhour.md) | An interface for a day's hours to use in [BaseFieldValueDirectAnswer.value](./search-headless.basefieldvaluedirectanswer.value.md)<!-- -->. |
 |  [DecimalDirectAnswer](./search-headless.decimaldirectanswer.md) | A direct answer for a decimal field, which is a number represented using a string. |
 |  [DirectAnswer](./search-headless.directanswer.md) | A direct answer to a search. |
 |  [DirectAnswerState](./search-headless.directanswerstate.md) | Maintains the direct answer associated with the latest search. |
@@ -82,8 +83,12 @@
 |  [FilterSearchResponse](./search-headless.filtersearchresponse.md) | The response of a filtersearch request. |
 |  [FiltersState](./search-headless.filtersstate.md) | Maintains the current state of facets and filters in the application. |
 |  [HighlightedValue](./search-headless.highlightedvalue.md) | A field value and its substring matches as emphasized by the Search API. |
+|  [HolidayHours](./search-headless.holidayhours.md) | An interface for holiday hours to use in [BaseFieldValueDirectAnswer.value](./search-headless.basefieldvaluedirectanswer.value.md)<!-- -->. |
+|  [Hours](./search-headless.hours.md) | An interface for hours fields to use in [BaseFieldValueDirectAnswer.value](./search-headless.basefieldvaluedirectanswer.value.md)<!-- -->. |
+|  [HoursDirectAnswer](./search-headless.hoursdirectanswer.md) | A [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md) interface with 'hours' field type. |
 |  [InstagramHandleDirectAnswer](./search-headless.instagramhandledirectanswer.md) | A direct answer for an instagram handle field. |
 |  [IntegerDirectAnswer](./search-headless.integerdirectanswer.md) | A direct answer for an integer field. |
+|  [Interval](./search-headless.interval.md) | An interface for a time interval to use in [BaseFieldValueDirectAnswer.value](./search-headless.basefieldvaluedirectanswer.value.md)<!-- -->. |
 |  [IosAppUrlDirectAnswer](./search-headless.iosappurldirectanswer.md) | A direct answer for an iOS app url field. |
 |  [LatLong](./search-headless.latlong.md) | The latitude and longitude of the user making the request. Used to bias the results. |
 |  [LocationBias](./search-headless.locationbias.md) | Information about the user's location. |

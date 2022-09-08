@@ -29,7 +29,7 @@ function mockSearchWithSpellcheck() {
   });
 }
 
-describe('AnswersHeadless spellcheck interactions properly update state', () => {
+describe('SearchHeadless spellcheck interactions properly update state', () => {
   it('executeVerticalQuery properly updates spellcheck state', async () => {
     const answers = createMockedHeadless({
       verticalSearch: mockSearchWithSpellcheck

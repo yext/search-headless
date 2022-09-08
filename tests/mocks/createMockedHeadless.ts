@@ -10,12 +10,12 @@ import { getHttpHeaders } from '../../src/utils/client-sdk-utils';
 /**
  * Creates a Search Headless instance with a mocked Search Core.
  *
- * @param mockedAnswersCore - Search Core overrides
+ * @param mockedSearchCore - Search Core overrides
  * @param initialState - The initial state of Search Headless
  * @returns The new Search Headless instance
  */
 export function createMockedHeadless(
-  mockedAnswersCore: any = {},
+  mockedSearchCore: any = {},
   initialState: Partial<State> = {},
   store?: HeadlessEnhancedStore,
   headlessReducerManager?: HeadlessReducerManager,
@@ -25,7 +25,7 @@ export function createMockedHeadless(
     store || createBaseStore(), DEFAULT_HEADLESS_ID, headlessReducerManager || new HeadlessReducerManager());
   const headlessHttpManager = httpManager || new HttpManager();
   const answers = new SearchHeadless(
-    mockedAnswersCore, reduxStateManager, headlessHttpManager, getHttpHeaders());
+    mockedSearchCore, reduxStateManager, headlessHttpManager, getHttpHeaders());
   answers.setState({
     ...answers.state,
     ...initialState

@@ -16,6 +16,6 @@ export declare interface Snippet
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [matchedSubstrings](./search-headless.snippet.matchedsubstrings.md) | { offset: number; length: number; }\[\] | The locations in the document text of the [FeaturedSnippetDirectAnswer.value](./search-headless.featuredsnippetdirectanswer.value.md) |
+|  [matchedSubstrings](./search-headless.snippet.matchedsubstrings.md) | { offset: number; length: number; }\[\] | The locations in the document text of the [DirectAnswer.value](./search-headless.directanswer.value.md) |
 |  [value](./search-headless.snippet.value.md) | string | The snippet's body of text |
 

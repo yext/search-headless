@@ -24,7 +24,7 @@ export function createBaseStore(): HeadlessEnhancedStore {
       (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
     reducer: initialReducer,
     devTools: process.env.NODE_ENV === 'production' ? false : {
-      name: 'AnswersHeadless'
+      name: 'SearchHeadless'
     }
   });
   return store;

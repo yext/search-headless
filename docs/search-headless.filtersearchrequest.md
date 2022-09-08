@@ -17,8 +17,8 @@ export declare interface FilterSearchRequest extends SearchRequest
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [excluded?](./search-headless.filtersearchrequest.excluded.md) | [Filter](./search-headless.filter.md)<!-- -->\[\] | <i>(Optional)</i> an array of filters that should be excluded from filter search results. |
-|  [fields](./search-headless.filtersearchrequest.fields.md) | [SearchParameterField](./search-headless.searchparameterfield.md)<!-- -->\[\] | An array of [SearchParameterField](./search-headless.searchparameterfield.md) |
+|  [excluded?](./search-headless.filtersearchrequest.excluded.md) | [FieldValueFilter](./search-headless.fieldvaluefilter.md)<!-- -->\[\] | <i>(Optional)</i> An array of field value filters that should be excluded from filter search results. |
+|  [fields](./search-headless.filtersearchrequest.fields.md) | [SearchParameterField](./search-headless.searchparameterfield.md)<!-- -->\[\] | An array of [SearchParameterField](./search-headless.searchparameterfield.md)<!-- -->. |
 |  [input](./search-headless.filtersearchrequest.input.md) | string | The input string for autocomplete. |
 |  [sectioned](./search-headless.filtersearchrequest.sectioned.md) | boolean | Determines whether or not the results of the [FilterSearchResponse](./search-headless.filtersearchresponse.md) are separated by field. |
 |  [sessionTrackingEnabled?](./search-headless.filtersearchrequest.sessiontrackingenabled.md) | boolean | <i>(Optional)</i> Enables session tracking. |

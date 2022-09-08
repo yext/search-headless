@@ -1,60 +1,68 @@
-import { CombinedFilter, Filter, FilterCombinator } from '@yext/search-core';
-import { SelectableFilter } from '../models/utils/selectableFilter';
+import { FieldValueStaticFilter, FilterCombinator, StaticFilter } from '@yext/search-core';
+import { SelectableStaticFilter } from '../models/utils/selectableStaticFilter';
 
 /**
- * Combines a list of Filters using the logical OR operator into a
- * {@link CombinedFilter}.
+ * Combines a list of field value static filters using the logical OR operator
+ * into a single {@link StaticFilter}.
  *
- * @returns The filters combined into a {@link CombinedFilter}, or the original
- *          filter if there is only one in the list
+ * @returns The filters combined into a single {@link StaticFilter}
  */
-function combineFiltersWithOR(filters: Filter[]): Filter | CombinedFilter {
+function combineFiltersWithOR(filters: FieldValueStaticFilter[]): StaticFilter {
   if (filters.length === 1) {
     return filters[0];
   }
   return {
+    kind: 'disjunction',
     combinator: FilterCombinator.OR,
-    filters: filters
+    filters
   };
 }
 
 /**
- * Converts a list of {@link SelectableFilter}s used in Search Headless
- * to a single nested filter stucture used in Search Core.
+ * Converts a list of {@link SelectableStaticFilter}s used in Search Headless
+ * to a single static filter expected by Search Core.
  *
  * @param selectableFilters - The filters to be transformed
- * @returns The filters in a singly-nested {@link CombinedFilter}, or if there
- *          is only one filter in the list and it is selected, returns that
- *          {@link Filter}
+ * @returns The filters combined into a single {@link StaticFilter}
  */
 export function transformFiltersToCoreFormat(
-  selectableFilters: SelectableFilter[] | undefined
-): Filter | CombinedFilter | null {
+  selectableFilters: SelectableStaticFilter[] | undefined
+): StaticFilter | null {
   if (!selectableFilters) {
     return null;
   }
-  if (selectableFilters.length === 0) {
+
+  const selectedFilters: StaticFilter[] = selectableFilters
+    .filter(selectableFilter => selectableFilter.selected)
+    .map(selectableFilter => selectableFilter.filter);
+  if (selectedFilters.length === 0) {
     return null;
   }
-  if (selectableFilters.length === 1) {
-    const { selected, displayName: _, ...filter } = selectableFilters[0];
-    return selected ? filter : null;
+  if (selectedFilters.length === 1) {
+    return selectedFilters[0];
   }
-  const selectedFilters = selectableFilters.filter(selectableFilter => selectableFilter.selected);
-  const groupedFilters: Record<string, Filter[]> = selectedFilters.reduce((groups, element) => {
-    const { selected: _, displayName: __, ...filter } = element;
-    groups[filter.fieldId]
-      ? groups[filter.fieldId].push(filter)
-      : groups[filter.fieldId] = [filter];
-    return groups;
-  }, {});
 
-  const groupedFilterLabels = Object.keys(groupedFilters);
-  if (groupedFilterLabels.length === 1) {
-    return combineFiltersWithOR(groupedFilters[groupedFilterLabels[0]]);
+  const combinationFilters: StaticFilter[] = [];
+  const fieldIdToFilters: Record<string, FieldValueStaticFilter[]> = selectedFilters.reduce(
+    (fieldIdToFilters, filter) => {
+      if (filter.kind !== 'fieldValue') {
+        combinationFilters.push(filter);
+      } else {
+        fieldIdToFilters[filter.fieldId]
+          ? fieldIdToFilters[filter.fieldId].push(filter)
+          : fieldIdToFilters[filter.fieldId] = [filter];
+      }
+      return fieldIdToFilters;
+    }, {}
+  );
+
+  const groupedFieldValueFilters = Object.values(fieldIdToFilters);
+  if (groupedFieldValueFilters.length === 1 && combinationFilters.length === 0) {
+    return combineFiltersWithOR(groupedFieldValueFilters[0]);
   }
   return {
+    kind: 'conjunction',
     combinator: FilterCombinator.AND,
-    filters: Object.values(groupedFilters).map((filters: Filter[]) => combineFiltersWithOR(filters))
+    filters: groupedFieldValueFilters.map(filters => combineFiltersWithOR(filters)).concat(combinationFilters)
   };
 }

@@ -1,4 +1,4 @@
-import { FeaturedSnippetDirectAnswer, DirectAnswerType, Source } from '@yext/search-core';
+import { FeaturedSnippetDirectAnswer, DirectAnswerType, Source, BuiltInFieldType } from '@yext/search-core';
 import { createMockedHeadless } from '../mocks/createMockedHeadless';
 import { State } from '../../src/models/state';
 import { SearchTypeEnum } from '../../src/models/utils/searchType';
@@ -31,7 +31,7 @@ const featuredSnippedDirectAnswer: FeaturedSnippetDirectAnswer = {
     source: Source.KnowledgeManager
   },
   verticalKey: 'people',
-  fieldType: 'c_name',
+  fieldType: BuiltInFieldType.RichText,
   snippet: {
     value: 'Bob',
     matchedSubstrings: [{ offset: 0, length: 3 }]

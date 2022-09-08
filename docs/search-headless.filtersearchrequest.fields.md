@@ -4,7 +4,7 @@
 
 ## FilterSearchRequest.fields property
 
-An array of [SearchParameterField](./search-headless.searchparameterfield.md)
+An array of [SearchParameterField](./search-headless.searchparameterfield.md)<!-- -->.
 
 <b>Signature:</b>
 

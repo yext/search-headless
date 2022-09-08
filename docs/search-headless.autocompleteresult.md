@@ -16,7 +16,7 @@ export declare interface AutocompleteResult
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [filter?](./search-headless.autocompleteresult.filter.md) | [Filter](./search-headless.filter.md) | <i>(Optional)</i> A filter applied to the autocomplete response. |
+|  [filter?](./search-headless.autocompleteresult.filter.md) | [FieldValueFilter](./search-headless.fieldvaluefilter.md) | <i>(Optional)</i> A filter applied to the autocomplete response. |
 |  [key?](./search-headless.autocompleteresult.key.md) | string | <i>(Optional)</i> The fieldId which corresponds to the AutocompleteResult value. |
 |  [matchedSubstrings?](./search-headless.autocompleteresult.matchedsubstrings.md) | { length: number; offset: number; }\[\] | <i>(Optional)</i> An array of substrings which overlap with the autocomplete input. |
 |  [relatedItem?](./search-headless.autocompleteresult.relateditem.md) | [Result](./search-headless.result.md) | <i>(Optional)</i> An entity that corresponds to the autocomplete result. |

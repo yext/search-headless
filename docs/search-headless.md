@@ -8,8 +8,6 @@
 
 |  Class | Description |
 |  --- | --- |
-|  [AnswersCore](./search-headless.answerscore.md) |  |
-|  [AnswersHeadless](./search-headless.answersheadless.md) |  |
 |  [SearchCore](./search-headless.searchcore.md) | Provides methods for executing searches, submitting questions, and performing autocompletes. |
 |  [SearchError](./search-headless.searcherror.md) | Represents an error |
 |  [SearchHeadless](./search-headless.searchheadless.md) | Provides the functionality for interacting with a Search experience. |
@@ -19,10 +17,11 @@
 |  Enumeration | Description |
 |  --- | --- |
 |  [AppliedQueryFilterType](./search-headless.appliedqueryfiltertype.md) | Represents the type of [AppliedQueryFilter](./search-headless.appliedqueryfilter.md) applied to a search. |
+|  [BuiltInFieldType](./search-headless.builtinfieldtype.md) | Possible built-in field types for [DirectAnswer.fieldType](./search-headless.directanswer.fieldtype.md)<!-- -->. |
 |  [DirectAnswerType](./search-headless.directanswertype.md) | Represents the type of direct answer. |
 |  [Direction](./search-headless.direction.md) | The direction of a sort. |
 |  [ErrorType](./search-headless.errortype.md) | Identifier for the type of error causing the failure. |
-|  [FilterCombinator](./search-headless.filtercombinator.md) | Indicates how the filters in a [CombinedFilter](./search-headless.combinedfilter.md) should be combined. |
+|  [FilterCombinator](./search-headless.filtercombinator.md) | Indicates how child filters in a [StaticFilter](./search-headless.staticfilter.md) should be combined. |
 |  [LocationBiasMethod](./search-headless.locationbiasmethod.md) | The method used to determine the location. |
 |  [Matcher](./search-headless.matcher.md) | A Matcher is a filtering operation. |
 |  [QuerySource](./search-headless.querysource.md) | The source of the search request. |
@@ -37,11 +36,11 @@
 
 |  Function | Description |
 |  --- | --- |
-|  [combineFilters(filterA, filterB, combinator)](./search-headless.combinefilters.md) | Creates a [CombinedFilter](./search-headless.combinedfilter.md) by applying the specified [FilterCombinator](./search-headless.filtercombinator.md) to the two filters. |
-|  [createDateRangeFilter(fieldId, range)](./search-headless.createdaterangefilter.md) | Creates a [Filter](./search-headless.filter.md) or [CombinedFilter](./search-headless.combinedfilter.md) that matches all results where the given field value falls in a specific Date [BoundedRange](./search-headless.boundedrange.md)<!-- -->. |
-|  [createEqualsFilter(fieldId, value)](./search-headless.createequalsfilter.md) | Creates a simple [Filter](./search-headless.filter.md) that ensures all results will match a specific field value. |
-|  [createNearMeFilter(position)](./search-headless.createnearmefilter.md) | Creates a [Filter](./search-headless.filter.md) that matches all results within a certain radius of the given position. |
-|  [createNumberRangeFilter(fieldId, range)](./search-headless.createnumberrangefilter.md) | Creates a [Filter](./search-headless.filter.md) or [CombinedFilter](./search-headless.combinedfilter.md) that matches all results where the given field value falls in a specific number [BoundedRange](./search-headless.boundedrange.md)<!-- -->. |
+|  [combineStaticFilters(filterA, filterB, combinator)](./search-headless.combinestaticfilters.md) | Creates a [StaticFilter](./search-headless.staticfilter.md) by applying the specified [FilterCombinator](./search-headless.filtercombinator.md) to the two static filters. Throws an error if an attempt is made to combine a conjunction static filter using [FilterCombinator.OR](./search-headless.filtercombinator.md)<!-- -->. |
+|  [createDateRangeStaticFilter(fieldId, range)](./search-headless.createdaterangestaticfilter.md) | Creates a [StaticFilter](./search-headless.staticfilter.md) that matches all results where the given field value falls in a specific Date [BoundedRange](./search-headless.boundedrange.md)<!-- -->. |
+|  [createEqualsStaticFilter(fieldId, value)](./search-headless.createequalsstaticfilter.md) | Creates a [FieldValueStaticFilter](./search-headless.fieldvaluestaticfilter.md) that ensures all results will match a specific field value. |
+|  [createNearMeStaticFilter(position)](./search-headless.createnearmestaticfilter.md) | Creates a [FieldValueStaticFilter](./search-headless.fieldvaluestaticfilter.md) that matches all results within a certain radius of the given position. |
+|  [createNumberRangeStaticFilter(fieldId, range)](./search-headless.createnumberrangestaticfilter.md) | Creates a [StaticFilter](./search-headless.staticfilter.md) that matches all results where the given field value falls in a specific number [BoundedRange](./search-headless.boundedrange.md)<!-- -->. |
 |  [provideHeadless(config)](./search-headless.provideheadless.md) | Supplies a new instance of [SearchHeadless](./search-headless.searchheadless.md)<!-- -->, using the provided configuration. |
 
 ## Interfaces
@@ -49,35 +48,48 @@
 |  Interface | Description |
 |  --- | --- |
 |  [AdditionalHttpHeaders](./search-headless.additionalhttpheaders.md) | AdditionalHttpHeaders allows users to specify additional values for specific HTTP headers. |
+|  [Address](./search-headless.address.md) | An interface with address fields to use in [BaseFieldValueDirectAnswer.value](./search-headless.basefieldvaluedirectanswer.value.md)<!-- -->. |
+|  [AddressDirectAnswer](./search-headless.addressdirectanswer.md) | A [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md) interface with 'address' field type. |
 |  [AllResultsForVertical](./search-headless.allresultsforvertical.md) | Represents all results for the current vertical. |
-|  [AnswersConfigWithApiKey](./search-headless.answersconfigwithapikey.md) |  |
-|  [AnswersConfigWithToken](./search-headless.answersconfigwithtoken.md) |  |
-|  [AnswersError](./search-headless.answerserror.md) |  |
-|  [AnswersRequest](./search-headless.answersrequest.md) |  |
+|  [AndroidAppUrlDirectAnswer](./search-headless.androidappurldirectanswer.md) | A direct answer for an android app url field. |
 |  [AppliedQueryFilter](./search-headless.appliedqueryfilter.md) | A filter that the Search API applied to the search. |
 |  [AutocompleteResponse](./search-headless.autocompleteresponse.md) | The response of a universal or vertical autocomplete request. |
 |  [AutocompleteResult](./search-headless.autocompleteresult.md) | An autocomplete suggestion. |
 |  [AutocompleteService](./search-headless.autocompleteservice.md) | A service for autocomplete requests. |
-|  [BaseAnswersConfig](./search-headless.baseanswersconfig.md) |  |
+|  [BaseFeaturedSnippetDirectAnswer](./search-headless.basefeaturedsnippetdirectanswer.md) | A direct answer which was found within a document. |
+|  [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md) | A direct answer where the answer came from a field from the knowledge graph. |
 |  [BaseSearchConfig](./search-headless.basesearchconfig.md) | The base configuration options for [SearchCore](./search-headless.searchcore.md)<!-- -->. |
 |  [BoundedRange](./search-headless.boundedrange.md) | An interface representing a range of values of type T. |
 |  [ClientSDKHeaderValues](./search-headless.clientsdkheadervalues.md) | Additional agents and their versions used to create the Search experience. The information for these agents is added to the Client-SDK HTTP header along with that of the ANSWERS\_CORE agent. |
-|  [CombinedFilter](./search-headless.combinedfilter.md) | Represents multiple filters that will be combined to refine results. |
+|  [ComplexURL](./search-headless.complexurl.md) | The shape of a [BuiltInFieldType.ComplexURL](./search-headless.builtinfieldtype.md) DirectAnswer value |
+|  [ComplexUrlDirectAnswer](./search-headless.complexurldirectanswer.md) | A direct answer for a complex url field. |
+|  [ConjunctionStaticFilter](./search-headless.conjunctionstaticfilter.md) | A static filter composed by combining other static filters with the logical AND operator. |
+|  [DayHour](./search-headless.dayhour.md) | An interface for a day's hours to use in [BaseFieldValueDirectAnswer.value](./search-headless.basefieldvaluedirectanswer.value.md)<!-- -->. |
+|  [DecimalDirectAnswer](./search-headless.decimaldirectanswer.md) | A direct answer for a decimal field, which is a number represented using a string. |
 |  [DirectAnswer](./search-headless.directanswer.md) | A direct answer to a search. |
 |  [DirectAnswerState](./search-headless.directanswerstate.md) | Maintains the direct answer associated with the latest search. |
+|  [DisjunctionStaticFilter](./search-headless.disjunctionstaticfilter.md) | A static filter composed by combining filters with the logical OR operator. The combined filters can either be field value filters or other disjunction filters. |
 |  [DisplayableFacet](./search-headless.displayablefacet.md) | A [Facet](./search-headless.facet.md) which contains extra fields meant to be displayed to the end user. |
 |  [DisplayableFacetOption](./search-headless.displayablefacetoption.md) | A [FacetOption](./search-headless.facetoption.md) with extra data meant to be displayed to the end user. |
+|  [EmailDirectAnswer](./search-headless.emaildirectanswer.md) | A [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md) interface with 'email' field type. |
 |  [Endpoints](./search-headless.endpoints.md) | Overrides for the URLs which are used when making requests to the Search API. |
+|  [FacebookUrlDirectAnswer](./search-headless.facebookurldirectanswer.md) | A direct answer for a facebook url field. |
 |  [Facet](./search-headless.facet.md) | Represents dynamic filter options for the Search API. |
 |  [FacetOption](./search-headless.facetoption.md) | A filter associated with the facet. |
 |  [FailedVertical](./search-headless.failedvertical.md) | Error information from when a vertical fails to return results. |
-|  [FeaturedSnippetDirectAnswer](./search-headless.featuredsnippetdirectanswer.md) | A direct answer which was found within a document. |
-|  [FieldValueDirectAnswer](./search-headless.fieldvaluedirectanswer.md) | A direct answer where the answer came from a field from the knowledge graph. |
-|  [Filter](./search-headless.filter.md) | Represents a filter which compares values to a single field. |
+|  [FieldValueFilter](./search-headless.fieldvaluefilter.md) | Represents a filter which compares values to a single field. |
+|  [FieldValueStaticFilter](./search-headless.fieldvaluestaticfilter.md) | A [FieldValueFilter](./search-headless.fieldvaluefilter.md) with the kind of filter specified to discriminate between static filter types. |
 |  [FilterSearchRequest](./search-headless.filtersearchrequest.md) | Options for a filtersearch request. |
 |  [FilterSearchResponse](./search-headless.filtersearchresponse.md) | The response of a filtersearch request. |
 |  [FiltersState](./search-headless.filtersstate.md) | Maintains the current state of facets and filters in the application. |
 |  [HighlightedValue](./search-headless.highlightedvalue.md) | A field value and its substring matches as emphasized by the Search API. |
+|  [HolidayHours](./search-headless.holidayhours.md) | An interface for holiday hours to use in [BaseFieldValueDirectAnswer.value](./search-headless.basefieldvaluedirectanswer.value.md)<!-- -->. |
+|  [Hours](./search-headless.hours.md) | An interface for hours fields to use in [BaseFieldValueDirectAnswer.value](./search-headless.basefieldvaluedirectanswer.value.md)<!-- -->. |
+|  [HoursDirectAnswer](./search-headless.hoursdirectanswer.md) | A [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md) interface with 'hours' field type. |
+|  [InstagramHandleDirectAnswer](./search-headless.instagramhandledirectanswer.md) | A direct answer for an instagram handle field. |
+|  [IntegerDirectAnswer](./search-headless.integerdirectanswer.md) | A direct answer for an integer field. |
+|  [Interval](./search-headless.interval.md) | An interface for a time interval to use in [BaseFieldValueDirectAnswer.value](./search-headless.basefieldvaluedirectanswer.value.md)<!-- -->. |
+|  [IosAppUrlDirectAnswer](./search-headless.iosappurldirectanswer.md) | A direct answer for an iOS app url field. |
 |  [LatLong](./search-headless.latlong.md) | The latitude and longitude of the user making the request. Used to bias the results. |
 |  [LocationBias](./search-headless.locationbias.md) | Information about the user's location. |
 |  [LocationBoundingBox](./search-headless.locationboundingbox.md) | Location boundaries for a filter with "Place" for its [AppliedQueryFilterType](./search-headless.appliedqueryfiltertype.md)<!-- -->. (e.g. boundary for a locality or region specific location filter) |
@@ -85,9 +97,11 @@
 |  [LocationState](./search-headless.locationstate.md) | Maintains the user's location, if given, or the inferred location, that is used to bias search results. |
 |  [LowerNumberRangeLimit](./search-headless.lowernumberrangelimit.md) | The start limit of [NumberRangeValue](./search-headless.numberrangevalue.md)<!-- -->. |
 |  [MetaState](./search-headless.metastate.md) | Maintains the metadata for Search Headless. |
+|  [MultiLineTextSnippetDirectAnswer](./search-headless.multilinetextsnippetdirectanswer.md) | A [BaseFeaturedSnippetDirectAnswer](./search-headless.basefeaturedsnippetdirectanswer.md) with 'multi\_line\_text' field type. |
 |  [NearFilterValue](./search-headless.nearfiltervalue.md) | A filter value for a filter with a $near [Matcher](./search-headless.matcher.md)<!-- -->. |
 |  [NumberRangeValue](./search-headless.numberrangevalue.md) | A filter value for a filter with a $between [Matcher](./search-headless.matcher.md)<!-- -->. |
 |  [ParentState](./search-headless.parentstate.md) | The overall shape of the redux state tree, with each key value pair of headlessId to [State](./search-headless.state.md) representing a single SearchHeadless instance. |
+|  [PhoneDirectAnswer](./search-headless.phonedirectanswer.md) | A [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md) interface with phone value. |
 |  [QueryRulesActionsData](./search-headless.queryrulesactionsdata.md) | Data returned from the Search query rules system. |
 |  [QueryRulesState](./search-headless.queryrulesstate.md) | Maintains the data from the triggered query rules. |
 |  [QueryState](./search-headless.querystate.md) | Maintains the latest query and its associated data. |
@@ -96,13 +110,15 @@
 |  [QuestionSubmissionService](./search-headless.questionsubmissionservice.md) | Submits a custom question to the Search API. |
 |  [RangeBoundary](./search-headless.rangeboundary.md) | A boundary for a [BoundedRange](./search-headless.boundedrange.md) of type T. |
 |  [Result](./search-headless.result.md) | An individual search result. |
+|  [RichTextDirectAnswer](./search-headless.richtextdirectanswer.md) | A direct answer for a rich text field. |
+|  [RichTextSnippetDirectAnswer](./search-headless.richtextsnippetdirectanswer.md) | A [BaseFeaturedSnippetDirectAnswer](./search-headless.basefeaturedsnippetdirectanswer.md) with 'rich\_text' field type. "value" field is omitted for featured snippet direct answer of this field type. |
 |  [SearchConfigWithApiKey](./search-headless.searchconfigwithapikey.md) | Configuration options for [SearchCore](./search-headless.searchcore.md)<!-- -->, which includes the options from [BaseSearchConfig](./search-headless.basesearchconfig.md)<!-- -->, but requires apiKey. |
 |  [SearchConfigWithToken](./search-headless.searchconfigwithtoken.md) | Configuration options for [SearchCore](./search-headless.searchcore.md)<!-- -->, which includes the options from [BaseSearchConfig](./search-headless.basesearchconfig.md)<!-- -->, but requires token. |
 |  [SearchParameterField](./search-headless.searchparameterfield.md) | Indicates which entity field to perform the autocomplete request on. |
 |  [SearchRequest](./search-headless.searchrequest.md) | Options for a Search API request. |
 |  [SearchService](./search-headless.searchservice.md) | A service which performs Yext Search. |
 |  [SearchStatusState](./search-headless.searchstatusstate.md) | Maintains the status of the latest search. |
-|  [SelectableFilter](./search-headless.selectablefilter.md) | A [Filter](./search-headless.filter.md) with additional information, such as an optional display name and whether or not it is selected. |
+|  [SelectableStaticFilter](./search-headless.selectablestaticfilter.md) | A [StaticFilter](./search-headless.staticfilter.md) with additional information, such as an optional display name and whether or not it is selected. |
 |  [SessionTrackingState](./search-headless.sessiontrackingstate.md) | Maintains whether the user session should be tracked and, if so, the session information. |
 |  [Snippet](./search-headless.snippet.md) | The section of text where a [FeaturedSnippetDirectAnswer](./search-headless.featuredsnippetdirectanswer.md) was found. |
 |  [SortBy](./search-headless.sortby.md) | Represents a criterion that can be used to sort results. |
@@ -111,12 +127,16 @@
 |  [State](./search-headless.state.md) | The state representing a SearchHeadless instance. |
 |  [StateListener](./search-headless.statelistener.md) | Represents a listener for a specific value of type T in the state. |
 |  [StateManager](./search-headless.statemanager.md) | Manages the information contained in the state for a SearchHeadless instance. |
+|  [TextDirectAnswer](./search-headless.textdirectanswer.md) | A direct answer whose source is a string or string list field in the knowledge graph. |
+|  [TwitterHandleDirectAnswer](./search-headless.twitterhandledirectanswer.md) | A direct answer for an twitter handle field. |
 |  [UniversalAutocompleteRequest](./search-headless.universalautocompleterequest.md) | Options for a universal autocomplete request. |
 |  [UniversalLimit](./search-headless.universallimit.md) | The maximum limit of results per vertical. Each limit can be set from 1-50, inclusive. |
 |  [UniversalSearchRequest](./search-headless.universalsearchrequest.md) | Options which can be specified for a universal search. |
 |  [UniversalSearchResponse](./search-headless.universalsearchresponse.md) | A representation of a response from a universal search. |
 |  [UniversalSearchState](./search-headless.universalsearchstate.md) | Maintains the data for the latest universal search. |
+|  [UnknownFieldValueDirectAnswer](./search-headless.unknownfieldvaluedirectanswer.md) | A [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md) with a field type outside of [BuiltInFieldType](./search-headless.builtinfieldtype.md)<!-- -->. |
 |  [UpperNumberRangeLimit](./search-headless.uppernumberrangelimit.md) | The end limit of [NumberRangeValue](./search-headless.numberrangevalue.md)<!-- -->. |
+|  [UrlDirectAnswer](./search-headless.urldirectanswer.md) | A direct answer for a simple url field. |
 |  [VerticalAutocompleteRequest](./search-headless.verticalautocompleterequest.md) | Options for a vertial autocomplete request. |
 |  [VerticalResults](./search-headless.verticalresults.md) | Represents results from a search vertical. |
 |  [VerticalSearchRequest](./search-headless.verticalsearchrequest.md) | Options which can be specified for a vertical search. |
@@ -128,7 +148,6 @@
 
 |  Namespace | Description |
 |  --- | --- |
-|  [answersUtilities](./search-headless.answersutilities.md) |  |
 |  [searchUtilities](./search-headless.searchutilities.md) |  |
 
 ## Variables
@@ -136,19 +155,19 @@
 |  Variable | Description |
 |  --- | --- |
 |  [DEFAULT\_HEADLESS\_ID](./search-headless.default_headless_id.md) | The headlessId automatically given to the first SearchHeadless instance created. |
-|  [provideAnswersHeadless](./search-headless.provideanswersheadless.md) | Supplies a new instance of [SearchHeadless](./search-headless.searchheadless.md)<!-- -->, using the provided configuration. |
 |  [SandboxEndpoints](./search-headless.sandboxendpoints.md) | The endpoints to use for sandbox experiences. |
 
 ## Type Aliases
 
 |  Type Alias | Description |
 |  --- | --- |
-|  [AnswersConfig](./search-headless.answersconfig.md) |  |
 |  [Context](./search-headless.context.md) | Used to trigger Search [Query Rules](https://hitchhikers.yext.com/tracks/answers-advanced/ans302-query-rules/)<!-- -->. |
 |  [EnumOrLiteral](./search-headless.enumorliteral.md) | Produces a union type from the enum passed as a generic which consists of the enum values and the string literals of the enum. |
-|  [FilterTypes](./search-headless.filtertypes.md) | A union type for the different kinds of filter. |
+|  [FeaturedSnippetDirectAnswer](./search-headless.featuredsnippetdirectanswer.md) | All possible built-in [BaseFeaturedSnippetDirectAnswer](./search-headless.basefeaturedsnippetdirectanswer.md) interfaces. |
+|  [FieldValueDirectAnswer](./search-headless.fieldvaluedirectanswer.md) | Possible built-in and custom [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md) interfaces. |
 |  [HeadlessConfig](./search-headless.headlessconfig.md) | The configuration for a SearchHeadless instance. |
 |  [HighlightedFields](./search-headless.highlightedfields.md) | A mapping of fields to the values emphasized by the Search API. |
 |  [SearchConfig](./search-headless.searchconfig.md) | The main configuration options for [SearchCore](./search-headless.searchcore.md)<!-- -->. For a full description of the options, see [BaseSearchConfig](./search-headless.basesearchconfig.md)<!-- -->. The config requires either an apiKey or a token. |
 |  [SearchType](./search-headless.searchtype.md) | An enum and its corresponding string literals which indicate the type of search that Headless is managing. |
+|  [StaticFilter](./search-headless.staticfilter.md) | Represents a static filter that will be used to refine results. |
 

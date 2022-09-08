@@ -28,7 +28,7 @@ function mockSearchWithQueryRules() {
   });
 }
 
-describe('AnswersHeadless queryRules interactions properly update state', () => {
+describe('SearchHeadless queryRules interactions properly update state', () => {
   it('executeVerticalQuery properly updates queryRules state', async () => {
     const answers = createMockedHeadless({
       verticalSearch: mockSearchWithQueryRules

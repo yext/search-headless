@@ -45,6 +45,9 @@ const reducers = {
   },
   setVerticalKey: (state: VerticalSearchState, action: PayloadAction<string | undefined>) => {
     state.verticalKey = action.payload;
+  },
+  setLocationRadius: (state: VerticalSearchState, action: PayloadAction<number | undefined>) => {
+    state.locationRadius = action.payload;
   }
 };
 

@@ -19,6 +19,7 @@ export interface VerticalSearchState
 |  [appliedQueryFilters?](./search-headless.verticalsearchstate.appliedqueryfilters.md) | [AppliedQueryFilter](./search-headless.appliedqueryfilter.md)<!-- -->\[\] | <i>(Optional)</i> The array of filters inferred from the query and applied to the search. |
 |  [displayName?](./search-headless.verticalsearchstate.displayname.md) | string | <i>(Optional)</i> Name to be displayed for the vertical. |
 |  [limit?](./search-headless.verticalsearchstate.limit.md) | number | <i>(Optional)</i> The maximum number of results to include for the vertical search. |
+|  [locationRadius?](./search-headless.verticalsearchstate.locationradius.md) | number | <i>(Optional)</i> The radius (in meters) to filter vertical searches by. |
 |  [noResults?](./search-headless.verticalsearchstate.noresults.md) | { allResultsForVertical: [AllResultsForVertical](./search-headless.allresultsforvertical.md)<!-- -->; alternativeVerticals: [VerticalResults](./search-headless.verticalresults.md)<!-- -->\[\]; } | <i>(Optional)</i> The data for when no results are returned in the vertical search. |
 |  [offset?](./search-headless.verticalsearchstate.offset.md) | number | <i>(Optional)</i> The number of results that should be skipped when fetching results for the response. Allows for fetching more results with the same query. |
 |  [queryDurationMillis?](./search-headless.verticalsearchstate.querydurationmillis.md) | number | <i>(Optional)</i> The duration of the query in milliseconds. |

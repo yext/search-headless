@@ -87,5 +87,9 @@ export interface VerticalSearchState {
   /**
    * The key associated with the vertical.
    */
-  verticalKey?: string
+  verticalKey?: string,
+  /**
+   * The radius (in meters) to filter vertical searches by.
+   */
+  locationRadius?: number
 }

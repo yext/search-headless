@@ -41,6 +41,7 @@ export default class SearchHeadless
 |  [setFacetOption(fieldId, facetOption, selected)](./search-headless.searchheadless.setfacetoption.md) |  | Sets a specified facet option to be selected or unselected. |
 |  [setFacets(facets)](./search-headless.searchheadless.setfacets.md) |  | Sets [FiltersState.facets](./search-headless.filtersstate.facets.md) to the specified facets. |
 |  [setFilterOption(filter)](./search-headless.searchheadless.setfilteroption.md) |  | Sets a static filter option and whether or not it is selected in state. |
+|  [setLocationRadius(locationRadius)](./search-headless.searchheadless.setlocationradius.md) |  | Sets [VerticalSearchState.locationRadius](./search-headless.verticalsearchstate.locationradius.md) to the specified number of meters. |
 |  [setOffset(offset)](./search-headless.searchheadless.setoffset.md) |  | Sets [VerticalSearchState.offset](./search-headless.verticalsearchstate.offset.md) to the specified offset. |
 |  [setQuery(input)](./search-headless.searchheadless.setquery.md) |  | Sets [QueryState.input](./search-headless.querystate.input.md) to the specified input. |
 |  [setQuerySource(source)](./search-headless.searchheadless.setquerysource.md) |  | Sets [QueryState.querySource](./search-headless.querystate.querysource.md) to the specified source. |

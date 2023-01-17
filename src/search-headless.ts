@@ -264,6 +264,15 @@ export default class SearchHeadless {
   }
 
   /**
+   * Sets {@link VerticalSearchState.locationRadius} to the specified number of meters.
+   *
+   * @param locationRadius -  The radius (in meters) to filter vertical searches by.
+   */
+  setLocationRadius(locationRadius: number | undefined): void {
+    this.stateManager.dispatchEvent('vertical/setLocationRadius', locationRadius);
+  }
+
+  /**
    * Gets the current state of the SearchHeadless instance.
    */
   get state(): State {
@@ -399,9 +408,7 @@ export default class SearchHeadless {
     const sessionId = this.state.sessionTracking.sessionId;
     const staticFilter = transformFiltersToCoreFormat(this.state.filters.static) || undefined;
     const facets = this.state.filters?.facets;
-    const limit = this.state.vertical.limit;
-    const offset = this.state.vertical.offset;
-    const sortBys = this.state.vertical.sortBys;
+    const { limit, offset, sortBys, locationRadius } = this.state.vertical;
     const { referrerPageUrl, context } = this.state.meta;
     const { userLocation } = this.state.location;
 
@@ -429,6 +436,7 @@ export default class SearchHeadless {
       sortBys,
       context,
       referrerPageUrl,
+      locationRadius,
       additionalHttpHeaders: this.additionalHttpHeaders
     };
 

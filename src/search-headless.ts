@@ -265,7 +265,7 @@ export default class SearchHeadless {
 
   /**
    * Sets {@link VerticalSearchState.locationRadius} to the specified number of meters.
-   * 
+   *
    * @param locationRadius -  The radius (in meters) to filter vertical searches by.
    */
   setLocationRadius(locationRadius: number | undefined): void {

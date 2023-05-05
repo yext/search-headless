@@ -18,8 +18,10 @@
 |  --- | --- |
 |  [AppliedQueryFilterType](./search-headless.appliedqueryfiltertype.md) | Represents the type of [AppliedQueryFilter](./search-headless.appliedqueryfilter.md) applied to a search. |
 |  [BuiltInFieldType](./search-headless.builtinfieldtype.md) | Possible built-in field types for [DirectAnswer.fieldType](./search-headless.directanswer.fieldtype.md)<!-- -->. |
+|  [CloudRegion](./search-headless.cloudregion.md) | Defines the cloud region of the API domains. |
 |  [DirectAnswerType](./search-headless.directanswertype.md) | Represents the type of direct answer. |
 |  [Direction](./search-headless.direction.md) | The direction of a sort. |
+|  [Environment](./search-headless.environment.md) | Defines the environment of the API domains. |
 |  [ErrorType](./search-headless.errortype.md) | Identifier for the type of error causing the failure. |
 |  [FilterCombinator](./search-headless.filtercombinator.md) | Indicates how child filters in a [StaticFilter](./search-headless.staticfilter.md) should be combined. |
 |  [LocationBiasMethod](./search-headless.locationbiasmethod.md) | The method used to determine the location. |
@@ -58,7 +60,7 @@
 |  [AutocompleteService](./search-headless.autocompleteservice.md) | A service for autocomplete requests. |
 |  [BaseFeaturedSnippetDirectAnswer](./search-headless.basefeaturedsnippetdirectanswer.md) | A direct answer which was found within a document. |
 |  [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md) | A direct answer where the answer came from a field from the knowledge graph. |
-|  [BaseSearchConfig](./search-headless.basesearchconfig.md) | The base configuration options for [SearchCore](./search-headless.searchcore.md)<!-- -->. |
+|  [BaseSearchConfig](./search-headless.basesearchconfig.md) | The base configuration options for [SearchCore](./search-headless.searchcore.md)<!-- -->, which includes the options from [ServingConfig](./search-headless.servingconfig.md)<!-- -->. |
 |  [BoundedRange](./search-headless.boundedrange.md) | An interface representing a range of values of type T. |
 |  [ClientSDKHeaderValues](./search-headless.clientsdkheadervalues.md) | Additional agents and their versions used to create the Search experience. The information for these agents is added to the Client-SDK HTTP header along with that of the ANSWERS\_CORE agent. |
 |  [ComplexURL](./search-headless.complexurl.md) | The shape of a [BuiltInFieldType.ComplexURL](./search-headless.builtinfieldtype.md) DirectAnswer value |
@@ -119,6 +121,7 @@
 |  [SearchService](./search-headless.searchservice.md) | A service which performs Yext Search. |
 |  [SearchStatusState](./search-headless.searchstatusstate.md) | Maintains the status of the latest search. |
 |  [SelectableStaticFilter](./search-headless.selectablestaticfilter.md) | A [StaticFilter](./search-headless.staticfilter.md) with additional information, such as an optional display name and whether or not it is selected. |
+|  [ServingConfig](./search-headless.servingconfig.md) | The configuration options for getting the endpoints. |
 |  [SessionTrackingState](./search-headless.sessiontrackingstate.md) | Maintains whether the user session should be tracked and, if so, the session information. |
 |  [Snippet](./search-headless.snippet.md) | The section of text where a [FeaturedSnippetDirectAnswer](./search-headless.featuredsnippetdirectanswer.md) was found. |
 |  [SortBy](./search-headless.sortby.md) | Represents a criterion that can be used to sort results. |

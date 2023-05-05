@@ -4,20 +4,23 @@
 
 ## BaseSearchConfig interface
 
-The base configuration options for [SearchCore](./search-headless.searchcore.md)<!-- -->.
+The base configuration options for [SearchCore](./search-headless.searchcore.md)<!-- -->, which includes the options from [ServingConfig](./search-headless.servingconfig.md)<!-- -->.
 
 <b>Signature:</b>
 
 ```typescript
-export declare interface BaseSearchConfig 
+export declare interface BaseSearchConfig extends ServingConfig 
 ```
+<b>Extends:</b> [ServingConfig](./search-headless.servingconfig.md)
 
 ## Properties
 
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [additionalQueryParams?](./search-headless.basesearchconfig.additionalqueryparams.md) | { \[key: string\]: string \| number \| boolean; } | <i>(Optional)</i> Additional query params added on to every request. |
+|  [cloudRegion?](./search-headless.basesearchconfig.cloudregion.md) | [CloudRegion](./search-headless.cloudregion.md) | <i>(Optional)</i> Defines the cloud region of the API domains. |
 |  [endpoints?](./search-headless.basesearchconfig.endpoints.md) | [Endpoints](./search-headless.endpoints.md) | <i>(Optional)</i> Overrides for the URLs which are used when making requests to the Search API. |
+|  [environment?](./search-headless.basesearchconfig.environment.md) | [Environment](./search-headless.environment.md) | <i>(Optional)</i> Defines the environment of the API domains. |
 |  [experienceKey](./search-headless.basesearchconfig.experiencekey.md) | string | The experience key of the search experience. |
 |  [experienceVersion?](./search-headless.basesearchconfig.experienceversion.md) | 'STAGING' \| 'PRODUCTION' \| string \| number | <i>(Optional)</i> The version of the search experience configuration. |
 |  [locale](./search-headless.basesearchconfig.locale.md) | string | The locale of the search experience. |

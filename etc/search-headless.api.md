@@ -79,6 +79,7 @@ export interface AutocompleteResponse {
 // @public
 export interface AutocompleteResult {
     filter?: FieldValueFilter;
+    inputIntents: SearchIntent[];
     key?: string;
     matchedSubstrings?: {
         length: number;
@@ -113,11 +114,13 @@ export interface BaseFieldValueDirectAnswer<T = unknown> extends DirectAnswer<T>
 }
 
 // @public
-export interface BaseSearchConfig {
+export interface BaseSearchConfig extends ServingConfig {
     additionalQueryParams?: {
         [key: string]: string | number | boolean;
     };
+    cloudRegion?: CloudRegion;
     endpoints?: Endpoints;
+    environment?: Environment;
     experienceKey: string;
     experienceVersion?: 'STAGING' | 'PRODUCTION' | string | number;
     locale: string;
@@ -170,6 +173,14 @@ export enum BuiltInFieldType {
 export interface ClientSDKHeaderValues {
     [agent: string]: string | undefined;
     ANSWERS_CORE?: never;
+}
+
+// @public
+export enum CloudRegion {
+    // (undocumented)
+    EU = "eu",
+    // (undocumented)
+    US = "us"
 }
 
 // @public
@@ -302,6 +313,14 @@ export interface Endpoints {
 
 // @public
 export type EnumOrLiteral<T extends string> = T | `${T}`;
+
+// @public
+export enum Environment {
+    // (undocumented)
+    PROD = "prod",
+    // (undocumented)
+    SANDBOX = "sbx"
+}
 
 // @public
 export enum ErrorType {
@@ -678,7 +697,7 @@ export interface RichTextSnippetDirectAnswer extends Omit<BaseFeaturedSnippetDir
     fieldType: EnumOrLiteral<BuiltInFieldType.RichText>;
 }
 
-// @public
+// @public @deprecated
 export const SandboxEndpoints: Required<Endpoints>;
 
 // @public
@@ -807,6 +826,12 @@ export interface SelectableStaticFilter {
     displayName?: string;
     filter: StaticFilter;
     selected: boolean;
+}
+
+// @public
+export interface ServingConfig {
+    cloudRegion?: CloudRegion;
+    environment?: Environment;
 }
 
 // @public

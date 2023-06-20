@@ -364,10 +364,6 @@ export interface FailedVertical {
     verticalKey: string;
 }
 
-// Warning: (ae-forgotten-export) The symbol "RichTextV2SnippetDirectAnswer" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "HTMLSnippetDirectAnswer" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "MarkdownSnippetDirectAnswer" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type FeaturedSnippetDirectAnswer = MultiLineTextSnippetDirectAnswer | RichTextSnippetDirectAnswer | RichTextV2SnippetDirectAnswer | HTMLSnippetDirectAnswer | MarkdownSnippetDirectAnswer;
 
@@ -480,6 +476,11 @@ export interface HoursDirectAnswer extends BaseFieldValueDirectAnswer<Hours | Ho
 }
 
 // @public
+export interface HTMLSnippetDirectAnswer extends Omit<BaseFeaturedSnippetDirectAnswer<string>, 'value'> {
+    fieldType: EnumOrLiteral<BuiltInFieldType.Html>;
+}
+
+// @public
 export interface InstagramHandleDirectAnswer extends BaseFieldValueDirectAnswer<string> {
     // (undocumented)
     fieldType: EnumOrLiteral<BuiltInFieldType.InstagramHandle>;
@@ -556,6 +557,11 @@ export interface LocationState {
 export interface LowerNumberRangeLimit {
     matcher: Matcher.GreaterThan | Matcher.GreaterThanOrEqualTo;
     value: number;
+}
+
+// @public
+export interface MarkdownSnippetDirectAnswer extends Omit<BaseFeaturedSnippetDirectAnswer<string>, 'value'> {
+    fieldType: EnumOrLiteral<BuiltInFieldType.Markdown>;
 }
 
 // @public
@@ -705,6 +711,11 @@ export interface RichTextDirectAnswer extends BaseFieldValueDirectAnswer<string 
 // @public
 export interface RichTextSnippetDirectAnswer extends Omit<BaseFeaturedSnippetDirectAnswer<string>, 'value'> {
     fieldType: EnumOrLiteral<BuiltInFieldType.RichText>;
+}
+
+// @public
+export interface RichTextV2SnippetDirectAnswer extends Omit<BaseFeaturedSnippetDirectAnswer<string>, 'value'> {
+    fieldType: EnumOrLiteral<BuiltInFieldType.RichText_v2>;
 }
 
 // @public @deprecated

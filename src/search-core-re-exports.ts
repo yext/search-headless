@@ -105,5 +105,8 @@ export {
   TextDirectAnswer,
   TwitterHandleDirectAnswer,
   UnknownFieldValueDirectAnswer,
-  UrlDirectAnswer
+  UrlDirectAnswer,
+  RichTextV2SnippetDirectAnswer,
+  HTMLSnippetDirectAnswer,
+  MarkdownSnippetDirectAnswer
 } from '@yext/search-core';

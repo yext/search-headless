@@ -17,5 +17,5 @@ export declare interface Snippet
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [matchedSubstrings](./search-headless.snippet.matchedsubstrings.md) | { offset: number; length: number; }\[\] | The locations in the document text of the [DirectAnswer.value](./search-headless.directanswer.value.md) |
-|  [value](./search-headless.snippet.value.md) | string | The snippet's body of text |
+|  [value](./search-headless.snippet.value.md) | string | The raw snippet value, or HTML if - entity is of type HTML - the conversion to HTML is enabled in search configuration |
 

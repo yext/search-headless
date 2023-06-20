@@ -99,7 +99,7 @@ export interface AutocompleteService {
 
 // @public
 export interface BaseFeaturedSnippetDirectAnswer<T = unknown> extends DirectAnswer<T> {
-    fieldType: EnumOrLiteral<BuiltInFieldType.MultiLineText | BuiltInFieldType.RichText>;
+    fieldType: EnumOrLiteral<BuiltInFieldType.MultiLineText | BuiltInFieldType.RichText | BuiltInFieldType.RichText_v2 | BuiltInFieldType.Html | BuiltInFieldType.Markdown>;
     snippet: Snippet;
     type: DirectAnswerType.FeaturedSnippet;
 }
@@ -150,17 +150,23 @@ export enum BuiltInFieldType {
     // (undocumented)
     Hours = "hours",
     // (undocumented)
+    Html = "html",
+    // (undocumented)
     InstagramHandle = "instagram_handle",
     // (undocumented)
     Integer = "integer",
     // (undocumented)
     IOSAppURL = "ios_app_url",
     // (undocumented)
+    Markdown = "markdown",
+    // (undocumented)
     MultiLineText = "multi_line_text",
     // (undocumented)
     Phone = "phone",
     // (undocumented)
     RichText = "rich_text",
+    // (undocumented)
+    RichText_v2 = "rich_text_v2",
     // (undocumented)
     SingleLineText = "single_line_text",
     // (undocumented)
@@ -358,8 +364,12 @@ export interface FailedVertical {
     verticalKey: string;
 }
 
+// Warning: (ae-forgotten-export) The symbol "RichTextV2SnippetDirectAnswer" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "HTMLSnippetDirectAnswer" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "MarkdownSnippetDirectAnswer" needs to be exported by the entry point index.d.ts
+//
 // @public
-export type FeaturedSnippetDirectAnswer = MultiLineTextSnippetDirectAnswer | RichTextSnippetDirectAnswer;
+export type FeaturedSnippetDirectAnswer = MultiLineTextSnippetDirectAnswer | RichTextSnippetDirectAnswer | RichTextV2SnippetDirectAnswer | HTMLSnippetDirectAnswer | MarkdownSnippetDirectAnswer;
 
 // @public
 export type FieldValueDirectAnswer = UnknownFieldValueDirectAnswer | TextDirectAnswer | UrlDirectAnswer | RichTextDirectAnswer | DecimalDirectAnswer | FacebookUrlDirectAnswer | InstagramHandleDirectAnswer | TwitterHandleDirectAnswer | IosAppUrlDirectAnswer | AndroidAppUrlDirectAnswer | ComplexUrlDirectAnswer | IntegerDirectAnswer | PhoneDirectAnswer | EmailDirectAnswer | AddressDirectAnswer | HoursDirectAnswer;

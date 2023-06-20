@@ -88,6 +88,7 @@
 |  [HolidayHours](./search-headless.holidayhours.md) | An interface for holiday hours to use in [BaseFieldValueDirectAnswer.value](./search-headless.basefieldvaluedirectanswer.value.md)<!-- -->. |
 |  [Hours](./search-headless.hours.md) | An interface for hours fields to use in [BaseFieldValueDirectAnswer.value](./search-headless.basefieldvaluedirectanswer.value.md)<!-- -->. |
 |  [HoursDirectAnswer](./search-headless.hoursdirectanswer.md) | A [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md) interface with 'hours' field type. |
+|  [HTMLSnippetDirectAnswer](./search-headless.htmlsnippetdirectanswer.md) | A [BaseFeaturedSnippetDirectAnswer](./search-headless.basefeaturedsnippetdirectanswer.md) with 'html' field type. "value" field is omitted for featured snippet direct answer of this field type. |
 |  [InstagramHandleDirectAnswer](./search-headless.instagramhandledirectanswer.md) | A direct answer for an instagram handle field. |
 |  [IntegerDirectAnswer](./search-headless.integerdirectanswer.md) | A direct answer for an integer field. |
 |  [Interval](./search-headless.interval.md) | An interface for a time interval to use in [BaseFieldValueDirectAnswer.value](./search-headless.basefieldvaluedirectanswer.value.md)<!-- -->. |
@@ -98,6 +99,7 @@
 |  [LocationFilterDetails](./search-headless.locationfilterdetails.md) | Additional details relevant to the filter with "PLACE" for its [AppliedQueryFilterType](./search-headless.appliedqueryfiltertype.md)<!-- -->. |
 |  [LocationState](./search-headless.locationstate.md) | Maintains the user's location, if given, or the inferred location, that is used to bias search results. |
 |  [LowerNumberRangeLimit](./search-headless.lowernumberrangelimit.md) | The start limit of [NumberRangeValue](./search-headless.numberrangevalue.md)<!-- -->. |
+|  [MarkdownSnippetDirectAnswer](./search-headless.markdownsnippetdirectanswer.md) | A [BaseFeaturedSnippetDirectAnswer](./search-headless.basefeaturedsnippetdirectanswer.md) with 'markdown' field type. "value" field is omitted for featured snippet direct answer of this field type. |
 |  [MetaState](./search-headless.metastate.md) | Maintains the metadata for Search Headless. |
 |  [MultiLineTextSnippetDirectAnswer](./search-headless.multilinetextsnippetdirectanswer.md) | A [BaseFeaturedSnippetDirectAnswer](./search-headless.basefeaturedsnippetdirectanswer.md) with 'multi\_line\_text' field type. |
 |  [NearFilterValue](./search-headless.nearfiltervalue.md) | A filter value for a filter with a $near [Matcher](./search-headless.matcher.md)<!-- -->. |
@@ -114,6 +116,7 @@
 |  [Result](./search-headless.result.md) | An individual search result. |
 |  [RichTextDirectAnswer](./search-headless.richtextdirectanswer.md) | A direct answer for a rich text field. |
 |  [RichTextSnippetDirectAnswer](./search-headless.richtextsnippetdirectanswer.md) | A [BaseFeaturedSnippetDirectAnswer](./search-headless.basefeaturedsnippetdirectanswer.md) with 'rich\_text' field type. "value" field is omitted for featured snippet direct answer of this field type. |
+|  [RichTextV2SnippetDirectAnswer](./search-headless.richtextv2snippetdirectanswer.md) | A [BaseFeaturedSnippetDirectAnswer](./search-headless.basefeaturedsnippetdirectanswer.md) with 'rich\_text\_v2' field type. "value" field is omitted for featured snippet direct answer of this field type. |
 |  [SearchConfigWithApiKey](./search-headless.searchconfigwithapikey.md) | Configuration options for [SearchCore](./search-headless.searchcore.md)<!-- -->, which includes the options from [BaseSearchConfig](./search-headless.basesearchconfig.md)<!-- -->, but requires apiKey. |
 |  [SearchConfigWithToken](./search-headless.searchconfigwithtoken.md) | Configuration options for [SearchCore](./search-headless.searchcore.md)<!-- -->, which includes the options from [BaseSearchConfig](./search-headless.basesearchconfig.md)<!-- -->, but requires token. |
 |  [SearchParameterField](./search-headless.searchparameterfield.md) | Indicates which entity field to perform the autocomplete request on. |

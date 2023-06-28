@@ -17,7 +17,7 @@ export declare interface BaseFeaturedSnippetDirectAnswer<T = unknown> extends Di
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [fieldType](./search-headless.basefeaturedsnippetdirectanswer.fieldtype.md) | [EnumOrLiteral](./search-headless.enumorliteral.md)<!-- -->&lt;[BuiltInFieldType.MultiLineText](./search-headless.builtinfieldtype.md) \| [BuiltInFieldType.RichText](./search-headless.builtinfieldtype.md)<!-- -->&gt; | The field type of the direct answer. |
+|  [fieldType](./search-headless.basefeaturedsnippetdirectanswer.fieldtype.md) | [EnumOrLiteral](./search-headless.enumorliteral.md)<!-- -->&lt;[BuiltInFieldType.MultiLineText](./search-headless.builtinfieldtype.md) \| [BuiltInFieldType.RichText](./search-headless.builtinfieldtype.md) \| [BuiltInFieldType.RichText\_v2](./search-headless.builtinfieldtype.md) \| [BuiltInFieldType.Html](./search-headless.builtinfieldtype.md) \| [BuiltInFieldType.Markdown](./search-headless.builtinfieldtype.md)<!-- -->&gt; | The field type of the direct answer. |
 |  [snippet](./search-headless.basefeaturedsnippetdirectanswer.snippet.md) | [Snippet](./search-headless.snippet.md) | The snippet where the direct answer was found. |
 |  [type](./search-headless.basefeaturedsnippetdirectanswer.type.md) | [DirectAnswerType.FeaturedSnippet](./search-headless.directanswertype.md) | Indicates that the DirectAnswer is a [FeaturedSnippetDirectAnswer](./search-headless.featuredsnippetdirectanswer.md)<!-- -->. |
 

@@ -73,6 +73,7 @@
 |  [DisjunctionStaticFilter](./search-headless.disjunctionstaticfilter.md) | A static filter composed by combining filters with the logical OR operator. The combined filters can either be field value filters or other disjunction filters. |
 |  [DisplayableFacet](./search-headless.displayablefacet.md) | A [Facet](./search-headless.facet.md) which contains extra fields meant to be displayed to the end user. |
 |  [DisplayableFacetOption](./search-headless.displayablefacetoption.md) | A [FacetOption](./search-headless.facetoption.md) with extra data meant to be displayed to the end user. |
+|  [Document\_2](./search-headless.document_2.md) | Details about the document and the document search algorithm |
 |  [EmailDirectAnswer](./search-headless.emaildirectanswer.md) | A [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md) interface with 'email' field type. |
 |  [Endpoints](./search-headless.endpoints.md) | Overrides for the URLs which are used when making requests to the Search API. |
 |  [FacebookUrlDirectAnswer](./search-headless.facebookurldirectanswer.md) | A direct answer for a facebook url field. |
@@ -123,6 +124,7 @@
 |  [SearchRequest](./search-headless.searchrequest.md) | Options for a Search API request. |
 |  [SearchService](./search-headless.searchservice.md) | A service which performs Yext Search. |
 |  [SearchStatusState](./search-headless.searchstatusstate.md) | Maintains the status of the latest search. |
+|  [Segment](./search-headless.segment.md) | A result produced by a document vertical. |
 |  [SelectableStaticFilter](./search-headless.selectablestaticfilter.md) | A [StaticFilter](./search-headless.staticfilter.md) with additional information, such as an optional display name and whether or not it is selected. |
 |  [ServingConfig](./search-headless.servingconfig.md) | The configuration options for getting the endpoints. |
 |  [SessionTrackingState](./search-headless.sessiontrackingstate.md) | Maintains whether the user session should be tracked and, if so, the session information. |

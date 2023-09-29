@@ -9,5 +9,5 @@ All relevant documents associated with the result. Present for document vertical
 <b>Signature:</b>
 
 ```typescript
-documents?: Document_2[];
+documents?: DocumentResult[];
 ```

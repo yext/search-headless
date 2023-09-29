@@ -20,7 +20,7 @@ export {
   DisjunctionStaticFilter,
   DisplayableFacet,
   DisplayableFacetOption,
-  Document,
+  DocumentResult,
   Endpoints,
   EnumOrLiteral,
   Environment,

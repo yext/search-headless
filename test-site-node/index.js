@@ -1,7 +1,7 @@
 const { provideHeadless } = require('@yext/search-headless');
 
 const answers = provideHeadless({
-  apiKey: '<REPLACE ME>',
+  apiKey: process.env.API_KEY,
   experienceKey: 'slanswers',
   locale: 'en'
 });

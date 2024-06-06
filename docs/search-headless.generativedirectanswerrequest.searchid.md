@@ -6,7 +6,7 @@
 
 The ID of the search request.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 searchId: string;

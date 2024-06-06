@@ -18,7 +18,9 @@ import {
   VerticalSearchResponse,
   AdditionalHttpHeaders,
   VerticalSearchRequest,
-  UniversalSearchRequest
+  UniversalSearchRequest,
+  GenerativeDirectAnswerRequest,
+  GenerativeDirectAnswerResponse
 } from '@yext/search-core';
 
 import StateListener from './models/state-listener';
@@ -554,6 +556,41 @@ export default class SearchHeadless {
    */
   setFilterOption(filter: SelectableStaticFilter): void {
     this.stateManager.dispatchEvent('filters/setFilterOption', filter);
+  }
+
+  /**
+   * Perform a generativeDirectAnswer request to the query most recent search stored in state.
+   *
+   * @returns A Promise of a {@link GenerativeDirectAnswerResponse} from the Search API or
+   *          of undefined if there is no results defined in state
+   */
+  async executeGenerativeDirectAnswer(): Promise<GenerativeDirectAnswerResponse | undefined> {
+    const searchId = this.state.meta.uuid;
+    if (!searchId) {
+      console.error('no search id supplied for generative direct answer');
+      return;
+    }
+    let results: VerticalResults[] | undefined;
+    if (this.state.meta.searchType === SearchTypeEnum.Vertical) {
+      results = [this.state.vertical as VerticalResults]
+    } else if (this.state.meta.searchType === SearchTypeEnum.Universal) {
+      results = this.state.universal.verticals;
+    } else {
+      console.error('The meta.searchType must be set to \'vertical\' or \'universal\' for generativeDirectAnswer. '
+      + 'Set the searchType by calling `setVertical()` or `setUniversal()`');
+        return;
+    }
+    if (!results || results.length === 0) {
+      console.error('no results supplied for generative direct answer');
+      return;
+    }
+    const searchTerm = this.state.query.mostRecentSearch || '';
+    return this.core.generativeDirectAnswer({
+      searchId,
+      results,
+      searchTerm,
+      additionalHttpHeaders: this.additionalHttpHeaders
+    });
   }
 }
 

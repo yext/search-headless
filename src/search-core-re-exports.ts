@@ -33,6 +33,8 @@ export {
   FilterCombinator,
   FilterSearchRequest,
   FilterSearchResponse,
+  GenerativeDirectAnswerRequest,
+  GenerativeDirectAnswerResponse,
   HighlightedFields,
   HighlightedValue,
   LatLong,

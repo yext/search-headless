@@ -310,6 +310,8 @@ export interface Endpoints {
     // (undocumented)
     filterSearch?: string;
     // (undocumented)
+    generativeDirectAnswer?: string;
+    // (undocumented)
     questionSubmission?: string;
     // (undocumented)
     status?: string;
@@ -419,6 +421,20 @@ export interface FilterSearchResponse {
 export interface FiltersState {
     facets?: DisplayableFacet[];
     static?: SelectableStaticFilter[];
+}
+
+// @public
+export interface GenerativeDirectAnswerRequest extends SearchRequest {
+    results: VerticalResults[];
+    searchId: string;
+    searchTerm: string;
+}
+
+// @public
+export interface GenerativeDirectAnswerResponse {
+    citations: string[];
+    directAnswer: string;
+    resultStatus: string;
 }
 
 // @public
@@ -747,8 +763,10 @@ export interface SearchConfigWithToken extends BaseSearchConfig {
 
 // @public
 export class SearchCore {
-    constructor(searchService: SearchService, questionSubmissionService: QuestionSubmissionService, autoCompleteService: AutocompleteService);
+    // Warning: (ae-forgotten-export) The symbol "GenerativeDirectAnswerService" needs to be exported by the entry point index.d.ts
+    constructor(searchService: SearchService, questionSubmissionService: QuestionSubmissionService, autoCompleteService: AutocompleteService, generativeDirectAnswerService: GenerativeDirectAnswerService);
     filterSearch(request: FilterSearchRequest): Promise<FilterSearchResponse>;
+    generativeDirectAnswer(request: GenerativeDirectAnswerRequest): Promise<GenerativeDirectAnswerResponse>;
     submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse>;
     universalAutocomplete(request: UniversalAutocompleteRequest): Promise<AutocompleteResponse>;
     universalSearch(request: UniversalSearchRequest): Promise<UniversalSearchResponse>;
@@ -770,6 +788,7 @@ export class SearchHeadless {
     constructor(core: SearchCore, stateManager: StateManager, httpManager: HttpManager, additionalHttpHeaders?: AdditionalHttpHeaders | undefined);
     addListener<T>(listener: StateListener<T>): Unsubscribe;
     executeFilterSearch(query: string, sectioned: boolean, fields: SearchParameterField[]): Promise<FilterSearchResponse | undefined>;
+    executeGenerativeDirectAnswer(): Promise<GenerativeDirectAnswerResponse | undefined>;
     executeUniversalAutocomplete(): Promise<AutocompleteResponse>;
     executeUniversalQuery(): Promise<UniversalSearchResponse | undefined>;
     executeVerticalAutocomplete(): Promise<AutocompleteResponse | undefined>;

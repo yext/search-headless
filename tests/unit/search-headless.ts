@@ -1,4 +1,4 @@
-import { FilterCombinator, Matcher, QuerySource, QueryTrigger } from '@yext/search-core';
+import { FilterCombinator, Matcher, QuerySource, QueryTrigger, VerticalResults, Source } from '@yext/search-core';
 import HttpManager from '../../src/http-manager';
 import StateManager from '../../src/models/state-manager';
 import SearchHeadless from '../../src/search-headless';
@@ -84,7 +84,8 @@ const mockedCore: any = {
   universalAutocomplete: jest.fn(() => { return {}; }),
   universalSearch: mockedSearch,
   verticalSearch: mockedSearch,
-  filterSearch: jest.fn(() => Promise.resolve({}))
+  filterSearch: jest.fn(() => Promise.resolve({})),
+  generativeDirectAnswer: jest.fn(() => Promise.resolve({}))
 };
 
 const answers = new SearchHeadless(mockedCore, mockedStateManager, new HttpManager());
@@ -419,6 +420,68 @@ describe('search works as expected', () => {
       sessionTrackingEnabled: true,
       sectioned: false,
       fields
+    });
+  });
+
+  describe('generative direct answer works as expected', () => {
+    beforeEach(() => {
+      jest.clearAllMocks();
+      answers.state.meta.uuid = 'someUuid';
+      answers.state.query.mostRecentSearch = 'someSearch';
+    });
+
+    const mockedVerticalResult: VerticalResults = {
+      'appliedQueryFilters': [],
+      'queryDurationMillis': 141,
+      'results': [
+        {
+          'distance': 608,
+          'entityType': 'restaurant',
+          'id': '8875293274284117370',
+          'index': 2,
+          'name': 'Cow Burgers',
+          'rawData': {
+            'address': {
+              'city': 'Arlington',
+              'countryCode': 'US',
+              'line1': '1101 Wilson Blvd',
+              'postalCode': '22209',
+              'region': 'VA'
+            },
+            'id': '8875293274284117370',
+            'name': 'Cow Burgers',
+            'timezone': 'America/New_York',
+            'type': 'restaurant',
+            'uid': '8279393'
+          },
+          'source': Source.KnowledgeManager
+        }
+      ],
+      'resultsCount': 1,
+      'source': Source.KnowledgeManager,
+      'verticalKey': 'restaurants'
+    }
+  
+    it('generative direct answer with vertical results works', async () => {
+      answers.state.meta.searchType = SearchTypeEnum.Vertical;
+      answers.state.vertical = mockedVerticalResult;
+      await answers.executeGenerativeDirectAnswer();
+  
+      const coreCalls = mockedCore.generativeDirectAnswer.mock.calls;
+      expect(coreCalls.length).toBe(1);
+      expect(coreCalls[0][0]).toEqual(
+        { searchId: mockedState.meta.uuid, results: [mockedState.vertical as VerticalResults], searchTerm: mockedState.query.mostRecentSearch });
+    })
+  
+    it('generative direct answer with universal results works', async () => {
+      answers.state.meta.searchType = SearchTypeEnum.Universal;
+      answers.state.universal.verticals = [mockedVerticalResult];
+      await answers.executeGenerativeDirectAnswer();
+  
+      const coreCalls = mockedCore.generativeDirectAnswer.mock.calls;
+      expect(coreCalls.length).toBe(1);
+      expect(coreCalls[0][0]).toEqual(
+        { searchId: mockedState.meta.uuid, results: mockedState.universal.verticals, searchTerm: mockedState.query.mostRecentSearch });
     });
   });
 });

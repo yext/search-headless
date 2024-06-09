@@ -69,7 +69,8 @@ const mockedState: State = {
   },
   location: {},
   directAnswer: {},
-  searchStatus: {}
+  searchStatus: {},
+  generativeDirectAnswer: {}
 };
 
 const mockedStateManager: jest.Mocked<StateManager> = {
@@ -432,27 +433,11 @@ describe('search works as expected', () => {
 
     const mockedVerticalResult: VerticalResults = {
       'appliedQueryFilters': [],
-      'queryDurationMillis': 141,
+      'queryDurationMillis': 1,
       'results': [
         {
-          'distance': 608,
-          'entityType': 'restaurant',
-          'id': '8875293274284117370',
-          'index': 2,
-          'name': 'Cow Burgers',
           'rawData': {
-            'address': {
-              'city': 'Arlington',
-              'countryCode': 'US',
-              'line1': '1101 Wilson Blvd',
-              'postalCode': '22209',
-              'region': 'VA'
-            },
-            'id': '8875293274284117370',
-            'name': 'Cow Burgers',
-            'timezone': 'America/New_York',
-            'type': 'restaurant',
-            'uid': '8279393'
+            'uid': '123'
           },
           'source': Source.KnowledgeManager
         }
@@ -460,28 +445,34 @@ describe('search works as expected', () => {
       'resultsCount': 1,
       'source': Source.KnowledgeManager,
       'verticalKey': 'restaurants'
-    }
-  
+    };
+
     it('generative direct answer with vertical results works', async () => {
       answers.state.meta.searchType = SearchTypeEnum.Vertical;
       answers.state.vertical = mockedVerticalResult;
       await answers.executeGenerativeDirectAnswer();
-  
+
       const coreCalls = mockedCore.generativeDirectAnswer.mock.calls;
       expect(coreCalls.length).toBe(1);
-      expect(coreCalls[0][0]).toEqual(
-        { searchId: mockedState.meta.uuid, results: [mockedState.vertical as VerticalResults], searchTerm: mockedState.query.mostRecentSearch });
-    })
-  
+      expect(coreCalls[0][0]).toEqual({
+        searchId: mockedState.meta.uuid,
+        results: [mockedState.vertical as VerticalResults],
+        searchTerm: mockedState.query.mostRecentSearch
+      });
+    });
+
     it('generative direct answer with universal results works', async () => {
       answers.state.meta.searchType = SearchTypeEnum.Universal;
       answers.state.universal.verticals = [mockedVerticalResult];
       await answers.executeGenerativeDirectAnswer();
-  
+
       const coreCalls = mockedCore.generativeDirectAnswer.mock.calls;
       expect(coreCalls.length).toBe(1);
-      expect(coreCalls[0][0]).toEqual(
-        { searchId: mockedState.meta.uuid, results: mockedState.universal.verticals, searchTerm: mockedState.query.mostRecentSearch });
+      expect(coreCalls[0][0]).toEqual({
+        searchId: mockedState.meta.uuid,
+        results: mockedState.universal.verticals,
+        searchTerm: mockedState.query.mostRecentSearch
+      });
     });
   });
 });

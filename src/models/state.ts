@@ -9,6 +9,7 @@ import { SessionTrackingState } from './slices/sessiontracking';
 import { DirectAnswerState } from './slices/directanswer';
 import { SearchStatusState } from './slices/searchstatus';
 import { QueryRulesState } from './slices/queryrules';
+import { GenerativeDirectAnswerState } from './slices/generativedirectanswer';
 
 /**
  * The overall shape of the redux state tree, with each key value pair of
@@ -72,5 +73,9 @@ export interface State {
   /**
    * {@inheritDoc LocationState}
    */
-  location: LocationState
+  location: LocationState,
+  /**
+   * {@inheritDoc UniversalSearchState}
+   */
+  generativeDirectAnswer: GenerativeDirectAnswerState
 }

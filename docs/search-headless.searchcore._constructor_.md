@@ -19,5 +19,5 @@ constructor(searchService: SearchService, questionSubmissionService: QuestionSub
 |  searchService | [SearchService](./search-headless.searchservice.md) |  |
 |  questionSubmissionService | [QuestionSubmissionService](./search-headless.questionsubmissionservice.md) |  |
 |  autoCompleteService | [AutocompleteService](./search-headless.autocompleteservice.md) |  |
-|  generativeDirectAnswerService | GenerativeDirectAnswerService |  |
+|  generativeDirectAnswerService | [GenerativeDirectAnswerService](./search-headless.generativedirectanswerservice.md) |  |
 

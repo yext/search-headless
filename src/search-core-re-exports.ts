@@ -33,6 +33,7 @@ export {
   FilterCombinator,
   FilterSearchRequest,
   FilterSearchResponse,
+  GenerativeDirectAnswerService,
   GenerativeDirectAnswerRequest,
   GenerativeDirectAnswerResponse,
   HighlightedFields,

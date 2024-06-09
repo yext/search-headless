@@ -19,7 +19,6 @@ import {
   AdditionalHttpHeaders,
   VerticalSearchRequest,
   UniversalSearchRequest,
-  GenerativeDirectAnswerRequest,
   GenerativeDirectAnswerResponse
 } from '@yext/search-core';
 
@@ -38,6 +37,7 @@ import { initialState as initialFiltersState } from './slices/filters';
 import { initialState as initialDirectAnswerState } from './slices/directanswer';
 import { initialState as initialQueryRulesState } from './slices/queryrules';
 import { initialState as initialSearchStatusState } from './slices/searchstatus';
+import { initialState as initialGenerativeDirectAnswerState } from './slices/generativedirectanswer';
 
 /**
  * Provides the functionality for interacting with a Search experience.
@@ -105,8 +105,8 @@ export default class SearchHeadless {
   }
 
   /**
-   * Resets the direct answer, filters, query rules, search status, vertical, and universal states
-   * to their initial values.
+   * Resets the direct answer, filters, query rules, search status, vertical, universal,
+   * and generative direct answer states to their initial values.
    */
   private _resetSearcherStates() {
     this.stateManager.dispatchEvent('set-state', {
@@ -116,7 +116,8 @@ export default class SearchHeadless {
       queryRules: initialQueryRulesState,
       searchStatus: initialSearchStatusState,
       vertical: initialVerticalState,
-      universal: initialUniversalState
+      universal: initialUniversalState,
+      generativeDirectAnswer: initialGenerativeDirectAnswerState
     });
   }
 
@@ -570,27 +571,69 @@ export default class SearchHeadless {
       console.error('no search id supplied for generative direct answer');
       return;
     }
+    let requestName: 'universalQuery' | 'verticalQuery';
     let results: VerticalResults[] | undefined;
     if (this.state.meta.searchType === SearchTypeEnum.Vertical) {
-      results = [this.state.vertical as VerticalResults]
+      requestName = 'verticalQuery';
+
+      if (!this.state.vertical || !this.state.vertical.appliedQueryFilters
+        || !this.state.vertical.queryDurationMillis || !this.state.vertical.results
+        || !this.state.vertical.resultsCount || !this.state.vertical.source
+        || !this.state.vertical.source || !this.state.vertical.verticalKey ) {
+        console.error('no results supplied for generative direct answer');
+        return;
+      }
+      results = [{
+        appliedQueryFilters: this.state.vertical.appliedQueryFilters,
+        queryDurationMillis: this.state.vertical.queryDurationMillis,
+        results: this.state.vertical.results,
+        resultsCount: this.state.vertical.resultsCount,
+        source: this.state.vertical.source,
+        verticalKey: this.state.vertical.verticalKey,
+      }];
     } else if (this.state.meta.searchType === SearchTypeEnum.Universal) {
+      requestName = 'universalQuery';
       results = this.state.universal.verticals;
     } else {
       console.error('The meta.searchType must be set to \'vertical\' or \'universal\' for generativeDirectAnswer. '
       + 'Set the searchType by calling `setVertical()` or `setUniversal()`');
-        return;
+      return;
     }
     if (!results || results.length === 0) {
       console.error('no results supplied for generative direct answer');
       return;
     }
-    const searchTerm = this.state.query.mostRecentSearch || '';
-    return this.core.generativeDirectAnswer({
-      searchId,
-      results,
-      searchTerm,
-      additionalHttpHeaders: this.additionalHttpHeaders
-    });
+    const searchTerm = this.state.query.mostRecentSearch;
+    if (!searchTerm) {
+      console.error('no search term supplied for generative direct answer');
+      return;
+    }
+    const thisRequestId = this.httpManager.updateRequestId(requestName);
+    this.stateManager.dispatchEvent('generativeDirectAnswer/setIsLoading', true);
+
+    let response: GenerativeDirectAnswerResponse;
+    try {
+      response = await this.core.generativeDirectAnswer({
+        searchId,
+        results,
+        searchTerm,
+        additionalHttpHeaders: this.additionalHttpHeaders
+      });
+    } catch (e) {
+      const isLatestResponse = this.httpManager.processRequestId(requestName, thisRequestId);
+      if (isLatestResponse) {
+        this.stateManager.dispatchEvent('generativeDirectAnswer/setIsLoading', false);
+      }
+      return Promise.reject(e);
+    }
+
+    const isLatestResponse = this.httpManager.processRequestId(requestName, thisRequestId);
+    if (!isLatestResponse) {
+      return response;
+    }
+    this.stateManager.dispatchEvent('generativeDirectAnswer/setResponse', response);
+    this.stateManager.dispatchEvent('generativeDirectAnswer/setIsLoading', false);
+    return response;
   }
 }
 

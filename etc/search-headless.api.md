@@ -438,6 +438,11 @@ export interface GenerativeDirectAnswerResponse {
 }
 
 // @public
+export interface GenerativeDirectAnswerService {
+    generateAnswer(request: GenerativeDirectAnswerRequest): Promise<GenerativeDirectAnswerResponse>;
+}
+
+// @public
 export type HeadlessConfig = SearchConfig & {
     headlessId?: string;
     verticalKey?: string;
@@ -763,7 +768,6 @@ export interface SearchConfigWithToken extends BaseSearchConfig {
 
 // @public
 export class SearchCore {
-    // Warning: (ae-forgotten-export) The symbol "GenerativeDirectAnswerService" needs to be exported by the entry point index.d.ts
     constructor(searchService: SearchService, questionSubmissionService: QuestionSubmissionService, autoCompleteService: AutocompleteService, generativeDirectAnswerService: GenerativeDirectAnswerService);
     filterSearch(request: FilterSearchRequest): Promise<FilterSearchResponse>;
     generativeDirectAnswer(request: GenerativeDirectAnswerRequest): Promise<GenerativeDirectAnswerResponse>;
@@ -956,6 +960,8 @@ export enum SpellCheckType {
 export interface State {
     directAnswer: DirectAnswerState;
     filters: FiltersState;
+    // Warning: (ae-forgotten-export) The symbol "GenerativeDirectAnswerState" needs to be exported by the entry point index.d.ts
+    generativeDirectAnswer: GenerativeDirectAnswerState;
     location: LocationState;
     meta: MetaState;
     query: QueryState;

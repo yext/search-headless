@@ -575,29 +575,21 @@ export default class SearchHeadless {
     let results: VerticalResults[] | undefined;
     if (this.state.meta.searchType === SearchTypeEnum.Vertical) {
       requestName = 'verticalQuery';
-
-      if (!this.state.vertical || !this.state.vertical.appliedQueryFilters
-        || !this.state.vertical.queryDurationMillis || !this.state.vertical.results
-        || !this.state.vertical.resultsCount || !this.state.vertical.source
-        || !this.state.vertical.source || !this.state.vertical.verticalKey ) {
-        console.error('no results supplied for generative direct answer');
-        return;
+      if (this.state.vertical.appliedQueryFilters && this.state.vertical.queryDurationMillis 
+        && this.state.vertical.results && this.state.vertical.resultsCount 
+        && this.state.vertical.source && this.state.vertical.verticalKey ) {
+        results = [{
+          appliedQueryFilters: this.state.vertical.appliedQueryFilters,
+          queryDurationMillis: this.state.vertical.queryDurationMillis,
+          results: this.state.vertical.results,
+          resultsCount: this.state.vertical.resultsCount,
+          source: this.state.vertical.source,
+          verticalKey: this.state.vertical.verticalKey,
+        }];
       }
-      results = [{
-        appliedQueryFilters: this.state.vertical.appliedQueryFilters,
-        queryDurationMillis: this.state.vertical.queryDurationMillis,
-        results: this.state.vertical.results,
-        resultsCount: this.state.vertical.resultsCount,
-        source: this.state.vertical.source,
-        verticalKey: this.state.vertical.verticalKey,
-      }];
-    } else if (this.state.meta.searchType === SearchTypeEnum.Universal) {
+    } else {
       requestName = 'universalQuery';
       results = this.state.universal.verticals;
-    } else {
-      console.error('The meta.searchType must be set to \'vertical\' or \'universal\' for generativeDirectAnswer. '
-      + 'Set the searchType by calling `setVertical()` or `setUniversal()`');
-      return;
     }
     if (!results || results.length === 0) {
       console.error('no results supplied for generative direct answer');

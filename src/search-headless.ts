@@ -569,10 +569,7 @@ export default class SearchHeadless {
   async executeGenerativeDirectAnswer(): Promise<GenerativeDirectAnswerResponse | undefined> {
     const thisRequestId = this.httpManager.updateRequestId('generativeDirectAnswer');
     const searchId = this.state.meta.uuid;
-    if (!searchId) {
-      console.error('no search id supplied for generative direct answer');
-      return;
-    }
+    const searchTerm = this.state.query.mostRecentSearch;
     let results: VerticalResults[] | undefined;
     if (this.state.meta.searchType === SearchTypeEnum.Vertical) {
       if (isVerticalResults(this.state.vertical)) {
@@ -581,17 +578,20 @@ export default class SearchHeadless {
     } else {
       results = this.state.universal.verticals;
     }
-    if (!results || results.length === 0) {
-      console.error('no results supplied for generative direct answer');
+    if (!searchId) {
+      console.error('no search id supplied for generative direct answer');
       return;
     }
-    const searchTerm = this.state.query.mostRecentSearch;
     if (!searchTerm) {
       console.error('no search term supplied for generative direct answer');
       return;
     }
-    this.stateManager.dispatchEvent('generativeDirectAnswer/setIsLoading', true);
+    if (!results || results.length === 0) {
+      console.error('no results supplied for generative direct answer');
+      return;
+    }
 
+    this.stateManager.dispatchEvent('generativeDirectAnswer/setIsLoading', true);
     let response: GenerativeDirectAnswerResponse;
     try {
       response = await this.core.generativeDirectAnswer({

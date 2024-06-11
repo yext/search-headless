@@ -18,7 +18,7 @@ export interface State
 |  --- | --- | --- |
 |  [directAnswer](./search-headless.state.directanswer.md) | [DirectAnswerState](./search-headless.directanswerstate.md) | Maintains the direct answer associated with the latest search. |
 |  [filters](./search-headless.state.filters.md) | [FiltersState](./search-headless.filtersstate.md) | Maintains the current state of facets and filters in the application. |
-|  [generativeDirectAnswer](./search-headless.state.generativedirectanswer.md) | GenerativeDirectAnswerState | Maintains the data for the latest universal search. |
+|  [generativeDirectAnswer](./search-headless.state.generativedirectanswer.md) | [GenerativeDirectAnswerState](./search-headless.generativedirectanswerstate.md) | Maintains the data for the latest universal search. |
 |  [location](./search-headless.state.location.md) | [LocationState](./search-headless.locationstate.md) | Maintains the user's location, if given, or the inferred location, that is used to bias search results. |
 |  [meta](./search-headless.state.meta.md) | [MetaState](./search-headless.metastate.md) | Maintains the metadata for Search Headless. |
 |  [query](./search-headless.state.query.md) | [QueryState](./search-headless.querystate.md) | Maintains the latest query and its associated data. |

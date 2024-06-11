@@ -443,6 +443,12 @@ export interface GenerativeDirectAnswerService {
 }
 
 // @public
+export interface GenerativeDirectAnswerState {
+    isLoading?: boolean;
+    response?: GenerativeDirectAnswerResponse;
+}
+
+// @public
 export type HeadlessConfig = SearchConfig & {
     headlessId?: string;
     verticalKey?: string;
@@ -960,7 +966,6 @@ export enum SpellCheckType {
 export interface State {
     directAnswer: DirectAnswerState;
     filters: FiltersState;
-    // Warning: (ae-forgotten-export) The symbol "GenerativeDirectAnswerState" needs to be exported by the entry point index.d.ts
     generativeDirectAnswer: GenerativeDirectAnswerState;
     location: LocationState;
     meta: MetaState;

@@ -93,3 +93,12 @@ export interface VerticalSearchState {
    */
   locationRadius?: number
 }
+
+export function isVerticalResults(vertical: VerticalSearchState): vertical is VerticalResults {
+  return (vertical as VerticalResults).appliedQueryFilters !== undefined
+    && (vertical as VerticalResults).queryDurationMillis !== undefined
+    && (vertical as VerticalResults).results !== undefined
+    && (vertical as VerticalResults).resultsCount !== undefined
+    && (vertical as VerticalResults).source !== undefined
+    && (vertical as VerticalResults).verticalKey !== undefined;
+}

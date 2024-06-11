@@ -38,6 +38,7 @@ import { initialState as initialDirectAnswerState } from './slices/directanswer'
 import { initialState as initialQueryRulesState } from './slices/queryrules';
 import { initialState as initialSearchStatusState } from './slices/searchstatus';
 import { initialState as initialGenerativeDirectAnswerState } from './slices/generativedirectanswer';
+import { isVerticalResults } from './models/slices/vertical';
 
 /**
  * Provides the functionality for interacting with a Search experience.
@@ -566,29 +567,18 @@ export default class SearchHeadless {
    *          of undefined if there is no results defined in state
    */
   async executeGenerativeDirectAnswer(): Promise<GenerativeDirectAnswerResponse | undefined> {
+    const thisRequestId = this.httpManager.updateRequestId('generativeDirectAnswer');
     const searchId = this.state.meta.uuid;
     if (!searchId) {
       console.error('no search id supplied for generative direct answer');
       return;
     }
-    let requestName: 'universalQuery' | 'verticalQuery';
     let results: VerticalResults[] | undefined;
     if (this.state.meta.searchType === SearchTypeEnum.Vertical) {
-      requestName = 'verticalQuery';
-      if (this.state.vertical.appliedQueryFilters && this.state.vertical.queryDurationMillis 
-        && this.state.vertical.results && this.state.vertical.resultsCount 
-        && this.state.vertical.source && this.state.vertical.verticalKey ) {
-        results = [{
-          appliedQueryFilters: this.state.vertical.appliedQueryFilters,
-          queryDurationMillis: this.state.vertical.queryDurationMillis,
-          results: this.state.vertical.results,
-          resultsCount: this.state.vertical.resultsCount,
-          source: this.state.vertical.source,
-          verticalKey: this.state.vertical.verticalKey,
-        }];
+      if (isVerticalResults(this.state.vertical)) {
+        results = [this.state.vertical];
       }
     } else {
-      requestName = 'universalQuery';
       results = this.state.universal.verticals;
     }
     if (!results || results.length === 0) {
@@ -600,7 +590,6 @@ export default class SearchHeadless {
       console.error('no search term supplied for generative direct answer');
       return;
     }
-    const thisRequestId = this.httpManager.updateRequestId(requestName);
     this.stateManager.dispatchEvent('generativeDirectAnswer/setIsLoading', true);
 
     let response: GenerativeDirectAnswerResponse;
@@ -612,14 +601,14 @@ export default class SearchHeadless {
         additionalHttpHeaders: this.additionalHttpHeaders
       });
     } catch (e) {
-      const isLatestResponse = this.httpManager.processRequestId(requestName, thisRequestId);
+      const isLatestResponse = this.httpManager.processRequestId('generativeDirectAnswer', thisRequestId);
       if (isLatestResponse) {
         this.stateManager.dispatchEvent('generativeDirectAnswer/setIsLoading', false);
       }
       return Promise.reject(e);
     }
 
-    const isLatestResponse = this.httpManager.processRequestId(requestName, thisRequestId);
+    const isLatestResponse = this.httpManager.processRequestId('generativeDirectAnswer', thisRequestId);
     if (!isLatestResponse) {
       return response;
     }
@@ -628,4 +617,3 @@ export default class SearchHeadless {
     return response;
   }
 }
-

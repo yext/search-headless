@@ -18,7 +18,8 @@ import {
   VerticalSearchResponse,
   AdditionalHttpHeaders,
   VerticalSearchRequest,
-  UniversalSearchRequest
+  UniversalSearchRequest,
+  GenerativeDirectAnswerResponse
 } from '@yext/search-core';
 
 import StateListener from './models/state-listener';
@@ -36,6 +37,8 @@ import { initialState as initialFiltersState } from './slices/filters';
 import { initialState as initialDirectAnswerState } from './slices/directanswer';
 import { initialState as initialQueryRulesState } from './slices/queryrules';
 import { initialState as initialSearchStatusState } from './slices/searchstatus';
+import { initialState as initialGenerativeDirectAnswerState } from './slices/generativedirectanswer';
+import { isVerticalResults } from './models/slices/vertical';
 
 /**
  * Provides the functionality for interacting with a Search experience.
@@ -103,8 +106,8 @@ export default class SearchHeadless {
   }
 
   /**
-   * Resets the direct answer, filters, query rules, search status, vertical, and universal states
-   * to their initial values.
+   * Resets the direct answer, filters, query rules, search status, vertical, universal,
+   * and generative direct answer states to their initial values.
    */
   private _resetSearcherStates() {
     this.stateManager.dispatchEvent('set-state', {
@@ -114,7 +117,8 @@ export default class SearchHeadless {
       queryRules: initialQueryRulesState,
       searchStatus: initialSearchStatusState,
       vertical: initialVerticalState,
-      universal: initialUniversalState
+      universal: initialUniversalState,
+      generativeDirectAnswer: initialGenerativeDirectAnswerState
     });
   }
 
@@ -555,5 +559,61 @@ export default class SearchHeadless {
   setFilterOption(filter: SelectableStaticFilter): void {
     this.stateManager.dispatchEvent('filters/setFilterOption', filter);
   }
-}
 
+  /**
+   * Perform a generativeDirectAnswer request to the query most recent search stored in state.
+   *
+   * @returns A Promise of a {@link GenerativeDirectAnswerResponse} from the Search API or
+   *          of undefined if there is no results defined in state
+   */
+  async executeGenerativeDirectAnswer(): Promise<GenerativeDirectAnswerResponse | undefined> {
+    const thisRequestId = this.httpManager.updateRequestId('generativeDirectAnswer');
+    const searchId = this.state.meta.uuid;
+    const searchTerm = this.state.query.mostRecentSearch;
+    let results: VerticalResults[] | undefined;
+    if (this.state.meta.searchType === SearchTypeEnum.Vertical) {
+      if (isVerticalResults(this.state.vertical)) {
+        results = [this.state.vertical];
+      }
+    } else {
+      results = this.state.universal.verticals;
+    }
+    if (!searchId) {
+      console.error('no search id supplied for generative direct answer');
+      return;
+    }
+    if (!searchTerm) {
+      console.error('no search term supplied for generative direct answer');
+      return;
+    }
+    if (!results || results.length === 0) {
+      console.error('no results supplied for generative direct answer');
+      return;
+    }
+
+    this.stateManager.dispatchEvent('generativeDirectAnswer/setIsLoading', true);
+    let response: GenerativeDirectAnswerResponse;
+    try {
+      response = await this.core.generativeDirectAnswer({
+        searchId,
+        results,
+        searchTerm,
+        additionalHttpHeaders: this.additionalHttpHeaders
+      });
+    } catch (e) {
+      const isLatestResponse = this.httpManager.processRequestId('generativeDirectAnswer', thisRequestId);
+      if (isLatestResponse) {
+        this.stateManager.dispatchEvent('generativeDirectAnswer/setIsLoading', false);
+      }
+      return Promise.reject(e);
+    }
+
+    const isLatestResponse = this.httpManager.processRequestId('generativeDirectAnswer', thisRequestId);
+    if (!isLatestResponse) {
+      return response;
+    }
+    this.stateManager.dispatchEvent('generativeDirectAnswer/setResponse', response);
+    this.stateManager.dispatchEvent('generativeDirectAnswer/setIsLoading', false);
+    return response;
+  }
+}

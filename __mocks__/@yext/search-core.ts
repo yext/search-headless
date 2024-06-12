@@ -22,6 +22,9 @@ export function provideCore(): unknown {
     }),
     submitQuestion: jest.fn(() => {
       return Promise.resolve({});
+    }),
+    generativeDirectAnswer: jest.fn(() => {
+      return Promise.resolve({});
     })
   };
 }

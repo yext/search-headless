@@ -603,6 +603,7 @@ export default class SearchHeadless {
     } catch (e) {
       const isLatestResponse = this.httpManager.processRequestId('generativeDirectAnswer', thisRequestId);
       if (isLatestResponse) {
+        this.stateManager.dispatchEvent('generativeDirectAnswer/setResponse', undefined);
         this.stateManager.dispatchEvent('generativeDirectAnswer/setIsLoading', false);
       }
       return Promise.reject(e);

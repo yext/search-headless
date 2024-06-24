@@ -17,7 +17,7 @@ export declare interface VerticalResults
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [appliedQueryFilters](./search-headless.verticalresults.appliedqueryfilters.md) | [AppliedQueryFilter](./search-headless.appliedqueryfilter.md)<!-- -->\[\] | A array of [AppliedQueryFilter](./search-headless.appliedqueryfilter.md)<!-- -->s which were applied to the vertical results. |
-|  [queryDurationMillis?](./search-headless.verticalresults.querydurationmillis.md) | number | <i>(Optional)</i> The duration of the query in milliseconds. |
+|  [queryDurationMillis?](./search-headless.verticalresults.querydurationmillis.md) | number | <i>(Optional)</i> The duration of the query in milliseconds |
 |  [results](./search-headless.verticalresults.results.md) | [Result](./search-headless.result.md)<!-- -->\[\] | An array of search [Result](./search-headless.result.md)<!-- -->s for the vertical. |
 |  [resultsCount](./search-headless.verticalresults.resultscount.md) | number | The total number of results within the vertical. |
 |  [source](./search-headless.verticalresults.source.md) | [Source](./search-headless.source.md) | Represents the source of a [Result](./search-headless.result.md)<!-- -->. |

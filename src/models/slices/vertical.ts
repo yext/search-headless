@@ -97,7 +97,6 @@ export interface VerticalSearchState {
 export function isVerticalResults(vertical: VerticalSearchState): vertical is VerticalResults {
   const verticalResults = vertical as VerticalResults;
   return verticalResults.appliedQueryFilters !== undefined
-    && verticalResults.queryDurationMillis !== undefined
     && verticalResults.results !== undefined
     && verticalResults.resultsCount !== undefined
     && verticalResults.source !== undefined

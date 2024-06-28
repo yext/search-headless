@@ -169,6 +169,24 @@ it('answers.setVerticalLimit sets the vertical limit when a number is passed to 
   expect(answers.state.vertical.limit).toEqual(7);
 });
 
+it('vertical searches re-use queryId when offset is non-0', async () => {
+  const answers = createMockedHeadless();
+  await answers.executeVerticalQuery();
+  const firstQueryId = answers.state.query.queryId;
+  answers.setOffset(5);
+  answers.setQuery('different query');
+  await answers.executeVerticalQuery();
+  expect(answers.state.query.queryId).toEqual(firstQueryId);
+});
+
+it('vertical searches re-use queryId when query is the same', async () => {
+  const answers = createMockedHeadless();
+  await answers.executeVerticalQuery();
+  const firstQueryId = answers.state.query.queryId;
+  await answers.executeVerticalQuery();
+  expect(answers.state.query.queryId).toEqual(firstQueryId);
+});
+
 it('handle a rejected promise from core', async () => {
   const mockSearch = createMockRejectedSearch();
   const mockCore = { verticalSearch: mockSearch };

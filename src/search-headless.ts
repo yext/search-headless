@@ -411,6 +411,9 @@ export default class SearchHeadless {
     const { limit, offset, sortBys, locationRadius } = this.state.vertical;
     const { referrerPageUrl, context } = this.state.meta;
     const { userLocation } = this.state.location;
+    const zeroOffset = this.state.vertical.offset ?? 0;
+    const inputIsPreviousQuery = input == this.state.query.mostRecentSearch;
+    const queryId = !zeroOffset || inputIsPreviousQuery ? this.state.query.queryId : undefined;
 
     const facetsToApply = facets?.map(facet => {
       return {
@@ -437,7 +440,8 @@ export default class SearchHeadless {
       context,
       referrerPageUrl,
       locationRadius,
-      additionalHttpHeaders: this.additionalHttpHeaders
+      additionalHttpHeaders: this.additionalHttpHeaders,
+      queryId
     };
 
     let response: VerticalSearchResponse;

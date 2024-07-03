@@ -4,7 +4,7 @@
 
 ## QueryState.isPagination property
 
-Whether the next query represnts a pagination - in which case queryId will be maintained
+Whether the next query represents a pagination - in which case queryId will be maintained
 
 <b>Signature:</b>
 

@@ -17,7 +17,7 @@ export interface QueryState
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [input?](./search-headless.querystate.input.md) | string | <i>(Optional)</i> The user input used for the next search query. |
-|  [isPagination?](./search-headless.querystate.ispagination.md) | boolean | <i>(Optional)</i> Whether the next query represnts a pagination - in which case queryId will be maintained |
+|  [isPagination?](./search-headless.querystate.ispagination.md) | boolean | <i>(Optional)</i> Whether the next query represents a pagination - in which case queryId will be maintained |
 |  [mostRecentSearch?](./search-headless.querystate.mostrecentsearch.md) | string | <i>(Optional)</i> The query of the most recent search. |
 |  [queryId?](./search-headless.querystate.queryid.md) | string | <i>(Optional)</i> The ID of the query from the latest search. |
 |  [querySource?](./search-headless.querystate.querysource.md) | [QuerySource](./search-headless.querysource.md) | <i>(Optional)</i> The source of the query (from a standard Search integration, a Search overlay, or from visual autocomplete). |

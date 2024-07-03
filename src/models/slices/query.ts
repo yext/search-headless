@@ -31,4 +31,8 @@ export interface QueryState {
    * The computed intents of the mostRecentSearch, as returned by the Search API.
    */
   searchIntents?: SearchIntent[]
+  /**
+   * Whether the next query represnts a pagination - in which case queryId will be maintained
+   */
+  isPagination?: boolean
 }

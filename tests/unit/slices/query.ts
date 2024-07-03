@@ -2,13 +2,21 @@ import { QuerySource, QueryTrigger } from '@yext/search-core';
 import createQuerySlice from '../../../src/slices/query';
 
 const { reducer, actions } = createQuerySlice('');
-const { setInput, setQueryId, setSource, setTrigger } = actions;
+const { setInput, setIsPagination, setQueryId, setSource, setTrigger } = actions;
 
 describe('query slice reducer works as expected', () => {
   it('setQuery action is handled properly', () => {
     const searchTerm = 'search term';
     const expectedState = { input: searchTerm };
     const actualState = reducer({}, setInput(searchTerm));
+
+    expect(actualState).toEqual(expectedState);
+  });
+
+  it('setIsPagination action is handled properly', () => {
+    const isPagination = true;
+    const expectedState = { isPagination };
+    const actualState = reducer({}, setIsPagination(isPagination));
 
     expect(actualState).toEqual(expectedState);
   });

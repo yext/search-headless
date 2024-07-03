@@ -402,7 +402,7 @@ export default class SearchHeadless {
       return;
     }
     this.stateManager.dispatchEvent('searchStatus/setIsLoading', true);
-    const { input, querySource, queryTrigger } = this.state.query;
+    const { input, querySource, queryTrigger, mostRecentSearch, queryId } = this.state.query;
     const skipSpellCheck = !this.state.spellCheck.enabled;
     const sessionTrackingEnabled = this.state.sessionTracking.enabled;
     const sessionId = this.state.sessionTracking.sessionId;
@@ -411,9 +411,9 @@ export default class SearchHeadless {
     const { limit, offset, sortBys, locationRadius } = this.state.vertical;
     const { referrerPageUrl, context } = this.state.meta;
     const { userLocation } = this.state.location;
-    const zeroOffset = this.state.vertical.offset ?? 0;
-    const inputIsPreviousQuery = input == this.state.query.mostRecentSearch;
-    const queryId = !zeroOffset || inputIsPreviousQuery ? this.state.query.queryId : undefined;
+    const zeroOffset = offset == 0 || offset == undefined;
+    const inputIsPreviousQuery = input == mostRecentSearch;
+    const nextQueryId = (!zeroOffset || inputIsPreviousQuery) ? queryId : undefined;
 
     const facetsToApply = facets?.map(facet => {
       return {
@@ -440,8 +440,8 @@ export default class SearchHeadless {
       context,
       referrerPageUrl,
       locationRadius,
-      additionalHttpHeaders: this.additionalHttpHeaders,
-      queryId
+      queryId: nextQueryId,
+      additionalHttpHeaders: this.additionalHttpHeaders
     };
 
     let response: VerticalSearchResponse;

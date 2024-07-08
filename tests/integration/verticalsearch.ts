@@ -169,6 +169,23 @@ it('answers.setVerticalLimit sets the vertical limit when a number is passed to 
   expect(answers.state.vertical.limit).toEqual(7);
 });
 
+it('vertical searches re-use queryId when isPagination is true', async () => {
+  const answers = createMockedHeadless( { verticalSearch: createMockSearch() }, initialState);
+  await answers.executeVerticalQuery();
+  const firstQueryId = answers.state.query.queryId;
+  answers.setIsPagination(true);
+  await answers.executeVerticalQuery();
+  expect(answers.state.query.queryId).toEqual(firstQueryId);
+});
+
+it('vertical searches change queryId when isPagination is not true', async () => {
+  const answers = createMockedHeadless( { verticalSearch: createMockSearch() }, initialState);
+  await answers.executeVerticalQuery();
+  const firstQueryId = answers.state.query.queryId;
+  await answers.executeVerticalQuery();
+  expect(answers.state.query.queryId).not.toEqual(firstQueryId);
+});
+
 it('handle a rejected promise from core', async () => {
   const mockSearch = createMockRejectedSearch();
   const mockCore = { verticalSearch: mockSearch };
@@ -199,7 +216,11 @@ it('executeVerticalQuery passes the additional HTTP headers', async () => {
 function createMockSearch() {
   return jest.fn(async (_request: VerticalSearchRequest) => {
     await setTimeout(0);
-    return Promise.resolve({});
+    return Promise.resolve({
+      // preserves queryId if passed-in, else generates a random string
+      queryId: _request.queryId == undefined ?
+        (Math.random()).toString(36).substring(2) : _request.queryId
+    });
   });
 }
 

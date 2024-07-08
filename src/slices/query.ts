@@ -8,6 +8,9 @@ const reducers = {
   setInput: (state, action: PayloadAction<string>) => {
     state.input = action.payload;
   },
+  setIsPagination: (state, action: PayloadAction<boolean>) => {
+    state.isPagination = action.payload;
+  },
   setTrigger: (state, action: PayloadAction<QueryTrigger>) => {
     state.queryTrigger = action.payload;
   },

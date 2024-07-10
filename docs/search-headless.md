@@ -85,6 +85,10 @@
 |  [FilterSearchRequest](./search-headless.filtersearchrequest.md) | Options for a filtersearch request. |
 |  [FilterSearchResponse](./search-headless.filtersearchresponse.md) | The response of a filtersearch request. |
 |  [FiltersState](./search-headless.filtersstate.md) | Maintains the current state of facets and filters in the application. |
+|  [GenerativeDirectAnswerRequest](./search-headless.generativedirectanswerrequest.md) | Options which can be specified for a generative direct answer request. |
+|  [GenerativeDirectAnswerResponse](./search-headless.generativedirectanswerresponse.md) | A representation of a generative direct answer response. |
+|  [GenerativeDirectAnswerService](./search-headless.generativedirectanswerservice.md) | A service for generative direct answer requests. |
+|  [GenerativeDirectAnswerState](./search-headless.generativedirectanswerstate.md) | Maintains the data for the latest generative direct answer. |
 |  [HighlightedValue](./search-headless.highlightedvalue.md) | A field value and its substring matches as emphasized by the Search API. |
 |  [HolidayHours](./search-headless.holidayhours.md) | An interface for holiday hours to use in [BaseFieldValueDirectAnswer.value](./search-headless.basefieldvaluedirectanswer.value.md)<!-- -->. |
 |  [Hours](./search-headless.hours.md) | An interface for hours fields to use in [BaseFieldValueDirectAnswer.value](./search-headless.basefieldvaluedirectanswer.value.md)<!-- -->. |

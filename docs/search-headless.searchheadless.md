@@ -31,6 +31,7 @@ export default class SearchHeadless
 |  --- | --- | --- |
 |  [addListener(listener)](./search-headless.searchheadless.addlistener.md) |  | Adds a listener for a specific state value of type T. |
 |  [executeFilterSearch(query, sectioned, fields)](./search-headless.searchheadless.executefiltersearch.md) |  | Performs a filtersearch request against specified fields within a single vertical using the vertical key stored in state. |
+|  [executeGenerativeDirectAnswer()](./search-headless.searchheadless.executegenerativedirectanswer.md) |  | Perform a generativeDirectAnswer request to the query most recent search stored in state. |
 |  [executeUniversalAutocomplete()](./search-headless.searchheadless.executeuniversalautocomplete.md) |  | Performs an autocomplete request across all verticals using the query input stored in state. |
 |  [executeUniversalQuery()](./search-headless.searchheadless.executeuniversalquery.md) |  | Performs a Search across all verticals with relevant parts of the state used as input to the search. Updates the state with the response data. |
 |  [executeVerticalAutocomplete()](./search-headless.searchheadless.executeverticalautocomplete.md) |  | Performs an autocomplete request for a single vertical using the query input and vertical key stored in state. |

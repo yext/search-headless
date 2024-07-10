@@ -56,6 +56,15 @@ export default class SearchHeadless {
   ) {}
 
   /**
+   * Sets {@link QueryState.isPagination} to the specified input.
+   *
+   * @param input - The input to set
+   */
+  setIsPagination(input: boolean): void {
+    this.stateManager.dispatchEvent('query/setIsPagination', input);
+  }
+
+  /**
    * Sets {@link QueryState.input} to the specified input.
    *
    * @param input - The input to set
@@ -402,7 +411,7 @@ export default class SearchHeadless {
       return;
     }
     this.stateManager.dispatchEvent('searchStatus/setIsLoading', true);
-    const { input, querySource, queryTrigger } = this.state.query;
+    const { input, isPagination, queryId, querySource, queryTrigger } = this.state.query;
     const skipSpellCheck = !this.state.spellCheck.enabled;
     const sessionTrackingEnabled = this.state.sessionTracking.enabled;
     const sessionId = this.state.sessionTracking.sessionId;
@@ -411,6 +420,7 @@ export default class SearchHeadless {
     const { limit, offset, sortBys, locationRadius } = this.state.vertical;
     const { referrerPageUrl, context } = this.state.meta;
     const { userLocation } = this.state.location;
+    const nextQueryId = isPagination ? queryId : undefined;
 
     const facetsToApply = facets?.map(facet => {
       return {
@@ -437,6 +447,7 @@ export default class SearchHeadless {
       context,
       referrerPageUrl,
       locationRadius,
+      queryId: nextQueryId,
       additionalHttpHeaders: this.additionalHttpHeaders
     };
 
@@ -457,6 +468,7 @@ export default class SearchHeadless {
     }
     this.stateManager.dispatchEvent('query/setQueryId', response.queryId);
     this.stateManager.dispatchEvent('query/setMostRecentSearch', input);
+    this.stateManager.dispatchEvent('query/setIsPagination', false);
     this.stateManager.dispatchEvent('filters/setFacets', response.facets);
     this.stateManager.dispatchEvent('spellCheck/setResult', response.spellCheck);
     this.stateManager.dispatchEvent('query/setSearchIntents', response.searchIntents || []);

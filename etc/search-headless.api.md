@@ -681,6 +681,7 @@ export enum QuerySource {
 // @public
 export interface QueryState {
     input?: string;
+    isPagination?: boolean;
     mostRecentSearch?: string;
     queryId?: string;
     querySource?: QuerySource;
@@ -809,6 +810,7 @@ export class SearchHeadless {
     setFacetOption(fieldId: string, facetOption: FacetOption, selected: boolean): void;
     setFacets(facets: DisplayableFacet[]): void;
     setFilterOption(filter: SelectableStaticFilter): void;
+    setIsPagination(input: boolean): void;
     setLocationRadius(locationRadius: number | undefined): void;
     setOffset(offset: number): void;
     setQuery(input: string): void;

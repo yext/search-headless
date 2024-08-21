@@ -6,7 +6,7 @@
 
 Sets [QueryState.queryTrigger](./search-headless.querystate.querytrigger.md) to the specified trigger.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 setQueryTrigger(trigger: QueryTrigger): void;
@@ -14,11 +14,40 @@ setQueryTrigger(trigger: QueryTrigger): void;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  trigger | [QueryTrigger](./search-headless.querytrigger.md) | The query trigger to set |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+trigger
+
+
+</td><td>
+
+[QueryTrigger](./search-headless.querytrigger.md)
+
+
+</td><td>
+
+The query trigger to set
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 void
 

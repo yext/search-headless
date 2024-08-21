@@ -6,7 +6,7 @@
 
 Maintains the direct answer associated with the latest search.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface DirectAnswerState 
@@ -14,7 +14,44 @@ export interface DirectAnswerState
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [result?](./search-headless.directanswerstate.result.md) | [FeaturedSnippetDirectAnswer](./search-headless.featuredsnippetdirectanswer.md) \| [FieldValueDirectAnswer](./search-headless.fieldvaluedirectanswer.md) | <i>(Optional)</i> The data for the direct answer. The type of the data is determined by the Search API based on whether the answer was found within a document or was a field value in the knowledge graph. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[result?](./search-headless.directanswerstate.result.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[FeaturedSnippetDirectAnswer](./search-headless.featuredsnippetdirectanswer.md) \| [FieldValueDirectAnswer](./search-headless.fieldvaluedirectanswer.md)
+
+
+</td><td>
+
+_(Optional)_ The data for the direct answer. The type of the data is determined by the Search API based on whether the answer was found within a document or was a field value in the knowledge graph.
+
+
+</td></tr>
+</tbody></table>

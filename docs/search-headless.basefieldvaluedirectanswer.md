@@ -6,20 +6,129 @@
 
 A direct answer where the answer came from a field from the knowledge graph.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare interface BaseFieldValueDirectAnswer<T = unknown> extends DirectAnswer<T> 
 ```
-<b>Extends:</b> [DirectAnswer](./search-headless.directanswer.md)<!-- -->&lt;T&gt;
+**Extends:** [DirectAnswer](./search-headless.directanswer.md)<!-- -->&lt;T&gt;
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [entityName](./search-headless.basefieldvaluedirectanswer.entityname.md) | string | The name of the entity that direct answer came from. |
-|  [fieldApiName](./search-headless.basefieldvaluedirectanswer.fieldapiname.md) | string | The field api name of the direct answer. |
-|  [fieldName](./search-headless.basefieldvaluedirectanswer.fieldname.md) | string | The field name of the direct answer. |
-|  [type](./search-headless.basefieldvaluedirectanswer.type.md) | [DirectAnswerType.FieldValue](./search-headless.directanswertype.md) | Indicates that the DirectAnswer is a [FieldValueDirectAnswer](./search-headless.fieldvaluedirectanswer.md)<!-- -->. |
-|  [value](./search-headless.basefieldvaluedirectanswer.value.md) | T | The result of the direct answer. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[entityName](./search-headless.basefieldvaluedirectanswer.entityname.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The name of the entity that direct answer came from.
+
+
+</td></tr>
+<tr><td>
+
+[fieldApiName](./search-headless.basefieldvaluedirectanswer.fieldapiname.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The field api name of the direct answer.
+
+
+</td></tr>
+<tr><td>
+
+[fieldName](./search-headless.basefieldvaluedirectanswer.fieldname.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The field name of the direct answer.
+
+
+</td></tr>
+<tr><td>
+
+[type](./search-headless.basefieldvaluedirectanswer.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[DirectAnswerType.FieldValue](./search-headless.directanswertype.md)
+
+
+</td><td>
+
+Indicates that the DirectAnswer is a [FieldValueDirectAnswer](./search-headless.fieldvaluedirectanswer.md)<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[value](./search-headless.basefieldvaluedirectanswer.value.md)
+
+
+</td><td>
+
+
+</td><td>
+
+T
+
+
+</td><td>
+
+The result of the direct answer.
+
+
+</td></tr>
+</tbody></table>

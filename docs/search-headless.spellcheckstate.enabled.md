@@ -6,7 +6,7 @@
 
 Whether or not spellcheck is enabled.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 enabled: boolean;

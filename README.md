@@ -1,5 +1,5 @@
 # search-headless
-A library for powering UI components for Yext Search integrations.
+A library for powering UI components for Yext Search integrations. 
 
 [Full Documentation](./docs/search-headless.md)
 

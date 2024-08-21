@@ -884,6 +884,7 @@ export { searchUtilities }
 
 // @public
 export interface Segment {
+    pageNumber?: number;
     score: number;
     text: string;
 }
@@ -936,6 +937,7 @@ export enum Source {
     Bing = "BING_CSE",
     Custom = "CUSTOM_SEARCHER",
     DocumentVertical = "DOCUMENT_VERTICAL",
+    FunctionVertical = "FUNCTION_VERTICAL",
     Google = "GOOGLE_CSE",
     KnowledgeManager = "KNOWLEDGE_MANAGER",
     Zendesk = "ZENDESK"

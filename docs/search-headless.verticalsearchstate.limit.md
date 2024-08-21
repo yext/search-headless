@@ -6,7 +6,7 @@
 
 The maximum number of results to include for the vertical search.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 limit?: number;

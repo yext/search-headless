@@ -6,16 +6,53 @@
 
 A [FieldValueFilter](./search-headless.fieldvaluefilter.md) with the kind of filter specified to discriminate between static filter types.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare interface FieldValueStaticFilter extends FieldValueFilter 
 ```
-<b>Extends:</b> [FieldValueFilter](./search-headless.fieldvaluefilter.md)
+**Extends:** [FieldValueFilter](./search-headless.fieldvaluefilter.md)
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [kind](./search-headless.fieldvaluestaticfilter.kind.md) | 'fieldValue' | The kind of static filter. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[kind](./search-headless.fieldvaluestaticfilter.kind.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'fieldValue'
+
+
+</td><td>
+
+The kind of static filter.
+
+
+</td></tr>
+</tbody></table>

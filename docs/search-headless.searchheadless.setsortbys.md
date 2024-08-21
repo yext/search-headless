@@ -6,7 +6,7 @@
 
 Sets [VerticalSearchState.sortBys](./search-headless.verticalsearchstate.sortbys.md) to the specified sortBys.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 setSortBys(sortBys: SortBy[]): void;
@@ -14,11 +14,40 @@ setSortBys(sortBys: SortBy[]): void;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  sortBys | [SortBy](./search-headless.sortby.md)<!-- -->\[\] | The sortBys to set |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+sortBys
+
+
+</td><td>
+
+[SortBy](./search-headless.sortby.md)<!-- -->\[\]
+
+
+</td><td>
+
+The sortBys to set
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 void
 

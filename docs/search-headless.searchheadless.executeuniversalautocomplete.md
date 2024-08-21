@@ -6,12 +6,12 @@
 
 Performs an autocomplete request across all verticals using the query input stored in state.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 executeUniversalAutocomplete(): Promise<AutocompleteResponse>;
 ```
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;[AutocompleteResponse](./search-headless.autocompleteresponse.md)<!-- -->&gt;
 

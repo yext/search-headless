@@ -6,7 +6,7 @@
 
 Error information from when a vertical fails to return results.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface FailedVertical 
@@ -14,101 +14,10 @@ export declare interface FailedVertical
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [details](./search-headless.failedvertical.details.md) | { responseCode: number; description: string; } | Detailed information about the error. |
+|  [errorType](./search-headless.failedvertical.errortype.md) | [ErrorType](./search-headless.errortype.md) | Identifier for the type of error causing the failure. |
+|  [queryDurationMillis](./search-headless.failedvertical.querydurationmillis.md) | number | The duration of the query in milliseconds. |
+|  [verticalKey](./search-headless.failedvertical.verticalkey.md) | string | The vertical key associated with the failed vertical. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[details](./search-headless.failedvertical.details.md)
-
-
-</td><td>
-
-
-</td><td>
-
-{ responseCode: number; description: string; }
-
-
-</td><td>
-
-Detailed information about the error.
-
-
-</td></tr>
-<tr><td>
-
-[errorType](./search-headless.failedvertical.errortype.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[ErrorType](./search-headless.errortype.md)
-
-
-</td><td>
-
-Identifier for the type of error causing the failure.
-
-
-</td></tr>
-<tr><td>
-
-[queryDurationMillis](./search-headless.failedvertical.querydurationmillis.md)
-
-
-</td><td>
-
-
-</td><td>
-
-number
-
-
-</td><td>
-
-The duration of the query in milliseconds.
-
-
-</td></tr>
-<tr><td>
-
-[verticalKey](./search-headless.failedvertical.verticalkey.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-The vertical key associated with the failed vertical.
-
-
-</td></tr>
-</tbody></table>

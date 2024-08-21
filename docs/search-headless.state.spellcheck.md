@@ -6,7 +6,7 @@
 
 Maintains whether spellcheck is enabled and the spellcheck response from the latest search.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 spellCheck: SpellCheckState;

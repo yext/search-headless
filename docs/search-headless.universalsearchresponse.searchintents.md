@@ -6,7 +6,7 @@
 
 An array of [SearchIntent](./search-headless.searchintent.md)<!-- -->s which represents requests from the API.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 searchIntents?: SearchIntent[];

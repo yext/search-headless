@@ -6,7 +6,7 @@
 
 The similarity score of the segment from 0 to 1
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 score: number;

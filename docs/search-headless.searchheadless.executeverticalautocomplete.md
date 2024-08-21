@@ -6,12 +6,12 @@
 
 Performs an autocomplete request for a single vertical using the query input and vertical key stored in state.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 executeVerticalAutocomplete(): Promise<AutocompleteResponse | undefined>;
 ```
-**Returns:**
+<b>Returns:</b>
 
 Promise&lt;[AutocompleteResponse](./search-headless.autocompleteresponse.md) \| undefined&gt;
 

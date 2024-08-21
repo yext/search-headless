@@ -6,7 +6,7 @@
 
 The field name to sort by. Required if the SortBy type is [SortType.Field](./search-headless.sorttype.md)<!-- -->.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 field?: string;

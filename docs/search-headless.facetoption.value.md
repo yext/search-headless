@@ -6,7 +6,7 @@
 
 The value to compare.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 value: Exclude<FieldValueFilter['value'], NearFilterValue>;

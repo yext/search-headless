@@ -6,7 +6,7 @@
 
 A service for autocomplete requests.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface AutocompleteService 
@@ -14,48 +14,9 @@ export declare interface AutocompleteService
 
 ## Methods
 
-<table><thead><tr><th>
+|  Method | Description |
+|  --- | --- |
+|  [filterSearch(request)](./search-headless.autocompleteservice.filtersearch.md) | Retrieves query suggestions for filter search. |
+|  [universalAutocomplete(request)](./search-headless.autocompleteservice.universalautocomplete.md) | Retrieves query suggestions for universal. |
+|  [verticalAutocomplete(request)](./search-headless.autocompleteservice.verticalautocomplete.md) | Retrieves query suggestions for a vertical. |
 
-Method
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[filterSearch(request)](./search-headless.autocompleteservice.filtersearch.md)
-
-
-</td><td>
-
-Retrieves query suggestions for filter search.
-
-
-</td></tr>
-<tr><td>
-
-[universalAutocomplete(request)](./search-headless.autocompleteservice.universalautocomplete.md)
-
-
-</td><td>
-
-Retrieves query suggestions for universal.
-
-
-</td></tr>
-<tr><td>
-
-[verticalAutocomplete(request)](./search-headless.autocompleteservice.verticalautocomplete.md)
-
-
-</td><td>
-
-Retrieves query suggestions for a vertical.
-
-
-</td></tr>
-</tbody></table>

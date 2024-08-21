@@ -6,7 +6,7 @@
 
 An interface for a day's hours to use in [BaseFieldValueDirectAnswer.value](./search-headless.basefieldvaluedirectanswer.value.md)<!-- -->.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface DayHour 
@@ -14,63 +14,8 @@ export declare interface DayHour
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [isClosed?](./search-headless.dayhour.isclosed.md) | boolean | <i>(Optional)</i> |
+|  [openIntervals?](./search-headless.dayhour.openintervals.md) | [Interval](./search-headless.interval.md)<!-- -->\[\] | <i>(Optional)</i> |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[isClosed?](./search-headless.dayhour.isclosed.md)
-
-
-</td><td>
-
-
-</td><td>
-
-boolean
-
-
-</td><td>
-
-_(Optional)_
-
-
-</td></tr>
-<tr><td>
-
-[openIntervals?](./search-headless.dayhour.openintervals.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[Interval](./search-headless.interval.md)<!-- -->\[\]
-
-
-</td><td>
-
-_(Optional)_
-
-
-</td></tr>
-</tbody></table>

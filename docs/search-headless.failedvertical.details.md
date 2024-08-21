@@ -6,7 +6,7 @@
 
 Detailed information about the error.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 details: {

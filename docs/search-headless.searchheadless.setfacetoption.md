@@ -6,7 +6,7 @@
 
 Sets a specified facet option to be selected or unselected.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 setFacetOption(fieldId: string, facetOption: FacetOption, selected: boolean): void;
@@ -14,72 +14,13 @@ setFacetOption(fieldId: string, facetOption: FacetOption, selected: boolean): vo
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  fieldId | string | The fieldId for the facet |
+|  facetOption | [FacetOption](./search-headless.facetoption.md) | The option of the facet to select |
+|  selected | boolean | Whether or not the facet option should be selected |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-fieldId
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-The fieldId for the facet
-
-
-</td></tr>
-<tr><td>
-
-facetOption
-
-
-</td><td>
-
-[FacetOption](./search-headless.facetoption.md)
-
-
-</td><td>
-
-The option of the facet to select
-
-
-</td></tr>
-<tr><td>
-
-selected
-
-
-</td><td>
-
-boolean
-
-
-</td><td>
-
-Whether or not the facet option should be selected
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 void
 

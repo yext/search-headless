@@ -6,7 +6,7 @@
 
 Submits a custom question to the Search API.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse>;
@@ -14,40 +14,11 @@ submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionRe
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  request | [QuestionSubmissionRequest](./search-headless.questionsubmissionrequest.md) | Question submission request options |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-request
-
-
-</td><td>
-
-[QuestionSubmissionRequest](./search-headless.questionsubmissionrequest.md)
-
-
-</td><td>
-
-Question submission request options
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 Promise&lt;[QuestionSubmissionResponse](./search-headless.questionsubmissionresponse.md)<!-- -->&gt;
 

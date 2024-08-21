@@ -6,7 +6,7 @@
 
 Performs a Universal search across all verticals.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 universalSearch(request: UniversalSearchRequest): Promise<UniversalSearchResponse>;
@@ -14,40 +14,11 @@ universalSearch(request: UniversalSearchRequest): Promise<UniversalSearchRespons
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  request | [UniversalSearchRequest](./search-headless.universalsearchrequest.md) | The details of the Universal search request. |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-request
-
-
-</td><td>
-
-[UniversalSearchRequest](./search-headless.universalsearchrequest.md)
-
-
-</td><td>
-
-The details of the Universal search request.
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 Promise&lt;[UniversalSearchResponse](./search-headless.universalsearchresponse.md)<!-- -->&gt;
 

@@ -6,7 +6,7 @@
 
 Constructs a new instance of the `SearchHeadless` class
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 constructor(core: SearchCore, stateManager: StateManager, httpManager: HttpManager, additionalHttpHeaders?: AdditionalHttpHeaders | undefined);
@@ -14,78 +14,10 @@ constructor(core: SearchCore, stateManager: StateManager, httpManager: HttpManag
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  core | [SearchCore](./search-headless.searchcore.md) |  |
+|  stateManager | StateManager |  |
+|  httpManager | HttpManager |  |
+|  additionalHttpHeaders | [AdditionalHttpHeaders](./search-headless.additionalhttpheaders.md) \| undefined |  |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-core
-
-
-</td><td>
-
-[SearchCore](./search-headless.searchcore.md)
-
-
-</td><td>
-
-
-</td></tr>
-<tr><td>
-
-stateManager
-
-
-</td><td>
-
-[StateManager](./search-headless.statemanager.md)
-
-
-</td><td>
-
-
-</td></tr>
-<tr><td>
-
-httpManager
-
-
-</td><td>
-
-HttpManager
-
-
-</td><td>
-
-
-</td></tr>
-<tr><td>
-
-additionalHttpHeaders
-
-
-</td><td>
-
-[AdditionalHttpHeaders](./search-headless.additionalhttpheaders.md) \| undefined
-
-
-</td><td>
-
-_(Optional)_
-
-
-</td></tr>
-</tbody></table>

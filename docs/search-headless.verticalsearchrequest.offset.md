@@ -6,7 +6,7 @@
 
 The result offset which allows for fetching more results with the same query.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 offset?: number;

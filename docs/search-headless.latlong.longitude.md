@@ -6,7 +6,7 @@
 
 Longitude formatted as a decimal degree number.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 longitude: number;

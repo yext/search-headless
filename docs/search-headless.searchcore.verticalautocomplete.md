@@ -6,7 +6,7 @@
 
 Performs an autocomplete request for a single vertical.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 verticalAutocomplete(request: VerticalAutocompleteRequest): Promise<AutocompleteResponse>;
@@ -14,40 +14,11 @@ verticalAutocomplete(request: VerticalAutocompleteRequest): Promise<Autocomplete
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  request | [VerticalAutocompleteRequest](./search-headless.verticalautocompleterequest.md) | Vertical autocomplete request options |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-request
-
-
-</td><td>
-
-[VerticalAutocompleteRequest](./search-headless.verticalautocompleterequest.md)
-
-
-</td><td>
-
-Vertical autocomplete request options
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 Promise&lt;[AutocompleteResponse](./search-headless.autocompleteresponse.md)<!-- -->&gt;
 

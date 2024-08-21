@@ -6,7 +6,7 @@
 
 A representation of a response from a universal search.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface UniversalSearchResponse 
@@ -14,196 +14,15 @@ export declare interface UniversalSearchResponse
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [directAnswer?](./search-headless.universalsearchresponse.directanswer.md) | [FeaturedSnippetDirectAnswer](./search-headless.featuredsnippetdirectanswer.md) \| [FieldValueDirectAnswer](./search-headless.fieldvaluedirectanswer.md) | <i>(Optional)</i> A direct answer to a search. |
+|  [failedVerticals?](./search-headless.universalsearchresponse.failedverticals.md) | [FailedVertical](./search-headless.failedvertical.md)<!-- -->\[\] | <i>(Optional)</i> Error information from when a vertical fails to return results. |
+|  [locationBias?](./search-headless.universalsearchresponse.locationbias.md) | [LocationBias](./search-headless.locationbias.md) | <i>(Optional)</i> Information about the user's location. |
+|  [queryId?](./search-headless.universalsearchresponse.queryid.md) | string | <i>(Optional)</i> The ID of the search query. |
+|  [queryRulesActionsData?](./search-headless.universalsearchresponse.queryrulesactionsdata.md) | [QueryRulesActionsData](./search-headless.queryrulesactionsdata.md)<!-- -->\[\] | <i>(Optional)</i> Data returned from the Search query rules system. |
+|  [searchIntents?](./search-headless.universalsearchresponse.searchintents.md) | [SearchIntent](./search-headless.searchintent.md)<!-- -->\[\] | <i>(Optional)</i> An array of [SearchIntent](./search-headless.searchintent.md)<!-- -->s which represents requests from the API. |
+|  [spellCheck?](./search-headless.universalsearchresponse.spellcheck.md) | [SpellCheck](./search-headless.spellcheck.md) | <i>(Optional)</i> A spellcheck response from a search query. |
+|  [uuid](./search-headless.universalsearchresponse.uuid.md) | string | A unique id which corresponds to the request. |
+|  [verticalResults](./search-headless.universalsearchresponse.verticalresults.md) | [VerticalResults](./search-headless.verticalresults.md)<!-- -->\[\] | An array of [VerticalResults](./search-headless.verticalresults.md) which represent the results for each vertical. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[directAnswer?](./search-headless.universalsearchresponse.directanswer.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[FeaturedSnippetDirectAnswer](./search-headless.featuredsnippetdirectanswer.md) \| [FieldValueDirectAnswer](./search-headless.fieldvaluedirectanswer.md)
-
-
-</td><td>
-
-_(Optional)_ A direct answer to a search.
-
-
-</td></tr>
-<tr><td>
-
-[failedVerticals?](./search-headless.universalsearchresponse.failedverticals.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[FailedVertical](./search-headless.failedvertical.md)<!-- -->\[\]
-
-
-</td><td>
-
-_(Optional)_ Error information from when a vertical fails to return results.
-
-
-</td></tr>
-<tr><td>
-
-[locationBias?](./search-headless.universalsearchresponse.locationbias.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[LocationBias](./search-headless.locationbias.md)
-
-
-</td><td>
-
-_(Optional)_ Information about the user's location.
-
-
-</td></tr>
-<tr><td>
-
-[queryId?](./search-headless.universalsearchresponse.queryid.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-_(Optional)_ The ID of the search query.
-
-
-</td></tr>
-<tr><td>
-
-[queryRulesActionsData?](./search-headless.universalsearchresponse.queryrulesactionsdata.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[QueryRulesActionsData](./search-headless.queryrulesactionsdata.md)<!-- -->\[\]
-
-
-</td><td>
-
-_(Optional)_ Data returned from the Search query rules system.
-
-
-</td></tr>
-<tr><td>
-
-[searchIntents?](./search-headless.universalsearchresponse.searchintents.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[SearchIntent](./search-headless.searchintent.md)<!-- -->\[\]
-
-
-</td><td>
-
-_(Optional)_ An array of [SearchIntent](./search-headless.searchintent.md)<!-- -->s which represents requests from the API.
-
-
-</td></tr>
-<tr><td>
-
-[spellCheck?](./search-headless.universalsearchresponse.spellcheck.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[SpellCheck](./search-headless.spellcheck.md)
-
-
-</td><td>
-
-_(Optional)_ A spellcheck response from a search query.
-
-
-</td></tr>
-<tr><td>
-
-[uuid](./search-headless.universalsearchresponse.uuid.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-A unique id which corresponds to the request.
-
-
-</td></tr>
-<tr><td>
-
-[verticalResults](./search-headless.universalsearchresponse.verticalresults.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[VerticalResults](./search-headless.verticalresults.md)<!-- -->\[\]
-
-
-</td><td>
-
-An array of [VerticalResults](./search-headless.verticalresults.md) which represent the results for each vertical.
-
-
-</td></tr>
-</tbody></table>

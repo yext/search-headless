@@ -6,7 +6,7 @@
 
 Sets [MetaState.referrerPageUrl](./search-headless.metastate.referrerpageurl.md) to the specified URL.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 setReferrerPageUrl(referrerPageUrl: string): void;
@@ -14,40 +14,11 @@ setReferrerPageUrl(referrerPageUrl: string): void;
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  referrerPageUrl | string | The referring page URL to set |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-referrerPageUrl
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-The referring page URL to set
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 void
 

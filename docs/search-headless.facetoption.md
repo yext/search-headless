@@ -6,53 +6,16 @@
 
 A filter associated with the facet.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface FacetOption extends Omit<FieldValueFilter, 'fieldId'> 
 ```
-**Extends:** Omit&lt;[FieldValueFilter](./search-headless.fieldvaluefilter.md)<!-- -->, 'fieldId'&gt;
+<b>Extends:</b> Omit&lt;[FieldValueFilter](./search-headless.fieldvaluefilter.md)<!-- -->, 'fieldId'&gt;
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [value](./search-headless.facetoption.value.md) | Exclude&lt;[FieldValueFilter](./search-headless.fieldvaluefilter.md)<!-- -->\['value'\], [NearFilterValue](./search-headless.nearfiltervalue.md)<!-- -->&gt; | The value to compare. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[value](./search-headless.facetoption.value.md)
-
-
-</td><td>
-
-
-</td><td>
-
-Exclude&lt;[FieldValueFilter](./search-headless.fieldvaluefilter.md)<!-- -->\['value'\], [NearFilterValue](./search-headless.nearfiltervalue.md)<!-- -->&gt;
-
-
-</td><td>
-
-The value to compare.
-
-
-</td></tr>
-</tbody></table>

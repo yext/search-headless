@@ -6,7 +6,7 @@
 
 Sets [SessionTrackingState.sessionId](./search-headless.sessiontrackingstate.sessionid.md) to the specified ID.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 setSessionId(sessionId: string): void;
@@ -14,40 +14,11 @@ setSessionId(sessionId: string): void;
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  sessionId | string | The session ID to set |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-sessionId
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-The session ID to set
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 void
 

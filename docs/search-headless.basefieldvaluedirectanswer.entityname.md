@@ -6,7 +6,7 @@
 
 The name of the entity that direct answer came from.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 entityName: string;

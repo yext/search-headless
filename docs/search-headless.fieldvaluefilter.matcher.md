@@ -6,7 +6,7 @@
 
 A Matcher is a filtering operation.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 matcher: Matcher;

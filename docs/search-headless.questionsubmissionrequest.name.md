@@ -6,7 +6,7 @@
 
 The name of the user.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 name: string;

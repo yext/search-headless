@@ -6,7 +6,7 @@
 
 Raw entity profile data in the shape of key-value pairs, or as an array of key-value pairs.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 rawData: T;

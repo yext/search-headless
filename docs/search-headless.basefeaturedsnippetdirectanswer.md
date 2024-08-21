@@ -6,91 +6,18 @@
 
 A direct answer which was found within a document.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface BaseFeaturedSnippetDirectAnswer<T = unknown> extends DirectAnswer<T> 
 ```
-**Extends:** [DirectAnswer](./search-headless.directanswer.md)<!-- -->&lt;T&gt;
+<b>Extends:</b> [DirectAnswer](./search-headless.directanswer.md)<!-- -->&lt;T&gt;
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [fieldType](./search-headless.basefeaturedsnippetdirectanswer.fieldtype.md) | [EnumOrLiteral](./search-headless.enumorliteral.md)<!-- -->&lt;[BuiltInFieldType.MultiLineText](./search-headless.builtinfieldtype.md) \| [BuiltInFieldType.RichText](./search-headless.builtinfieldtype.md) \| [BuiltInFieldType.RichText\_v2](./search-headless.builtinfieldtype.md) \| [BuiltInFieldType.Html](./search-headless.builtinfieldtype.md) \| [BuiltInFieldType.Markdown](./search-headless.builtinfieldtype.md)<!-- -->&gt; | The field type of the direct answer. |
+|  [snippet](./search-headless.basefeaturedsnippetdirectanswer.snippet.md) | [Snippet](./search-headless.snippet.md) | The snippet where the direct answer was found. |
+|  [type](./search-headless.basefeaturedsnippetdirectanswer.type.md) | [DirectAnswerType.FeaturedSnippet](./search-headless.directanswertype.md) | Indicates that the DirectAnswer is a [FeaturedSnippetDirectAnswer](./search-headless.featuredsnippetdirectanswer.md)<!-- -->. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[fieldType](./search-headless.basefeaturedsnippetdirectanswer.fieldtype.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[EnumOrLiteral](./search-headless.enumorliteral.md)<!-- -->&lt;[BuiltInFieldType.MultiLineText](./search-headless.builtinfieldtype.md) \| [BuiltInFieldType.RichText](./search-headless.builtinfieldtype.md) \| [BuiltInFieldType.RichText\_v2](./search-headless.builtinfieldtype.md) \| [BuiltInFieldType.Html](./search-headless.builtinfieldtype.md) \| [BuiltInFieldType.Markdown](./search-headless.builtinfieldtype.md)<!-- -->&gt;
-
-
-</td><td>
-
-The field type of the direct answer.
-
-
-</td></tr>
-<tr><td>
-
-[snippet](./search-headless.basefeaturedsnippetdirectanswer.snippet.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[Snippet](./search-headless.snippet.md)
-
-
-</td><td>
-
-The snippet where the direct answer was found.
-
-
-</td></tr>
-<tr><td>
-
-[type](./search-headless.basefeaturedsnippetdirectanswer.type.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[DirectAnswerType.FeaturedSnippet](./search-headless.directanswertype.md)
-
-
-</td><td>
-
-Indicates that the DirectAnswer is a [FeaturedSnippetDirectAnswer](./search-headless.featuredsnippetdirectanswer.md)<!-- -->.
-
-
-</td></tr>
-</tbody></table>

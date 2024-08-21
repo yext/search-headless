@@ -6,7 +6,7 @@
 
 [SearchIntent](./search-headless.searchintent.md)<!-- -->s corresponding to the autocomplete result.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 inputIntents: SearchIntent[];

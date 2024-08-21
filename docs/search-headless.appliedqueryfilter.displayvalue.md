@@ -6,7 +6,7 @@
 
 The value used in the filter.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 displayValue: string;

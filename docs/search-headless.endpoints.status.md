@@ -4,7 +4,7 @@
 
 ## Endpoints.status property
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 status?: string;

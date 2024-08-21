@@ -6,7 +6,7 @@
 
 If included, the verticals to which the universal search should be restricted.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 restrictVerticals?: string[];

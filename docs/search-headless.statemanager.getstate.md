@@ -6,12 +6,12 @@
 
 Returns the current state.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 getState(): State;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [State](./search-headless.state.md)
 

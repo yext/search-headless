@@ -6,7 +6,7 @@
 
 The ID of the current session. Used to track session state when cookies are blocked.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 sessionId?: string;

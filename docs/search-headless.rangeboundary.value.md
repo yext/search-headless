@@ -6,7 +6,7 @@
 
 The value of the boundary.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 value: T;

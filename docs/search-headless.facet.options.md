@@ -6,7 +6,7 @@
 
 An array of [FacetOption](./search-headless.facetoption.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 options: FacetOption[];

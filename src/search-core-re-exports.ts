@@ -16,6 +16,7 @@ export {
   Context,
   ClientSDKHeaderValues,
   CloudRegion,
+  CloudChoice,
   Direction,
   DisjunctionStaticFilter,
   DisplayableFacet,

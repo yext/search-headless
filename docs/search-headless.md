@@ -18,6 +18,7 @@
 |  --- | --- |
 |  [AppliedQueryFilterType](./search-headless.appliedqueryfiltertype.md) | Represents the type of [AppliedQueryFilter](./search-headless.appliedqueryfilter.md) applied to a search. |
 |  [BuiltInFieldType](./search-headless.builtinfieldtype.md) | Possible built-in field types for [DirectAnswer.fieldType](./search-headless.directanswer.fieldtype.md)<!-- -->. |
+|  [CloudChoice](./search-headless.cloudchoice.md) | Defines the cloud choice of the API domains. |
 |  [CloudRegion](./search-headless.cloudregion.md) | Defines the cloud region of the API domains. |
 |  [DirectAnswerType](./search-headless.directanswertype.md) | Represents the type of direct answer. |
 |  [Direction](./search-headless.direction.md) | The direction of a sort. |

@@ -15,6 +15,7 @@ export {
   ConjunctionStaticFilter,
   Context,
   ClientSDKHeaderValues,
+  CloudChoice,
   CloudRegion,
   Direction,
   DisjunctionStaticFilter,

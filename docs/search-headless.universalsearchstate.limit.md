@@ -6,7 +6,7 @@
 
 An object defining the limit (up to how many results should be returned) for each vertical.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 limit?: UniversalLimit;

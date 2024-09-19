@@ -6,7 +6,7 @@
 
 Name to be displayed for the vertical.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 displayName?: string;

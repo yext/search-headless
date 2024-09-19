@@ -6,7 +6,7 @@
 
 Whether or not session tracking is enabled.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 enabled?: boolean;

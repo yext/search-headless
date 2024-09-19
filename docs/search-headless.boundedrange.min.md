@@ -6,7 +6,7 @@
 
 The minimum value bounding the range.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 min?: RangeBoundary<T>;

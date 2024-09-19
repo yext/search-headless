@@ -6,7 +6,7 @@
 
 The results from the vertical search.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 results?: Result[];

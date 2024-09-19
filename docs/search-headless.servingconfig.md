@@ -13,8 +13,11 @@ export declare interface ServingConfig
 ```
 
 ## Properties
-
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [cloudChoice?](./search-headless.servingconfig.cloudchoice.md) | [CloudChoice](./search-headless.cloudchoice.md) | <i>(Optional)</i> Defines the cloud choice of the API domains. |
+|  [cloudRegion?](./search-headless.servingconfig.cloudregion.md) | [CloudRegion](./search-headless.cloudregion.md) | <i>(Optional)</i> Defines the cloud region of the API domains. |
+|  [environment?](./search-headless.servingconfig.environment.md) | [Environment](./search-headless.environment.md) | <i>(Optional)</i> Defines the environment of the API domains. |
 
 Property
 

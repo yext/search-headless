@@ -6,7 +6,7 @@
 
 The section of text where a [FeaturedSnippetDirectAnswer](./search-headless.featuredsnippetdirectanswer.md) was found.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare interface Snippet 
@@ -14,8 +14,63 @@ export declare interface Snippet
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [matchedSubstrings](./search-headless.snippet.matchedsubstrings.md) | { offset: number; length: number; }\[\] | The locations in the document text of the [DirectAnswer.value](./search-headless.directanswer.value.md) |
-|  [value](./search-headless.snippet.value.md) | string | The raw snippet value, or HTML if - entity is of type HTML - the conversion to HTML is enabled in search configuration |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[matchedSubstrings](./search-headless.snippet.matchedsubstrings.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ offset: number; length: number; }\[\]
+
+
+</td><td>
+
+The locations in the document text of the [DirectAnswer.value](./search-headless.directanswer.value.md)
+
+
+</td></tr>
+<tr><td>
+
+[value](./search-headless.snippet.value.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The raw snippet value, or HTML if - entity is of type HTML - the conversion to HTML is enabled in search configuration
+
+
+</td></tr>
+</tbody></table>

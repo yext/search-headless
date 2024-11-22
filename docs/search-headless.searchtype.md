@@ -6,10 +6,10 @@
 
 An enum and its corresponding string literals which indicate the type of search that Headless is managing.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-export declare type SearchType = EnumOrLiteral<SearchTypeEnum>;
+export type SearchType = EnumOrLiteral<SearchTypeEnum>;
 ```
-<b>References:</b> [EnumOrLiteral](./search-headless.enumorliteral.md)<!-- -->, [SearchTypeEnum](./search-headless.searchtypeenum.md)
+**References:** [EnumOrLiteral](./search-headless.enumorliteral.md)<!-- -->, [SearchTypeEnum](./search-headless.searchtypeenum.md)
 

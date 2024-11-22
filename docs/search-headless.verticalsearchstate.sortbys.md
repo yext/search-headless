@@ -6,7 +6,7 @@
 
 The criteria by which the results should be sorted, in the order in which they should be applied.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 sortBys?: SortBy[];

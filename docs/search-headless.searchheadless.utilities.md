@@ -6,7 +6,7 @@
 
 Common utility functions for manipulating Search-related data.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 readonly utilities: typeof searchUtilities;

@@ -6,7 +6,7 @@
 
 Maintains the user's location, if given, or the inferred location, that is used to bias search results.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface LocationState 
@@ -14,8 +14,63 @@ export interface LocationState
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [locationBias?](./search-headless.locationstate.locationbias.md) | [LocationBias](./search-headless.locationbias.md) | <i>(Optional)</i> The geographical location bias used in the search, returned from the Search API. |
-|  [userLocation?](./search-headless.locationstate.userlocation.md) | [LatLong](./search-headless.latlong.md) | <i>(Optional)</i> The latitude and longitude of the user making the request. Used to bias the results. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[locationBias?](./search-headless.locationstate.locationbias.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[LocationBias](./search-headless.locationbias.md)
+
+
+</td><td>
+
+_(Optional)_ The geographical location bias used in the search, returned from the Search API.
+
+
+</td></tr>
+<tr><td>
+
+[userLocation?](./search-headless.locationstate.userlocation.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[LatLong](./search-headless.latlong.md)
+
+
+</td><td>
+
+_(Optional)_ The latitude and longitude of the user making the request. Used to bias the results.
+
+
+</td></tr>
+</tbody></table>

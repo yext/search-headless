@@ -6,7 +6,7 @@
 
 A filter that the Search API applied to the search.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare interface AppliedQueryFilter 
@@ -14,11 +14,120 @@ export declare interface AppliedQueryFilter
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [details?](./search-headless.appliedqueryfilter.details.md) | [LocationFilterDetails](./search-headless.locationfilterdetails.md) | <i>(Optional)</i> Additional details relevant to the filter with "PLACE" for its [AppliedQueryFilterType](./search-headless.appliedqueryfiltertype.md)<!-- -->. |
-|  [displayKey](./search-headless.appliedqueryfilter.displaykey.md) | string | The display name of the filter key. |
-|  [displayValue](./search-headless.appliedqueryfilter.displayvalue.md) | string | The value used in the filter. |
-|  [filter](./search-headless.appliedqueryfilter.filter.md) | [FieldValueFilter](./search-headless.fieldvaluefilter.md) | The filter applied to the query results. |
-|  [type](./search-headless.appliedqueryfilter.type.md) | [AppliedQueryFilterType](./search-headless.appliedqueryfiltertype.md) | Represents the type of [AppliedQueryFilter](./search-headless.appliedqueryfilter.md) applied to a search. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[details?](./search-headless.appliedqueryfilter.details.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[LocationFilterDetails](./search-headless.locationfilterdetails.md)
+
+
+</td><td>
+
+_(Optional)_ Additional details relevant to the filter with "PLACE" for its [AppliedQueryFilterType](./search-headless.appliedqueryfiltertype.md)<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[displayKey](./search-headless.appliedqueryfilter.displaykey.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The display name of the filter key.
+
+
+</td></tr>
+<tr><td>
+
+[displayValue](./search-headless.appliedqueryfilter.displayvalue.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The value used in the filter.
+
+
+</td></tr>
+<tr><td>
+
+[filter](./search-headless.appliedqueryfilter.filter.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[FieldValueFilter](./search-headless.fieldvaluefilter.md)
+
+
+</td><td>
+
+The filter applied to the query results.
+
+
+</td></tr>
+<tr><td>
+
+[type](./search-headless.appliedqueryfilter.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[AppliedQueryFilterType](./search-headless.appliedqueryfiltertype.md)
+
+
+</td><td>
+
+Represents the type of [AppliedQueryFilter](./search-headless.appliedqueryfilter.md) applied to a search.
+
+
+</td></tr>
+</tbody></table>

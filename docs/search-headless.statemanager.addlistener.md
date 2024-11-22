@@ -6,7 +6,7 @@
 
 Adds a listener for a specific state value of type T.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 addListener<T>(listener: StateListener<T>): Unsubscribe;
@@ -14,11 +14,40 @@ addListener<T>(listener: StateListener<T>): Unsubscribe;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  listener | StateListener&lt;T&gt; | The state listener to add |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+listener
+
+
+</td><td>
+
+[StateListener](./search-headless.statelistener.md)<!-- -->&lt;T&gt;
+
+
+</td><td>
+
+The state listener to add
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 Unsubscribe
 

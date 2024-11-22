@@ -6,7 +6,7 @@
 
 Maintains the status of the latest search.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface SearchStatusState 
@@ -14,7 +14,44 @@ export interface SearchStatusState
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [isLoading?](./search-headless.searchstatusstate.isloading.md) | boolean | <i>(Optional)</i> Whether a search is currently loading or has finished loading. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[isLoading?](./search-headless.searchstatusstate.isloading.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Whether a search is currently loading or has finished loading.
+
+
+</td></tr>
+</tbody></table>

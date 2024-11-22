@@ -6,7 +6,7 @@
 
 An array of [SearchIntent](./search-headless.searchintent.md)<!-- -->s.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 searchIntents?: SearchIntent[];

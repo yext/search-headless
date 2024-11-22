@@ -6,7 +6,7 @@
 
 Searches through the specified facet and filters out the options that aren't a close match for the given searchTerm. The comparison is case insensitive.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare function searchThroughFacet(facet: DisplayableFacet, searchTerm: string): DisplayableFacet;
@@ -14,12 +14,56 @@ export declare function searchThroughFacet(facet: DisplayableFacet, searchTerm: 
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  facet | [DisplayableFacet](./search-headless.displayablefacet.md) | The facet whose options are searched through |
-|  searchTerm | string | The search term to compare the facet options against |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+facet
+
+
+</td><td>
+
+[DisplayableFacet](./search-headless.displayablefacet.md)
+
+
+</td><td>
+
+The facet whose options are searched through
+
+
+</td></tr>
+<tr><td>
+
+searchTerm
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The search term to compare the facet options against
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 [DisplayableFacet](./search-headless.displayablefacet.md)
 

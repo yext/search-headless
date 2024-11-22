@@ -6,7 +6,7 @@
 
 The end limit of [NumberRangeValue](./search-headless.numberrangevalue.md)<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare interface UpperNumberRangeLimit 
@@ -14,8 +14,63 @@ export declare interface UpperNumberRangeLimit
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [matcher](./search-headless.uppernumberrangelimit.matcher.md) | [Matcher.LessThan](./search-headless.matcher.md) \| [Matcher.LessThanOrEqualTo](./search-headless.matcher.md) | [Matcher](./search-headless.matcher.md) for the end limit |
-|  [value](./search-headless.uppernumberrangelimit.value.md) | number | Value of the limit. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[matcher](./search-headless.uppernumberrangelimit.matcher.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Matcher.LessThan](./search-headless.matcher.md) \| [Matcher.LessThanOrEqualTo](./search-headless.matcher.md)
+
+
+</td><td>
+
+[Matcher](./search-headless.matcher.md) for the end limit
+
+
+</td></tr>
+<tr><td>
+
+[value](./search-headless.uppernumberrangelimit.value.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+Value of the limit.
+
+
+</td></tr>
+</tbody></table>

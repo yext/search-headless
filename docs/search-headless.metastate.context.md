@@ -6,7 +6,7 @@
 
 A JSON object used for passing data to and triggering Search [Query Rules](https://hitchhikers.yext.com/tracks/answers-advanced/ans302-query-rules/)<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 context?: Context;

@@ -6,7 +6,7 @@
 
 Sets the [State](./search-headless.state.md) to the specified state.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 setState(state: State): void;
@@ -14,11 +14,40 @@ setState(state: State): void;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  state | [State](./search-headless.state.md) | The state to set |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+state
+
+
+</td><td>
+
+[State](./search-headless.state.md)
+
+
+</td><td>
+
+The state to set
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 void
 

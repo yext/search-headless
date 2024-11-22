@@ -6,7 +6,7 @@
 
 Represents dynamic filter options for the Search API.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare interface Facet 
@@ -14,8 +14,63 @@ export declare interface Facet
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [fieldId](./search-headless.facet.fieldid.md) | string | The associated fieldId. |
-|  [options](./search-headless.facet.options.md) | [FacetOption](./search-headless.facetoption.md)<!-- -->\[\] | An array of [FacetOption](./search-headless.facetoption.md) |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[fieldId](./search-headless.facet.fieldid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The associated fieldId.
+
+
+</td></tr>
+<tr><td>
+
+[options](./search-headless.facet.options.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[FacetOption](./search-headless.facetoption.md)<!-- -->\[\]
+
+
+</td><td>
+
+An array of [FacetOption](./search-headless.facetoption.md)
+
+
+</td></tr>
+</tbody></table>

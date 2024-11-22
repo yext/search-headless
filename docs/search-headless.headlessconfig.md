@@ -6,13 +6,13 @@
 
 The configuration for a SearchHeadless instance.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-export declare type HeadlessConfig = SearchConfig & {
+export type HeadlessConfig = SearchConfig & {
     headlessId?: string;
     verticalKey?: string;
 };
 ```
-<b>References:</b> [SearchConfig](./search-headless.searchconfig.md)
+**References:** [SearchConfig](./search-headless.searchconfig.md)
 

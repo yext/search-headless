@@ -6,7 +6,7 @@
 
 Checks if the searchTerm is a case-insensitive, Levenshtein match for the value.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare function isCloseMatch(value: string, searchTerm: string): boolean;
@@ -14,12 +14,56 @@ export declare function isCloseMatch(value: string, searchTerm: string): boolean
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  value | string | The string to compare against |
-|  searchTerm | string | The term being searched for |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+value
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The string to compare against
+
+
+</td></tr>
+<tr><td>
+
+searchTerm
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The term being searched for
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 boolean
 

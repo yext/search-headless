@@ -6,7 +6,7 @@
 
 Details about the document and the document search algorithm
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare interface DocumentResult 
@@ -14,8 +14,63 @@ export declare interface DocumentResult
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [documentScore](./search-headless.documentresult.documentscore.md) | number | The score calculated from whatever document search strategy was used. |
-|  [segments](./search-headless.documentresult.segments.md) | [Segment](./search-headless.segment.md)<!-- -->\[\] | All the relevant segments extracted from the document. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[documentScore](./search-headless.documentresult.documentscore.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+The score calculated from whatever document search strategy was used.
+
+
+</td></tr>
+<tr><td>
+
+[segments](./search-headless.documentresult.segments.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Segment](./search-headless.segment.md)<!-- -->\[\]
+
+
+</td><td>
+
+All the relevant segments extracted from the document.
+
+
+</td></tr>
+</tbody></table>

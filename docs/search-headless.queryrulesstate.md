@@ -6,7 +6,7 @@
 
 Maintains the data from the triggered query rules.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface QueryRulesState 
@@ -14,7 +14,44 @@ export interface QueryRulesState
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [actions](./search-headless.queryrulesstate.actions.md) | [QueryRulesActionsData](./search-headless.queryrulesactionsdata.md)<!-- -->\[\] | Any actions triggered by meeting criteria for query rules. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[actions](./search-headless.queryrulesstate.actions.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[QueryRulesActionsData](./search-headless.queryrulesactionsdata.md)<!-- -->\[\]
+
+
+</td><td>
+
+Any actions triggered by meeting criteria for query rules.
+
+
+</td></tr>
+</tbody></table>

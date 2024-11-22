@@ -6,7 +6,7 @@
 
 Indicates which entity field to perform the autocomplete request on.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare interface SearchParameterField 
@@ -14,9 +14,82 @@ export declare interface SearchParameterField
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [entityType](./search-headless.searchparameterfield.entitytype.md) | string | The entityType to perform the autocomplete on. |
-|  [fetchEntities](./search-headless.searchparameterfield.fetchentities.md) | boolean | Indicates whether or not to return the [AutocompleteResult.relatedItem](./search-headless.autocompleteresult.relateditem.md) associated with the autocomplete result. |
-|  [fieldApiName](./search-headless.searchparameterfield.fieldapiname.md) | string | The fieldApiName to perform the autocomplete on. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[entityType](./search-headless.searchparameterfield.entitytype.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The entityType to perform the autocomplete on.
+
+
+</td></tr>
+<tr><td>
+
+[fetchEntities](./search-headless.searchparameterfield.fetchentities.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+Indicates whether or not to return the [AutocompleteResult.relatedItem](./search-headless.autocompleteresult.relateditem.md) associated with the autocomplete result.
+
+
+</td></tr>
+<tr><td>
+
+[fieldApiName](./search-headless.searchparameterfield.fieldapiname.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The fieldApiName to perform the autocomplete on.
+
+
+</td></tr>
+</tbody></table>

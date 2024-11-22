@@ -6,7 +6,7 @@
 
 Sets [LocationState.userLocation](./search-headless.locationstate.userlocation.md) to the specified latitude and longitude.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 setUserLocation(latLong: LatLong): void;
@@ -14,11 +14,40 @@ setUserLocation(latLong: LatLong): void;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  latLong | [LatLong](./search-headless.latlong.md) | The user location to set |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+latLong
+
+
+</td><td>
+
+[LatLong](./search-headless.latlong.md)
+
+
+</td><td>
+
+The user location to set
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 void
 

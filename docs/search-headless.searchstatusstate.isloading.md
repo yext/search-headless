@@ -6,7 +6,7 @@
 
 Whether a search is currently loading or has finished loading.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 isLoading?: boolean;

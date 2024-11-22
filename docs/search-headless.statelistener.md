@@ -6,7 +6,7 @@
 
 Represents a listener for a specific value of type T in the state.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export default interface StateListener<T> 
@@ -14,8 +14,37 @@ export default interface StateListener<T>
 
 ## Methods
 
-|  Method | Description |
-|  --- | --- |
-|  [callback(currentValue)](./search-headless.statelistener.callback.md) | The function to call when the state value updates. |
-|  [valueAccessor(state)](./search-headless.statelistener.valueaccessor.md) | Accesses a value of type T in the state. |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[callback(currentValue)](./search-headless.statelistener.callback.md)
+
+
+</td><td>
+
+The function to call when the state value updates.
+
+
+</td></tr>
+<tr><td>
+
+[valueAccessor(state)](./search-headless.statelistener.valueaccessor.md)
+
+
+</td><td>
+
+Accesses a value of type T in the state.
+
+
+</td></tr>
+</tbody></table>

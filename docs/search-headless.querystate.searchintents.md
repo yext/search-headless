@@ -6,7 +6,7 @@
 
 The computed intents of the mostRecentSearch, as returned by the Search API.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 searchIntents?: SearchIntent[];

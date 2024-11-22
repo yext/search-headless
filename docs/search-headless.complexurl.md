@@ -6,7 +6,7 @@
 
 The shape of a [BuiltInFieldType.ComplexURL](./search-headless.builtinfieldtype.md) DirectAnswer value
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare interface ComplexURL 
@@ -14,9 +14,78 @@ export declare interface ComplexURL
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [displayUrl?](./search-headless.complexurl.displayurl.md) | string | <i>(Optional)</i> |
-|  [preferDisplayUrl](./search-headless.complexurl.preferdisplayurl.md) | boolean |  |
-|  [url](./search-headless.complexurl.url.md) | string |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[displayUrl?](./search-headless.complexurl.displayurl.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[preferDisplayUrl](./search-headless.complexurl.preferdisplayurl.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[url](./search-headless.complexurl.url.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

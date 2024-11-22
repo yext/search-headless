@@ -6,7 +6,7 @@
 
 Sets up Headless to manage the vertical indicated by the verticalKey.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 setVertical(verticalKey: string): void;
@@ -14,11 +14,40 @@ setVertical(verticalKey: string): void;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  verticalKey | string | The vertical key to set |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+verticalKey
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The vertical key to set
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 void
 

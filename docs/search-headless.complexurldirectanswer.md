@@ -6,16 +6,51 @@
 
 A direct answer for a complex url field.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare interface ComplexUrlDirectAnswer extends BaseFieldValueDirectAnswer<ComplexURL> 
 ```
-<b>Extends:</b> [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md)<!-- -->&lt;[ComplexURL](./search-headless.complexurl.md)<!-- -->&gt;
+**Extends:** [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md)<!-- -->&lt;[ComplexURL](./search-headless.complexurl.md)<!-- -->&gt;
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [fieldType](./search-headless.complexurldirectanswer.fieldtype.md) | [EnumOrLiteral](./search-headless.enumorliteral.md)<!-- -->&lt;[BuiltInFieldType.ComplexURL](./search-headless.builtinfieldtype.md)<!-- -->&gt; |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[fieldType](./search-headless.complexurldirectanswer.fieldtype.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[EnumOrLiteral](./search-headless.enumorliteral.md)<!-- -->&lt;[BuiltInFieldType.ComplexURL](./search-headless.builtinfieldtype.md)<!-- -->&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

@@ -6,7 +6,7 @@
 
 The function to call when the state value updates.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 callback(currentValue: T): any;
@@ -14,11 +14,40 @@ callback(currentValue: T): any;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  currentValue | T | The current state value |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+currentValue
+
+
+</td><td>
+
+T
+
+
+</td><td>
+
+The current state value
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 any
 

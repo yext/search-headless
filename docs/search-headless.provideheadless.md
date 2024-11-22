@@ -6,7 +6,7 @@
 
 Supplies a new instance of [SearchHeadless](./search-headless.searchheadless.md)<!-- -->, using the provided configuration.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare function provideHeadless(config: HeadlessConfig): SearchHeadless;
@@ -14,13 +14,42 @@ export declare function provideHeadless(config: HeadlessConfig): SearchHeadless;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  config | [HeadlessConfig](./search-headless.headlessconfig.md) | The apiKey, experienceKey, etc. needed to set up a front-end Search experience. |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
 
-SearchHeadless
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+config
+
+
+</td><td>
+
+[HeadlessConfig](./search-headless.headlessconfig.md)
+
+
+</td><td>
+
+The apiKey, experienceKey, etc. needed to set up a front-end Search experience.
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
+
+[SearchHeadless](./search-headless.searchheadless.md)
 
 The newly created instance of [SearchHeadless](./search-headless.searchheadless.md)
 

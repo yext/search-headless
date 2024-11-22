@@ -6,7 +6,7 @@
 
 A representation of a response from a vertical search.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare interface VerticalSearchResponse 
@@ -14,17 +14,234 @@ export declare interface VerticalSearchResponse
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [allResultsForVertical?](./search-headless.verticalsearchresponse.allresultsforvertical.md) | [VerticalSearchResponse](./search-headless.verticalsearchresponse.md) | <i>(Optional)</i> A representation of a response from a vertical search. |
-|  [alternativeVerticals?](./search-headless.verticalsearchresponse.alternativeverticals.md) | [VerticalResults](./search-headless.verticalresults.md)<!-- -->\[\] | <i>(Optional)</i> The [VerticalResults](./search-headless.verticalresults.md) for each search vertical. |
-|  [directAnswer?](./search-headless.verticalsearchresponse.directanswer.md) | [FeaturedSnippetDirectAnswer](./search-headless.featuredsnippetdirectanswer.md) \| [FieldValueDirectAnswer](./search-headless.fieldvaluedirectanswer.md) | <i>(Optional)</i> A direct answer to a search. |
-|  [facets?](./search-headless.verticalsearchresponse.facets.md) | [DisplayableFacet](./search-headless.displayablefacet.md)<!-- -->\[\] | <i>(Optional)</i> An array of [Facet](./search-headless.facet.md)<!-- -->s associated with the search results. |
-|  [locationBias?](./search-headless.verticalsearchresponse.locationbias.md) | [LocationBias](./search-headless.locationbias.md) | <i>(Optional)</i> Information about the user's location. |
-|  [queryId](./search-headless.verticalsearchresponse.queryid.md) | string | The ID of the query. |
-|  [queryRulesActionsData?](./search-headless.verticalsearchresponse.queryrulesactionsdata.md) | [QueryRulesActionsData](./search-headless.queryrulesactionsdata.md)<!-- -->\[\] | <i>(Optional)</i> Data returned from the Search query rules system. |
-|  [searchIntents?](./search-headless.verticalsearchresponse.searchintents.md) | [SearchIntent](./search-headless.searchintent.md)<!-- -->\[\] | <i>(Optional)</i> An array of [SearchIntent](./search-headless.searchintent.md)<!-- -->s. |
-|  [spellCheck?](./search-headless.verticalsearchresponse.spellcheck.md) | [SpellCheck](./search-headless.spellcheck.md) | <i>(Optional)</i> A spellcheck response from a search query. |
-|  [uuid](./search-headless.verticalsearchresponse.uuid.md) | string | A unique id which corresponds to the request. |
-|  [verticalResults](./search-headless.verticalsearchresponse.verticalresults.md) | [VerticalResults](./search-headless.verticalresults.md) | Represents results from a search vertical. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[allResultsForVertical?](./search-headless.verticalsearchresponse.allresultsforvertical.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[VerticalSearchResponse](./search-headless.verticalsearchresponse.md)
+
+
+</td><td>
+
+_(Optional)_ A representation of a response from a vertical search.
+
+
+</td></tr>
+<tr><td>
+
+[alternativeVerticals?](./search-headless.verticalsearchresponse.alternativeverticals.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[VerticalResults](./search-headless.verticalresults.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_ The [VerticalResults](./search-headless.verticalresults.md) for each search vertical.
+
+
+</td></tr>
+<tr><td>
+
+[directAnswer?](./search-headless.verticalsearchresponse.directanswer.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[FeaturedSnippetDirectAnswer](./search-headless.featuredsnippetdirectanswer.md) \| [FieldValueDirectAnswer](./search-headless.fieldvaluedirectanswer.md)
+
+
+</td><td>
+
+_(Optional)_ A direct answer to a search.
+
+
+</td></tr>
+<tr><td>
+
+[facets?](./search-headless.verticalsearchresponse.facets.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[DisplayableFacet](./search-headless.displayablefacet.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_ An array of [Facet](./search-headless.facet.md)<!-- -->s associated with the search results.
+
+
+</td></tr>
+<tr><td>
+
+[locationBias?](./search-headless.verticalsearchresponse.locationbias.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[LocationBias](./search-headless.locationbias.md)
+
+
+</td><td>
+
+_(Optional)_ Information about the user's location.
+
+
+</td></tr>
+<tr><td>
+
+[queryId](./search-headless.verticalsearchresponse.queryid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the query.
+
+
+</td></tr>
+<tr><td>
+
+[queryRulesActionsData?](./search-headless.verticalsearchresponse.queryrulesactionsdata.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[QueryRulesActionsData](./search-headless.queryrulesactionsdata.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_ Data returned from the Search query rules system.
+
+
+</td></tr>
+<tr><td>
+
+[searchIntents?](./search-headless.verticalsearchresponse.searchintents.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[SearchIntent](./search-headless.searchintent.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_ An array of [SearchIntent](./search-headless.searchintent.md)<!-- -->s.
+
+
+</td></tr>
+<tr><td>
+
+[spellCheck?](./search-headless.verticalsearchresponse.spellcheck.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[SpellCheck](./search-headless.spellcheck.md)
+
+
+</td><td>
+
+_(Optional)_ A spellcheck response from a search query.
+
+
+</td></tr>
+<tr><td>
+
+[uuid](./search-headless.verticalsearchresponse.uuid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+A unique id which corresponds to the request.
+
+
+</td></tr>
+<tr><td>
+
+[verticalResults](./search-headless.verticalsearchresponse.verticalresults.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[VerticalResults](./search-headless.verticalresults.md)
+
+
+</td><td>
+
+Represents results from a search vertical.
+
+
+</td></tr>
+</tbody></table>

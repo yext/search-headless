@@ -6,7 +6,7 @@
 
 A unique id which corresponds to the latest request/response.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 uuid?: string;

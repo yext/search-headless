@@ -6,7 +6,7 @@
 
 The ID of the query from the latest search.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 queryId?: string;

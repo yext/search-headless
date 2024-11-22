@@ -6,7 +6,7 @@
 
 Maintains the metadata for Search Headless.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 meta: MetaState;

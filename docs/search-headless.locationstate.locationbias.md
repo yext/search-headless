@@ -6,7 +6,7 @@
 
 The geographical location bias used in the search, returned from the Search API.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 locationBias?: LocationBias;

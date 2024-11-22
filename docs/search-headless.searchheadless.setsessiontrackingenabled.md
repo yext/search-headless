@@ -6,7 +6,7 @@
 
 Sets [SessionTrackingState.enabled](./search-headless.sessiontrackingstate.enabled.md) to the specified boolean value.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 setSessionTrackingEnabled(enabled: boolean): void;
@@ -14,11 +14,40 @@ setSessionTrackingEnabled(enabled: boolean): void;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  enabled | boolean | Whether or not session tracking should be set to enabled |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+enabled
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+Whether or not session tracking should be set to enabled
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 void
 

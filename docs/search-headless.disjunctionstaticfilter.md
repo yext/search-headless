@@ -6,7 +6,7 @@
 
 A static filter composed by combining filters with the logical OR operator. The combined filters can either be field value filters or other disjunction filters.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare interface DisjunctionStaticFilter 
@@ -14,9 +14,82 @@ export declare interface DisjunctionStaticFilter
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [combinator](./search-headless.disjunctionstaticfilter.combinator.md) | [FilterCombinator.OR](./search-headless.filtercombinator.md) | Indicates that filters should be combined with a logical OR. |
-|  [filters](./search-headless.disjunctionstaticfilter.filters.md) | ([DisjunctionStaticFilter](./search-headless.disjunctionstaticfilter.md) \| [FieldValueStaticFilter](./search-headless.fieldvaluestaticfilter.md)<!-- -->)\[\] | The filters to combine together. |
-|  [kind](./search-headless.disjunctionstaticfilter.kind.md) | 'disjunction' | The kind of static filter. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[combinator](./search-headless.disjunctionstaticfilter.combinator.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[FilterCombinator.OR](./search-headless.filtercombinator.md)
+
+
+</td><td>
+
+Indicates that filters should be combined with a logical OR.
+
+
+</td></tr>
+<tr><td>
+
+[filters](./search-headless.disjunctionstaticfilter.filters.md)
+
+
+</td><td>
+
+
+</td><td>
+
+([DisjunctionStaticFilter](./search-headless.disjunctionstaticfilter.md) \| [FieldValueStaticFilter](./search-headless.fieldvaluestaticfilter.md)<!-- -->)\[\]
+
+
+</td><td>
+
+The filters to combine together.
+
+
+</td></tr>
+<tr><td>
+
+[kind](./search-headless.disjunctionstaticfilter.kind.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'disjunction'
+
+
+</td><td>
+
+The kind of static filter.
+
+
+</td></tr>
+</tbody></table>

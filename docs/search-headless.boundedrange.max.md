@@ -6,7 +6,7 @@
 
 The maximum value bounding the range.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 max?: RangeBoundary<T>;

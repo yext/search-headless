@@ -6,7 +6,7 @@
 
 The array of all results for the vertical.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 results: Result[];

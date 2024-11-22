@@ -6,7 +6,7 @@
 
 Manages the information contained in the state for a SearchHeadless instance.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export default interface StateManager 
@@ -18,9 +18,48 @@ The [State](./search-headless.state.md) is immutable, and can only be updated by
 
 ## Methods
 
-|  Method | Description |
-|  --- | --- |
-|  [addListener(listener)](./search-headless.statemanager.addlistener.md) | Adds a listener for a specific state value of type T. |
-|  [dispatchEvent(type, payload)](./search-headless.statemanager.dispatchevent.md) | Dispatches an event. This can update the [State](./search-headless.state.md)<!-- -->. |
-|  [getState()](./search-headless.statemanager.getstate.md) | Returns the current state. |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[addListener(listener)](./search-headless.statemanager.addlistener.md)
+
+
+</td><td>
+
+Adds a listener for a specific state value of type T.
+
+
+</td></tr>
+<tr><td>
+
+[dispatchEvent(type, payload)](./search-headless.statemanager.dispatchevent.md)
+
+
+</td><td>
+
+Dispatches an event. This can update the [State](./search-headless.state.md)<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[getState()](./search-headless.statemanager.getstate.md)
+
+
+</td><td>
+
+Returns the current state.
+
+
+</td></tr>
+</tbody></table>

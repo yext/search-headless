@@ -6,7 +6,7 @@
 
 The [highlighted fields](./search-headless.highlightedfields.md) emphasized by the api.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 highlightedFields?: HighlightedFields;

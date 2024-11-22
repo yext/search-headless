@@ -6,7 +6,7 @@
 
 An array of [AutocompleteResult](./search-headless.autocompleteresult.md)<!-- -->s.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 results: AutocompleteResult[];

@@ -6,17 +6,72 @@
 
 Options for a universal autocomplete request.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare interface UniversalAutocompleteRequest extends SearchRequest 
 ```
-<b>Extends:</b> [SearchRequest](./search-headless.searchrequest.md)
+**Extends:** [SearchRequest](./search-headless.searchrequest.md)
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [input](./search-headless.universalautocompleterequest.input.md) | string | The input string for autocomplete. |
-|  [sessionTrackingEnabled?](./search-headless.universalautocompleterequest.sessiontrackingenabled.md) | boolean | <i>(Optional)</i> Enables session tracking. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[input](./search-headless.universalautocompleterequest.input.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The input string for autocomplete.
+
+
+</td></tr>
+<tr><td>
+
+[sessionTrackingEnabled?](./search-headless.universalautocompleterequest.sessiontrackingenabled.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Enables session tracking.
+
+
+</td></tr>
+</tbody></table>

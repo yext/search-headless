@@ -6,16 +6,53 @@
 
 A [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md) with a field type outside of [BuiltInFieldType](./search-headless.builtinfieldtype.md)<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare interface UnknownFieldValueDirectAnswer<T = unknown> extends BaseFieldValueDirectAnswer<T> 
 ```
-<b>Extends:</b> [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md)<!-- -->&lt;T&gt;
+**Extends:** [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md)<!-- -->&lt;T&gt;
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [fieldType](./search-headless.unknownfieldvaluedirectanswer.fieldtype.md) | 'unknown' | The field type of the direct answer. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[fieldType](./search-headless.unknownfieldvaluedirectanswer.fieldtype.md)
+
+
+</td><td>
+
+
+</td><td>
+
+'unknown'
+
+
+</td><td>
+
+The field type of the direct answer.
+
+
+</td></tr>
+</tbody></table>

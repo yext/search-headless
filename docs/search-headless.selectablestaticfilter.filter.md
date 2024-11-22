@@ -6,7 +6,7 @@
 
 Represents a static filter that will be used to refine results.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 filter: StaticFilter;

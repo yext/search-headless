@@ -6,21 +6,148 @@
 
 Options for a QuestionSubmission request.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare interface QuestionSubmissionRequest extends SearchRequest 
 ```
-<b>Extends:</b> [SearchRequest](./search-headless.searchrequest.md)
+**Extends:** [SearchRequest](./search-headless.searchrequest.md)
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [email](./search-headless.questionsubmissionrequest.email.md) | string | The email of the user that is submitting the question. |
-|  [entityId](./search-headless.questionsubmissionrequest.entityid.md) | string | The ID of the entity to associate with the question. |
-|  [name](./search-headless.questionsubmissionrequest.name.md) | string | The name of the user. |
-|  [questionDescription?](./search-headless.questionsubmissionrequest.questiondescription.md) | string | <i>(Optional)</i> Additional information about the question. |
-|  [questionText](./search-headless.questionsubmissionrequest.questiontext.md) | string | The question. |
-|  [sessionTrackingEnabled?](./search-headless.questionsubmissionrequest.sessiontrackingenabled.md) | boolean | <i>(Optional)</i> Enables session tracking. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[email](./search-headless.questionsubmissionrequest.email.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The email of the user that is submitting the question.
+
+
+</td></tr>
+<tr><td>
+
+[entityId](./search-headless.questionsubmissionrequest.entityid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The ID of the entity to associate with the question.
+
+
+</td></tr>
+<tr><td>
+
+[name](./search-headless.questionsubmissionrequest.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The name of the user.
+
+
+</td></tr>
+<tr><td>
+
+[questionDescription?](./search-headless.questionsubmissionrequest.questiondescription.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Additional information about the question.
+
+
+</td></tr>
+<tr><td>
+
+[questionText](./search-headless.questionsubmissionrequest.questiontext.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The question.
+
+
+</td></tr>
+<tr><td>
+
+[sessionTrackingEnabled?](./search-headless.questionsubmissionrequest.sessiontrackingenabled.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_ Enables session tracking.
+
+
+</td></tr>
+</tbody></table>

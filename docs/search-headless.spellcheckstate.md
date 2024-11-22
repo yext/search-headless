@@ -6,16 +6,53 @@
 
 Maintains whether spellcheck is enabled and the spellcheck response from the latest search.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface SpellCheckState extends Partial<SpellCheck> 
 ```
-<b>Extends:</b> Partial&lt;[SpellCheck](./search-headless.spellcheck.md)<!-- -->&gt;
+**Extends:** Partial&lt;[SpellCheck](./search-headless.spellcheck.md)<!-- -->&gt;
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [enabled](./search-headless.spellcheckstate.enabled.md) | boolean | Whether or not spellcheck is enabled. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[enabled](./search-headless.spellcheckstate.enabled.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+Whether or not spellcheck is enabled.
+
+
+</td></tr>
+</tbody></table>

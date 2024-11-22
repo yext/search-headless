@@ -6,7 +6,7 @@
 
 Represents a filter which compares values to a single field.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare interface FieldValueFilter 
@@ -14,9 +14,82 @@ export declare interface FieldValueFilter
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [fieldId](./search-headless.fieldvaluefilter.fieldid.md) | string | The fieldId to apply the filter against. |
-|  [matcher](./search-headless.fieldvaluefilter.matcher.md) | [Matcher](./search-headless.matcher.md) | A Matcher is a filtering operation. |
-|  [value](./search-headless.fieldvaluefilter.value.md) | string \| number \| boolean \| [NearFilterValue](./search-headless.nearfiltervalue.md) \| [NumberRangeValue](./search-headless.numberrangevalue.md) | The value to compare. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[fieldId](./search-headless.fieldvaluefilter.fieldid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The fieldId to apply the filter against.
+
+
+</td></tr>
+<tr><td>
+
+[matcher](./search-headless.fieldvaluefilter.matcher.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Matcher](./search-headless.matcher.md)
+
+
+</td><td>
+
+A Matcher is a filtering operation.
+
+
+</td></tr>
+<tr><td>
+
+[value](./search-headless.fieldvaluefilter.value.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string \| number \| boolean \| [NearFilterValue](./search-headless.nearfiltervalue.md) \| [NumberRangeValue](./search-headless.numberrangevalue.md)
+
+
+</td><td>
+
+The value to compare.
+
+
+</td></tr>
+</tbody></table>

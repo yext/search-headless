@@ -6,12 +6,12 @@
 
 Represents an error
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare class SearchError extends Error 
 ```
-<b>Extends:</b> Error
+**Extends:** Error
 
 ## Remarks
 
@@ -19,9 +19,82 @@ If the error originates from the Search API, the code and type property will be 
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [code?](./search-headless.searcherror.code.md) |  | number | <i>(Optional)</i> Search API error code. |
-|  [message](./search-headless.searcherror.message.md) |  | string | The error message. |
-|  [type?](./search-headless.searcherror.type.md) |  | string | <i>(Optional)</i> Search API error type. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[code?](./search-headless.searcherror.code.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Search API error code.
+
+
+</td></tr>
+<tr><td>
+
+[message](./search-headless.searcherror.message.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The error message.
+
+
+</td></tr>
+<tr><td>
+
+[type?](./search-headless.searcherror.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Search API error type.
+
+
+</td></tr>
+</tbody></table>

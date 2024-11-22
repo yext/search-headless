@@ -6,10 +6,10 @@
 
 All possible built-in [BaseFeaturedSnippetDirectAnswer](./search-headless.basefeaturedsnippetdirectanswer.md) interfaces.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare type FeaturedSnippetDirectAnswer = MultiLineTextSnippetDirectAnswer | RichTextSnippetDirectAnswer | RichTextV2SnippetDirectAnswer | HTMLSnippetDirectAnswer | MarkdownSnippetDirectAnswer;
 ```
-<b>References:</b> [MultiLineTextSnippetDirectAnswer](./search-headless.multilinetextsnippetdirectanswer.md)<!-- -->, [RichTextSnippetDirectAnswer](./search-headless.richtextsnippetdirectanswer.md)<!-- -->, [RichTextV2SnippetDirectAnswer](./search-headless.richtextv2snippetdirectanswer.md)<!-- -->, [HTMLSnippetDirectAnswer](./search-headless.htmlsnippetdirectanswer.md)<!-- -->, [MarkdownSnippetDirectAnswer](./search-headless.markdownsnippetdirectanswer.md)
+**References:** [MultiLineTextSnippetDirectAnswer](./search-headless.multilinetextsnippetdirectanswer.md)<!-- -->, [RichTextSnippetDirectAnswer](./search-headless.richtextsnippetdirectanswer.md)<!-- -->, [RichTextV2SnippetDirectAnswer](./search-headless.richtextv2snippetdirectanswer.md)<!-- -->, [HTMLSnippetDirectAnswer](./search-headless.htmlsnippetdirectanswer.md)<!-- -->, [MarkdownSnippetDirectAnswer](./search-headless.markdownsnippetdirectanswer.md)
 

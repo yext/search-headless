@@ -6,7 +6,7 @@
 
 The URL of the referring page (the page that directed to the current page from which the request was made).
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 referrerPageUrl?: string;

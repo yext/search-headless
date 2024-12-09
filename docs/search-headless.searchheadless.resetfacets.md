@@ -6,12 +6,12 @@
 
 Unselects all [facets](./search-headless.filtersstate.facets.md)<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 resetFacets(): void;
 ```
-<b>Returns:</b>
+**Returns:**
 
 void
 

@@ -6,7 +6,7 @@
 
 An array of [DisplayableFacetOption](./search-headless.displayablefacetoption.md)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 options: DisplayableFacetOption[];

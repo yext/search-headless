@@ -318,6 +318,8 @@ export interface Endpoints {
     // (undocumented)
     filterSearch?: string;
     // (undocumented)
+    generativeDirectAnswer?: string;
+    // (undocumented)
     questionSubmission?: string;
     // (undocumented)
     status?: string;
@@ -427,6 +429,31 @@ export interface FilterSearchResponse {
 export interface FiltersState {
     facets?: DisplayableFacet[];
     static?: SelectableStaticFilter[];
+}
+
+// @public
+export interface GenerativeDirectAnswerRequest extends SearchRequest {
+    results: VerticalResults[];
+    searchId: string;
+    searchTerm: string;
+}
+
+// @public
+export interface GenerativeDirectAnswerResponse {
+    citations: string[];
+    directAnswer: string;
+    resultStatus: string;
+}
+
+// @public
+export interface GenerativeDirectAnswerService {
+    generateAnswer(request: GenerativeDirectAnswerRequest): Promise<GenerativeDirectAnswerResponse>;
+}
+
+// @public
+export interface GenerativeDirectAnswerState {
+    isLoading?: boolean;
+    response?: GenerativeDirectAnswerResponse;
 }
 
 // @public
@@ -756,8 +783,9 @@ export interface SearchConfigWithToken extends BaseSearchConfig {
 
 // @public
 export class SearchCore {
-    constructor(searchService: SearchService, questionSubmissionService: QuestionSubmissionService, autoCompleteService: AutocompleteService);
+    constructor(searchService: SearchService, questionSubmissionService: QuestionSubmissionService, autoCompleteService: AutocompleteService, generativeDirectAnswerService: GenerativeDirectAnswerService);
     filterSearch(request: FilterSearchRequest): Promise<FilterSearchResponse>;
+    generativeDirectAnswer(request: GenerativeDirectAnswerRequest): Promise<GenerativeDirectAnswerResponse>;
     submitQuestion(request: QuestionSubmissionRequest): Promise<QuestionSubmissionResponse>;
     universalAutocomplete(request: UniversalAutocompleteRequest): Promise<AutocompleteResponse>;
     universalSearch(request: UniversalSearchRequest): Promise<UniversalSearchResponse>;
@@ -779,6 +807,7 @@ export class SearchHeadless {
     constructor(core: SearchCore, stateManager: StateManager, httpManager: HttpManager, additionalHttpHeaders?: AdditionalHttpHeaders | undefined);
     addListener<T>(listener: StateListener<T>): Unsubscribe;
     executeFilterSearch(query: string, sectioned: boolean, fields: SearchParameterField[]): Promise<FilterSearchResponse | undefined>;
+    executeGenerativeDirectAnswer(): Promise<GenerativeDirectAnswerResponse | undefined>;
     executeUniversalAutocomplete(): Promise<AutocompleteResponse>;
     executeUniversalQuery(): Promise<UniversalSearchResponse | undefined>;
     executeVerticalAutocomplete(): Promise<AutocompleteResponse | undefined>;
@@ -915,6 +944,7 @@ export enum SortType {
 export enum Source {
     Custom = "CUSTOM_SEARCHER",
     DocumentVertical = "DOCUMENT_VERTICAL",
+    FunctionVertical = "FUNCTION_VERTICAL",
     Google = "GOOGLE_CSE",
     KnowledgeManager = "KNOWLEDGE_MANAGER"
 }
@@ -946,6 +976,7 @@ export enum SpellCheckType {
 export interface State {
     directAnswer: DirectAnswerState;
     filters: FiltersState;
+    generativeDirectAnswer: GenerativeDirectAnswerState;
     location: LocationState;
     meta: MetaState;
     query: QueryState;
@@ -1059,7 +1090,7 @@ export interface VerticalAutocompleteRequest extends SearchRequest {
 // @public
 export interface VerticalResults {
     appliedQueryFilters: AppliedQueryFilter[];
-    queryDurationMillis: number;
+    queryDurationMillis?: number;
     results: Result[];
     resultsCount: number;
     source: Source;

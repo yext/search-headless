@@ -6,10 +6,10 @@
 
 Represents a static filter that will be used to refine results.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare type StaticFilter = FieldValueStaticFilter | DisjunctionStaticFilter | ConjunctionStaticFilter;
 ```
-<b>References:</b> [FieldValueStaticFilter](./search-headless.fieldvaluestaticfilter.md)<!-- -->, [DisjunctionStaticFilter](./search-headless.disjunctionstaticfilter.md)<!-- -->, [ConjunctionStaticFilter](./search-headless.conjunctionstaticfilter.md)
+**References:** [FieldValueStaticFilter](./search-headless.fieldvaluestaticfilter.md)<!-- -->, [DisjunctionStaticFilter](./search-headless.disjunctionstaticfilter.md)<!-- -->, [ConjunctionStaticFilter](./search-headless.conjunctionstaticfilter.md)
 

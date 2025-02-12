@@ -75,6 +75,28 @@ Maintains the current state of facets and filters in the application.
 </td></tr>
 <tr><td>
 
+<<<<<<< HEAD
+=======
+[generativeDirectAnswer](./search-headless.state.generativedirectanswer.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[GenerativeDirectAnswerState](./search-headless.generativedirectanswerstate.md)
+
+
+</td><td>
+
+Maintains the data for the latest universal search.
+
+
+</td></tr>
+<tr><td>
+
+>>>>>>> develop
 [location](./search-headless.state.location.md)
 
 

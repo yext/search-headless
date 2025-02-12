@@ -13,8 +13,16 @@ export declare interface Segment
 ```
 
 ## Properties
+<<<<<<< HEAD
 
 <table><thead><tr><th>
+=======
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [pageNumber?](./search-headless.segment.pagenumber.md) | number | <i>(Optional)</i> The page number of the document that the segment came from. Populated only for pdf files. |
+|  [score](./search-headless.segment.score.md) | number | The similarity score of the segment from 0 to 1 |
+|  [text](./search-headless.segment.text.md) | string | The value of the segment as plain text. |
+>>>>>>> develop
 
 Property
 

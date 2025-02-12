@@ -56,7 +56,11 @@ A array of [AppliedQueryFilter](./search-headless.appliedqueryfilter.md)<!-- -->
 </td></tr>
 <tr><td>
 
+<<<<<<< HEAD
 [queryDurationMillis](./search-headless.verticalresults.querydurationmillis.md)
+=======
+[queryDurationMillis?](./search-headless.verticalresults.querydurationmillis.md)
+>>>>>>> develop
 
 
 </td><td>
@@ -69,7 +73,11 @@ number
 
 </td><td>
 
+<<<<<<< HEAD
 The duration of the query in milliseconds.
+=======
+_(Optional)_ The duration of the query in milliseconds
+>>>>>>> develop
 
 
 </td></tr>

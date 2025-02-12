@@ -53,7 +53,30 @@ Provides the functionality for interacting with a Search experience.
 </tbody></table>
 
 ## Enumerations
+<<<<<<< HEAD
 
+=======
+|  Enumeration | Description |
+|  --- | --- |
+|  [AppliedQueryFilterType](./search-headless.appliedqueryfiltertype.md) | Represents the type of [AppliedQueryFilter](./search-headless.appliedqueryfilter.md) applied to a search. |
+|  [BuiltInFieldType](./search-headless.builtinfieldtype.md) | Possible built-in field types for [DirectAnswer.fieldType](./search-headless.directanswer.fieldtype.md)<!-- -->. |
+|  [CloudChoice](./search-headless.cloudchoice.md) | Defines the cloud choice of the API domains. |
+|  [CloudRegion](./search-headless.cloudregion.md) | Defines the cloud region of the API domains. |
+|  [DirectAnswerType](./search-headless.directanswertype.md) | Represents the type of direct answer. |
+|  [Direction](./search-headless.direction.md) | The direction of a sort. |
+|  [Environment](./search-headless.environment.md) | Defines the environment of the API domains. |
+|  [ErrorType](./search-headless.errortype.md) | Identifier for the type of error causing the failure. |
+|  [FilterCombinator](./search-headless.filtercombinator.md) | Indicates how child filters in a [StaticFilter](./search-headless.staticfilter.md) should be combined. |
+|  [LocationBiasMethod](./search-headless.locationbiasmethod.md) | The method used to determine the location. |
+|  [Matcher](./search-headless.matcher.md) | A Matcher is a filtering operation. |
+|  [QuerySource](./search-headless.querysource.md) | The source of the search request. |
+|  [QueryTrigger](./search-headless.querytrigger.md) | Describes the ways a search can be executed besides user input. |
+|  [SearchIntent](./search-headless.searchintent.md) | Represents intents from the Search API. |
+|  [SearchTypeEnum](./search-headless.searchtypeenum.md) | An enum which indicates the type of search that Headless is managing. |
+|  [SortType](./search-headless.sorttype.md) | The method of sorting. |
+|  [Source](./search-headless.source.md) | Represents the source of a [Result](./search-headless.result.md)<!-- -->. |
+|  [SpellCheckType](./search-headless.spellchecktype.md) | Represents the type of spell check performed. |
+>>>>>>> develop
 <table><thead><tr><th>
 
 Enumeration
@@ -89,6 +112,7 @@ Possible built-in field types for [DirectAnswer.fieldType](./search-headless.dir
 </td></tr>
 <tr><td>
 
+<<<<<<< HEAD
 [CloudChoice](./search-headless.cloudchoice.md)
 
 
@@ -100,6 +124,8 @@ Defines the cloud choice of the API domains.
 </td></tr>
 <tr><td>
 
+=======
+>>>>>>> develop
 [CloudRegion](./search-headless.cloudregion.md)
 
 
@@ -757,6 +783,53 @@ Maintains the current state of facets and filters in the application.
 </td></tr>
 <tr><td>
 
+<<<<<<< HEAD
+=======
+[GenerativeDirectAnswerRequest](./search-headless.generativedirectanswerrequest.md)
+
+
+</td><td>
+
+Options which can be specified for a generative direct answer request.
+
+
+</td></tr>
+<tr><td>
+
+[GenerativeDirectAnswerResponse](./search-headless.generativedirectanswerresponse.md)
+
+
+</td><td>
+
+A representation of a generative direct answer response.
+
+
+</td></tr>
+<tr><td>
+
+[GenerativeDirectAnswerService](./search-headless.generativedirectanswerservice.md)
+
+
+</td><td>
+
+A service for generative direct answer requests.
+
+
+</td></tr>
+<tr><td>
+
+[GenerativeDirectAnswerState](./search-headless.generativedirectanswerstate.md)
+
+
+</td><td>
+
+Maintains the data for the latest generative direct answer.
+
+
+</td></tr>
+<tr><td>
+
+>>>>>>> develop
 [HighlightedValue](./search-headless.highlightedvalue.md)
 
 

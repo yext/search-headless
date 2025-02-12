@@ -13,8 +13,17 @@ export declare enum Source
 ```
 
 ## Enumeration Members
+<<<<<<< HEAD
 
 <table><thead><tr><th>
+=======
+|  Member | Value | Description |
+|  --- | --- | --- |
+|  Custom | <code>&quot;CUSTOM_SEARCHER&quot;</code> | The result was from a custom source. |
+|  DocumentVertical | <code>&quot;DOCUMENT_VERTICAL&quot;</code> | The result is from a document vertical. |
+|  Google | <code>&quot;GOOGLE_CSE&quot;</code> | The result is from Google Custom Search Engine. |
+|  KnowledgeManager | <code>&quot;KNOWLEDGE_MANAGER&quot;</code> | The result is from a Knowledge Graph. |
+>>>>>>> develop
 
 Member
 
@@ -32,6 +41,41 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
+<<<<<<< HEAD
+=======
+Algolia
+
+
+</td><td>
+
+`"ALGOLIA"`
+
+
+</td><td>
+
+The result is from Algolia.
+
+
+</td></tr>
+<tr><td>
+
+Bing
+
+
+</td><td>
+
+`"BING_CSE"`
+
+
+</td><td>
+
+The result is from Bing Search Engine.
+
+
+</td></tr>
+<tr><td>
+
+>>>>>>> develop
 Custom
 
 
@@ -64,6 +108,25 @@ The result is from a document vertical.
 </td></tr>
 <tr><td>
 
+<<<<<<< HEAD
+=======
+FunctionVertical
+
+
+</td><td>
+
+`"FUNCTION_VERTICAL"`
+
+
+</td><td>
+
+The result is from a function vertical.
+
+
+</td></tr>
+<tr><td>
+
+>>>>>>> develop
 Google
 
 
@@ -94,4 +157,23 @@ The result is from a Knowledge Graph.
 
 
 </td></tr>
+<<<<<<< HEAD
+=======
+<tr><td>
+
+Zendesk
+
+
+</td><td>
+
+`"ZENDESK"`
+
+
+</td><td>
+
+The result is from Zendesk.
+
+
+</td></tr>
+>>>>>>> develop
 </tbody></table>

@@ -32,7 +32,11 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
+<<<<<<< HEAD
 [(constructor)(searchService, questionSubmissionService, autoCompleteService)](./search-headless.searchcore._constructor_.md)
+=======
+[(constructor)(searchService, questionSubmissionService, autoCompleteService, generativeDirectAnswerService)](./search-headless.searchcore._constructor_.md)
+>>>>>>> develop
 
 
 </td><td>
@@ -80,6 +84,23 @@ Performs a filtersearch request against specified fields within a single vertica
 </td></tr>
 <tr><td>
 
+<<<<<<< HEAD
+=======
+[generativeDirectAnswer(request)](./search-headless.searchcore.generativedirectanswer.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Performs a generative direct answer request.
+
+
+</td></tr>
+<tr><td>
+
+>>>>>>> develop
 [submitQuestion(request)](./search-headless.searchcore.submitquestion.md)
 
 

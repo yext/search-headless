@@ -13,6 +13,7 @@ export { SessionTrackingState } from './slices/sessiontracking';
 export { SpellCheckState } from './slices/spellcheck';
 export { UniversalSearchState } from './slices/universal';
 export { VerticalSearchState, AllResultsForVertical } from './slices/vertical';
+export { GenerativeDirectAnswerState } from './slices/generativedirectanswer';
 
 // utils models
 export { BoundedRange, RangeBoundary } from './utils/boundedrange';

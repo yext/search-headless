@@ -56,6 +56,28 @@ _(Optional)_
 </td></tr>
 <tr><td>
 
+<<<<<<< HEAD
+=======
+[generativeDirectAnswer?](./search-headless.endpoints.generativedirectanswer.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+>>>>>>> develop
 [questionSubmission?](./search-headless.endpoints.questionsubmission.md)
 
 

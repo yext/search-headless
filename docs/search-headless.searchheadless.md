@@ -161,6 +161,23 @@ Performs a filtersearch request against specified fields within a single vertica
 </td></tr>
 <tr><td>
 
+<<<<<<< HEAD
+=======
+[executeGenerativeDirectAnswer()](./search-headless.searchheadless.executegenerativedirectanswer.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Perform a generativeDirectAnswer request to the query most recent search stored in state.
+
+
+</td></tr>
+<tr><td>
+
+>>>>>>> develop
 [executeUniversalAutocomplete()](./search-headless.searchheadless.executeuniversalautocomplete.md)
 
 

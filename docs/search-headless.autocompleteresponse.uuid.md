@@ -6,7 +6,7 @@
 
 A unique id which corresponds to the request.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 uuid: string;

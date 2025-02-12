@@ -6,7 +6,7 @@
 
 Maintains the latest query and its associated data.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export interface QueryState 
@@ -14,158 +14,13 @@ export interface QueryState
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [input?](./search-headless.querystate.input.md) | string | <i>(Optional)</i> The user input used for the next search query. |
+|  [isPagination?](./search-headless.querystate.ispagination.md) | boolean | <i>(Optional)</i> Whether the next query represents a pagination - in which case queryId will be maintained |
+|  [mostRecentSearch?](./search-headless.querystate.mostrecentsearch.md) | string | <i>(Optional)</i> The query of the most recent search. |
+|  [queryId?](./search-headless.querystate.queryid.md) | string | <i>(Optional)</i> The ID of the query from the latest search. |
+|  [querySource?](./search-headless.querystate.querysource.md) | [QuerySource](./search-headless.querysource.md) | <i>(Optional)</i> The source of the query (from a standard Search integration, a Search overlay, or from visual autocomplete). |
+|  [queryTrigger?](./search-headless.querystate.querytrigger.md) | [QueryTrigger](./search-headless.querytrigger.md) | <i>(Optional)</i> How the query was triggered (besides user input). |
+|  [searchIntents?](./search-headless.querystate.searchintents.md) | [SearchIntent](./search-headless.searchintent.md)<!-- -->\[\] | <i>(Optional)</i> The computed intents of the mostRecentSearch, as returned by the Search API. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[input?](./search-headless.querystate.input.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-_(Optional)_ The user input used for the next search query.
-
-
-</td></tr>
-<tr><td>
-
-[isPagination?](./search-headless.querystate.ispagination.md)
-
-
-</td><td>
-
-
-</td><td>
-
-boolean
-
-
-</td><td>
-
-_(Optional)_ Whether the next query represents a pagination - in which case queryId will be maintained
-
-
-</td></tr>
-<tr><td>
-
-[mostRecentSearch?](./search-headless.querystate.mostrecentsearch.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-_(Optional)_ The query of the most recent search.
-
-
-</td></tr>
-<tr><td>
-
-[queryId?](./search-headless.querystate.queryid.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-_(Optional)_ The ID of the query from the latest search.
-
-
-</td></tr>
-<tr><td>
-
-[querySource?](./search-headless.querystate.querysource.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[QuerySource](./search-headless.querysource.md)
-
-
-</td><td>
-
-_(Optional)_ The source of the query (from a standard Search integration, a Search overlay, or from visual autocomplete).
-
-
-</td></tr>
-<tr><td>
-
-[queryTrigger?](./search-headless.querystate.querytrigger.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[QueryTrigger](./search-headless.querytrigger.md)
-
-
-</td><td>
-
-_(Optional)_ How the query was triggered (besides user input).
-
-
-</td></tr>
-<tr><td>
-
-[searchIntents?](./search-headless.querystate.searchintents.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[SearchIntent](./search-headless.searchintent.md)<!-- -->\[\]
-
-
-</td><td>
-
-_(Optional)_ The computed intents of the mostRecentSearch, as returned by the Search API.
-
-
-</td></tr>
-</tbody></table>

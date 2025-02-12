@@ -6,7 +6,7 @@
 
 The index of the result among the other results in the search.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 index?: number;

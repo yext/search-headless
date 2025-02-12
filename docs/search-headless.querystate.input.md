@@ -6,7 +6,7 @@
 
 The user input used for the next search query.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 input?: string;

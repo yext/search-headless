@@ -4,7 +4,7 @@
 
 ## Interval.start property
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 start?: string;

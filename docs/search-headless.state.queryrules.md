@@ -6,7 +6,7 @@
 
 Maintains the data from the triggered query rules.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 queryRules: QueryRulesState;

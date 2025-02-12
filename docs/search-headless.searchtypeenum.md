@@ -6,7 +6,7 @@
 
 An enum which indicates the type of search that Headless is managing.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare enum SearchTypeEnum 
@@ -14,52 +14,8 @@ export declare enum SearchTypeEnum
 
 ## Enumeration Members
 
-<table><thead><tr><th>
+|  Member | Value | Description |
+|  --- | --- | --- |
+|  Universal | <code>&quot;universal&quot;</code> | Indicates that headless is managing universal search. |
+|  Vertical | <code>&quot;vertical&quot;</code> | Indicates that headless is managing vertical search. |
 
-Member
-
-
-</th><th>
-
-Value
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-Universal
-
-
-</td><td>
-
-`"universal"`
-
-
-</td><td>
-
-Indicates that headless is managing universal search.
-
-
-</td></tr>
-<tr><td>
-
-Vertical
-
-
-</td><td>
-
-`"vertical"`
-
-
-</td><td>
-
-Indicates that headless is managing vertical search.
-
-
-</td></tr>
-</tbody></table>

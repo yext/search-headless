@@ -6,7 +6,7 @@
 
 Maintains the latest query and its associated data.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 query: QueryState;

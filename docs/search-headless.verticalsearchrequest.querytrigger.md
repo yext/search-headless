@@ -6,7 +6,7 @@
 
 Describes the ways a search can be executed besides user input.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 queryTrigger?: QueryTrigger;

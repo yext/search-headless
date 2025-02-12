@@ -6,7 +6,7 @@
 
 The method used to determine the location.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 method: LocationBiasMethod;

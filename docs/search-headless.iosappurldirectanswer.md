@@ -6,51 +6,16 @@
 
 A direct answer for an iOS app url field.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface IosAppUrlDirectAnswer extends BaseFieldValueDirectAnswer<string> 
 ```
-**Extends:** [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md)<!-- -->&lt;string&gt;
+<b>Extends:</b> [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md)<!-- -->&lt;string&gt;
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [fieldType](./search-headless.iosappurldirectanswer.fieldtype.md) | [EnumOrLiteral](./search-headless.enumorliteral.md)<!-- -->&lt;[BuiltInFieldType.IOSAppURL](./search-headless.builtinfieldtype.md)<!-- -->&gt; |  |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[fieldType](./search-headless.iosappurldirectanswer.fieldtype.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[EnumOrLiteral](./search-headless.enumorliteral.md)<!-- -->&lt;[BuiltInFieldType.IOSAppURL](./search-headless.builtinfieldtype.md)<!-- -->&gt;
-
-
-</td><td>
-
-
-</td></tr>
-</tbody></table>

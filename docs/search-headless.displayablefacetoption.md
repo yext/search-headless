@@ -6,91 +6,18 @@
 
 A [FacetOption](./search-headless.facetoption.md) with extra data meant to be displayed to the end user.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface DisplayableFacetOption extends FacetOption 
 ```
-**Extends:** [FacetOption](./search-headless.facetoption.md)
+<b>Extends:</b> [FacetOption](./search-headless.facetoption.md)
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [count](./search-headless.displayablefacetoption.count.md) | number | The number of results associated with this facet option. |
+|  [displayName](./search-headless.displayablefacetoption.displayname.md) | string | The name of the facet option which is meant to be displayed to the end user. |
+|  [selected](./search-headless.displayablefacetoption.selected.md) | boolean | Whether or not the filter is selected in the search results. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[count](./search-headless.displayablefacetoption.count.md)
-
-
-</td><td>
-
-
-</td><td>
-
-number
-
-
-</td><td>
-
-The number of results associated with this facet option.
-
-
-</td></tr>
-<tr><td>
-
-[displayName](./search-headless.displayablefacetoption.displayname.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-The name of the facet option which is meant to be displayed to the end user.
-
-
-</td></tr>
-<tr><td>
-
-[selected](./search-headless.displayablefacetoption.selected.md)
-
-
-</td><td>
-
-
-</td><td>
-
-boolean
-
-
-</td><td>
-
-Whether or not the filter is selected in the search results.
-
-
-</td></tr>
-</tbody></table>

@@ -6,7 +6,7 @@
 
 The field api name of the direct answer.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 fieldApiName: string;

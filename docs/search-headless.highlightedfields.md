@@ -6,14 +6,14 @@
 
 A mapping of fields to the values emphasized by the Search API.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare type HighlightedFields = {
     [fieldId: string]: HighlightedValue | HighlightedValue[] | HighlightedFields | HighlightedFields[];
 };
 ```
-**References:** [HighlightedValue](./search-headless.highlightedvalue.md)<!-- -->, [HighlightedFields](./search-headless.highlightedfields.md)
+<b>References:</b> [HighlightedValue](./search-headless.highlightedvalue.md)<!-- -->, [HighlightedFields](./search-headless.highlightedfields.md)
 
 ## Remarks
 

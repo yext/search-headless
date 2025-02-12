@@ -6,7 +6,7 @@
 
 Maintains the data for the latest universal search.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 universal: UniversalSearchState;

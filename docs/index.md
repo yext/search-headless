@@ -6,24 +6,7 @@
 
 ## Packages
 
-<table><thead><tr><th>
+|  Package | Description |
+|  --- | --- |
+|  [@yext/search-headless](./search-headless.md) |  |
 
-Package
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[@yext/search-headless](./search-headless.md)
-
-
-</td><td>
-
-
-</td></tr>
-</tbody></table>

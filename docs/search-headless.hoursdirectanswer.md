@@ -6,51 +6,16 @@
 
 A [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md) interface with 'hours' field type.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface HoursDirectAnswer extends BaseFieldValueDirectAnswer<Hours | Hours[]> 
 ```
-**Extends:** [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md)<!-- -->&lt;[Hours](./search-headless.hours.md) \| [Hours](./search-headless.hours.md)<!-- -->\[\]&gt;
+<b>Extends:</b> [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md)<!-- -->&lt;[Hours](./search-headless.hours.md) \| [Hours](./search-headless.hours.md)<!-- -->\[\]&gt;
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [fieldType](./search-headless.hoursdirectanswer.fieldtype.md) | [EnumOrLiteral](./search-headless.enumorliteral.md)<!-- -->&lt;[BuiltInFieldType.Hours](./search-headless.builtinfieldtype.md)<!-- -->&gt; |  |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[fieldType](./search-headless.hoursdirectanswer.fieldtype.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[EnumOrLiteral](./search-headless.enumorliteral.md)<!-- -->&lt;[BuiltInFieldType.Hours](./search-headless.builtinfieldtype.md)<!-- -->&gt;
-
-
-</td><td>
-
-
-</td></tr>
-</tbody></table>

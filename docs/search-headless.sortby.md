@@ -6,7 +6,7 @@
 
 Represents a criterion that can be used to sort results.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface SortBy 
@@ -18,82 +18,9 @@ Overrides the sort options that are configured on the experience configuration.
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [direction?](./search-headless.sortby.direction.md) | [Direction](./search-headless.direction.md) | <i>(Optional)</i> The direction of the sort. Required if the SortBy type is [SortType.Field](./search-headless.sorttype.md)<!-- -->. |
+|  [field?](./search-headless.sortby.field.md) | string | <i>(Optional)</i> The field name to sort by. Required if the SortBy type is [SortType.Field](./search-headless.sorttype.md)<!-- -->. |
+|  [type](./search-headless.sortby.type.md) | [SortType](./search-headless.sorttype.md) | The method of sorting. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[direction?](./search-headless.sortby.direction.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[Direction](./search-headless.direction.md)
-
-
-</td><td>
-
-_(Optional)_ The direction of the sort. Required if the SortBy type is [SortType.Field](./search-headless.sorttype.md)<!-- -->.
-
-
-</td></tr>
-<tr><td>
-
-[field?](./search-headless.sortby.field.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-_(Optional)_ The field name to sort by. Required if the SortBy type is [SortType.Field](./search-headless.sorttype.md)<!-- -->.
-
-
-</td></tr>
-<tr><td>
-
-[type](./search-headless.sortby.type.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[SortType](./search-headless.sorttype.md)
-
-
-</td><td>
-
-The method of sorting.
-
-
-</td></tr>
-</tbody></table>

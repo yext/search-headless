@@ -6,7 +6,7 @@
 
 Retrieves query suggestions for a vertical.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 verticalAutocomplete(request: VerticalAutocompleteRequest): Promise<AutocompleteResponse>;
@@ -14,38 +14,11 @@ verticalAutocomplete(request: VerticalAutocompleteRequest): Promise<Autocomplete
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  request | [VerticalAutocompleteRequest](./search-headless.verticalautocompleterequest.md) |  |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-request
-
-
-</td><td>
-
-[VerticalAutocompleteRequest](./search-headless.verticalautocompleterequest.md)
-
-
-</td><td>
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 Promise&lt;[AutocompleteResponse](./search-headless.autocompleteresponse.md)<!-- -->&gt;
 

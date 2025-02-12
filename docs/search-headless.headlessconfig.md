@@ -6,7 +6,7 @@
 
 The configuration for a SearchHeadless instance.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare type HeadlessConfig = SearchConfig & {
@@ -14,5 +14,5 @@ export declare type HeadlessConfig = SearchConfig & {
     verticalKey?: string;
 };
 ```
-**References:** [SearchConfig](./search-headless.searchconfig.md)
+<b>References:</b> [SearchConfig](./search-headless.searchconfig.md)
 

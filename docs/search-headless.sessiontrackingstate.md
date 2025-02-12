@@ -6,7 +6,7 @@
 
 Maintains whether the user session should be tracked and, if so, the session information.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export interface SessionTrackingState 
@@ -14,63 +14,8 @@ export interface SessionTrackingState
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [enabled?](./search-headless.sessiontrackingstate.enabled.md) | boolean | <i>(Optional)</i> Whether or not session tracking is enabled. |
+|  [sessionId?](./search-headless.sessiontrackingstate.sessionid.md) | string | <i>(Optional)</i> The ID of the current session. Used to track session state when cookies are blocked. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[enabled?](./search-headless.sessiontrackingstate.enabled.md)
-
-
-</td><td>
-
-
-</td><td>
-
-boolean
-
-
-</td><td>
-
-_(Optional)_ Whether or not session tracking is enabled.
-
-
-</td></tr>
-<tr><td>
-
-[sessionId?](./search-headless.sessiontrackingstate.sessionid.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-_(Optional)_ The ID of the current session. Used to track session state when cookies are blocked.
-
-
-</td></tr>
-</tbody></table>

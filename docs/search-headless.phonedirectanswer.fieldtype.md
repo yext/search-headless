@@ -4,7 +4,7 @@
 
 ## PhoneDirectAnswer.fieldType property
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 fieldType: BuiltInFieldType.Phone;

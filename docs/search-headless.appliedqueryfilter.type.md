@@ -6,7 +6,7 @@
 
 Represents the type of [AppliedQueryFilter](./search-headless.appliedqueryfilter.md) applied to a search.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 type: AppliedQueryFilterType;

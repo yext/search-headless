@@ -6,7 +6,7 @@
 
 An autocomplete suggestion.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface AutocompleteResult 
@@ -14,158 +14,13 @@ export declare interface AutocompleteResult
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [filter?](./search-headless.autocompleteresult.filter.md) | [FieldValueFilter](./search-headless.fieldvaluefilter.md) | <i>(Optional)</i> A filter applied to the autocomplete response. |
+|  [inputIntents](./search-headless.autocompleteresult.inputintents.md) | [SearchIntent](./search-headless.searchintent.md)<!-- -->\[\] | [SearchIntent](./search-headless.searchintent.md)<!-- -->s corresponding to the autocomplete result. |
+|  [key?](./search-headless.autocompleteresult.key.md) | string | <i>(Optional)</i> The fieldId which corresponds to the AutocompleteResult value. |
+|  [matchedSubstrings?](./search-headless.autocompleteresult.matchedsubstrings.md) | { length: number; offset: number; }\[\] | <i>(Optional)</i> An array of substrings which overlap with the autocomplete input. |
+|  [relatedItem?](./search-headless.autocompleteresult.relateditem.md) | [Result](./search-headless.result.md) | <i>(Optional)</i> An entity that corresponds to the autocomplete result. |
+|  [value](./search-headless.autocompleteresult.value.md) | string | The value of an autocomplete suggestion. |
+|  [verticalKeys?](./search-headless.autocompleteresult.verticalkeys.md) | string\[\] | <i>(Optional)</i> Any vertical keys associated with a prompt. This only shows up on universal autocomplete requests. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[filter?](./search-headless.autocompleteresult.filter.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[FieldValueFilter](./search-headless.fieldvaluefilter.md)
-
-
-</td><td>
-
-_(Optional)_ A filter applied to the autocomplete response.
-
-
-</td></tr>
-<tr><td>
-
-[inputIntents](./search-headless.autocompleteresult.inputintents.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[SearchIntent](./search-headless.searchintent.md)<!-- -->\[\]
-
-
-</td><td>
-
-[SearchIntent](./search-headless.searchintent.md)<!-- -->s corresponding to the autocomplete result.
-
-
-</td></tr>
-<tr><td>
-
-[key?](./search-headless.autocompleteresult.key.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-_(Optional)_ The fieldId which corresponds to the AutocompleteResult value.
-
-
-</td></tr>
-<tr><td>
-
-[matchedSubstrings?](./search-headless.autocompleteresult.matchedsubstrings.md)
-
-
-</td><td>
-
-
-</td><td>
-
-{ length: number; offset: number; }\[\]
-
-
-</td><td>
-
-_(Optional)_ An array of substrings which overlap with the autocomplete input.
-
-
-</td></tr>
-<tr><td>
-
-[relatedItem?](./search-headless.autocompleteresult.relateditem.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[Result](./search-headless.result.md)
-
-
-</td><td>
-
-_(Optional)_ An entity that corresponds to the autocomplete result.
-
-
-</td></tr>
-<tr><td>
-
-[value](./search-headless.autocompleteresult.value.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-The value of an autocomplete suggestion.
-
-
-</td></tr>
-<tr><td>
-
-[verticalKeys?](./search-headless.autocompleteresult.verticalkeys.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string\[\]
-
-
-</td><td>
-
-_(Optional)_ Any vertical keys associated with a prompt. This only shows up on universal autocomplete requests.
-
-
-</td></tr>
-</tbody></table>

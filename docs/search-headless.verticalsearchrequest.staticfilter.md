@@ -6,7 +6,7 @@
 
 The static filter to apply to the search.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 staticFilter?: StaticFilter;

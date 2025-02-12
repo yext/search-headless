@@ -6,7 +6,7 @@
 
 The name of the location.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 displayName: string;

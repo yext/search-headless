@@ -6,7 +6,7 @@
 
 Accesses a value of type T in the state.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 valueAccessor(state: State): T;
@@ -14,40 +14,11 @@ valueAccessor(state: State): T;
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  state | [State](./search-headless.state.md) | The current state |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-state
-
-
-</td><td>
-
-[State](./search-headless.state.md)
-
-
-</td><td>
-
-The current state
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 T
 

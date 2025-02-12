@@ -6,7 +6,7 @@
 
 A array of [AppliedQueryFilter](./search-headless.appliedqueryfilter.md)<!-- -->s which were applied to the vertical results.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 appliedQueryFilters: AppliedQueryFilter[];

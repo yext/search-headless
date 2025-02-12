@@ -6,7 +6,7 @@
 
 A static filter composed by combining other static filters with the logical AND operator.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface ConjunctionStaticFilter 
@@ -14,82 +14,9 @@ export declare interface ConjunctionStaticFilter
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [combinator](./search-headless.conjunctionstaticfilter.combinator.md) | [FilterCombinator.AND](./search-headless.filtercombinator.md) | Indicates that filters should be combined with a logical AND. |
+|  [filters](./search-headless.conjunctionstaticfilter.filters.md) | [StaticFilter](./search-headless.staticfilter.md)<!-- -->\[\] | The filters to combine together. |
+|  [kind](./search-headless.conjunctionstaticfilter.kind.md) | 'conjunction' | The kind of static filter. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[combinator](./search-headless.conjunctionstaticfilter.combinator.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[FilterCombinator.AND](./search-headless.filtercombinator.md)
-
-
-</td><td>
-
-Indicates that filters should be combined with a logical AND.
-
-
-</td></tr>
-<tr><td>
-
-[filters](./search-headless.conjunctionstaticfilter.filters.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[StaticFilter](./search-headless.staticfilter.md)<!-- -->\[\]
-
-
-</td><td>
-
-The filters to combine together.
-
-
-</td></tr>
-<tr><td>
-
-[kind](./search-headless.conjunctionstaticfilter.kind.md)
-
-
-</td><td>
-
-
-</td><td>
-
-'conjunction'
-
-
-</td><td>
-
-The kind of static filter.
-
-
-</td></tr>
-</tbody></table>

@@ -6,7 +6,7 @@
 
 The headlessId automatically given to the first SearchHeadless instance created.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 DEFAULT_HEADLESS_ID = "main"

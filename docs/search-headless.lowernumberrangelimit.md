@@ -6,7 +6,7 @@
 
 The start limit of [NumberRangeValue](./search-headless.numberrangevalue.md)<!-- -->.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface LowerNumberRangeLimit 
@@ -14,63 +14,8 @@ export declare interface LowerNumberRangeLimit
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [matcher](./search-headless.lowernumberrangelimit.matcher.md) | [Matcher.GreaterThan](./search-headless.matcher.md) \| [Matcher.GreaterThanOrEqualTo](./search-headless.matcher.md) | [Matcher](./search-headless.matcher.md) for the start limit |
+|  [value](./search-headless.lowernumberrangelimit.value.md) | number | Value of the limit. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[matcher](./search-headless.lowernumberrangelimit.matcher.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[Matcher.GreaterThan](./search-headless.matcher.md) \| [Matcher.GreaterThanOrEqualTo](./search-headless.matcher.md)
-
-
-</td><td>
-
-[Matcher](./search-headless.matcher.md) for the start limit
-
-
-</td></tr>
-<tr><td>
-
-[value](./search-headless.lowernumberrangelimit.value.md)
-
-
-</td><td>
-
-
-</td><td>
-
-number
-
-
-</td><td>
-
-Value of the limit.
-
-
-</td></tr>
-</tbody></table>

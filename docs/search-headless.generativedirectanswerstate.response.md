@@ -6,7 +6,7 @@
 
 The generative direct answer response.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 response?: GenerativeDirectAnswerResponse;

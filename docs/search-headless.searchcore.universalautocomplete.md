@@ -6,7 +6,7 @@
 
 Performs an autocomplete request across all verticals.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 universalAutocomplete(request: UniversalAutocompleteRequest): Promise<AutocompleteResponse>;
@@ -14,40 +14,11 @@ universalAutocomplete(request: UniversalAutocompleteRequest): Promise<Autocomple
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  request | [UniversalAutocompleteRequest](./search-headless.universalautocompleterequest.md) | Universal autocomplete request options |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-request
-
-
-</td><td>
-
-[UniversalAutocompleteRequest](./search-headless.universalautocompleterequest.md)
-
-
-</td><td>
-
-Universal autocomplete request options
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 Promise&lt;[AutocompleteResponse](./search-headless.autocompleteresponse.md)<!-- -->&gt;
 

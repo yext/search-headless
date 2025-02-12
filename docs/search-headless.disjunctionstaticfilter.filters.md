@@ -6,7 +6,7 @@
 
 The filters to combine together.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 filters: (DisjunctionStaticFilter | FieldValueStaticFilter)[];

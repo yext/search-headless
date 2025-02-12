@@ -6,7 +6,7 @@
 
 AdditionalHttpHeaders allows users to specify additional values for specific HTTP headers.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface AdditionalHttpHeaders 
@@ -14,44 +14,7 @@ export declare interface AdditionalHttpHeaders
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  ["Client-SDK"?](./search-headless.additionalhttpheaders._client-sdk_.md) | [ClientSDKHeaderValues](./search-headless.clientsdkheadervalues.md) | <i>(Optional)</i> Additional agents and their versions used to create the Search experience. The information for these agents is added to the Client-SDK HTTP header along with that of the ANSWERS\_CORE agent. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-["Client-SDK"?](./search-headless.additionalhttpheaders._client-sdk_.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[ClientSDKHeaderValues](./search-headless.clientsdkheadervalues.md)
-
-
-</td><td>
-
-_(Optional)_ Additional agents and their versions used to create the Search experience. The information for these agents is added to the Client-SDK HTTP header along with that of the ANSWERS\_CORE agent.
-
-
-</td></tr>
-</tbody></table>

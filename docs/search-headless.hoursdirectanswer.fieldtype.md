@@ -4,7 +4,7 @@
 
 ## HoursDirectAnswer.fieldType property
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 fieldType: EnumOrLiteral<BuiltInFieldType.Hours>;

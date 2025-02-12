@@ -6,7 +6,7 @@
 
 Search API error type.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 type?: string;

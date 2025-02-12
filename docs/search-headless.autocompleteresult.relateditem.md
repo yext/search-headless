@@ -6,7 +6,7 @@
 
 An entity that corresponds to the autocomplete result.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 relatedItem?: Result;

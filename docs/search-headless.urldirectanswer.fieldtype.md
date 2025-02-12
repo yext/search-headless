@@ -4,7 +4,7 @@
 
 ## UrlDirectAnswer.fieldType property
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 fieldType: EnumOrLiteral<BuiltInFieldType.URL>;

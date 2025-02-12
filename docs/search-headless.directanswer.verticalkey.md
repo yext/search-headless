@@ -6,7 +6,7 @@
 
 The vertical key of the direct answer.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 verticalKey: string;

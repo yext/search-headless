@@ -6,7 +6,7 @@
 
 The authentication token of the search experience which will be passed in the Auth header as a Bearer token.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 token: string;

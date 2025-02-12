@@ -6,7 +6,7 @@
 
 The key associated with the vertical.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 verticalKey?: string;

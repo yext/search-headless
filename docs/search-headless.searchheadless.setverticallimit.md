@@ -6,7 +6,7 @@
 
 Sets [VerticalSearchState.limit](./search-headless.verticalsearchstate.limit.md) to the specified limit.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 setVerticalLimit(limit: number): void;
@@ -14,40 +14,11 @@ setVerticalLimit(limit: number): void;
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  limit | number | The vertical limit to set |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-limit
-
-
-</td><td>
-
-number
-
-
-</td><td>
-
-The vertical limit to set
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 void
 

@@ -6,7 +6,7 @@
 
 Sets [VerticalSearchState.locationRadius](./search-headless.verticalsearchstate.locationradius.md) to the specified number of meters.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 setLocationRadius(locationRadius: number | undefined): void;
@@ -14,40 +14,11 @@ setLocationRadius(locationRadius: number | undefined): void;
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  locationRadius | number \| undefined | The radius (in meters) to filter vertical searches by. |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-locationRadius
-
-
-</td><td>
-
-number \| undefined
-
-
-</td><td>
-
-The radius (in meters) to filter vertical searches by.
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 void
 

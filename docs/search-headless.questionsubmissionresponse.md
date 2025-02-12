@@ -6,7 +6,7 @@
 
 A representation of a question submission response.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface QuestionSubmissionResponse 
@@ -14,44 +14,7 @@ export declare interface QuestionSubmissionResponse
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [uuid](./search-headless.questionsubmissionresponse.uuid.md) | string | A unique id which corresponds to the request. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[uuid](./search-headless.questionsubmissionresponse.uuid.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-A unique id which corresponds to the request.
-
-
-</td></tr>
-</tbody></table>

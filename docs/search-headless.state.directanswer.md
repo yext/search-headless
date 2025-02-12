@@ -6,7 +6,7 @@
 
 Maintains the direct answer associated with the latest search.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 directAnswer: DirectAnswerState;

@@ -6,7 +6,7 @@
 
 The snippet where the direct answer was found.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 snippet: Snippet;

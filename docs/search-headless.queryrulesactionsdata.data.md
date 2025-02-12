@@ -6,7 +6,7 @@
 
 The data returned from the query rule.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 data?: Record<string, unknown>;

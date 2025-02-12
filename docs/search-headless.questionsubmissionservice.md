@@ -6,7 +6,7 @@
 
 Submits a custom question to the Search API.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface QuestionSubmissionService 
@@ -14,26 +14,7 @@ export declare interface QuestionSubmissionService
 
 ## Methods
 
-<table><thead><tr><th>
+|  Method | Description |
+|  --- | --- |
+|  [submitQuestion(request)](./search-headless.questionsubmissionservice.submitquestion.md) | Submits a question to be answered. |
 
-Method
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[submitQuestion(request)](./search-headless.questionsubmissionservice.submitquestion.md)
-
-
-</td><td>
-
-Submits a question to be answered.
-
-
-</td></tr>
-</tbody></table>

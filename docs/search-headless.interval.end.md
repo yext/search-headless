@@ -4,7 +4,7 @@
 
 ## Interval.end property
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 end?: string;

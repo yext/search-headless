@@ -6,7 +6,7 @@
 
 Sets [UniversalSearchState.limit](./search-headless.universalsearchstate.limit.md) to the specified limit.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 setUniversalLimit(limit: UniversalLimit): void;
@@ -14,40 +14,11 @@ setUniversalLimit(limit: UniversalLimit): void;
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  limit | [UniversalLimit](./search-headless.universallimit.md) | The universal limit to set |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-limit
-
-
-</td><td>
-
-[UniversalLimit](./search-headless.universallimit.md)
-
-
-</td><td>
-
-The universal limit to set
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 void
 

@@ -6,7 +6,7 @@
 
 Additional details relevant to the filter with "PLACE" for its [AppliedQueryFilterType](./search-headless.appliedqueryfiltertype.md)<!-- -->.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface LocationFilterDetails 
@@ -14,120 +14,11 @@ export declare interface LocationFilterDetails
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [boundingBox?](./search-headless.locationfilterdetails.boundingbox.md) | [LocationBoundingBox](./search-headless.locationboundingbox.md) | <i>(Optional)</i> The location's coordinate boundaries. |
+|  [featureTypes](./search-headless.locationfilterdetails.featuretypes.md) | string\[\] | The location's classification (e.g. locality, region, address). |
+|  [latitude](./search-headless.locationfilterdetails.latitude.md) | number | The location's latitude. |
+|  [longitude](./search-headless.locationfilterdetails.longitude.md) | number | The location's longitude. |
+|  [placeName](./search-headless.locationfilterdetails.placename.md) | string | The location's name. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[boundingBox?](./search-headless.locationfilterdetails.boundingbox.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[LocationBoundingBox](./search-headless.locationboundingbox.md)
-
-
-</td><td>
-
-_(Optional)_ The location's coordinate boundaries.
-
-
-</td></tr>
-<tr><td>
-
-[featureTypes](./search-headless.locationfilterdetails.featuretypes.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string\[\]
-
-
-</td><td>
-
-The location's classification (e.g. locality, region, address).
-
-
-</td></tr>
-<tr><td>
-
-[latitude](./search-headless.locationfilterdetails.latitude.md)
-
-
-</td><td>
-
-
-</td><td>
-
-number
-
-
-</td><td>
-
-The location's latitude.
-
-
-</td></tr>
-<tr><td>
-
-[longitude](./search-headless.locationfilterdetails.longitude.md)
-
-
-</td><td>
-
-
-</td><td>
-
-number
-
-
-</td><td>
-
-The location's longitude.
-
-
-</td></tr>
-<tr><td>
-
-[placeName](./search-headless.locationfilterdetails.placename.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-The location's name.
-
-
-</td></tr>
-</tbody></table>

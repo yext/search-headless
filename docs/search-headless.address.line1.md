@@ -4,7 +4,7 @@
 
 ## Address.line1 property
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 line1?: string;

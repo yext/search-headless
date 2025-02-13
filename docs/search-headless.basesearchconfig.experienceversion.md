@@ -6,7 +6,7 @@
 
 The version of the search experience configuration.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 experienceVersion?: 'STAGING' | 'PRODUCTION' | string | number;

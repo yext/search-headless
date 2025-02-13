@@ -6,7 +6,7 @@
 
 An interface for hours fields to use in [BaseFieldValueDirectAnswer.value](./search-headless.basefieldvaluedirectanswer.value.md)<!-- -->.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface Hours 
@@ -14,196 +14,15 @@ export declare interface Hours
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [friday?](./search-headless.hours.friday.md) | [DayHour](./search-headless.dayhour.md) | <i>(Optional)</i> |
+|  [holidayHours?](./search-headless.hours.holidayhours.md) | [HolidayHours](./search-headless.holidayhours.md)<!-- -->\[\] | <i>(Optional)</i> |
+|  [monday?](./search-headless.hours.monday.md) | [DayHour](./search-headless.dayhour.md) | <i>(Optional)</i> |
+|  [reopenDate?](./search-headless.hours.reopendate.md) | string | <i>(Optional)</i> |
+|  [saturday?](./search-headless.hours.saturday.md) | [DayHour](./search-headless.dayhour.md) | <i>(Optional)</i> |
+|  [sunday?](./search-headless.hours.sunday.md) | [DayHour](./search-headless.dayhour.md) | <i>(Optional)</i> |
+|  [thursday?](./search-headless.hours.thursday.md) | [DayHour](./search-headless.dayhour.md) | <i>(Optional)</i> |
+|  [tuesday?](./search-headless.hours.tuesday.md) | [DayHour](./search-headless.dayhour.md) | <i>(Optional)</i> |
+|  [wednesday?](./search-headless.hours.wednesday.md) | [DayHour](./search-headless.dayhour.md) | <i>(Optional)</i> |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[friday?](./search-headless.hours.friday.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[DayHour](./search-headless.dayhour.md)
-
-
-</td><td>
-
-_(Optional)_
-
-
-</td></tr>
-<tr><td>
-
-[holidayHours?](./search-headless.hours.holidayhours.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[HolidayHours](./search-headless.holidayhours.md)<!-- -->\[\]
-
-
-</td><td>
-
-_(Optional)_
-
-
-</td></tr>
-<tr><td>
-
-[monday?](./search-headless.hours.monday.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[DayHour](./search-headless.dayhour.md)
-
-
-</td><td>
-
-_(Optional)_
-
-
-</td></tr>
-<tr><td>
-
-[reopenDate?](./search-headless.hours.reopendate.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-_(Optional)_
-
-
-</td></tr>
-<tr><td>
-
-[saturday?](./search-headless.hours.saturday.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[DayHour](./search-headless.dayhour.md)
-
-
-</td><td>
-
-_(Optional)_
-
-
-</td></tr>
-<tr><td>
-
-[sunday?](./search-headless.hours.sunday.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[DayHour](./search-headless.dayhour.md)
-
-
-</td><td>
-
-_(Optional)_
-
-
-</td></tr>
-<tr><td>
-
-[thursday?](./search-headless.hours.thursday.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[DayHour](./search-headless.dayhour.md)
-
-
-</td><td>
-
-_(Optional)_
-
-
-</td></tr>
-<tr><td>
-
-[tuesday?](./search-headless.hours.tuesday.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[DayHour](./search-headless.dayhour.md)
-
-
-</td><td>
-
-_(Optional)_
-
-
-</td></tr>
-<tr><td>
-
-[wednesday?](./search-headless.hours.wednesday.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[DayHour](./search-headless.dayhour.md)
-
-
-</td><td>
-
-_(Optional)_
-
-
-</td></tr>
-</tbody></table>

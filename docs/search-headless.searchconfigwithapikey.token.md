@@ -6,7 +6,7 @@
 
 token should NOT be provided along with apiKey.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 token?: never;

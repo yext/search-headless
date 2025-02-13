@@ -6,7 +6,7 @@
 
 Represents results from a search vertical.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 verticalResults: VerticalResults;

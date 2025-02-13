@@ -6,7 +6,7 @@
 
 A representation of a generative direct answer response.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface GenerativeDirectAnswerResponse 
@@ -14,82 +14,9 @@ export declare interface GenerativeDirectAnswerResponse
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [citations](./search-headless.generativedirectanswerresponse.citations.md) | string\[\] | An array of uids from the relevant [Result.rawData](./search-headless.result.rawdata.md) that were used to form the directAnswer. |
+|  [directAnswer](./search-headless.generativedirectanswerresponse.directanswer.md) | string | The text of the final generated response. |
+|  [resultStatus](./search-headless.generativedirectanswerresponse.resultstatus.md) | string | A string representing whether there was a result found within the given invocation. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[citations](./search-headless.generativedirectanswerresponse.citations.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string\[\]
-
-
-</td><td>
-
-An array of uids from the relevant [Result.rawData](./search-headless.result.rawdata.md) that were used to form the directAnswer.
-
-
-</td></tr>
-<tr><td>
-
-[directAnswer](./search-headless.generativedirectanswerresponse.directanswer.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-The text of the final generated response.
-
-
-</td></tr>
-<tr><td>
-
-[resultStatus](./search-headless.generativedirectanswerresponse.resultstatus.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-A string representing whether there was a result found within the given invocation.
-
-
-</td></tr>
-</tbody></table>

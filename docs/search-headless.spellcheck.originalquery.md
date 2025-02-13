@@ -6,7 +6,7 @@
 
 The query that was input into the spell checker.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 originalQuery: string;

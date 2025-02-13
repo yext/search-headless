@@ -6,7 +6,7 @@
 
 The fieldId which corresponds to the AutocompleteResult value.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 key?: string;

@@ -4,7 +4,7 @@
 
 ## Address.postalCode property
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 postalCode?: string;

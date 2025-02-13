@@ -6,7 +6,7 @@
 
 Sets [QueryState.input](./search-headless.querystate.input.md) to the specified input.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 setQuery(input: string): void;
@@ -14,40 +14,11 @@ setQuery(input: string): void;
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  input | string | The input to set |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-input
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-The input to set
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 void
 

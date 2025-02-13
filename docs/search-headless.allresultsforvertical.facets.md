@@ -6,7 +6,7 @@
 
 The dynamic collection of facets that can be applied to filter the search results and whether each of them is currently selected.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 facets: DisplayableFacet[];

@@ -6,7 +6,7 @@
 
 The [DirectAnswerType](./search-headless.directanswertype.md)<!-- -->.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 type: DirectAnswerType;

@@ -6,7 +6,7 @@
 
 Creates a [StaticFilter](./search-headless.staticfilter.md) that matches all results where the given field value falls in a specific number [BoundedRange](./search-headless.boundedrange.md)<!-- -->.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare function createNumberRangeStaticFilter(fieldId: string, range: BoundedRange<number>): StaticFilter;
@@ -14,56 +14,12 @@ export declare function createNumberRangeStaticFilter(fieldId: string, range: Bo
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  fieldId | string | The comparison field's identifier |
+|  range | [BoundedRange](./search-headless.boundedrange.md)<!-- -->&lt;number&gt; | The acceptable number range |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-fieldId
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-The comparison field's identifier
-
-
-</td></tr>
-<tr><td>
-
-range
-
-
-</td><td>
-
-[BoundedRange](./search-headless.boundedrange.md)<!-- -->&lt;number&gt;
-
-
-</td><td>
-
-The acceptable number range
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 [StaticFilter](./search-headless.staticfilter.md)
 

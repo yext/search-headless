@@ -6,7 +6,7 @@
 
 Latitude formatted as a decimal degree number.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 latitude: number;

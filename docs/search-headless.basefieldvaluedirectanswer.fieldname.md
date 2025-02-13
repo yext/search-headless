@@ -6,7 +6,7 @@
 
 The field name of the direct answer.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 fieldName: string;

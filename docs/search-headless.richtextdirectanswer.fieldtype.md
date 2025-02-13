@@ -4,7 +4,7 @@
 
 ## RichTextDirectAnswer.fieldType property
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 fieldType: EnumOrLiteral<BuiltInFieldType.RichText>;

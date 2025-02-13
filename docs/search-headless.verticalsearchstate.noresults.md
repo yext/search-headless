@@ -6,7 +6,7 @@
 
 The data for when no results are returned in the vertical search.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 noResults?: {

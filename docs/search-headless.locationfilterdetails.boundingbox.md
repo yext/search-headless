@@ -6,7 +6,7 @@
 
 The location's coordinate boundaries.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 boundingBox?: LocationBoundingBox;

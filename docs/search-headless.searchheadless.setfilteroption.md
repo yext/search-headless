@@ -6,7 +6,7 @@
 
 Sets a static filter option and whether or not it is selected in state.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 setFilterOption(filter: SelectableStaticFilter): void;
@@ -14,40 +14,11 @@ setFilterOption(filter: SelectableStaticFilter): void;
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  filter | [SelectableStaticFilter](./search-headless.selectablestaticfilter.md) | The static filter and whether it is selected |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-filter
-
-
-</td><td>
-
-[SelectableStaticFilter](./search-headless.selectablestaticfilter.md)
-
-
-</td><td>
-
-The static filter and whether it is selected
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 void
 

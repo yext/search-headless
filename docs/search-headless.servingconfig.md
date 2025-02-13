@@ -6,74 +6,17 @@
 
 The configuration options for getting the endpoints.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface ServingConfig 
 ```
 
 ## Properties
+
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [cloudChoice?](./search-headless.servingconfig.cloudchoice.md) | [CloudChoice](./search-headless.cloudchoice.md) | <i>(Optional)</i> Defines the cloud choice of the API domains. |
 |  [cloudRegion?](./search-headless.servingconfig.cloudregion.md) | [CloudRegion](./search-headless.cloudregion.md) | <i>(Optional)</i> Defines the cloud region of the API domains. |
 |  [environment?](./search-headless.servingconfig.environment.md) | [Environment](./search-headless.environment.md) | <i>(Optional)</i> Defines the environment of the API domains. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[cloudRegion?](./search-headless.servingconfig.cloudregion.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[CloudRegion](./search-headless.cloudregion.md)
-
-
-</td><td>
-
-_(Optional)_ Defines the cloud region of the API domains.
-
-
-</td></tr>
-<tr><td>
-
-[environment?](./search-headless.servingconfig.environment.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[Environment](./search-headless.environment.md)
-
-
-</td><td>
-
-_(Optional)_ Defines the environment of the API domains.
-
-
-</td></tr>
-</tbody></table>

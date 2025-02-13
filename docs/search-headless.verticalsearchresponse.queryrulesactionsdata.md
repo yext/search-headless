@@ -6,7 +6,7 @@
 
 Data returned from the Search query rules system.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 queryRulesActionsData?: QueryRulesActionsData[];

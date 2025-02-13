@@ -6,7 +6,7 @@
 
 Whether the AI generated answer is currently loading or has finished loading.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 isLoading?: boolean;

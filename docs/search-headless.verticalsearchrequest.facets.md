@@ -6,7 +6,7 @@
 
 The facet filters to apply to the search.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 facets?: Facet[];

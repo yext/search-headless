@@ -6,7 +6,7 @@
 
 The overall shape of the redux state tree, with each key value pair of headlessId to [State](./search-headless.state.md) representing a single SearchHeadless instance.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export interface ParentState 

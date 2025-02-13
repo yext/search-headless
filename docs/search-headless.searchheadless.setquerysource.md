@@ -6,7 +6,7 @@
 
 Sets [QueryState.querySource](./search-headless.querystate.querysource.md) to the specified source.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 setQuerySource(source: QuerySource): void;
@@ -14,40 +14,11 @@ setQuerySource(source: QuerySource): void;
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  source | [QuerySource](./search-headless.querysource.md) | The query source to set |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-source
-
-
-</td><td>
-
-[QuerySource](./search-headless.querysource.md)
-
-
-</td><td>
-
-The query source to set
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 void
 

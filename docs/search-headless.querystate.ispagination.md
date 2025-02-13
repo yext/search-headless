@@ -6,7 +6,7 @@
 
 Whether the next query represents a pagination - in which case queryId will be maintained
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 isPagination?: boolean;

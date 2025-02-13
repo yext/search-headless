@@ -6,7 +6,7 @@
 
 Creates a [StaticFilter](./search-headless.staticfilter.md) by applying the specified [FilterCombinator](./search-headless.filtercombinator.md) to the two static filters. Throws an error if an attempt is made to combine a conjunction static filter using [FilterCombinator.OR](./search-headless.filtercombinator.md)<!-- -->.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare function combineStaticFilters(filterA: StaticFilter, filterB: StaticFilter, combinator: FilterCombinator): StaticFilter;
@@ -14,72 +14,13 @@ export declare function combineStaticFilters(filterA: StaticFilter, filterB: Sta
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  filterA | [StaticFilter](./search-headless.staticfilter.md) | The first static filter to be combined |
+|  filterB | [StaticFilter](./search-headless.staticfilter.md) | The second static filter to be combined |
+|  combinator | [FilterCombinator](./search-headless.filtercombinator.md) | Specifies how the two static filters should be joined |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-filterA
-
-
-</td><td>
-
-[StaticFilter](./search-headless.staticfilter.md)
-
-
-</td><td>
-
-The first static filter to be combined
-
-
-</td></tr>
-<tr><td>
-
-filterB
-
-
-</td><td>
-
-[StaticFilter](./search-headless.staticfilter.md)
-
-
-</td><td>
-
-The second static filter to be combined
-
-
-</td></tr>
-<tr><td>
-
-combinator
-
-
-</td><td>
-
-[FilterCombinator](./search-headless.filtercombinator.md)
-
-
-</td><td>
-
-Specifies how the two static filters should be joined
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 [StaticFilter](./search-headless.staticfilter.md)
 

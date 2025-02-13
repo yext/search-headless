@@ -6,7 +6,7 @@
 
 An interface with address fields to use in [BaseFieldValueDirectAnswer.value](./search-headless.basefieldvaluedirectanswer.value.md)<!-- -->.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface Address 
@@ -14,194 +14,15 @@ export declare interface Address
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [city?](./search-headless.address.city.md) | string | <i>(Optional)</i> |
+|  [countryCode](./search-headless.address.countrycode.md) | string |  |
+|  [extraDescription?](./search-headless.address.extradescription.md) | string | <i>(Optional)</i> |
+|  [line1?](./search-headless.address.line1.md) | string | <i>(Optional)</i> |
+|  [line2?](./search-headless.address.line2.md) | string | <i>(Optional)</i> |
+|  [line3?](./search-headless.address.line3.md) | string | <i>(Optional)</i> |
+|  [postalCode?](./search-headless.address.postalcode.md) | string | <i>(Optional)</i> |
+|  [region?](./search-headless.address.region.md) | string | <i>(Optional)</i> |
+|  [sublocality?](./search-headless.address.sublocality.md) | string | <i>(Optional)</i> |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[city?](./search-headless.address.city.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-_(Optional)_
-
-
-</td></tr>
-<tr><td>
-
-[countryCode](./search-headless.address.countrycode.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-
-</td></tr>
-<tr><td>
-
-[extraDescription?](./search-headless.address.extradescription.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-_(Optional)_
-
-
-</td></tr>
-<tr><td>
-
-[line1?](./search-headless.address.line1.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-_(Optional)_
-
-
-</td></tr>
-<tr><td>
-
-[line2?](./search-headless.address.line2.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-_(Optional)_
-
-
-</td></tr>
-<tr><td>
-
-[line3?](./search-headless.address.line3.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-_(Optional)_
-
-
-</td></tr>
-<tr><td>
-
-[postalCode?](./search-headless.address.postalcode.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-_(Optional)_
-
-
-</td></tr>
-<tr><td>
-
-[region?](./search-headless.address.region.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-_(Optional)_
-
-
-</td></tr>
-<tr><td>
-
-[sublocality?](./search-headless.address.sublocality.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-_(Optional)_
-
-
-</td></tr>
-</tbody></table>

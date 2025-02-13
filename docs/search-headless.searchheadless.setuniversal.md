@@ -6,12 +6,12 @@
 
 Sets up Headless to manage universal searches.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 setUniversal(): void;
 ```
-**Returns:**
+<b>Returns:</b>
 
 void
 

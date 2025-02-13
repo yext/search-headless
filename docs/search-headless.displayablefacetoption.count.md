@@ -6,7 +6,7 @@
 
 The number of results associated with this facet option.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 count: number;

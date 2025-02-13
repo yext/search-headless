@@ -6,7 +6,7 @@
 
 Produces a union type from the enum passed as a generic which consists of the enum values and the string literals of the enum.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare type EnumOrLiteral<T extends string> = T | `${T}`;

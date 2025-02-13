@@ -4,7 +4,7 @@
 
 ## TextDirectAnswer.fieldType property
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 fieldType: EnumOrLiteral<BuiltInFieldType.SingleLineText | BuiltInFieldType.MultiLineText>;

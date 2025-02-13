@@ -1,4 +1,4 @@
-type ServiceType = 'universalQuery' | 'verticalQuery';
+type ServiceType = 'universalQuery' | 'verticalQuery' | 'generativeDirectAnswer';
 
 type ServiceIds = {
   [key in ServiceType]: number;
@@ -18,12 +18,14 @@ export default class HttpManager {
   constructor() {
     this.latestRequestIds = {
       universalQuery: 0,
-      verticalQuery: 0
+      verticalQuery: 0,
+      generativeDirectAnswer: 0
     };
 
     this.latestResponseIds = {
       universalQuery: 0,
-      verticalQuery: 0
+      verticalQuery: 0,
+      generativeDirectAnswer: 0
     };
   }
 

@@ -6,12 +6,12 @@
 
 Perform a Search for a single vertical with relevant parts of the state used as input to the search. Updates the state with the response data.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 executeVerticalQuery(): Promise<VerticalSearchResponse | undefined>;
 ```
-**Returns:**
+<b>Returns:</b>
 
 Promise&lt;[VerticalSearchResponse](./search-headless.verticalsearchresponse.md) \| undefined&gt;
 

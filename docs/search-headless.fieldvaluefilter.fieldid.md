@@ -6,7 +6,7 @@
 
 The fieldId to apply the filter against.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 fieldId: string;

@@ -6,7 +6,7 @@
 
 The name of the facet option which is meant to be displayed to the end user.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 displayName: string;

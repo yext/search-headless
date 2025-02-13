@@ -6,7 +6,7 @@
 
 Indicates that the DirectAnswer is a [FieldValueDirectAnswer](./search-headless.fieldvaluedirectanswer.md)<!-- -->.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 type: DirectAnswerType.FieldValue;

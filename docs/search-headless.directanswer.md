@@ -6,7 +6,7 @@
 
 A direct answer to a search.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface DirectAnswer<T = unknown> 
@@ -14,120 +14,11 @@ export declare interface DirectAnswer<T = unknown>
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [fieldType](./search-headless.directanswer.fieldtype.md) | [EnumOrLiteral](./search-headless.enumorliteral.md)<!-- -->&lt;[BuiltInFieldType](./search-headless.builtinfieldtype.md)<!-- -->&gt; \| 'unknown' | The field type of the direct answer. |
+|  [relatedResult](./search-headless.directanswer.relatedresult.md) | [Result](./search-headless.result.md) | The entity associated with the direct answer. |
+|  [type](./search-headless.directanswer.type.md) | [DirectAnswerType](./search-headless.directanswertype.md) | The [DirectAnswerType](./search-headless.directanswertype.md)<!-- -->. |
+|  [value?](./search-headless.directanswer.value.md) | T | <i>(Optional)</i> The value of the direct answer. |
+|  [verticalKey](./search-headless.directanswer.verticalkey.md) | string | The vertical key of the direct answer. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[fieldType](./search-headless.directanswer.fieldtype.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[EnumOrLiteral](./search-headless.enumorliteral.md)<!-- -->&lt;[BuiltInFieldType](./search-headless.builtinfieldtype.md)<!-- -->&gt; \| 'unknown'
-
-
-</td><td>
-
-The field type of the direct answer.
-
-
-</td></tr>
-<tr><td>
-
-[relatedResult](./search-headless.directanswer.relatedresult.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[Result](./search-headless.result.md)
-
-
-</td><td>
-
-The entity associated with the direct answer.
-
-
-</td></tr>
-<tr><td>
-
-[type](./search-headless.directanswer.type.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[DirectAnswerType](./search-headless.directanswertype.md)
-
-
-</td><td>
-
-The [DirectAnswerType](./search-headless.directanswertype.md)<!-- -->.
-
-
-</td></tr>
-<tr><td>
-
-[value?](./search-headless.directanswer.value.md)
-
-
-</td><td>
-
-
-</td><td>
-
-T
-
-
-</td><td>
-
-_(Optional)_ The value of the direct answer.
-
-
-</td></tr>
-<tr><td>
-
-[verticalKey](./search-headless.directanswer.verticalkey.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-The vertical key of the direct answer.
-
-
-</td></tr>
-</tbody></table>

@@ -6,7 +6,7 @@
 
 The result of the direct answer.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 value: T;

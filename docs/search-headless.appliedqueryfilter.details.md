@@ -6,7 +6,7 @@
 
 Additional details relevant to the filter with "PLACE" for its [AppliedQueryFilterType](./search-headless.appliedqueryfiltertype.md)<!-- -->.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 details?: LocationFilterDetails;

@@ -6,7 +6,7 @@
 
 Maintains the current state of facets and filters in the application.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export interface FiltersState 
@@ -14,63 +14,8 @@ export interface FiltersState
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [facets?](./search-headless.filtersstate.facets.md) | [DisplayableFacet](./search-headless.displayablefacet.md)<!-- -->\[\] | <i>(Optional)</i> The dynamic collection of facets that can be applied to filter the search results and whether each of them is currently selected. |
+|  [static?](./search-headless.filtersstate.static.md) | [SelectableStaticFilter](./search-headless.selectablestaticfilter.md)<!-- -->\[\] | <i>(Optional)</i> The collection of possible static filters that can be applied to the search results and whether each of them is currently selected. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[facets?](./search-headless.filtersstate.facets.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[DisplayableFacet](./search-headless.displayablefacet.md)<!-- -->\[\]
-
-
-</td><td>
-
-_(Optional)_ The dynamic collection of facets that can be applied to filter the search results and whether each of them is currently selected.
-
-
-</td></tr>
-<tr><td>
-
-[static?](./search-headless.filtersstate.static.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[SelectableStaticFilter](./search-headless.selectablestaticfilter.md)<!-- -->\[\]
-
-
-</td><td>
-
-_(Optional)_ The collection of possible static filters that can be applied to the search results and whether each of them is currently selected.
-
-
-</td></tr>
-</tbody></table>

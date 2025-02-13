@@ -6,7 +6,7 @@
 
 Maintains the status of the latest search.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 searchStatus: SearchStatusState;

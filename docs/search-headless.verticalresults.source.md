@@ -6,7 +6,7 @@
 
 Represents the source of a [Result](./search-headless.result.md)<!-- -->.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 source: Source;

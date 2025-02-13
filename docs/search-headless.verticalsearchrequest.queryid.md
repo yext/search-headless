@@ -6,7 +6,7 @@
 
 The queryId for the query, if this is a repeat query.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 queryId?: string;

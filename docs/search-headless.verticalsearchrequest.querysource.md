@@ -6,7 +6,7 @@
 
 The source of the search request.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 querySource?: QuerySource | string;

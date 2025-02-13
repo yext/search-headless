@@ -6,7 +6,7 @@
 
 Sets [FiltersState.static](./search-headless.filtersstate.static.md) to the specified filters.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 setStaticFilters(filters: SelectableStaticFilter[]): void;
@@ -14,40 +14,11 @@ setStaticFilters(filters: SelectableStaticFilter[]): void;
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  filters | [SelectableStaticFilter](./search-headless.selectablestaticfilter.md)<!-- -->\[\] | The static filters to set |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-filters
-
-
-</td><td>
-
-[SelectableStaticFilter](./search-headless.selectablestaticfilter.md)<!-- -->\[\]
-
-
-</td><td>
-
-The static filters to set
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 void
 

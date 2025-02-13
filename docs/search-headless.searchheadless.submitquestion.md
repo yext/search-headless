@@ -6,7 +6,7 @@
 
 Submits a question to the Search API with the specified request data.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 submitQuestion(request: Omit<QuestionSubmissionRequest, 'additionalHttpHeaders'>): Promise<QuestionSubmissionResponse>;
@@ -14,40 +14,11 @@ submitQuestion(request: Omit<QuestionSubmissionRequest, 'additionalHttpHeaders'>
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  request | Omit&lt;[QuestionSubmissionRequest](./search-headless.questionsubmissionrequest.md)<!-- -->, 'additionalHttpHeaders'&gt; | The data for the network request |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-request
-
-
-</td><td>
-
-Omit&lt;[QuestionSubmissionRequest](./search-headless.questionsubmissionrequest.md)<!-- -->, 'additionalHttpHeaders'&gt;
-
-
-</td><td>
-
-The data for the network request
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 Promise&lt;[QuestionSubmissionResponse](./search-headless.questionsubmissionresponse.md)<!-- -->&gt;
 

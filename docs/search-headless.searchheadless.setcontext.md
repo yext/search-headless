@@ -6,7 +6,7 @@
 
 Sets [MetaState.context](./search-headless.metastate.context.md) to the specified context.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 setContext(context: Context): void;
@@ -14,40 +14,11 @@ setContext(context: Context): void;
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  context | [Context](./search-headless.context.md) | The context to set |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-context
-
-
-</td><td>
-
-[Context](./search-headless.context.md)
-
-
-</td><td>
-
-The context to set
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 void
 

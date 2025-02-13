@@ -4,7 +4,7 @@
 
 ## Address.region property
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 region?: string;

@@ -6,7 +6,7 @@
 
 The maximum number of results to include with a max of 50.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 limit?: number;

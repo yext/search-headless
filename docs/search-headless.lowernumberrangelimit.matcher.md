@@ -6,7 +6,7 @@
 
 [Matcher](./search-headless.matcher.md) for the start limit
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 matcher: Matcher.GreaterThan | Matcher.GreaterThanOrEqualTo;

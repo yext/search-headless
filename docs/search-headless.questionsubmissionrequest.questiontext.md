@@ -6,7 +6,7 @@
 
 The question.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 questionText: string;

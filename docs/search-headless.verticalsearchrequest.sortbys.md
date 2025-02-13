@@ -6,7 +6,7 @@
 
 Determines how results are sorted. \*
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 sortBys?: SortBy[];

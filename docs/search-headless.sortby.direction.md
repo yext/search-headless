@@ -6,7 +6,7 @@
 
 The direction of the sort. Required if the SortBy type is [SortType.Field](./search-headless.sorttype.md)<!-- -->.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 direction?: Direction;

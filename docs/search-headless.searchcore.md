@@ -6,7 +6,7 @@
 
 Provides methods for executing searches, submitting questions, and performing autocompletes.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare class SearchCore 
@@ -14,43 +14,6 @@ export declare class SearchCore
 
 ## Constructors
 
-<<<<<<< HEAD
-<table><thead><tr><th>
-
-Constructor
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[(constructor)(searchService, questionSubmissionService, autoCompleteService)](./search-headless.searchcore._constructor_.md)
-
-
-</td><td>
-
-
-</td><td>
-
-Constructs a new instance of the `SearchCore` class
-
-
-</td></tr>
-</tbody></table>
-
-## Methods
-
-<table><thead><tr><th>
-=======
 |  Constructor | Modifiers | Description |
 |  --- | --- | --- |
 |  [(constructor)(searchService, questionSubmissionService, autoCompleteService, generativeDirectAnswerService)](./search-headless.searchcore._constructor_.md) |  | Constructs a new instance of the <code>SearchCore</code> class |
@@ -66,104 +29,4 @@ Constructs a new instance of the `SearchCore` class
 |  [universalSearch(request)](./search-headless.searchcore.universalsearch.md) |  | Performs a search across all verticals. |
 |  [verticalAutocomplete(request)](./search-headless.searchcore.verticalautocomplete.md) |  | Performs an autocomplete request for a single vertical. |
 |  [verticalSearch(request)](./search-headless.searchcore.verticalsearch.md) |  | Performs a search for a single vertical. |
->>>>>>> develop
 
-Method
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[filterSearch(request)](./search-headless.searchcore.filtersearch.md)
-
-
-</td><td>
-
-
-</td><td>
-
-Performs a filtersearch request against specified fields within a single vertical.
-
-
-</td></tr>
-<tr><td>
-
-[submitQuestion(request)](./search-headless.searchcore.submitquestion.md)
-
-
-</td><td>
-
-
-</td><td>
-
-Submits a custom question to the Search API.
-
-
-</td></tr>
-<tr><td>
-
-[universalAutocomplete(request)](./search-headless.searchcore.universalautocomplete.md)
-
-
-</td><td>
-
-
-</td><td>
-
-Performs an autocomplete request across all verticals.
-
-
-</td></tr>
-<tr><td>
-
-[universalSearch(request)](./search-headless.searchcore.universalsearch.md)
-
-
-</td><td>
-
-
-</td><td>
-
-Performs a search across all verticals.
-
-
-</td></tr>
-<tr><td>
-
-[verticalAutocomplete(request)](./search-headless.searchcore.verticalautocomplete.md)
-
-
-</td><td>
-
-
-</td><td>
-
-Performs an autocomplete request for a single vertical.
-
-
-</td></tr>
-<tr><td>
-
-[verticalSearch(request)](./search-headless.searchcore.verticalsearch.md)
-
-
-</td><td>
-
-
-</td><td>
-
-Performs a search for a single vertical.
-
-
-</td></tr>
-</tbody></table>

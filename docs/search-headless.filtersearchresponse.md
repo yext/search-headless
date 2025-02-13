@@ -6,7 +6,7 @@
 
 The response of a filtersearch request.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface FilterSearchResponse 
@@ -14,101 +14,10 @@ export declare interface FilterSearchResponse
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [businessId?](./search-headless.filtersearchresponse.businessid.md) | string | <i>(Optional)</i> ID of the account associated with this Search experience. |
+|  [queryId?](./search-headless.filtersearchresponse.queryid.md) | string | <i>(Optional)</i> The ID of the search query. |
+|  [sections](./search-headless.filtersearchresponse.sections.md) | { label?: string; results: [AutocompleteResult](./search-headless.autocompleteresult.md)<!-- -->\[\]; }\[\] | Represents autocomplete results separated by field. |
+|  [uuid](./search-headless.filtersearchresponse.uuid.md) | string | A unique id which corresponds to the request. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[businessId?](./search-headless.filtersearchresponse.businessid.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-_(Optional)_ ID of the account associated with this Search experience.
-
-
-</td></tr>
-<tr><td>
-
-[queryId?](./search-headless.filtersearchresponse.queryid.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-_(Optional)_ The ID of the search query.
-
-
-</td></tr>
-<tr><td>
-
-[sections](./search-headless.filtersearchresponse.sections.md)
-
-
-</td><td>
-
-
-</td><td>
-
-{ label?: string; results: [AutocompleteResult](./search-headless.autocompleteresult.md)<!-- -->\[\]; }\[\]
-
-
-</td><td>
-
-Represents autocomplete results separated by field.
-
-
-</td></tr>
-<tr><td>
-
-[uuid](./search-headless.filtersearchresponse.uuid.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-A unique id which corresponds to the request.
-
-
-</td></tr>
-</tbody></table>

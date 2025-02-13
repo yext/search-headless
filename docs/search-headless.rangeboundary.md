@@ -6,7 +6,7 @@
 
 A boundary for a [BoundedRange](./search-headless.boundedrange.md) of type T.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export interface RangeBoundary<T> 
@@ -14,63 +14,8 @@ export interface RangeBoundary<T>
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [inclusive](./search-headless.rangeboundary.inclusive.md) | boolean | Whether or not the range includes the boundary value. |
+|  [value](./search-headless.rangeboundary.value.md) | T | The value of the boundary. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[inclusive](./search-headless.rangeboundary.inclusive.md)
-
-
-</td><td>
-
-
-</td><td>
-
-boolean
-
-
-</td><td>
-
-Whether or not the range includes the boundary value.
-
-
-</td></tr>
-<tr><td>
-
-[value](./search-headless.rangeboundary.value.md)
-
-
-</td><td>
-
-
-</td><td>
-
-T
-
-
-</td><td>
-
-The value of the boundary.
-
-
-</td></tr>
-</tbody></table>

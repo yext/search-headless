@@ -6,7 +6,7 @@
 
 Location boundaries for a filter with "Place" for its [AppliedQueryFilterType](./search-headless.appliedqueryfiltertype.md)<!-- -->. (e.g. boundary for a locality or region specific location filter)
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface LocationBoundingBox 
@@ -14,101 +14,10 @@ export declare interface LocationBoundingBox
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [maxLatitude](./search-headless.locationboundingbox.maxlatitude.md) | number | The location's highest latitude degree. |
+|  [maxLongitude](./search-headless.locationboundingbox.maxlongitude.md) | number | The location's highest longitude degree. |
+|  [minLatitude](./search-headless.locationboundingbox.minlatitude.md) | number | The location's lowest latitude degree. |
+|  [minLongitude](./search-headless.locationboundingbox.minlongitude.md) | number | The location's lowest longitude degree. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[maxLatitude](./search-headless.locationboundingbox.maxlatitude.md)
-
-
-</td><td>
-
-
-</td><td>
-
-number
-
-
-</td><td>
-
-The location's highest latitude degree.
-
-
-</td></tr>
-<tr><td>
-
-[maxLongitude](./search-headless.locationboundingbox.maxlongitude.md)
-
-
-</td><td>
-
-
-</td><td>
-
-number
-
-
-</td><td>
-
-The location's highest longitude degree.
-
-
-</td></tr>
-<tr><td>
-
-[minLatitude](./search-headless.locationboundingbox.minlatitude.md)
-
-
-</td><td>
-
-
-</td><td>
-
-number
-
-
-</td><td>
-
-The location's lowest latitude degree.
-
-
-</td></tr>
-<tr><td>
-
-[minLongitude](./search-headless.locationboundingbox.minlongitude.md)
-
-
-</td><td>
-
-
-</td><td>
-
-number
-
-
-</td><td>
-
-The location's lowest longitude degree.
-
-
-</td></tr>
-</tbody></table>

@@ -6,7 +6,7 @@
 
 The query of the most recent search.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 mostRecentSearch?: string;

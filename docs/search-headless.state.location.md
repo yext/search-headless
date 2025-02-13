@@ -6,7 +6,7 @@
 
 Maintains the user's location, if given, or the inferred location, that is used to bias search results.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 location: LocationState;

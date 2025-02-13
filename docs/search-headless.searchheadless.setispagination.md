@@ -6,7 +6,7 @@
 
 Sets [QueryState.isPagination](./search-headless.querystate.ispagination.md) to the specified input.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 setIsPagination(input: boolean): void;
@@ -14,40 +14,11 @@ setIsPagination(input: boolean): void;
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  input | boolean | The input to set |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-input
-
-
-</td><td>
-
-boolean
-
-
-</td><td>
-
-The input to set
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 void
 

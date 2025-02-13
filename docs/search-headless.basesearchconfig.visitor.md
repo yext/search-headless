@@ -6,7 +6,7 @@
 
 Information used to associate requests with a particular user.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 visitor?: Visitor;

@@ -6,7 +6,7 @@
 
 The ID of the query.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 queryId: string;

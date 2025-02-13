@@ -6,7 +6,7 @@
 
 The experience key of the search experience.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 experienceKey: string;

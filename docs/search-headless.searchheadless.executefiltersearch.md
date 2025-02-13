@@ -6,7 +6,7 @@
 
 Performs a filtersearch request against specified fields within a single vertical using the vertical key stored in state.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 executeFilterSearch(query: string, sectioned: boolean, fields: SearchParameterField[]): Promise<FilterSearchResponse | undefined>;
@@ -14,72 +14,13 @@ executeFilterSearch(query: string, sectioned: boolean, fields: SearchParameterFi
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  query | string | The query for which to search |
+|  sectioned | boolean | Whether or not the results should be sectioned by field |
+|  fields | [SearchParameterField](./search-headless.searchparameterfield.md)<!-- -->\[\] | The entity fields to search |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-query
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-The query for which to search
-
-
-</td></tr>
-<tr><td>
-
-sectioned
-
-
-</td><td>
-
-boolean
-
-
-</td><td>
-
-Whether or not the results should be sectioned by field
-
-
-</td></tr>
-<tr><td>
-
-fields
-
-
-</td><td>
-
-[SearchParameterField](./search-headless.searchparameterfield.md)<!-- -->\[\]
-
-
-</td><td>
-
-The entity fields to search
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 Promise&lt;[FilterSearchResponse](./search-headless.filtersearchresponse.md) \| undefined&gt;
 

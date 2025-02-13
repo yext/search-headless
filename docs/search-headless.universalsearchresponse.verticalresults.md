@@ -6,7 +6,7 @@
 
 An array of [VerticalResults](./search-headless.verticalresults.md) which represent the results for each vertical.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 verticalResults: VerticalResults[];

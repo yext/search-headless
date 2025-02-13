@@ -6,7 +6,7 @@
 
 Represents the type of direct answer.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare enum DirectAnswerType 
@@ -14,52 +14,8 @@ export declare enum DirectAnswerType
 
 ## Enumeration Members
 
-<table><thead><tr><th>
+|  Member | Value | Description |
+|  --- | --- | --- |
+|  FeaturedSnippet | <code>&quot;FEATURED_SNIPPET&quot;</code> | Indicates that the DirectAnswer is a [FeaturedSnippetDirectAnswer](./search-headless.featuredsnippetdirectanswer.md)<!-- -->. |
+|  FieldValue | <code>&quot;FIELD_VALUE&quot;</code> | Indicates that the DirectAnswer is a [FieldValueDirectAnswer](./search-headless.fieldvaluedirectanswer.md)<!-- -->. |
 
-Member
-
-
-</th><th>
-
-Value
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-FeaturedSnippet
-
-
-</td><td>
-
-`"FEATURED_SNIPPET"`
-
-
-</td><td>
-
-Indicates that the DirectAnswer is a [FeaturedSnippetDirectAnswer](./search-headless.featuredsnippetdirectanswer.md)<!-- -->.
-
-
-</td></tr>
-<tr><td>
-
-FieldValue
-
-
-</td><td>
-
-`"FIELD_VALUE"`
-
-
-</td><td>
-
-Indicates that the DirectAnswer is a [FieldValueDirectAnswer](./search-headless.fieldvaluedirectanswer.md)<!-- -->.
-
-
-</td></tr>
-</tbody></table>

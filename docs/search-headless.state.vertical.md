@@ -6,7 +6,7 @@
 
 Maintains the data for the latest vertical search.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 vertical: VerticalSearchState;

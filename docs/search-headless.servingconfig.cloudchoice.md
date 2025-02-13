@@ -6,7 +6,7 @@
 
 Defines the cloud choice of the API domains.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 cloudChoice?: CloudChoice;

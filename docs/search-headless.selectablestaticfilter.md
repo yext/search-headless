@@ -6,7 +6,7 @@
 
 A [StaticFilter](./search-headless.staticfilter.md) with additional information, such as an optional display name and whether or not it is selected.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export interface SelectableStaticFilter 
@@ -14,82 +14,9 @@ export interface SelectableStaticFilter
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [displayName?](./search-headless.selectablestaticfilter.displayname.md) | string | <i>(Optional)</i> The filter's display name. |
+|  [filter](./search-headless.selectablestaticfilter.filter.md) | [StaticFilter](./search-headless.staticfilter.md) | Represents a static filter that will be used to refine results. |
+|  [selected](./search-headless.selectablestaticfilter.selected.md) | boolean | Whether or not the filter is selected. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[displayName?](./search-headless.selectablestaticfilter.displayname.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-_(Optional)_ The filter's display name.
-
-
-</td></tr>
-<tr><td>
-
-[filter](./search-headless.selectablestaticfilter.filter.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[StaticFilter](./search-headless.staticfilter.md)
-
-
-</td><td>
-
-Represents a static filter that will be used to refine results.
-
-
-</td></tr>
-<tr><td>
-
-[selected](./search-headless.selectablestaticfilter.selected.md)
-
-
-</td><td>
-
-
-</td><td>
-
-boolean
-
-
-</td><td>
-
-Whether or not the filter is selected.
-
-
-</td></tr>
-</tbody></table>

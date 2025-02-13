@@ -6,7 +6,7 @@
 
 Search API error code.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 code?: number;

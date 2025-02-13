@@ -6,7 +6,7 @@
 
 The method of sorting.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 type: SortType;

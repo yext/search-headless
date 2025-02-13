@@ -6,7 +6,7 @@
 
 Sets [VerticalSearchState.offset](./search-headless.verticalsearchstate.offset.md) to the specified offset.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 setOffset(offset: number): void;
@@ -14,40 +14,11 @@ setOffset(offset: number): void;
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  offset | number | The vertical offset to set |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-offset
-
-
-</td><td>
-
-number
-
-
-</td><td>
-
-The vertical offset to set
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 void
 

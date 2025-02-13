@@ -6,7 +6,7 @@
 
 Sets the alternativeVerticals for [VerticalSearchState.noResults](./search-headless.verticalsearchstate.noresults.md) to the specified verticals.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 setAlternativeVerticals(alternativeVerticals: VerticalResults[]): void;
@@ -14,40 +14,11 @@ setAlternativeVerticals(alternativeVerticals: VerticalResults[]): void;
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  alternativeVerticals | [VerticalResults](./search-headless.verticalresults.md)<!-- -->\[\] | The alternative verticals to set |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-alternativeVerticals
-
-
-</td><td>
-
-[VerticalResults](./search-headless.verticalresults.md)<!-- -->\[\]
-
-
-</td><td>
-
-The alternative verticals to set
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 void
 

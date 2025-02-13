@@ -6,7 +6,7 @@
 
 Represents results from a search vertical.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface VerticalResults 
@@ -14,9 +14,6 @@ export declare interface VerticalResults
 
 ## Properties
 
-<<<<<<< HEAD
-<table><thead><tr><th>
-=======
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [appliedQueryFilters](./search-headless.verticalresults.appliedqueryfilters.md) | [AppliedQueryFilter](./search-headless.appliedqueryfilter.md)<!-- -->\[\] | A array of [AppliedQueryFilter](./search-headless.appliedqueryfilter.md)<!-- -->s which were applied to the vertical results. |
@@ -25,139 +22,4 @@ export declare interface VerticalResults
 |  [resultsCount](./search-headless.verticalresults.resultscount.md) | number | The total number of results within the vertical. |
 |  [source](./search-headless.verticalresults.source.md) | [Source](./search-headless.source.md) | Represents the source of a [Result](./search-headless.result.md)<!-- -->. |
 |  [verticalKey](./search-headless.verticalresults.verticalkey.md) | string | The vertical key associated with the vertical results. |
->>>>>>> develop
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[appliedQueryFilters](./search-headless.verticalresults.appliedqueryfilters.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[AppliedQueryFilter](./search-headless.appliedqueryfilter.md)<!-- -->\[\]
-
-
-</td><td>
-
-A array of [AppliedQueryFilter](./search-headless.appliedqueryfilter.md)<!-- -->s which were applied to the vertical results.
-
-
-</td></tr>
-<tr><td>
-
-[queryDurationMillis](./search-headless.verticalresults.querydurationmillis.md)
-
-
-</td><td>
-
-
-</td><td>
-
-number
-
-
-</td><td>
-
-The duration of the query in milliseconds.
-
-
-</td></tr>
-<tr><td>
-
-[results](./search-headless.verticalresults.results.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[Result](./search-headless.result.md)<!-- -->\[\]
-
-
-</td><td>
-
-An array of search [Result](./search-headless.result.md)<!-- -->s for the vertical.
-
-
-</td></tr>
-<tr><td>
-
-[resultsCount](./search-headless.verticalresults.resultscount.md)
-
-
-</td><td>
-
-
-</td><td>
-
-number
-
-
-</td><td>
-
-The total number of results within the vertical.
-
-
-</td></tr>
-<tr><td>
-
-[source](./search-headless.verticalresults.source.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[Source](./search-headless.source.md)
-
-
-</td><td>
-
-Represents the source of a [Result](./search-headless.result.md)<!-- -->.
-
-
-</td></tr>
-<tr><td>
-
-[verticalKey](./search-headless.verticalresults.verticalkey.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-The vertical key associated with the vertical results.
-
-
-</td></tr>
-</tbody></table>

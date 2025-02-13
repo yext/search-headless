@@ -6,7 +6,7 @@
 
 A direct answer to a search.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 directAnswer?: FeaturedSnippetDirectAnswer | FieldValueDirectAnswer;

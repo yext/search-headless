@@ -6,7 +6,7 @@
 
 Performs a filtersearch request against specified fields within a single vertical.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 filterSearch(request: FilterSearchRequest): Promise<FilterSearchResponse>;
@@ -14,40 +14,11 @@ filterSearch(request: FilterSearchRequest): Promise<FilterSearchResponse>;
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  request | [FilterSearchRequest](./search-headless.filtersearchrequest.md) | filtersearch request options |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-request
-
-
-</td><td>
-
-[FilterSearchRequest](./search-headless.filtersearchrequest.md)
-
-
-</td><td>
-
-filtersearch request options
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 Promise&lt;[FilterSearchResponse](./search-headless.filtersearchresponse.md)<!-- -->&gt;
 

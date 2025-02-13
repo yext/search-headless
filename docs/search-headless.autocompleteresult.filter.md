@@ -6,7 +6,7 @@
 
 A filter applied to the autocomplete response.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 filter?: FieldValueFilter;

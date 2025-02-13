@@ -6,7 +6,7 @@
 
 Constructs a new instance of the `SearchCore` class
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 constructor(searchService: SearchService, questionSubmissionService: QuestionSubmissionService, autoCompleteService: AutocompleteService, generativeDirectAnswerService: GenerativeDirectAnswerService);
@@ -14,71 +14,10 @@ constructor(searchService: SearchService, questionSubmissionService: QuestionSub
 
 ## Parameters
 
-<<<<<<< HEAD
-<table><thead><tr><th>
-=======
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  searchService | [SearchService](./search-headless.searchservice.md) |  |
 |  questionSubmissionService | [QuestionSubmissionService](./search-headless.questionsubmissionservice.md) |  |
 |  autoCompleteService | [AutocompleteService](./search-headless.autocompleteservice.md) |  |
 |  generativeDirectAnswerService | [GenerativeDirectAnswerService](./search-headless.generativedirectanswerservice.md) |  |
->>>>>>> develop
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-searchService
-
-
-</td><td>
-
-[SearchService](./search-headless.searchservice.md)
-
-
-</td><td>
-
-
-</td></tr>
-<tr><td>
-
-questionSubmissionService
-
-
-</td><td>
-
-[QuestionSubmissionService](./search-headless.questionsubmissionservice.md)
-
-
-</td><td>
-
-
-</td></tr>
-<tr><td>
-
-autoCompleteService
-
-
-</td><td>
-
-[AutocompleteService](./search-headless.autocompleteservice.md)
-
-
-</td><td>
-
-
-</td></tr>
-</tbody></table>

@@ -4,7 +4,7 @@
 
 ## HolidayHours.date property
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 date: string;

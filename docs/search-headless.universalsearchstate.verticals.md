@@ -6,7 +6,7 @@
 
 The results from each vertical included in the universal search.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 verticals?: VerticalResults[];

@@ -6,51 +6,16 @@
 
 A direct answer for a simple url field.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface UrlDirectAnswer extends BaseFieldValueDirectAnswer<string | string[]> 
 ```
-**Extends:** [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md)<!-- -->&lt;string \| string\[\]&gt;
+<b>Extends:</b> [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md)<!-- -->&lt;string \| string\[\]&gt;
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [fieldType](./search-headless.urldirectanswer.fieldtype.md) | [EnumOrLiteral](./search-headless.enumorliteral.md)<!-- -->&lt;[BuiltInFieldType.URL](./search-headless.builtinfieldtype.md)<!-- -->&gt; |  |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[fieldType](./search-headless.urldirectanswer.fieldtype.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[EnumOrLiteral](./search-headless.enumorliteral.md)<!-- -->&lt;[BuiltInFieldType.URL](./search-headless.builtinfieldtype.md)<!-- -->&gt;
-
-
-</td><td>
-
-
-</td></tr>
-</tbody></table>

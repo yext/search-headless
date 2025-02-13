@@ -6,7 +6,7 @@
 
 An interface for holiday hours to use in [BaseFieldValueDirectAnswer.value](./search-headless.basefieldvaluedirectanswer.value.md)<!-- -->.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface HolidayHours 
@@ -14,99 +14,10 @@ export declare interface HolidayHours
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [date](./search-headless.holidayhours.date.md) | string |  |
+|  [isClosed?](./search-headless.holidayhours.isclosed.md) | boolean | <i>(Optional)</i> |
+|  [isRegularHours?](./search-headless.holidayhours.isregularhours.md) | boolean | <i>(Optional)</i> |
+|  [openIntervals?](./search-headless.holidayhours.openintervals.md) | [Interval](./search-headless.interval.md)<!-- -->\[\] | <i>(Optional)</i> |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[date](./search-headless.holidayhours.date.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-
-</td></tr>
-<tr><td>
-
-[isClosed?](./search-headless.holidayhours.isclosed.md)
-
-
-</td><td>
-
-
-</td><td>
-
-boolean
-
-
-</td><td>
-
-_(Optional)_
-
-
-</td></tr>
-<tr><td>
-
-[isRegularHours?](./search-headless.holidayhours.isregularhours.md)
-
-
-</td><td>
-
-
-</td><td>
-
-boolean
-
-
-</td><td>
-
-_(Optional)_
-
-
-</td></tr>
-<tr><td>
-
-[openIntervals?](./search-headless.holidayhours.openintervals.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[Interval](./search-headless.interval.md)<!-- -->\[\]
-
-
-</td><td>
-
-_(Optional)_
-
-
-</td></tr>
-</tbody></table>

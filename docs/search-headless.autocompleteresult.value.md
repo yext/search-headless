@@ -6,7 +6,7 @@
 
 The value of an autocomplete suggestion.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 value: string;

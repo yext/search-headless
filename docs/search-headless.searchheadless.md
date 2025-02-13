@@ -115,7 +115,45 @@ Common utility functions for manipulating Search-related data.
 
 ## Methods
 
+<<<<<<< HEAD
 <table><thead><tr><th>
+=======
+|  Method | Modifiers | Description |
+|  --- | --- | --- |
+|  [addListener(listener)](./search-headless.searchheadless.addlistener.md) |  | Adds a listener for a specific state value of type T. |
+|  [executeFilterSearch(query, sectioned, fields)](./search-headless.searchheadless.executefiltersearch.md) |  | Performs a filtersearch request against specified fields within a single vertical using the vertical key stored in state. |
+|  [executeGenerativeDirectAnswer()](./search-headless.searchheadless.executegenerativedirectanswer.md) |  | Perform a generativeDirectAnswer request to the query most recent search stored in state. |
+|  [executeUniversalAutocomplete()](./search-headless.searchheadless.executeuniversalautocomplete.md) |  | Performs an autocomplete request across all verticals using the query input stored in state. |
+|  [executeUniversalQuery()](./search-headless.searchheadless.executeuniversalquery.md) |  | Performs a Search across all verticals with relevant parts of the state used as input to the search. Updates the state with the response data. |
+|  [executeVerticalAutocomplete()](./search-headless.searchheadless.executeverticalautocomplete.md) |  | Performs an autocomplete request for a single vertical using the query input and vertical key stored in state. |
+|  [executeVerticalQuery()](./search-headless.searchheadless.executeverticalquery.md) |  | Perform a Search for a single vertical with relevant parts of the state used as input to the search. Updates the state with the response data. |
+|  [resetFacets()](./search-headless.searchheadless.resetfacets.md) |  | Unselects all [facets](./search-headless.filtersstate.facets.md)<!-- -->. |
+|  [setAlternativeVerticals(alternativeVerticals)](./search-headless.searchheadless.setalternativeverticals.md) |  | Sets the alternativeVerticals for [VerticalSearchState.noResults](./search-headless.verticalsearchstate.noresults.md) to the specified verticals. |
+|  [setContext(context)](./search-headless.searchheadless.setcontext.md) |  | Sets [MetaState.context](./search-headless.metastate.context.md) to the specified context. |
+|  [setFacetOption(fieldId, facetOption, selected)](./search-headless.searchheadless.setfacetoption.md) |  | Sets a specified facet option to be selected or unselected. |
+|  [setFacets(facets)](./search-headless.searchheadless.setfacets.md) |  | Sets [FiltersState.facets](./search-headless.filtersstate.facets.md) to the specified facets. |
+|  [setFilterOption(filter)](./search-headless.searchheadless.setfilteroption.md) |  | Sets a static filter option and whether or not it is selected in state. |
+|  [setIsPagination(input)](./search-headless.searchheadless.setispagination.md) |  | Sets [QueryState.isPagination](./search-headless.querystate.ispagination.md) to the specified input. |
+|  [setLocationRadius(locationRadius)](./search-headless.searchheadless.setlocationradius.md) |  | Sets [VerticalSearchState.locationRadius](./search-headless.verticalsearchstate.locationradius.md) to the specified number of meters. |
+|  [setOffset(offset)](./search-headless.searchheadless.setoffset.md) |  | Sets [VerticalSearchState.offset](./search-headless.verticalsearchstate.offset.md) to the specified offset. |
+|  [setQuery(input)](./search-headless.searchheadless.setquery.md) |  | Sets [QueryState.input](./search-headless.querystate.input.md) to the specified input. |
+|  [setQuerySource(source)](./search-headless.searchheadless.setquerysource.md) |  | Sets [QueryState.querySource](./search-headless.querystate.querysource.md) to the specified source. |
+|  [setQueryTrigger(trigger)](./search-headless.searchheadless.setquerytrigger.md) |  | Sets [QueryState.queryTrigger](./search-headless.querystate.querytrigger.md) to the specified trigger. |
+|  [setReferrerPageUrl(referrerPageUrl)](./search-headless.searchheadless.setreferrerpageurl.md) |  | Sets [MetaState.referrerPageUrl](./search-headless.metastate.referrerpageurl.md) to the specified URL. |
+|  [setRestrictVerticals(restrictVerticals)](./search-headless.searchheadless.setrestrictverticals.md) |  | Sets [UniversalSearchState.restrictVerticals](./search-headless.universalsearchstate.restrictverticals.md) to the specified vertical keys. |
+|  [setSessionId(sessionId)](./search-headless.searchheadless.setsessionid.md) |  | Sets [SessionTrackingState.sessionId](./search-headless.sessiontrackingstate.sessionid.md) to the specified ID. |
+|  [setSessionTrackingEnabled(enabled)](./search-headless.searchheadless.setsessiontrackingenabled.md) |  | Sets [SessionTrackingState.enabled](./search-headless.sessiontrackingstate.enabled.md) to the specified boolean value. |
+|  [setSortBys(sortBys)](./search-headless.searchheadless.setsortbys.md) |  | Sets [VerticalSearchState.sortBys](./search-headless.verticalsearchstate.sortbys.md) to the specified sortBys. |
+|  [setSpellCheckEnabled(enabled)](./search-headless.searchheadless.setspellcheckenabled.md) |  | Sets [SpellCheckState.enabled](./search-headless.spellcheckstate.enabled.md) to the specified boolean value. |
+|  [setState(state)](./search-headless.searchheadless.setstate.md) |  | Sets the [State](./search-headless.state.md) to the specified state. |
+|  [setStaticFilters(filters)](./search-headless.searchheadless.setstaticfilters.md) |  | Sets [FiltersState.static](./search-headless.filtersstate.static.md) to the specified filters. |
+|  [setUniversal()](./search-headless.searchheadless.setuniversal.md) |  | Sets up Headless to manage universal searches. |
+|  [setUniversalLimit(limit)](./search-headless.searchheadless.setuniversallimit.md) |  | Sets [UniversalSearchState.limit](./search-headless.universalsearchstate.limit.md) to the specified limit. |
+|  [setUserLocation(latLong)](./search-headless.searchheadless.setuserlocation.md) |  | Sets [LocationState.userLocation](./search-headless.locationstate.userlocation.md) to the specified latitude and longitude. |
+|  [setVertical(verticalKey)](./search-headless.searchheadless.setvertical.md) |  | Sets up Headless to manage the vertical indicated by the verticalKey. |
+|  [setVerticalLimit(limit)](./search-headless.searchheadless.setverticallimit.md) |  | Sets [VerticalSearchState.limit](./search-headless.verticalsearchstate.limit.md) to the specified limit. |
+|  [submitQuestion(request)](./search-headless.searchheadless.submitquestion.md) |  | Submits a question to the Search API with the specified request data. |
+>>>>>>> develop
 
 Method
 

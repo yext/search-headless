@@ -14,7 +14,20 @@ export declare interface Endpoints
 
 ## Properties
 
+<<<<<<< HEAD
 <table><thead><tr><th>
+=======
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [filterSearch?](./search-headless.endpoints.filtersearch.md) | string | <i>(Optional)</i> |
+|  [generativeDirectAnswer?](./search-headless.endpoints.generativedirectanswer.md) | string | <i>(Optional)</i> |
+|  [questionSubmission?](./search-headless.endpoints.questionsubmission.md) | string | <i>(Optional)</i> |
+|  [status?](./search-headless.endpoints.status.md) | string | <i>(Optional)</i> |
+|  [universalAutocomplete?](./search-headless.endpoints.universalautocomplete.md) | string | <i>(Optional)</i> |
+|  [universalSearch?](./search-headless.endpoints.universalsearch.md) | string | <i>(Optional)</i> |
+|  [verticalAutocomplete?](./search-headless.endpoints.verticalautocomplete.md) | string | <i>(Optional)</i> |
+|  [verticalSearch?](./search-headless.endpoints.verticalsearch.md) | string | <i>(Optional)</i> |
+>>>>>>> develop
 
 Property
 

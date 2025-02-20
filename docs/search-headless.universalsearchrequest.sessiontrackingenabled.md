@@ -6,7 +6,7 @@
 
 Enables session tracking.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 sessionTrackingEnabled?: boolean;

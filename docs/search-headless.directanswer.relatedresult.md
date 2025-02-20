@@ -6,7 +6,7 @@
 
 The entity associated with the direct answer.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 relatedResult: Result;

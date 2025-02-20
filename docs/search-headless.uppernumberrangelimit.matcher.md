@@ -6,7 +6,7 @@
 
 [Matcher](./search-headless.matcher.md) for the end limit
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 matcher: Matcher.LessThan | Matcher.LessThanOrEqualTo;

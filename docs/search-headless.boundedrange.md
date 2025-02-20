@@ -6,7 +6,7 @@
 
 An interface representing a range of values of type T.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export interface BoundedRange<T> 
@@ -14,63 +14,8 @@ export interface BoundedRange<T>
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [max?](./search-headless.boundedrange.max.md) | [RangeBoundary](./search-headless.rangeboundary.md)<!-- -->&lt;T&gt; | <i>(Optional)</i> The maximum value bounding the range. |
+|  [min?](./search-headless.boundedrange.min.md) | [RangeBoundary](./search-headless.rangeboundary.md)<!-- -->&lt;T&gt; | <i>(Optional)</i> The minimum value bounding the range. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[max?](./search-headless.boundedrange.max.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[RangeBoundary](./search-headless.rangeboundary.md)<!-- -->&lt;T&gt;
-
-
-</td><td>
-
-_(Optional)_ The maximum value bounding the range.
-
-
-</td></tr>
-<tr><td>
-
-[min?](./search-headless.boundedrange.min.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[RangeBoundary](./search-headless.rangeboundary.md)<!-- -->&lt;T&gt;
-
-
-</td><td>
-
-_(Optional)_ The minimum value bounding the range.
-
-
-</td></tr>
-</tbody></table>

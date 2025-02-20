@@ -4,7 +4,7 @@
 
 ## Hours.reopenDate property
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 reopenDate?: string;

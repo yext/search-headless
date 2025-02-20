@@ -13,6 +13,7 @@ import { ActionWithHeadlessId } from './store';
 import createDirectAnswerSlice from './slices/directanswer';
 import createSearchStatusSlice from './slices/searchstatus';
 import createQueryRulesSlice from './slices/queryrules';
+import createGenerativeDirectAnswerSlice from './slices/generativedirectanswer';
 
 /**
  * Manages the current map of headless IDs to Reducers.
@@ -53,6 +54,7 @@ function createAnswersReducer(prefix: string): Reducer<State> {
     sessionTracking: createSessionTrackingSlice(prefix).reducer,
     searchStatus: createSearchStatusSlice(prefix).reducer,
     meta: createMetaSlice(prefix).reducer,
-    location: createLocationSlice(prefix).reducer
+    location: createLocationSlice(prefix).reducer,
+    generativeDirectAnswer: createGenerativeDirectAnswerSlice(prefix).reducer
   });
 }

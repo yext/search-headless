@@ -6,72 +6,17 @@
 
 Configuration options for [SearchCore](./search-headless.searchcore.md)<!-- -->, which includes the options from [BaseSearchConfig](./search-headless.basesearchconfig.md)<!-- -->, but requires token.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface SearchConfigWithToken extends BaseSearchConfig 
 ```
-**Extends:** [BaseSearchConfig](./search-headless.basesearchconfig.md)
+<b>Extends:</b> [BaseSearchConfig](./search-headless.basesearchconfig.md)
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [apiKey?](./search-headless.searchconfigwithtoken.apikey.md) | never | <i>(Optional)</i> apiKey should NOT be provided along with token. |
+|  [token](./search-headless.searchconfigwithtoken.token.md) | string | The authentication token of the search experience which will be passed in the Auth header as a Bearer token. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[apiKey?](./search-headless.searchconfigwithtoken.apikey.md)
-
-
-</td><td>
-
-
-</td><td>
-
-never
-
-
-</td><td>
-
-_(Optional)_ apiKey should NOT be provided along with token.
-
-
-</td></tr>
-<tr><td>
-
-[token](./search-headless.searchconfigwithtoken.token.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-The authentication token of the search experience which will be passed in the Auth header as a Bearer token.
-
-
-</td></tr>
-</tbody></table>

@@ -6,7 +6,7 @@
 
 The kind of static filter.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 kind: 'disjunction';

@@ -4,7 +4,7 @@
 
 ## Address.city property
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 city?: string;

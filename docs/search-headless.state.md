@@ -6,7 +6,7 @@
 
 The state representing a SearchHeadless instance.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export interface State 
@@ -14,234 +14,18 @@ export interface State
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [directAnswer](./search-headless.state.directanswer.md) | [DirectAnswerState](./search-headless.directanswerstate.md) | Maintains the direct answer associated with the latest search. |
+|  [filters](./search-headless.state.filters.md) | [FiltersState](./search-headless.filtersstate.md) | Maintains the current state of facets and filters in the application. |
+|  [generativeDirectAnswer](./search-headless.state.generativedirectanswer.md) | [GenerativeDirectAnswerState](./search-headless.generativedirectanswerstate.md) | Maintains the data for the latest universal search. |
+|  [location](./search-headless.state.location.md) | [LocationState](./search-headless.locationstate.md) | Maintains the user's location, if given, or the inferred location, that is used to bias search results. |
+|  [meta](./search-headless.state.meta.md) | [MetaState](./search-headless.metastate.md) | Maintains the metadata for Search Headless. |
+|  [query](./search-headless.state.query.md) | [QueryState](./search-headless.querystate.md) | Maintains the latest query and its associated data. |
+|  [queryRules](./search-headless.state.queryrules.md) | [QueryRulesState](./search-headless.queryrulesstate.md) | Maintains the data from the triggered query rules. |
+|  [searchStatus](./search-headless.state.searchstatus.md) | [SearchStatusState](./search-headless.searchstatusstate.md) | Maintains the status of the latest search. |
+|  [sessionTracking](./search-headless.state.sessiontracking.md) | [SessionTrackingState](./search-headless.sessiontrackingstate.md) | Maintains whether the user session should be tracked and, if so, the session information. |
+|  [spellCheck](./search-headless.state.spellcheck.md) | [SpellCheckState](./search-headless.spellcheckstate.md) | Maintains whether spellcheck is enabled and the spellcheck response from the latest search. |
+|  [universal](./search-headless.state.universal.md) | [UniversalSearchState](./search-headless.universalsearchstate.md) | Maintains the data for the latest universal search. |
+|  [vertical](./search-headless.state.vertical.md) | [VerticalSearchState](./search-headless.verticalsearchstate.md) | Maintains the data for the latest vertical search. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[directAnswer](./search-headless.state.directanswer.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[DirectAnswerState](./search-headless.directanswerstate.md)
-
-
-</td><td>
-
-Maintains the direct answer associated with the latest search.
-
-
-</td></tr>
-<tr><td>
-
-[filters](./search-headless.state.filters.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[FiltersState](./search-headless.filtersstate.md)
-
-
-</td><td>
-
-Maintains the current state of facets and filters in the application.
-
-
-</td></tr>
-<tr><td>
-
-[location](./search-headless.state.location.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[LocationState](./search-headless.locationstate.md)
-
-
-</td><td>
-
-Maintains the user's location, if given, or the inferred location, that is used to bias search results.
-
-
-</td></tr>
-<tr><td>
-
-[meta](./search-headless.state.meta.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[MetaState](./search-headless.metastate.md)
-
-
-</td><td>
-
-Maintains the metadata for Search Headless.
-
-
-</td></tr>
-<tr><td>
-
-[query](./search-headless.state.query.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[QueryState](./search-headless.querystate.md)
-
-
-</td><td>
-
-Maintains the latest query and its associated data.
-
-
-</td></tr>
-<tr><td>
-
-[queryRules](./search-headless.state.queryrules.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[QueryRulesState](./search-headless.queryrulesstate.md)
-
-
-</td><td>
-
-Maintains the data from the triggered query rules.
-
-
-</td></tr>
-<tr><td>
-
-[searchStatus](./search-headless.state.searchstatus.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[SearchStatusState](./search-headless.searchstatusstate.md)
-
-
-</td><td>
-
-Maintains the status of the latest search.
-
-
-</td></tr>
-<tr><td>
-
-[sessionTracking](./search-headless.state.sessiontracking.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[SessionTrackingState](./search-headless.sessiontrackingstate.md)
-
-
-</td><td>
-
-Maintains whether the user session should be tracked and, if so, the session information.
-
-
-</td></tr>
-<tr><td>
-
-[spellCheck](./search-headless.state.spellcheck.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[SpellCheckState](./search-headless.spellcheckstate.md)
-
-
-</td><td>
-
-Maintains whether spellcheck is enabled and the spellcheck response from the latest search.
-
-
-</td></tr>
-<tr><td>
-
-[universal](./search-headless.state.universal.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[UniversalSearchState](./search-headless.universalsearchstate.md)
-
-
-</td><td>
-
-Maintains the data for the latest universal search.
-
-
-</td></tr>
-<tr><td>
-
-[vertical](./search-headless.state.vertical.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[VerticalSearchState](./search-headless.verticalsearchstate.md)
-
-
-</td><td>
-
-Maintains the data for the latest vertical search.
-
-
-</td></tr>
-</tbody></table>

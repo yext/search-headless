@@ -6,7 +6,7 @@
 
 The entityType to perform the autocomplete on.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 entityType: string;

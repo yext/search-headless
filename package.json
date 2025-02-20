@@ -1,6 +1,6 @@
 {
   "name": "@yext/search-headless",
-  "version": "2.5.4",
+  "version": "2.6.0",
   "description": "A library for powering UI components for Yext Search integrations",
   "author": "slapshot@yext.com",
   "license": "BSD-3-Clause",
@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
-    "@yext/search-core": "^2.5.4",
+    "@yext/search-core": "^2.6.0",
     "js-levenshtein": "^1.1.6",
     "lodash": "^4.17.21"
   },
@@ -80,7 +80,11 @@
     ]
   },
   "overrides": {
-    "@babel/helper-define-polyfill-provider": "^0.4.3"
+    "@babel/helper-define-polyfill-provider": "^0.4.3",
+    "@babel/plugin-transform-runtime": "^7.23.2",
+    "babel-plugin-polyfill-regenerator": "^0.5.3",
+    "babel-plugin-polyfill-corejs2": "^0.4.6",
+    "language-subtag-registry": "^0.3.23"
   },
   "repository": {
     "type": "git",

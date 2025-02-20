@@ -6,7 +6,7 @@
 
 The entity type of the result.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 entityType?: string;

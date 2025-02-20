@@ -18,5 +18,6 @@ export const expectedInitialState: State = {
   universal: {},
   vertical: {},
   directAnswer: {},
-  queryRules: { actions: [] }
+  queryRules: { actions: [] },
+  generativeDirectAnswer: {}
 };

@@ -6,7 +6,7 @@
 
 Describes the ways a search can be executed besides user input.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare enum QueryTrigger 
@@ -14,55 +14,10 @@ export declare enum QueryTrigger
 
 ## Enumeration Members
 
-<table><thead><tr><th>
-
-Member
-
-
-</th><th>
-
-Value
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-Initialize
-
-
-</td><td>
-
-`"initialize"`
-
-
-</td><td>
-
-Indicates that the query was triggered by a default initial search.
-
-
-</td></tr>
-<tr><td>
-
-Suggest
-
-
-</td><td>
-
-`"suggest"`
-
-
-</td><td>
-
-Indicates that the query was suggested by a [SpellCheck](./search-headless.spellcheck.md) response.
-
-
-</td></tr>
-</tbody></table>
+|  Member | Value | Description |
+|  --- | --- | --- |
+|  Initialize | <code>&quot;initialize&quot;</code> | Indicates that the query was triggered by a default initial search. |
+|  Suggest | <code>&quot;suggest&quot;</code> | Indicates that the query was suggested by a [SpellCheck](./search-headless.spellcheck.md) response. |
 
 ## Remarks
 

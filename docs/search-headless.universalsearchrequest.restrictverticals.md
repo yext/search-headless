@@ -6,7 +6,7 @@
 
 If included, the response will only include these verticals.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 restrictVerticals?: string[];

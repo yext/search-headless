@@ -6,7 +6,7 @@
 
 The [VerticalResults](./search-headless.verticalresults.md) for each search vertical.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 alternativeVerticals?: VerticalResults[];

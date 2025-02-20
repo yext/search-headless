@@ -6,7 +6,7 @@
 
 Gets the current state of the SearchHeadless instance.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 get state(): State;

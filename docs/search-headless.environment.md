@@ -6,7 +6,7 @@
 
 Defines the environment of the API domains.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare enum Environment 
@@ -14,48 +14,8 @@ export declare enum Environment
 
 ## Enumeration Members
 
-<table><thead><tr><th>
+|  Member | Value | Description |
+|  --- | --- | --- |
+|  PROD | <code>&quot;prod&quot;</code> |  |
+|  SANDBOX | <code>&quot;sbx&quot;</code> |  |
 
-Member
-
-
-</th><th>
-
-Value
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-PROD
-
-
-</td><td>
-
-`"prod"`
-
-
-</td><td>
-
-
-</td></tr>
-<tr><td>
-
-SANDBOX
-
-
-</td><td>
-
-`"sbx"`
-
-
-</td><td>
-
-
-</td></tr>
-</tbody></table>

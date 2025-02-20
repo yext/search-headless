@@ -6,7 +6,7 @@
 
 Any actions triggered by meeting criteria for query rules.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 actions: QueryRulesActionsData[];

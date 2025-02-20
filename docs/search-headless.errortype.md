@@ -6,7 +6,7 @@
 
 Identifier for the type of error causing the failure.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare enum ErrorType 
@@ -14,84 +14,10 @@ export declare enum ErrorType
 
 ## Enumeration Members
 
-<table><thead><tr><th>
+|  Member | Value | Description |
+|  --- | --- | --- |
+|  BackendError | <code>&quot;BACKEND_ERROR&quot;</code> | An internal error from the API backend. |
+|  InvalidConfig | <code>&quot;INVALID_CONFIG&quot;</code> | An invalid config from the request. |
+|  InvalidQuery | <code>&quot;INVALID_QUERY&quot;</code> | An invalid query from the request. |
+|  Timeout | <code>&quot;TIMEOUT&quot;</code> | A timeout error from the server. |
 
-Member
-
-
-</th><th>
-
-Value
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-BackendError
-
-
-</td><td>
-
-`"BACKEND_ERROR"`
-
-
-</td><td>
-
-An internal error from the API backend.
-
-
-</td></tr>
-<tr><td>
-
-InvalidConfig
-
-
-</td><td>
-
-`"INVALID_CONFIG"`
-
-
-</td><td>
-
-An invalid config from the request.
-
-
-</td></tr>
-<tr><td>
-
-InvalidQuery
-
-
-</td><td>
-
-`"INVALID_QUERY"`
-
-
-</td><td>
-
-An invalid query from the request.
-
-
-</td></tr>
-<tr><td>
-
-Timeout
-
-
-</td><td>
-
-`"TIMEOUT"`
-
-
-</td><td>
-
-A timeout error from the server.
-
-
-</td></tr>
-</tbody></table>

@@ -19,6 +19,12 @@ const reducers = {
   },
   setSearchType: (state, action: PayloadAction<string>) => {
     state.searchType = action.payload;
+  },
+  setExperienceKey: (state, action: PayloadAction<string>) => {
+    state.experienceKey = action.payload;
+  },
+  setLocale: (state, action: PayloadAction<string>) => {
+    state.locale = action.payload;
   }
 };
 

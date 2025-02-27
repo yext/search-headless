@@ -6,6 +6,7 @@ import { createBaseStore, HeadlessEnhancedStore } from '../../src/store';
 import { DEFAULT_HEADLESS_ID } from '../../src/constants';
 import HeadlessReducerManager from '../../src/headless-reducer-manager';
 import { getHttpHeaders } from '../../src/utils/client-sdk-utils';
+import {HeadlessConfig} from "../../src";
 
 /**
  * Creates a Search Headless instance with a mocked Search Core.
@@ -19,12 +20,14 @@ export function createMockedHeadless(
   initialState: Partial<State> = {},
   store?: HeadlessEnhancedStore,
   headlessReducerManager?: HeadlessReducerManager,
-  httpManager?: HttpManager
+  httpManager?: HttpManager,
+  searchConfig?: HeadlessConfig,
 ): SearchHeadless {
   const reduxStateManager = new ReduxStateManager(
     store || createBaseStore(), DEFAULT_HEADLESS_ID, headlessReducerManager || new HeadlessReducerManager());
   const headlessHttpManager = httpManager || new HttpManager();
-  const answers = new SearchHeadless(
+  const headlessConfig = searchConfig || {} as HeadlessConfig;
+  const answers = new SearchHeadless(headlessConfig,
     mockedSearchCore, reduxStateManager, headlessHttpManager, getHttpHeaders());
   answers.setState({
     ...answers.state,

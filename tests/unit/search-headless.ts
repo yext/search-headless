@@ -11,6 +11,7 @@ import { initialState as initialFiltersState } from '../../src/slices/filters';
 import { initialState as initialDirectAnswerState } from '../../src/slices/directanswer';
 import { initialState as initialQueryRulesState } from '../../src/slices/queryrules';
 import { initialState as initialSearchStatusState } from '../../src/slices/searchstatus';
+import {HeadlessConfig} from "../../src";
 
 const mockedState: State = {
   query: {
@@ -65,7 +66,9 @@ const mockedState: State = {
     sessionId: 'random-id-number'
   },
   meta: {
-    searchType: SearchTypeEnum.Vertical
+    searchType: SearchTypeEnum.Vertical,
+    experienceKey: 'experience',
+    locale: 'en'
   },
   location: {},
   directAnswer: {},
@@ -79,6 +82,11 @@ const mockedStateManager: jest.Mocked<StateManager> = {
   addListener: jest.fn()
 };
 
+const mockedConfig: HeadlessConfig = {
+  experienceKey: 'experience',
+  locale: 'en',
+  apiKey: 'apiKey'
+};
 const mockedSearch = jest.fn(() => { return { queryId: '123' }; });
 const mockedCore: any = {
   verticalAutocomplete: jest.fn(() => { return {}; }),
@@ -89,7 +97,7 @@ const mockedCore: any = {
   generativeDirectAnswer: jest.fn(() => Promise.resolve({}))
 };
 
-const answers = new SearchHeadless(mockedCore, mockedStateManager, new HttpManager());
+const answers = new SearchHeadless(mockedConfig, mockedCore, mockedStateManager, new HttpManager());
 
 describe('setters work as expected', () => {
   beforeEach(() => {

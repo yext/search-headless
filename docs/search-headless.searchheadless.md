@@ -16,7 +16,7 @@ export default class SearchHeadless
 
 |  Constructor | Modifiers | Description |
 |  --- | --- | --- |
-|  [(constructor)(core, stateManager, httpManager, additionalHttpHeaders)](./search-headless.searchheadless._constructor_.md) |  | Constructs a new instance of the <code>SearchHeadless</code> class |
+|  [(constructor)(config, core, stateManager, httpManager, additionalHttpHeaders)](./search-headless.searchheadless._constructor_.md) |  | Constructs a new instance of the <code>SearchHeadless</code> class |
 
 ## Properties
 

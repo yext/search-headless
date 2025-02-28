@@ -1,4 +1,4 @@
-import { provideHeadless } from '../../src';
+import {provideHeadless, SearchTypeEnum} from '../../src';
 import { DEFAULT_HEADLESS_ID } from '../../src/constants';
 import { expectedInitialState } from '../mocks/expectedInitialState';
 
@@ -18,13 +18,20 @@ it('multiple SearchHeadless instances link SessionTrackingState together', () =>
     ...config,
     headlessId: 'third'
   });
-  expect(firstHeadless.state).toEqual(expectedInitialState);
-  expect(secondHeadless.state).toEqual(expectedInitialState);
-  expect(thirdHeadless.state).toEqual(expectedInitialState);
+  const updatedState = {
+    ...expectedInitialState,
+    meta: {
+      searchType: SearchTypeEnum.Universal,
+      experienceKey: 'exp-key',
+      locale: 'en'
+    } };
+  expect(firstHeadless.state).toEqual(updatedState);
+  expect(secondHeadless.state).toEqual(updatedState);
+  expect(thirdHeadless.state).toEqual(updatedState);
 
   firstHeadless.setSessionId('123');
   const expectedIntermediaryState = {
-    ...expectedInitialState,
+    ...updatedState,
     sessionTracking: {
       enabled: false,
       sessionId: '123'
@@ -36,7 +43,7 @@ it('multiple SearchHeadless instances link SessionTrackingState together', () =>
 
   secondHeadless.setSessionTrackingEnabled(true);
   const expectedFinalState = {
-    ...expectedInitialState,
+    ...updatedState,
     sessionTracking: {
       enabled: true,
       sessionId: '123'

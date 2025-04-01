@@ -39,7 +39,7 @@ import { initialState as initialQueryRulesState } from './slices/queryrules';
 import { initialState as initialSearchStatusState } from './slices/searchstatus';
 import { initialState as initialGenerativeDirectAnswerState } from './slices/generativedirectanswer';
 import { isVerticalResults } from './models/slices/vertical';
-import {HeadlessConfig} from "./index";
+import { HeadlessConfig } from './index';
 
 /**
  * Provides the functionality for interacting with a Search experience.

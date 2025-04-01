@@ -1,4 +1,4 @@
-import {provideHeadless, SearchTypeEnum} from '../../src';
+import { provideHeadless, SearchTypeEnum } from '../../src';
 import { DEFAULT_HEADLESS_ID } from '../../src/constants';
 import { expectedInitialState } from '../mocks/expectedInitialState';
 

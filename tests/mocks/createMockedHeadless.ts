@@ -6,7 +6,7 @@ import { createBaseStore, HeadlessEnhancedStore } from '../../src/store';
 import { DEFAULT_HEADLESS_ID } from '../../src/constants';
 import HeadlessReducerManager from '../../src/headless-reducer-manager';
 import { getHttpHeaders } from '../../src/utils/client-sdk-utils';
-import {HeadlessConfig} from "../../src";
+import { HeadlessConfig } from "../../src";
 
 /**
  * Creates a Search Headless instance with a mocked Search Core.

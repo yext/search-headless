@@ -4,7 +4,7 @@
 
 ## MetaState.locale property
 
-Indicates the language of the search that Search Headless is managing.
+Indicates the language of the search that Search Headless is managing. Should not be adjusted after initialization.
 
 <b>Signature:</b>
 

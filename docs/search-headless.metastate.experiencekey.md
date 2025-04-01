@@ -4,7 +4,7 @@
 
 ## MetaState.experienceKey property
 
-Indicates the name of the experience that Search Headless is managing.
+Indicates the key of the experience that Search Headless is managing. Should not be adjusted after initialization.
 
 <b>Signature:</b>
 

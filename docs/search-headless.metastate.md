@@ -17,8 +17,8 @@ export interface MetaState
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [context?](./search-headless.metastate.context.md) | [Context](./search-headless.context.md) | <i>(Optional)</i> A JSON object used for passing data to and triggering Search [Query Rules](https://hitchhikers.yext.com/tracks/answers-advanced/ans302-query-rules/)<!-- -->. |
-|  [experienceKey?](./search-headless.metastate.experiencekey.md) | string | <i>(Optional)</i> Indicates the name of the experience that Search Headless is managing. |
-|  [locale?](./search-headless.metastate.locale.md) | string | <i>(Optional)</i> Indicates the language of the search that Search Headless is managing. |
+|  [experienceKey?](./search-headless.metastate.experiencekey.md) | string | <i>(Optional)</i> Indicates the key of the experience that Search Headless is managing. Should not be adjusted after initialization. |
+|  [locale?](./search-headless.metastate.locale.md) | string | <i>(Optional)</i> Indicates the language of the search that Search Headless is managing. Should not be adjusted after initialization. |
 |  [referrerPageUrl?](./search-headless.metastate.referrerpageurl.md) | string | <i>(Optional)</i> The URL of the referring page (the page that directed to the current page from which the request was made). |
 |  [searchType](./search-headless.metastate.searchtype.md) | [SearchType](./search-headless.searchtype.md) | Indicates the type of search that Search Headless is managing. |
 |  [uuid?](./search-headless.metastate.uuid.md) | string | <i>(Optional)</i> A unique id which corresponds to the latest request/response. |

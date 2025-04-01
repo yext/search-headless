@@ -26,11 +26,13 @@ export interface MetaState {
   */
   searchType: SearchType,
   /**
-   * Indicates the name of the experience that Search Headless is managing.
+   * Indicates the key of the experience that Search Headless is managing.
+   * Should not be adjusted after initialization.
    */
   experienceKey?: string,
   /**
    * Indicates the language of the search that Search Headless is managing.
+   * Should not be adjusted after initialization.
    */
   locale?: string
 }

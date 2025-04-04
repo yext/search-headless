@@ -338,8 +338,10 @@ export type EnumOrLiteral<T extends string> = T | `${T}`;
 
 // @public
 export enum Environment {
+    DEV = "dev",
     // (undocumented)
     PROD = "prod",
+    QA = "qa",
     // (undocumented)
     SANDBOX = "sbx"
 }

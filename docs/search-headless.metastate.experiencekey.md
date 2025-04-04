@@ -6,7 +6,7 @@
 
 Indicates the key of the experience that Search Headless is managing. Should not be adjusted after initialization.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 experienceKey?: string;

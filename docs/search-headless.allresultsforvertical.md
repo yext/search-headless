@@ -6,7 +6,7 @@
 
 Represents all results for the current vertical.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface AllResultsForVertical 
@@ -14,9 +14,82 @@ export interface AllResultsForVertical
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [facets](./search-headless.allresultsforvertical.facets.md) | [DisplayableFacet](./search-headless.displayablefacet.md)<!-- -->\[\] | The dynamic collection of facets that can be applied to filter the search results and whether each of them is currently selected. |
-|  [results](./search-headless.allresultsforvertical.results.md) | [Result](./search-headless.result.md)<!-- -->\[\] | The array of all results for the vertical. |
-|  [resultsCount](./search-headless.allresultsforvertical.resultscount.md) | number | The total number of results for the vertical. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[facets](./search-headless.allresultsforvertical.facets.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[DisplayableFacet](./search-headless.displayablefacet.md)<!-- -->\[\]
+
+
+</td><td>
+
+The dynamic collection of facets that can be applied to filter the search results and whether each of them is currently selected.
+
+
+</td></tr>
+<tr><td>
+
+[results](./search-headless.allresultsforvertical.results.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Result](./search-headless.result.md)<!-- -->\[\]
+
+
+</td><td>
+
+The array of all results for the vertical.
+
+
+</td></tr>
+<tr><td>
+
+[resultsCount](./search-headless.allresultsforvertical.resultscount.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+The total number of results for the vertical.
+
+
+</td></tr>
+</tbody></table>

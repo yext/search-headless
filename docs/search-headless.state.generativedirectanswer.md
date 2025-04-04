@@ -6,7 +6,7 @@
 
 Maintains the data for the latest universal search.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 generativeDirectAnswer: GenerativeDirectAnswerState;

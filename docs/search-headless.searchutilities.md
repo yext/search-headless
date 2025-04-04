@@ -6,8 +6,37 @@
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [isCloseMatch(value, searchTerm)](./search-headless.searchutilities.isclosematch.md) | Checks if the searchTerm is a case-insensitive, Levenshtein match for the value. |
-|  [searchThroughFacet(facet, searchTerm)](./search-headless.searchutilities.searchthroughfacet.md) | Searches through the specified facet and filters out the options that aren't a close match for the given searchTerm. The comparison is case insensitive. |
+<table><thead><tr><th>
 
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[isCloseMatch(value, searchTerm)](./search-headless.searchutilities.isclosematch.md)
+
+
+</td><td>
+
+Checks if the searchTerm is a case-insensitive, Levenshtein match for the value.
+
+
+</td></tr>
+<tr><td>
+
+[searchThroughFacet(facet, searchTerm)](./search-headless.searchutilities.searchthroughfacet.md)
+
+
+</td><td>
+
+Searches through the specified facet and filters out the options that aren't a close match for the given searchTerm. The comparison is case insensitive.
+
+
+</td></tr>
+</tbody></table>

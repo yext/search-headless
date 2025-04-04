@@ -6,7 +6,7 @@
 
 Maintains the metadata for Search Headless.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface MetaState 
@@ -14,12 +14,139 @@ export interface MetaState
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [context?](./search-headless.metastate.context.md) | [Context](./search-headless.context.md) | <i>(Optional)</i> A JSON object used for passing data to and triggering Search [Query Rules](https://hitchhikers.yext.com/tracks/answers-advanced/ans302-query-rules/)<!-- -->. |
-|  [experienceKey?](./search-headless.metastate.experiencekey.md) | string | <i>(Optional)</i> Indicates the key of the experience that Search Headless is managing. Should not be adjusted after initialization. |
-|  [locale?](./search-headless.metastate.locale.md) | string | <i>(Optional)</i> Indicates the language of the search that Search Headless is managing. Should not be adjusted after initialization. |
-|  [referrerPageUrl?](./search-headless.metastate.referrerpageurl.md) | string | <i>(Optional)</i> The URL of the referring page (the page that directed to the current page from which the request was made). |
-|  [searchType](./search-headless.metastate.searchtype.md) | [SearchType](./search-headless.searchtype.md) | Indicates the type of search that Search Headless is managing. |
-|  [uuid?](./search-headless.metastate.uuid.md) | string | <i>(Optional)</i> A unique id which corresponds to the latest request/response. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[context?](./search-headless.metastate.context.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Context](./search-headless.context.md)
+
+
+</td><td>
+
+_(Optional)_ A JSON object used for passing data to and triggering Search [Query Rules](https://hitchhikers.yext.com/tracks/answers-advanced/ans302-query-rules/)<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[experienceKey?](./search-headless.metastate.experiencekey.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Indicates the key of the experience that Search Headless is managing. Should not be adjusted after initialization.
+
+
+</td></tr>
+<tr><td>
+
+[locale?](./search-headless.metastate.locale.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ Indicates the language of the search that Search Headless is managing. Should not be adjusted after initialization.
+
+
+</td></tr>
+<tr><td>
+
+[referrerPageUrl?](./search-headless.metastate.referrerpageurl.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The URL of the referring page (the page that directed to the current page from which the request was made).
+
+
+</td></tr>
+<tr><td>
+
+[searchType](./search-headless.metastate.searchtype.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[SearchType](./search-headless.searchtype.md)
+
+
+</td><td>
+
+Indicates the type of search that Search Headless is managing.
+
+
+</td></tr>
+<tr><td>
+
+[uuid?](./search-headless.metastate.uuid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ A unique id which corresponds to the latest request/response.
+
+
+</td></tr>
+</tbody></table>

@@ -5,6 +5,7 @@ import SearchHeadless from '../../src/search-headless';
 import { expectedInitialState } from '../mocks/expectedInitialState';
 import HttpManager from '../../src/http-manager';
 import { SearchCore } from '@yext/search-core';
+import { HeadlessConfig, SearchTypeEnum } from '../../src';
 
 it('instantiating a ReduxStateManager creates adjacent state subtrees', () => {
   const store = createBaseStore();
@@ -57,13 +58,18 @@ it('dispatching answers actions through SearchHeadless', () => {
   const store = createBaseStore();
   const headlessReducerManager = new HeadlessReducerManager();
   const stateManager = new ReduxStateManager(store, 'anId', headlessReducerManager);
-  const headless = new SearchHeadless({} as SearchCore, stateManager, new HttpManager());
+  const headless = new SearchHeadless({ experienceKey: 'experience', locale: 'en' } as HeadlessConfig, {} as SearchCore, stateManager, new HttpManager());
   headless.setQuery('yo');
   expect(store.getState()).toEqual({
     anId: {
       ...expectedInitialState,
       query: {
         input: 'yo'
+      },
+      meta: {
+        searchType: SearchTypeEnum.Universal,
+        experienceKey: 'experience',
+        locale: 'en'
       }
     }
   });
@@ -73,7 +79,7 @@ it('addListener works with multiple headless instances', () => {
   const store = createBaseStore();
   const headlessReducerManager = new HeadlessReducerManager();
   const stateManager = new ReduxStateManager(store, 'anId', headlessReducerManager);
-  const headless = new SearchHeadless({} as SearchCore, stateManager, new HttpManager());
+  const headless = new SearchHeadless({} as HeadlessConfig, {} as SearchCore, stateManager, new HttpManager());
   const callback = jest.fn();
   headless.addListener({
     valueAccessor: state => state.query.input,
@@ -92,12 +98,12 @@ it('addListener works with multiple headless instances', () => {
 it('addListener can be used to link together different headless instances', () => {
   const store = createBaseStore();
   const headlessReducerManager = new HeadlessReducerManager();
-  const firstHeadless = new SearchHeadless(
+  const firstHeadless = new SearchHeadless({} as HeadlessConfig,
     {} as SearchCore,
     new ReduxStateManager(store, 'first', headlessReducerManager),
     new HttpManager()
   );
-  const secondHeadless = new SearchHeadless(
+  const secondHeadless = new SearchHeadless({} as HeadlessConfig,
     {} as SearchCore,
     new ReduxStateManager(store, 'second', headlessReducerManager),
     new HttpManager()

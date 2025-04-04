@@ -6,7 +6,7 @@
 
 Information about the user's location.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare interface LocationBias 
@@ -14,10 +14,101 @@ export declare interface LocationBias
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [displayName](./search-headless.locationbias.displayname.md) | string | The name of the location. |
-|  [latitude](./search-headless.locationbias.latitude.md) | number | The location's latitude. |
-|  [longitude](./search-headless.locationbias.longitude.md) | number | The location's longitude. |
-|  [method](./search-headless.locationbias.method.md) | [LocationBiasMethod](./search-headless.locationbiasmethod.md) | The method used to determine the location. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[displayName](./search-headless.locationbias.displayname.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+The name of the location.
+
+
+</td></tr>
+<tr><td>
+
+[latitude](./search-headless.locationbias.latitude.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+The location's latitude.
+
+
+</td></tr>
+<tr><td>
+
+[longitude](./search-headless.locationbias.longitude.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+The location's longitude.
+
+
+</td></tr>
+<tr><td>
+
+[method](./search-headless.locationbias.method.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[LocationBiasMethod](./search-headless.locationbiasmethod.md)
+
+
+</td><td>
+
+The method used to determine the location.
+
+
+</td></tr>
+</tbody></table>

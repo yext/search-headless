@@ -6,7 +6,7 @@
 
 Creates a [FieldValueStaticFilter](./search-headless.fieldvaluestaticfilter.md) that matches all results within a certain radius of the given position.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare function createNearMeStaticFilter(position: NearFilterValue): FieldValueStaticFilter;
@@ -14,11 +14,40 @@ export declare function createNearMeStaticFilter(position: NearFilterValue): Fie
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  position | [NearFilterValue](./search-headless.nearfiltervalue.md) | The position and radius |
+<table><thead><tr><th>
 
-<b>Returns:</b>
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+position
+
+
+</td><td>
+
+[NearFilterValue](./search-headless.nearfiltervalue.md)
+
+
+</td><td>
+
+The position and radius
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
 
 [FieldValueStaticFilter](./search-headless.fieldvaluestaticfilter.md)
 

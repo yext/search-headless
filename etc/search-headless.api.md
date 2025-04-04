@@ -338,8 +338,10 @@ export type EnumOrLiteral<T extends string> = T | `${T}`;
 
 // @public
 export enum Environment {
+    DEV = "dev",
     // (undocumented)
     PROD = "prod",
+    QA = "qa",
     // (undocumented)
     SANDBOX = "sbx"
 }
@@ -620,6 +622,8 @@ export enum Matcher {
 // @public
 export interface MetaState {
     context?: Context;
+    experienceKey?: string;
+    locale?: string;
     referrerPageUrl?: string;
     searchType: SearchType;
     uuid?: string;
@@ -804,7 +808,7 @@ export class SearchError extends Error {
 // @public
 export class SearchHeadless {
     // Warning: (ae-forgotten-export) The symbol "HttpManager" needs to be exported by the entry point index.d.ts
-    constructor(core: SearchCore, stateManager: StateManager, httpManager: HttpManager, additionalHttpHeaders?: AdditionalHttpHeaders | undefined);
+    constructor(config: HeadlessConfig, core: SearchCore, stateManager: StateManager, httpManager: HttpManager, additionalHttpHeaders?: AdditionalHttpHeaders | undefined);
     addListener<T>(listener: StateListener<T>): Unsubscribe;
     executeFilterSearch(query: string, sectioned: boolean, fields: SearchParameterField[]): Promise<FilterSearchResponse | undefined>;
     executeGenerativeDirectAnswer(): Promise<GenerativeDirectAnswerResponse | undefined>;

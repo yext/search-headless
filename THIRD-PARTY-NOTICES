@@ -1,7 +1,7 @@
 The following NPM packages may be included in this product:
 
- - @babel/runtime-corejs3@7.16.5
- - @babel/runtime@7.16.5
+ - @babel/runtime-corejs3@7.27.0
+ - @babel/runtime@7.27.0
 
 These packages each contain the following license and notice below:
 
@@ -32,7 +32,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 The following NPM package may be included in this product:
 
- - @reduxjs/toolkit@1.8.1
+ - @reduxjs/toolkit@1.9.7
 
 This package contains the following license and notice below:
 
@@ -62,7 +62,7 @@ SOFTWARE.
 
 The following NPM package may be included in this product:
 
- - @yext/search-core@2.6.0
+ - @yext/search-core@2.6.1
 
 This package contains the following license and notice below:
 
@@ -106,11 +106,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 The following NPM package may be included in this product:
 
- - core-js-pure@3.19.3
+ - core-js-pure@3.41.0
 
 This package contains the following license and notice below:
 
-Copyright (c) 2014-2021 Denis Pushkarev
+Copyright (c) 2014-2025 Denis Pushkarev
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -134,7 +134,7 @@ THE SOFTWARE.
 
 The following NPM package may be included in this product:
 
- - cross-fetch@3.1.8
+ - cross-fetch@3.2.0
 
 This package contains the following license and notice below:
 
@@ -164,7 +164,7 @@ SOFTWARE.
 
 The following NPM package may be included in this product:
 
- - immer@9.0.7
+ - immer@9.0.21
 
 This package contains the following license and notice below:
 
@@ -310,7 +310,7 @@ SOFTWARE.
 
 The following NPM package may be included in this product:
 
- - redux-thunk@2.4.1
+ - redux-thunk@2.4.2
 
 This package contains the following license and notice below:
 
@@ -340,7 +340,7 @@ SOFTWARE.
 
 The following NPM package may be included in this product:
 
- - redux@4.1.2
+ - redux@4.2.1
 
 This package contains the following license and notice below:
 
@@ -370,7 +370,7 @@ SOFTWARE.
 
 The following NPM package may be included in this product:
 
- - regenerator-runtime@0.13.9
+ - regenerator-runtime@0.14.1
 
 This package contains the following license and notice below:
 
@@ -400,7 +400,7 @@ SOFTWARE.
 
 The following NPM package may be included in this product:
 
- - reselect@4.1.5
+ - reselect@4.1.8
 
 This package contains the following license and notice below:
 

@@ -16,84 +16,8 @@ export declare enum Environment
 
 |  Member | Value | Description |
 |  --- | --- | --- |
+|  DEV | <code>&quot;dev&quot;</code> | For internal development only |
 |  PROD | <code>&quot;prod&quot;</code> |  |
+|  QA | <code>&quot;qa&quot;</code> | For internal development only |
 |  SANDBOX | <code>&quot;sbx&quot;</code> |  |
 
-<<<<<<< HEAD
-Member
-
-
-</th><th>
-
-Value
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-DEV
-
-
-</td><td>
-
-`"dev"`
-
-
-</td><td>
-
-For internal development only
-
-
-</td></tr>
-<tr><td>
-
-PROD
-
-
-</td><td>
-
-`"prod"`
-
-
-</td><td>
-
-
-</td></tr>
-<tr><td>
-
-QA
-
-
-</td><td>
-
-`"qa"`
-
-
-</td><td>
-
-For internal development only
-
-
-</td></tr>
-<tr><td>
-
-SANDBOX
-
-
-</td><td>
-
-`"sbx"`
-
-
-</td><td>
-
-
-</td></tr>
-</tbody></table>
-=======
->>>>>>> develop

@@ -16,98 +16,9 @@ constructor(config: HeadlessConfig, core: SearchCore, stateManager: StateManager
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
+|  config | [HeadlessConfig](./search-headless.headlessconfig.md) |  |
 |  core | [SearchCore](./search-headless.searchcore.md) |  |
 |  stateManager | StateManager |  |
 |  httpManager | HttpManager |  |
 |  additionalHttpHeaders | [AdditionalHttpHeaders](./search-headless.additionalhttpheaders.md) \| undefined |  |
 
-<<<<<<< HEAD
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-config
-
-
-</td><td>
-
-[HeadlessConfig](./search-headless.headlessconfig.md)
-
-
-</td><td>
-
-
-</td></tr>
-<tr><td>
-
-core
-
-
-</td><td>
-
-[SearchCore](./search-headless.searchcore.md)
-
-
-</td><td>
-
-
-</td></tr>
-<tr><td>
-
-stateManager
-
-
-</td><td>
-
-[StateManager](./search-headless.statemanager.md)
-
-
-</td><td>
-
-
-</td></tr>
-<tr><td>
-
-httpManager
-
-
-</td><td>
-
-HttpManager
-
-
-</td><td>
-
-
-</td></tr>
-<tr><td>
-
-additionalHttpHeaders
-
-
-</td><td>
-
-[AdditionalHttpHeaders](./search-headless.additionalhttpheaders.md) \| undefined
-
-
-</td><td>
-
-_(Optional)_
-
-
-</td></tr>
-</tbody></table>
-=======
->>>>>>> develop

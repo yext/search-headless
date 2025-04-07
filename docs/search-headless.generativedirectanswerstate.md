@@ -6,11 +6,7 @@
 
 Maintains the data for the latest generative direct answer.
 
-<<<<<<< HEAD
-**Signature:**
-=======
 <b>Signature:</b>
->>>>>>> develop
 
 ```typescript
 export interface GenerativeDirectAnswerState 
@@ -18,71 +14,8 @@ export interface GenerativeDirectAnswerState
 
 ## Properties
 
-<<<<<<< HEAD
-<table><thead><tr><th>
-
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[isLoading?](./search-headless.generativedirectanswerstate.isloading.md)
-
-
-</td><td>
-
-
-</td><td>
-
-boolean
-
-
-</td><td>
-
-_(Optional)_ Whether the AI generated answer is currently loading or has finished loading.
-
-
-</td></tr>
-<tr><td>
-
-[response?](./search-headless.generativedirectanswerstate.response.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[GenerativeDirectAnswerResponse](./search-headless.generativedirectanswerresponse.md)
-
-
-</td><td>
-
-_(Optional)_ The generative direct answer response.
-
-
-</td></tr>
-</tbody></table>
-=======
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [isLoading?](./search-headless.generativedirectanswerstate.isloading.md) | boolean | <i>(Optional)</i> Whether the AI generated answer is currently loading or has finished loading. |
 |  [response?](./search-headless.generativedirectanswerstate.response.md) | [GenerativeDirectAnswerResponse](./search-headless.generativedirectanswerresponse.md) | <i>(Optional)</i> The generative direct answer response. |
 
->>>>>>> develop

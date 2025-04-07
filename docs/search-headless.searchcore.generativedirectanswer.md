@@ -6,11 +6,7 @@
 
 Performs a generative direct answer request.
 
-<<<<<<< HEAD
-**Signature:**
-=======
 <b>Signature:</b>
->>>>>>> develop
 
 ```typescript
 generativeDirectAnswer(request: GenerativeDirectAnswerRequest): Promise<GenerativeDirectAnswerResponse>;
@@ -18,48 +14,11 @@ generativeDirectAnswer(request: GenerativeDirectAnswerRequest): Promise<Generati
 
 ## Parameters
 
-<<<<<<< HEAD
-<table><thead><tr><th>
-
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-request
-
-
-</td><td>
-
-[GenerativeDirectAnswerRequest](./search-headless.generativedirectanswerrequest.md)
-
-
-</td><td>
-
-Generative direct answer request options
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
-=======
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  request | [GenerativeDirectAnswerRequest](./search-headless.generativedirectanswerrequest.md) | Generative direct answer request options |
 
 <b>Returns:</b>
->>>>>>> develop
 
 Promise&lt;[GenerativeDirectAnswerResponse](./search-headless.generativedirectanswerresponse.md)<!-- -->&gt;
 

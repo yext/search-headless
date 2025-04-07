@@ -6,20 +6,12 @@
 
 Perform a generativeDirectAnswer request to the query most recent search stored in state.
 
-<<<<<<< HEAD
-**Signature:**
-=======
 <b>Signature:</b>
->>>>>>> develop
 
 ```typescript
 executeGenerativeDirectAnswer(): Promise<GenerativeDirectAnswerResponse | undefined>;
 ```
-<<<<<<< HEAD
-**Returns:**
-=======
 <b>Returns:</b>
->>>>>>> develop
 
 Promise&lt;[GenerativeDirectAnswerResponse](./search-headless.generativedirectanswerresponse.md) \| undefined&gt;
 

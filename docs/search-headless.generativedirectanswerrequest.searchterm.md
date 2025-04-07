@@ -6,11 +6,7 @@
 
 The text of the user-written query that prompted Search results.
 
-<<<<<<< HEAD
-**Signature:**
-=======
 <b>Signature:</b>
->>>>>>> develop
 
 ```typescript
 searchTerm: string;

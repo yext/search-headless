@@ -6,100 +6,11 @@
 
 Options which can be specified for a generative direct answer request.
 
-<<<<<<< HEAD
-**Signature:**
-=======
 <b>Signature:</b>
->>>>>>> develop
 
 ```typescript
 export declare interface GenerativeDirectAnswerRequest extends SearchRequest 
 ```
-<<<<<<< HEAD
-**Extends:** [SearchRequest](./search-headless.searchrequest.md)
-
-## Properties
-
-<table><thead><tr><th>
-
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[results](./search-headless.generativedirectanswerrequest.results.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[VerticalResults](./search-headless.verticalresults.md)<!-- -->\[\]
-
-
-</td><td>
-
-The complete set of Search Results
-
-
-</td></tr>
-<tr><td>
-
-[searchId](./search-headless.generativedirectanswerrequest.searchid.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-The ID of the search request.
-
-
-</td></tr>
-<tr><td>
-
-[searchTerm](./search-headless.generativedirectanswerrequest.searchterm.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-The text of the user-written query that prompted Search results.
-
-
-</td></tr>
-</tbody></table>
-=======
 <b>Extends:</b> [SearchRequest](./search-headless.searchrequest.md)
 
 ## Properties
@@ -110,4 +21,3 @@ The text of the user-written query that prompted Search results.
 |  [searchId](./search-headless.generativedirectanswerrequest.searchid.md) | string | The ID of the search request. |
 |  [searchTerm](./search-headless.generativedirectanswerrequest.searchterm.md) | string | The text of the user-written query that prompted Search results. |
 
->>>>>>> develop

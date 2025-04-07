@@ -6,7 +6,7 @@
 
 Indicates the language of the search that Search Headless is managing. Should not be adjusted after initialization.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 locale?: string;

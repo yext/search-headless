@@ -6,7 +6,11 @@
 
 The text of the final generated response.
 
+<<<<<<< HEAD
 **Signature:**
+=======
+<b>Signature:</b>
+>>>>>>> develop
 
 ```typescript
 directAnswer: string;

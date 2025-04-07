@@ -6,7 +6,7 @@
 
 All the relevant segments extracted from the document.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 segments: Segment[];

@@ -6,7 +6,7 @@
 
 Whether or not the filter is selected.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 selected: boolean;

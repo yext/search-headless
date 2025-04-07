@@ -6,7 +6,11 @@
 
 A string representing whether there was a result found within the given invocation.
 
+<<<<<<< HEAD
 **Signature:**
+=======
+<b>Signature:</b>
+>>>>>>> develop
 
 ```typescript
 resultStatus: string;

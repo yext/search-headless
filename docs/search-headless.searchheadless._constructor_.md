@@ -6,7 +6,7 @@
 
 Constructs a new instance of the `SearchHeadless` class
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 constructor(config: HeadlessConfig, core: SearchCore, stateManager: StateManager, httpManager: HttpManager, additionalHttpHeaders?: AdditionalHttpHeaders | undefined);
@@ -14,8 +14,14 @@ constructor(config: HeadlessConfig, core: SearchCore, stateManager: StateManager
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  core | [SearchCore](./search-headless.searchcore.md) |  |
+|  stateManager | StateManager |  |
+|  httpManager | HttpManager |  |
+|  additionalHttpHeaders | [AdditionalHttpHeaders](./search-headless.additionalhttpheaders.md) \| undefined |  |
 
+<<<<<<< HEAD
 Parameter
 
 
@@ -103,3 +109,5 @@ _(Optional)_
 
 </td></tr>
 </tbody></table>
+=======
+>>>>>>> develop

@@ -6,7 +6,7 @@
 
 Constructs a new instance of the `SearchCore` class
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 constructor(searchService: SearchService, questionSubmissionService: QuestionSubmissionService, autoCompleteService: AutocompleteService, generativeDirectAnswerService: GenerativeDirectAnswerService);
@@ -14,8 +14,14 @@ constructor(searchService: SearchService, questionSubmissionService: QuestionSub
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  searchService | [SearchService](./search-headless.searchservice.md) |  |
+|  questionSubmissionService | [QuestionSubmissionService](./search-headless.questionsubmissionservice.md) |  |
+|  autoCompleteService | [AutocompleteService](./search-headless.autocompleteservice.md) |  |
+|  generativeDirectAnswerService | [GenerativeDirectAnswerService](./search-headless.generativedirectanswerservice.md) |  |
 
+<<<<<<< HEAD
 Parameter
 
 
@@ -87,3 +93,5 @@ generativeDirectAnswerService
 
 </td></tr>
 </tbody></table>
+=======
+>>>>>>> develop

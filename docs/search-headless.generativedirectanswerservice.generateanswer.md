@@ -6,7 +6,11 @@
 
 Generates an answer to a search query.
 
+<<<<<<< HEAD
 **Signature:**
+=======
+<b>Signature:</b>
+>>>>>>> develop
 
 ```typescript
 generateAnswer(request: GenerativeDirectAnswerRequest): Promise<GenerativeDirectAnswerResponse>;
@@ -14,6 +18,7 @@ generateAnswer(request: GenerativeDirectAnswerRequest): Promise<GenerativeDirect
 
 ## Parameters
 
+<<<<<<< HEAD
 <table><thead><tr><th>
 
 Parameter
@@ -46,6 +51,13 @@ request
 </td></tr>
 </tbody></table>
 **Returns:**
+=======
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  request | [GenerativeDirectAnswerRequest](./search-headless.generativedirectanswerrequest.md) |  |
+
+<b>Returns:</b>
+>>>>>>> develop
 
 Promise&lt;[GenerativeDirectAnswerResponse](./search-headless.generativedirectanswerresponse.md)<!-- -->&gt;
 

@@ -6,7 +6,7 @@
 
 Retrieves query suggestions for filter search.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 filterSearch(request: FilterSearchRequest): Promise<FilterSearchResponse>;
@@ -14,38 +14,11 @@ filterSearch(request: FilterSearchRequest): Promise<FilterSearchResponse>;
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  request | [FilterSearchRequest](./search-headless.filtersearchrequest.md) |  |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-request
-
-
-</td><td>
-
-[FilterSearchRequest](./search-headless.filtersearchrequest.md)
-
-
-</td><td>
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 Promise&lt;[FilterSearchResponse](./search-headless.filtersearchresponse.md)<!-- -->&gt;
 

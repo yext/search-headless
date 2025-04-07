@@ -6,7 +6,7 @@
 
 Creates a [FieldValueStaticFilter](./search-headless.fieldvaluestaticfilter.md) that ensures all results will match a specific field value.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare function createEqualsStaticFilter(fieldId: string, value: string | number | boolean): FieldValueStaticFilter;
@@ -14,56 +14,12 @@ export declare function createEqualsStaticFilter(fieldId: string, value: string 
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  fieldId | string | The comparison field's identifier |
+|  value | string \| number \| boolean | The value to match |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-fieldId
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-The comparison field's identifier
-
-
-</td></tr>
-<tr><td>
-
-value
-
-
-</td><td>
-
-string \| number \| boolean
-
-
-</td><td>
-
-The value to match
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 [FieldValueStaticFilter](./search-headless.fieldvaluestaticfilter.md)
 

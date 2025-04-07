@@ -6,7 +6,7 @@
 
 Represents the source of a [Result](./search-headless.result.md)<!-- -->.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare enum Source 
@@ -14,8 +14,15 @@ export declare enum Source
 
 ## Enumeration Members
 
-<table><thead><tr><th>
+|  Member | Value | Description |
+|  --- | --- | --- |
+|  Custom | <code>&quot;CUSTOM_SEARCHER&quot;</code> | The result was from a custom source. |
+|  DocumentVertical | <code>&quot;DOCUMENT_VERTICAL&quot;</code> | The result is from a document vertical. |
+|  FunctionVertical | <code>&quot;FUNCTION_VERTICAL&quot;</code> | The result is from a function vertical. |
+|  Google | <code>&quot;GOOGLE_CSE&quot;</code> | The result is from Google Custom Search Engine. |
+|  KnowledgeManager | <code>&quot;KNOWLEDGE_MANAGER&quot;</code> | The result is from a Knowledge Graph. |
 
+<<<<<<< HEAD
 Member
 
 
@@ -111,3 +118,5 @@ The result is from a Knowledge Graph.
 
 </td></tr>
 </tbody></table>
+=======
+>>>>>>> develop

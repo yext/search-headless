@@ -6,10 +6,10 @@
 
 The main configuration options for [SearchCore](./search-headless.searchcore.md)<!-- -->. For a full description of the options, see [BaseSearchConfig](./search-headless.basesearchconfig.md)<!-- -->. The config requires either an apiKey or a token.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare type SearchConfig = SearchConfigWithApiKey | SearchConfigWithToken;
 ```
-**References:** [SearchConfigWithApiKey](./search-headless.searchconfigwithapikey.md)<!-- -->, [SearchConfigWithToken](./search-headless.searchconfigwithtoken.md)
+<b>References:</b> [SearchConfigWithApiKey](./search-headless.searchconfigwithapikey.md)<!-- -->, [SearchConfigWithToken](./search-headless.searchconfigwithtoken.md)
 

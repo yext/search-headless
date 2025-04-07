@@ -6,7 +6,11 @@
 
 A service for generative direct answer requests.
 
+<<<<<<< HEAD
 **Signature:**
+=======
+<b>Signature:</b>
+>>>>>>> develop
 
 ```typescript
 export declare interface GenerativeDirectAnswerService 
@@ -14,6 +18,7 @@ export declare interface GenerativeDirectAnswerService
 
 ## Methods
 
+<<<<<<< HEAD
 <table><thead><tr><th>
 
 Method
@@ -37,3 +42,9 @@ Generates an answer to a search query.
 
 </td></tr>
 </tbody></table>
+=======
+|  Method | Description |
+|  --- | --- |
+|  [generateAnswer(request)](./search-headless.generativedirectanswerservice.generateanswer.md) | Generates an answer to a search query. |
+
+>>>>>>> develop

@@ -6,51 +6,16 @@
 
 A [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md) interface with phone value.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface PhoneDirectAnswer extends BaseFieldValueDirectAnswer<string> 
 ```
-**Extends:** [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md)<!-- -->&lt;string&gt;
+<b>Extends:</b> [BaseFieldValueDirectAnswer](./search-headless.basefieldvaluedirectanswer.md)<!-- -->&lt;string&gt;
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [fieldType](./search-headless.phonedirectanswer.fieldtype.md) | [BuiltInFieldType.Phone](./search-headless.builtinfieldtype.md) |  |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[fieldType](./search-headless.phonedirectanswer.fieldtype.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[BuiltInFieldType.Phone](./search-headless.builtinfieldtype.md)
-
-
-</td><td>
-
-
-</td></tr>
-</tbody></table>

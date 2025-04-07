@@ -6,7 +6,7 @@
 
 The number of results for the vertical search.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 resultsCount?: number;

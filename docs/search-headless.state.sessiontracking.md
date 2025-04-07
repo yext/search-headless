@@ -6,7 +6,7 @@
 
 Maintains whether the user session should be tracked and, if so, the session information.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 sessionTracking: SessionTrackingState;

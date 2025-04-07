@@ -6,7 +6,11 @@
 
 A representation of a generative direct answer response.
 
+<<<<<<< HEAD
 **Signature:**
+=======
+<b>Signature:</b>
+>>>>>>> develop
 
 ```typescript
 export declare interface GenerativeDirectAnswerResponse 
@@ -14,6 +18,7 @@ export declare interface GenerativeDirectAnswerResponse
 
 ## Properties
 
+<<<<<<< HEAD
 <table><thead><tr><th>
 
 Property
@@ -93,3 +98,11 @@ A string representing whether there was a result found within the given invocati
 
 </td></tr>
 </tbody></table>
+=======
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [citations](./search-headless.generativedirectanswerresponse.citations.md) | string\[\] | An array of uids from the relevant [Result.rawData](./search-headless.result.rawdata.md) that were used to form the directAnswer. |
+|  [directAnswer](./search-headless.generativedirectanswerresponse.directanswer.md) | string | The text of the final generated response. |
+|  [resultStatus](./search-headless.generativedirectanswerresponse.resultstatus.md) | string | A string representing whether there was a result found within the given invocation. |
+
+>>>>>>> develop

@@ -6,7 +6,7 @@
 
 Overrides for the URLs which are used when making requests to the Search API.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 endpoints?: Endpoints;

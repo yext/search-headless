@@ -6,7 +6,7 @@
 
 The data for the direct answer. The type of the data is determined by the Search API based on whether the answer was found within a document or was a field value in the knowledge graph.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 result?: FeaturedSnippetDirectAnswer | FieldValueDirectAnswer;

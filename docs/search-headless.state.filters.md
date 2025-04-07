@@ -6,7 +6,7 @@
 
 Maintains the current state of facets and filters in the application.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 filters: FiltersState;

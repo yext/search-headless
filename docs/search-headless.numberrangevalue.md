@@ -6,7 +6,7 @@
 
 A filter value for a filter with a $between [Matcher](./search-headless.matcher.md)<!-- -->.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface NumberRangeValue 
@@ -14,63 +14,8 @@ export declare interface NumberRangeValue
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [end?](./search-headless.numberrangevalue.end.md) | [UpperNumberRangeLimit](./search-headless.uppernumberrangelimit.md) | <i>(Optional)</i> End limit of the number range value. |
+|  [start?](./search-headless.numberrangevalue.start.md) | [LowerNumberRangeLimit](./search-headless.lowernumberrangelimit.md) | <i>(Optional)</i> Start limit of the number range value. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[end?](./search-headless.numberrangevalue.end.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[UpperNumberRangeLimit](./search-headless.uppernumberrangelimit.md)
-
-
-</td><td>
-
-_(Optional)_ End limit of the number range value.
-
-
-</td></tr>
-<tr><td>
-
-[start?](./search-headless.numberrangevalue.start.md)
-
-
-</td><td>
-
-
-</td><td>
-
-[LowerNumberRangeLimit](./search-headless.lowernumberrangelimit.md)
-
-
-</td><td>
-
-_(Optional)_ Start limit of the number range value.
-
-
-</td></tr>
-</tbody></table>

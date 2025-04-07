@@ -4,7 +4,7 @@
 
 ## DayHour.openIntervals property
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 openIntervals?: Interval[];

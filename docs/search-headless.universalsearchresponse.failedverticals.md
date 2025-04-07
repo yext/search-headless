@@ -6,7 +6,7 @@
 
 Error information from when a vertical fails to return results.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 failedVerticals?: FailedVertical[];

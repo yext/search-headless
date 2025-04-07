@@ -4,7 +4,7 @@
 
 ## Endpoints.verticalAutocomplete property
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 verticalAutocomplete?: string;

@@ -6,7 +6,7 @@
 
 The value of the field which should be highlighted.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 value: string;

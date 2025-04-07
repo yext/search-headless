@@ -6,7 +6,7 @@
 
 Sets [UniversalSearchState.restrictVerticals](./search-headless.universalsearchstate.restrictverticals.md) to the specified vertical keys.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 setRestrictVerticals(restrictVerticals: string[]): void;
@@ -14,40 +14,11 @@ setRestrictVerticals(restrictVerticals: string[]): void;
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  restrictVerticals | string\[\] | The new verticals to restrict a universal search |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-restrictVerticals
-
-
-</td><td>
-
-string\[\]
-
-
-</td><td>
-
-The new verticals to restrict a universal search
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 void
 

@@ -6,7 +6,7 @@
 
 The radius (in meters) to filter vertical searches by.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 locationRadius?: number;

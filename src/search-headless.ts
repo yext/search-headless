@@ -39,6 +39,7 @@ import { initialState as initialQueryRulesState } from './slices/queryrules';
 import { initialState as initialSearchStatusState } from './slices/searchstatus';
 import { initialState as initialGenerativeDirectAnswerState } from './slices/generativedirectanswer';
 import { isVerticalResults } from './models/slices/vertical';
+import { HeadlessConfig } from './index';
 
 /**
  * Provides the functionality for interacting with a Search experience.
@@ -52,11 +53,15 @@ export default class SearchHeadless {
   public readonly utilities = searchUtilities;
 
   constructor(
+    private config: HeadlessConfig,
     private core: SearchCore,
     private stateManager: StateManager,
     private httpManager: HttpManager,
     private additionalHttpHeaders?: AdditionalHttpHeaders
-  ) {}
+  ) {
+    this.stateManager.dispatchEvent('meta/setExperienceKey', config.experienceKey);
+    this.stateManager.dispatchEvent('meta/setLocale', config.locale);
+  }
 
   /**
    * Sets {@link QueryState.isPagination} to the specified input.

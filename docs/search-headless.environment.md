@@ -16,6 +16,8 @@ export declare enum Environment
 
 |  Member | Value | Description |
 |  --- | --- | --- |
+|  DEV | <code>&quot;dev&quot;</code> | For internal development only |
 |  PROD | <code>&quot;prod&quot;</code> |  |
+|  QA | <code>&quot;qa&quot;</code> | For internal development only |
 |  SANDBOX | <code>&quot;sbx&quot;</code> |  |
 

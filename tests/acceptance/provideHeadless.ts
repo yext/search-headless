@@ -6,6 +6,16 @@ const baseConfig = {
   locale: 'en'
 };
 
+it('meta state is populated using passed-in config', () => {
+  const headless = provideHeadless({
+    ...baseConfig,
+    verticalKey: 'test'
+  });
+
+  expect(headless.state.meta.experienceKey).toEqual('exp-key');
+  expect(headless.state.meta.locale).toEqual('en');
+});
+
 it('if apiKey is passed into the headless config, the searchType is set to \'vertical\'', () => {
   const headless = provideHeadless({
     ...baseConfig,

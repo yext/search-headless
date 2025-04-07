@@ -149,6 +149,7 @@ describe('ensure correct results from latest request', () => {
 });
 
 function getSearchHeadless(requestsTime: { [x: string]: number }) {
+  const mockedConfig: any = {};
   const mockedCore: any = {
     verticalSearch: jest.fn( async (request: VerticalSearchRequest) => {
       const waitTime = requestsTime[request.query];
@@ -164,5 +165,5 @@ function getSearchHeadless(requestsTime: { [x: string]: number }) {
   const stateManager = new ReduxStateManager(
     createBaseStore(), DEFAULT_HEADLESS_ID, new HeadlessReducerManager());
   const httpManager = new HttpManager();
-  return new SearchHeadless(mockedCore, stateManager, httpManager);
+  return new SearchHeadless(mockedConfig, mockedCore, stateManager, httpManager);
 }

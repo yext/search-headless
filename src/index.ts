@@ -87,7 +87,7 @@ export function provideHeadless(
   const httpManager = new HttpManager();
   const httpHeaders = getHttpHeaders(additionalHttpHeaders);
 
-  const headless = new SearchHeadless(searchCore, stateManager, httpManager, httpHeaders);
+  const headless = new SearchHeadless(searchConfig, searchCore, stateManager, httpManager, httpHeaders);
   verticalKey
     ? headless.setVertical(verticalKey)
     : headless.setUniversal();

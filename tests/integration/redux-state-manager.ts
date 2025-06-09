@@ -118,7 +118,7 @@ it('addListener can be used to link together different headless instances', () =
   const expectedStartState = {
     ...expectedInitialState,
     sessionTracking: {
-      enabled: false
+      enabled: true
     }
   };
   expect(store.getState()).toEqual({
@@ -129,10 +129,10 @@ it('addListener can be used to link together different headless instances', () =
   const expectedFinalState = {
     ...expectedInitialState,
     sessionTracking: {
-      enabled: true
+      enabled: false
     }
   };
-  firstHeadless.setSessionTrackingEnabled(true);
+  firstHeadless.setSessionTrackingEnabled(false);
   expect(store.getState()).toEqual({
     first: expectedFinalState,
     second: expectedFinalState

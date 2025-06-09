@@ -33,7 +33,7 @@ it('multiple SearchHeadless instances link SessionTrackingState together', () =>
   const expectedIntermediaryState = {
     ...updatedState,
     sessionTracking: {
-      enabled: false,
+      enabled: true,
       sessionId: '123'
     }
   };
@@ -41,11 +41,11 @@ it('multiple SearchHeadless instances link SessionTrackingState together', () =>
   expect(secondHeadless.state).toEqual(expectedIntermediaryState);
   expect(thirdHeadless.state).toEqual(expectedIntermediaryState);
 
-  secondHeadless.setSessionTrackingEnabled(true);
+  secondHeadless.setSessionTrackingEnabled(false);
   const expectedFinalState = {
     ...updatedState,
     sessionTracking: {
-      enabled: true,
+      enabled: false,
       sessionId: '123'
     }
   };

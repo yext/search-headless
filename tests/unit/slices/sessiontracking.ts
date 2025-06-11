@@ -23,3 +23,11 @@ describe('sessionTracking slice reducer works as expected', () => {
     expect(actualState).toEqual(expectedState);
   });
 });
+
+describe('sessionTracking is enabled by default', () => {
+  it('initial state is enabled', () => {
+    const initialState = reducer(undefined, { type: '' });
+    expect(initialState.enabled).toBe(true);
+  }
+  );
+});

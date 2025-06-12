@@ -2,7 +2,7 @@ import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
 import { SessionTrackingState } from '../models/slices/sessiontracking';
 
 const initialState: SessionTrackingState = {
-  enabled: false
+  enabled: true
 };
 
 const reducers = {

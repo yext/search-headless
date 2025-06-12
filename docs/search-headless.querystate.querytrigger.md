@@ -6,7 +6,7 @@
 
 How the query was triggered (besides user input).
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 queryTrigger?: QueryTrigger;

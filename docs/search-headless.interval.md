@@ -6,7 +6,7 @@
 
 An interface for a time interval to use in [BaseFieldValueDirectAnswer.value](./search-headless.basefieldvaluedirectanswer.value.md)<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare interface Interval 
@@ -14,8 +14,63 @@ export declare interface Interval
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [end?](./search-headless.interval.end.md) | string | <i>(Optional)</i> |
-|  [start?](./search-headless.interval.start.md) | string | <i>(Optional)</i> |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[end?](./search-headless.interval.end.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[start?](./search-headless.interval.start.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

@@ -6,16 +6,53 @@
 
 A [BaseFeaturedSnippetDirectAnswer](./search-headless.basefeaturedsnippetdirectanswer.md) with 'rich\_text\_v2' field type. "value" field is omitted for featured snippet direct answer of this field type.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare interface RichTextV2SnippetDirectAnswer extends Omit<BaseFeaturedSnippetDirectAnswer<string>, 'value'> 
 ```
-<b>Extends:</b> Omit&lt;[BaseFeaturedSnippetDirectAnswer](./search-headless.basefeaturedsnippetdirectanswer.md)<!-- -->&lt;string&gt;, 'value'&gt;
+**Extends:** Omit&lt;[BaseFeaturedSnippetDirectAnswer](./search-headless.basefeaturedsnippetdirectanswer.md)<!-- -->&lt;string&gt;, 'value'&gt;
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [fieldType](./search-headless.richtextv2snippetdirectanswer.fieldtype.md) | [EnumOrLiteral](./search-headless.enumorliteral.md)<!-- -->&lt;[BuiltInFieldType.RichText\_v2](./search-headless.builtinfieldtype.md)<!-- -->&gt; | The field type of the direct answer. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[fieldType](./search-headless.richtextv2snippetdirectanswer.fieldtype.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[EnumOrLiteral](./search-headless.enumorliteral.md)<!-- -->&lt;[BuiltInFieldType.RichText\_v2](./search-headless.builtinfieldtype.md)<!-- -->&gt;
+
+
+</td><td>
+
+The field type of the direct answer.
+
+
+</td></tr>
+</tbody></table>

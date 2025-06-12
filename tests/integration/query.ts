@@ -80,7 +80,7 @@ describe('sessionId to request works as expected', () => {
 });
 
 describe('ensure correct results from latest request', () => {
-  jest.useFakeTimers();
+  jest.useFakeTimers({ legacyFakeTimers: true });
   const queries = ['really long request', 'short', 'long request'];
   const requestsTime = {
     [queries[0]]: 20,

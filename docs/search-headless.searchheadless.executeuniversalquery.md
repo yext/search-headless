@@ -6,12 +6,12 @@
 
 Performs a Search across all verticals with relevant parts of the state used as input to the search. Updates the state with the response data.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 executeUniversalQuery(): Promise<UniversalSearchResponse | undefined>;
 ```
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;[UniversalSearchResponse](./search-headless.universalsearchresponse.md) \| undefined&gt;
 

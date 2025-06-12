@@ -9,7 +9,7 @@ export const expectedInitialState: State = {
   },
   query: {},
   sessionTracking: {
-    enabled: false
+    enabled: true
   },
   spellCheck: {
     enabled: true

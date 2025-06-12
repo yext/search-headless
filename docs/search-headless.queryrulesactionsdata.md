@@ -6,7 +6,7 @@
 
 Data returned from the Search query rules system.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 export declare interface QueryRulesActionsData 
@@ -14,82 +14,9 @@ export declare interface QueryRulesActionsData
 
 ## Properties
 
-<table><thead><tr><th>
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [data?](./search-headless.queryrulesactionsdata.data.md) | Record&lt;string, unknown&gt; | <i>(Optional)</i> The data returned from the query rule. |
+|  [errors?](./search-headless.queryrulesactionsdata.errors.md) | { uuid: string; type: string; message?: string; }\[\] | <i>(Optional)</i> Any errors returned from the query rule. |
+|  [key](./search-headless.queryrulesactionsdata.key.md) | string | The unique identifier for this query rule. |
 
-Property
-
-
-</th><th>
-
-Modifiers
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-[data?](./search-headless.queryrulesactionsdata.data.md)
-
-
-</td><td>
-
-
-</td><td>
-
-Record&lt;string, unknown&gt;
-
-
-</td><td>
-
-_(Optional)_ The data returned from the query rule.
-
-
-</td></tr>
-<tr><td>
-
-[errors?](./search-headless.queryrulesactionsdata.errors.md)
-
-
-</td><td>
-
-
-</td><td>
-
-{ uuid: string; type: string; message?: string; }\[\]
-
-
-</td><td>
-
-_(Optional)_ Any errors returned from the query rule.
-
-
-</td></tr>
-<tr><td>
-
-[key](./search-headless.queryrulesactionsdata.key.md)
-
-
-</td><td>
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-The unique identifier for this query rule.
-
-
-</td></tr>
-</tbody></table>

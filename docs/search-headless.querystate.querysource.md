@@ -6,7 +6,7 @@
 
 The source of the query (from a standard Search integration, a Search overlay, or from visual autocomplete).
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 querySource?: QuerySource;

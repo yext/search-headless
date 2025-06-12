@@ -6,7 +6,7 @@
 
 Dispatches an event. This can update the [State](./search-headless.state.md)<!-- -->.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 dispatchEvent(type: string, payload?: unknown): void;
@@ -14,56 +14,12 @@ dispatchEvent(type: string, payload?: unknown): void;
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  type | string | The type of action to dispatch |
+|  payload | unknown | The payload of the action to dispatch |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-type
-
-
-</td><td>
-
-string
-
-
-</td><td>
-
-The type of action to dispatch
-
-
-</td></tr>
-<tr><td>
-
-payload
-
-
-</td><td>
-
-unknown
-
-
-</td><td>
-
-_(Optional)_ The payload of the action to dispatch
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 void
 

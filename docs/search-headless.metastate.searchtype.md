@@ -6,7 +6,7 @@
 
 Indicates the type of search that Search Headless is managing.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 searchType: SearchType;

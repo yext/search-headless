@@ -6,7 +6,7 @@
 
 The input string for autocomplete.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 input: string;

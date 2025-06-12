@@ -6,7 +6,7 @@
 
 An array of [Facet](./search-headless.facet.md)<!-- -->s associated with the search results.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 facets?: DisplayableFacet[];

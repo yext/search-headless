@@ -4,7 +4,7 @@
 
 ## ComplexURL.preferDisplayUrl property
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 preferDisplayUrl: boolean;

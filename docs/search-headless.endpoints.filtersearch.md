@@ -4,7 +4,7 @@
 
 ## Endpoints.filterSearch property
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 filterSearch?: string;

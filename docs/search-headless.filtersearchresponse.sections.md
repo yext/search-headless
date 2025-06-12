@@ -6,7 +6,7 @@
 
 Represents autocomplete results separated by field.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 sections: {

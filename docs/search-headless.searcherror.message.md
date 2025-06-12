@@ -6,7 +6,7 @@
 
 The error message.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 message: string;

@@ -4,7 +4,7 @@
 
 ## Endpoints.questionSubmission property
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 questionSubmission?: string;

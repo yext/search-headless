@@ -6,7 +6,7 @@
 
 The source of the vertical search results.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 source?: Source;

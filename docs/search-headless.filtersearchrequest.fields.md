@@ -6,7 +6,7 @@
 
 An array of [SearchParameterField](./search-headless.searchparameterfield.md)<!-- -->.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 fields: SearchParameterField[];

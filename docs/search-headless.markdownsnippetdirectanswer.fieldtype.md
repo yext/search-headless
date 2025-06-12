@@ -6,7 +6,7 @@
 
 The field type of the direct answer.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 fieldType: EnumOrLiteral<BuiltInFieldType.Markdown>;

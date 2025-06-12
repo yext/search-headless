@@ -6,7 +6,7 @@
 
 Determines whether or not the results of the [FilterSearchResponse](./search-headless.filtersearchresponse.md) are separated by field.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 sectioned: boolean;

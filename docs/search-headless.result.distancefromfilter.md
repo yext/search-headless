@@ -6,7 +6,7 @@
 
 The distance from a [AppliedQueryFilter](./search-headless.appliedqueryfilter.md) location to the result in meters.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 distanceFromFilter?: number;

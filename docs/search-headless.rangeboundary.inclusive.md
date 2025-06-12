@@ -6,7 +6,7 @@
 
 Whether or not the range includes the boundary value.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 inclusive: boolean;

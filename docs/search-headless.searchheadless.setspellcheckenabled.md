@@ -6,7 +6,7 @@
 
 Sets [SpellCheckState.enabled](./search-headless.spellcheckstate.enabled.md) to the specified boolean value.
 
-**Signature:**
+<b>Signature:</b>
 
 ```typescript
 setSpellCheckEnabled(enabled: boolean): void;
@@ -14,40 +14,11 @@ setSpellCheckEnabled(enabled: boolean): void;
 
 ## Parameters
 
-<table><thead><tr><th>
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  enabled | boolean | Whether or not spellcheck should be set to enabled |
 
-Parameter
-
-
-</th><th>
-
-Type
-
-
-</th><th>
-
-Description
-
-
-</th></tr></thead>
-<tbody><tr><td>
-
-enabled
-
-
-</td><td>
-
-boolean
-
-
-</td><td>
-
-Whether or not spellcheck should be set to enabled
-
-
-</td></tr>
-</tbody></table>
-**Returns:**
+<b>Returns:</b>
 
 void
 

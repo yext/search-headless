@@ -6,7 +6,7 @@
 
 The array of filters inferred from the query and applied to the search.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 appliedQueryFilters?: AppliedQueryFilter[];

@@ -6,7 +6,7 @@
 
 The response of a universal or vertical autocomplete request.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare interface AutocompleteResponse 
@@ -14,10 +14,101 @@ export declare interface AutocompleteResponse
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [inputIntents](./search-headless.autocompleteresponse.inputintents.md) | [SearchIntent](./search-headless.searchintent.md)<!-- -->\[\] | Represents intents from the Search API. |
-|  [queryId?](./search-headless.autocompleteresponse.queryid.md) | string | <i>(Optional)</i> The ID of the search query. |
-|  [results](./search-headless.autocompleteresponse.results.md) | [AutocompleteResult](./search-headless.autocompleteresult.md)<!-- -->\[\] | An array of [AutocompleteResult](./search-headless.autocompleteresult.md)<!-- -->s. |
-|  [uuid](./search-headless.autocompleteresponse.uuid.md) | string | A unique id which corresponds to the request. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[inputIntents](./search-headless.autocompleteresponse.inputintents.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[SearchIntent](./search-headless.searchintent.md)<!-- -->\[\]
+
+
+</td><td>
+
+Represents intents from the Search API.
+
+
+</td></tr>
+<tr><td>
+
+[queryId?](./search-headless.autocompleteresponse.queryid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The ID of the search query.
+
+
+</td></tr>
+<tr><td>
+
+[results](./search-headless.autocompleteresponse.results.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[AutocompleteResult](./search-headless.autocompleteresult.md)<!-- -->\[\]
+
+
+</td><td>
+
+An array of [AutocompleteResult](./search-headless.autocompleteresult.md)<!-- -->s.
+
+
+</td></tr>
+<tr><td>
+
+[uuid](./search-headless.autocompleteresponse.uuid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+A unique id which corresponds to the request.
+
+
+</td></tr>
+</tbody></table>

@@ -6,7 +6,7 @@
 
 Maintains the data for the latest universal search.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface UniversalSearchState 
@@ -14,9 +14,82 @@ export interface UniversalSearchState
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [limit?](./search-headless.universalsearchstate.limit.md) | [UniversalLimit](./search-headless.universallimit.md) | <i>(Optional)</i> An object defining the limit (up to how many results should be returned) for each vertical. |
-|  [restrictVerticals?](./search-headless.universalsearchstate.restrictverticals.md) | string\[\] | <i>(Optional)</i> If included, the verticals to which the universal search should be restricted. |
-|  [verticals?](./search-headless.universalsearchstate.verticals.md) | [VerticalResults](./search-headless.verticalresults.md)<!-- -->\[\] | <i>(Optional)</i> The results from each vertical included in the universal search. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[limit?](./search-headless.universalsearchstate.limit.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[UniversalLimit](./search-headless.universallimit.md)
+
+
+</td><td>
+
+_(Optional)_ An object defining the limit (up to how many results should be returned) for each vertical.
+
+
+</td></tr>
+<tr><td>
+
+[restrictVerticals?](./search-headless.universalsearchstate.restrictverticals.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string\[\]
+
+
+</td><td>
+
+_(Optional)_ If included, the verticals to which the universal search should be restricted.
+
+
+</td></tr>
+<tr><td>
+
+[verticals?](./search-headless.universalsearchstate.verticals.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[VerticalResults](./search-headless.verticalresults.md)<!-- -->\[\]
+
+
+</td><td>
+
+_(Optional)_ The results from each vertical included in the universal search.
+
+
+</td></tr>
+</tbody></table>

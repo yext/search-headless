@@ -6,7 +6,7 @@
 
 The number of results that should be skipped when fetching results for the response. Allows for fetching more results with the same query.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 offset?: number;

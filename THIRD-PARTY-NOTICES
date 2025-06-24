@@ -62,7 +62,11 @@ SOFTWARE.
 
 The following NPM package may be included in this product:
 
+<<<<<<< HEAD
  - @yext/search-core@2.6.1
+=======
+ - @yext/search-core@2.6.2
+>>>>>>> main
 
 This package contains the following license and notice below:
 

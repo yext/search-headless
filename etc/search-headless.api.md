@@ -616,7 +616,7 @@ export enum Matcher {
     LessThan = "$lt",
     LessThanOrEqualTo = "$le",
     Near = "$near",
-    NotEquals = "!$e"
+    NotEquals = "!$eq"
 }
 
 // @public

@@ -1,6 +1,6 @@
 {
   "name": "@yext/search-headless",
-  "version": "2.6.3",
+  "version": "2.6.4",
   "description": "A library for powering UI components for Yext Search integrations",
   "author": "slapshot@yext.com",
   "license": "BSD-3-Clause",
@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
-    "@yext/search-core": "^2.6.2",
+    "@yext/search-core": "^2.6.3",
     "js-levenshtein": "^1.1.6",
     "lodash": "^4.17.21"
   },

@@ -1106,6 +1106,7 @@ export interface VerticalResults {
 // @public
 export interface VerticalSearchRequest extends SearchRequest {
     context?: Context;
+    facetAllowlist?: string[];
     facets?: Facet[];
     limit?: number;
     location?: LatLong;

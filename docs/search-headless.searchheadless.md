@@ -273,6 +273,20 @@ Sets [MetaState.context](./search-headless.metastate.context.md) to the specifie
 </td></tr>
 <tr><td>
 
+[setFacetAllowList(facetAllowlist)](./search-headless.searchheadless.setfacetallowlist.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Sets [VerticalSearchState.facetAllowlist](./search-headless.verticalsearchstate.facetallowlist.md) to the specified subset of facet field IDs.
+
+
+</td></tr>
+<tr><td>
+
 [setFacetOption(fieldId, facetOption, selected)](./search-headless.searchheadless.setfacetoption.md)
 
 

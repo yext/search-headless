@@ -284,10 +284,19 @@ export default class SearchHeadless {
   /**
    * Sets {@link VerticalSearchState.locationRadius} to the specified number of meters.
    *
-   * @param locationRadius -  The radius (in meters) to filter vertical searches by.
+   * @param locationRadius - The radius (in meters) to filter vertical searches by.
    */
   setLocationRadius(locationRadius: number | undefined): void {
     this.stateManager.dispatchEvent('vertical/setLocationRadius', locationRadius);
+  }
+
+  /**
+   * Sets {@link VerticalSearchState.facetAllowlist} to the specified subset of facet field IDs.
+   *
+   * @param facetAllowlist - The subset of facet field IDs that facet options will be retrieved for.
+   */
+  setFacetAllowList(facetAllowlist: string[] | undefined): void {
+    this.stateManager.dispatchEvent('vertical/setFacetAllowList', facetAllowlist);
   }
 
   /**
@@ -426,7 +435,7 @@ export default class SearchHeadless {
     const sessionId = this.state.sessionTracking.sessionId;
     const staticFilter = transformFiltersToCoreFormat(this.state.filters.static) || undefined;
     const facets = this.state.filters?.facets;
-    const { limit, offset, sortBys, locationRadius } = this.state.vertical;
+    const { limit, offset, sortBys, locationRadius, facetAllowlist } = this.state.vertical;
     const { referrerPageUrl, context } = this.state.meta;
     const { userLocation } = this.state.location;
     const nextQueryId = isPagination ? queryId : undefined;
@@ -456,6 +465,7 @@ export default class SearchHeadless {
       context,
       referrerPageUrl,
       locationRadius,
+      facetAllowlist,
       queryId: nextQueryId,
       additionalHttpHeaders: this.additionalHttpHeaders
     };

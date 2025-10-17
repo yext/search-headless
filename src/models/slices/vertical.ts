@@ -91,7 +91,11 @@ export interface VerticalSearchState {
   /**
    * The radius (in meters) to filter vertical searches by.
    */
-  locationRadius?: number
+  locationRadius?: number,
+  /**
+   * The subset of facet field IDs that facet options will be retrieved for.
+   */
+  facetAllowlist?: string[]
 }
 
 export function isVerticalResults(vertical: VerticalSearchState): vertical is VerticalResults {

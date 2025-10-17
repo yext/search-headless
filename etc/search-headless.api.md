@@ -821,6 +821,7 @@ export class SearchHeadless {
     resetFacets(): void;
     setAlternativeVerticals(alternativeVerticals: VerticalResults[]): void;
     setContext(context: Context): void;
+    setFacetAllowList(facetAllowlist: string[] | undefined): void;
     setFacetOption(fieldId: string, facetOption: FacetOption, selected: boolean): void;
     setFacets(facets: DisplayableFacet[]): void;
     setFilterOption(filter: SelectableStaticFilter): void;
@@ -1145,6 +1146,7 @@ export interface VerticalSearchResponse {
 export interface VerticalSearchState {
     appliedQueryFilters?: AppliedQueryFilter[];
     displayName?: string;
+    facetAllowlist?: string[];
     limit?: number;
     locationRadius?: number;
     noResults?: {

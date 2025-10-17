@@ -75,6 +75,25 @@ _(Optional)_ Name to be displayed for the vertical.
 </td></tr>
 <tr><td>
 
+[facetAllowlist?](./search-headless.verticalsearchstate.facetallowlist.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string\[\]
+
+
+</td><td>
+
+_(Optional)_ The subset of facet field IDs that facet options will be retrieved for.
+
+
+</td></tr>
+<tr><td>
+
 [limit?](./search-headless.verticalsearchstate.limit.md)
 
 

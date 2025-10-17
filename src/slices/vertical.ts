@@ -48,6 +48,9 @@ const reducers = {
   },
   setLocationRadius: (state: VerticalSearchState, action: PayloadAction<number | undefined>) => {
     state.locationRadius = action.payload;
+  },
+  setFacetAllowList: (state: VerticalSearchState, action: PayloadAction<string[] | undefined>) => {
+    state.facetAllowlist = action.payload;
   }
 };
 

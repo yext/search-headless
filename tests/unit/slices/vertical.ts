@@ -1,7 +1,7 @@
 import createVerticalSlice from '../../../src/slices/vertical';
 
 const { reducer, actions } = createVerticalSlice('');
-const { setVerticalKey, setLimit, setOffset, setDisplayName, setLocationRadius } = actions;
+const { setVerticalKey, setLimit, setOffset, setDisplayName, setLocationRadius, setFacetAllowList } = actions;
 
 describe('vertical slice reducer works as expected', () => {
   it('setVerticalKey action is handled properly', () => {
@@ -40,6 +40,14 @@ describe('vertical slice reducer works as expected', () => {
     const locationRadius = 123;
     const expectedState = { locationRadius };
     const actualState = reducer({}, setLocationRadius(locationRadius));
+
+    expect(actualState).toEqual(expectedState);
+  });
+
+  it('setFacetAllowList action is handled properly', () => {
+    const facetAllowlist = ['facetId1', 'facetId2'];
+    const expectedState = { facetAllowlist };
+    const actualState = reducer({}, setFacetAllowList(facetAllowlist));
 
     expect(actualState).toEqual(expectedState);
   });

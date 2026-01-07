@@ -95,7 +95,7 @@ export interface VerticalSearchState {
   /**
    * The subset of facet field IDs that facet options will be retrieved for.
    */
-  facetAllowlist?: string[]
+  facetAllowlist?: string[],
   /**
    * The maximum number of autocomplete results to return.
    */

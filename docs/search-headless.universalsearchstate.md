@@ -50,7 +50,7 @@ number
 
 </td><td>
 
-_(Optional)_
+_(Optional)_ The maximum number of autocomplete results to return.
 
 
 </td></tr>

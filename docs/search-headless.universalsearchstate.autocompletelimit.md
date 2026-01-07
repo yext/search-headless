@@ -4,6 +4,8 @@
 
 ## UniversalSearchState.autocompleteLimit property
 
+The maximum number of autocomplete results to return.
+
 **Signature:**
 
 ```typescript

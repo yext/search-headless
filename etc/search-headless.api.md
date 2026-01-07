@@ -1068,7 +1068,6 @@ export interface UniversalSearchResponse {
 
 // @public
 export interface UniversalSearchState {
-    // (undocumented)
     autocompleteLimit?: number;
     limit?: UniversalLimit;
     restrictVerticals?: string[];

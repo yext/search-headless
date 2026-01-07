@@ -23,6 +23,12 @@ it('answers.setUniversalLimit sets the universal limit when a UniversalLimit is 
   expect(answers.state.universal.limit).toEqual(universalLimit);
 });
 
+it('answers.setUniversalAutocompleteLimit sets the universal autocomplete limit when a number is passed to it', () => {
+  const answers = createMockedHeadless();
+  answers.setUniversalAutocompleteLimit(7);
+  expect(answers.state.universal.autocompleteLimit).toEqual(7);
+});
+
 it('answers.setRestrictVerticals sets the restrictVerticals param', async () => {
   const mockSearch = createMockSearch();
   const answers = createMockedHeadless({

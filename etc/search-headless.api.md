@@ -840,9 +840,11 @@ export class SearchHeadless {
     setState(state: State): void;
     setStaticFilters(filters: SelectableStaticFilter[]): void;
     setUniversal(): void;
+    setUniversalAutocompleteLimit(limit: number | undefined): void;
     setUniversalLimit(limit: UniversalLimit): void;
     setUserLocation(latLong: LatLong): void;
     setVertical(verticalKey: string): void;
+    setVerticalAutocompleteLimit(limit: number | undefined): void;
     setVerticalLimit(limit: number): void;
     get state(): State;
     submitQuestion(request: Omit<QuestionSubmissionRequest, 'additionalHttpHeaders'>): Promise<QuestionSubmissionResponse>;
@@ -1026,6 +1028,7 @@ export interface TwitterHandleDirectAnswer extends BaseFieldValueDirectAnswer<st
 // @public
 export interface UniversalAutocompleteRequest extends SearchRequest {
     input: string;
+    limit?: number;
     sessionTrackingEnabled?: boolean;
 }
 
@@ -1065,6 +1068,7 @@ export interface UniversalSearchResponse {
 
 // @public
 export interface UniversalSearchState {
+    autocompleteLimit?: number;
     limit?: UniversalLimit;
     restrictVerticals?: string[];
     verticals?: VerticalResults[];
@@ -1090,6 +1094,7 @@ export interface UrlDirectAnswer extends BaseFieldValueDirectAnswer<string | str
 // @public
 export interface VerticalAutocompleteRequest extends SearchRequest {
     input: string;
+    limit?: number;
     sessionTrackingEnabled?: boolean;
     verticalKey: string;
 }
@@ -1145,6 +1150,7 @@ export interface VerticalSearchResponse {
 // @public
 export interface VerticalSearchState {
     appliedQueryFilters?: AppliedQueryFilter[];
+    autocompleteLimit?: number;
     displayName?: string;
     facetAllowlist?: string[];
     limit?: number;

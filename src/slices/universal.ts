@@ -13,6 +13,9 @@ const reducers = {
   },
   setRestrictVerticals: (state: UniversalSearchState, action: PayloadAction<string[]>) => {
     state.restrictVerticals = action.payload;
+  },
+  setAutocompleteLimit: (state: UniversalSearchState, action: PayloadAction<number>) => {
+    state.autocompleteLimit = action.payload;
   }
 };
 

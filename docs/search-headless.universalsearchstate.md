@@ -37,6 +37,25 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
+[autocompleteLimit?](./search-headless.universalsearchstate.autocompletelimit.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
 [limit?](./search-headless.universalsearchstate.limit.md)
 
 

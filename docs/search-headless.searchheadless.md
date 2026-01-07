@@ -539,6 +539,20 @@ Sets up Headless to manage universal searches.
 </td></tr>
 <tr><td>
 
+[setUniversalAutocompleteLimit(limit)](./search-headless.searchheadless.setuniversalautocompletelimit.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Sets [UniversalSearchState.autocompleteLimit](./search-headless.universalsearchstate.autocompletelimit.md) to the specified limit.
+
+
+</td></tr>
+<tr><td>
+
 [setUniversalLimit(limit)](./search-headless.searchheadless.setuniversallimit.md)
 
 
@@ -576,6 +590,20 @@ Sets [LocationState.userLocation](./search-headless.locationstate.userlocation.m
 </td><td>
 
 Sets up Headless to manage the vertical indicated by the verticalKey.
+
+
+</td></tr>
+<tr><td>
+
+[setVerticalAutocompleteLimit(limit)](./search-headless.searchheadless.setverticalautocompletelimit.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Sets [VerticalSearchState.autocompleteLimit](./search-headless.verticalsearchstate.autocompletelimit.md) to the specified limit.
 
 
 </td></tr>

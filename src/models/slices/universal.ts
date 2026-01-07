@@ -18,5 +18,8 @@ export interface UniversalSearchState {
   /**
    * If included, the verticals to which the universal search should be restricted.
    */
-  restrictVerticals?: string[]
+  restrictVerticals?: string[]/**
+   * The maximum number of autocomplete results to return.
+   */
+  autocompleteLimit?: number
 }

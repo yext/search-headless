@@ -146,12 +146,30 @@ export default class SearchHeadless {
   }
 
   /**
+   * Sets {@link VerticalSearchState.autocompleteLimit} to the specified limit.
+   *
+   * @param limit - The vertical autocomplete limit to set
+   */
+  setVerticalAutocompleteLimit(limit: number | undefined): void {
+    this.stateManager.dispatchEvent('vertical/setAutocompleteLimit', limit);
+  }
+
+  /**
    * Sets {@link UniversalSearchState.limit} to the specified limit.
    *
    * @param limit - The universal limit to set
    */
   setUniversalLimit(limit: UniversalLimit): void {
     this.stateManager.dispatchEvent('universal/setLimit', limit);
+  }
+
+  /**
+   * Sets {@link UniversalSearchState.autocompleteLimit} to the specified limit.
+   *
+   * @param limit - The universal autocomplete limit to set
+   */
+  setUniversalAutocompleteLimit(limit: number | undefined): void {
+    this.stateManager.dispatchEvent('universal/setAutocompleteLimit', limit);
   }
 
   /**
@@ -403,8 +421,10 @@ export default class SearchHeadless {
    */
   async executeUniversalAutocomplete(): Promise<AutocompleteResponse> {
     const query = this.state.query.input || '';
+    const limit = this.state.universal.autocompleteLimit;
     return this.core.universalAutocomplete({
       input: query,
+      limit,
       additionalHttpHeaders: this.additionalHttpHeaders
     });
   }
@@ -519,10 +539,12 @@ export default class SearchHeadless {
       console.error('no verticalKey supplied for vertical autocomplete');
       return;
     }
+    const limit = this.state.vertical.autocompleteLimit;
 
     return this.core.verticalAutocomplete({
       input: query,
       verticalKey,
+      limit,
       additionalHttpHeaders: this.additionalHttpHeaders
     });
   }

@@ -56,6 +56,25 @@ _(Optional)_ The array of filters inferred from the query and applied to the sea
 </td></tr>
 <tr><td>
 
+[autocompleteLimit?](./search-headless.verticalsearchstate.autocompletelimit.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ The maximum number of autocomplete results to return.
+
+
+</td></tr>
+<tr><td>
+
 [displayName?](./search-headless.verticalsearchstate.displayname.md)
 
 

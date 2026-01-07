@@ -169,6 +169,12 @@ it('answers.setVerticalLimit sets the vertical limit when a number is passed to 
   expect(answers.state.vertical.limit).toEqual(7);
 });
 
+it('answers.setVerticalAutocompleteLimit sets the vertical autocomplete limit when a number is passed to it', () => {
+  const answers = createMockedHeadless();
+  answers.setVerticalAutocompleteLimit(7);
+  expect(answers.state.vertical.autocompleteLimit).toEqual(7);
+});
+
 it('vertical searches re-use queryId when isPagination is true', async () => {
   const answers = createMockedHeadless( { verticalSearch: createMockSearch() }, initialState);
   await answers.executeVerticalQuery();

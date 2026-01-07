@@ -52,7 +52,7 @@ const reducers = {
   setFacetAllowList: (state: VerticalSearchState, action: PayloadAction<string[] | undefined>) => {
     state.facetAllowlist = action.payload;
   },
-  setAutocompleteLimit: (state: VerticalSearchState, action: PayloadAction<number | undefined>) => {
+  setAutocompleteLimit: (state: VerticalSearchState, action: PayloadAction<number>) => {
     state.autocompleteLimit = action.payload;
   }
 };

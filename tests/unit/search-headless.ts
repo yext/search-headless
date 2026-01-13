@@ -286,6 +286,18 @@ describe('setters work as expected', () => {
     expect(dispatchEventCalls[0][1]).toBe(limit);
   });
 
+  it('setVerticalAutocompleteLimit works as expected', () => {
+    const limit = 12;
+    answers.setVerticalAutocompleteLimit(limit);
+
+    const dispatchEventCalls =
+      mockedStateManager.dispatchEvent.mock.calls;
+
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('vertical/setAutocompleteLimit');
+    expect(dispatchEventCalls[0][1]).toBe(limit);
+  });
+
   it('setUniversalLimit works as expected', () => {
     const limit = {
       people: 10,
@@ -298,6 +310,18 @@ describe('setters work as expected', () => {
 
     expect(dispatchEventCalls.length).toBe(1);
     expect(dispatchEventCalls[0][0]).toBe('universal/setLimit');
+    expect(dispatchEventCalls[0][1]).toBe(limit);
+  });
+
+  it('setUniversalAutocompleteLimit works as expected', () => {
+    const limit = 12
+    answers.setUniversalAutocompleteLimit(limit);
+
+    const dispatchEventCalls =
+      mockedStateManager.dispatchEvent.mock.calls;
+
+    expect(dispatchEventCalls.length).toBe(1);
+    expect(dispatchEventCalls[0][0]).toBe('universal/setAutocompleteLimit');
     expect(dispatchEventCalls[0][1]).toBe(limit);
   });
 
